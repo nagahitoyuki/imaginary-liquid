@@ -1,4 +1,4 @@
-<p>Here are Imaginary with liquid design (one column index page) for Japanese and English.</p>
+<p>Introduction of Imaginary with liquid design (one column index page) for Japanese and English.</p>
 
 <p><b>Some features</b></p>
 
