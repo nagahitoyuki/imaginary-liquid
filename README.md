@@ -10,6 +10,6 @@
 
 <p>Basic performance is all the same, but design may vary by type or version.</p>
 
-<p><a href="https://www.nagahitoyuki.com/p/imaginary-theme-for-blogger.html">The explanation of Japanese ver.</a> is also posted on my Japanese blog.</p>
+<p><a href="https://www.nagahitoyuki.com/p/imaginary-theme-for-blogger.html">The explanation of Japanese version</a> is also posted on my Japanese blog.</p>
 
 <p>I hore you enjoy this Imaginary in your Blogger blog.</p>
