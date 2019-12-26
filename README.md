@@ -1,4 +1,4 @@
-<p>Blogger theme / template: Imaginary with liquid design (one column index page) for Japanese and English.</p>
+<p>Here are Imaginary with liquid design (one column index page) for Japanese and English.</p>
 
 <p><b>Some features</b></p>
 
@@ -12,4 +12,4 @@
 
 <p><a href="https://www.nagahitoyuki.com/p/imaginary-theme-for-blogger.html">The explanation of Japanese version</a> is also posted on my Japanese blog.</p>
 
-<p>I hore you enjoy this Imaginary in your Blogger blog.</p>
+<p>I hore you enjoy this Imaginary in your Blogger / blopspot blog.</p>
