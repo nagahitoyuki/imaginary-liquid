@@ -6,8 +6,8 @@
 
 <p><b>Sample blog</b></p>
 
-<ul><li><a href="https://imaginary-theme.blogspot.com/">One of Imaginary series for Japanese</a> (basic performance is all the same, but design may vary by version)</li></ul>
+<ul><li><a href="https://imaginary-theme.blogspot.com/">One of Imaginary series for Japanese</a> (basic performance is all the same, but design may vary by type or version)</li></ul>
 
-<p><a href="https://www.nagahitoyuki.com/p/imaginary-theme-for-blogger.html">The explanation of Japanese ver.</a> is also posted on my Japanese blog（日本語版の説明は僕の日本語のブログにも掲載しています）.</p>
+<p><a href="https://www.nagahitoyuki.com/p/imaginary-theme-for-blogger.html">The explanation of Japanese ver.</a> is also posted on my Japanese blog.</p>
 
 <p>I hore you enjoy this Imaginary in your Blogger blog.</p>
