@@ -12,4 +12,4 @@
 
 <p><a href="https://www.nagahitoyuki.com/p/imaginary-theme-for-blogger.html">The explanation of Japanese version</a> is also posted on my Japanese blog.</p>
 
-<p>I hore you enjoy this Imaginary in your Blogger / blogspot blog.</p>
+<p>I hope you enjoy this Imaginary in your Blogger / blogspot blog.</p>
