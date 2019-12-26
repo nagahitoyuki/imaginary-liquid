@@ -8,7 +8,7 @@
 
 <ul><li><a href="https://imaginary-theme.blogspot.com/">One of Imaginary series for Japanese</a> </li></ul>
 
-<p>Basic performance is all the same, but design may vary by type or version.</p>
+<p>Basic performance of Imaginary series is all the same, but design may vary by type or version.</p>
 
 <p><a href="https://www.nagahitoyuki.com/p/imaginary-theme-for-blogger.html">The explanation of Japanese version</a> is also posted on my Japanese blog.</p>
 
