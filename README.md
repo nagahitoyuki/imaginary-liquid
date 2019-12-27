@@ -4,7 +4,7 @@
 
 <ul><li>Lazy load images in index pages</li><li>Infinite scroll in index pages</li><li>Floating back button (at the bottom right of the blog except its header) in all pages</li><li>Share button for apps in all pages on mobile</li></ul>
 
-<h2>Sample blog</h2>
+<h3>Sample blog</h3>
 
 <ul><li><a href="https://imaginary-theme.blogspot.com/">One of Imaginary series for Japanese</a> </li></ul>
 
