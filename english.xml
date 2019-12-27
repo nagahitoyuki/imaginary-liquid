@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='english.xml' b:templateVersion='ver.1.0.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language'>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='english.xml' b:templateVersion='1.0.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language'>
   <head>
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
@@ -433,8 +433,8 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 /* Post title */
 .Blog .post-title {margin-top:0;margin-bottom:16px}
 .Blog .post-title a,.post-title a:hover,.post-title a:visited{color:$(posts.title.color)}
-.Blog h1.post-title a {font:$(posts.title.font);line-height:calc(var(--body-lineheight) - .15)}
-.Blog h3.post-title a, .FeaturedPost .post-title a {font:$(posts.stream.title.font);line-height:calc(var(--body-lineheight) - .15)}
+.Blog h1.post-title a {font:$(posts.title.font)}
+.Blog h3.post-title a, .FeaturedPost .post-title a {font:$(posts.stream.title.font)}
 
 /* Post header / footer */
 .post-footer,.post-header {display:flex;color:$(posts.byline.color)}
@@ -666,7 +666,7 @@ body {position:relative}
 /* Below the width of the blog content and sidebar and gap */
 @media screen and (max-width:$(sidebar.width + content.width + content.margin * 2 - 1px)){
 
-/* サイドバー */
+/* Side bar */
 .sidebar-container {bottom:0;position:fixed;top:0;left:0;right:auto;animation:slidein .2s ease-out;}
 .slideout-sidebar {animation:slideout .2s ease-out}
 .sidebar-invisible {display:none}
@@ -682,6 +682,10 @@ body {position:relative}
 
 /* Adsense ads */
 .desktop-ad .inline-ad {display:block;margin:calc(var(--maincolumn-padding) / 2) auto}
+
+/* Post title */
+.Blog h1.post-title a {line-height:calc(var(--body-lineheight) - .15)}
+.Blog h3.post-title a, .FeaturedPost .post-title a {line-height:calc(var(--body-lineheight) - .15)}
 }
 
 /* Below the width of horizontal tablet */
