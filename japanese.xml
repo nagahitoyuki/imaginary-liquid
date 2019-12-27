@@ -1309,7 +1309,7 @@ body#layout .hamburger-menu {display: none;}
 </b:if>
 
 <b:section class='main' id='page_body' name='Page Body' showaddelement='false'>
-  <b:widget cond='data:view.isHomepage' id='FeaturedPost1' locked='true' title='注目の投稿' type='FeaturedPost' version='2' visible='true'>
+  <b:widget cond='data:view.isHomepage' id='FeaturedPost1' locked='true' title='注目の投稿' type='FeaturedPost' version='2' visible='false'>
     <b:widget-settings>
       <b:widget-setting name='showSnippet'>true</b:widget-setting>
       <b:widget-setting name='showPostTitle'>true</b:widget-setting>
