@@ -356,7 +356,7 @@ iframe.b-hbp-video {border:0}
 .no-posts-message {line-height:40px;text-align:center}
 
 /* ブログヘッダー */
-.centered-top {margin-top:2em;margin-bottom:2em;line-height:var(--body-lineheight)}
+.centered-top {margin-top:2em;margin-bottom:2em}
 .centered-top-placeholder{display:none}
 .centered-top-container {text-align:center;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
 .centered-top-container img, .centered-top-placeholder img {max-width:100%}
@@ -524,7 +524,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 #page_body .PopularPosts {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
 .page .item-content {margin-bottom:16px}
 .page .PopularPosts .post-title {margin-top:20px;margin-bottom:20px}
-.page .PopularPosts .post {margin-bottom:20px;padding:0;line-height:var(--body-lineheight)}
+.page .PopularPosts .post {margin-bottom:20px;padding:0}
 .page .PopularPosts p.snippet-item {color:$(popularposts.text.color);margin:0}
 .page .PopularPosts .footerbox {display:flex}
 .sidebar-container .PopularPosts .post {margin-bottom:24px}
@@ -539,7 +539,6 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .blog-pager a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* サブメイン */
-.sub- main {line-height:var(--body-lineheight)}
 .sub_main .widget {margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
 .sub_main .widget ul {list-style:none;padding-left:0}
 .sub_main .widget ul ul {margin-$startSide:1em}
@@ -557,7 +556,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 
 /* サイドバー */
 .navigation {text-align:right;margin-top:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
-.sidebar-container {background-color:$(sidebar.backgroundColorBottom);max-width:$(sidebar.width);overflow-y:auto;width:$(sidebar.width);box-sizing:border-box;box-shadow:5px 0 10px -5px rgba(0,0,0,.45);line-height:var(--body-lineheight);z-index:101;-webkit-overflow-scrolling:touch}
+.sidebar-container {background-color:$(sidebar.backgroundColorBottom);max-width:$(sidebar.width);overflow-y:auto;width:$(sidebar.width);box-sizing:border-box;box-shadow:5px 0 10px -5px rgba(0,0,0,.45);z-index:101;-webkit-overflow-scrolling:touch}
 .sidebar-container .widget {background:0 0;margin:0 var(--maincolumn-padding);padding:8px 0;color:$(widget.text.color)}
 .sidebar-container .widget .title {color:$(widget.title.color)}
 .sidebar-container .widget ul {list-style:none;padding-left:0}
