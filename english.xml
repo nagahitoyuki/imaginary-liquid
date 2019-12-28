@@ -421,7 +421,7 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 
 /* Featured post */
 .FeaturedPost .title {margin-top:0;margin-bottom:16px}
-.FeaturedPost .title a {color:$(posts.title.color);line-height:inherit}
+.FeaturedPost .title a {color:$(posts.title.color)}
 .FeaturedPost {padding:20px var(--maincolumn-padding);margin-bottom:var(--maincolumn-padding);background-color:$(posts.background.color)}
 .FeaturedPost a,.FeaturedPost a:hover,.FeaturedPost a:visited {color:$(posts.link.color)}
 .FeaturedPost .post-title,.FeaturedPost .post-title a,.FeaturedPost .post-title a:hover,.FeaturedPost .post-title a:visited {color:$(posts.title.color)}
