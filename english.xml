@@ -415,14 +415,14 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .page_body .centered {display:flex;flex-direction:column;margin:0 auto;max-width:$(content.width);min-height:100vh}
 .page_body .centered>* {flex:0 0 auto}
 .blog-posts {background:$(body.background.color);display:grid;margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
-.Blog article {background:$(posts.background.color);box-sizing:border-box;width:auto;padding:16px var(--maincolumn-padding)}
+.Blog article {background:$(posts.background.color);box-sizing:border-box;width:auto;padding:20px var(--maincolumn-padding)}
 .Blog article:not(:first-child) {margin-top:calc(var(--maincolumn-padding) / 2)}
 .Blog article:not(:last-child) {margin-bottom:calc(var(--maincolumn-padding) / 2)}
 
 /* Featured post */
 .FeaturedPost .title {margin-top:0;margin-bottom:16px}
 .FeaturedPost .title a {color:$(posts.title.color);line-height:inherit}
-.FeaturedPost {padding:16px var(--maincolumn-padding);margin-bottom:var(--maincolumn-padding);background-color:$(posts.background.color)}
+.FeaturedPost {padding:20px var(--maincolumn-padding);margin-bottom:var(--maincolumn-padding);background-color:$(posts.background.color)}
 .FeaturedPost a,.FeaturedPost a:hover,.FeaturedPost a:visited {color:$(posts.link.color)}
 .FeaturedPost .post-title,.FeaturedPost .post-title a,.FeaturedPost .post-title a:hover,.FeaturedPost .post-title a:visited {color:$(posts.title.color)}
 .FeaturedPost .post-title {margin-top:0;margin-bottom:16px}
@@ -529,8 +529,8 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .PopularPosts .item-thumbnail img {width:94px;height:94px;margin-right:var(--maincolumn-padding)}
 #page_body .PopularPosts {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
 .page .item-content {margin-bottom:16px}
-.page .PopularPosts .post-title {margin-top:16px;margin-bottom:16px}
-.page .PopularPosts .post {margin-bottom:16px;padding:0}
+.page .PopularPosts .post-title {margin-top:20px;margin-bottom:16px}
+.page .PopularPosts .post {margin-bottom:20px;padding:0}
 .page .PopularPosts p.snippet-item {color:$(popularposts.text.color);margin:0}
 .page .PopularPosts .footerbox {display:flex}
 .sidebar-container .PopularPosts .post {margin-bottom:24px}
