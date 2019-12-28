@@ -694,6 +694,10 @@ body {position:relative}
 /* Page body */
 .Blog article {max-width:100vw}
 
+/* Post title */
+.Blog h1.post-title a {line-height:calc(var(--body-lineheight) - .2)}
+.Blog h3.post-title a, .FeaturedPost .post-title a {line-height:calc(var(--body-lineheight) - .15)}
+
 /* Posted image */
 body.item-view .post-body a[imageanchor="1"][style*="float: left;"],body.item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none!important;clear:none!important}
 body.item-view .post-body a[imageanchor="1"] img{display:block;height:auto;
