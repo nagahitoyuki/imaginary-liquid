@@ -356,7 +356,7 @@ iframe.b-hbp-video {border:0}
 .no-posts-message {line-height:40px;text-align:center}
 
 /* ブログヘッダー */
-.centered-top {margin-top:2em;margin-bottom:2em}
+.centered-top {margin-top:2em;margin-bottom:2em;line-height:var(--body-lineheight)}
 .centered-top-placeholder{display:none}
 .centered-top-container {text-align:center;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
 .centered-top-container img, .centered-top-placeholder img {max-width:100%}
@@ -372,8 +372,8 @@ iframe.b-hbp-video {border:0}
 
 /* フローティングバー */
 #floatingbar {position:sticky;top:0;left:0;right:0;height:var(--floatingbar-height);width:auto;display:flex;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
-#left-floating {margin-$endSide:auto;display:grid;grid-auto-flow:column;align-items:center;column-gap:8px}
-#right-floating {margin-$startSide:auto;display:grid;grid-auto-flow:column;align-items:center;column-gap:4px}
+#left-floating {margin-$endSide:auto;display:grid;grid-auto-flow:column;align-items:center;column-gap:calc(var(--maincolumn-padding) / 2)}
+#right-floating {margin-$startSide:auto;display:grid;grid-auto-flow:column;align-items:center;column-gap:calc(var(--maincolumn-padding) / 3)}
 
 /* SVGアイコン */
 .sidebar-container .svg-icon-24 {fill:$(sidebar.icons.color)}
@@ -427,15 +427,14 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .FeaturedPost a,.FeaturedPost a:hover,.FeaturedPost a:visited {color:$(posts.link.color)}
 .FeaturedPost .post-title,.FeaturedPost .post-title a,.FeaturedPost .post-title a:hover,.FeaturedPost .post-title a:visited {color:$(posts.title.color)}
 .FeaturedPost .post-title {margin-top:0;margin-bottom:20px}
-.FeaturedPost .post-title a {font:$(posts.title.font)}
 .FeaturedPost .snippet-thumbnail img {width:100%;max-width:100%;height:auto;margin-bottom:16px}
 .FeaturedPost .snippet-item {color:$(posts.text.color);margin:0 0 20px}
 
 /* 記事の題名 */
-.Blog .post-title {margin-top:0;margin-bottom:20px;}
+.Blog .post-title {margin-top:0;margin-bottom:20px}
 .Blog .post-title a,.post-title a:hover,.post-title a:visited{color:$(posts.title.color)}
-.Blog h1.post-title a {font:$(posts.title.font)}
-.Blog h3.post-title a, .FeaturedPost .post-title a {font:$(posts.stream.title.font)}
+.Blog h1.post-title {font:$(posts.title.font)}
+.Blog h3.post-title, .FeaturedPost .post-title {font:$(posts.stream.title.font)}
 
 /* 記事のヘッダー／フッター */
 .post-footer,.post-header {display:flex;color:$(posts.byline.color)}
@@ -458,12 +457,6 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .snippet-thumbnail img {width:100%;max-width:100%;margin-bottom:16px}
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin:0 0 20px}
-.post-body h1 {font-size:26.5px;line-height:calc(var(--body-lineheight) - .1)}
-.post-body h2 {font-size:25px;line-height:calc(var(--body-lineheight) - .1)}
-.post-body h3 {font-size:20.9px}
-.post-body h4 {font-size:15.8px}
-.post-body h5 {font-size:13px}
-.post-body h6 {font-size:10.7px}
 
 /* ラベル */
 .Label li, .Label span.label-size, .byline.post-labels a {background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px}
@@ -525,13 +518,13 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .PopularPosts a,.PopularPosts a:hover,.PopularPosts a:visited {color:$(popularposts.link.color)}
 .PopularPosts .post-title,.PopularPosts .post-title a,.PopularPosts .post-title a:hover,.PopularPosts .post-title a:visited {color:$(popularposts.title.color)}
 .PopularPosts,PopularPosts .title a {color:$(posts.text.color)}
-.PopularPosts .post-title a {font:$(popularposts.title.font)}
+.PopularPosts .post-title {font:$(popularposts.title.font)}
 .PopularPosts .post+.post {border-top:1px dashed $(sidebar.separator.color)}
 .PopularPosts .item-thumbnail img {width:94px;height:94px;margin-right:var(--maincolumn-padding)}
 #page_body .PopularPosts {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
 .page .item-content {margin-bottom:16px}
 .page .PopularPosts .post-title {margin-top:20px;margin-bottom:20px}
-.page .PopularPosts .post {margin-bottom:20px;padding:0}
+.page .PopularPosts .post {margin-bottom:20px;padding:0;line-height:var(--body-lineheight)}
 .page .PopularPosts p.snippet-item {color:$(popularposts.text.color);margin:0}
 .page .PopularPosts .footerbox {display:flex}
 .sidebar-container .PopularPosts .post {margin-bottom:24px}
@@ -546,6 +539,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .blog-pager a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* サブメイン */
+.sub- main {line-height:var(--body-lineheight)}
 .sub_main .widget {margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
 .sub_main .widget ul {list-style:none;padding-left:0}
 .sub_main .widget ul ul {margin-$startSide:1em}
@@ -563,7 +557,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 
 /* サイドバー */
 .navigation {text-align:right;margin-top:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
-.sidebar-container {background-color:$(sidebar.backgroundColorBottom);max-width:$(sidebar.width);overflow-y:auto;width:$(sidebar.width);box-sizing:border-box;box-shadow:5px 0 10px -5px rgba(0,0,0,.45);z-index:101;-webkit-overflow-scrolling: touch}
+.sidebar-container {background-color:$(sidebar.backgroundColorBottom);max-width:$(sidebar.width);overflow-y:auto;width:$(sidebar.width);box-sizing:border-box;box-shadow:5px 0 10px -5px rgba(0,0,0,.45);line-height:var(--body-lineheight);z-index:101;-webkit-overflow-scrolling:touch}
 .sidebar-container .widget {background:0 0;margin:0 var(--maincolumn-padding);padding:8px 0;color:$(widget.text.color)}
 .sidebar-container .widget .title {color:$(widget.title.color)}
 .sidebar-container .widget ul {list-style:none;padding-left:0}
@@ -685,8 +679,17 @@ body {position:relative}
 .desktop-ad .inline-ad {display:block;margin:calc(var(--maincolumn-padding) / 2) auto}
 
 /* 記事の題名 */
-.Blog h1.post-title a {line-height:calc(var(--body-lineheight) - .2)}
-.Blog h3.post-title a, .FeaturedPost .post-title a {line-height:calc(var(--body-lineheight) - .2)}
+.Blog h1.post-title {line-height:calc(var(--body-lineheight) - .2)}
+.Blog h3.post-title, .FeaturedPost .post-title {line-height:calc(var(--body-lineheight) - .2)}
+.PopularPosts .post-title {line-height:var(--body-lineheight)}
+
+/* 記事の本文 */
+.post-body h1 {font-size:26.5px;line-height:calc(var(--body-lineheight) - .1)}
+.post-body h2 {font-size:25px;line-height:calc(var(--body-lineheight) - .1)}
+.post-body h3 {font-size:20.9px}
+.post-body h4 {font-size:15.8px}
+.post-body h5 {font-size:13px}
+.post-body h6 {font-size:10.7px}
 }
 
 /* 横向きタブレット以下 */
@@ -727,29 +730,30 @@ body.item-view .post-body a[imageanchor="1"]+a[imageanchor="1"] {margin-top:16px
 /* 文字サイズと行間 */
 #blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 18)}
 body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 36)}
-.Blog h1.post-title a {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22);line-height:calc(var(--body-lineheight) - .1)}
-.Blog h3.post-title a, .FeaturedPost .post-title a {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22);line-height:calc(var(--body-lineheight) - .1)}
-.post-body h1 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 24);line-height:calc(var(--body-lineheight) - .1)}
-.post-body h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 26);line-height:calc(var(--body-lineheight) - .1)}
+.Blog h1.post-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22);line-height:calc(var(--body-lineheight) - .2)}
+.Blog h3.post-title, .FeaturedPost .post-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22);line-height:calc(var(--body-lineheight) - .2)}
+.post-body h1 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22);line-height:calc(var(--body-lineheight) - .2)}
+.post-body h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 26);line-height:calc(var(--body-lineheight) - .05)}
 .post-body h3 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30)}
 .post-body h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 44)}
 .post-body h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 55)}
-.PopularPosts .post-title a {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30)}
+.PopularPosts .post-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30);line-height:var(--body-lineheight)}
 }
 
 /* スマホ中心 */
 @media screen and (max-width:480px) {
 
+/* 文字サイズと行間 */
 #blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 12.5)}
 body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
-.Blog h1.post-title a {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15);line-height:calc(var(--body-lineheight) - .2)}
-.Blog h3.post-title a, .FeaturedPost .post-title a {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15);line-height:var(--body-lineheight)}
+.Blog h1.post-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15);line-height:calc(var(--body-lineheight) - .1)}
+.Blog h3.post-title, .FeaturedPost .post-title  {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15);line-height:calc(var(--body-lineheight) - .1)}
 .post-body h1 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15);line-height:calc(var(--body-lineheight) - .2)}
-.post-body h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 17);line-height:calc(var(--body-lineheight) - .1)}
+.post-body h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 17);line-height:calc(var(--body-lineheight) - .05)}
 .post-body h3 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 20)}
 .post-body h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 25)}
 .post-body h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30)}
-.PopularPosts .post-title a {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 20)}
+.PopularPosts .post-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 20);line-height:var(--body-lineheight)}
 
 /* ラベル */
 .Label li, .Label span.label-size, .byline.post-labels a {margin-right:8px;margin-bottom:12px}
