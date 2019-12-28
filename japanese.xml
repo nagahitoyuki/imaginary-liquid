@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='japanease.xml' b:templateVersion='1.0.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language'>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='japanese.xml' b:templateVersion='1.0.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language'>
   <head>
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
@@ -293,7 +293,7 @@
 
 /*!************************************************
  * Blogger Template Style
- * Name: Imaginary with liquid design in Japanease
+ * Name: Imaginary with liquid design in Japanese
  * Copyright: Nagahito Yuki 2019 | The MIT License | https://github.com/nagahitoyuki/imaginary-liquid
 **************************************************/
 
