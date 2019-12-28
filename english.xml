@@ -326,7 +326,7 @@ pre {white-space:pre-wrap}
 #comments .comment .comment-actions,.subscribe-popup .FollowByEmail .follow-by-email-submit,.widget.Profile .profile-link,.widget.Profile .profile-link.visit-profile {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0;}
 .widget .title {font-size:large;color:$(widget.title.color)}
 
-/* Skip nav */
+/* Skip navigation */
 .skip-navigation{background-color:#fff;box-sizing:border-box;color:#000;display:block;height:0;left:0;line-height:50px;overflow:hidden;
 padding-top:0;position:fixed;text-align:center;top:0;transition:box-shadow .3s,height .3s,padding-top .3s;width:100%;z-index:900}
 .skip-navigation:focus{box-shadow:0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);height:50px}
