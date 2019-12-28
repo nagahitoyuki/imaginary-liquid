@@ -1,5 +1,7 @@
 <p>I introduce Imaginary with liquid design (one column index page) for Japanese and English.</p>
 
+<img src="https://raw.githubusercontent.com/nagahitoyuki/imaginary-liquid/master/firstview.jpg" alt="Header image of Imaginary with liquid design">
+
 <h2>Some features</h2>
 
 <ul><li>Lazy load images in index pages</li><li>Infinite scroll in index pages</li><li>Floating back button (at the bottom right of the blog except its header) in all pages</li><li>Share button for apps in all pages on mobile</li></ul>
