@@ -549,7 +549,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .sub_main .widget ul {list-style:none;padding-left:0}
 .sub_main .widget ul ul {margin-$startSide:1em}
 .sub_main.no-items {display:none}
-.sub_main .widget:last-child {margin-bottom:2em}
+.sub_main .widget:last-child {margin-bottom:1.75em}
 
 /* Attribution */
 .theme-attribution {text-align:center;font-size:small}
