@@ -1,4 +1,4 @@
-<h2>About content</h2>
+<h2>About theme</h2>
 
 <p>I introduce Imaginary with liquid design (one column index page) for Japanese and English.</p>
 
