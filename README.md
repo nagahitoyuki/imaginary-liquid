@@ -1,3 +1,5 @@
+<h1>About content</h1>
+
 <p>I introduce Imaginary with liquid design (one column index page) for Japanese and English.</p>
 
 <img src="https://raw.githubusercontent.com/nagahitoyuki/imaginary-liquid/master/firstview.jpg" alt="Header image of Imaginary with liquid design">
