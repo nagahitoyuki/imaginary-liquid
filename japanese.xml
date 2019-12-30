@@ -360,7 +360,7 @@ iframe.b-hbp-video {border:0}
 .centered-top-placeholder{display:none}
 .centered-top-container {text-align:center;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
 .centered-top-container img, .centered-top-placeholder img {max-width:100%}
-#blog-title {color:$(blog.title.color);font:$(blog.title.font);margin:0}
+#blog-title {color:$(blog.title.color);font:$(blog.title.font);margin:0;line-height:calc(var(--body-lineheight) - .1)}
 #blog-title a,#blog-title a:hover,#blog-title a:visited{color:$(blog.title.color)}
 .Header p {color:$(blog.title.color);margin-top:1.5em;margin-bottom:0}
 
