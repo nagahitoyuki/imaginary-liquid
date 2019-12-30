@@ -372,8 +372,8 @@ iframe.b-hbp-video {border:0}
 
 /* フローティングバー */
 #floatingbar {position:sticky;top:0;left:0;right:0;height:var(--floatingbar-height);width:auto;display:flex;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
-#left-floating {margin-$endSide:auto;display:grid;grid-auto-flow:column;align-items:center;column-gap:calc(var(--maincolumn-padding) / 2)}
-#right-floating {margin-$startSide:auto;display:grid;grid-auto-flow:column;align-items:center;column-gap:calc(var(--maincolumn-padding) / 3)}
+#left-floating {margin-$endSide:auto;display:grid;grid-auto-flow:column;align-items:center;column-gap:8px}
+#right-floating {margin-$startSide:auto;display:grid;grid-auto-flow:column;align-items:center;column-gap:4px}
 
 /* SVGアイコン */
 .sidebar-container .svg-icon-24 {fill:$(sidebar.icons.color)}
