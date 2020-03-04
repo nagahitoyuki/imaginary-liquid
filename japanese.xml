@@ -402,7 +402,7 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .page_body.has-vertical-ads .centered .centered-bottom {display:inline-block;width:calc(100% - 174px)}
 .vertical-ad-placeholder {height:600px}
 .vertical-ad-placeholder span {margin-top:290px;padding:0 40px}
-.vertical-ad-container {float:$(endSide);margin-$endSide:var(--maincolumn-padding) / 2);width:128px}
+.vertical-ad-container {float:$(endSide);margin-$endSide:calc(var(--maincolumn-padding) / 2);width:128px}
 .vertical-ad-container .AdSense+.AdSense {margin-top:calc(var(--maincolumn-padding) + var(--maincolumn-padding) / 2)}
 .inline-ad {display:none;overflow:hidden;max-width:100%;width:100%;height:auto}
 .adsbygoogle {display:block;overflow:hidden}
