@@ -65,7 +65,10 @@
   <Variable name="body.background" description="Background"
       color="$(body.background.color)"
       type="background"
-      default="$(color) none repeat scroll center center" value="$(color) url(http://3.bp.blogspot.com/-xw41YEV073w/XMucy3oWvJI/AAAAAAAAZUI/IkK9SQEnWac3AKNx71W6Kyg4JRj3aUSKQCK4BGAYYCw/s0/imaginary-gray.png) no-repeat scroll top center"/>
+      default="$(color) none repeat scroll center center" value="$(color) none no-repeat scroll center center"/>
+  <Variable name="blog.header.color" description="Blog header color"
+      type="color"
+      default="#c0c0c0"  value="#c0c0c0"/>
   <Variable name="body.background.color" description="Body background color"
       type="color"
       default="#f5f5dc"  value="#f5f5dc"/>
@@ -313,7 +316,7 @@ pre {white-space:pre-wrap}
 
 /* ヘッダーの背景画像 */
 .bg-photo-container {height:$(body.background.height);overflow:hidden;position:absolute;width:100%;z-index:1}
-.bg-photo {background:$(body.background);background-attachment:scroll;background-size:cover;filter:blur($(body.background.blur));height:calc(100% + 2 * $(body.background.blur));left:$(0 - body.background.blur);position:absolute;top:$(0 - body.background.blur);width:calc(100% + 2 * $(body.background.blur))}
+.bg-photo {background:$(body.background);background-attachment:scroll;background-size:cover;filter:blur($(body.background.blur));height:calc(100% + 2 * $(body.background.blur));left:$(0 - body.background.blur);position:absolute;top:$(0 - body.background.blur);width:calc(100% + 2 * $(body.background.blur));background-color:$(blog.header.color)}
 .bg-photo {background-attachment:scroll !important}
 
 /* バランサー */
@@ -1197,7 +1200,7 @@ body#layout .hamburger-menu {display: none;}
 <div id='floatingbar'>
 <b:class cond='data:hasVerticalAds' name='narrow'/>
   <div id='left-floating'>
-    <span class='svg-icon-24-button hamburger-menu'><svg class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='none'/><path d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'/></svg></span>
+    <span aria-label='サイドバー' class='svg-icon-24-button hamburger-menu'><svg class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='none'/><path d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'/></svg></span>
      <b:if cond='data:view.isLayoutMode or data:widgets any (w =&gt; w.sectionId == &quot;search_top&quot;)'>
         <div class='search'>
         <b:class cond='data:view.isSearch and data:view.search.query' name='focused'/>
@@ -1207,7 +1210,7 @@ body#layout .hamburger-menu {display: none;}
            <b:include name='content'/>
          </b:includable>
             <b:includable id='content'>
-           <div class='widget-content hidden' id='swc' role='search'>
+           <div class='widget-content hidden' id='swc'>
              <b:include name='searchForm'/>
            </div>
          </b:includable>
@@ -1227,7 +1230,7 @@ body#layout .hamburger-menu {display: none;}
           </b:widget>
         </b:section>
 
-     <span class='svg-icon-24-button search-expand' expr:aria-label='data:messages.search.escaped'><svg class='svg-icon-24 touch-icon' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/><path d='M0 0h24v24H0z' fill='none'/></svg></span>
+     <span class='svg-icon-24-button search-expand' expr:aria-label='data:messages.search.escaped' role='search'><svg class='svg-icon-24 touch-icon' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/><path d='M0 0h24v24H0z' fill='none'/></svg></span>
     </div>
     </b:if>
   </div>
@@ -1242,7 +1245,7 @@ body#layout .hamburger-menu {display: none;}
 
 <div class='hidden' id='back-button-box'>
   <div class='back-button'>
-    <a class='svg-icon-24-button' href='#blog-title'><svg class='svg-icon-back' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M4 20 L12 4, 20 20 Q12 18, 4 20Z'/></svg></a>
+    <a aria-label='戻るボタン' class='svg-icon-24-button' href='#blog-title'><svg class='svg-icon-back' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M4 20 L12 4, 20 20 Q12 18, 4 20Z'/></svg></a>
   </div>
 </div>
 
@@ -1955,7 +1958,7 @@ avic.innerHTML = &quot;<svg class='avatarIcon'><use xlink:href='/responsive/spri
 <b:section class='sub_main' cond='!data:view.isError' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true'>
   <b:widget id='Text1' locked='false' title='お知らせ' type='Text' visible='true'>
     <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<p>ヘッダーの背景画像（灰色）はBloggerのウェブの編集のテーマのカスタマイズの「背景」から削除・変更できます。</p><p>テーマデザイナーでの文字サイズの変更は横向きタブレットかパソコン以上の画面でしか反映しません。縦向きタブレット、スマホでの文字サイズの変更はBloggerのテーマのhtml編集かバックアップ／復元からskin内の二つに振り分けられたmedia screen内のfont-sizeを変更して下さい。</p><p>例＿<code>font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}</code></p><p>右端の数字が一行当たりの文字数になり、減らすと文字サイズが大きくなり、増やすと文字サイズが小さくなります。</p><h4>対応する指定先</h4><dl><dt>#blog-title</dt><dd>ブログ名</dd><dt>body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4</dt><dd>ブログ、記事／追加ページの本文、ブログの投稿のスニペット、注目と人気の投稿のスニペット、記事／追加ページの引用、記事／追加ページの見出しのh4</dd><dt>.Blog h1.post-title a<dd>記事／追加ページの記事／追加タイトル</dd><dt>.Blog h3.post-title a, .FeaturedPost .post-title a</dt><dd>ブログと注目の投稿のスニペットの記事タイトル</dd><dt>.post-body h1</dt><dd>記事／追加ページの見出しのh1</dd><dt>.post-body h2</dt><dd>記事／追加ページの見出しのh2</dd><dt>.post-body h3</dt><dd>記事／追加ページの見出しのh3</dd><dt>.post-body h5</dt><dd>記事／追加ページの見出しのh5</dd><dt>.post-body h6</dt><dd>記事／追加ページの見出しのh6</dd><dt>.PopularPosts .post-title a</dt><dd>人気の投稿のスニペットの記事タイトル</dd></dl>]]></b:widget-setting>
+      <b:widget-setting name='content'><![CDATA[<p>テーマデザイナーでの文字サイズの変更は横向きタブレットかパソコン以上の画面でしか反映しません。縦向きタブレット、スマホでの文字サイズの変更はBloggerのテーマのhtml編集かバックアップ／復元からskin内の二つに振り分けられたmedia screen内のfont-sizeを変更して下さい。</p><p>例＿<code>font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}</code></p><p>右端の数字が一行当たりの文字数になり、減らすと文字サイズが大きくなり、増やすと文字サイズが小さくなります。</p><h4>対応する指定先</h4><dl><dt>#blog-title</dt><dd>ブログ名</dd><dt>body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4</dt><dd>ブログ、記事／追加ページの本文、ブログの投稿のスニペット、注目と人気の投稿のスニペット、記事／追加ページの引用、記事／追加ページの見出しのh4</dd><dt>.Blog h1.post-title a<dd>記事／追加ページの記事／追加タイトル</dd><dt>.Blog h3.post-title a, .FeaturedPost .post-title a</dt><dd>ブログと注目の投稿のスニペットの記事タイトル</dd><dt>.post-body h1</dt><dd>記事／追加ページの見出しのh1</dd><dt>.post-body h2</dt><dd>記事／追加ページの見出しのh2</dd><dt>.post-body h3</dt><dd>記事／追加ページの見出しのh3</dd><dt>.post-body h5</dt><dd>記事／追加ページの見出しのh5</dd><dt>.post-body h6</dt><dd>記事／追加ページの見出しのh6</dd><dt>.PopularPosts .post-title a</dt><dd>人気の投稿のスニペットの記事タイトル</dd></dl>]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <b:include name='widget-title'/>
@@ -2015,7 +2018,7 @@ avic.innerHTML = &quot;<svg class='avatarIcon'><use xlink:href='/responsive/spri
 
 <aside class='sidebar-container container sidebar-invisible slideout-sidebar'>
   <div class='navigation'>
-    <span class='svg-icon-24-button close-button'><svg class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/><path d='M0 0h24v24H0z' fill='none'/></svg></span>
+    <span aria-label='閉じるボタン' class='svg-icon-24-button close-button'><svg class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/><path d='M0 0h24v24H0z' fill='none'/></svg></span>
     </div>
       <div class='sidebar_top_wrapper'>
         <b:class cond='data:widgets none w =&gt; w.sectionId == &quot;sidebar_top&quot;' name='no-items'/>
