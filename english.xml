@@ -1705,7 +1705,7 @@ body#layout .hamburger-menu {display: none;}
       <b:if cond='data:view.isPost'>
       <b:include name='footerBylines'/>
         <div class='lastupdated'>
-          <span class='byline post-timestamp updated'>last updated: <time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span>
+          <span class='byline post-timestamp updated'>Last updated: <time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span>
         </div>
       <b:elseif cond='data:view.isMultipleItems'/>
         <span class='byline archive-link'>
