@@ -789,7 +789,7 @@ body#layout .hamburger-menu {display: none;}
 </b:defaultmarkup>
 <b:defaultmarkup type='PopularPosts'>
     <b:includable id='main' var='this'>
-    <section><b:include name='super.main'/></section>
+    <b:include name='super.main'/>
 </b:includable>
     <b:includable id='postSnippet'>
   <div expr:class='(data:snippetPrefix ?: &quot;post&quot;) + &quot;-snippet snippet-container&quot;'>
@@ -1323,12 +1323,10 @@ body#layout .hamburger-menu {display: none;}
       <b:widget-setting name='useMostRecentPost'>true</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-  <section>
   <b:include name='widget-title'/>
   <div class='widget-content'>
     <b:include name='snippetedPosts'/>
   </div>
-  </section>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
   <span class='jump-link'>
@@ -1887,7 +1885,7 @@ avic.innerHTML = &quot;<svg class='avatarIcon'><use xlink:href='/responsive/spri
       <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-    <section><b:include name='super.main'/></section>
+    <b:include name='super.main'/>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
   <span class='jump-link'>
