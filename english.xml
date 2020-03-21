@@ -1187,7 +1187,7 @@ body#layout .hamburger-menu {display: none;}
            <b:include name='content'/>
          </b:includable>
             <b:includable id='content'>
-           <div class='widget-content hidden' id='swc'>
+           <div aria-hidden='true' class='widget-content hidden' id='swc'>
              <b:include name='searchForm'/>
            </div>
          </b:includable>
@@ -1981,7 +1981,7 @@ avic.innerHTML = &quot;<svg class='avatarIcon'><use xlink:href='/responsive/spri
       </b:with>
     </div>
 
-<aside class='sidebar-container container sidebar-invisible slideout-sidebar'>
+<aside aria-hidden='true' class='sidebar-container container sidebar-invisible slideout-sidebar'>
   <div class='navigation'>
     <span aria-label='Close button' class='svg-icon-24-button close-button'><svg class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/><path d='M0 0h24v24H0z' fill='none'/></svg></span>
     </div>
@@ -2304,9 +2304,9 @@ var shrb = document.getElementsByClassName(&quot;share-buttons&quot;)[0];
 var acsbtns = [].slice.call(document.querySelectorAll(&quot;span.show-more&quot;));
 var acebtns = [].slice.call(document.querySelectorAll(&quot;span.show-less&quot;));
 hbm.onclick = function(){
-sbct.classList.remove(&quot;sidebar-invisible&quot;, &quot;slideout-sidebar&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); document.body.appendChild(bcsd).classList.add(&quot;dim-overlay&quot;);};
+sbct.classList.remove(&quot;sidebar-invisible&quot;, &quot;slideout-sidebar&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); sbct.setAttribute("aria-hidden", "false"); document.body.appendChild(bcsd).classList.add(&quot;dim-overlay&quot;);};
 clb.onclick = function(){
-sbct.classList.add(&quot;slideout-sidebar&quot;); setTimeout(function(){
+sbct.classList.add(&quot;slideout-sidebar&quot;); sbct.setAttribute("aria-hidden", "true"); setTimeout(function(){
 sbct.classList.add(&quot;sidebar-invisible&quot;);}, 180); bdis.classList.remove(&quot;sidebar-visible&quot;); document.body.removeChild(bcsd);};
 bcsd.onclick = function(){
 sbct.classList.add(&quot;slideout-sidebar&quot;); setTimeout(function(){
@@ -2315,9 +2315,8 @@ var snot = 0;
 sce.onclick = function(){
 snot++;
 if (snot % 2 !== 0) {
-swc.classList.remove(&quot;hidden&quot;); shrb.style.display = &quot;none&quot;;
-} else {
-swc.classList.add(&quot;hidden&quot;); shrb.style.display = &quot;grid&quot;;}};
+swc.classList.remove(&quot;hidden&quot;); shrb.style.display = &quot;none&quot;; swc.setAttribute("aria-hidden", "false");} else {
+swc.classList.add(&quot;hidden&quot;); shrb.style.display = &quot;grid&quot;; swc.setAttribute("aria-hidden", "true");}};
 function expand(event){
 exp = event.target; exp.classList.add(&quot;hidden&quot;); exp.previousElementSibling.classList.toggle(&quot;expanded&quot;); exp.nextElementSibling.classList.remove(&quot;hidden&quot;);};
 acsbtns.forEach(function(acsbtn){
