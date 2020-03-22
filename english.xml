@@ -1221,7 +1221,7 @@ body#layout .hamburger-menu {display: none;}
 
 <div class='hidden' id='back-button-box'>
   <div class='back-button'>
-    <svg role='img' aria-label='Back to top' class='svg-icon-24 svg-icon-back' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' xlink:href='#blog-title'><path d='M4 20 L12 4, 20 20 Q12 18, 4 20Z'/></a></svg>
+    <svg role='img' aria-label='Back to top' class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' xlink:href='#blog-title'><path class='svg-icon-back' d='M4 20 L12 4, 20 20 Q12 18, 4 20Z'/></a></svg>
   </div>
 </div>
 
