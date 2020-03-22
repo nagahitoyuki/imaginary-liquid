@@ -388,7 +388,7 @@ iframe.b-hbp-video {border:0}
 
 /* Back button */
 .back-button {display:flex;justify-content:center;align-items:center;position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 6px);right:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 6px);width:var(--floatingbar-height);height:var(--floatingbar-height);border-radius:50%;background-color:$(sticky.background.color);box-sizing:border-box;box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50;animation:fadein .2s ease-out}
-.back-button a {margin-bottom:calc(12px - (28px / 3))}
+.back-button svg {margin-bottom:calc(12px - (28px / 3))}
 .fadeout {animation:fadeout .2s ease-out}
 
 /* Search widget */
