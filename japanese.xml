@@ -2335,6 +2335,8 @@ var bcsd = document.createElement(&quot;div&quot;);
 var shrb = document.getElementsByClassName(&quot;share-buttons&quot;)[0];
 var acsbtns = [].slice.call(document.querySelectorAll(&quot;span.show-more&quot;));
 var acebtns = [].slice.call(document.querySelectorAll(&quot;span.show-less&quot;));
+if (sbct.style.position === "absolute") {
+sbct.setAttribute("aria-hidden", "false");};
 hbm.onclick = function(){
 sbct.classList.remove(&quot;sidebar-invisible&quot;, &quot;slideout-sidebar&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); sbct.setAttribute("aria-hidden", "false"); document.body.appendChild(bcsd).classList.add(&quot;dim-overlay&quot;);};
 clb.onclick = function(){
