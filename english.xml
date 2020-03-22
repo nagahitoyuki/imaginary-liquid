@@ -1424,9 +1424,9 @@ body#layout .hamburger-menu {display: none;}
     <b:includable id='commentAuthorAvatar'>
   <div class='avatar-image-container'>
   <b:if cond='data:comment.authorUserType == &quot;blogger&quot;'>
-    <img class='author-avatar' expr:src='data:comment.authorAvatarSrc' height='35' width='35'/>
+    <img class='author-avatar' alt='Avatar' expr:src='data:comment.authorAvatarSrc' height='35' width='35'/>
   <b:else/>
-    <svg class='avatarIcon'><use xlink:href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp' xmlns:xlink='http://www.w3.org/1999/xlink'/></svg>
+    <svg role='img' aria-label='Avatar' class='avatarIcon'><use xlink:href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp' xmlns:xlink='http://www.w3.org/1999/xlink'/></svg>
   </b:if>
   </div>
 </b:includable>
@@ -1467,7 +1467,7 @@ body#layout .hamburger-menu {display: none;}
     <b:include cond='data:blog.enabledCommentProfileImages' name='commentAuthorAvatar'/>
   <b:else/>
   <div class='avatar-image-container'>
-    <svg class='avatarIcon'><use xlink:href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp' xmlns:xlink='http://www.w3.org/1999/xlink'/></svg>
+    <svg role='img' aria-label='Avatar' class='avatarIcon'><use xlink:href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp' xmlns:xlink='http://www.w3.org/1999/xlink'/></svg>
   </div>
   </b:if>
     <div class='comment-block'>
@@ -1823,7 +1823,7 @@ window.onload = function(){
 var avics = [].slice.call(document.querySelectorAll(&quot;div.avatar-image-container&quot;));
 avics.forEach(function(avic){
 if (avic.firstElementChild.src.includes(&quot;blank&quot;))
-avic.innerHTML = &quot;<svg class='avatarIcon'><use xlink:href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp' xmlns:xlink='http://www.w3.org/1999/xlink'/></svg>&quot;;});}
+avic.innerHTML = &quot;<svg role='img' aria-label='Avatar' class='avatarIcon'><use xlink:href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp' xmlns:xlink='http://www.w3.org/1999/xlink'/></svg>&quot;;});}
 </script>
 </b:includable>
     <b:includable id='threadedComments' var='post'>
