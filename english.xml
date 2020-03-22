@@ -1177,7 +1177,7 @@ body#layout .hamburger-menu {display: none;}
 <div id='floatingbar'>
 <b:class cond='data:hasVerticalAds' name='narrow'/>
   <div id='left-floating'>
-    <svg role='img' aria-label='Open sidebar' class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='transparent'/><a class='svg-icon-24-button hamburger-menu' xlink:href='javascript:void(0)'><path d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'/></a></svg>
+    <svg role='img' aria-label='Open sidebar' class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='transparent'/><a class='svg-icon-24-button hamburger-menu' href='javascript:void(0)'><path d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'/></a></svg>
      <b:if cond='data:view.isLayoutMode or data:widgets any (w =&gt; w.sectionId == &quot;search_top&quot;)'>
         <div class='search'>
         <b:class cond='data:view.isSearch and data:view.search.query' name='focused'/>
@@ -1206,22 +1206,22 @@ body#layout .hamburger-menu {display: none;}
          </b:includable>
           </b:widget>
         </b:section>
-     <svg role='img' expr:aria-label='data:messages.search.escaped' class='svg-icon-24 touch-icon' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button search-expand' xlink:href='javascript:void(0)'><path d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/><path d='M0 0h24v24H0z' fill='transparent'/></a></svg>
+     <svg role='img' expr:aria-label='data:messages.search.escaped' class='svg-icon-24 touch-icon' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button search-expand' href='javascript:void(0)'><path d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/><path d='M0 0h24v24H0z' fill='transparent'/></a></svg>
     </div>
     </b:if>
   </div>
   <div id='right-floating'>
   <b:class cond='data:blog.isMobileRequest' name='share-buttons'/>
-    <svg role='img' expr:aria-label='data:blog.sharing.platforms[1].shareMessage' class='svg-icon-24 touch-icon sharing-facebook' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' expr:xlink:href='&quot;https://www.facebook.com/sharer/sharer.php?u=&quot; + data:blog.url.canonical' rel='nofollow'><g transform='translate(-312 -104)'><g transform='translate(312 104)'><path d='M0 0h24v24H0V0z' fill='transparent'/><path d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 2v3h-2c-.5 0-1 .4-1 1v2h3v3h-3v7h-3v-7h-2v-3h2V7.5C13 5.6 14.6 4 16.5 4H19z'/></g></g></a></svg>
-      <svg role='img' expr:aria-label='data:blog.sharing.platforms[3].shareMessage' class='svg-icon-24 touch-icon sharing-twitter' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' expr:xlink:href='&quot;https://twitter.com/share?url=&quot; + data:blog.url.canonical + &quot;&amp;text=&quot; + data:blog.pageTitle' rel='nofollow'><g transform='translate(-344 -104)'><g transform='translate(344 104)'><path d='M0 0h24v24H0V0z' fill='transparent'/><path d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2.3 7.3c-.1 4.6-3 7.8-7.4 8-1.8.1-3.1-.5-4.3-1.2 1.3.2 3-.3 3.9-1.1-1.3-.1-2.1-.8-2.5-1.9.4.1.8.1 1.1 0-1.2-.4-2-1.1-2.1-2.7.3.2.7.3 1.1.3-.9-.5-1.6-2.3-.8-3.6C8 8.5 9.6 9.7 12.2 9.9c-.6-2.8 3.1-4.3 4.6-2.4.7-.1 1.2-.4 1.7-.7-.2.7-.6 1.1-1.1 1.5.5-.1 1-.2 1.4-.4 0 .5-.6 1-1.1 1.4z'/></g></g></a></svg>
-      <b:if cond='data:blog.isMobileRequest'><svg role='img' aria-label='Share with apps' class='svg-icon-24 touch-icon sharing-more' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' id='shbtn' xlink:href='javascript:void(0)'><path d='M0 0h24v24H0z' fill='transparent'/><path d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/></a></svg><b:else/><b:with value='data:widgets.Blog.first.posts where (p =&gt; p.featuredImage) map (p =&gt; p.featuredImage)' var='imageUrl'><svg role='img' expr:aria-label='data:blog.sharing.platforms[4].shareMessage' class='svg-icon-24 touch-icon sharing-pinterest' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' expr:xlink:href='&quot;https://www.pinterest.com/pin/create/button/?url=&quot; + data:blog.url.canonical + &quot;&amp;media=&quot; + data:imageUrl[0] + &quot;&amp;description=&quot; + data:blog.pageTitle' rel='nofollow'><g transform='translate(-312 -136)'><g transform='translate(312 136)'><path d='M0 0h24v24H0V0z' fill='transparent'/><path d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 14.2c-.8 0-1.6-.3-2.1-.9l-.9 3.2-.1.2c-.2.3-.5.5-.9.5-.6 0-1.1-.5-1.1-1.1V17.8l1.8-5.6c-9.6-12.2-.2-.6-.2-1.5 0-1.7.9-2.2 1.7-2.2s1.4.3 1.4 1.3c0 1.3-.9 2-.9 3 0 .7.6 1.3 1.3 1.3 2.3 0 3.2-1.8 3.2-3.4 0-2.2-1.9-3.9-4.2-3.9s-4.2 1.8-4.2 3.9c0 .7.2 1.3.5 1.9.1.2.1.3.1.5 0 .6-.4 1-1 1-.4 0-.7-.2-.9-.5-.5-.9-.8-1.9-.8-3 0-3.3 2.8-5.9 6.2-5.9s6.2 2.7 6.2 5.9c.1 2.8-1.5 5.6-5.1 5.6z'/></g></g></a></svg></b:with>
+    <svg role='img' expr:aria-label='data:blog.sharing.platforms[1].shareMessage' class='svg-icon-24 touch-icon sharing-facebook' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' expr:href='&quot;https://www.facebook.com/sharer/sharer.php?u=&quot; + data:blog.url.canonical' rel='nofollow'><g transform='translate(-312 -104)'><g transform='translate(312 104)'><path d='M0 0h24v24H0V0z' fill='transparent'/><path d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 2v3h-2c-.5 0-1 .4-1 1v2h3v3h-3v7h-3v-7h-2v-3h2V7.5C13 5.6 14.6 4 16.5 4H19z'/></g></g></a></svg>
+      <svg role='img' expr:aria-label='data:blog.sharing.platforms[3].shareMessage' class='svg-icon-24 touch-icon sharing-twitter' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' expr:href='&quot;https://twitter.com/share?url=&quot; + data:blog.url.canonical + &quot;&amp;text=&quot; + data:blog.pageTitle' rel='nofollow'><g transform='translate(-344 -104)'><g transform='translate(344 104)'><path d='M0 0h24v24H0V0z' fill='transparent'/><path d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2.3 7.3c-.1 4.6-3 7.8-7.4 8-1.8.1-3.1-.5-4.3-1.2 1.3.2 3-.3 3.9-1.1-1.3-.1-2.1-.8-2.5-1.9.4.1.8.1 1.1 0-1.2-.4-2-1.1-2.1-2.7.3.2.7.3 1.1.3-.9-.5-1.6-2.3-.8-3.6C8 8.5 9.6 9.7 12.2 9.9c-.6-2.8 3.1-4.3 4.6-2.4.7-.1 1.2-.4 1.7-.7-.2.7-.6 1.1-1.1 1.5.5-.1 1-.2 1.4-.4 0 .5-.6 1-1.1 1.4z'/></g></g></a></svg>
+      <b:if cond='data:blog.isMobileRequest'><svg role='img' aria-label='Share with apps' class='svg-icon-24 touch-icon sharing-more' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' id='shbtn' href='javascript:void(0)'><path d='M0 0h24v24H0z' fill='transparent'/><path d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/></a></svg><b:else/><b:with value='data:widgets.Blog.first.posts where (p =&gt; p.featuredImage) map (p =&gt; p.featuredImage)' var='imageUrl'><svg role='img' expr:aria-label='data:blog.sharing.platforms[4].shareMessage' class='svg-icon-24 touch-icon sharing-pinterest' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' expr:href='&quot;https://www.pinterest.com/pin/create/button/?url=&quot; + data:blog.url.canonical + &quot;&amp;media=&quot; + data:imageUrl[0] + &quot;&amp;description=&quot; + data:blog.pageTitle' rel='nofollow'><g transform='translate(-312 -136)'><g transform='translate(312 136)'><path d='M0 0h24v24H0V0z' fill='transparent'/><path d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 14.2c-.8 0-1.6-.3-2.1-.9l-.9 3.2-.1.2c-.2.3-.5.5-.9.5-.6 0-1.1-.5-1.1-1.1V17.8l1.8-5.6c-9.6-12.2-.2-.6-.2-1.5 0-1.7.9-2.2 1.7-2.2s1.4.3 1.4 1.3c0 1.3-.9 2-.9 3 0 .7.6 1.3 1.3 1.3 2.3 0 3.2-1.8 3.2-3.4 0-2.2-1.9-3.9-4.2-3.9s-4.2 1.8-4.2 3.9c0 .7.2 1.3.5 1.9.1.2.1.3.1.5 0 .6-.4 1-1 1-.4 0-.7-.2-.9-.5-.5-.9-.8-1.9-.8-3 0-3.3 2.8-5.9 6.2-5.9s6.2 2.7 6.2 5.9c.1 2.8-1.5 5.6-5.1 5.6z'/></g></g></a></svg></b:with>
       </b:if>
     </div>
 </div>
 
 <div class='hidden' id='back-button-box'>
   <div class='back-button'>
-    <svg role='img' aria-label='Back to top' class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' xlink:href='#blog-title'><path class='svg-icon-back' d='M4 20 L12 4, 20 20 Q12 18, 4 20Z'/></a></svg>
+    <svg role='img' aria-label='Back to top' class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' href='#blog-title'><path class='svg-icon-back' d='M4 20 L12 4, 20 20 Q12 18, 4 20Z'/></a></svg>
   </div>
 </div>
 
@@ -1426,7 +1426,7 @@ body#layout .hamburger-menu {display: none;}
   <b:if cond='data:comment.authorUserType == &quot;blogger&quot;'>
     <img class='author-avatar' alt='Avatar' expr:src='data:comment.authorAvatarSrc' height='35' width='35'/>
   <b:else/>
-    <svg role='img' aria-label='Avatar' class='avatarIcon'><use xlink:href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp' xmlns:xlink='http://www.w3.org/1999/xlink'/></svg>
+    <svg role='img' aria-label='Avatar' class='avatarIcon'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>
   </b:if>
   </div>
 </b:includable>
@@ -1467,7 +1467,7 @@ body#layout .hamburger-menu {display: none;}
     <b:include cond='data:blog.enabledCommentProfileImages' name='commentAuthorAvatar'/>
   <b:else/>
   <div class='avatar-image-container'>
-    <svg role='img' aria-label='Avatar' class='avatarIcon'><use xlink:href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp' xmlns:xlink='http://www.w3.org/1999/xlink'/></svg>
+    <svg role='img' aria-label='Avatar' class='avatarIcon'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>
   </div>
   </b:if>
     <div class='comment-block'>
@@ -1823,7 +1823,7 @@ window.onload = function(){
 var avics = [].slice.call(document.querySelectorAll(&quot;div.avatar-image-container&quot;));
 avics.forEach(function(avic){
 if (avic.firstElementChild.src.includes(&quot;blank&quot;))
-avic.innerHTML = &quot;<svg role='img' aria-label='Avatar' class='avatarIcon'><use xlink:href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp' xmlns:xlink='http://www.w3.org/1999/xlink'/></svg>&quot;;});}
+avic.innerHTML = &quot;<svg role='img' aria-label='Avatar' class='avatarIcon'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>&quot;;});}
 </script>
 </b:includable>
     <b:includable id='threadedComments' var='post'>
