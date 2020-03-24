@@ -430,16 +430,15 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .FeaturedPost {padding:20px var(--maincolumn-padding);margin-bottom:var(--maincolumn-padding);background-color:$(posts.background.color)}
 .FeaturedPost a,.FeaturedPost a:hover,.FeaturedPost a:visited {color:$(posts.link.color)}
 .FeaturedPost .post-title,.FeaturedPost .post-title a,.FeaturedPost .post-title a:hover,.FeaturedPost .post-title a:visited {color:$(posts.title.color)}
-.FeaturedPost .post-title {margin-top:0;margin-bottom:16px}
-.FeaturedPost .post-title a {font:$(posts.title.font)}
+.FeaturedPost .post-title {font:$(posts.stream.title.font);margin-top:0;margin-bottom:16px}
 .FeaturedPost .snippet-thumbnail img {width:100%;max-width:100%;height:auto;margin-bottom:16px}
 .FeaturedPost .snippet-item {color:$(posts.text.color);margin:0 0 16px}
 
 /* Post title */
 .Blog .post-title {margin-top:0;margin-bottom:16px}
 .Blog .post-title a,.post-title a:hover,.post-title a:visited{color:$(posts.title.color)}
-.Blog h1.post-title a {font:$(posts.title.font)}
-.Blog h2.post-title a, .FeaturedPost .post-title a {font:$(posts.stream.title.font)}
+.Blog h1.post-title {font:$(posts.title.font)}
+.Blog h2.post-title {font:$(posts.stream.title.font)}
 
 /* Post header / footer */
 .post-footer,.post-header {display:flex;color:$(posts.byline.color)}
