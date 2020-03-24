@@ -379,12 +379,13 @@ iframe.b-hbp-video {border:0}
 #right-floating {margin-$startSide:auto;display:grid;grid-auto-flow:column;align-items:center;column-gap:4px}
 
 /* SVGアイコン */
+.svg-icon-24 {width:24px;height:24px}
 .sidebar-container .svg-icon-24 {fill:$(sidebar.icons.color)}
 .centered-bottom .svg-icon-24 {fill:$(posts.icons.color)}
 .svg-icon-24-button, .touch-icon-button {cursor:pointer}
-.svg-icon-24 {width:24px;height:24px;fill:$(sticky.icons.color)}
-.svg-icon-back {stroke-width:2px;stroke:$(sticky.icons.color);fill:transparent}
+.floatingIcon {fill:$(sticky.icons.color)}
 .hatenaIcon {fill:$(sticky.background.color)}
+.svg-icon-back {stroke-width:2px;stroke:$(sticky.icons.color);fill:transparent}
 .avatarIcon {width:24px;height:24px;fill:$(posts.icons.color);padding:5.5px}
 
 /* 戻るボタン */
@@ -1200,7 +1201,7 @@ body#layout .hamburger-menu {display: none;}
 <div id='floatingbar'>
 <b:class cond='data:hasVerticalAds' name='narrow'/>
   <div id='left-floating'>
-    <svg role='img' aria-label='サイドバーを開く' class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button hamburger-menu' href='javascript:void(0)'><path d='M0 0h24v24H0z' fill='transparent'/><path d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'/></a></svg>
+    <svg role='img' aria-label='サイドバーを開く' class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button hamburger-menu' href='javascript:void(0)'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'/></a></svg>
      <b:if cond='data:view.isLayoutMode or data:widgets any (w =&gt; w.sectionId == &quot;search_top&quot;)'>
         <div class='search'>
         <b:class cond='data:view.isSearch and data:view.search.query' name='focused'/>
@@ -1229,22 +1230,22 @@ body#layout .hamburger-menu {display: none;}
          </b:includable>
           </b:widget>
         </b:section>
-     <svg role='img' expr:aria-label='data:messages.search.escaped' class='svg-icon-24 touch-icon' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button search-expand' href='javascript:void(0)'><path d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/><path d='M0 0h24v24H0z' fill='transparent'/></a></svg>
+     <svg role='img' expr:aria-label='data:messages.search.escaped' class='svg-icon-24 touch-icon' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button search-expand' href='javascript:void(0)'><path class='floatingIcon' d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/><path d='M0 0h24v24H0z' fill='transparent'/></a></svg>
     </div>
     </b:if>
   </div>
   <div id='right-floating'>
   <b:class cond='data:blog.isMobileRequest' name='share-buttons'/>
-    <svg role='img' expr:aria-label='data:blog.sharing.platforms[1].shareMessage' class='svg-icon-24 touch-icon sharing-facebook' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' expr:href='&quot;https://www.facebook.com/sharer/sharer.php?u=&quot; + data:blog.url.canonical' rel='nofollow'><g transform='translate(-312 -104)'><g transform='translate(312 104)'><path d='M0 0h24v24H0V0z' fill='transparent'/><path d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 2v3h-2c-.5 0-1 .4-1 1v2h3v3h-3v7h-3v-7h-2v-3h2V7.5C13 5.6 14.6 4 16.5 4H19z'/></g></g></a></svg>
-      <svg role='img' expr:aria-label='data:blog.sharing.platforms[3].shareMessage' class='svg-icon-24 touch-icon sharing-twitter' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' expr:href='&quot;https://twitter.com/share?url=&quot; + data:blog.url.canonical + &quot;&amp;text=&quot; + (data:blog.pageType == &quot;index&quot; ? data:blog.pageTitle : data:blog.pageTitle)' rel='nofollow'><g transform='translate(-344 -104)'><g transform='translate(344 104)'><path d='M0 0h24v24H0V0z' fill='transparent'/><path d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2.3 7.3c-.1 4.6-3 7.8-7.4 8-1.8.1-3.1-.5-4.3-1.2 1.3.2 3-.3 3.9-1.1-1.3-.1-2.1-.8-2.5-1.9.4.1.8.1 1.1 0-1.2-.4-2-1.1-2.1-2.7.3.2.7.3 1.1.3-.9-.5-1.6-2.3-.8-3.6C8 8.5 9.6 9.7 12.2 9.9c-.6-2.8 3.1-4.3 4.6-2.4.7-.1 1.2-.4 1.7-.7-.2.7-.6 1.1-1.1 1.5.5-.1 1-.2 1.4-.4 0 .5-.6 1-1.1 1.4z'/></g></g></a></svg>
-      <b:if cond='data:blog.isMobileRequest'><svg role='img' aria-label='アプリで共有' class='svg-icon-24 touch-icon sharing-more' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' id='shbtn' href='javascript:void(0)'><path d='M0 0h24v24H0z' fill='transparent'/><path d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/></a></svg><b:else/><svg aria-label='はてなブックマークで共有' class='svg-icon-24 touch-icon sharing-hatena' role='img' viewBox='-50 -50 600 600' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' expr:href='&quot;https://b.hatena.ne.jp/entry/&quot; + data:blog.url.canonical' rel='nofollow'><rect height='600' width='600' x='-50' y='-50' fill='transparent'/><rect height='500' width='500' rx='10%' ry='10%'/><g class='hatenaIcon'><path d='M278.2,258.1q-13.6-15.2-37.8-17c14.4-3.9,24.8-9.6,31.4-17.3s9.8-17.8,9.8-30.7A55,55,0,0,0,275,166a48.8,48.8,0,0,0-19.2-18.6c-7.3-4-16-6.9-26.2-8.6s-28.1-2.4-53.7-2.4H113.6V363.6h64.2q38.7,0,55.8-2.6c11.4-1.8,20.9-4.8,28.6-8.9a52.5,52.5,0,0,0,21.9-21.4c5.1-9.2,7.7-19.9,7.7-32.1C291.8,281.7,287.3,268.2,278.2,258.1Zm-107-71.4h13.3q23.1,0,31,5.2c5.3,3.5,7.9,9.5,7.9,18s-2.9,14-8.5,17.4-16.1,5-31.4,5H171.2V186.7Zm52.8,130.3c-6.1,3.7-16.5,5.5-31.1,5.5H171.2V273h22.6c15,0,25.4,1.9,30.9,5.7s8.4,10.4,8.4,20S230.1,313.4,223.9,317.1Z'/><path d='M357.6,306.1a28.8,28.8,0,1,0,28.8,28.8A28.8,28.8,0,0,0,357.6,306.1Z'/><rect height='151.52' width='50' x='332.6' y='136.4'/></g></a></svg>
+    <svg role='img' expr:aria-label='data:blog.sharing.platforms[1].shareMessage' class='svg-icon-24 touch-icon sharing-facebook' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' expr:href='&quot;https://www.facebook.com/sharer/sharer.php?u=&quot; + data:blog.url.canonical' rel='nofollow'><path d='M0 0h24v24H0V0z' fill='transparent'/><path class='floatingIcon' d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 2v3h-2c-.5 0-1 .4-1 1v2h3v3h-3v7h-3v-7h-2v-3h2V7.5C13 5.6 14.6 4 16.5 4H19z'/></a></svg>
+      <svg role='img' expr:aria-label='data:blog.sharing.platforms[3].shareMessage' class='svg-icon-24 touch-icon sharing-twitter' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' expr:href='&quot;https://twitter.com/share?url=&quot; + data:blog.url.canonical + &quot;&amp;text=&quot; + (data:blog.pageType == &quot;index&quot; ? data:blog.pageTitle : data:blog.pageTitle)' rel='nofollow'><path d='M0 0h24v24H0V0z' fill='transparent'/><path class='floatingIcon' d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2.3 7.3c-.1 4.6-3 7.8-7.4 8-1.8.1-3.1-.5-4.3-1.2 1.3.2 3-.3 3.9-1.1-1.3-.1-2.1-.8-2.5-1.9.4.1.8.1 1.1 0-1.2-.4-2-1.1-2.1-2.7.3.2.7.3 1.1.3-.9-.5-1.6-2.3-.8-3.6C8 8.5 9.6 9.7 12.2 9.9c-.6-2.8 3.1-4.3 4.6-2.4.7-.1 1.2-.4 1.7-.7-.2.7-.6 1.1-1.1 1.5.5-.1 1-.2 1.4-.4 0 .5-.6 1-1.1 1.4z'/></a></svg>
+      <b:if cond='data:blog.isMobileRequest'><svg role='img' aria-label='アプリで共有' class='svg-icon-24 touch-icon sharing-more' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' id='shbtn' href='javascript:void(0)'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/></a></svg><b:else/><svg aria-label='はてなブックマークで共有' class='svg-icon-24 touch-icon sharing-hatena' role='img' viewBox='-50 -50 600 600' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' expr:href='&quot;https://b.hatena.ne.jp/entry/&quot; + data:blog.url.canonical' rel='nofollow'><rect height='600' width='600' x='-50' y='-50' fill='transparent'/><rect height='500' width='500' rx='10%' ry='10%' class='floatingIcon'/><g class='hatenaIcon'><path d='M278.2,258.1q-13.6-15.2-37.8-17c14.4-3.9,24.8-9.6,31.4-17.3s9.8-17.8,9.8-30.7A55,55,0,0,0,275,166a48.8,48.8,0,0,0-19.2-18.6c-7.3-4-16-6.9-26.2-8.6s-28.1-2.4-53.7-2.4H113.6V363.6h64.2q38.7,0,55.8-2.6c11.4-1.8,20.9-4.8,28.6-8.9a52.5,52.5,0,0,0,21.9-21.4c5.1-9.2,7.7-19.9,7.7-32.1C291.8,281.7,287.3,268.2,278.2,258.1Zm-107-71.4h13.3q23.1,0,31,5.2c5.3,3.5,7.9,9.5,7.9,18s-2.9,14-8.5,17.4-16.1,5-31.4,5H171.2V186.7Zm52.8,130.3c-6.1,3.7-16.5,5.5-31.1,5.5H171.2V273h22.6c15,0,25.4,1.9,30.9,5.7s8.4,10.4,8.4,20S230.1,313.4,223.9,317.1Z'/><path d='M357.6,306.1a28.8,28.8,0,1,0,28.8,28.8A28.8,28.8,0,0,0,357.6,306.1Z'/><rect height='151.52' width='50' x='332.6' y='136.4'/></g></a></svg>
       </b:if>
     </div>
 </div>
 
 <div class='hidden' id='back-button-box'>
   <div class='back-button'>
-    <svg role='img' aria-label='トップへ戻る' class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' href='#blog-title'><path class='svg-icon-back' d='M4 20 L12 4, 20 20 Q12 18, 4 20Z'/></a></svg>
+    <svg role='img' aria-label='トップへ戻る' class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' href='#blog-title'><path class='svg-icon-back' d='M4 20 L12 4, 20 20 Q12 18, 4 20Z' fill='transparent'/></a></svg>
   </div>
 </div>
 
