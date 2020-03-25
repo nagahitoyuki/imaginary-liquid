@@ -2264,7 +2264,7 @@ if (lazyImage.classList.contains(&quot;yt&quot;)){
 var yt = new Image();
 yt.onload = function(){
 if (yt.naturalWidth &gt; 120){
-lazyImage.src = yt.src; lazyImage.srcset = yt.src + &quot;=w320-h213-pd 320w, &quot; + yt.src + &quot;=w678-h452-pd 678w, &quot; + yt.src +&quot;=w1024-h682-pd 1024w&quot;;
+lazyImage.src = yt.src; lazyImage.srcset = yt.src + &quot;=w320-h213-pd 320w, &quot; + yt.src + &quot;=w678-h452-pd 678w, &quot; + yt.src + &quot;=w1024-h682-pd 1024w&quot;;
 } else {
 lazyImage.src = lazyImage.dataset.src; lazyImage.srcset = lazyImage.dataset.srcset;
 }};
