@@ -448,7 +448,7 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .hentry .post-footer {flex-direction:column}
 .post-footer-line {margin-bottom:16px}
 .post-footer-line > span {display:block}
-.lastupdated {margin-$startSide:auto;margin-bottom:16px;font-style:oblique}
+.pf-last {width:100%;text-align:$endSide;margin-bottom:16px;font-style:oblique}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
 .post-icons, .post-location {margin-top:16px}
@@ -1725,10 +1725,12 @@ body#layout .hamburger-menu {display: none;}
     <div class='post-footer float-container'>
       <b:if cond='data:view.isPost'>
       <b:include name='footerBylines'/>
-        <div class='lastupdated'>
-          <span class='byline post-timestamp updated'>最終更新: <time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span>
+        <div class='pf-last'>
+          <span class='byline post-timestamp updated'>最終更新:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>URL:&#160;<data:post.url.canonical/>
         </div>
-      <b:elseif cond='data:view.isMultipleItems'/>
+      <b:elseif cond='data:view.isPage'/>
+      <div class='pf-last'>URL:&#160;<data:post.url.canonical/></div>
+      <b:else/>
         <span class='byline archive-link'>
         <b:if cond='data:post.url and data:post.date.month lt 10'>
           <a expr:href='data:view.url path (data:post.date.year + &quot;/0&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
