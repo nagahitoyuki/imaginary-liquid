@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='english.xml' b:templateVersion='1.0.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language'>
-  <head>
+  <head expr:prefix='&quot;og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# &quot; + (data:view.isMultipleItems ? &quot;website: http://ogp.me/ns/website#&quot; : &quot;article: http://ogp.me/ns/article#&quot;)'>
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
   <title><data:view.title.escaped/><b:if cond='data:view.isArchive'>: <data:blog.pageName/>&#65288;<data:messages.archive/>&#65289;<b:elseif cond='data:view.isLabelSearch'/>: <data:blog.pageName/>&#65288;<data:messages.labels/>&#65289;<b:elseif cond='data:view.isSearch'/>: <data:messages.search/></b:if></title>
@@ -15,7 +15,9 @@
     <meta expr:content='data:skin.vars.body_background_color' name='msapplication-navbutton-color'/>
  </b:if>
     <meta content='blogger' name='generator'/>
+    <link rel='profile' href='http://microformats.org/profile/hatom'/>
     <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
+    <link expr:href='data:blog.homepageUrl.canonical' rel='home'/>
   <b:if cond='data:blog.adultContent'>
     <meta content='adult' name='rating'/>
   </b:if>
@@ -38,6 +40,7 @@
     <meta expr:content='resizeImage(data:view.featuredImage, 1200, &quot;1200:630&quot;)' property='og:image'/>
     <meta content='article' property='og:type'/>
   </b:if>
+    <meta expr:conten='data:blog.title.escaped' property='og:site_name'/>
 
     <b:skin version='1.0.0'><![CDATA[/*!
 
