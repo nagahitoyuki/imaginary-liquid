@@ -449,13 +449,12 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .photo {vertical-align:bottom;border-radius:50%;margin-$(endSide):4px}
 .post-footer a {color:$(posts.link.color)}
 .hentry .post-footer {flex-direction:column}
-.post-footer-line {margin-bottom:16px}
 .post-footer-line > span {display:block}
-.pf-last {width:100%;text-align:$endSide;margin-bottom:16px;font-style:oblique}
+.pf-last {width:100%;text-align:$endSide;margin-top:16px;margin-bottom:16px;font-style:oblique}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
-.post-icons, .post-location {margin-top:16px}
-.reactions iframe {height:20px}
+.post-icons, .post-location {margin-top:16px;margin-bottom:16px}
+.reactions iframe {height:20px;margin-top:16px}
 .author-profile {margin-bottom:16px}
 
 /* 記事の本文とスニペット */
