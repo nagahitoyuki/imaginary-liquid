@@ -449,12 +449,12 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .photo {vertical-align:bottom;border-radius:50%;margin-$(endSide):4px}
 .post-footer a {color:$(posts.link.color)}
 .hentry .post-footer {flex-direction:column}
-.post-footer-line > span {display:block}
-.pf-last {width:100%;text-align:$endSide;margin-top:16px;margin-bottom:16px;font-style:oblique}
+.post-footer-line > span {display:block;margin-bottom:16px}
+.pf-last {width:100%;text-align:$endSide;margin-bottom:16px;font-style:oblique}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
-.post-icons, .post-location {margin-top:16px;margin-bottom:16px}
-.reactions iframe {height:20px;margin-top:16px}
+.post-icons, .post-location {margin-top:16px}
+.reactions iframe {height:20px}
 .author-profile {margin-bottom:16px}
 
 /* Post body and snippet */
@@ -471,10 +471,10 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .post-body h6 {font-size:11px}
 
 /* Labels */
-.Label li, .Label span.label-size, .byline.post-labels a {background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px}
-.Label a, .byline.post-labels a {color:$(labels.text.color)}
+.Label li, .Label .label-size, .post-labels a {background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px}
+.Label a, .post-labels a {color:$(labels.text.color)}
 .Label ul {list-style:none;padding-left:0}
-.Label li a, .byline.post-labels {display:inline-block}
+.Label li a {display:inline-block}
 
 /* Comments */
 #comments, section.embed {color:$(posts.text.color)}
@@ -724,8 +724,8 @@ body.item-view .post-body a[imageanchor="1"]+a[imageanchor="1"] {margin-top:16px
 @media screen and (min-width:481px) {
 
 /* Labels */
-.Label li, .Label span.label-size, .byline.post-labels a {margin-right:4px;margin-bottom:12px}
-.byline.post-labels {margin-right:-4px;margin-bottom:-6px}
+.Label li, .Label .label-size, .post-labels a {margin-right:4px;margin-bottom:12px}
+.post-labels {margin-right:-4px;margin-bottom:-6px}
 .Label .first-items {margin-right:-4px;margin-bottom:-12px}
 .Label .remaining-items {margin-top:12px;margin-right:-4px;margin-bottom:-12px}
 }
@@ -738,8 +738,8 @@ body.item-view .post-body a[imageanchor="1"]+a[imageanchor="1"] {margin-top:16px
 .search-expand {margin-right:35%}
 
 /* Labels */
-.Label li, .Label span.label-size, .byline.post-labels a {margin-right:8px;margin-bottom:12px}
-.byline.post-labels {margin-right:-8px;margin-bottom:-6px}
+.Label li, .Label .label-size, .post-labels a {margin-right:8px;margin-bottom:12px}
+.post-labels {margin-right:-8px;margin-bottom:-6px}
 .Label .first-items {margin-right:-8px;margin-bottom:-12px}
 .Label .remaining-items {margin-top:12px;margin-right:-8px;margin-bottom:-12px}
 }
