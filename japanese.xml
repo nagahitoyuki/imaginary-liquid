@@ -71,7 +71,7 @@
       default="$(color) none repeat scroll center center" value="$(color) none no-repeat scroll center center"/>
   <Variable name="blog.header.color" description="Blog header color"
       type="color"
-      default="#c0c0c0"  value="#c0c0c0"/>
+      default="#dcdcdc"  value="#dcdcdc"/>
   <Variable name="body.background.color" description="Body background color"
       type="color"
       default="#f5f5dc"  value="#f5f5dc"/>
