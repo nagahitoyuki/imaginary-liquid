@@ -17,7 +17,7 @@
     <meta content='blogger' name='generator'/>
     <link rel='profile' href='http://microformats.org/profile/hatom'/>
     <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
-    <link expr:href='data:blog.homepageUrl.canonical' rel='home'/>
+    <link expr:href='data:blog.homepageUrl.canonical' rel='home' expr:title='data:messages.home'/>
   <b:if cond='data:blog.adultContent'>
     <meta content='adult' name='rating'/>
   </b:if>
