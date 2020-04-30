@@ -40,7 +40,7 @@
     <meta expr:content='resizeImage(data:view.featuredImage, 1200, &quot;1200:630&quot;)' property='og:image'/>
     <meta content='article' property='og:type'/>
   </b:if>
-    <meta expr:conten='data:blog.title.escaped' property='og:site_name'/>
+    <meta expr:content='data:blog.title.escaped' property='og:site_name'/>
 
     <b:skin version='1.0.0'><![CDATA[/*!
 
