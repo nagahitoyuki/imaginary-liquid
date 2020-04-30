@@ -18,6 +18,7 @@
     <link rel='profile' href='http://microformats.org/profile/hatom'/>
     <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
     <link expr:href='data:blog.homepageUrl.canonical' rel='home' expr:title='data:messages.home'/>
+    <link expr:href='data:blog.searchUrl' expr:title='data:messages.search' rel='search'/>
   <b:if cond='data:blog.adultContent'>
     <meta content='adult' name='rating'/>
   </b:if>
