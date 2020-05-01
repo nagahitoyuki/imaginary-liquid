@@ -511,7 +511,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .comment-link .num_comments {margin-left:.5em;vertical-align:top}
 #comment-holder .continue {display:none}
 #comment-editor {margin-bottom:2em}
-#comments h3.title {color:$(posts.title.color);margin-top:0;margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
+#comments h2.title {color:$(posts.title.color);margin-top:0;margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
 #comments.embed .footer p {margin-top:0}
 #cf-message {margin-bottom:0}
 .item-control {display:none}
@@ -1576,7 +1576,7 @@ body#layout .hamburger-menu {display: none;}
   </section>
 </b:includable>
     <b:includable id='commentsTitle'>
-  <h3 class='title'><data:messages.comments/></h3>
+  <h2 class='title'><data:messages.comments/></h2>
 </b:includable>
     <b:includable id='defaultAdUnit'>
   <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
