@@ -843,9 +843,9 @@ body#layout .hamburger-menu {display: none;}
   </div>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <h2 class='post-title'>
+  <h3 class='post-title'>
     <a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
-  </h2>
+  </h3>
 </b:includable>
     <b:includable id='snippetedPosts'>
   <div role='feed'>
@@ -1657,7 +1657,7 @@ body#layout .hamburger-menu {display: none;}
       <header><b:include data='post' name='postTitle'/>
       <b:include name='headerByline'/></header>
       <b:include data='post' name='postBody'/>
-      <footer><b:include data='post' name='postFooter'/></footer>
+      <b:include data='post' name='postFooter'/>
     <b:else/>
       <b:include data='post' name='postTitle'/>
       <b:include data='post' name='postBodySnippet'/>
@@ -1723,7 +1723,7 @@ body#layout .hamburger-menu {display: none;}
   </b:if>
 </b:includable>
     <b:includable id='postFooter' var='post'>
-  <div class='post-bottom'>
+  <footer class='post-bottom'>
     <div class='post-footer float-container'>
       <b:if cond='data:view.isPost'>
       <b:include name='footerBylines'/>
@@ -1744,7 +1744,7 @@ body#layout .hamburger-menu {display: none;}
     </b:if>
       <b:include cond='data:widget.type == &quot;Blog&quot;' data='post' name='postFooterAuthorProfile'/>
     </div>
-  </div>
+  </footer>
 </b:includable>
     <b:includable id='postFooterAuthorProfile' var='post'>
   <b:if cond='data:post.author.aboutMe and data:view.isPost'>
@@ -1937,9 +1937,9 @@ avic.innerHTML = &quot;<svg role='img' aria-label='アバター' class='avatarIc
   </div>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <h2 class='post-title'>
+  <h3 class='post-title'>
     <a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
-  </h2>
+  </h3>
 </b:includable>
     <b:includable id='snippetedPosts'>
   <div role='feed'>
