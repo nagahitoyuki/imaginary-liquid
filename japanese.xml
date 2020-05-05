@@ -350,6 +350,7 @@ font-weight:bold}
 body .CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
 iframe.b-hbp-video {border:0}
+.noscript {background:#ffff00;color:#000000;font-size:large;margin-bottom:2em}
 
 /* フェード */
 @keyframes fadein { from{ opacity:0} to { opacity:1}}
@@ -767,6 +768,11 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 .Label .first-items {margin-right:-8px;margin-bottom:-12px}
 .Label .remaining-items {margin-top:12px;margin-right:-8px;margin-bottom:-12px}
 }
+
+/* IEへの対応 */
+_:-ms-input-placeholder, :root .hamburger-menu, .search-expand, .navigation {display:none}
+_:-ms-input-placeholder, :root #BlogSearch1 .hidden, .sidebar-invisible {display:block}
+_:-ms-input-placeholder, :root .sidebar-container {position:static;margin-top:0}
 ]]></b:skin>
 
 <b:template-skin>
@@ -1199,6 +1205,7 @@ body#layout .hamburger-menu {display: none;}
 </b:section>
 </div>
 </div>
+  <noscript><div class='noscript'>このサイトを適切に使用するためにはブラウザのJavaScriptを稼働させて下さい。</div></noscript>
 </header>
 
 <div id='floatingbar'>
