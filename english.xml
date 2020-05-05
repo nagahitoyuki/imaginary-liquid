@@ -350,7 +350,7 @@ font-weight:bold}
 body .CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
 iframe.b-hbp-video {border:0}
-.noscript {background:#ffff00;color:#000000;font-size:large;margin-bottom:2em}
+.noscript {background:#ffff00;color:#000000;padding:var(--maincolumn-padding);margin-bottom:2em}
 
 /* Fade animation */
 @keyframes fadein { from{ opacity:0} to { opacity:1}}
