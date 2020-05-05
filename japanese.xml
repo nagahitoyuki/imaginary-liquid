@@ -350,7 +350,7 @@ font-weight:bold}
 body .CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
 iframe.b-hbp-video {border:0}
-.noscript {background:#ffff00;color:#000000;font-size:large;margin-bottom:2em}
+.noscript {background:#ffff00;color:#000000;padding:var(--maincolumn-padding);margin-bottom:2em}
 
 /* フェード */
 @keyframes fadein { from{ opacity:0} to { opacity:1}}
@@ -1205,7 +1205,7 @@ body#layout .hamburger-menu {display: none;}
 </b:section>
 </div>
 </div>
-  <noscript><div class='noscript'>このサイトを適切に使用するためにはブラウザのJavaScriptを稼働させて下さい。</div></noscript>
+  <noscript><div class='noscript'>このサイトを適切に使用するためにはブラウザのJavaScriptの実行を許可して下さい。</div></noscript>
 </header>
 
 <div id='floatingbar'>
