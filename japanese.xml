@@ -456,7 +456,7 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
 .post-icons, .post-location {margin-top:16px}
-.reactions iframe {height:20px}
+.reactions iframe {height:20px;vertical-align:text-bottom}
 .author-profile {margin-bottom:16px}
 
 /* 記事の本文とスニペット */
@@ -1625,6 +1625,9 @@ body#layout .hamburger-menu {display: none;}
      <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' target='_blank'><data:f.name/> (<data:f.feedType/>)</a>
   </b:loop>
   </div>
+</b:includable>
+    <b:includable id='footerBylines'>
+  <b:include name='super.footerBylines'/>
 </b:includable>
     <b:includable id='homePageLink'>
   <a class='home-link' expr:href='data:blog.homepageUrl'>
