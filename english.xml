@@ -2229,7 +2229,7 @@ avic.innerHTML = &quot;<svg role='img' aria-label='Avatar' class='avatarIcon'><u
       </b:section>
 </aside>
 <script>
-/* Lazy Loading Copyright 2019 Jeremy Wagner | Apache 2.0 License | https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/ */
+/* Lazy Loading Copyright 2019 Jeremy Wagner | Apache 2.0 License | https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/ | Modified from original */
 document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
 var lazyImages = [].slice.call(document.querySelectorAll(&quot;img.lazy&quot;));
 var backButton = document.querySelector(&quot;header.centered-top-container&quot;);
