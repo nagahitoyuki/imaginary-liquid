@@ -19,6 +19,7 @@
     <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
     <link expr:href='data:blog.homepageUrl.canonical' expr:title='data:messages.home' rel='home'/>
     <link expr:href='data:blog.searchUrl' expr:title='data:messages.search' rel='search'/>
+    <data:blog.meTag/>
   <b:if cond='data:blog.adultContent'>
     <meta content='adult' name='rating'/>
   </b:if>
@@ -910,7 +911,7 @@ body#layout .hamburger-menu {display: none;}
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
-  <a expr:href='data:userUrl' rel='author me'>
+  <a expr:href='data:userUrl' rel='author'>
     <b:include name='profileImage'/>
   </a>
 </b:includable>
@@ -927,7 +928,7 @@ body#layout .hamburger-menu {display: none;}
   </div>
 </b:includable>
             <b:includable id='userProfileLink'>
-  <a class='profile-link g-profile' expr:href='data:userUrl' rel='author me'>
+  <a class='profile-link g-profile' expr:href='data:userUrl' rel='author'>
     <data:displayname/>
   </a>
 </b:includable>
@@ -937,7 +938,7 @@ body#layout .hamburger-menu {display: none;}
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author me'>
+  <a class='profile-link' expr:href='data:userUrl' rel='author'>
     <data:messages.viewMyCompleteProfile/>
   </a>
 </b:includable>
@@ -1416,7 +1417,7 @@ body#layout .hamburger-menu {display: none;}
 </b:includable>
     <b:includable id='aboutPostAuthor'>
   <div class='author-name'>
-    <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author me' title='author profile'>
+    <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
       <span><data:post.author.name/></span>
     </a>
   </div>
@@ -1657,7 +1658,7 @@ body#layout .hamburger-menu {display: none;}
   <span class='byline post-author author vcard'><span class='post-author-label'><data:byline.label/></span>
   <span class='fn'>
   <b:if cond='data:post.author.profileUrl'>
-    <a class='url uid' expr:href='data:post.author.profileUrl' rel='author me' title='author profile'>
+    <a class='url uid' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
       <img class='photo' expr:alt='data:messages.myPhoto' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24px' width='24px'/><span><data:post.author.name/></span>
     </a>
   <b:else/>
@@ -2074,7 +2075,7 @@ avic.innerHTML = &quot;<svg role='img' aria-label='Avatar' class='avatarIcon'><u
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
-  <a expr:href='data:userUrl' rel='author me'>
+  <a expr:href='data:userUrl' rel='author'>
     <b:include name='profileImage'/>
   </a>
 </b:includable>
@@ -2091,7 +2092,7 @@ avic.innerHTML = &quot;<svg role='img' aria-label='Avatar' class='avatarIcon'><u
   </div>
 </b:includable>
             <b:includable id='userProfileLink'>
-  <a class='profile-link g-profile' expr:href='data:userUrl' rel='author me'>
+  <a class='profile-link g-profile' expr:href='data:userUrl' rel='author'>
     <data:displayname/>
   </a>
 </b:includable>
@@ -2101,7 +2102,7 @@ avic.innerHTML = &quot;<svg role='img' aria-label='Avatar' class='avatarIcon'><u
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author me'>
+  <a class='profile-link' expr:href='data:userUrl' rel='author'>
     <data:messages.viewMyCompleteProfile/>
   </a>
 </b:includable>
