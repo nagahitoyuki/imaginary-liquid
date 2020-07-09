@@ -1740,10 +1740,10 @@ body#layout .hamburger-menu {display: none;}
       <b:if cond='data:view.isPost'>
       <b:include name='footerBylines'/>
         <div class='pf-last'>
-          <span class='byline post-timestamp updated'>最終更新:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>題名:&#160;<data:post.title/><br/>url:&#160;<data:post.url.canonical/>
+          <span class='byline post-timestamp updated'>最終更新:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>題名:&#160;<data:post.title.escaped/><br/>url:&#160;<data:post.url.canonical/>
         </div>
       <b:elseif cond='data:view.isPage'/>
-      <div class='pf-last'>題名:&#160;<data:post.title/><br/>url:&#160;<data:post.url.canonical/></div>
+      <div class='pf-last'>題名:&#160;<data:post.title.escaped/><br/>url:&#160;<data:post.url.canonical/></div>
       <b:else/>
         <span class='byline archive-link'>
         <b:if cond='data:post.url and data:post.date.month lt 10'>
