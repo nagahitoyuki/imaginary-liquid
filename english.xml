@@ -569,17 +569,16 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .blogger, .image-attribution {margin-bottom:1em}
 
 /* Side bar */
-.navigation {text-align:right;margin-top:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
-.sidebar-container {background-color:$(sidebar.backgroundColorBottom);max-width:$(sidebar.width);overflow-y:auto;width:$(sidebar.width);box-sizing:border-box;box-shadow:5px 0 10px -5px rgba(0,0,0,.45);z-index:101;-webkit-overflow-scrolling: touch}
+.navigation {text-align:right;padding-top:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)}
+.sidebar-container {backgroundcolor:$(sidebar.backgroundColorBottom);max-width:$(sidebar.width);overflow-y:auto;width:$(sidebar.width);box-sizing:border-box;box-shadow:5px 0 10px -5px rgba(0,0,0,.45);z-index:101;-webkit-overflow-scrolling: touch}
 .sidebar-container .widget {background:0 0;margin:0 var(--maincolumn-padding);padding:8px 0;color:$(widget.text.color)}
 .sidebar-container .widget .title {color:$(widget.title.color)}
 .sidebar-container .widget ul {list-style:none;padding-left:0}
 .sidebar-container .widget ul ul {margin-$startSide:1em}
 .sidebar-container .widget+.widget {border-top:1px dashed $(sidebar.separator.color)}
 .sidebar-container .sidebar_top {overflow:auto}
-.sidebar-container .sidebar_top_wrapper {background-color:$(sidebar.backgroundColorTop)}
-.sidebar-container .sidebar_bottom {width:100%}
-.sidebar-container,.sidebar-container .sidebar_bottom{background-color:$(sidebar.backgroundColorBottom)}
+.sidebar-container .navigation, .sidebar-container .sidebar_top_wrapper {background-color:$(sidebar.backgroundColorTop)}
+.sidebar-container .sidebar_bottom {width:100%;background-color:$(sidebar.backgroundColorBottom)}
 
 /* Effects of side bar */
 body.sidebar-visible {overflow-y:hidden}
