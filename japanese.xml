@@ -367,7 +367,6 @@ iframe.b-hbp-video {border:0}
 .centered-top {margin-top:2em;margin-bottom:2em}
 .centered-top-placeholder{display:none}
 .centered-top-container {text-align:center;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
-.centered-top-container img, .centered-top-placeholder img {max-width:100%}
 #blog-title {color:$(blog.title.color);font:$(blog.title.font);margin:0;line-height:calc(var(--body-lineheight) - .1)}
 #blog-title a,#blog-title a:hover,#blog-title a:visited{color:$(blog.title.color)}
 .Header p {color:$(blog.title.color);margin-top:1.5em;margin-bottom:0}
@@ -704,6 +703,7 @@ body {position:relative}
 body.item-view .post-body a[imageanchor="1"][style*="float: left;"],body.item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none!important;clear:none!important}
 body.item-view .post-body a[imageanchor="1"] img{display:block;height:auto;
 margin:0 auto}
+body.item-view .post-body a:not([imageanchor="1"]) img {height:inherit}
 body.item-view .post-body>.separator:first-child>a[imageanchor="1"]:first-child {
 margin-top:20px}
 .post-body a[imageanchor] {display:block}
