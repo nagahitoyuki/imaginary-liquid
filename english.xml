@@ -367,7 +367,6 @@ iframe.b-hbp-video {border:0}
 .centered-top {margin-top:1.75em;margin-bottom:1.75em}
 .centered-top-placeholder{display:none}
 .centered-top-container {text-align:center;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
-.centered-top-container img, .centered-top-placeholder img {max-width:100%}
 #blog-title {color:$(blog.title.color);font:$(blog.title.font);margin:0;line-height:calc(var(--body-lineheight) - .15)}
 #blog-title a,#blog-title a:hover,#blog-title a:visited{color:$(blog.title.color)}
 .Header p {color:$(blog.title.color);margin-top:1.25em;margin-bottom:0}
@@ -407,7 +406,7 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .search-input {display:inline}
 .search {display:flex;align-items:center}
 
-/* Adsense ads */
+/* AdSense ads */
 .page_body.has-vertical-ads .centered .centered-bottom {display:inline-block;width:calc(100% - 174px)}
 .vertical-ad-placeholder {height:600px}
 .vertical-ad-placeholder span {margin-top:290px;padding:0 40px}
@@ -683,7 +682,7 @@ body {position:relative}
 /* Floating bar */
 #floatingbar.narrow {width:calc(100% - 174px)}
 
-/* Adsense ads */
+/* AdSense ads */
 .desktop-ad .inline-ad {display:block;margin:calc(var(--maincolumn-padding) / 2) auto}
 
 /* Post title */
@@ -705,13 +704,14 @@ body {position:relative}
 body.item-view .post-body a[imageanchor="1"][style*="float: left;"],body.item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none!important;clear:none!important}
 body.item-view .post-body a[imageanchor="1"] img{display:block;height:auto;
 margin:0 auto}
+body.item-view .post-body a:not([imageanchor="1"]) img {height:inherit}
 body.item-view .post-body>.separator:first-child>a[imageanchor="1"]:first-child {
 margin-top:16px}
 .post-body a[imageanchor] {display:block}
 body.item-view .post-body a[imageanchor="1"] {margin-left:0!important;margin-right:0!important}
 body.item-view .post-body a[imageanchor="1"]+a[imageanchor="1"] {margin-top:16px}
 
-/* Adsense ads */
+/* AdSense ads */
 .mobile-ad .inline-ad {display:block;height:auto;width:calc(100vw - var(--maincolumn-padding) * 2);margin:calc(var(--maincolumn-padding) / 2) auto} 
 .page_body.has-vertical-ads .vertical-ad-container,.page_body.has-vertical-ads .vertical-ad-container ins {display:none}
 .page_body.has-vertical-ads .centered .centered-bottom,.page_body.has-vertical-ads .centered .centered-top {display:block;width:auto}
