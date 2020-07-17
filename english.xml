@@ -1040,9 +1040,6 @@ body#layout .hamburger-menu {display: none;}
 
 <b:include cond='not data:view.isPreview' data='{ image: data:skin.vars.body_background.image, selector: &quot;.bg-photo&quot;, imageSizes: [480, 640, 800, 1200, 1600] }' name='responsiveImageStyle'/>
 
-    <b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
-      <script async='async' expr:data-ad-client='data:blog.adsenseClientId' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'/>
-    </b:if>
     <b:include data='blog' name='google-analytics'/>
 </head>
 
