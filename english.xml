@@ -2244,7 +2244,7 @@ yt.src = lazyImage.dataset.mxrd;
 } else {
 lazyImage.src = lazyImage.dataset.src; lazyImage.srcset = lazyImage.dataset.srcset;};
 lazyImage.classList.remove(&quot;lazy&quot;);
-lazyImageObserver.unobserve(lazyImage); } }); },
+} }); },
 { rootMargin: &quot;120px&quot; });
 lazyImages.forEach(function(lazyImage) {
 lazyImageObserver.observe(lazyImage); });
@@ -2291,7 +2291,7 @@ var bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-page
 if (bpg !== null) {
 bpg.parentNode.remove();
 }} else {
-nextIndexObserver.unobserve(nextIndex);
+nextIndexObserver.disconnect();
 }});},
 { rootMargin: &quot;120px&quot; });
 nextIndexObserver.observe(nextIndex);
