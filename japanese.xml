@@ -312,7 +312,7 @@ a {text-decoration:none;color:$(body.link.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
 h1, h2, h3, h4, h5, h6 {scroll-margin-top:calc(1em + var(--floatingbar-height))}
-img {max-width:100%}
+img {max-width:100%;height:auto}
 iframe {max-width:100%}
 input {font-size:100%}
 blockquote {margin:1em 2.5em}
@@ -701,9 +701,7 @@ body {position:relative}
 
 /* 投稿画像 */
 body.item-view .post-body a[imageanchor="1"][style*="float: left;"],body.item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none!important;clear:none!important}
-body.item-view .post-body a[imageanchor="1"] img{display:block;height:auto;
-margin:0 auto}
-body.item-view .post-body a:not([imageanchor="1"]) img {height:inherit}
+body.item-view .post-body a[imageanchor="1"] img{display:block;margin:0 auto}
 body.item-view .post-body>.separator:first-child>a[imageanchor="1"]:first-child {
 margin-top:20px}
 .post-body a[imageanchor] {display:block}
@@ -871,7 +869,7 @@ body#layout .hamburger-menu {display: none;}
           </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
+  <img class='profile-img lazy' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:data-src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
@@ -2047,7 +2045,7 @@ avic.innerHTML = &quot;<svg role='img' aria-label='アバター' class='avatarIc
           </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
+  <img class='profile-img lazy' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:data-src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
@@ -2280,7 +2278,9 @@ lazyImage.src = lazyImage.dataset.src; lazyImage.srcset = lazyImage.dataset.srcs
 }};
 yt.src = lazyImage.dataset.mxrd;
 } else {
-lazyImage.src = lazyImage.dataset.src; lazyImage.srcset = lazyImage.dataset.srcset;};
+lazyImage.src = lazyImage.dataset.src;
+if (lazyImage.hasAttribute(&quot;data-srcset&quot;)) {
+lazyImage.srcset = lazyImage.dataset.srcset;}};
 lazyImage.classList.remove(&quot;lazy&quot;);
 } }); },
 { rootMargin: &quot;120px&quot; });
