@@ -1450,7 +1450,7 @@ body#layout .hamburger-menu {display: none;}
     <b:includable id='commentForm' var='post'>
   <footer class='comment-form'>
     <b:include data='post' name='commentFormIframeSrc'/>
-    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' loading='lazy' name='comment-editor' src='' width='100%'/>
     <data:post.cmtfpIframe/>
     <script type='text/javascript'>
       BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
@@ -1570,7 +1570,7 @@ body#layout .hamburger-menu {display: none;}
     </b:if>
     <b:if cond='data:showCmtPopup'>
       <div id='comment-popup'>
-        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' loading='lazy' name='comment-actions' scrolling='no'>
         </iframe>
       </div>
     </b:if>
@@ -1773,6 +1773,14 @@ body#layout .hamburger-menu {display: none;}
    </nav>
   </div>
 </b:includable>
+    <b:includable id='postReactions'>
+  <span class='byline reactions'>
+    <span class='reactions-label'>
+      <data:byline.label/>
+    </span>
+    <iframe allowtransparency='true' class='reactions-iframe' expr:src='data:post.reactionsUrl' frameborder='0' loading='lazy' name='reactions' scrolling='no'/>
+  </span>
+</b:includable>
     <b:includable id='postShareButtons'>
   <b:comment>Don&#39;t show share buttons.</b:comment>
 </b:includable>
@@ -1811,7 +1819,7 @@ body#layout .hamburger-menu {display: none;}
       <p id='switch'><data:this.messages.blogComment/></p>
     </b:if>
     <b:include data='post' name='commentFormIframeSrc'/>
-    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' loading='lazy' name='comment-editor' src='' width='100%'/>
     <data:post.cmtfpIframe/>
     <script type='text/javascript'>
       BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
@@ -1856,7 +1864,7 @@ avic.innerHTML = &quot;<svg role='img' aria-label='Avatar' class='avatarIcon'><u
     </div>
     <b:if cond='data:showCmtPopup'>
       <div id='comment-popup'>
-        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' loading='lazy' name='comment-actions' scrolling='no'>
         </iframe>
       </div>
     </b:if>
