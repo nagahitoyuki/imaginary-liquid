@@ -1428,7 +1428,7 @@ body#layout .hamburger-menu {display: none;}
     <b:includable id='commentAuthorAvatar'>
   <div class='avatar-image-container'>
   <b:if cond='data:comment.authorUserType == &quot;blogger&quot;'>
-    <img class='author-avatar' alt='Avatar' expr:src='data:comment.authorAvatarSrc' height='35' width='35'/>
+    <img class='author-avatar lazy' alt='Avatar' expr:data-src='data:comment.authorAvatarSrc' height='35' width='35'/>
   <b:else/>
     <svg role='img' aria-label='Avatar' class='avatarIcon'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>
   </b:if>
@@ -1442,7 +1442,7 @@ body#layout .hamburger-menu {display: none;}
       </div>
     <b:else/>
       <a class='comment-delete' expr:href='data:comment.deleteUrl' expr:title='data:messages.deleteComment' rel='nofollow'>
-        <img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+        <img class='lazy' data-src='https://resources.blogblog.com/img/icon_delete13.gif'/>
       </a>
     </b:if>
   </span>
@@ -1651,7 +1651,7 @@ body#layout .hamburger-menu {display: none;}
   <span class='fn'>
   <b:if cond='data:post.author.profileUrl'>
     <a class='url uid' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
-      <img class='photo' expr:alt='data:messages.myPhoto' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24px' width='24px'/><span><data:post.author.name/></span>
+      <img class='photo lazy' expr:alt='data:messages.myPhoto' expr:data-src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24px' width='24px'/><span><data:post.author.name/></span>
     </a>
   <b:else/>
     <span><data:post.author.name/></span>
@@ -1731,7 +1731,7 @@ body#layout .hamburger-menu {display: none;}
   <b:if cond='data:post.author.aboutMe and data:view.isPost'>
     <div class='author-profile'>
       <b:if cond='data:post.author.authorPhoto.url'>
-        <img class='author-image' expr:src='data:post.author.authorPhoto.url' width='50px'/>
+        <img class='author-image lazy' expr:data-src='data:post.author.authorPhoto.url' width='50px'/>
         <div class='author-about'>
           <b:include data='post' name='aboutPostAuthor'/>
         </div>
