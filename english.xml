@@ -1430,7 +1430,7 @@ body#layout .hamburger-menu {display: none;}
   <b:if cond='data:comment.authorUserType == &quot;blogger&quot;'>
     <img class='author-avatar lazy' alt='Avatar' expr:data-src='data:comment.authorAvatarSrc' height='35' width='35'/>
   <b:else/>
-    <svg role='img' aria-label='Avatar' class='avatarIcon'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>
+    <svg aria-label='Avatar' class='avatarIcon' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg>
   </b:if>
   </div>
 </b:includable>
@@ -1471,7 +1471,7 @@ body#layout .hamburger-menu {display: none;}
     <b:include cond='data:blog.enabledCommentProfileImages' name='commentAuthorAvatar'/>
   <b:else/>
   <div class='avatar-image-container'>
-    <svg role='img' aria-label='Avatar' class='avatarIcon'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>
+    <svg aria-label='Avatar' class='avatarIcon' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg>
   </div>
   </b:if>
     <div class='comment-block'>
@@ -1840,7 +1840,7 @@ window.onload = function(){
 var avics = [].slice.call(document.querySelectorAll(&quot;div.avatar-image-container&quot;));
 avics.forEach(function(avic){
 if (avic.firstElementChild.src.includes(&quot;blank&quot;))
-avic.innerHTML = &quot;<svg role='img' aria-label='Avatar' class='avatarIcon'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>&quot;;});}
+avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg>&quot;;});}
 </script>
 </b:includable>
     <b:includable id='threadedComments' var='post'>
@@ -2297,7 +2297,6 @@ nextIndexObserver.observe(nextIndex); } else {
 lazyImages.forEach(function(lazyImage) {
 lazyImage.src = lazyImage.dataset.src; lazyImage.srcset = lazyImage.dataset.srcset; }); }});
 /* Imaginary's program for buttons */
-window.onload = function(){
 var hbm = document.getElementsByClassName(&quot;hamburger-menu&quot;)[0];
 var clb = document.getElementsByClassName(&quot;close-button&quot;)[0];
 var sbct = document.getElementsByClassName(&quot;sidebar-container&quot;)[0];
@@ -2334,7 +2333,7 @@ acebtn.addEventListener(&quot;click&quot;, compress, false); });
 shbtn.onclick = function() {
 window.navigator.share( {
 title: &quot;<data:view.title.escaped/>&quot;,
-url: &quot;<data:blog.url.canonical/>&quot; }); }}
+url: &quot;<data:blog.url.canonical/>&quot; }); }
 </script>
 </body>
 </html>
