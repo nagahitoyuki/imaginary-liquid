@@ -19,7 +19,7 @@
     <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
     <link expr:href='data:blog.homepageUrl.canonical' expr:title='data:messages.home' rel='home'/>
     <link expr:href='data:blog.searchUrl' expr:title='data:messages.search' rel='search'/>
-  <data:blog.meTag/>
+  <b:eval expr='data:blog.meTag'/>
   <b:if cond='data:blog.adultContent'>
     <meta content='adult' name='rating'/>
   </b:if>
