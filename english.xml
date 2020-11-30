@@ -1377,14 +1377,14 @@ body#layout .hamburger-menu {display: none;}
       <b:widget-setting name='style.linkcolor'>#000000</b:widget-setting>
       <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
       <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
-      <b:widget-setting name='timestampLabel'>-</b:widget-setting>
+      <b:widget-setting name='timestampLabel'></b:widget-setting>
       <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
       <b:widget-setting name='style.layout'>1x1</b:widget-setting>
       <b:widget-setting name='showLabels'>true</b:widget-setting>
-      <b:widget-setting name='showLocation'>true</b:widget-setting>
+      <b:widget-setting name='showLocation'>false</b:widget-setting>
       <b:widget-setting name='postLabelsLabel'/>
       <b:widget-setting name='showTimestamp'>true</b:widget-setting>
-      <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+      <b:widget-setting name='postsPerAd'>3</b:widget-setting>
       <b:widget-setting name='showBacklinks'>false</b:widget-setting>
       <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
       <b:widget-setting name='showInlineAds'>false</b:widget-setting>
