@@ -1951,7 +1951,7 @@ avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img' vi
 </div>
 
 <footer>
-  <div class='theme-attribution'>With <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow'>Imaginary theme</a></div>
+  <div class='theme-attribution'>with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow'>Imaginary theme</a></div>
 
             <b:section class='footer' id='footer' name='Footer' showaddelement='false'>
               <b:widget id='Attribution1' locked='true' title='' type='Attribution' visible='true'>
