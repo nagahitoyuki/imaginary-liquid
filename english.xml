@@ -462,7 +462,7 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .post-body {font:$(posts.text.font);color:$(posts.text.color);margin:16px 0;line-height:var(--body-lineheight)}
 .post-body a,.post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
-.snippet-thumbnail img {width:100%;max-width:100%;margin-bottom:16px}
+.snippet-thumbnail img {margin-bottom:16px}
 .summary {font:$(posts.text.font);color:$(posts.text.color);margin:0 0 16px;line-height:var(--body-lineheight)}
 .post-body h1 {font-size:26px;line-height:calc(var(--body-lineheight) - .15)}
 .post-body h2 {font-size:24px;line-height:calc(var(--body-lineheight) - .15)}
@@ -688,6 +688,10 @@ body {position:relative}
 /* Post title */
 .Blog h1.post-title a {line-height:calc(var(--body-lineheight) - .15)}
 .Blog h2.post-title a, .FeaturedPost .post-title a {line-height:calc(var(--body-lineheight) - .15)}
+
+/* Post body */
+:not(.has-vertical-ads) .FeaturedPost .snippet-thumbnail img, :not(.has-vertical-ads) .Blog .snippet-thumbnail img {width:calc($(content.width) - var(--maincolumn-padding) * 2);height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
+.has-vertical-ads .FeaturedPost .snippet-thumbnail img, .has-vertical-ads .Blog .snippet-thumbnail img {width:calc($(content.width) - 174px - var(--maincolumn-padding) * 2);height:calc(($(content.width) - 174px - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
 }
 
 /* Below the width of horizontal tablet */
@@ -699,6 +703,9 @@ body {position:relative}
 /* Post title */
 .Blog h1.post-title a {line-height:calc(var(--body-lineheight) - .2)}
 .Blog h2.post-title a, .FeaturedPost .post-title a {line-height:calc(var(--body-lineheight) - .15)}
+
+/* Post body */
+.FeaturedPost .snippet-thumbnail img, .Blog .snippet-thumbnail img {width:100%;height:calc((100vw - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover;}
 
 /* Posted image */
 body.item-view .post-body a[imageanchor="1"][style*="float: left;"],body.item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none!important;clear:none!important}
