@@ -462,7 +462,7 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .post-body {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin:20px 0}
 .post-body a,.post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
-.snippet-thumbnail img {width:100%;max-width:100%;margin-bottom:16px}
+.snippet-thumbnail img {margin-bottom:16px}
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin:0 0 20px}
 
 /* ラベル */
@@ -685,6 +685,8 @@ body {position:relative}
 .PopularPosts .post-title {line-height:var(--body-lineheight)}
 
 /* 記事の本文 */
+:not(.has-vertical-ads) .FeaturedPost .snippet-thumbnail img, :not(.has-vertical-ads) .Blog .snippet-thumbnail img {width:calc($(content.width) - var(--maincolumn-padding) * 2);height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
+.has-vertical-ads .FeaturedPost .snippet-thumbnail img, .has-vertical-ads .Blog .snippet-thumbnail img {width:calc($(content.width) - 174px - var(--maincolumn-padding) * 2);height:calc(($(content.width) - 174px - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
 .post-body h1 {font-size:26.5px;line-height:calc(var(--body-lineheight) - .1)}
 .post-body h2 {font-size:25px;line-height:calc(var(--body-lineheight) - .1)}
 .post-body h3 {font-size:20.9px}
@@ -698,6 +700,9 @@ body {position:relative}
 
 /* ページボディー */
 .Blog article {max-width:100vw}
+
+/* 記事の本文 */
+.FeaturedPost .snippet-thumbnail img, .Blog .snippet-thumbnail img {width:100%;height:calc((100vw - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover;}
 
 /* 投稿画像 */
 body.item-view .post-body a[imageanchor="1"][style*="float: left;"],body.item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none!important;clear:none!important}
