@@ -24,6 +24,9 @@
     <meta content='adult' name='rating'/>
   </b:if>
     <link expr:href='data:view.url.canonical' rel='canonical'/>
+  <b:if cond='!data:blog.isMobileRequest'>
+    <link expr:href='data:view.url.canonical + &quot;?m=1&quot;' media='only screen and (max-width: 640px)' rel='alternate'/>
+  </b:if>
     <data:blog.feedLinks/>
     <meta expr:content='data:blog.url.canonical' property='og:url'/>
   <b:if cond='data:view.isArchive or data:view.isLabelSearch'>
