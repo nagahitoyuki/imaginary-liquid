@@ -1662,7 +1662,7 @@ body#layout .hamburger-menu {display: none;}
   <span class='fn'>
   <b:if cond='data:post.author.profileUrl'>
     <a class='url uid' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
-      <img class='photo lazy' expr:alt='data:messages.myPhoto' expr:data-src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24px' width='24px'/><span><data:post.author.name/></span>
+      <img class='photo' expr:alt='data:messages.myPhoto' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24px' width='24px'/><span><data:post.author.name/></span>
     </a>
   <b:else/>
     <span><data:post.author.name/></span>
