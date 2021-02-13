@@ -331,7 +331,7 @@ pre {white-space:pre-wrap}
 .invisible {visibility:hidden}
 .container::after,.float-container::after {clear:both;content:'';display:table}
 .clearboth {clear:both}
-.post-bottom, .comments, .blog-pager, .sub_main, .theme-attribution, #PopularPosts1 {content-visibility:auto;contain-intrinsic-size:100%}
+body.item-view .post-bottom, .comments, body.item-view .blog-pager, .related-contents, .sub_main, .theme-attribution, #PopularPosts1 {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* ウィジェット */
 #comments .comment .comment-actions,.subscribe-popup .FollowByEmail .follow-by-email-submit,.widget.Profile .profile-link,.widget.Profile .profile-link.visit-profile {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0;}
