@@ -331,6 +331,7 @@ pre {white-space:pre-wrap}
 .invisible {visibility:hidden}
 .container::after,.float-container::after {clear:both;content:'';display:table}
 .clearboth {clear:both}
+.post-bottom, .comments, .blog-pager, .sub_main, .theme-attribution, #PopularPosts1 {content-visibility:auto;contain-intrinsic-size:200px;}
 
 /* Widget */
 #comments .comment .comment-actions,.subscribe-popup .FollowByEmail .follow-by-email-submit,.widget.Profile .profile-link,.widget.Profile .profile-link.visit-profile {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0;}
@@ -826,7 +827,7 @@ body#layout .hamburger-menu {display: none;}
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <div class='item-thumbnail'>
-    <img class='lazy' expr:alt='data:messages.image' expr:data-src='data:post.featuredImage' expr:data-srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' sizes='94px'/>
+    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' sizes='94px'/>
   </div>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
@@ -1438,7 +1439,7 @@ body#layout .hamburger-menu {display: none;}
     <b:includable id='commentAuthorAvatar'>
   <div class='avatar-image-container'>
   <b:if cond='data:comment.authorUserType == &quot;blogger&quot;'>
-    <img class='author-avatar lazy' alt='Avatar' expr:data-src='data:comment.authorAvatarSrc' height='35' width='35'/>
+    <img class='author-avatar' alt='Avatar' expr:src='data:comment.authorAvatarSrc' height='35' width='35'/>
   <b:else/>
     <svg aria-label='Avatar' class='avatarIcon' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg>
   </b:if>
@@ -1452,7 +1453,7 @@ body#layout .hamburger-menu {display: none;}
       </div>
     <b:else/>
       <a class='comment-delete' expr:href='data:comment.deleteUrl' expr:title='data:messages.deleteComment' rel='nofollow'>
-        <img class='lazy' data-src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+        <img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
       </a>
     </b:if>
   </span>
@@ -1741,7 +1742,7 @@ body#layout .hamburger-menu {display: none;}
   <b:if cond='data:post.author.aboutMe and data:view.isPost'>
     <div class='author-profile'>
       <b:if cond='data:post.author.authorPhoto.url'>
-        <img class='author-image lazy' expr:data-src='data:post.author.authorPhoto.url' width='50px'/>
+        <img class='author-image' expr:src='data:post.author.authorPhoto.url' width='50px'/>
         <div class='author-about'>
           <b:include data='post' name='aboutPostAuthor'/>
         </div>
@@ -1932,7 +1933,7 @@ avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img' vi
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <div class='item-thumbnail'>
-    <img class='lazy' expr:alt='data:messages.image' expr:data-src='data:post.featuredImage' expr:data-srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' sizes='94px'/>
+    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' sizes='94px'/>
   </div>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
