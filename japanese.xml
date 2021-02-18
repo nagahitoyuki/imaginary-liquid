@@ -4,6 +4,7 @@
   <head expr:prefix='&quot;og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# &quot; + (data:view.isMultipleItems ? &quot;website: http://ogp.me/ns/website#&quot; : &quot;article: http://ogp.me/ns/article#&quot;)'>
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <link href='//www.blogger.com' rel='preconnect'/>
   <title><data:view.title.escaped/><b:if cond='data:view.isArchive'>: <data:blog.pageName/>&#65288;<data:messages.archive/>&#65289;<b:elseif cond='data:view.isLabelSearch'/>: <data:blog.pageName/>&#65288;<data:messages.labels/>&#65289;<b:elseif cond='data:view.isSearch'/>: <data:messages.search/></b:if></title>
   <b:if cond='data:blog.metaDescription'>
     <meta expr:content='data:blog.metaDescription' name='description'/>
@@ -1125,7 +1126,7 @@ body#layout .hamburger-menu {display: none;}
     <b:includable id='behindImageStyle'>
   <b:if cond='data:sourceUrl'>
     <b:include cond='data:this.image' data='{ image: data:this.image, selector: &quot;.header-widget&quot; }' name='responsiveImageStyle'/>
-<style type='text/css'>
+<style>
 .header-widget { background-position: <data:blog.locale.languageAlignment/>; background-repeat: no-repeat; }
  </style>
   </b:if>
@@ -1484,7 +1485,7 @@ body#layout .hamburger-menu {display: none;}
     <b:include data='post' name='commentFormIframeSrc'/>
     <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
     <data:post.cmtfpIframe/>
-    <script type='text/javascript'>
+    <script>
       BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
     </script>
     <a name='comment-form'/>
@@ -1638,7 +1639,7 @@ body#layout .hamburger-menu {display: none;}
 </b:includable>
     <b:includable id='iframeComments' var='post'>
   <b:if cond='data:post.allowIframeComments'>
-    <script expr:src='data:post.iframeCommentSrc' type='text/javascript'/>
+    <script expr:src='data:post.iframeCommentSrc'/>
     <div class='cmt_iframe_holder' expr:data-href='data:post.url.canonical' expr:data-viewtype='data:post.viewType'/>
     <b:if cond='!data:post.embedCommentForm'>
       <b:include data='post' name='commentsLink'/>
@@ -1853,15 +1854,15 @@ body#layout .hamburger-menu {display: none;}
     <b:include data='post' name='commentFormIframeSrc'/>
     <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
     <data:post.cmtfpIframe/>
-    <script type='text/javascript'>
+    <script>
       BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
     </script>
   </footer>
 </b:includable>
     <b:includable id='threadedCommentJs' var='post'>
-<script async='async' expr:src='data:post.commentSrc' type='text/javascript'/>
+<script async='async' expr:src='data:post.commentSrc'/>
   <b:template-script inline='true' name='threaded_comments'/>
-<script type='text/javascript'>
+<script>
     blogger.widgets.blog.initThreadedComments(
         <data:post.commentJso/>,
         <data:post.commentMsgs/>,
