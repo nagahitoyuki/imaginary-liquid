@@ -332,7 +332,7 @@ pre {white-space:pre-wrap}
 .invisible {visibility:hidden}
 .container::after,.float-container::after {clear:both;content:'';display:table}
 .clearboth {clear:both}
-body.item-view .post-bottom, .comments, body.item-view .blog-pager, .related-contents, .sub_main, .theme-attribution, #PopularPosts1 {content-visibility:auto;contain-intrinsic-size:100%}
+#PopularPosts1, .sub_main, .theme-attribution, .sidebar-container {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* Widget */
 #comments .comment .comment-actions,.subscribe-popup .FollowByEmail .follow-by-email-submit,.widget.Profile .profile-link,.widget.Profile .profile-link.visit-profile {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0;}
@@ -858,7 +858,7 @@ body#layout .hamburger-menu {display: none;}
           </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <img class='profile-img lazy' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:data-src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
+  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
@@ -1462,7 +1462,7 @@ body#layout .hamburger-menu {display: none;}
     <b:includable id='commentForm' var='post'>
   <footer class='comment-form'>
     <b:include data='post' name='commentFormIframeSrc'/>
-    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' loading='lazy' src='' width='100%'/>
     <data:post.cmtfpIframe/>
     <script>
       BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
@@ -1582,7 +1582,7 @@ body#layout .hamburger-menu {display: none;}
     </b:if>
     <b:if cond='data:showCmtPopup'>
       <div id='comment-popup'>
-        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' loading='lazy' scrolling='no'>
         </iframe>
       </div>
     </b:if>
@@ -1790,7 +1790,7 @@ body#layout .hamburger-menu {display: none;}
     <span class='reactions-label'>
       <data:byline.label/>
     </span>
-    <iframe allowtransparency='true' class='reactions-iframe' expr:src='data:post.reactionsUrl' frameborder='0' name='reactions' scrolling='no'/>
+    <iframe allowtransparency='true' class='reactions-iframe' expr:src='data:post.reactionsUrl' frameborder='0' name='reactions' loading='lazy' scrolling='no'/>
   </span>
 </b:includable>
     <b:includable id='postShareButtons'>
@@ -1831,7 +1831,7 @@ body#layout .hamburger-menu {display: none;}
       <p id='switch'><data:this.messages.blogComment/></p>
     </b:if>
     <b:include data='post' name='commentFormIframeSrc'/>
-    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' loading='lazy' src='' width='100%'/>
     <data:post.cmtfpIframe/>
     <script>
       BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
@@ -1876,7 +1876,7 @@ avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img' vi
     </div>
     <b:if cond='data:showCmtPopup'>
       <div id='comment-popup'>
-        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' loading='lazy' scrolling='no'>
         </iframe>
       </div>
     </b:if>
@@ -2030,7 +2030,7 @@ avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img' vi
           </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <img class='profile-img lazy' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:data-src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
+  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
@@ -2262,8 +2262,7 @@ lazyImage.src = yt.src; lazyImage.srcset = yt.src + &quot;=w320-h213-pd 320w, &q
 lazyImage.src = lazyImage.dataset.src; lazyImage.srcset = lazyImage.dataset.srcset; } }
 yt.src = lazyImage.dataset.mxrd; } else {
 lazyImage.src = lazyImage.dataset.src;
-if (lazyImage.hasAttribute(&quot;data-srcset&quot;)) {
-lazyImage.srcset = lazyImage.dataset.srcset; } }
+lazyImage.srcset = lazyImage.dataset.srcset; }
 lazyImage.classList.remove(&quot;lazy&quot;); }}); }, {
 rootMargin: &quot;120px&quot; });
 lazyImages.forEach(function(lazyImage) {
