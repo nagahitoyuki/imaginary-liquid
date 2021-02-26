@@ -334,7 +334,7 @@ pre {white-space:pre-wrap}
 .invisible {visibility:hidden}
 .container::after,.float-container::after {clear:both;content:'';display:table}
 .clearboth {clear:both}
-#PopularPosts1, .sub_main, .theme-attribution, .sidebar-container {content-visibility:auto;contain-intrinsic-size:100%}
+.sub_main, .theme-attribution, .sidebar-container {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* Widget */
 #comments .comment .comment-actions,.subscribe-popup .FollowByEmail .follow-by-email-submit,.widget.Profile .profile-link,.widget.Profile .profile-link.visit-profile {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0;}
@@ -1357,9 +1357,9 @@ body#layout .hamburger-menu {display: none;}
     <b:includable id='snippetedPostThumbnail'>
   <div class='snippet-thumbnail'>
   <b:if cond='data:post.featuredImage.isYoutube'>
-    <img class='lazy yt' expr:alt='data:messages.image' expr:data-mxrd='data:post.featuredImage.youtubeMaxResDefaultUrl' expr:data-src='data:post.featuredImage' expr:data-srcset='sourceSet(data:post.featuredImage, [320,678,1024], &quot;3:2&quot;)'/>
+    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage.youtubeMaxResDefaultUrl' expr:srcset='sourceSet(data:post.featuredImage.youtubeMaxResDefaultUrl, [320,678,1024], &quot;3:2&quot;)' loading='lazy'/>
   <b:else/>
-    <img class='lazy' expr:alt='data:messages.image' expr:data-src='data:post.featuredImage' expr:data-srcset='sourceSet(data:post.featuredImage, [320,678,1024], &quot;3:2&quot;)'/>
+    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceSet(data:post.featuredImage, [320,678,1024], &quot;3:2&quot;)' loading='lazy'/>
   </b:if>
   </div>
 </b:includable>
@@ -1684,9 +1684,9 @@ body#layout .hamburger-menu {display: none;}
     <b:if cond='data:post.featuredImage'>
     <div class='snippet-thumbnail'>
     <b:if cond='data:post.featuredImage.isYoutube'>
-      <img class='lazy yt' expr:alt='data:messages.image' expr:data-mxrd='data:post.featuredImage.youtubeMaxResDefaultUrl' expr:data-src='data:post.featuredImage' expr:data-srcset='sourceSet(data:post.featuredImage, [320,678,1024], &quot;3:2&quot;)'/>
-    <b:else/>
-      <img class='lazy' expr:alt='data:messages.image' expr:data-src='data:post.featuredImage' expr:data-srcset='sourceSet(data:post.featuredImage, [320,678,1024], &quot;3:2&quot;)'/>
+      <img expr:alt='data:messages.image' expr:src='data:post.featuredImage.youtubeMaxResDefaultUrl' expr:srcset='sourceSet(data:post.featuredImage.youtubeMaxResDefaultUrl, [320,678,1024], &quot;3:2&quot;)' loading='lazy'/>
+  <b:else/>
+    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceSet(data:post.featuredImage, [320,678,1024], &quot;3:2&quot;)' loading='lazy'/>
     </b:if>
     </div>
     </b:if>
@@ -1936,7 +1936,7 @@ avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img' vi
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <div class='item-thumbnail'>
-    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' sizes='94px'/>
+    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' sizes='94px' loading='lazy'/>
   </div>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
@@ -2244,31 +2244,13 @@ avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img' vi
       </b:section>
 </aside>
 <script>
-/* Lazy Loading Copyright 2019 Jeremy Wagner | Apache 2.0 License | https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/ | Modified from original */
+/* Back button and infinite scroll */
 document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
-var lazyImages = [].slice.call(document.querySelectorAll(&quot;img.lazy&quot;));
 var backButton = document.querySelector(&quot;header.centered-top-container&quot;);
 var nextIndex = document.querySelector(&quot;aside.isf&quot;);
 var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
 var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
 if (&quot;IntersectionObserver&quot; in window) {
-let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-entries.forEach(function(entry) {
-if (entry.isIntersecting) {
-let lazyImage = entry.target;
-if (lazyImage.classList.contains(&quot;yt&quot;)) {
-var yt = new Image();
-yt.onload = function() {
-if (yt.naturalWidth &gt; 120) {
-lazyImage.src = yt.src; lazyImage.srcset = yt.src + &quot;=w320-h213-pd 320w, &quot; + yt.src + &quot;=w678-h452-pd 678w, &quot; + yt.src + &quot;=w1024-h682-pd 1024w&quot;; } else {
-lazyImage.src = lazyImage.dataset.src; lazyImage.srcset = lazyImage.dataset.srcset; } }
-yt.src = lazyImage.dataset.mxrd; } else {
-lazyImage.src = lazyImage.dataset.src;
-lazyImage.srcset = lazyImage.dataset.srcset; }
-lazyImage.classList.remove(&quot;lazy&quot;); }}); }, {
-rootMargin: &quot;120px&quot; });
-lazyImages.forEach(function(lazyImage) {
-lazyImageObserver.observe(lazyImage); });
 let backButtonObserver = new IntersectionObserver(function(entries, observer) {
 entries.forEach(function(entry) {
 let bbb = document.querySelector(&quot;#back-button-box&quot;);
@@ -2286,17 +2268,6 @@ await fetch(npl.getAttribute(&quot;href&quot;)).then((response) =&gt; response.t
 var parserh = new DOMParser();
 var doch = parserh.parseFromString(text, &quot;text/html&quot;);
 var pst = doch.querySelector(&quot;div.blog-posts&quot;);
-var nimgs = [].slice.call(doch.querySelectorAll(&quot;img.lazy&quot;));
-if (nimgs[0] !== null) {
-nimgs.forEach(function (nimg) {
-if (nimg.classList.contains(&quot;yt&quot;)) {
-var nyt = new Image();
-nyt.onload = function() {
-if (nyt.naturalWidth &gt; 120) {
-nimg.src = nyt.src; nimg.srcset = nyt.src + &quot;=w320-h213-pd 320w, &quot; + nyt.src + &quot;=w678-h452-pd 678w, &quot; + nyt.src +&quot;=w1024-h682-pd 1024w&quot;; } else {
-nimg.src = nimg.dataset.src; nimg.srcset = nimg.dataset.srcset; }}
-nyt.src = nimg.dataset.mxrd; } else {
-nimg.src = nimg.dataset.src; nimg.srcset = nimg.dataset.srcset; }});}
 var adcs = [].slice.call(doch.querySelectorAll(&quot;aside&quot;));
 if (adcs[0] !== null) {
 adcs.forEach (function(adc) {
@@ -2306,10 +2277,8 @@ if (bpg !== null) {
 bpg.parentNode.remove(); }} else {
 nextIndexObserver.disconnect(); }}); }, {
 rootMargin: &quot;120px&quot; });
-nextIndexObserver.observe(nextIndex); } else {
-lazyImages.forEach(function(lazyImage) {
-lazyImage.src = lazyImage.dataset.src; lazyImage.srcset = lazyImage.dataset.srcset; }); }});
-/* Imaginary's program for buttons */
+nextIndexObserver.observe(nextIndex); }});
+/* Share, sidebar, search and expand buttons */
 var hbm = document.getElementsByClassName(&quot;hamburger-menu&quot;)[0];
 var clb = document.getElementsByClassName(&quot;close-button&quot;)[0];
 var sbct = document.getElementsByClassName(&quot;sidebar-container&quot;)[0];
