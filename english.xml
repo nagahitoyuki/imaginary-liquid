@@ -860,7 +860,7 @@ body#layout .hamburger-menu {display: none;}
           </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
+  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width' decoding='async'/>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
@@ -1357,9 +1357,9 @@ body#layout .hamburger-menu {display: none;}
     <b:includable id='snippetedPostThumbnail'>
   <div class='snippet-thumbnail'>
   <b:if cond='data:post.featuredImage.isYoutube'>
-    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage.youtubeMaxResDefaultUrl' expr:srcset='sourceSet(data:post.featuredImage.youtubeMaxResDefaultUrl, [320,678,1024], &quot;3:2&quot;)' loading='lazy'/>
+    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage.youtubeMaxResDefaultUrl' expr:srcset='sourceSet(data:post.featuredImage.youtubeMaxResDefaultUrl, [320,678,1024], &quot;3:2&quot;)' decoding='async'/>
   <b:else/>
-    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceSet(data:post.featuredImage, [320,678,1024], &quot;3:2&quot;)' loading='lazy'/>
+    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceSet(data:post.featuredImage, [320,678,1024], &quot;3:2&quot;)' decoding='async'/>
   </b:if>
   </div>
 </b:includable>
@@ -2032,7 +2032,7 @@ avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img' vi
           </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
+  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width' decoding='async'/>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
