@@ -4,12 +4,12 @@
   <head expr:prefix='&quot;og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# &quot; + (data:view.isMultipleItems ? &quot;website: http://ogp.me/ns/website#&quot; : &quot;article: http://ogp.me/ns/article#&quot;)'>
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
-  <link href='//www.blogger.com' rel='preconnect'/>
 <b:if cond='!data:blog.isMobileRequest'>
   <link expr:href='data:view.url.canonical + &quot;?m=1&quot;' media='only screen and (max-width: 480px)' rel='alternate'/>
 <b:elseif cond='data:skin.vars.body_background.image'/>
   <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 480)' rel='preload'/>
 </b:if>
+   <link as='script' href='//www.blogger.com/static/v1/widgets/2473628150-widgets.js' rel='preload'/>
   <title><data:view.title.escaped/><b:if cond='data:view.isArchive'>: <data:blog.pageName/>&#65288;<data:messages.archive/>&#65289;<b:elseif cond='data:view.isLabelSearch'/>: <data:blog.pageName/>&#65288;<data:messages.labels/>&#65289;<b:elseif cond='data:view.isSearch'/>: <data:messages.search/></b:if></title>
   <b:if cond='data:blog.metaDescription'>
     <meta expr:content='data:blog.metaDescription' name='description'/>
