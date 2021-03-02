@@ -830,7 +830,7 @@ body#layout .hamburger-menu {display: none;}
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <div class='item-thumbnail'>
-    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' sizes='94px'/>
+    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' sizes='(max-width:480px) 20vw, 188px'/>
   </div>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
@@ -1936,7 +1936,7 @@ avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img' vi
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <div class='item-thumbnail'>
-    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' sizes='94px' loading='lazy'/>
+    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' sizes='(max-width:480px) 20vw, 188px' loading='lazy'/>
   </div>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
