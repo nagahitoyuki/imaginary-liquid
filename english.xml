@@ -2279,13 +2279,13 @@ nextIndexObserver.disconnect(); }}); }, {
 rootMargin: &quot;120px&quot; });
 nextIndexObserver.observe(nextIndex); }});
 /* Share, sidebar, search and expand buttons */
-var hbm = document.getElementsByClassName(&quot;hamburger-menu&quot;)[0];
-var clb = document.getElementsByClassName(&quot;close-button&quot;)[0];
-var sbct = document.getElementsByClassName(&quot;sidebar-container&quot;)[0];
-var bdis = document.getElementsByTagName(&quot;body&quot;)[0];
-var sce = document.getElementsByClassName(&quot;search-expand&quot;)[0];
+var hbm = document.querySelector(&quot;a.hamburger-menu&quot;);
+var clb = document.querySelector(&quot;a.close-button&quot;);
+var sbct = document.querySelector(&quot;aside.sidebar-container&quot;);
+var bdis = document.querySelector(&quot;body&quot;);
+var sce = document.querySelector(&quot;a.search-expand&quot;);
 var bcsd = document.createElement(&quot;div&quot;);
-var shrb = document.getElementsByClassName(&quot;share-buttons&quot;)[0];
+var shrb = document.querySelector(&quot;div.share-buttons&quot;);
 var acsbtns = [].slice.call(document.querySelectorAll(&quot;span.show-more&quot;));
 var acebtns = [].slice.call(document.querySelectorAll(&quot;span.show-less&quot;));
 if (sbct.style.position === &quot;absolute&quot;) {
