@@ -1376,13 +1376,19 @@ body#layout .hamburger-menu {display: none;}
   </div>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
-  <div class='snippet-thumbnail'>
-  <b:if cond='data:post.featuredImage.isYoutube'>
-    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage.youtubeMaxResDefaultUrl' expr:srcset='sourceSet(data:post.featuredImage.youtubeMaxResDefaultUrl, [320,678,1024], &quot;3:2&quot;)' decoding='async'/>
-  <b:else/>
-    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceSet(data:post.featuredImage, [320,678,1024], &quot;3:2&quot;)' decoding='async'/>
-  </b:if>
-  </div>
+  <picture class='snippet-thumbnail'>
+  <b:loop index='i' values='resizeImage((data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage), [480,768,1024], "3:2")' var='image'>
+  <b:switch var='data:i'>
+  <b:case value='0'/>
+    <source expr:srcset='data:image.url' media='(max-width:480px)'/>
+  <b:case value='1'/>
+    <source expr:srcset='data:image.url' media='(max-width:768px)'/>
+  <b:default/>
+    <source expr:srcset='data:image.url' media='(min-width:769px)'/>
+  </b:switch>
+  </b:loop>
+    <img decoding='async' expr:alt='data:messages.image' expr:src='data:post.featuredImage'/>
+    </picture>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
   <h2 class='post-title'>
@@ -1703,13 +1709,19 @@ body#layout .hamburger-menu {display: none;}
     <b:includable id='postBodySnippet' var='post'>
   <a class='total-snippet' expr:href='data:post.url'>
     <b:if cond='data:post.featuredImage'>
-    <div class='snippet-thumbnail'>
-    <b:if cond='data:post.featuredImage.isYoutube'>
-      <img expr:alt='data:messages.image' expr:src='data:post.featuredImage.youtubeMaxResDefaultUrl' expr:srcset='sourceSet(data:post.featuredImage.youtubeMaxResDefaultUrl, [320,678,1024], &quot;3:2&quot;)' loading='lazy'/>
-  <b:else/>
-    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceSet(data:post.featuredImage, [320,678,1024], &quot;3:2&quot;)' loading='lazy'/>
-    </b:if>
-    </div>
+  <picture class='snippet-thumbnail'>
+  <b:loop index='i' values='resizeImage((data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage), [480,768,1024], "3:2")' var='image'>
+  <b:switch var='data:i'>
+  <b:case value='0'/>
+    <source expr:srcset='data:image.url' media='(max-width:480px)'/>
+  <b:case value='1'/>
+    <source expr:srcset='data:image.url' media='(max-width:768px)'/>
+  <b:default/>
+    <source expr:srcset='data:image.url' media='(min-width:769px)'/>
+  </b:switch>
+  </b:loop>
+    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' loading='lazy'/>
+    </picture>
     </b:if>
     <p class='summary'><data:post.snippets.short/></p>
     </a>
