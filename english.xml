@@ -2256,78 +2256,80 @@ avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img' vi
       </b:section>
 </aside>
 <script>
+// <![CDATA[
 /* Back button and infinite scroll */
-document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
-var backButton = document.querySelector(&quot;header.centered-top-container&quot;);
-var nextIndex = document.querySelector(&quot;aside.isf&quot;);
-var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
-var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
-if (&quot;IntersectionObserver&quot; in window) {
+document.addEventListener("DOMContentLoaded", function() {
+var backButton = document.querySelector("header.centered-top-container");
+var nextIndex = document.querySelector("aside.isf");
+var bpg = document.querySelector("nav#blog-pager");
+var npl = document.querySelector("a.blog-pager-older-link");
+if ("IntersectionObserver" in window) {
 let backButtonObserver = new IntersectionObserver(function(entries, observer) {
 entries.forEach(function(entry) {
-let bbb = document.querySelector(&quot;#back-button-box&quot;);
+let bbb = document.querySelector("#back-button-box");
 if (entry.isIntersecting) {
-if (!bbb.classList.contains(&quot;hidden&quot;)) {
-bbb.classList.add(&quot;fadeout&quot;); setTimeout(function() {
-bbb.classList.add(&quot;hidden&quot;); }, 180); }} else {
-bbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
+if (!bbb.classList.contains("hidden")) {
+bbb.classList.add("fadeout"); setTimeout(function() {
+bbb.classList.add("hidden"); }, 190); }} else {
+bbb.classList.remove("fadeout", "hidden"); }}); });
 backButtonObserver.observe(backButton);
 let nextIndexObserver = new IntersectionObserver(function(entries, observer) {
 entries.forEach(function(entry) {
 if (npl !== null) {
 (async function() {
-await fetch(npl.getAttribute(&quot;href&quot;)).then((response) =&gt; response.text()).then((text) =&gt; {
+await fetch(npl.getAttribute("href")).then((response) => response.text()).then((text) => {
 var parserh = new DOMParser();
-var doch = parserh.parseFromString(text, &quot;text/html&quot;);
-var pst = doch.querySelector(&quot;div.blog-posts&quot;);
-var adcs = [].slice.call(doch.querySelectorAll(&quot;aside&quot;));
+var doch = parserh.parseFromString(text, "text/html");
+var pst = doch.querySelector("div.blog-posts");
+var adcs = [].slice.call(doch.querySelectorAll("aside"));
 if (adcs[0] !== null) {
 adcs.forEach (function(adc) {
 adc.parentNode.removeChild(adc); });}
-var bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); Blog1.appendChild(bpNode); }); })();
+var bpNode = document.adoptNode(pst); npl = doch.querySelector("a.blog-pager-older-link"); Blog1.appendChild(bpNode); }); })();
 if (bpg !== null) {
 bpg.parentNode.remove(); }} else {
 nextIndexObserver.disconnect(); }}); }, {
-rootMargin: &quot;120px&quot; });
+rootMargin: "120px" });
 nextIndexObserver.observe(nextIndex); }});
 /* Share, sidebar, search and expand buttons */
-var hbm = document.querySelector(&quot;a.hamburger-menu&quot;);
-var clb = document.querySelector(&quot;a.close-button&quot;);
-var sbct = document.querySelector(&quot;aside.sidebar-container&quot;);
-var bdis = document.querySelector(&quot;body&quot;);
-var sce = document.querySelector(&quot;a.search-expand&quot;);
-var bcsd = document.createElement(&quot;div&quot;);
-var shrb = document.querySelector(&quot;div.share-buttons&quot;);
-var acsbtns = [].slice.call(document.querySelectorAll(&quot;span.show-more&quot;));
-var acebtns = [].slice.call(document.querySelectorAll(&quot;span.show-less&quot;));
-if (sbct.style.position === &quot;absolute&quot;) {
-sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); }
+var hbm = document.querySelector("a.hamburger-menu");
+var clb = document.querySelector("a.close-button");
+var sbct = document.querySelector("aside.sidebar-container");
+var bdis = document.querySelector("body");
+var sce = document.querySelector("a.search-expand");
+var bcsd = document.createElement("div");
+var shrb = document.querySelector("div.share-buttons");
+var acsbtns = [].slice.call(document.querySelectorAll("span.show-more"));
+var acebtns = [].slice.call(document.querySelectorAll("span.show-less"));
+if (sbct.style.position === "absolute") {
+sbct.setAttribute("aria-hidden", "false"); }
 hbm.onclick = function() {
-sbct.classList.remove(&quot;sidebar-invisible&quot;, &quot;slideout-sidebar&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); document.body.appendChild(bcsd).classList.add(&quot;dim-overlay&quot;); };
+sbct.classList.remove("sidebar-invisible", "slideout-sidebar"); bdis.classList.add("sidebar-visible"); sbct.setAttribute("aria-hidden", "false"); document.body.appendChild(bcsd).classList.add("dim-overlay"); };
 clb.onclick = function() {
-sbct.classList.add(&quot;slideout-sidebar&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); setTimeout(function() {
-sbct.classList.add(&quot;sidebar-invisible&quot;); }, 180); bdis.classList.remove(&quot;sidebar-visible&quot;); document.body.removeChild(bcsd); }
+sbct.classList.add("slideout-sidebar"); sbct.setAttribute("aria-hidden", "true"); setTimeout(function() {
+sbct.classList.add("sidebar-invisible"); }, 190); bdis.classList.remove("sidebar-visible"); document.body.removeChild(bcsd); }
 bcsd.onclick = function() {
-sbct.classList.add(&quot;slideout-sidebar&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); setTimeout(function() {
-sbct.classList.add(&quot;sidebar-invisible&quot;); }, 180); bdis.classList.remove(&quot;sidebar-visible&quot;); document.body.removeChild(bcsd); }
+sbct.classList.add("slideout-sidebar"); sbct.setAttribute("aria-hidden", "true"); setTimeout(function() {
+sbct.classList.add("sidebar-invisible"); }, 190); bdis.classList.remove("sidebar-visible"); document.body.removeChild(bcsd); }
 var snot = 0;
 sce.onclick = function() {
 snot++;
 if (snot % 2 !== 0) {
-swc.classList.remove(&quot;hidden&quot;); shrb.style.display = &quot;none&quot;; swc.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); } else {
-swc.classList.add(&quot;hidden&quot;); shrb.style.display = &quot;grid&quot;; swc.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); }}
+swc.classList.remove("hidden"); shrb.style.display = "none"; swc.setAttribute("aria-hidden", "false"); } else {
+swc.classList.add("hidden"); shrb.style.display = "grid"; swc.setAttribute("aria-hidden", "true"); }}
 function expand(event) {
-exp = event.target; exp.classList.add(&quot;hidden&quot;); exp.previousElementSibling.classList.toggle(&quot;expanded&quot;); exp.nextElementSibling.classList.remove(&quot;hidden&quot;); }
+exp = event.target; exp.classList.add("hidden"); exp.previousElementSibling.classList.toggle("expanded"); exp.nextElementSibling.classList.remove("hidden"); }
 acsbtns.forEach(function(acsbtn) {
-acsbtn.addEventListener(&quot;click&quot;, expand, false); });
+acsbtn.addEventListener("click", expand, false); });
 function compress(event) {
-cmp = event.target; cmp.classList.add(&quot;hidden&quot;); cmp.previousElementSibling.previousElementSibling.classList.toggle(&quot;expanded&quot;); cmp.previousElementSibling.classList.remove(&quot;hidden&quot;); }
+cmp = event.target; cmp.classList.add("hidden"); cmp.previousElementSibling.previousElementSibling.classList.toggle("expanded"); cmp.previousElementSibling.classList.remove("hidden"); }
 acebtns.forEach(function(acebtn) {
-acebtn.addEventListener(&quot;click&quot;, compress, false); });
+acebtn.addEventListener("click", compress, false); });
 shbtn.onclick = function() {
 window.navigator.share( {
-title: &quot;<data:view.title.escaped/>&quot;,
-url: &quot;<data:blog.url.canonical/>&quot; }); }
+title: "<data:view.title.escaped/>",
+url: "<data:blog.url.canonical/>" }); }
+// ]]>
 </script>
 </body>
 </html>
