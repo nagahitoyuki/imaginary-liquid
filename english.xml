@@ -4,6 +4,9 @@
   <head expr:prefix='&quot;og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# &quot; + (data:view.isMultipleItems ? &quot;website: http://ogp.me/ns/website#&quot; : &quot;article: http://ogp.me/ns/article#&quot;)'>
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
+<b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
+  <link href='//pagead2.googlesyndication.com' rel='dns-prefetch'/>
+</b:if>
 <b:if cond='!data:blog.isMobileRequest'>
   <link expr:href='data:view.url.canonical + &quot;?m=1&quot;' media='only screen and (max-width: 480px)' rel='alternate'/>
 <b:elseif cond='data:skin.vars.body_background.image'/>
@@ -1051,10 +1054,15 @@ body#layout .hamburger-menu {display: none;}
 
 <b:include cond='not data:view.isPreview' data='{ image: data:skin.vars.body_background.image, selector: &quot;.bg-photo&quot;, imageSizes: [480, 640, 800, 1200, 1600] }' name='responsiveImageStyle'/>
 
-    <b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
-      <script async='async' expr:data-ad-client='data:adClientId ?: data:blog.adsenseClientId' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'/>
-    </b:if>
-    <b:include data='blog' name='google-analytics'/>
+<b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
+  <script async='async' expr:data-ad-client='data:adClientId ?: data:blog.adsenseClientId' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'/>
+</b:if>
+<b:if cond='data:blog.analyticsAccountNumber'>
+  <script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '<data:blog.analyticsAccountNumber.jsEscaped/>', 'auto', 'blogger'); ga('set', 'transport', 'beacon'); ga('blogger.send', 'pageview');
+  </script>
+  <script defer='defer' src='//www.google-analytics.com/analytics.js'/>
+</b:if>
 </head>
 
 <body>
@@ -2255,7 +2263,6 @@ avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img' vi
       </b:section>
 </aside>
 <script>
-// <![CDATA[
 /* Back button and infinite scroll */
 document.addEventListener("DOMContentLoaded", function() {
 var backButton = document.querySelector("header.centered-top-container");
@@ -2328,7 +2335,6 @@ shbtn.onclick = function() {
 window.navigator.share( {
 title: "<data:view.title.escaped/>",
 url: "<data:blog.url.canonical/>" }); }
-// ]]>
 </script>
 </body>
 </html>
