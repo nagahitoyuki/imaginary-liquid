@@ -2290,8 +2290,8 @@ avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='i
       </b:section>
 </aside>
 <script>
-/* Back button,  infinite scroll and iframe comment */
 document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+/* Back button,  infinite scroll and iframe comment */
 var backButton = document.querySelector(&quot;header.centered-top-container&quot;);
 var bbb = document.querySelector(&quot;#back-button-box&quot;);
 var iframeComment = document.querySelector(&quot;iframe.blogger-iframe-colorize&quot;);
@@ -2307,6 +2307,14 @@ bbb.classList.add(&quot;fadeout&quot;); setTimeout(function() {
 bbb.classList.add(&quot;hidden&quot;); }, 190); }} else {
 bbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
 backButtonObserver.observe(backButton);
+let iframeCommentObserver = new IntersectionObserver(function(entries, observer) {
+entries.forEach(function(entry) {
+if (entry.isIntersecting) {
+var ifc = document.createElement(&quot;script&quot;);
+ifc.innerHTML = &quot;BLOG_CMT_createIframe(&#39;https://www.blogger.com/rpc_relay.html&#39;);&quot;;
+iframeComment.parentNode.appendChild(ifc);
+iframeCommentObserver.disconnect(); }}); });
+iframeComment ? iframeCommentObserver.observe(iframeComment) : iframeCommentObserver.disconnect();
 let nextIndexObserver = new IntersectionObserver(function(entries, observer) {
 entries.forEach(function(entry) {
 if (npl !== null) {
@@ -2324,15 +2332,7 @@ if (bpg !== null) {
 bpg.parentNode.remove(); }} else {
 nextIndexObserver.disconnect(); }}); }, {
 rootMargin: &quot;120px&quot; });
-nextIndex ? nextIndexObserver.observe(nextIndex) : nextIndexObserver.disconnect();
-let iframeCommentObserver = new IntersectionObserver(function(entries, observer) {
-entries.forEach(function(entry) {
-if (entry.isIntersecting) {
-var ifc = document.createElement(&quot;script&quot;);
-ifc.innerHTML = &quot;BLOG_CMT_createIframe(&#39;https://www.blogger.com/rpc_relay.html&#39;);&quot;;
-iframeComment.parentNode.appendChild(ifc);
-iframeCommentObserver.disconnect(); }}); });
-iframeComment ? iframeCommentObserver.observe(iframeComment) : iframeCommentObserver.disconnect(); }});
+nextIndex ? nextIndexObserver.observe(nextIndex) : nextIndexObserver.disconnect(); }
 /* Share, sidebar, search and expand buttons */
 var hbm = document.querySelector(&quot;a.hamburger-menu&quot;);
 var clb = document.querySelector(&quot;a.close-button&quot;);
@@ -2370,7 +2370,7 @@ acebtn.addEventListener(&quot;click&quot;, compress, false); });
 shbtn.onclick = function() {
 window.navigator.share( {
 title: &quot;<data:view.title.escaped/>&quot;,
-url: &quot;<data:blog.url.canonical/>&quot; }); }
+url: &quot;<data:blog.url.canonical/>&quot; }); }});
 </script>
 </body>
 </html>
