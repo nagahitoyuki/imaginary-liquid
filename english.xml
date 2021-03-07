@@ -2277,7 +2277,7 @@ backButtonObserver.observe(backButton);
 let iframeCommentObserver = new IntersectionObserver(function(entries, observer) {
 entries.forEach(function(entry) {
 if (entry.isIntersecting) {
-var ifc = document.createElement(&quot;script&quot;);
+const ifc = document.createElement(&quot;script&quot;);
 ifc.innerHTML = &quot;BLOG_CMT_createIframe(&#39;https://www.blogger.com/rpc_relay.html&#39;);&quot;;
 iframeComment.parentNode.appendChild(ifc);
 iframeCommentObserver.disconnect(); }}); });
@@ -2287,14 +2287,14 @@ entries.forEach(function(entry) {
 if (npl !== null) {
 (async function() {
 await fetch(npl.getAttribute(&quot;href&quot;)).then((response) =&gt; response.text()).then((text) =&gt; {
-var parserh = new DOMParser();
-var doch = parserh.parseFromString(text, &quot;text/html&quot;);
-var pst = doch.querySelector(&quot;div.blog-posts&quot;);
-var adcs = [].slice.call(doch.querySelectorAll(&quot;aside&quot;));
+const parserh = new DOMParser();
+const doch = parserh.parseFromString(text, &quot;text/html&quot;);
+const pst = doch.querySelector(&quot;div.blog-posts&quot;);
+const adcs = [].slice.call(doch.querySelectorAll(&quot;aside&quot;));
 if (adcs[0] !== null) {
 adcs.forEach (function(adc) {
 adc.parentNode.removeChild(adc); });}
-var bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); Blog1.appendChild(bpNode); }); })();
+const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); Blog1.appendChild(bpNode); }); })();
 if (bpg !== null) {
 bpg.parentNode.remove(); }} else {
 nextIndexObserver.disconnect(); }}); }, {
@@ -2320,7 +2320,7 @@ sbct.classList.add(&quot;sidebar-invisible&quot;); }, 190); bdis.classList.remov
 bcsd.onclick = function() {
 sbct.classList.add(&quot;slideout-sidebar&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); setTimeout(function() {
 sbct.classList.add(&quot;sidebar-invisible&quot;); }, 190); bdis.classList.remove(&quot;sidebar-visible&quot;); document.body.removeChild(bcsd); }
-var snot = 0;
+let snot = 0;
 sce.onclick = function() {
 snot++;
 if (snot % 2 !== 0) {
