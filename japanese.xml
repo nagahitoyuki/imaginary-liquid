@@ -5,7 +5,7 @@
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
 <b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
-  <link href='//pagead2.googlesyndication.com' rel='dns-prefetch'/>
+  <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
 </b:if>
 <b:if cond='!data:blog.isMobileRequest'>
   <link expr:href='data:view.url.canonical + &quot;?m=1&quot;' media='only screen and (max-width: 480px)' rel='alternate'/>
