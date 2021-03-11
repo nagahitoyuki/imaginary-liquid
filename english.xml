@@ -1629,12 +1629,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </a>
 </b:includable>
     <b:includable id='iframeComments' var='post'>
-  <b:if cond='data:post.allowIframeComments'>
-    <script expr:src='data:post.iframeCommentSrc'/>
-    <div class='cmt_iframe_holder' expr:data-href='data:post.url.canonical' expr:data-viewtype='data:post.viewType'/>
-    <b:if cond='!data:post.embedCommentForm'>
+  <b:if cond='!data:post.embedCommentForm'>
       <b:include data='post' name='commentsLink'/>
-    </b:if>
   </b:if>
 </b:includable>
     <b:includable id='inlineAd' var='post'>
@@ -1854,14 +1850,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </footer>
 </b:includable>
     <b:includable id='threadedCommentJs' var='post'>
-<script async='async' expr:src='data:post.commentSrc'/>
   <b:template-script inline='true' name='threaded_comments'/>
-<script>
-    blogger.widgets.blog.initThreadedComments(
-        <data:post.commentJso/>,
-        <data:post.commentMsgs/>,
-        <data:post.commentConfig/>);
-</script>
 <script>
 window.onload = function(){
 var avics = [].slice.call(document.querySelectorAll(&quot;div.avatar-image-container&quot;));
