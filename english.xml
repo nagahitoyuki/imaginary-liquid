@@ -1533,9 +1533,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </div>
 </b:includable>
     <b:includable id='commentPicker' var='post'>
-  <b:if cond='data:post.commentSource == 1'>
-    <b:include data='post' name='iframeComments'/>
-  <b:elseif cond='data:post.showThreadedComments'/>
+  <b:if cond='data:post.showThreadedComments'>
     <b:include data='post' name='threadedComments'/>
   <b:else/>
     <b:include data='post' name='comments'/>
@@ -1725,7 +1723,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <b:if cond='data:view.isMultipleItems'>
     <span class='byline post-comment-link container'>
       <b:include cond='data:post.commentSource != 1' name='commentsLink'/>
-      <b:include cond='data:post.commentSource == 1' name='commentsLinkIframe'/>
     </span>
   </b:if>
 </b:includable>
@@ -1847,17 +1844,16 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:include data='post' name='commentFormIframeSrc'/>
     <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
     <data:post.cmtfpIframe/>
+<script>
+var avics = [].slice.call(document.querySelectorAll(&quot;div.avatar-image-container&quot;));
+avics.forEach(function(avic){
+if (avic.firstElementChild.src.includes(&quot;blank&quot;))
+avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg>&quot;;});
+</script>
   </footer>
 </b:includable>
     <b:includable id='threadedCommentJs' var='post'>
   <b:template-script inline='true' name='threaded_comments'/>
-<script>
-window.onload = function(){
-var avics = [].slice.call(document.querySelectorAll(&quot;div.avatar-image-container&quot;));
-avics.forEach(function(avic){
-if (avic.firstElementChild.src.includes(&quot;blank&quot;))
-avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg>&quot;;});}
-</script>
 </b:includable>
     <b:includable id='threadedComments' var='post'>
   <section class='comments threaded' expr:data-embed='data:post.embedCommentForm' expr:data-num-comments='data:post.numberOfComments' id='comments'>
