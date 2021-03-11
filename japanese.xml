@@ -924,7 +924,7 @@ body#layout .hamburger-menu {display: none;}
   </a>
 </b:includable>
             <b:includable id='userGoogleProfile'>
-  <div class='g-follow' data-annotation='bubble' data-height='20' expr:data-href='data:userUrl'/>
+  <b:comment>Don&#39;t show G+ profile.</b:comment>
 </b:includable>
             <b:includable id='userLocation'>
   <dd class='profile-data location'><data:location/></dd>
@@ -936,7 +936,6 @@ body#layout .hamburger-menu {display: none;}
             <b:includable id='userProfileData'>
   <dt class='profile-data'>
     <b:include name='userProfileLink'/>
-    <b:include cond='data:hasgoogleprofile' name='userGoogleProfile'/>
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
@@ -1648,9 +1647,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </a>
 </b:includable>
     <b:includable id='iframeComments' var='post'>
-  <b:if cond='!data:post.embedCommentForm'>
-      <b:include data='post' name='commentsLink'/>
-  </b:if>
+  <!-- G+ comments, no longer available. The includable is retained for backwards-compatibility. -->
 </b:includable>
     <b:includable id='inlineAd' var='post'>
   <aside aria-label='広告'>
@@ -1743,7 +1740,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='postCommentsLink'>
   <b:if cond='data:view.isMultipleItems'>
     <span class='byline post-comment-link container'>
-      <b:include cond='data:post.commentSource != 1' name='commentsLink'/>
+      <b:include name='commentsLink'/>
     </span>
   </b:if>
 </b:includable>
@@ -1874,18 +1871,19 @@ avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='i
   </footer>
 </b:includable>
     <b:includable id='threadedCommentJs' var='post'>
-  <b:template-script inline='true' name='threaded_comments'/>
+  <b:template-script inline='false' name='threaded_comments'/>
 </b:includable>
     <b:includable id='threadedComments' var='post'>
   <section class='comments threaded' expr:data-embed='data:post.embedCommentForm' expr:data-num-comments='data:post.numberOfComments' id='comments'>
     <a name='comments'/>
     <b:include name='commentsTitle'/>
     <div class='comments-content'>
-      <b:if cond='data:post.embedCommentForm'>
-        <b:include data='post' name='threadedCommentJs'/>
-      </b:if>
       <div id='comment-holder'>
          <data:post.commentHtml/>
+      <script>var avics = [].slice.call(document.querySelectorAll(&quot;div.avatar-image-container&quot;));
+avics.forEach(function(avic){
+if (avic.firstElementChild.src.includes(&quot;blank&quot;))
+avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg>&quot;;});</script>
       </div>
     </div>
     <div class='comment-footer'>
@@ -2104,7 +2102,7 @@ avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='i
   </a>
 </b:includable>
             <b:includable id='userGoogleProfile'>
-  <div class='g-follow' data-annotation='bubble' data-height='20' expr:data-href='data:userUrl'/>
+  <b:comment>Don&#39;t show G+ profile.</b:comment>
 </b:includable>
             <b:includable id='userLocation'>
   <dd class='profile-data location'><data:location/></dd>
@@ -2116,7 +2114,6 @@ avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='i
             <b:includable id='userProfileData'>
   <dt class='profile-data'>
     <b:include name='userProfileLink'/>
-    <b:include cond='data:hasgoogleprofile' name='userGoogleProfile'/>
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
