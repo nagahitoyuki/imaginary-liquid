@@ -8,6 +8,12 @@
   <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
 </b:if>
 <b:if cond='!data:blog.isMobileRequest'>
+<b:if cond='data:skin.vars.body_background.image'>
+  <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 640)' media='(max-width:640px) and (min-width:481px)' rel='preload'/>
+  <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image,800)' media='(max-width:800px) and (min-width:641px)' rel='preload'/>
+  <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 1200)' media='(max-width:1200px) and (min-width:801px)' rel='preload'/>
+  <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 1600)' media='(min-width:1201px)' rel='preload'/>
+</b:if>
   <link expr:href='data:view.url.canonical + &quot;?m=1&quot;' media='only screen and (max-width: 480px)' rel='alternate'/>
 <b:elseif cond='data:skin.vars.body_background.image'/>
   <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 480)' rel='preload'/>
@@ -440,12 +446,14 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 /* 注目の投稿 */
 .FeaturedPost .title {margin-top:0;margin-bottom:20px}
 .FeaturedPost .title a {color:$(posts.title.color)}
-.FeaturedPost {padding:20px var(--maincolumn-padding);margin-bottom:var(--maincolumn-padding);background-color:$(posts.background.color)}
+.FeaturedPost {padding:20px var(--maincolumn-padding) 12px;background-color:$(posts.background.color);margin-bottom:var(--maincolumn-padding)}
 .FeaturedPost a,.FeaturedPost a:hover,.FeaturedPost a:visited {color:$(posts.link.color)}
-.FeaturedPost .post-title,.FeaturedPost .post-title a,.FeaturedPost .post-title a:hover,.FeaturedPost .post-title a:visited {color:$(posts.title.color)}
-.FeaturedPost .post-title {font:$(posts.stream.title.font);margin-top:0;margin-bottom:20px}
-.FeaturedPost .snippet-thumbnail img {width:100%;max-width:100%;height:auto;margin-bottom:16px}
-.FeaturedPost .snippet-item {color:$(posts.text.color);margin:0 0 20px}
+.FeaturedPost article {display:grid}
+.FeaturedPost .post-title,.FeaturedPost .post-title a,.FeaturedPost .post-title a:hover,.FeaturedPost .post-title a:visited {color:#ffffff}
+.FeaturedPost .post-title {font:$(posts.stream.title.font);margin:0;grid-column:1/2;grid-row:1/2;z-index:1}
+.FeaturedPost .post-title a {background-color:rgba(0,0,0,0.275);display:grid;justify-content:center;align-items:center;padding:var(--maincolumn-padding);text-align:center;max-width:100%}
+.FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2}
+.FeaturedPost .snippet-thumbnail img {width:100%;max-width:100%;height:100%;margin-bottom:0}
 
 /* 記事の題名 */
 .Blog .post-title {margin-top:0;margin-bottom:20px}
@@ -471,8 +479,9 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .post-body {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin:20px 0}
 .post-body a,.post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
-.snippet-thumbnail img {margin-bottom:16px}
-.summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin:0 0 20px}
+.total-snippet {display:inline-block;margin-bottom:20px;width:100%}
+.Blog .snippet-thumbnail img {float:left;width:min(33%);margin-right:var(--maincolumn-padding);margin-bottom:calc(1em * var(--body-lineheight) / 10)}
+.summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0;}
 
 /* ラベル */
 .Label li, .Label .label-size, .post-labels a {background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px}
@@ -694,8 +703,8 @@ body {position:relative}
 .PopularPosts .post-title {line-height:var(--body-lineheight)}
 
 /* 記事の本文 */
-:not(.has-vertical-ads) .FeaturedPost .snippet-thumbnail img, :not(.has-vertical-ads) .Blog .snippet-thumbnail img {width:calc($(content.width) - var(--maincolumn-padding) * 2);height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
-.has-vertical-ads .FeaturedPost .snippet-thumbnail img, .has-vertical-ads .Blog .snippet-thumbnail img {width:calc($(content.width) - 174px - var(--maincolumn-padding) * 2);height:calc(($(content.width) - 174px - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
+:not(.has-vertical-ads) .FeaturedPost .snippet-thumbnail img {width:calc($(content.width) - var(--maincolumn-padding) * 2);height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
+.has-vertical-ads .FeaturedPost .snippet-thumbnail img {width:calc($(content.width) - 174px - var(--maincolumn-padding) * 2);height:calc(($(content.width) - 174px - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
 .post-body h1 {font-size:26.5px;line-height:calc(var(--body-lineheight) - .1)}
 .post-body h2 {font-size:25px;line-height:calc(var(--body-lineheight) - .1)}
 .post-body h3 {font-size:20.9px}
@@ -704,6 +713,23 @@ body {position:relative}
 .post-body h6 {font-size:10.7px}
 }
 
+/* ブログのコンテンツの幅以上 */
+@media screen and (min-width:$(content.width)){
+
+/* 注目の投稿 */
+:not(.has-vertical-ads) .FeaturedPost .post-title a {width:100%;height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);box-sizing:border-box}
+.has-vertical-ads .FeaturedPost .post-title a {width:100%;height:calc(($(content.width) - 174px - var(--maincolumn-padding) * 2) * 2 / 3);box-sizing:border-box}
+:not(.has-vertical-ads) .FeaturedPost .snippet-thumbnail img {width:100%;height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
+.has-vertical-ads .FeaturedPost .snippet-thumbnail img {width:100%;height:calc(($(content.width) - 174px - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
+}
+
+/* ブログのコンテンツの幅以下 */
+@media screen and (max-width:$(content.width - 1px)){
+
+/* 注目の投稿 */
+.FeaturedPost .post-title a {width:100%;height:calc((100vw - var(--maincolumn-padding) * 2) * 2 / 3);box-sizing:border-box}
+.FeaturedPost .snippet-thumbnail img {width:100%;height:calc((100vw - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
+}
 /* 横向きタブレット以下 */
 @media screen and (max-width:768px){
 
@@ -711,7 +737,7 @@ body {position:relative}
 .Blog article {max-width:100vw}
 
 /* 記事の本文 */
-.FeaturedPost .snippet-thumbnail img, .Blog .snippet-thumbnail img {width:100%;height:calc((100vw - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover;}
+.FeaturedPost .snippet-thumbnail img {width:100%;height:calc((100vw - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover;}
 
 /* 投稿画像 */
 body.item-view .post-body a[imageanchor="1"][style*="float: left;"],body.item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none!important;clear:none!important}
@@ -1336,7 +1362,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:if>
 
 <b:section class='main' id='page_body' name='Page Body' showaddelement='false'>
-  <b:widget cond='data:view.isHomepage' id='FeaturedPost1' locked='true' title='注目の投稿' type='FeaturedPost' version='2' visible='false'>
+  <b:widget cond='data:view.isHomepage' id='FeaturedPost1' locked='true' title='' type='FeaturedPost' version='2' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='showSnippet'>true</b:widget-setting>
       <b:widget-setting name='showPostTitle'>true</b:widget-setting>
@@ -1350,40 +1376,13 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:include name='snippetedPosts'/>
   </div>
 </b:includable>
-    <b:includable id='postFooterJumpLink'>
-  <span class='jump-link'>
-    <a expr:href='data:post.hasJumpLink ? data:post.url fragment &quot;more&quot; : data:post.url' expr:title='data:post.title'>
-      <data:blog.jumpLinkMessage/>
-    </a>
-  </span>
-</b:includable>
-    <b:includable id='postSnippet'>
-  <div expr:class='(data:snippetPrefix ?: &quot;post&quot;) + &quot;-snippet snippet-container&quot;'>
-    <p class='snippet-item'>
-    <data:post.snippets.short/>
-    </p>
-  </div>
-</b:includable>
     <b:includable id='snippetedPostContent'>
   <b:include cond='data:this.postDisplay.showTitle' name='snippetedPostTitle'/>
-  <a expr:href='data:post.url'>
   <b:include cond='data:post.featuredImage and data:this.postDisplay.showFeaturedImage' data='post' name='snippetedPostThumbnail'/>
-  <b:include cond='data:this.postDisplay.showSnippet' data='post' name='postSnippet'/>
-  </a>
-  <div class='post-footer'>
-    <span class='byline archive-link'>
-    <b:if cond='data:post.url and data:post.date.month lt 10'>
-      <a expr:href='data:view.url path (data:post.date.year + &quot;/0&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
-    <else/>
-      <a expr:href='data:view.url path (data:post.date.year + &quot;/&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
-    </b:if>
-    </span>
-    <b:include data='post' name='postFooterJumpLink'/>
-  </div>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <picture class='snippet-thumbnail'>
-  <b:loop index='i' values='resizeImage((data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage), [480,768,1024], "3:2")' var='image'>
+  <b:loop index='i' values='resizeImage((data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage), [480,768,1024], &quot;3:2&quot;)' var='image'>
   <b:switch var='data:i'>
   <b:case value='0'/>
     <source expr:srcset='data:image.url' media='(max-width:480px)'/>
@@ -1398,7 +1397,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='snippetedPostTitle'>
   <h2 class='post-title'>
-    <a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
+    <a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><span><data:post.title/></span></a>
   </h2>
 </b:includable>
     <b:includable id='snippetedPosts'>
@@ -1511,13 +1510,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='commentItem' var='comment'>
   <div class='comment' expr:id='&quot;c&quot; + data:comment.id'>
-  <b:if cond='data:comment.authorUserType == &quot;blogger&quot;'>
     <b:include cond='data:blog.enabledCommentProfileImages' name='commentAuthorAvatar'/>
-  <b:else/>
-  <div class='avatar-image-container'>
-    <svg aria-label='アバター' class='avatarIcon' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg>
-  </div>
-  </b:if>
     <div class='comment-block'>
       <div class='comment-author'>
         <b:if cond='data:comment.authorUrl'>
@@ -1705,7 +1698,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <a class='total-snippet' expr:href='data:post.url'>
     <b:if cond='data:post.featuredImage'>
   <picture class='snippet-thumbnail'>
-  <b:loop index='i' values='resizeImage((data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage), [480,768,1024], "3:2")' var='image'>
+  <b:loop index='i' values='resizeImage((data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage), [240,359,512], "1:1")' var='image'>
   <b:switch var='data:i'>
   <b:case value='0'/>
     <source expr:srcset='data:image.url' media='(max-width:480px)'/>
@@ -1718,7 +1711,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' loading='lazy'/>
     </picture>
     </b:if>
-    <p class='summary'><data:post.snippets.short/></p>
+    <p class='summary'><b:eval expr='data:post.body snippet { length:(data:blog.isMobileRequest ? 140 : 320), links: false, linebreaks: false, ellipsis: true }'/></p>
     </a>
 </b:includable>
     <b:includable id='postCommentsAndAd' var='post'>
@@ -1746,6 +1739,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='postFooter' var='post'>
   <footer class='post-bottom'>
+  <b:class cond='data:view.isMultipleItems' name='clearboth'/> 
     <div class='post-footer float-container'>
       <b:if cond='data:view.isPost'>
       <b:include name='footerBylines'/>
@@ -1862,12 +1856,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:include data='post' name='commentFormIframeSrc'/>
     <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
     <data:post.cmtfpIframe/>
-<script>
-var avics = [].slice.call(document.querySelectorAll(&quot;div.avatar-image-container&quot;));
-avics.forEach(function(avic){
-if (avic.firstElementChild.src.includes(&quot;blank&quot;))
-avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg>&quot;;});
-</script>
   </footer>
 </b:includable>
     <b:includable id='threadedCommentJs' var='post'>
