@@ -479,7 +479,7 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .post-body {font:$(posts.text.font);color:$(posts.text.color);margin:16px 0;line-height:var(--body-lineheight)}
 .post-body a,.post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
-.total-snippet {display:inline-block;margin-bottom:16px}
+.total-snippet {display:inline-block;margin-bottom:16px;width:100%}
 .Blog .snippet-thumbnail img {float:left;width:min(33%);margin-right:var(--maincolumn-padding);margin-bottom:calc(1em * var(--body-lineheight) / 10)}
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0;}
 .post-body h1 {font-size:26px;line-height:calc(var(--body-lineheight) - .15)}
