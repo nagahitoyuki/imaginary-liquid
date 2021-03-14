@@ -98,7 +98,7 @@
       type="length"
       min="0px"
       max="50px"
-      default="4.5px"  value="4.5px"/>
+      default="4px"  value="4px"/>
 </Group>
 
 <Group description="Links">
@@ -451,7 +451,7 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .FeaturedPost article {display:grid}
 .FeaturedPost .post-title,.FeaturedPost .post-title a,.FeaturedPost .post-title a:hover,.FeaturedPost .post-title a:visited {color:#ffffff}
 .FeaturedPost .post-title {font:$(posts.stream.title.font);margin:0;grid-column:1/2;grid-row:1/2;z-index:1}
-.FeaturedPost .post-title a {background-color:rgba(0,0,0,0.275);display:grid;justify-content:center;align-items:center;padding:var(--maincolumn-padding);text-align:center;max-width:100%}
+.FeaturedPost .post-title a {background-color:rgba(0,0,0,0.3);display:grid;justify-content:center;align-items:center;padding:var(--maincolumn-padding);text-align:center;max-width:100%}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2}
 .FeaturedPost .snippet-thumbnail img {width:100%;max-width:100%;height:100%;margin-bottom:0}
 
@@ -1509,7 +1509,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       </div>
       <div class='comment-footer'>
         <span class='comment-timestamp'>
-          <a expr:href='data:comment.url' rel='nofollow' title='comment permalink'>
+          <a expr:href='data:comment.url' title='comment permalink'>
             <data:comment.timestamp/>
           </a>
           <b:include data='comment' name='commentDeleteIcon'/>
@@ -1546,10 +1546,10 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:if cond='data:post.commentPagingRequired'>
         <div class='paging-control-container'>
           <b:if cond='data:post.hasOlderLinks'>
-            <a expr:class='data:post.oldLinkClass' expr:href='data:post.oldestLinkUrl' rel='nofollow'>
+            <a expr:class='data:post.oldLinkClass' expr:href='data:post.oldestLinkUrl'>
               <data:messages.oldest/>
             </a>
-            <a expr:class='data:post.oldLinkClass' expr:href='data:post.olderLinkUrl' rel='nofollow'>
+            <a expr:class='data:post.oldLinkClass' expr:href='data:post.olderLinkUrl'>
               <data:messages.older/>
             </a>
           </b:if>
@@ -1559,10 +1559,10 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           </span>
 
           <b:if cond='data:post.hasNewerLinks'>
-            <a expr:class='data:post.newLinkClass' expr:href='data:post.newerLinkUrl' rel='nofollow'>
+            <a expr:class='data:post.newLinkClass' expr:href='data:post.newerLinkUrl'>
               <data:messages.newer/>
             </a>
-            <a expr:class='data:post.newLinkClass' expr:href='data:post.newestLinkUrl' rel='nofollow'>
+            <a expr:class='data:post.newLinkClass' expr:href='data:post.newestLinkUrl'>
               <data:messages.newest/>
             </a>
           </b:if>
@@ -1607,7 +1607,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <div class='feed-links'>
   <data:messages.subscribeTo/>
   <b:loop values='data:links' var='f'>
-     <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' target='_blank'><data:f.name/> (<data:f.feedType/>)</a>
+     <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' rel='nofollow' target='_blank'><data:f.name/> (<data:f.feedType/>)</a>
   </b:loop>
   </div>
 </b:includable>
@@ -1635,7 +1635,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
      <data:messages.olderPosts/>
     </a>
   <b:elseif cond='data:view.isMultipleItems'/>
-    <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:title='data:messages.morePosts' rel='prev nofollow'>
+    <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:title='data:messages.morePosts' rel='prev'>
       <data:messages.morePosts/>
     </a>
   </b:if>
@@ -1774,7 +1774,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
  </b:includable>
     <b:includable id='postLocation'>
   <span class='byline post-location'><data:byline.label/>
-<a expr:href='data:post.location.mapsUrl' rel='noopener' target='_blank'><data:post.location.name/>
+<a expr:href='data:post.location.mapsUrl' rel='nofollow' target='_blank'><data:post.location.name/>
 </a></span>
 </b:includable>
     <b:includable id='postMeta' var='post'>
@@ -1823,7 +1823,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='previousPageLink'>
   <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:title='data:messages.newerPosts' rel='next'>
-  <b:attr cond='data:view.isMultipleItems' name='rel' value='next nofollow'/>
     <data:messages.newerPosts/>
   </a>
 </b:includable>
