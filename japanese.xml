@@ -340,7 +340,6 @@ pre {white-space:pre-wrap}
 /* バランサー */
 .hidden {display:none}
 .invisible {visibility:hidden}
-.container::after,.float-container::after {clear:both;content:'';display:table}
 .clearboth {clear:both}
 .sub_main, .theme-attribution, .sidebar-container {content-visibility:auto;contain-intrinsic-size:100%}
 
@@ -856,7 +855,7 @@ body#layout .hamburger-menu {display: none;}
  </b:includable>
     <b:includable id='snippetedPostContent'>
   <b:include name='snippetedPostTitle'/>
-  <a class='item-content float-container' expr:href='data:post.url'>
+  <a class='item-content' expr:href='data:post.url'>
     <b:include cond='data:post.featuredImage and data:this.postDisplay.showFeaturedImage' name='snippetedPostThumbnail'/>
     <b:if cond='data:this.postDisplay.showSnippet'>
     <b:with value='&quot;popular-posts&quot;' var='snippetPrefix'>
@@ -1136,9 +1135,9 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 
 <div class='clearboth'/>                      
 
-<div class='blog-name container'>
+<div class='blog-name'>
 
-<b:section class='container' id='header' name='Header' showaddelement='false'>
+<b:section id='header' name='Header' showaddelement='false'>
   <b:widget id='Header1' locked='true' title='ブログ名 (Header)' type='Header' version='2' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='displayUrl'/>
@@ -1212,13 +1211,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='overflowablePageList'>
   <div class='overflowable-container'>
     <div class='overflowable-contents'>
-      <div class='container'>
         <b:with value='true' var='overflow'>
         <b:with value='&quot;tabs&quot;' var='pageListClass'>
           <b:include name='pageList'/>
         </b:with>
         </b:with>
-      </div>
     </div>
     <div class='overflow-button hidden'>
       <b:include name='overflowButton'/>
@@ -1690,7 +1687,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='postBody' var='post'>
   <!-- If metaDescription is empty, use the post body as the schema.org description too, for G+/FB snippeting. -->
-    <div class='post-body entry-content float-container' expr:id='&quot;post-body-&quot; + data:post.id'>
+    <div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id'>
       <data:post.body/>
     </div>
 </b:includable>
@@ -1732,7 +1729,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='postCommentsLink'>
   <b:if cond='data:view.isMultipleItems'>
-    <span class='byline post-comment-link container'>
+    <span class='byline post-comment-link'>
       <b:include name='commentsLink'/>
     </span>
   </b:if>
@@ -1740,7 +1737,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='postFooter' var='post'>
   <footer class='post-bottom'>
   <b:class cond='data:view.isMultipleItems' name='clearboth'/> 
-    <div class='post-footer float-container'>
+    <div class='post-footer'>
       <b:if cond='data:view.isPost'>
       <b:include name='footerBylines'/>
         <div class='pf-last'>
@@ -1801,7 +1798,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <b:include data='post' name='postMetadataJSON'/>
 </b:includable>
     <b:includable id='postPagination'>
-  <div class='blog-pager container'>
+  <div class='blog-pager'>
     <nav id='blog-pager'>
     <b:include cond='data:newerPageUrl' name='previousPageLink'/>
     <b:include cond='data:olderPageUrl' name='nextPageLink'/>
@@ -1919,7 +1916,7 @@ avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='i
 </b:includable>
     <b:includable id='snippetedPostContent'>
   <b:include name='snippetedPostTitle'/>
-  <a class='item-content float-container' expr:href='data:post.url'>
+  <a class='item-content' expr:href='data:post.url'>
     <b:include cond='data:post.featuredImage and data:this.postDisplay.showFeaturedImage' name='snippetedPostThumbnail'/>
     <b:if cond='data:this.postDisplay.showSnippet'>
     <b:with value='&quot;popular-posts&quot;' var='snippetPrefix'>
@@ -2025,7 +2022,7 @@ avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='i
       </b:with>
     </div>
 
-<aside aria-hidden='true' class='sidebar-container container sidebar-invisible slideout-sidebar'>
+<aside aria-hidden='true' class='sidebar-container sidebar-invisible slideout-sidebar'>
   <div class='navigation'>
     <svg role='img' aria-label='サイドバーを閉じる' class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button close-button' href='javascript:void(0)'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/><path d='M0 0h24v24H0z' fill='transparent'/></a></svg>
     </div>
@@ -2260,7 +2257,7 @@ avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='i
 </aside>
 <script>
 document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
-/* Back button,  infinite scroll and iframe comment */
+/* Back button, iframe comment and infinite scroll */
 var backButton = document.querySelector(&quot;header.centered-top-container&quot;);
 var bbb = document.querySelector(&quot;#back-button-box&quot;);
 var iframeComment = document.querySelector(&quot;iframe.blogger-iframe-colorize&quot;);
