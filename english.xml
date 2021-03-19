@@ -157,7 +157,10 @@
       default="#1e90ff"  value="#1e90ff"/>
   <Variable name="posts.byline.color" description="Post byline color"
       type="color"
-      default="rgba(0, 0, 0, 0.6)"  value="rgba(0, 0, 0, 0.6)"/>
+      red="$(posts.text.color.red)"
+      green="$(posts.text.color.green)"
+      blue="$(posts.text.color.blue)"
+      default="rgba($(red), $(green), $(blue), 0.6)"  value="rgba(0, 0, 0, 0.6)"/>
   <Variable name="blockquote.font" description="Blockquote font"
       type="font"
       default="16px sans-serif"  value="16px sans-serif"/>
@@ -182,7 +185,7 @@
       red="$(search.input.color.red)"
       green="$(search.input.color.green)"
       blue="$(search.input.color.blue)"
-      default="rgba($red, $green, $blue, 0.6)"  value="rgba(0, 0, 0, 0.6)"/>
+      default="rgba($(red), $(green), $(blue), 0.6)"  value="rgba(0, 0, 0, 0.6)"/>
 </Group>
 
 <Group description="Sharing">
@@ -241,7 +244,7 @@
   <Variable name="sidebar.backgroundColorTopHD"
       description="Background color (Top) - HD"
       type="color"
-      default="rgba(245, 245, 220, 1)"  value="rgba(245, 245, 220, 1)"/>
+      default="$(sidebar.backgroundColorTop)"  value="$(sidebar.backgroundColorTop)"/>
   <Variable name="sidebar.backgroundColorBottom"
       description="Background color (Bottom)"
       type="color"
@@ -267,10 +270,13 @@
 <Group description="Author profile" selector='.widget.Profile'>
   <Variable name="profile.title.color" description="Profile title color"
       type="color"
-      default="rgba(0,0,0,0.8)"  value="rgba(0,0,0,0.8)"/>
+      default="#000000"  value="#000000"/>
   <Variable name="profile.text.color" description="Profile text color"
       type="color"
-      default="rgba(0, 0, 0, 0.8)"  value="rgba(0, 0, 0, 0.8)"/>
+      red="$(posts.text.color.red)"
+      green="$(posts.text.color.green)"
+      blue="$(posts.text.color.blue)"
+      default="rgba($(red), $(green), $(blue), 0.8)"  value="rgba(0, 0, 0, 0.8)"/>
   <Variable name="profile.link.color" description="Profile link color"
       type="color"
       default="#1e90ff"  value="#1e90ff"/>
@@ -287,7 +293,7 @@
       red="$(labels.text.color.red)"
       green="$(labels.text.color.green)"
       blue="$(labels.text.color.blue)"
-      default="rgba($red, $green, $blue, 0.2)"  value="rgba(255, 140, 0, 0.2)"/>
+      default="rgba($(red), $(green), $(blue), 0.2)"  value="rgba(255, 140, 0, 0.2)"/>
 </Group>
 
 <Group description="Attribution" selector=".widget.Attribution">
@@ -473,6 +479,7 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .post-icons, .post-location {margin-top:16px}
 .reactions iframe {height:20px;vertical-align:text-bottom}
 .author-profile {margin-bottom:16px}
+.author-profile span {color:$(profile.text.color)}
 
 /* Post body and snippet */
 .post-body {font:$(posts.text.font);color:$(posts.text.color);margin:16px 0;line-height:var(--body-lineheight)}
