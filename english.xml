@@ -1376,7 +1376,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <source expr:srcset='data:image.url' media='(min-width:769px)'/>
   </b:switch>
   </b:loop>
-    <img decoding='async' expr:alt='data:messages.image' expr:src='data:post.featuredImage'/>
+    <img decoding='async' expr:alt='data:messages.image' expr:src='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage'/>
     </picture>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
@@ -1692,7 +1692,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <source expr:srcset='data:image.url' media='(min-width:769px)'/>
   </b:switch>
   </b:loop>
-    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' loading='lazy'/>
+    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' loading='lazy'/>
     </picture>
     </b:if>
     <p class='summary'><b:eval expr='data:post.body snippet { length:(data:blog.isMobileRequest ? 280 : 640), links: false, linebreaks: false, ellipsis: true }'/></p>
