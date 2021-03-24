@@ -1,6 +1,6 @@
 <h2>About theme</h2>
 
-<figure style="margin-bottom:1em"><img  style="margin-bottom:0" src="https://raw.githubusercontent.com/nagahitoyuki/imaginary-liquid/master/imaginary.jpg" alt="Header image of Imaginary"><footer>Header image｜<a href="https://imaginary-theme.blogspot.com/">Imaginary theme</a></footer></figure>
+<figure><img src="https://raw.githubusercontent.com/nagahitoyuki/imaginary-liquid/master/imaginary.jpg" alt="Header image of Imaginary"><footer><p>Header image｜<a href="https://imaginary-theme.blogspot.com/">Imaginary theme</a></p></footer></figure><br>
 
 <p>I introduce Imaginary with liquid design (one column index page) for Japanese and English.</p>
 
@@ -10,7 +10,7 @@
 
 <h3>SEO measurement</h3>
 
-<figure style="margin-bottom:1em"><img  style="margin-bottom:0" src="https://raw.githubusercontent.com/nagahitoyuki/imaginary-liquid/master/score.jpg" alt="100-points-on-pagespeed-insights"><footer>Score｜<a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a></footer></figure>
+<figure><img src="https://raw.githubusercontent.com/nagahitoyuki/imaginary-liquid/master/score.jpg" alt="100-points-on-pagespeed-insights"><footer><p>Score｜<a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a></p></footer></figure><br>
 
 <p>I took measures against Google ranking factors such as Website's Crawlability, Mobile First Index and Core Web Vitals.</p>
 
