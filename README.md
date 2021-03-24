@@ -2,11 +2,17 @@
 
 <p>I introduce Imaginary with liquid design (one column index page) for Japanese and English.</p>
 
-<img src="https://raw.githubusercontent.com/nagahitoyuki/imaginary-liquid/master/imaginary.jpg" alt="Header image of Imaginary with liquid design">
+<figure><img src="https://raw.githubusercontent.com/nagahitoyuki/imaginary-liquid/master/imaginary.jpg" alt="Header image of Imaginary"><footer>Header image｜<a href="https://imaginary-theme.blogspot.com/">Imaginary theme</a></footer></figure>
 
 <h3>Some features</h3>
 
 <ul><li>Lazy load image of post snippets</li><li>Infinite scroll in index pages</li><li>Floating back button (at the bottom right of the blog except its header) in all pages</li><li>Share button for apps in all pages on mobile</li></ul>
+
+<h3>SEO measurement</h3>
+
+<figure><img src="https://raw.githubusercontent.com/nagahitoyuki/imaginary-liquid/master/pagespeed-insights" alt="100-points-on-pagespeed-insights"><footer>Score｜<a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a></footer></figure>
+
+<p>I took measures against Google ranking factors such as Website's Crawlability, Mobile First Index and Core Web Vitals.</p>
 
 <h3>Sample blog</h3>
 
