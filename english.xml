@@ -476,7 +476,6 @@ input::placeholder {color:$(search.placeholder.color);opacity:.6}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
 .post-icons, .post-location {margin-top:16px}
-.reactions iframe {height:20px;vertical-align:text-bottom}
 .author-profile {margin-bottom:16px}
 .author-profile span {color:$(profile.text.color)}
 
@@ -1400,14 +1399,15 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:widget-setting name='style.linkcolor'>#000000</b:widget-setting>
       <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
       <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
-      <b:widget-setting name='timestampLabel'></b:widget-setting>
+      <b:widget-setting name='timestampLabel'/>
+      <b:widget-setting name='reactionsLabel'/>
       <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
-      <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+      <b:widget-setting name='style.layout'>336x280</b:widget-setting>
       <b:widget-setting name='showLabels'>true</b:widget-setting>
       <b:widget-setting name='showLocation'>false</b:widget-setting>
       <b:widget-setting name='postLabelsLabel'/>
       <b:widget-setting name='showTimestamp'>true</b:widget-setting>
-      <b:widget-setting name='postsPerAd'>3</b:widget-setting>
+      <b:widget-setting name='postsPerAd'>1</b:widget-setting>
       <b:widget-setting name='showBacklinks'>false</b:widget-setting>
       <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
       <b:widget-setting name='showInlineAds'>false</b:widget-setting>
@@ -1784,14 +1784,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:include cond='data:olderPageUrl' name='nextPageLink'/>
    </nav>
   </div>
-</b:includable>
-    <b:includable id='postReactions'>
-  <span class='byline reactions'>
-    <span class='reactions-label'>
-      <data:byline.label/>
-    </span>
-    <iframe allowtransparency='true' class='reactions-iframe' expr:src='data:post.reactionsUrl' frameborder='0' name='reactions' loading='lazy' scrolling='no'/>
-  </span>
 </b:includable>
     <b:includable id='postShareButtons'>
   <b:comment>Don&#39;t show share buttons.</b:comment>
