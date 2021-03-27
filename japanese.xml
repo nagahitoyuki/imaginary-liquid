@@ -2276,6 +2276,13 @@ if (entry.isIntersecting) {
 const ifc = document.createElement(&quot;script&quot;);
 ifc.innerHTML = &quot;BLOG_CMT_createIframe(&#39;https://www.blogger.com/rpc_relay.html&#39;);&quot;;
 iframeComment.parentNode.appendChild(ifc);
+<b:if cond='data:blog.isMobileRequest'>
+bdis.onblur = function (){
+if (iframeComment === document.activeElement)
+bbb.classList.add(&quot;invisible&quot;); }
+bdis.onfocus = function (){
+if (iframeComment !== document.activeElement)
+bbb.classList.remove(&quot;invisible&quot;); }</b:if>
 iframeCommentObserver.disconnect(); }}); });
 iframeComment ? iframeCommentObserver.observe(iframeComment) : iframeCommentObserver.disconnect();
 let nextIndexObserver = new IntersectionObserver(function(entries, observer) {
