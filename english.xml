@@ -1483,7 +1483,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </footer>
 </b:includable>
     <b:includable id='commentFormIframeSrc' var='post'>
-  <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src' rel='nofollow'/>
+  <a expr:href='data:post.commentFormIframeSrc + &quot;&amp;skin=essential&quot;' id='comment-editor-src' rel='nofollow'/>
 </b:includable>
     <b:includable id='commentItem' var='comment'>
   <div class='comment' expr:id='&quot;c&quot; + data:comment.id'>
