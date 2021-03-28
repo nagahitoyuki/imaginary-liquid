@@ -417,13 +417,12 @@ iframe.b-hbp-video {border:0}
 .fadeout {animation:fadeout .2s ease-out}
 
 /* ブログ内検索 */
-input {color:$(search.input.color);font:$(search.input.font)}
-input::placeholder {color:$(search.placeholder.color);opacity:.6}
-.search-action {color:$(search.input.color);cursor:pointer}
-.search-input input.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
-#swc {padding-$endSide:10px;animation:fadein .2s ease-out}
-.search-input {display:inline}
-.search {display:flex;align-items:center}
+.search {display:flex;align-items:center;}
+#swc {padding-$endSide:12px;animation:fadein .2s ease-out}
+.search-space {color:$(search.input.color);font:$(search.input.font)}
+.search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
+.search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
+.search-action {color:$(search.input.color);cursor:pointer;max-height:27px;}
 
 /* アドセンス広告 */
 .page_body.has-vertical-ads .centered .centered-bottom {display:inline-block;width:calc(100% - 174px)}
@@ -781,8 +780,7 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 @media screen and (max-width:480px) {
 
 /* ブログ内検索 */
-.search-input input {max-width:65%}
-.search-expand {margin-$endSide:35%}
+.search-space {max-width:70%}
 
 /* 文字サイズと行間 */
 #blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 12.5)}
@@ -1268,9 +1266,9 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
            <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
              <b:include name='urlParamsAsFormInput'/>
              <div class='search-input'>
-               <input autocomplete='off' autofocus='autofocus' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
-              </div>
+               <input autocomplete='off' autofocus='autofocus' class='search-space' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
               <b:include name='searchSubmit'/>
+              </div>
            </form>
          </b:includable>
             <b:includable id='searchSubmit'>
