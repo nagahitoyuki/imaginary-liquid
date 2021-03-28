@@ -2219,8 +2219,9 @@ avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='i
 document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
 /* Back button, iframe comment and infinite scroll */
 var backButton = document.querySelector(&quot;header.centered-top-container&quot;);
-var bbb = document.querySelector(&quot;#back-button-box&quot;);
+var bbb = document.querySelector(&quot;div#back-button-box&quot;);
 var iframeComment = document.querySelector(&quot;iframe.blogger-iframe-colorize&quot;);
+var bdis = document.body;
 var nextIndex = document.querySelector(&quot;aside.isf&quot;);
 var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
 var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
@@ -2270,7 +2271,6 @@ nextIndex ? nextIndexObserver.observe(nextIndex) : nextIndexObserver.disconnect(
 var hbm = document.querySelector(&quot;a.hamburger-menu&quot;);
 var clb = document.querySelector(&quot;a.close-button&quot;);
 var sbct = document.querySelector(&quot;aside.sidebar-container&quot;);
-var bdis = document.querySelector(&quot;body&quot;);
 var sce = document.querySelector(&quot;a.search-expand&quot;);
 var bcsd = document.createElement(&quot;div&quot;);
 var shrb = document.querySelector(&quot;div.share-buttons&quot;);
