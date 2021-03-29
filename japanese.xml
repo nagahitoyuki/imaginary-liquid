@@ -314,7 +314,7 @@
   <Variable name="content.width" description="Content width" type="length"
             min="600px" max="2400px" default="925px"  value="925px"/>
   <Variable name="content.margin" description="Content margin" type="length"
-            min="0px" max="1000px" default="100px"  value="100px"/>
+            min="0px" max="1000px" default="60px"  value="60px"/>
 </Group>
  */
 
@@ -327,7 +327,7 @@
 /* 一般設定 */
 :root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6}
 html {scroll-behavior:smooth}
-body {margin:0;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal}
+body {max-width:$(sidebar.width + content.width + content.margin * 2 + body.background.blur * 2);margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal}
 a {text-decoration:none;color:$(body.link.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
