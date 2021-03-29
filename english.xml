@@ -417,12 +417,13 @@ iframe.b-hbp-video {border:0}
 .fadeout {animation:fadeout .2s ease-out}
 
 /* Search widget */
-.search {display:flex;align-items:center;}
+.search {display:flex;align-items:center}
 #swc {padding-$endSide:12px;animation:fadein .2s ease-out}
 .search-space {color:$(search.input.color);font:$(search.input.font)}
+.search-adjust {vertical-align:middle}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
-.search-action {color:$(search.input.color);cursor:pointer;max-height:27px;}
+.search-action {color:$(search.input.color);cursor:pointer;max-height:30px}
 
 /* AdSense ads */
 .page_body.has-vertical-ads .centered .centered-bottom {display:inline-block;width:calc(100% - 174px)}
@@ -479,7 +480,7 @@ iframe.b-hbp-video {border:0}
 .author-profile span {color:$(profile.text.color)}
 
 /* Post body and snippet */
-.post-body {font:$(posts.text.font);color:$(posts.text.color);margin:16px 0;line-height:var(--body-lineheight)}
+.post-body {font:$(posts.text.font);color:$(posts.text.color);margin:16px 0 20px;line-height:var(--body-lineheight)}
 .post-body a,.post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:inline-block;margin-bottom:16px;width:100%}
@@ -1241,7 +1242,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
            <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
              <b:include name='urlParamsAsFormInput'/>
              <div class='search-input'>
-               <input autocomplete='off' autofocus='autofocus' class='search-space' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+               <input autocomplete='off' autofocus='autofocus' expr:class='data:skin.vars.startSide == &quot;left&quot; ? &quot;search-space&quot; : &quot;search-space search-adjust&quot;' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
               <b:include name='searchSubmit'/>
               </div>
            </form>
@@ -1719,7 +1720,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:if cond='data:view.isPost'>
       <b:include name='footerBylines'/>
         <div class='pf-last'>
-          <span class='byline post-timestamp updated'>last updated:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<data:post.url.canonical/>
+          <span class='byline post-timestamp updated'>Last updated:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<data:post.url.canonical/>
         </div>
       <b:elseif cond='data:view.isPage'/>
       <div class='pf-last'>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<data:post.url.canonical/></div>
