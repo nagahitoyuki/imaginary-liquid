@@ -2004,7 +2004,10 @@ avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='i
           </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width' loading='lazy'/>
+  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'>
+  <b:attr cond='!data:blog.isMobileRequest' name='decoding' value='async'/>
+  <b:attr cond='data:blog.isMobileRequest' name='loading' value='lazy'/>
+  </img>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
