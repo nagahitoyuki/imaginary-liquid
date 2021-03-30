@@ -1657,7 +1657,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <span class='fn'>
   <b:if cond='data:post.author.profileUrl'>
     <a class='url uid' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
-      <img class='photo' decoding='async' expr:alt='data:messages.myPhoto' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24px' width='24px'/><span><data:post.author.name/></span>
+      <img class='photo' decoding='async' expr:alt='data:messages.myPhoto' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24' width='24'/><span><data:post.author.name/></span>
     </a>
   <b:else/>
     <span><data:post.author.name/></span>
@@ -1743,7 +1743,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <b:if cond='data:post.author.aboutMe and data:view.isPost'>
     <div class='author-profile'>
       <b:if cond='data:post.author.authorPhoto.url'>
-        <img class='author-image' expr:src='data:post.author.authorPhoto.url' width='50px'/>
+        <img class='author-image' expr:src='data:post.author.authorPhoto.url' height='50' width='50'/>
         <div class='author-about'>
           <b:include data='post' name='aboutPostAuthor'/>
         </div>
@@ -2005,10 +2005,7 @@ avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='i
           </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'>
-  <b:attr cond='!data:blog.isMobileRequest' name='decoding' value='async'/>
-  <b:attr cond='data:blog.isMobileRequest' name='loading' value='lazy'/>
-  </img>
+   <img class='profile-img' expr:alt='data:messages.myPhoto' expr:decoding='data:blog.isMobileRequest ? &quot;auto&quot; : &quot;async&quot;' expr:height='data:authorPhoto.height' expr:loading='data:blog.isMobileRequest ? &quot;lazy&quot; : &quot;eager&quot;' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
