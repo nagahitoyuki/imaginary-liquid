@@ -350,7 +350,7 @@ pre {white-space:pre-wrap}
 .sub_main, .theme-attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* ウィジェット */
-#comments .comment .comment-actions,.subscribe-popup .FollowByEmail .follow-by-email-submit,.widget.Profile .profile-link,.widget.Profile .profile-link.visit-profile {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0;}
+#comments .comment .comment-actions,.subscribe-popup .FollowByEmail .follow-by-email-submit,.widget.Profile .profile-link,.widget.Profile .profile-link.visit-profile {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0}
 .widget .title {font-size:large;color:$(widget.title.color)}
 
 /* スキップナビ */
@@ -359,7 +359,7 @@ padding-top:0;position:fixed;text-align:center;top:0;transition:box-shadow .3s,h
 .skip-navigation:focus{box-shadow:0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);height:50px}
 
 /* アーカイブと検索のメッセージ */
-.post-filter-message {background-color:rgba(0,0,0,.8);color:#ffffff;padding-top:calc(var(--maincolumn-padding) * 2.25);padding-bottom:calc(var(--maincolumn-padding) * 2.25);text-align:center;}
+.post-filter-message {background-color:rgba(0,0,0,.8);color:#ffffff;padding-top:calc(var(--maincolumn-padding) * 2.25);padding-bottom:calc(var(--maincolumn-padding) * 2.25);text-align:center}
 .post-filter-message a {margin-$startSide:1em;color:#ffffff}
 .post-filter-message .search-label,.post-filter-message .search-query{
 font-weight:bold}
@@ -427,17 +427,12 @@ iframe.b-hbp-video {border:0}
 .search-action {color:$(search.input.color);cursor:pointer;max-height:30px}
 
 /* アドセンス広告 */
-.page_body.has-vertical-ads .centered .centered-bottom {display:inline-block;width:calc(100% - 174px)}
-.vertical-ad-placeholder {height:600px}
-.vertical-ad-placeholder span {margin-top:290px;padding:0 40px}
-.vertical-ad-container {float:right;margin-right:var(--maincolumn-padding);width:128px}
-.vertical-ad-container .AdSense+.AdSense {margin-top:calc(var(--maincolumn-padding) + var(--maincolumn-padding) / 2)}
-.inline-ad {display:none;overflow:hidden;max-width:100%;width:100%;height:auto}
+.top-ad-container {padding:0 var(--maincolumn-padding)}
+#AdSense1 {overflow:hidden}
+.inline-ad {display:none;overflow:hidden}
 .adsbygoogle {display:block;overflow:hidden}
-.inline-ad-placeholder,.vertical-ad-placeholder {background:$(posts.background.color);border:1px solid #000;opacity:.9;vertical-align:middle;text-align:center}
-.inline-ad-placeholder span,.vertical-ad-placeholder span {margin-top:290px;display:block;text-transform:uppercase;font-weight:700;color:$(posts.title.color)}
-.inline-ad-placeholder {height:90px}
-.inline-ad-placeholder span{margin-top:36px}
+.top-ad-placeholder, .inline-ad-placeholder {height:90px;background:$(posts.background.color);border:1px solid #000;opacity:.9;vertical-align:middle;text-align:center}
+.top-ad-placeholder span, .inline-ad-placeholder span {margin-top:36px;display:block;text-transform:uppercase;font-weight:700;color:$(posts.title.color)}
 
 /* ページボディー */
 .page_body {position:relative;z-index:20}
@@ -486,7 +481,7 @@ iframe.b-hbp-video {border:0}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:inline-block;margin-bottom:20px;width:100%}
 .Blog .snippet-thumbnail img {float:$startSide;width:min(33%);margin-$endSide:var(--maincolumn-padding);line-height:var(--body-lineheight)}
-.summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0;}
+.summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0}
 
 /* ラベル */
 .Label li, .Label .label-size, .post-labels a {background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px}
@@ -507,7 +502,7 @@ iframe.b-hbp-video {border:0}
 .avatar-image-container svg {border-radius:50%;border:solid 1px $(posts.icons.color);box-sizing:border-box;height:35px;width:35px}
 .comment .comment-block {margin-$startSide:49px;padding-bottom:0}
 .comment svg + .comment-block {margin-top:-42px}
-#comments .comment-author-header-wrapper {margin-$startSide:40px;}
+#comments .comment-author-header-wrapper {margin-$startSide:40px}
 #comments .comment .thread-expanded .comment-block {padding-bottom:1.5em}
 #comments .comment .comment-header .user,#comments .comment .comment-header .user a, .comment-author, .comment-author a {color:$(posts.byline.color);font-style:normal;font-weight:bold}
 #comments .comment .comment-actions {
@@ -677,11 +672,11 @@ body {position:relative}
 @media screen and (max-width:$(sidebar.width + content.width + content.margin * 2 - 1px)){
 
 /* サイドバー */
-.sidebar-container {bottom:0;position:fixed;top:0;left:0;right:auto;animation:slidein .2s ease-out;}
+.sidebar-container {bottom:0;position:fixed;top:0;left:0;right:auto;animation:slidein .2s ease-out}
 .slideout-sidebar {animation:slideout .2s ease-out}
 .sidebar-invisible {display:none}
-@keyframes slidein { from { transform:translateX(-100%);} to { transform:translateX(0); } }
-@keyframes slideout { from{ transform:translateX(0); } to { transform:translateX(-100%); } }
+@keyframes slidein { from { transform:translateX(-100%)} to { transform:translateX(0); } }
+@keyframes slideout { from{ transform:translateX(0)} to { transform:translateX(-100%); } }
 .sidebar-container {content-visibility:auto;contain-intrinsic-size:100%}
 }
 
@@ -689,10 +684,8 @@ body {position:relative}
 @media screen and (min-width:$(content.width)){
 
 /* 注目の投稿 */
-:not(.has-vertical-ads) .FeaturedPost .post-title a {width:100%;height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);box-sizing:border-box}
-.has-vertical-ads .FeaturedPost .post-title a {width:100%;height:calc(($(content.width) - 174px - var(--maincolumn-padding) * 2) * 2 / 3);box-sizing:border-box}
-:not(.has-vertical-ads) .FeaturedPost .snippet-thumbnail img {width:100%;height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
-.has-vertical-ads .FeaturedPost .snippet-thumbnail img {width:100%;height:calc(($(content.width) - 174px - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
+.FeaturedPost .post-title a {width:100%;height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);box-sizing:border-box}
+.FeaturedPost .snippet-thumbnail img {width:100%;height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
 }
 
 /* ブログのコンテンツの幅以下 */
@@ -706,11 +699,10 @@ body {position:relative}
 /* 横向きタブレット以上 */
 @media screen and (min-width:769px){
 
-/* フローティングバー */
-#floatingbar.narrow {width:calc(100% - 174px)}
-
 /* アドセンス広告 */
-.desktop-ad .inline-ad {display:block;margin:calc(var(--maincolumn-padding) / 2) auto}
+#AdSense1, .desktop-ad .inline-ad {display:block;height:auto;max-width:100%;width:100%}
+#AdSense1 {margin:0 auto 20px}
+.desktop-ad .inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
 
 /* 記事の題名 */
 .Blog h1.post-title {line-height:calc(var(--body-lineheight) - .2)}
@@ -718,8 +710,7 @@ body {position:relative}
 .PopularPosts .post-title {line-height:var(--body-lineheight)}
 
 /* 記事の本文 */
-:not(.has-vertical-ads) .FeaturedPost .snippet-thumbnail img {width:calc($(content.width) - var(--maincolumn-padding) * 2);height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
-.has-vertical-ads .FeaturedPost .snippet-thumbnail img {width:calc($(content.width) - 174px - var(--maincolumn-padding) * 2);height:calc(($(content.width) - 174px - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
+.FeaturedPost .snippet-thumbnail img {width:calc($(content.width) - var(--maincolumn-padding) * 2);height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
 .post-body h1 {font-size:26.5px;line-height:calc(var(--body-lineheight) - .1)}
 .post-body h2 {font-size:25px;line-height:calc(var(--body-lineheight) - .1)}
 .post-body h3 {font-size:20.9px}
@@ -735,7 +726,7 @@ body {position:relative}
 .Blog article {max-width:100vw}
 
 /* 記事の本文 */
-.FeaturedPost .snippet-thumbnail img {width:100%;height:calc((100vw - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover;}
+.FeaturedPost .snippet-thumbnail img {width:100%;height:calc((100vw - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
 
 /* 投稿画像 */
 body.item-view .post-body a[imageanchor="1"][style*="float: left;"],body.item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none!important;clear:none!important}
@@ -747,9 +738,9 @@ body.item-view .post-body a[imageanchor="1"] {margin-left:0!important;margin-rig
 body.item-view .post-body a[imageanchor="1"]+a[imageanchor="1"] {margin-top:16px}
 
 /* アドセンス広告 */
-.mobile-ad .inline-ad {display:block;height:auto;width:calc(100vw - var(--maincolumn-padding) * 2);margin:calc(var(--maincolumn-padding) / 2) auto} 
-.page_body.has-vertical-ads .vertical-ad-container,.page_body.has-vertical-ads .vertical-ad-container ins {display:none}
-.page_body.has-vertical-ads .centered .centered-bottom,.page_body.has-vertical-ads .centered .centered-top {display:block;width:auto}
+#AdSense1, .mobile-ad .inline-ad {display:block;height:auto;width:calc(100vw - var(--maincolumn-padding) * 2)}
+#AdSense1 {margin:0 auto 20px}
+.mobile-ad .inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
 }
 
 /* タブレット中心 */
@@ -825,7 +816,7 @@ body#layout .sidebar-container {display:inline-block;float:right;width:40%}
   <b:defaultmarkup type='Common'>
    <b:includable id='widgetNotAvailableInPreview'>
    <b:if cond='data:widget.type == &quot;AdSense&quot;'>
-     <div class='vertical-ad-placeholder'>
+     <div class='top-ad-placeholder'>
        <span><b:message name='messages.adsGoHere'/></span>
      </div>
    <b:else/>
@@ -1127,9 +1118,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
      <div class='bg-photo-container'>
        <div class='bg-photo'/>
       </div>
-      <b:with value='data:widgets.AdSense any (w =&gt; w.sectionId == &quot;ads&quot;)' var='hasVerticalAds'>
        <div class='page_body'>
-         <b:class cond='data:hasVerticalAds' name='has-vertical-ads'/>
 
           <div class='centered'>
             <div class='centered-top-placeholder'/>
@@ -1246,8 +1235,28 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <noscript><div class='noscript'>このサイトを適切に使用するためにはブラウザのJavaScriptの実行を許可して下さい。</div></noscript>
 </header>
 
+  <b:section ads='true' class='top-ad-container' cond='data:widgets.AdSense.first.id == &quot;AdSense1&quot;' id='ads' name='広告 (水平型)' showaddelement='false' tag='aside'>
+    <b:widget id='AdSense1' locked='true' title='アドセンス' type='AdSense' version='2' visible='false'>
+      <b:widget-settings>
+        <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+        <b:widget-setting name='style.textcolor'>#2196f3</b:widget-setting>
+        <b:widget-setting name='style.layout'>234x60</b:widget-setting>
+        <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+        <b:widget-setting name='style.urlcolor'>#757575</b:widget-setting>
+        <b:widget-setting name='style.linkcolor'>#212121</b:widget-setting>
+        <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+    <div aria-label='広告' class='widget-content'>
+  <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
+    <ins class='adsbygoogle' data-ad-format='horizontal' expr:data-ad-client='data:adClientId ?: data:blog.adsenseClientId' expr:data-ad-host='data:blog.adsenseHostId' expr:data-analytics-uacct='data:blog.analyticsAccountNumber' style='/* Done in css. */'/>
+<script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+    </div>
+  </b:includable>
+    </b:widget>
+  </b:section>
+
 <div id='floatingbar'>
-<b:class cond='data:hasVerticalAds' name='narrow'/>
   <div id='floating-menu'>
     <svg role='img' aria-label='サイドバーを開く' class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button hamburger-menu' href='javascript:void(0)'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'/></a></svg>
      <b:if cond='data:view.isLayoutMode or data:widgets any (w =&gt; w.sectionId == &quot;search_top&quot;)'>
@@ -1296,44 +1305,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <svg role='img' aria-label='トップへ戻る' class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' href='#blog-title'><path class='svg-icon-back' d='M4 20 L12 4, 20 20 Q12 18, 4 20Z' fill='transparent'/></a></svg>
   </div>
 </div>
-
-<div>
-  <b:section ads='true' class='vertical-ad-container' cond='!data:blog.isMobileRequest and data:hasVerticalAds' id='ads' name='Ads' showaddelement='false' tag='aside'>
-    <b:widget id='AdSense1' locked='true' title='' type='AdSense' visible='true'>
-      <b:includable id='main'>
-    <aside aria-label='広告' class='widget-content'>
-    <b:if cond='data:adCode'>
-      <data:adCode/>
-    <b:else/>
-      <b:include name='defaultAdUnit'/>
-    </b:if>
-    </aside>
-  </b:includable>
-  <b:includable id='defaultAdUnit'>
-  <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
-  <b:with value='&quot;/* Done in css. */&quot;' var='style'>
-    <b:include name='super.defaultAdUnit'/>
-  </b:with>
-  </b:includable>
-    </b:widget>
-    <b:widget id='AdSense2' locked='true' title='' type='AdSense' visible='false'>
-      <b:includable id='main'>
-    <aside aria-label='広告' class='widget-content'>
-    <b:if cond='data:adCode'>
-      <data:adCode/>
-    <b:else/>
-      <b:include name='defaultAdUnit'/>
-    </b:if>
-    </aside>
-  </b:includable>
-  <b:includable id='defaultAdUnit'>
-  <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
-  <b:with value='&quot;/* Done in css. */&quot;' var='style'>
-    <b:include name='super.defaultAdUnit'/>
-  </b:with>
-  </b:includable>
-    </b:widget>
-  </b:section>
 
 <main class='centered-bottom' id='main' tabindex='-1'>
 
@@ -1972,7 +1943,6 @@ avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='i
   </b:widget>
 </b:section>
 </aside>
-</div>
 
 <footer>
   <div class='theme-attribution'>with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow'>Imaginary theme</a></div>
@@ -2016,7 +1986,6 @@ avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='i
             </footer>
           </div>
         </div>
-      </b:with>
     </div>
 
 <aside aria-hidden='true' class='sidebar-container sidebar-invisible slideout-sidebar'>
