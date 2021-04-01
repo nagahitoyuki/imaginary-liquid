@@ -705,11 +705,6 @@ body {position:relative}
 /* 横向きタブレット以上 */
 @media screen and (min-width:769px){
 
-/* アドセンス広告 */
-#AdSense1, .desktop-ad .inline-ad {display:block;height:auto;max-width:100%;width:100%}
-#AdSense1 {margin:0 auto 20px}
-.desktop-ad .inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
-
 /* 記事の題名 */
 .Blog h1.post-title {line-height:calc(var(--body-lineheight) - .2)}
 .Blog h2.post-title, .FeaturedPost .post-title {line-height:calc(var(--body-lineheight) - .2)}
@@ -723,6 +718,11 @@ body {position:relative}
 .post-body h4 {font-size:15.8px}
 .post-body h5 {font-size:13px}
 .post-body h6 {font-size:10.7px}
+
+/* アドセンス広告 */
+#AdSense1, .desktop-ad .inline-ad {display:block;height:auto;max-width:100%;width:100%}
+#AdSense1 {margin:0 auto 20px}
+.desktop-ad .inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
 }
 
 /* 横向きタブレット以下 */
