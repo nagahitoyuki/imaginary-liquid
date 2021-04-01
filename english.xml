@@ -710,17 +710,17 @@ body {position:relative}
 /* More than the width of horizontal tablet */
 @media screen and (min-width:769px){
 
-/* AdSense ads */
-#AdSense1, .desktop-ad .inline-ad {display:block;height:auto;max-width:100%;width:100%}
-#AdSense1 {margin:0 auto 20px}
-.desktop-ad .inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
-
 /* Post title */
 .Blog h1.post-title a {line-height:calc(var(--body-lineheight) - .15)}
 .Blog h2.post-title a, .FeaturedPost .post-title a {line-height:calc(var(--body-lineheight) - .15)}
 
 /* Post body */
 .FeaturedPost .snippet-thumbnail img {width:calc($(content.width) - var(--maincolumn-padding) * 2);height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
+
+/* AdSense ads */
+#AdSense1, .desktop-ad .inline-ad {display:block;height:auto;max-width:100%;width:100%}
+#AdSense1 {margin:0 auto 20px}
+.desktop-ad .inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
 }
 
 /* Below the width of horizontal tablet */
