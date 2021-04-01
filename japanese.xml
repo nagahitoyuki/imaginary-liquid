@@ -443,9 +443,8 @@ iframe.b-hbp-video {border:0}
 .Blog article:not(:first-child) {margin-top:calc(var(--maincolumn-padding) / 2)}
 .Blog article:not(:last-child) {margin-bottom:calc(var(--maincolumn-padding) / 2)}
 body:not(.item-view) .blog-posts {grid-template-columns:1fr}
-body:not(.item-view) .Blog aside {align-self:center}
+body:not(.item-view) .Blog aside {margin-bottom:var(--maincolumn-padding);align-self:center}
 body:not(.item-view) .post-bottom {align-self:end}
-body:not(.item-view) .Blog .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 1.25)}
 body.item-view .Blog .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
 
 
