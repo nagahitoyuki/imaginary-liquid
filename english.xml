@@ -567,7 +567,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .sidebar-container .PopularPosts .snippet-item {color:$(posts.text.color);margin:0}
 
 /* Pager */
-.blog-pager {text-align:center;margin-bottom:calc(var(--maincolumn-padding) * 1.75)}
+.blog-pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.75);margin-bottom:calc(var(--maincolumn-padding) * 1.75)}
 #blog-pager {display:flex;justify-content:space-around}
 .blog-pager a {color:$(posts.navigation.link.color)}
 .blog-pager a:visited{color:$(posts.navigation.link.visited.color)}
