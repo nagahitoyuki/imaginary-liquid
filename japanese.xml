@@ -412,7 +412,7 @@ iframe.b-hbp-video {border:0}
 .avatarIcon {width:24px;height:24px;fill:$(posts.icons.color);padding:5.5px}
 
 /* 戻るボタン */
-.back-button {display:flex;justify-content:center;align-items:center;position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 6px);$endSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 6px);width:var(--floatingbar-height);height:var(--floatingbar-height);border-radius:50%;background-color:$(sticky.background.color);box-sizing:border-box;box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50;animation:fadein .2s ease-out}
+.back-button {display:flex;justify-content:center;align-items:center;position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);$endSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);width:var(--floatingbar-height);height:var(--floatingbar-height);border-radius:50%;background-color:$(sticky.background.color);box-sizing:border-box;box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50;animation:fadein .2s ease-out}
 .back-button svg {margin-bottom:calc(20px / 6)}
 .fadeout {animation:fadeout .2s ease-out}
 
@@ -474,7 +474,6 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .pf-last {width:100%;text-align:$endSide;margin-bottom:16px;font-style:oblique}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
-.post-icons, .post-location {margin-top:16px}
 .author-profile {margin-bottom:16px}
 .author-profile span {color:$(profile.text.color)}
 
@@ -1305,7 +1304,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 
 <div class='hidden' id='back-button-box'>
   <div class='back-button'>
-    <svg role='img' aria-label='トップへ戻る' class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' href='#blog-title'><path class='svg-icon-back' d='M4 20 L12 4, 20 20 Q12 18, 4 20Z' fill='transparent'/></a></svg>
+    <svg role='img' aria-label='トップへ戻る' class='svg-icon-24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><a class='svg-icon-24-button' href='#blog-title'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></a></svg>
   </div>
 </div>
 
