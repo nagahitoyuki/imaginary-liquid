@@ -2229,7 +2229,7 @@ entries.forEach(function(entry) {
 if (entry.isIntersecting) {
 if (!bbb.classList.contains(&quot;hidden&quot;)) {
 bbb.classList.add(&quot;fadeout&quot;); setTimeout(function() {
-bbb.classList.add(&quot;hidden&quot;); }, 200); }} else {
+bbb.classList.add(&quot;hidden&quot;); }, 190); }} else {
 bbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
 backButtonObserver.observe(backButton);
 let iframeCommentObserver = new IntersectionObserver(function(entries, observer) {
