@@ -2354,7 +2354,7 @@ url: &quot;<data:blog.url.canonical/>&quot; }); }
 <b:else/>
 clpcp.onclick = function() {
 navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; {
-alert (&quot;リンクをクリップボードにコピーしました&quot;);});}
+alert (&quot;リンクをクリップボードにコピーしました\u3002&quot;);});}
 </b:if>});
 </script>
 </body>
