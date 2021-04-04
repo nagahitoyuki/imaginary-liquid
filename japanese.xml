@@ -481,7 +481,7 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .post-body {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin:20px 0 25px}
 .post-body a,.post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
-.total-snippet {display:inline-block;margin-bottom:20px;width:100%}
+.total-snippet {display:inline-block;width:100%;margin-bottom:20px}
 .Blog .snippet-thumbnail img {float:$startSide;width:min(33%);margin-$endSide:var(--maincolumn-padding);line-height:var(--body-lineheight)}
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0}
 
@@ -2239,6 +2239,8 @@ avic.insertAdjacentHTML(&quot;afterbegin&quot;, &quot;<svg aria-label='アバタ
 </aside>
 <script>
 document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+var bdis = document.body;
+<b:if cond='data:view.isMultipleItems'>
 /* YouTube image */
 var ytpics = [].slice.call(document.querySelectorAll(&quot;picture.ytpic&quot;));
 if (ytpics[0] !== null) {
@@ -2251,14 +2253,10 @@ const nytimg = document.createElement(&quot;source&quot;);
 const nytpic = ytpic.cloneNode(false);
 nytimg.srcset = yt.dataset.src; nytpic.appendChild(nytimg); nytpic.appendChild(yt); ytpic.parentNode.replaceChild(nytpic, ytpic);}}
 ytimg.src = yt.src; }); }
-/* Back button, iframe comment and infinite scroll */
+</b:if>
+/* Back button */
 var backButton = document.querySelector(&quot;header.centered-top-container&quot;);
 var bbb = document.querySelector(&quot;div#back-button-box&quot;);
-var iframeComment = document.querySelector(&quot;iframe.blogger-iframe-colorize&quot;);
-var bdis = document.body;
-var nextIndex = document.querySelector(&quot;aside.isf&quot;);
-var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
-var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
 if (&quot;IntersectionObserver&quot; in window) {
 let backButtonObserver = new IntersectionObserver(function(entries, observer) {
 entries.forEach(function(entry) {
@@ -2268,6 +2266,43 @@ bbb.classList.add(&quot;fadeout&quot;); setTimeout(function() {
 bbb.classList.add(&quot;hidden&quot;); }, 190); }} else {
 bbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
 backButtonObserver.observe(backButton);
+<b:if cond='data:view.isMultipleItems'>
+/* Infinite scroll */
+var nextIndex = document.querySelector(&quot;aside.isf&quot;);
+var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
+var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
+let nextIndexObserver = new IntersectionObserver(function(entries, observer) {
+entries.forEach(function(entry) {
+if (npl !== null) {
+(async function() {
+await fetch(npl.getAttribute(&quot;href&quot;)).then((response) =&gt; response.text()).then((text) =&gt; {
+const parserh = new DOMParser();
+const doch = parserh.parseFromString(text, &quot;text/html&quot;);
+const pst = doch.querySelector(&quot;div.blog-posts&quot;);
+const nppics = [].slice.call(pst.querySelectorAll(&quot;picture.ytpic&quot;));
+const adcs = [].slice.call(pst.querySelectorAll(&quot;aside&quot;));
+if (adcs[0] !== null) {
+adcs.forEach (function(adc) {
+adc.parentNode.removeChild(adc); });}
+const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); Blog1.appendChild(bpNode);
+if (nppics[0] !== null) {
+nppics.forEach(function(nppic) {
+const np = nppic.querySelector(&quot;img&quot;);
+const npimg = new Image();
+npimg.onload = function() {
+if (npimg.naturalWidth &lt; 121) {
+const nnpimg = document.createElement(&quot;source&quot;);
+const nnppic = nppic.cloneNode(false);
+nnpimg.srcset = np.dataset.src; nnppic.appendChild(nnpimg); nnppic.appendChild(np); nppic.parentNode.replaceChild(nnppic, nppic);}}
+npimg.src = np.src; });}}); })();
+if (bpg !== null) {
+bpg.parentNode.remove(); }} else {
+nextIndexObserver.disconnect(); }}); }, {
+rootMargin: &quot;120px&quot; });
+nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
+<b:else/>
+/* iframe comment */
+var iframeComment = document.querySelector(&quot;iframe.blogger-iframe-colorize&quot;);
 let iframeCommentObserver = new IntersectionObserver(function(entries, observer) {
 entries.forEach(function(entry) {
 if (entry.isIntersecting) {
@@ -2282,36 +2317,8 @@ bdis.onfocus = function () {
 if (iframeComment !== document.activeElement)
 bbb.classList.remove(&quot;invisible&quot;); }</b:if>
 iframeCommentObserver.disconnect(); }}); });
-iframeComment ? iframeCommentObserver.observe(iframeComment) : iframeCommentObserver.disconnect();
-let nextIndexObserver = new IntersectionObserver(function(entries, observer) {
-entries.forEach(function(entry) {
-if (npl !== null) {
-(async function() {
-await fetch(npl.getAttribute(&quot;href&quot;)).then((response) =&gt; response.text()).then((text) =&gt; {
-const parserh = new DOMParser();
-const doch = parserh.parseFromString(text, &quot;text/html&quot;);
-const pst = doch.querySelector(&quot;div.blog-posts&quot;);
-const nppics = [].slice.call(pst.querySelectorAll(&quot;picture.ytpic&quot;));
-const adcs = [].slice.call(pst.querySelectorAll(&quot;aside&quot;));
-if (nppics[0] !== null) {
-nppics.forEach(function(nppic) {
-const np = nppic.querySelector(&quot;img&quot;);
-const npimg = new Image();
-npimg.onload = function() {
-if (npimg.naturalWidth &lt; 121) {
-const nnpimg = document.createElement(&quot;source&quot;);
-const nnppic = nppic.cloneNode(false);
-nnpimg.srcset = np.dataset.src; nnppic.appendChild(nnpimg); nnppic.appendChild(np); nppic.parentNode.replaceChild(nnppic, nppic);}}
-npimg.src = np.src; });}
-if (adcs[0] !== null) {
-adcs.forEach (function(adc) {
-adc.parentNode.removeChild(adc); });}
-const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); Blog1.appendChild(bpNode); }); })();
-if (bpg !== null) {
-bpg.parentNode.remove(); }} else {
-nextIndexObserver.disconnect(); }}); }, {
-rootMargin: &quot;120px&quot; });
-nextIndex ? nextIndexObserver.observe(nextIndex) : nextIndexObserver.disconnect(); }
+iframeComment ? iframeCommentObserver.observe(iframeComment) : &quot;&quot;;
+</b:if>}
 /* Share, sidebar, search and expand buttons */
 var hbm = document.querySelector(&quot;a.hamburger-menu&quot;);
 var clb = document.querySelector(&quot;a.close-button&quot;);
