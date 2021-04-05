@@ -482,7 +482,7 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .post-body {font:$(posts.text.font);color:$(posts.text.color);margin:16px 0 20px;line-height:var(--body-lineheight)}
 .post-body a,.post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
-.total-snippet {display:inline-block;width:100%;margin-bottom:16px}
+.total-snippet {display:inline-block;width:min(100%, calc($(content.width) - var(--maincolumn-padding) * 2));margin-bottom:16px}
 .Blog .snippet-thumbnail img {float:$startSide;width:min(33%);margin-$endSide:var(--maincolumn-padding);line-height:var(--body-lineheight)}
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0}
 .post-body h1 {font-size:26px;line-height:calc(var(--body-lineheight) - .15)}
