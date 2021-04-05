@@ -412,7 +412,7 @@ iframe.b-hbp-video {border:0}
 .avatarIcon {width:24px;height:24px;fill:$(posts.icons.color);padding:5.5px}
 
 /* 戻るボタン */
-.back-button {display:flex;justify-content:center;align-items:center;position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);$endSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);width:var(--floatingbar-height);height:var(--floatingbar-height);border-radius:50%;background-color:$(sticky.background.color);box-sizing:border-box;box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50;animation:fadein .2s ease-out}
+.back-button {display:flex;justify-content:center;align-items:center;position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);width:var(--floatingbar-height);height:var(--floatingbar-height);border-radius:50%;background-color:$(sticky.background.color);box-sizing:border-box;box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50;animation:fadein .2s ease-out}
 .back-button svg {margin-bottom:calc(20px / 6)}
 .fadeout {animation:fadeout .2s ease-out}
 
@@ -659,6 +659,9 @@ body {position:relative}
 .search.focused {width:100%}
 .centered-top-container {margin-top:30px;margin-bottom:30px}
 
+/* 戻るボタン */
+.back-button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin * 2)) / 2 + var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px + $(content.margin))}
+
 /* サイドバー */
 .sidebar-container .navigation {display:none}
 .sidebar-container {position:absolute;top:0;left:0;right:auto;margin-top:$(body.background.height);min-height:calc(100% - $(body.background.height));overflow:visible;z-index:32}
@@ -672,6 +675,9 @@ body {position:relative}
 
 /* ブログのコンテンツとサイドバーと隙間の幅以下 */
 @media screen and (max-width:$(sidebar.width + content.width + content.margin * 2 - 1px)){
+
+/* 戻るボタン */
+.back-button {$endSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
 
 /* サイドバー */
 .sidebar-container {bottom:0;position:fixed;top:0;left:0;right:auto;animation:slidein .2s ease-out}
