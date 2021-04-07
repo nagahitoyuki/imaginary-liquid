@@ -2342,7 +2342,7 @@ function sstp (event) {
 event.preventDefault(); }
 const isac = new Promise (resolve =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
-adb.classList.toggle(&quot;hidden&quot;);  resolve(); } else {reject(); }});
+adb.classList.toggle(&quot;hidden&quot;); resolve(); }});
 isac.then(() =&gt; {
 document.addEventListener("touchmove", sstp, { passive: false }); document.addEventListener("mousewheel", sstp, { passive: false }); }).then(() =&gt; {
 (async function() {
@@ -2365,16 +2365,14 @@ npimg.src = np.src; });}
 if (adcs[0] !== null) {
 adcs.forEach (function(adc) {
 adc.parentNode.removeChild(adc); });}
-const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); Blog1.appendChild(bpNode);
-return finish(); }); })(); });
+const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); Blog1.appendChild(bpNode); return finish(); }); })(); });
 function finish() {
-document.removeEventListener("touchmove", sstp, { passive: false }); document.removeEventListener("mousewheel", sstp, { passive: false });
-adb.classList.toggle(&quot;hidden&quot;); }
+document.removeEventListener("touchmove", sstp, { passive: false }); document.removeEventListener("mousewheel", sstp, { passive: false }); adb.style.visibility = "hidden" ? (adb.style.visibility = "visible", adb.classList.toggle(&quot;hidden&quot;)) : adb.classList.toggle(&quot;hidden&quot;); }
 if (bpg !== null) {
 bpg.parentNode.remove(); }} else {
 nextIndexObserver.disconnect(); }}); }, {
-rootMargin: &quot;180px&quot; });
-nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
+rootMargin: &quot;180px&quot;, threshold: 0.5 });
+nextIndex ? (nextIndexObserver.observe(nextIndex), adb.style.visibility = "hidden") : &quot;&quot;;
 <b:else/>
 /* Comment button */
 var commentAllow = document.querySelector("a.cmal");
