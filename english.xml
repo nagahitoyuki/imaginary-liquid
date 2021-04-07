@@ -415,7 +415,7 @@ iframe.b-hbp-video {border:0}
 #back-button, #comment-button, #add-button {display:flex;justify-content:center;align-items:center;position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50;animation:fadein .2s ease-out}
 #back-button, #comment-button {width:var(--floatingbar-height);border-radius:50%}
 #back-button svg {margin-bottom:calc(20px / 6)}
-#add-button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:2em;animation:fadeout 2s ease-out}
+#add-button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:2em}
 .fadeout {animation:fadeout .2s ease-out}
 
 /* Search widget */
@@ -2301,7 +2301,13 @@ var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
 let nextIndexObserver = new IntersectionObserver(function(entries, observer) {
 entries.forEach(function(entry) {
 if (npl !== null) {
-adb.classList.toggle(&quot;hidden&quot;);
+function sstp (event) {
+event.preventDefault(); }
+const isac = new Promise (resolve =&gt; {
+if (adb.classList.contains(&quot;hidden&quot;)) {
+adb.classList.toggle(&quot;hidden&quot;);  resolve(); } else {reject(); }});
+isac.then(() =&gt; {
+document.addEventListener("touchmove", sstp, { passive: false }); document.addEventListener("mousewheel", sstp, { passive: false }); }).then(() =&gt; {
 (async function() {
 await fetch(npl.getAttribute(&quot;href&quot;)).then((response) =&gt; response.text()).then((text) =&gt; {
 const parserh = new DOMParser();
@@ -2309,10 +2315,6 @@ const doch = parserh.parseFromString(text, &quot;text/html&quot;);
 const pst = doch.querySelector(&quot;div.blog-posts&quot;);
 const nppics = [].slice.call(pst.querySelectorAll(&quot;picture.ytpic&quot;));
 const adcs = [].slice.call(pst.querySelectorAll(&quot;aside&quot;));
-if (adcs[0] !== null) {
-adcs.forEach (function(adc) {
-adc.parentNode.removeChild(adc); });}
-const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); Blog1.appendChild(bpNode);
 if (nppics[0] !== null) {
 nppics.forEach(function(nppic) {
 const np = nppic.querySelector(&quot;img&quot;);
@@ -2322,12 +2324,19 @@ if (npimg.naturalWidth &lt; 121) {
 const nnpimg = document.createElement(&quot;source&quot;);
 const nnppic = nppic.cloneNode(false);
 nnpimg.srcset = np.dataset.src; nnppic.appendChild(nnpimg); nnppic.appendChild(np); nppic.parentNode.replaceChild(nnppic, nppic);}}
-npimg.src = np.src; });}});
-adb.classList.toggle(&quot;hidden&quot;); })();
+npimg.src = np.src; });}
+if (adcs[0] !== null) {
+adcs.forEach (function(adc) {
+adc.parentNode.removeChild(adc); });}
+const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); Blog1.appendChild(bpNode);
+return finish(); }); })(); });
+function finish() {
+document.removeEventListener("touchmove", sstp, { passive: false }); document.removeEventListener("mousewheel", sstp, { passive: false });
+adb.classList.toggle(&quot;hidden&quot;); }
 if (bpg !== null) {
 bpg.parentNode.remove(); }} else {
 nextIndexObserver.disconnect(); }}); }, {
-rootMargin: &quot;120px&quot;});
+rootMargin: &quot;180px&quot; });
 nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
 <b:else/>
 /* Comment button */
