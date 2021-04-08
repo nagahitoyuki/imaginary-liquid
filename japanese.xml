@@ -413,6 +413,7 @@ iframe.b-hbp-video {border:0}
 
 /* 戻るボタン／コメントボタン／ローディング */
 #back-button, #comment-button, #add-button {display:flex;justify-content:center;align-items:center;position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50;animation:fadein .2s ease-out}
+html[dir="rtl"] body #back-button, html[dir="rtl"] body #comment-button, html[dir="rtl"] body #add-button {box-shadow:-5px 5px 10px -5px rgba(0,0,0,.35)}
 #back-button, #comment-button {width:var(--floatingbar-height);border-radius:50%}
 #back-button svg {margin-bottom:calc(20px / 6)}
 #add-button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:2em}
@@ -422,7 +423,7 @@ iframe.b-hbp-video {border:0}
 .search {display:flex;align-items:center}
 #swc {padding-$endSide:12px;animation:fadein .2s ease-out}
 .search-space {color:$(search.input.color);font:$(search.input.font)}
-.search-adjust {vertical-align:middle}
+html[dir="rtl"] body .search-space {vertical-align:middle}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
 .search-action {color:$(search.input.color);cursor:pointer;max-height:30px}
@@ -575,17 +576,16 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .sub_main .widget:last-child {margin-bottom:2em}
 
 /* ブログの帰属 */
-.theme-attribution {text-align:center;font-size:small}
-.theme-attribution a {color:$(attribution.link.color)}
-.Attribution {color:$(attribution.text.color);text-align:center;font-size:small;margin-top:1em;margin-bottom:2em}
-.Attribution a,.Attribution a:hover,.Attribution a:visited {color:$(attribution.link.color)}
-.Attribution svg {fill:$(attribution.icon.color);vertical-align:bottom}
-.Attribution div {line-height:24px;margin-top:.5em}
+#attribution {text-align:center;font-size:small;color:$(attribution.text.color);margin-top:1em;margin-bottom:2em}
+#attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
+#attribution svg {fill:$(attribution.icon.color);vertical-align:bottom}
+#attribution div {line-height:24px;margin-top:.5em}
 .blogger, .image-attribution {margin-bottom:1em}
 
 /* サイドバー */
-.navigation {text-align:right;padding-top:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)}
+.navigation {text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
 .sidebar-container {backgroundcolor:$(sidebar.backgroundColorBottom);max-width:$(sidebar.width);overflow-y:auto;width:$(sidebar.width);box-sizing:border-box;box-shadow:5px 0 10px -5px rgba(0,0,0,.45);z-index:101;-webkit-overflow-scrolling: touch}
+html[dir="rtl"] .sidebar-container {box-shadow:-5px 0 10px -5px rgba(0,0,0,.45)}
 .sidebar-container .widget {background:0 0;margin:0 var(--maincolumn-padding);padding:8px 0;color:$(widget.text.color)}
 .sidebar-container .widget .title {color:$(widget.title.color)}
 .sidebar-container .widget ul {list-style:none;padding-$startSide:0}
@@ -667,8 +667,9 @@ body {position:relative}
 
 /* サイドバー */
 .sidebar-container .navigation {display:none}
-.sidebar-container {position:absolute;top:0;left:0;right:auto;margin-top:$(body.background.height);min-height:calc(100% - $(body.background.height));overflow:visible;z-index:32}
-.sidebar-container .sidebar_top_wrapper {padding-top:1em;background-color:$(sidebar.backgroundColorTopHD);height:$(body.background.height);min-height:500px;margin-top:$(body.background.height * -1)}
+.sidebar-container {position:absolute;top:0;$startSide:0;$endSide:auto;margin-top:$(body.background.height);min-height:calc(100% - $(body.background.height));overflow:visible;z-index:32}
+.sidebar-container .sidebar_top_wrapper {padding-top:1em;background-color:$(sidebar.backgroundColorTopHD);height:$(body.background.height);min-height:500px;margin-top:$(body.background.height * -1);box-shadow:5px 0 10px -5px rgba(0,0,0,.45);z-index:101}
+html[dir="rtl"] .sidebar-container .sidebar_top_wrapper {box-shadow:-5px 0 10px -5px rgba(0,0,0,.45)}
 .sidebar-container .sidebar_top {display:flex;height:$(body.background.height);flex-direction:row;max-height:$(body.background.height);min-height:500px}
 .sidebar-container .sidebar_bottom {max-width:$(sidebar.width);width:$(sidebar.width)}
 .sidebar-container .sidebar_top:empty {display:none}
@@ -684,11 +685,16 @@ body {position:relative}
 #comment-button, #add-button {$startSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
 
 /* サイドバー */
-.sidebar-container {bottom:0;position:fixed;top:0;left:0;right:auto;animation:slidein .2s ease-out}
+.sidebar-container {bottom:0;position:fixed;top:0;$startSide:0;$endSide:auto;animation:slidein .2s ease-out}
+html[dir="rtl"] .sidebar-container {animation:r-slidein .2s ease-out}
 .slideout-sidebar {animation:slideout .2s ease-out}
+html[dir="rtl"] .slideout-sidebar {animation:r-slideout .2s ease-out}
 .sidebar-invisible {display:none}
 @keyframes slidein { from { transform:translateX(-100%)} to { transform:translateX(0); } }
 @keyframes slideout { from{ transform:translateX(0)} to { transform:translateX(-100%); } }
+.sidebar-container {content-visibility:auto;contain-intrinsic-size:100%}
+@keyframes r-slidein { from { transform:translateX(200%)} to { transform:translateX(0); } }
+@keyframes r-slideout { from{ transform:translateX(0)} to { transform:translateX(200%); } }
 .sidebar-container {content-visibility:auto;contain-intrinsic-size:100%}
 }
 
@@ -1289,7 +1295,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
            <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
              <b:include name='urlParamsAsFormInput'/>
              <div class='search-input'>
-               <input autocomplete='off' autofocus='autofocus' expr:class='data:skin.vars.startSide == &quot;left&quot; ? &quot;search-space&quot; : &quot;search-space search-adjust&quot;' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+               <input autocomplete='off' autofocus='autofocus' class='search-space' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
               <b:include name='searchSubmit'/>
               </div>
            </form>
