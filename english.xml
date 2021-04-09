@@ -347,7 +347,7 @@ pre {white-space:pre-wrap}
 .hidden {display:none}
 .invisible {visibility:hidden}
 .clearboth {clear:both}
-.sub_main, .theme-attribution {content-visibility:auto;contain-intrinsic-size:100%}
+.sub_main, #attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* Widget */
 #comments .comment .comment-actions,.subscribe-popup .FollowByEmail .follow-by-email-submit,.widget.Profile .profile-link,.widget.Profile .profile-link.visit-profile {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0}
@@ -586,7 +586,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 #attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
 #attribution svg {fill:$(attribution.icon.color);vertical-align:bottom}
 #attribution div {line-height:24px;margin-top:.5em}
-.blogger, .image-attribution {margin-bottom:1em}
+.theme-attribution, .blogger, .image-attribution {margin-bottom:1em}
 
 /* Side bar */
 .navigation {text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
