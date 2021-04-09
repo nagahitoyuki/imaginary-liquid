@@ -332,7 +332,7 @@ body {max-width:$(sidebar.width + content.width + content.margin * 2 + body.back
 a {text-decoration:none;color:$(body.link.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
-h1, h2, h3, h4, h5, h6 {scroll-margin-top:calc(1em + var(--floatingbar-height))}
+h1, h2, h3, h4, h5, h6, #blog-title {scroll-margin-top:calc(1em + var(--floatingbar-height))}
 img {max-width:100%;height:auto}
 iframe {max-width:100%}
 input {font-size:100%}
@@ -582,7 +582,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .sub_main .widget:last-child {margin-bottom:1.75em}
 
 /* Attribution */
-#attribution {text-align:center;font-size:small;color:$(attribution.text.color);margin-top:1em;margin-bottom:1.75em}
+#attribution {text-align:center;font-size:small;color:$(attribution.text.color);margin-bottom:1.75em}
 #attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
 #attribution svg {fill:$(attribution.icon.color);vertical-align:bottom}
 #attribution div {line-height:24px;margin-top:.5em}
