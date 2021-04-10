@@ -685,17 +685,16 @@ html[dir="rtl"] .sidebar-container .sidebar_top_wrapper {box-shadow:-5px 0 10px 
 #comment-button, #add-button {$startSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
 
 /* サイドバー */
-.sidebar-container {bottom:0;position:fixed;top:0;$startSide:0;$endSide:auto;animation:slidein .2s ease-out}
-html[dir="rtl"] .sidebar-container {animation:r-slidein .2s ease-out}
+.sidebar-container {bottom:0;position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;animation:slidein .2s ease-out forwards}
+html[dir="rtl"] .sidebar-container {animation:r-slidein .2s ease-out forwards}
 .slideout-sidebar {animation:slideout .2s ease-out}
 html[dir="rtl"] .slideout-sidebar {animation:r-slideout .2s ease-out}
 .sidebar-invisible {display:none}
-@keyframes slidein { from { transform:translateX(-100%)} to { transform:translateX(0); } }
-@keyframes slideout { from{ transform:translateX(0)} to { transform:translateX(-100%); } }
-.sidebar-container {content-visibility:auto;contain-intrinsic-size:100%}
-@keyframes r-slidein { from { transform:translateX(200%)} to { transform:translateX(0); } }
-@keyframes r-slideout { from{ transform:translateX(0)} to { transform:translateX(200%); } }
-.sidebar-container {content-visibility:auto;contain-intrinsic-size:100%}
+@keyframes slidein {from{transform:translateX(0)} to {transform:translateX($(sidebar.width)); }}
+@keyframes slideout {from{transform:translateX($(sidebar.width))} to { transform:translateX(0); }}
+@keyframes r-slidein {from{transform:translateX(0)} to { transform:translateX(-$(sidebar.width)); }}
+@keyframes r-slideout {from{transform:translateX(-$(sidebar.width))} to {transform:translateX(0); }}
+.sidebar-container {contain:strict}
 }
 
 /* 横向きタブレット以上 */
@@ -2269,16 +2268,16 @@ var hbm = document.querySelector(&quot;button#hamburger-menu&quot;);
 var bcsd = document.createElement(&quot;div&quot;);
 function hmbe () {
 sbct.classList.remove(&quot;slideout-sidebar&quot;, &quot;sidebar-invisible&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); bdis.appendChild(bcsd).classList.add(&quot;dim-overlay&quot;); }
-hbm.addEventListener(&quot;click&quot;, hmbe, false);
+hbm.addEventListener(&quot;click&quot;, hmbe);
 /* Close button */
 var clb = document.querySelector(&quot;button#close-button&quot;);
 function clbe () {
 sbct.classList.add(&quot;slideout-sidebar&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); setTimeout(function() {
-sbct.classList.add(&quot;sidebar-invisible&quot;); }, 190); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); }
+sbct.classList.add(&quot;sidebar-invisible&quot;); }, 200); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); }
 clb.addEventListener(&quot;click&quot;, clbe);
 function bcsde () {
 sbct.classList.add(&quot;slideout-sidebar&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); setTimeout(function() {
-sbct.classList.add(&quot;sidebar-invisible&quot;); }, 190); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); }
+sbct.classList.add(&quot;sidebar-invisible&quot;); }, 200); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); }
 bcsd.addEventListener(&quot;click&quot;, bcsde);
 /* Search button */
 var sce = document.querySelector(&quot;button#search-expand&quot;);
@@ -2323,7 +2322,7 @@ entries.forEach(function(entry) {
 if (entry.isIntersecting) {
 if (!bbb.classList.contains(&quot;hidden&quot;)) {
 bbb.classList.add(&quot;fadeout&quot;); setTimeout(function() {
-bbb.classList.add(&quot;hidden&quot;); }, 190); }} else {
+bbb.classList.add(&quot;hidden&quot;); }, 200); }} else {
 bbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
 backButtonObserver.observe(backButton);
 <b:if cond='data:view.isMultipleItems'>
@@ -2389,7 +2388,7 @@ entries.forEach(function(entry) {
 if (entry.isIntersecting) {
 if (!cbb.classList.contains(&quot;hidden&quot;)) {
 cbb.classList.add(&quot;fadeout&quot;); setTimeout(function() {
-cbb.classList.add(&quot;hidden&quot;); }, 190); }} else {
+cbb.classList.add(&quot;hidden&quot;); }, 200); }} else {
 cbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
 commentAllow ? commentButtonObserver.observe(commentButton) : &quot;&quot;;
 /* iframe comment */
