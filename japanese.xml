@@ -445,7 +445,7 @@ html[dir="rtl"] body .search-space {vertical-align:middle}
 .Blog article:not(:first-child) {margin-top:calc(var(--maincolumn-padding) / 2)}
 .Blog article:not(:last-child) {margin-bottom:calc(var(--maincolumn-padding) / 2)}
 body:not(.item-view) .blog-posts {grid-template-columns:1fr;margin-bottom:var(--maincolumn-padding)}
-body:not(.item-view) .Blog aside {margin-bottom:var(--maincolumn-padding);align-self:center}
+body:not(.item-view) .Blog aside {align-self:stretch;display:grid}
 body:not(.item-view) .post-bottom {align-self:end}
 body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
 
@@ -573,7 +573,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .sub_main .widget ul {list-style:none;padding-$startSide:0}
 .sub_main .widget ul ul {margin-$startSide:1em}
 .sub_main.no-items {display:none}
-.sub_main .widget:last-child {margin-bottom:2em}
+.sub_main .widget:last-child {margin-bottom:1.75em}
 
 /* ブログの帰属 */
 #attribution {text-align:center;font-size:small;color:$(attribution.text.color);margin-bottom:2em}
@@ -729,6 +729,7 @@ html[dir="rtl"] .slideout-sidebar {animation:r-slideout .2s ease-out}
 
 /* 記事の本文 */
 .FeaturedPost .snippet-thumbnail img {width:100%;height:calc((100vw - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
+body:not(.item-view) .Blog aside {align-self:stretch;display:grid}
 
 /* 投稿画像 */
 body.item-view .post-body a[imageanchor="1"][style*="float: left;"],body.item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none!important;clear:none!important}
@@ -743,6 +744,7 @@ body.item-view .post-body a[imageanchor="1"]+a[imageanchor="1"] {margin-top:16px
 #AdSense1, .mobile-ad .inline-ad {display:block;height:auto;width:calc(100vw - var(--maincolumn-padding) * 2)}
 #AdSense1 {margin:0 auto 20px}
 .mobile-ad .inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
+body:not(.item-view) .mobile-ad .inline-ad {align-self:center}
 }
 
 /* ブログのコンテンツの幅以上 */
