@@ -2266,26 +2266,30 @@ sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); }
 /* Hamburger memu */
 var hbm = document.querySelector(&quot;button#hamburger-menu&quot;);
 var bcsd = document.createElement(&quot;div&quot;);
-function hmbe () {
+function hmbe() {
 sbct.classList.remove(&quot;slideout-sidebar&quot;, &quot;sidebar-invisible&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); bdis.appendChild(bcsd).classList.add(&quot;dim-overlay&quot;); }
 hbm.addEventListener(&quot;click&quot;, hmbe);
 /* Close button */
 var clb = document.querySelector(&quot;button#close-button&quot;);
-function clbe () {
-sbct.classList.add(&quot;slideout-sidebar&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); setTimeout(function() {
-sbct.classList.add(&quot;sidebar-invisible&quot;); }, 200); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); }
-clb.addEventListener(&quot;click&quot;, clbe);
-function bcsde () {
-sbct.classList.add(&quot;slideout-sidebar&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); setTimeout(function() {
-sbct.classList.add(&quot;sidebar-invisible&quot;); }, 200); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); }
-bcsd.addEventListener(&quot;click&quot;, bcsde);
+function tosl() {
+const start = new Date().getTime();
+function lpsl(timestamp) {
+const progress = new Date().getTime() - start;
+if (progress &gt;= 200){
+sbct.classList.add(&quot;sidebar-invisible&quot;); cancelAnimationFrame(cancel); }
+const cancel = requestAnimationFrame(lpsl); }
+lpsl(); }
+function clbe(){
+sbct.classList.add(&quot;slideout-sidebar&quot;); tosl(); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); }
+clb.addEventListener(&quot;click&quot;, clbe); 
+function bcsde() {
+sbct.classList.add(&quot;slideout-sidebar&quot;); tosl(); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); }
+bcsd.addEventListener(&quot;click&quot;, bcsde); 
 /* Search button */
 var sce = document.querySelector(&quot;button#search-expand&quot;);
 var shrb = document.querySelector(&quot;div.share-buttons&quot;);
-let snot = 0;
-function scee () {
-snot++;
-if (snot % 2 !== 0) {
+let snot = 0; function scee() {
+snot++; if (snot % 2 !== 0) {
 swc.classList.remove(&quot;hidden&quot;); shrb.style.display = &quot;none&quot;; swc.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); } else {
 swc.classList.add(&quot;hidden&quot;); shrb.style.display = &quot;flex&quot;; swc.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); }}
 sce.addEventListener(&quot;click&quot;, scee);
@@ -2302,7 +2306,7 @@ acebtns.forEach(function(acebtn) {
 acebtn.addEventListener(&quot;click&quot;, compress); });
 <b:if cond='data:blog.isMobileRequest'>
 /* Share memu */
-function shbtne () {
+function shbtne() {
 navigator.share( {
 title: &quot;<data:view.title.escaped/>&quot;,
 url: &quot;<data:blog.url.canonical/>&quot; }); }
@@ -2317,12 +2321,19 @@ clpcp.addEventListener(&quot;click&quot;, clpcpe);
 /* Back button */
 var backButton = document.querySelector(&quot;header.centered-top-container&quot;);
 var ftb = document.querySelector(&quot;div#floatingbar&quot;);
+function tofdb() {
+const start = new Date().getTime();
+function lpfdb(timestamp) {
+const progress = new Date().getTime() - start;
+if (progress &gt;= 200){
+bbb.classList.add(&quot;hidden&quot;); cancelAnimationFrame(cancel); }
+const cancel = requestAnimationFrame(lpfdb); }
+lpfdb(); }
 let backButtonObserver = new IntersectionObserver(function(entries, observer) {
 entries.forEach(function(entry) {
 if (entry.isIntersecting) {
 if (!bbb.classList.contains(&quot;hidden&quot;)) {
-bbb.classList.add(&quot;fadeout&quot;); setTimeout(function() {
-bbb.classList.add(&quot;hidden&quot;); }, 200); }} else {
+bbb.classList.add(&quot;fadeout&quot;); tofdb(); }} else {
 bbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
 backButtonObserver.observe(backButton);
 <b:if cond='data:view.isMultipleItems'>
@@ -2346,12 +2357,12 @@ let nextIndexObserver = new IntersectionObserver(function(entries, observer) {
 entries.forEach(function(entry) {
 if (npl !== null) {
 sub_main.classList.add(&quot;hidden&quot;); attribution.classList.add(&quot;hidden&quot;);
-nextIndex.style.marginTop = "46px";
+nextIndex.style.marginTop = &quot;46px&quot;;
 const isac = new Promise (resolve =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 adb.classList.remove(&quot;hidden&quot;);  resolve(); }});
 isac.then(() =&gt; {
-(async function () {
+(async function() {
 await fetch(npl.getAttribute(&quot;href&quot;)).then((response) =&gt; response.text()).then((text) =&gt; {
 const parserh = new DOMParser();
 const doch = parserh.parseFromString(text, &quot;text/html&quot;);
@@ -2372,23 +2383,30 @@ if (adcs[0] !== null) {
 adcs.forEach (function(adc) {
 adc.parentNode.removeChild(adc); });}
 const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); Blog1.appendChild(bpNode); return finish(); }); })(); });
-function finish (){
+function finish(){
 adb.style.visibility = &quot;hidden&quot; ? (adb.style.visibility = &quot;visible&quot;, adb.classList.add(&quot;hidden&quot;)) : adb.classList.add(&quot;hidden&quot;); }
 if (bpg !== null) {
 bpg.parentNode.remove(); }} else {
-sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = "0"; nextIndexObserver.disconnect(); }}); }, {
+sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; nextIndexObserver.disconnect(); }}); }, {
 rootMargin: &quot;226px&quot;});
 nextIndex ? (nextIndexObserver.observe(nextIndex), adb.style.visibility = &quot;hidden&quot;) : &quot;&quot;;
 <b:else/>
 /* Comment button */
 var commentAllow = document.querySelector(&quot;a.cmal&quot;);
 var commentButton = document.querySelector(&quot;article.hentry&quot;);
+function tofdc() {
+const start = new Date().getTime();
+function lpfdc(timestamp) {
+const progress = new Date().getTime() - start;
+if (progress &gt;= 200){
+cbb.classList.add(&quot;hidden&quot;); cancelAnimationFrame(cancel); }
+const cancel = requestAnimationFrame(lpfdc); }
+lpfdc(); }
 let commentButtonObserver = new IntersectionObserver(function(entries, observer) {
 entries.forEach(function(entry) {
 if (entry.isIntersecting) {
 if (!cbb.classList.contains(&quot;hidden&quot;)) {
-cbb.classList.add(&quot;fadeout&quot;); setTimeout(function() {
-cbb.classList.add(&quot;hidden&quot;); }, 200); }} else {
+cbb.classList.add(&quot;fadeout&quot;); tofdc(); }} else {
 cbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
 commentAllow ? commentButtonObserver.observe(commentButton) : &quot;&quot;;
 /* iframe comment */
@@ -2400,10 +2418,10 @@ const ifc = document.createElement(&quot;script&quot;);
 ifc.insertAdjacentHTML(&quot;afterbegin&quot;, &quot;BLOG_CMT_createIframe(&#39;https://www.blogger.com/rpc_relay.html&#39;);&quot;);
 iframeComment.parentNode.appendChild(ifc);
 <b:if cond='data:blog.isMobileRequest'>
-bdis.onblur = function () {
+bdis.onblur = function() {
 if (iframeComment === document.activeElement)
 bbb.classList.add(&quot;invisible&quot;); }
-bdis.onfocus = function () {
+bdis.onfocus = function() {
 if (iframeComment !== document.activeElement)
 bbb.classList.remove(&quot;invisible&quot;); }</b:if>
 iframeCommentObserver.disconnect(); }}); });
