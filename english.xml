@@ -2318,6 +2318,7 @@ var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
 var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
 let nextIndexObserver = new IntersectionObserver(function(entries, observer) {
 entries.forEach(function(entry) {
+if (entry.rootBounds.height &gt;= (entry.boundingClientRect.top - 226)) {
 if (npl !== null) {
 sub_main.classList.add(&quot;hidden&quot;); attribution.classList.add(&quot;hidden&quot;);
 nextIndex.style.marginTop = &quot;46px&quot;;
@@ -2347,12 +2348,12 @@ adcs.forEach (function(adc) {
 adc.parentNode.removeChild(adc); });}
 const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); Blog1.appendChild(bpNode); return finish(); }); })(); });
 function finish(){
-adb.style.visibility = &quot;hidden&quot; ? (adb.style.visibility = &quot;visible&quot;, adb.classList.add(&quot;hidden&quot;)) : adb.classList.add(&quot;hidden&quot;); }
+adb.classList.add(&quot;hidden&quot;); }
 if (bpg !== null) {
 bpg.parentNode.remove(); }} else {
-sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; nextIndexObserver.disconnect(); }}); }, {
+sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; nextIndexObserver.disconnect(); }}}); }, {
 rootMargin: &quot;226px&quot;});
-nextIndex ? (nextIndexObserver.observe(nextIndex), adb.style.visibility = &quot;hidden&quot;) : &quot;&quot;;
+nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
 <b:else/>
 /* Comment button */
 var commentAllow = document.querySelector(&quot;a.cmal&quot;);
