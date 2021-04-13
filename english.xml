@@ -2220,7 +2220,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       </b:section>
 </aside>
 <script>
-document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
 var bdis = document.body;
 /* Screen reader */
 var sbct = document.querySelector(&quot;aside.sidebar-container&quot;);
@@ -2261,11 +2261,11 @@ var acsbtns = [].slice.call(document.querySelectorAll(&quot;span.show-more&quot;
 var acebtns = [].slice.call(document.querySelectorAll(&quot;span.show-less&quot;));
 function expand(event) {
 exp = event.target; exp.classList.add(&quot;hidden&quot;); exp.previousElementSibling.classList.toggle(&quot;expanded&quot;); exp.nextElementSibling.classList.remove(&quot;hidden&quot;); }
-acsbtns.forEach(function(acsbtn) {
+acsbtns.forEach((acsbtn) =&gt; {
 acsbtn.addEventListener(&quot;click&quot;, expand); });
 function compress(event) {
 cmp = event.target; cmp.classList.add(&quot;hidden&quot;); cmp.previousElementSibling.previousElementSibling.classList.toggle(&quot;expanded&quot;); cmp.previousElementSibling.classList.remove(&quot;hidden&quot;); }
-acebtns.forEach(function(acebtn) {
+acebtns.forEach((acebtn) =&gt; {
 acebtn.addEventListener(&quot;click&quot;, compress); });
 <b:if cond='data:blog.isMobileRequest'>
 /* Share memu */
@@ -2292,8 +2292,8 @@ if (progress &gt;= 200){
 bbb.classList.add(&quot;hidden&quot;); cancelAnimationFrame(cancel); }
 const cancel = requestAnimationFrame(lpfdb); }
 lpfdb(); }
-let backButtonObserver = new IntersectionObserver(function(entries, observer) {
-entries.forEach(function(entry) {
+let backButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
+entries.forEach((entry) =&gt; {
 if (entry.isIntersecting) {
 if (!bbb.classList.contains(&quot;hidden&quot;)) {
 bbb.classList.add(&quot;fadeout&quot;); tofdb(); }} else {
@@ -2303,10 +2303,10 @@ backButtonObserver.observe(backButton);
 /* YouTube image */
 var ytpics = [].slice.call(document.querySelectorAll(&quot;picture.ytpic&quot;));
 if (ytpics[0] !== null) {
-ytpics.forEach(function(ytpic) {
+ytpics.forEach((ytpic) =&gt; {
 const yt = ytpic.querySelector(&quot;img&quot;);
 const ytimg = new Image();
-ytimg.onload = function() {
+ytimg.onload = () =&gt; {
 if (ytimg.naturalWidth &lt; 121) {
 const nytimg = document.createElement(&quot;source&quot;);
 const nytpic = ytpic.cloneNode(false);
@@ -2316,8 +2316,8 @@ ytimg.src = yt.src; }); }
 var nextIndex = document.querySelector(&quot;aside.isf&quot;);
 var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
 var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
-let nextIndexObserver = new IntersectionObserver(function(entries, observer) {
-entries.forEach(function(entry) {
+let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
+entries.forEach((entry) =&gt; {
 if (entry.rootBounds.height &gt;= (entry.boundingClientRect.top - 226)) {
 if (npl !== null) {
 sub_main.classList.add(&quot;hidden&quot;); attribution.classList.add(&quot;hidden&quot;);
@@ -2326,7 +2326,7 @@ const isac = new Promise (resolve =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 adb.classList.remove(&quot;hidden&quot;);  resolve(); }});
 isac.then(() =&gt; {
-(async function() {
+(async () =&gt; {
 await fetch(npl.getAttribute(&quot;href&quot;)).then((response) =&gt; response.text()).then((text) =&gt; {
 const parserh = new DOMParser();
 const doch = parserh.parseFromString(text, &quot;text/html&quot;);
@@ -2334,22 +2334,21 @@ const pst = doch.querySelector(&quot;div.blog-posts&quot;);
 const nppics = [].slice.call(pst.querySelectorAll(&quot;picture.ytpic&quot;));
 const adcs = [].slice.call(pst.querySelectorAll(&quot;aside&quot;));
 if (nppics[0] !== null) {
-nppics.forEach(function(nppic) {
+nppics.forEach((nppic) =&gt; {
 const np = nppic.querySelector(&quot;img&quot;);
 const npimg = new Image();
-npimg.onload = function() {
+npimg.onload = () =&gt; {
 if (npimg.naturalWidth &lt; 121) {
 const nnpimg = document.createElement(&quot;source&quot;);
 const nnppic = nppic.cloneNode(false);
 nnpimg.srcset = np.dataset.src; nnppic.appendChild(nnpimg); nnppic.appendChild(np); nppic.parentNode.replaceChild(nnppic, nppic); }}
 npimg.src = np.src; }); }
 if (adcs[0] !== null) {
-adcs.forEach (function(adc) {
+adcs.forEach ((adc) =&gt; {
 adc.parentNode.removeChild(adc); }); }
 const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); requestAnimationFrame(() =&gt; {
-Blog1.appendChild(bpNode); }); return finish(); }); })(); });
-function finish(){
-adb.classList.add(&quot;hidden&quot;); }
+Blog1.appendChild(bpNode); }); return (() =&gt; {
+adb.classList.add(&quot;hidden&quot;); })(); }); })(); });
 if (bpg !== null) {
 bpg.parentNode.remove(); }} else {
 sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; nextIndexObserver.disconnect(); }}}); }, {
@@ -2367,8 +2366,8 @@ if (progress &gt;= 200){
 cbb.classList.add(&quot;hidden&quot;); cancelAnimationFrame(cancel); }
 const cancel = requestAnimationFrame(lpfdc); }
 lpfdc(); }
-let commentButtonObserver = new IntersectionObserver(function(entries, observer) {
-entries.forEach(function(entry) {
+let commentButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
+entries.forEach((entry) =&gt; {
 if (entry.isIntersecting) {
 if (!cbb.classList.contains(&quot;hidden&quot;)) {
 cbb.classList.add(&quot;fadeout&quot;); tofdc(); }} else {
@@ -2376,17 +2375,17 @@ cbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
 commentAllow ? commentButtonObserver.observe(commentButton) : &quot;&quot;;
 /* iframe comment */
 var iframeComment = document.querySelector(&quot;iframe.blogger-iframe-colorize&quot;);
-let iframeCommentObserver = new IntersectionObserver(function(entries, observer) {
-entries.forEach(function(entry) {
+let iframeCommentObserver = new IntersectionObserver((entries, observer) =&gt; {
+entries.forEach((entry) =&gt; {
 if (entry.isIntersecting) {
 const ifc = document.createElement(&quot;script&quot;);
 ifc.insertAdjacentHTML(&quot;afterbegin&quot;, &quot;BLOG_CMT_createIframe(&#39;https://www.blogger.com/rpc_relay.html&#39;);&quot;);
 iframeComment.parentNode.appendChild(ifc);
 <b:if cond='data:blog.isMobileRequest'>
-bdis.onblur = function() {
+bdis.onblur = () =&gt; {
 if (iframeComment === document.activeElement)
 bbb.classList.add(&quot;invisible&quot;); }
-bdis.onfocus = function() {
+bdis.onfocus = () =&gt; {
 if (iframeComment !== document.activeElement)
 bbb.classList.remove(&quot;invisible&quot;); }</b:if>
 iframeCommentObserver.disconnect(); }}); });
@@ -2395,7 +2394,7 @@ iframeComment ? iframeCommentObserver.observe(iframeComment) : &quot;&quot;;
 var cml = document.querySelector(&quot;div.comments-content&quot;);
 if (cml !== null) {
 const avics = [].slice.call(document.querySelectorAll(&quot;div.avatar-image-container&quot;));
-avics.forEach(function(avic){
+avics.forEach((avic) =&gt; {
 if (avic.firstElementChild.src.includes(&quot;//resources.blogblog.com/img/blank.gif&quot;)) {
 avic.insertAdjacentHTML(&quot;afterbegin&quot;, &quot;<svg aria-label='アバター' class='avatarIcon' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg>&quot;); }}); }
 </b:if>});
