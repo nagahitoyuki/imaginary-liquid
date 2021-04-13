@@ -2278,7 +2278,7 @@ shbtn.addEventListener(&quot;click&quot;, shbtne);
 /* Link share */
 function clpcpe() {
 navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; {
-alert (&quot;<data:messages.linkCopiedToClipboard.jsEscaped/>&quot;);});}
+alert (&quot;<data:messages.linkCopiedToClipboard.jsEscaped/>&quot;); }); }
 clpcp.addEventListener(&quot;click&quot;, clpcpe);
 </b:if>
 /* Back button */
@@ -2310,7 +2310,7 @@ ytimg.onload = function() {
 if (ytimg.naturalWidth &lt; 121) {
 const nytimg = document.createElement(&quot;source&quot;);
 const nytpic = ytpic.cloneNode(false);
-nytimg.srcset = yt.dataset.src; nytpic.appendChild(nytimg); nytpic.appendChild(yt); ytpic.parentNode.replaceChild(nytpic, ytpic);}}
+nytimg.srcset = yt.dataset.src; nytpic.appendChild(nytimg); nytpic.appendChild(yt); ytpic.parentNode.replaceChild(nytpic, ytpic); }}
 ytimg.src = yt.src; }); }
 /* Infinite scroll */
 var nextIndex = document.querySelector(&quot;aside.isf&quot;);
@@ -2341,12 +2341,13 @@ npimg.onload = function() {
 if (npimg.naturalWidth &lt; 121) {
 const nnpimg = document.createElement(&quot;source&quot;);
 const nnppic = nppic.cloneNode(false);
-nnpimg.srcset = np.dataset.src; nnppic.appendChild(nnpimg); nnppic.appendChild(np); nppic.parentNode.replaceChild(nnppic, nppic);}}
-npimg.src = np.src; });}
+nnpimg.srcset = np.dataset.src; nnppic.appendChild(nnpimg); nnppic.appendChild(np); nppic.parentNode.replaceChild(nnppic, nppic); }}
+npimg.src = np.src; }); }
 if (adcs[0] !== null) {
 adcs.forEach (function(adc) {
-adc.parentNode.removeChild(adc); });}
-const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); Blog1.appendChild(bpNode); return finish(); }); })(); });
+adc.parentNode.removeChild(adc); }); }
+const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); requestAnimationFrame(() =&gt; {
+Blog1.appendChild(bpNode); }); return finish(); }); })(); });
 function finish(){
 adb.classList.add(&quot;hidden&quot;); }
 if (bpg !== null) {
