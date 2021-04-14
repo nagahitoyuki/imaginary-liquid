@@ -15,7 +15,6 @@
   <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 1600)' media='(min-width:1201px)' rel='preload'/>
 </b:if>
   <link expr:href='data:view.url.canonical + &quot;?m=1&quot;' media='only screen and (max-width: 640px)' rel='alternate'/>
-  <link expr:href='data:view.url.canonical + &quot;?m=1&quot;' media='handheld' rel='alternate'/>
 <b:elseif cond='data:skin.vars.body_background.image'/>
   <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 480)' rel='preload'/>
 </b:if>
