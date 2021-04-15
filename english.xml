@@ -327,7 +327,7 @@
 /* General settings */
 :root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6}
 html {scroll-behavior:smooth}
-body {max-width:$(sidebar.width + content.width + content.margin * 2 + body.background.blur * 2);margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal}
+body {width:min(100vw, $(sidebar.width + content.width + content.margin * 2 + body.background.blur * 2));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal}
 a {text-decoration:none;color:$(body.link.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
@@ -448,17 +448,17 @@ body:not(.item-view) .Blog aside {align-self:stretch;display:grid}
 body:not(.item-view) .post-bottom {align-self:end}
 body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
 
-/* Featured post */
+/* 注目の投稿 */
 .FeaturedPost .title {margin-top:0;margin-bottom:16px}
 .FeaturedPost .title a {color:$(posts.title.color)}
-.FeaturedPost {padding:20px var(--maincolumn-padding) 12px;background-color:$(posts.background.color);margin-bottom:var(--maincolumn-padding)}
-.FeaturedPost a,.FeaturedPost a:hover,.FeaturedPost a:visited {color:$(posts.link.color)}
-.FeaturedPost article {display:grid}
-.FeaturedPost .post-title,.FeaturedPost .post-title a,.FeaturedPost .post-title a:hover,.FeaturedPost .post-title a:visited {color:#ffffff}
+.FeaturedPost {padding:20px var(--maincolumn-padding);background-color:$(posts.background.color);margin-bottom:var(--maincolumn-padding)}
+.FeaturedPost a, .FeaturedPost a:hover, .FeaturedPost a:visited {color:$(posts.link.color)}
+.FeaturedPost article {display:grid;}
+.FeaturedPost .post-title, .FeaturedPost .post-title a, .FeaturedPost .post-title a:hover, .FeaturedPost .post-title a:visited {color:#ffffff}
+.FeaturedPost .post-title a {background-color:rgba(0, 0, 0, 0.2);width:min(100vw - var(--maincolumn-padding) * 2, $(content.width) - var(--maincolumn-padding) * 2);height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;justify-content:center;align-items:center;text-align:center;padding:var(--maincolumn-padding);box-sizing:border-box}
 .FeaturedPost .post-title {font:$(posts.stream.title.font);margin:0;grid-column:1/2;grid-row:1/2;z-index:1}
-.FeaturedPost .post-title a {background-color:rgba(0,0,0,0.3);display:grid;justify-content:center;align-items:center;padding:var(--maincolumn-padding);text-align:center;max-width:100%}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2}
-.FeaturedPost .snippet-thumbnail img {width:100%;max-width:100%;height:100%;margin-bottom:0}
+.FeaturedPost .snippet-thumbnail img {display:block;width:min(100vw - var(--maincolumn-padding) * 2, $(content.width) - var(--maincolumn-padding) * 2);height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3)}
 
 /* Post title */
 .Blog .post-title {margin-top:0;margin-bottom:16px}
@@ -484,7 +484,7 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .post-body a,.post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:inline-block;width:min(100%, calc($(content.width) - var(--maincolumn-padding) * 2));margin-bottom:16px}
-.Blog .snippet-thumbnail img {float:$startSide;width:min(33%);margin-$endSide:var(--maincolumn-padding);line-height:var(--body-lineheight)}
+.Blog .snippet-thumbnail img {float:$startSide;width:33%;margin-$endSide:var(--maincolumn-padding);line-height:var(--body-lineheight)}
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0}
 .post-body h1 {font-size:26px;line-height:calc(var(--body-lineheight) - .15)}
 .post-body h2 {font-size:24px;line-height:calc(var(--body-lineheight) - .15)}
@@ -746,22 +746,6 @@ body.item-view .post-body a[imageanchor="1"]+a[imageanchor="1"] {margin-top:16px
 #AdSense1 {margin:0 auto 20px}
 .mobile-ad .inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
 body:not(.item-view) .mobile-ad .inline-ad {align-self:center}
-}
-
-/* More than the width of blog content */
-@media screen and (min-width:$(content.width)){
-
-/* Featured post */
-.FeaturedPost .post-title a {width:100%;height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);box-sizing:border-box}
-.FeaturedPost .snippet-thumbnail img {width:100%;height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
-}
-
-/* Below the width of blog content */
-@media screen and (max-width:$(content.width - 1px)){
-
-/* Featured post */
-.FeaturedPost .post-title a {width:100%;height:calc((100vw - var(--maincolumn-padding) * 2) * 2 / 3);box-sizing:border-box}
-.FeaturedPost .snippet-thumbnail img {width:100%;height:calc((100vw - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
 }
 
 /* More than the width of smartphone */
@@ -2310,13 +2294,13 @@ var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
 var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach((entry) =&gt; {
-if (entry.rootBounds.height &gt;= (entry.boundingClientRect.top - 226)) {
+if (entry.rootBounds.height &gt;= (entry.boundingClientRect.top - 180)) {
 if (npl) {
 sub_main.classList.add(&quot;hidden&quot;); attribution.classList.add(&quot;hidden&quot;);
 nextIndex.style.marginTop = &quot;46px&quot;;
 const isac = new Promise (resolve =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
-adb.classList.remove(&quot;hidden&quot;);  resolve(); }});
+adb.classList.remove(&quot;hidden&quot;); resolve(); }});
 isac.then(() =&gt; {
 (async () =&gt; {
 await fetch(npl.getAttribute(&quot;href&quot;)).then((response) =&gt; response.text()).then((text) =&gt; {
@@ -2344,7 +2328,7 @@ adb.classList.add(&quot;hidden&quot;); })(); }); })(); });
 if (bpg) {
 bpg.parentNode.remove(); }} else {
 sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; nextIndexObserver.disconnect(); }}}); }, {
-rootMargin: &quot;226px&quot;});
+rootMargin: &quot;180px&quot;});
 nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
 <b:else/>
 /* Comment button */
