@@ -415,7 +415,7 @@ iframe.b-hbp-video {border:0}
 html[dir="rtl"] body #back-button, html[dir="rtl"] body #comment-button, html[dir="rtl"] body #add-button {box-shadow:-5px 5px 10px -5px rgba(0,0,0,.35)}
 #back-button, #comment-button {width:var(--floatingbar-height);border-radius:50%}
 #back-button svg {margin-bottom:calc(20px / 6)}
-#add-button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:2em}
+#add-button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px}
 .fadeout {animation:fadeout .2s ease-out}
 
 /* ブログ内検索 */
