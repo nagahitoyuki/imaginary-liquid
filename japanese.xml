@@ -2269,7 +2269,7 @@ sbct.classList.add(&quot;slideout-sidebar&quot;); tosl(); sbct.setAttribute(&quo
 var sce = document.querySelector(&quot;button#search-expand&quot;);
 var shrb = document.querySelector(&quot;div.share-buttons&quot;);
 sce.addEventListener(&quot;click&quot;, () =&gt; {
-if (swc.classList.contains("hidden")) {
+if (swc.classList.contains(&quot;hidden&quot;)) {
 swc.classList.remove(&quot;hidden&quot;); shrb.style.display = &quot;none&quot;; swc.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); } else {
 swc.classList.add(&quot;hidden&quot;); shrb.style.display = &quot;flex&quot;; swc.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); }});
 /* Expand button */
@@ -2329,15 +2329,14 @@ ytimg.src = yt.src; }); }
 var nextIndex = document.querySelector(&quot;aside.isf&quot;);
 var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
 var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
-let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
-entries.forEach((entry) =&gt; {
-if (entry.rootBounds.height &gt;= (entry.boundingClientRect.top - 180)) {
-if (npl) {
+function scrollStop(event) {
+event.preventDefault(); }
+function mnisac(){
 sub_main.classList.add(&quot;hidden&quot;); attribution.classList.add(&quot;hidden&quot;);
 nextIndex.style.marginTop = &quot;46px&quot;;
 const isac = new Promise (resolve =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
-adb.classList.remove(&quot;hidden&quot;); resolve(); }});
+adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(); }});
 isac.then(() =&gt; {
 (async () =&gt; {
 await fetch(npl.getAttribute(&quot;href&quot;)).then((response) =&gt; response.text()).then((text) =&gt; {
@@ -2361,10 +2360,21 @@ adcs.forEach ((adc) =&gt; {
 adc.parentNode.removeChild(adc); }); }
 const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); requestAnimationFrame(() =&gt; {
 Blog1.appendChild(bpNode); }); return (() =&gt; {
-adb.classList.add(&quot;hidden&quot;); })(); }); })(); });
+document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); adb.classList.add(&quot;hidden&quot;); })(); }); })(); });
 if (bpg) {
-bpg.parentNode.remove(); }} else {
-sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; nextIndexObserver.disconnect(); }}}); }, {
+bpg.parentNode.remove(); }}
+let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
+entries.forEach((entry) =&gt; {
+if (npl) {
+const iolm = window.screen.height - entry.boundingClientRect.top - 180;
+const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 180;
+if (window.pageYOffset === 0) {
+if (iolm &gt;= 0) {
+const bphg = document.querySelector(&quot;div.blog-posts&quot;).clientHeight;
+const adsp = sgtm - bphg * 2;
+mnisac(); nextIndex.style.marginTop = adsp + &quot;px&quot;; }} else if (sgtm &gt;= 0) {
+mnisac(); }} else {
+sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; nextIndexObserver.disconnect(); }}); }, {
 rootMargin: &quot;180px&quot;});
 nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
 <b:else/>
