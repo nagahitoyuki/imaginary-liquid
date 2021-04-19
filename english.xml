@@ -693,6 +693,7 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 body.sidebar-visible {overflow-y:hidden}
 body.sidebar-visible .page_body {overflow-y:scroll}
 body.sidebar-visible .bg-photo-container {overflow-y:scroll}
+.wc-transform {will-change:transform}
 .dim-overlay {background-color:rgba(0,0,0,.7);z-index:100;height:100vh;left:0;position:fixed;top:0;width:100%}
 }
 
@@ -2209,7 +2210,7 @@ var bcsd = document.createElement(&quot;div&quot;);
 bcsd.classList.add(&quot;dim-overlay&quot;);
 hbm.addEventListener(&quot;click&quot;, () =&gt; {
 sbct.classList.remove(&quot;slideout&quot;); requestAnimationFrame(() =&gt; {
-sbct.classList.add("slidein"); sbct.classList.remove("sidebar-invisible"); }); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); bdis.classList.add("sidebar-visible"); bdis.appendChild(bcsd); });
+sbct.classList.add(&quot;wc-transform&quot;, &quot;slidein&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); }); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); bdis.appendChild(bcsd); });
 /* Close button */
 var clb = document.querySelector(&quot;button#close-button&quot;);
 function tofdb() {
@@ -2217,20 +2218,20 @@ const start = new Date().getTime();
 function lpfdb(timestamp) {
 const progress = new Date().getTime() - start;
 if (progress &gt;= 300) {
-bbb.classList.add(&quot;sidebar-invisible&quot;); cancelAnimationFrame(cancel); }
+sbct.classList.add(&quot;sidebar-invisible&quot;); return; }
 const cancel = requestAnimationFrame(lpfdb); }
 lpfdb(); }
 clb.addEventListener(&quot;click&quot;, () =&gt; {
-sbct.classList.add(&quot;slideout&quot;); tofdb(); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove("sidebar-visible"); bdis.removeChild(bcsd); });
+sbct.classList.add(&quot;slideout&quot;); tofdb(); sbct.classList.remove(&quot;wc-transform&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); });
 bcsd.addEventListener(&quot;click&quot;, () =&gt; {
-sbct.classList.add(&quot;slideout&quot;); tofdb(); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove("sidebar-visible"); bdis.removeChild(bcsd); });
+sbct.classList.add(&quot;slideout&quot;); tofdb(); sbct.classList.remove(&quot;wc-transform&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); });
 /* Search button */
 var sce = document.querySelector(&quot;button#search-expand&quot;);
 var shrb = document.querySelector(&quot;div.share-buttons&quot;);
 sce.addEventListener(&quot;click&quot;, () =&gt; {
 if (swc.classList.contains(&quot;hidden&quot;)) {
-swc.classList.remove(&quot;hidden&quot;); shrb.style.display = &quot;none&quot;; swc.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); } else {
-swc.classList.add(&quot;hidden&quot;); shrb.style.display = &quot;flex&quot;; swc.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); }});
+swc.classList.remove(&quot;hidden&quot;); floating_share.style.display = &quot;none&quot;; swc.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); } else {
+swc.classList.add(&quot;hidden&quot;); floating_share.style.display = &quot;flex&quot;; swc.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); }});
 /* Expand button */
 var acsbtns = [].slice.call(document.querySelectorAll(&quot;span.show-more&quot;));
 var acebtns = [].slice.call(document.querySelectorAll(&quot;span.show-less&quot;));
@@ -2261,7 +2262,7 @@ const start = new Date().getTime();
 function lpfdb(timestamp) {
 const progress = new Date().getTime() - start;
 if (progress &gt;= 300) {
-bbb.classList.add(&quot;hidden&quot;); cancelAnimationFrame(cancel); }
+bbb.classList.add(&quot;hidden&quot;); return; }
 const cancel = requestAnimationFrame(lpfdb); }
 lpfdb(); }
 let backButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
@@ -2345,7 +2346,7 @@ const start = new Date().getTime();
 function lpfdc(timestamp) {
 const progress = new Date().getTime() - start;
 if (progress &gt;= 300) {
-cbb.classList.add(&quot;hidden&quot;); cancelAnimationFrame(cancel); }
+cbb.classList.add(&quot;hidden&quot;); return; }
 const cancel = requestAnimationFrame(lpfdc); }
 lpfdc(); }
 let commentButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
@@ -2370,7 +2371,8 @@ bbb.classList.add(&quot;invisible&quot;); }
 bdis.onfocus = () =&gt; {
 if (iframeComment !== document.activeElement)
 bbb.classList.remove(&quot;invisible&quot;); }</b:if>
-iframeCommentObserver.disconnect(); }}); });
+iframeCommentObserver.disconnect(); }}); }, {
+rootMargin: &quot;180px&quot;});
 iframeComment ? iframeCommentObserver.observe(iframeComment) : &quot;&quot;;
 /* Comment avatar */
 var cml = document.querySelector(&quot;div.comments-content&quot;);
