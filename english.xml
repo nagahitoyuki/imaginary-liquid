@@ -349,19 +349,17 @@ pre {white-space:pre-wrap}
 .sub_main, #attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* Widget */
-#comments .comment .comment-actions,.subscribe-popup .FollowByEmail .follow-by-email-submit,.widget.Profile .profile-link,.widget.Profile .profile-link.visit-profile {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0}
+#comments .comment .comment-actions, .widget.Profile .profile-link, .widget.Profile .profile-link.visit-profile {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0}
 .widget .title {font-size:large;color:$(widget.title.color)}
 
 /* Skip navigation */
-.skip-navigation{background-color:#fff;box-sizing:border-box;color:#000;display:block;height:0;$startSide:0;line-height:50px;overflow:hidden;
-padding-top:0;position:fixed;text-align:center;top:0;transition:box-shadow .3s,height .3s,padding-top .3s;width:100%;z-index:900}
-.skip-navigation:focus{box-shadow:0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);height:50px}
+.skip-navigation {background-color:#fff;box-sizing:border-box;color:#000;display:block;height:0;$startSide:0;line-height:50px;overflow:hidden;padding-top:0;position:fixed;text-align:center;top:0;transition:box-shadow .3s, height .3s, padding-top .3s;width:100%;z-index:900}
+.skip-navigation:focus{box-shadow:0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);height:50px}
 
 /* Message of archive and search pages */
-.post-filter-message {background-color:rgba(0,0,0,.8);color:#ffffff;padding-top:calc(var(--maincolumn-padding) * 2.25);padding-bottom:calc(var(--maincolumn-padding) * 2.25);text-align:center}
-.post-filter-message a {margin-$startSide:1em;color:#ffffff}
-.post-filter-message .search-label,.post-filter-message .search-query{
-font-weight:bold}
+.post-filter-message {background-color:rgba(0, 0, 0, .8);color:#fff;padding-top:calc(var(--maincolumn-padding) * 2.25);padding-bottom:calc(var(--maincolumn-padding) * 2.25);text-align:center}
+.post-filter-message a {margin-$startSide:1em;color:#fff}
+.post-filter-message .search-label, .post-filter-message .search-query {font-weight:bold}
 
 /* Appendix */
 #main {outline:0}
@@ -369,11 +367,11 @@ font-weight:bold}
 body .CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
 iframe.b-hbp-video {border:0}
-.noscript {background:#ffff00;color:#000000;padding:var(--maincolumn-padding);margin-bottom:2em}
+.noscript {background:#ff0;color:#000;padding:var(--maincolumn-padding);margin-bottom:2em}
 
 /* Notification */
 .b-notification {color:#000;background-color:#fff;border-bottom:solid 1px #000;box-sizing:border-box;padding:16px 32px;text-align:center}
-.b-notification.visible {transition:margin-top .3s cubic-bezier(.4,0,.2,1)}
+.b-notification.visible {transition:margin-top .3s cubic-bezier(.4, 0, .2, 1)}
 .b-notification.invisible {position:absolute}
 .b-notification-close {position:absolute;$endSide:8px;top:8px}
 .no-posts-message {line-height:40px;text-align:center}
@@ -393,7 +391,7 @@ iframe.b-hbp-video {border:0}
 .tabs li a {color:$(tabs.color)}
 
 /* Floating bar */
-#floatingbar {position:sticky;top:0;left:0;right:0;height:var(--floatingbar-height);width:auto;display:flex;justify-content:space-between;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
+#floatingbar {position:sticky;top:0;left:0;right:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
 #floating_menu {display:flex;column-gap:8px}
 #floating_share {display:flex;column-gap:4px}
 
@@ -455,7 +453,7 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .FeaturedPost a, .FeaturedPost a:hover, .FeaturedPost a:visited {color:$(posts.link.color)}
 .FeaturedPost article {display:grid;}
 .FeaturedPost .post-title, .FeaturedPost .post-title a, .FeaturedPost .post-title a:hover, .FeaturedPost .post-title a:visited {color:#ffffff}
-.FeaturedPost .post-title a {background-color:rgba(0, 0, 0, 0.2);width:min(100vw - var(--maincolumn-padding) * 2, $(content.width) - var(--maincolumn-padding) * 2);height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;justify-content:center;align-items:center;text-align:center;padding:var(--maincolumn-padding);box-sizing:border-box}
+.FeaturedPost .post-title a {background-color:rgba(0, 0, 0, .3);width:min(100vw - var(--maincolumn-padding) * 2, $(content.width) - var(--maincolumn-padding) * 2);height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;justify-content:center;align-items:center;text-align:center;padding:var(--maincolumn-padding);box-sizing:border-box}
 .FeaturedPost .post-title {font:$(posts.stream.title.font);margin:0;grid-column:1/2;grid-row:1/2;z-index:1}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2}
 .FeaturedPost .snippet-thumbnail img {display:block;width:min(100vw - var(--maincolumn-padding) * 2, $(content.width) - var(--maincolumn-padding) * 2);height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3)}
@@ -766,7 +764,7 @@ body:not(.item-view) .mobile-ad .inline-ad {align-self:center}
 }
 
 /* Hack for IE */
-_:-ms-input-placeholder, :root .hamburger-menu, .search-expand, .navigation {display:none}
+_:-ms-input-placeholder, :root #hamburger_menu, #search_expand, .navigation {display:none}
 _:-ms-input-placeholder, :root #BlogSearch1 .hidden, .sidebar-invisible {display:block}
 _:-ms-input-placeholder, :root .sidebar-container {position:static;margin-top:0}
 ]]></b:skin>
@@ -774,12 +772,11 @@ _:-ms-input-placeholder, :root .sidebar-container {position:static;margin-top:0}
 <b:template-skin>
 <![CDATA[
 body#layout .bg-photo, body#layout .bg-photo-overlay, body#layout .navigation {display:none}
-body#layout .hidden, body#layout .invisible {display: inherit}
-body#layout .centered {max-width:954px}
-body#layout page_body {padding:0;position:relative;top:0}
-body#layout page, body#layout .sidebar_top, body#layout .sidebar_bottom {display:inline-block;left:inherit;position:relative;vertical-align:top}
-body#layout .page {float:right;margin-left:20px;width:55%}
-body#layout .sidebar-container {display:inline-block;float:right;width:40%}
+body#layout .centered {display:block;max-width:925px;width:60%;float:right;}
+body#layout .centered-top {margin-top:0;margin-bottom:0}
+body#layout #floatingbar {position:initial;display:initial}
+body#layout #floating_menu {display:initial}
+body#layout .sidebar-container {float:left;width:40%}
 ]]>
 </b:template-skin>
 
@@ -1229,8 +1226,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 
 <div id='floatingbar'>
   <div id='floating_menu'>
-    <button type='button' class='svg-icon-24-button' id='hamburger-menu' aria-label='Open sidebar'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'/></svg></button>
-     <b:if cond='data:view.isLayoutMode or data:widgets any (w =&gt; w.sectionId == &quot;search_top&quot;)'>
+    <button type='button' class='svg-icon-24-button' id='hamburger_menu' aria-label='Open sidebar'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'/></svg></button>
+     <b:if cond='data:widgets any (w =&gt; w.sectionId == &quot;search_top&quot;)'>
         <div class='search'>
         <b:class cond='data:view.isSearch and data:view.search.query' name='focused'/>
         <b:section id='search_top' name='Search (Top)' showaddelement='false'>
@@ -1258,7 +1255,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
          </b:includable>
           </b:widget>
         </b:section>
-     <button type='button' class='svg-icon-24-button' id='search-expand' expr:aria-label='data:messages.search.escaped'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='floatingIcon' d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg></button>
+     <button type='button' class='svg-icon-24-button' id='search_expand' expr:aria-label='data:messages.search.escaped'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='floatingIcon' d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg></button>
     </div>
     </b:if>
   </div>
@@ -2204,7 +2201,7 @@ var sbct = document.querySelector(&quot;aside.sidebar-container&quot;);
 if (sbct.style.position === &quot;absolute&quot;) {
 sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); }
 /* Hamburger memu */
-var hbm = document.querySelector(&quot;button#hamburger-menu&quot;);
+var hbm = document.querySelector(&quot;button#hamburger_menu&quot;);
 var bcsd = document.createElement(&quot;div&quot;);
 bcsd.classList.add(&quot;dim-overlay&quot;);
 hbm.addEventListener(&quot;click&quot;, () =&gt; {
@@ -2219,13 +2216,13 @@ const progress = new Date().getTime() - start;
 if (progress &gt;= 300) {
 sbct.classList.add(&quot;sidebar-invisible&quot;); return; }
 const cancel = requestAnimationFrame(lpfdb); }
-lpfdb(); }
+requestAnimationFrame(lpfdb); }
 clb.addEventListener(&quot;click&quot;, () =&gt; {
 sbct.classList.add(&quot;slideout&quot;); tofdb(); sbct.style.willChange = &quot;auto&quot;; sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); });
 bcsd.addEventListener(&quot;click&quot;, () =&gt; {
 sbct.classList.add(&quot;slideout&quot;); tofdb(); sbct.style.willChange = &quot;auto&quot;; sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); });
 /* Search button */
-var sce = document.querySelector(&quot;button#search-expand&quot;);
+var sce = document.querySelector(&quot;button#search_expand&quot;);
 var shrb = document.querySelector(&quot;div.share-buttons&quot;);
 sce.addEventListener(&quot;click&quot;, () =&gt; {
 if (swc.classList.contains(&quot;hidden&quot;)) {
@@ -2263,7 +2260,7 @@ const progress = new Date().getTime() - start;
 if (progress &gt;= 300) {
 bbb.classList.add(&quot;hidden&quot;); return; }
 const cancel = requestAnimationFrame(lpfdb); }
-lpfdb(); }
+requestAnimationFrame(lpfdb); }
 let backButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach((entry) =&gt; {
 if (entry.isIntersecting) {
@@ -2347,7 +2344,7 @@ const progress = new Date().getTime() - start;
 if (progress &gt;= 300) {
 cbb.classList.add(&quot;hidden&quot;); return; }
 const cancel = requestAnimationFrame(lpfdc); }
-lpfdc(); }
+requestAnimationFrame(lpfdc); }
 let commentButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach((entry) =&gt; {
 if (entry.isIntersecting) {
