@@ -795,16 +795,17 @@ _:-ms-input-placeholder, :root #BlogSearch1 .hidden, .sidebar-invisible {display
 _:-ms-input-placeholder, :root .sidebar-container {position:static;margin-top:0}
 ]]></b:skin>
 
-<b:template-skin>
+<b:if cond='data:view.isLayoutMode'>
+<b:template-skin cond='data:view.isLayoutMode'>
 <![CDATA[
 body#layout .bg-photo, body#layout .bg-photo-overlay, body#layout .navigation {display:none}
-body#layout .centered {display:block;max-width:925px;width:60%;float:right;}
+body#layout .centered {display:block;max-width:925px;width:60%;float:right}
 body#layout .centered-top {margin-top:0;margin-bottom:0}
 body#layout #floatingbar {position:initial;display:initial}
 body#layout #floating_menu {display:initial}
 body#layout .sidebar-container {float:left;width:40%}
 ]]>
-</b:template-skin>
+</b:template-skin></b:if>
 
 <b:defaultmarkups>
   <b:defaultmarkup type='Common'>
