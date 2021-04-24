@@ -796,7 +796,7 @@ _:-ms-input-placeholder, :root .sidebar-container {position:static;margin-top:0}
 ]]></b:skin>
 
 <b:if cond='data:view.isLayoutMode'>
-<b:template-skin cond='data:view.isLayoutMode'>
+<b:template-skin>
 <![CDATA[
 body#layout .bg-photo, body#layout .bg-photo-overlay, body#layout .navigation {display:none}
 body#layout .centered {display:block;max-width:925px;width:60%;float:right}
