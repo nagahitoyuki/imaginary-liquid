@@ -452,7 +452,7 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .FeaturedPost {padding:20px var(--maincolumn-padding);background-color:$(posts.background.color);margin-bottom:var(--maincolumn-padding)}
 .FeaturedPost a, .FeaturedPost a:hover, .FeaturedPost a:visited {color:$(posts.link.color)}
 .FeaturedPost article {display:grid;}
-.FeaturedPost .post-title, .FeaturedPost .post-title a, .FeaturedPost .post-title a:hover, .FeaturedPost .post-title a:visited {color:#f8f8ff}
+.FeaturedPost .post-title, .FeaturedPost .post-title a, .FeaturedPost .post-title a:hover, .FeaturedPost .post-title a:visited {color:#fff}
 .FeaturedPost .post-title a {background-color:rgba(0, 0, 0, .3);width:min(100vw - var(--maincolumn-padding) * 2, $(content.width) - var(--maincolumn-padding) * 2);height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;justify-content:center;align-items:center;text-align:center;padding:var(--maincolumn-padding);box-sizing:border-box}
 .FeaturedPost .post-title {font:$(posts.stream.title.font);margin:0;grid-column:1/2;grid-row:1/2;z-index:1}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2}
