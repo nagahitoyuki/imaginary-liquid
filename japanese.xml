@@ -707,7 +707,7 @@ body.sidebar-visible .bg-photo-container {overflow-y:scroll}
 .post-body h6 {font-size:10.7px}
 
 /* アドセンス広告 */
-#AdSense1, .desktop-ad .inline-ad {display:block;height:auto;max-width:100%;width:100%}
+#AdSense1, .desktop-ad .inline-ad {display:block;width:100%;max-width:100%}
 #AdSense1 {margin:0 auto 20px}
 .desktop-ad .inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
 }
@@ -732,7 +732,7 @@ body.item-view .post-body a[imageanchor="1"] {margin-left:0!important;margin-rig
 body.item-view .post-body a[imageanchor="1"]+a[imageanchor="1"] {margin-top:16px}
 
 /* アドセンス広告 */
-#AdSense1, .mobile-ad .inline-ad {display:block;height:auto;width:calc(100vw - var(--maincolumn-padding) * 2)}
+#AdSense1, .mobile-ad .inline-ad {display:block;width:min(100%, calc(100vw - var(--maincolumn-padding) * 2))}
 #AdSense1 {margin:0 auto 20px}
 .mobile-ad .inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
 body:not(.item-view) .mobile-ad .inline-ad {align-self:center}
