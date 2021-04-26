@@ -419,7 +419,7 @@ html[dir="rtl"] body #back-button, html[dir="rtl"] body #comment-button, html[di
 
 /* ブログ内検索 */
 .search {display:flex;align-items:center}
-#swc {padding-$endSide:12px;animation:fadein .3s ease-out}
+#swc {padding-$endSide:8px;animation:fadein .3s ease-out}
 .search-space {color:$(search.input.color);font:$(search.input.font)}
 html[dir="rtl"] body .search-space {vertical-align:middle}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
