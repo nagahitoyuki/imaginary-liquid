@@ -767,9 +767,6 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 /* スマホ以下 */
 @media screen and (max-width:480px) {
 
-/* ブログ内検索 */
-.search-space {max-width:75%}
-
 /* 文字サイズと行間 */
 #blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 12.5)}
 body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
