@@ -419,7 +419,7 @@ html[dir="rtl"] body #back-button, html[dir="rtl"] body #comment-button, html[di
 /* Search widget */
 .search {display:flex;align-items:center}
 #swc {padding-$endSide:12px;animation:fadein .3s ease-out}
-.search-space {color:$(search.input.color);font:$(search.input.font)}
+.search-space {color:$(search.input.color);font:$(search.input.font);max-width:73%}
 html[dir="rtl"] body .search-space {vertical-align:middle}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
@@ -752,9 +752,6 @@ body:not(.item-view) .mobile-ad .inline-ad {align-self:center}
 
 /* Below the width of smartphone */
 @media screen and (max-width:480px) {
-
-/* Search widget */
-.search-space {max-width:70%}
 
 /* Labels */
 .Label li, .Label .label-size, .post-labels a {margin-$endSide:8px;margin-bottom:12px}
