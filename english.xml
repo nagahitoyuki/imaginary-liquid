@@ -336,7 +336,6 @@ img {max-width:100%;height:auto}
 iframe {max-width:100%}
 input {font-size:100%}
 blockquote {margin:1em 2.5em}
-pre {white-space:pre-wrap}
 
 /* Header background image */
 .bg-photo-container {height:$(body.background.height);overflow:hidden;position:absolute;width:100%;z-index:1}
