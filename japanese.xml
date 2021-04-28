@@ -2244,18 +2244,18 @@ sbct.style.willChange = &quot;transform&quot;; sbct.classList.remove(&quot;slide
 sbct.classList.add(&quot;slidein&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); }); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); bdis.appendChild(bcsd); });
 /* Close button */
 var clb = document.querySelector(&quot;button#close-button&quot;);
-function tofdb() {
+function tosl() {
 const start = new Date().getTime();
-function lpfdb(timestamp) {
+function lpsl(timestamp) {
 const progress = new Date().getTime() - start;
 if (progress &gt;= 300) {
 sbct.classList.add(&quot;sidebar-invisible&quot;); return; }
-const cancel = requestAnimationFrame(lpfdb); }
-requestAnimationFrame(lpfdb); }
+const cancel = requestAnimationFrame(lpsl); }
+requestAnimationFrame(lpsl); }
 clb.addEventListener(&quot;click&quot;, () =&gt; {
-sbct.classList.add(&quot;slideout&quot;); tofdb(); sbct.style.willChange = &quot;auto&quot;; sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); });
+sbct.classList.add(&quot;slideout&quot;); tosl(); sbct.style.willChange = &quot;auto&quot;; sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); });
 bcsd.addEventListener(&quot;click&quot;, () =&gt; {
-sbct.classList.add(&quot;slideout&quot;); tofdb(); sbct.style.willChange = &quot;auto&quot;; sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); });
+sbct.classList.add(&quot;slideout&quot;); tosl(); sbct.style.willChange = &quot;auto&quot;; sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); });
 /* Search button */
 var sce = document.querySelector(&quot;button#search_expand&quot;);
 var shrb = document.querySelector(&quot;div.share-buttons&quot;);
