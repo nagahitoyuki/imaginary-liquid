@@ -586,8 +586,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 
 /* Side bar */
 .navigation {text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
-.sidebar-container {backgroundcolor:$(sidebar.backgroundColorBottom);max-width:$(sidebar.width);overflow-y:auto;width:$(sidebar.width);box-sizing:border-box;box-shadow:5px 0 10px -5px rgba(0,0,0,.45);z-index:101;-webkit-overflow-scrolling: touch}
-html[dir="rtl"] .sidebar-container {box-shadow:-5px 0 10px -5px rgba(0,0,0,.45)}
+.sidebar-container {backgroundcolor:$(sidebar.backgroundColorBottom);max-width:$(sidebar.width);overflow-y:auto;width:$(sidebar.width);box-sizing:border-box;z-index:101;-webkit-overflow-scrolling: touch}
 .sidebar-container .widget {background:0 0;margin:0 var(--maincolumn-padding);padding:8px 0;color:$(widget.text.color)}
 .sidebar-container .widget .title {color:$(widget.title.color)}
 .sidebar-container .widget ul {list-style:none;padding-$startSide:0}
@@ -663,7 +662,8 @@ body {position:relative}
 
 /* Side bar */
 .sidebar-container .navigation {display:none}
-.sidebar-container {position:absolute;top:0;$startSide:0;$endSide:auto;margin-top:$(body.background.height);min-height:calc(100% - $(body.background.height));overflow:visible;z-index:32}
+.sidebar-container {position:absolute;top:0;$startSide:0;$endSide:auto;margin-top:$(body.background.height);min-height:calc(100% - $(body.background.height));overflow:visible;box-shadow:5px 0 10px -5px rgba(0,0,0,.45);z-index:32}
+html[dir="rtl"] .sidebar-container {box-shadow:-5px 0 10px -5px rgba(0,0,0,.45)}
 .sidebar-container .sidebar_top_wrapper {padding-top:1em;background-color:$(sidebar.backgroundColorTopHD);height:$(body.background.height);min-height:500px;margin-top:$(body.background.height * -1);box-shadow:5px 0 10px -5px rgba(0,0,0,.45);z-index:101}
 html[dir="rtl"] .sidebar-container .sidebar_top_wrapper {box-shadow:-5px 0 10px -5px rgba(0,0,0,.45)}
 .sidebar-container .sidebar_top {display:flex;height:$(body.background.height);flex-direction:row;max-height:$(body.background.height);min-height:500px}
