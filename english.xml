@@ -491,10 +491,9 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .post-body h6 {font-size:11px}
 
 /* Labels */
-.Label li, .Label .label-size, .post-labels a {background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px}
-.Label a, .post-labels a {color:$(labels.text.color)}
+.label-name, .post-labels a {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px}
+.label-name:hover, .label-name:visited {color:$(labels.text.color)}
 .Label ul {list-style:none;padding-$startSide:0}
-.Label li a {display:inline-block}
 
 /* Comments */
 #comments, section.embed {color:$(posts.text.color)}
@@ -743,8 +742,8 @@ body:not(.item-view) .mobile-ad .inline-ad {align-self:center}
 @media screen and (min-width:481px) {
 
 /* Labels */
-.Label li, .Label .label-size, .post-labels a {margin-$endSide:4px;margin-bottom:12px}
 .post-labels {margin-$endSide:-4px;margin-bottom:-6px}
+.label-name, .post-labels a {margin-$endSide:4px;margin-bottom:12px}
 .Label .first-items {margin-$endSide:-4px;margin-bottom:-12px}
 .Label .remaining-items {margin-top:12px;margin-$endSide:-4px;margin-bottom:-12px}
 }
@@ -753,8 +752,8 @@ body:not(.item-view) .mobile-ad .inline-ad {align-self:center}
 @media screen and (max-width:480px) {
 
 /* Labels */
-.Label li, .Label .label-size, .post-labels a {margin-$endSide:8px;margin-bottom:12px}
 .post-labels {margin-$endSide:-8px;margin-bottom:-6px}
+.label-name, .post-labels a {margin-$endSide:8px;margin-bottom:12px}
 .Label .first-items {margin-$endSide:-8px;margin-bottom:-12px}
 .Label .remaining-items {margin-top:12px;margin-$endSide:-8px;margin-bottom:-12px}
 }
