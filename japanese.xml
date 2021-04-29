@@ -486,10 +486,9 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0}
 
 /* ラベル */
-.Label li, .Label .label-size, .post-labels a {background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px}
-.Label a, .post-labels a {color:$(labels.text.color)}
+.label-name, .post-labels a {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px}
+.label-name:hover, .label-name:visited {color:$(labels.text.color)}
 .Label ul {list-style:none;padding-$startSide:0}
-.Label li a {display:inline-block}
 
 /* コメント */
 #comments, section.embed {color:$(posts.text.color)}
@@ -757,8 +756,8 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 @media screen and (min-width:481px) {
 
 /* ラベル */
-.Label li, .Label .label-size, .post-labels a {margin-$endSide:4px;margin-bottom:12px}
 .post-labels {margin-$endSide:-4px;margin-bottom:-6px}
+.label-name, .post-labels a {margin-$endSide:4px;margin-bottom:12px}
 .Label .first-items {margin-$endSide:-4px;margin-bottom:-12px}
 .Label .remaining-items {margin-top:12px;margin-$endSide:-4px;margin-bottom:-12px}
 }
@@ -779,8 +778,8 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 .PopularPosts .post-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 20);line-height:var(--body-lineheight)}
 
 /* ラベル */
-.Label li, .Label .label-size, .post-labels a {margin-$endSide:8px;margin-bottom:12px}
 .post-labels {margin-$endSide:-8px;margin-bottom:-6px}
+.label-name, .post-labels a {margin-$endSide:8px;margin-bottom:12px}
 .Label .first-items {margin-$endSide:-8px;margin-bottom:-12px}
 .Label .remaining-items {margin-top:12px;margin-$endSide:-8px;margin-bottom:-12px}
 }
