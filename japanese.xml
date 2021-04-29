@@ -489,6 +489,11 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .label-name, .post-labels a {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px}
 .label-name:hover, .label-name:visited {color:$(labels.text.color)}
 .Label ul {list-style:none;padding-$startSide:0}
+.Label li {margin-bottom:12px}
+.post-labels, .cloud-label-widget-content .first-items, .cloud-label-widget-content .remaining-items {display:flex;flex-wrap:wrap;gap:12px}
+.cloud-label-widget-content .remaining-items {margin-top:12px;margin-bottom:-12px}
+.Label .remaining-items li:last-child, .Label .remaining-items .label-size:last-child {margin-bottom:12px}
+.post-labels:last-child {margin-bottom:16px}
 
 /* コメント */
 #comments, section.embed {color:$(posts.text.color)}
@@ -751,17 +756,6 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 .post-body h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 55)}
 .PopularPosts .post-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30);line-height:var(--body-lineheight)}
 }
-
-/* スマホ以上 */
-@media screen and (min-width:481px) {
-
-/* ラベル */
-.post-labels {margin-$endSide:-4px;margin-bottom:-6px}
-.label-name, .post-labels a {margin-$endSide:4px;margin-bottom:12px}
-.Label .first-items {margin-$endSide:-4px;margin-bottom:-12px}
-.Label .remaining-items {margin-top:12px;margin-$endSide:-4px;margin-bottom:-12px}
-}
-
 /* スマホ以下 */
 @media screen and (max-width:480px) {
 
@@ -776,12 +770,6 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 .post-body h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 25)}
 .post-body h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30)}
 .PopularPosts .post-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 20);line-height:var(--body-lineheight)}
-
-/* ラベル */
-.post-labels {margin-$endSide:-8px;margin-bottom:-6px}
-.label-name, .post-labels a {margin-$endSide:8px;margin-bottom:12px}
-.Label .first-items {margin-$endSide:-8px;margin-bottom:-12px}
-.Label .remaining-items {margin-top:12px;margin-$endSide:-8px;margin-bottom:-12px}
 }
 
 /* IEへの対応 */
@@ -1763,7 +1751,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='postLabels'>
   <b:comment>We don&#39;t display labels on the home page.</b:comment>
   <b:if cond='data:view.isSingleItem and data:widget.type == &quot;Blog&quot;'>
-    <b:include name='super.postLabels'/>
+    <div class='byline post-labels'><b:tag cond='data:byline.label' class='byline-label' name='span'><data:byline.label/></b:tag><b:loop index='i' values='data:post.labels' var='label'><a expr:href='data:label.url' rel='tag'><data:label.name/></a></b:loop></div>
    </b:if>
  </b:includable>
     <b:includable id='postLocation'>
