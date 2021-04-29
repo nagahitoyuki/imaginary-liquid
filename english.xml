@@ -494,6 +494,11 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .label-name, .post-labels a {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px}
 .label-name:hover, .label-name:visited {color:$(labels.text.color)}
 .Label ul {list-style:none;padding-$startSide:0}
+.Label li {margin-bottom:12px}
+.post-labels, .cloud-label-widget-content .first-items, .cloud-label-widget-content .remaining-items {display:flex;flex-wrap:wrap;gap:12px}
+.cloud-label-widget-content .remaining-items {margin-top:12px;margin-bottom:-12px}
+.Label .remaining-items li:last-child, .Label .remaining-items .label-size:last-child {margin-bottom:12px}
+.post-labels:last-child {margin-bottom:16px}
 
 /* Comments */
 #comments, section.embed {color:$(posts.text.color)}
@@ -736,26 +741,6 @@ body.item-view .post-body a[imageanchor="1"]+a[imageanchor="1"] {margin-top:16px
 #AdSense1 {margin:0 auto 20px}
 .mobile-ad .inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
 body:not(.item-view) .mobile-ad .inline-ad {align-self:center}
-}
-
-/* More than the width of smartphone */
-@media screen and (min-width:481px) {
-
-/* Labels */
-.post-labels {margin-$endSide:-4px;margin-bottom:-6px}
-.label-name, .post-labels a {margin-$endSide:4px;margin-bottom:12px}
-.Label .first-items {margin-$endSide:-4px;margin-bottom:-12px}
-.Label .remaining-items {margin-top:12px;margin-$endSide:-4px;margin-bottom:-12px}
-}
-
-/* Below the width of smartphone */
-@media screen and (max-width:480px) {
-
-/* Labels */
-.post-labels {margin-$endSide:-8px;margin-bottom:-6px}
-.label-name, .post-labels a {margin-$endSide:8px;margin-bottom:12px}
-.Label .first-items {margin-$endSide:-8px;margin-bottom:-12px}
-.Label .remaining-items {margin-top:12px;margin-$endSide:-8px;margin-bottom:-12px}
 }
 
 /* Hack for IE */
@@ -1737,7 +1722,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='postLabels'>
   <b:comment>We don&#39;t display labels on the home page.</b:comment>
   <b:if cond='data:view.isSingleItem and data:widget.type == &quot;Blog&quot;'>
-    <b:include name='super.postLabels'/>
+    <div class='byline post-labels'><b:tag cond='data:byline.label' class='byline-label' name='span'><data:byline.label/></b:tag><b:loop index='i' values='data:post.labels' var='label'><a expr:href='data:label.url' rel='tag'><data:label.name/></a></b:loop></div>
    </b:if>
  </b:includable>
     <b:includable id='postLocation'>
