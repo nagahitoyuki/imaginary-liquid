@@ -1255,20 +1255,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 
 <main class='centered-bottom' id='main' tabindex='-1'>
 
-<b:if cond='data:view.isMultipleItems'>
-<script type='application/ld+json'> {
-&quot;@context&quot;: &quot;http://schema.org&quot;,
-&quot;@type&quot;: &quot;CreativeWork&quot;,
-&quot;mainEntity&quot;: {
-&quot;@type&quot;: &quot;Blog&quot;,
-&quot;@id&quot;: &quot;<data:blog.url.canonical.jsonEscaped/>&quot; },
-&quot;name&quot;: &quot;<data:blog.pageTitle.jsonEscaped/>&quot;,
-&quot;description&quot;: &quot;<b:eval expr='data:blog.description ? data:blog.description.jsonEscaped : &quot;Blog posting site by Blogger&quot;'/>&quot;,
-&quot;inLanguage&quot;: &quot;<data:blog.locale.name.jsonEscaped/>&quot;
-}
-</script>
-</b:if>
-
 <b:if cond='data:view.isArchive or (data:view.isSearch and data:view.search.resultsMessageHtml)'>
   <div class='post-filter-message'>
     <b:if cond='data:view.isArchive'>
@@ -1588,11 +1574,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='post' var='post'>
   <div class='post'>
     <b:if cond='data:view.isSingleItem'>
-    <b:include data='post' name='postMeta'/>
       <header><b:include data='post' name='postTitle'/>
       <b:include name='headerByline'/></header>
       <b:include data='post' name='postBody'/>
       <b:include data='post' name='postFooter'/>
+      <b:include data='post' name='postMeta'/>
       <div class='hidden' id='cbb'>
         <button type='button' class='svg-icon-24-button' id='comment-button' onclick='location.href="#cmt"' expr:aria-label='data:messages.postAComment' ><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='floatingIcon' d='M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z'/></svg></button>
       </div>
@@ -1880,6 +1866,20 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
   </b:widget>
 </b:section>
+
+<b:if cond='data:view.isMultipleItems'>
+<script type='application/ld+json'> {
+&quot;@context&quot;: &quot;http://schema.org&quot;,
+&quot;@type&quot;: &quot;CreativeWork&quot;,
+&quot;mainEntity&quot;: {
+&quot;@type&quot;: &quot;Blog&quot;,
+&quot;@id&quot;: &quot;<data:blog.url.canonical.jsonEscaped/>&quot; },
+&quot;name&quot;: &quot;<data:blog.pageTitle.jsonEscaped/>&quot;,
+&quot;description&quot;: &quot;<b:eval expr='data:blog.description ? data:blog.description.jsonEscaped : &quot;Blog posting site by Blogger&quot;'/>&quot;,
+&quot;inLanguage&quot;: &quot;<data:blog.locale.name.jsonEscaped/>&quot;
+}
+</script>
+</b:if>
 
 </main>
 
