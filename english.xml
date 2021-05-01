@@ -491,7 +491,7 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .post-body h6 {font-size:11px}
 
 /* Labels */
-.label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px;cursor:none}
+.post-labels a, .label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px;cursor:none}
 .label-name:hover, .label-name:visited {color:$(labels.text.color)}
 .Label ul {list-style:none;padding-$startSide:0}
 .Label li {margin-bottom:12px}
@@ -1708,7 +1708,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='postLabels'>
   <b:comment>We don&#39;t display labels on the home page.</b:comment>
   <b:if cond='data:view.isSingleItem and data:widget.type == &quot;Blog&quot;'>
-    <div class='byline post-labels'><b:tag cond='data:byline.label' class='byline-label' name='span'><data:byline.label/></b:tag><b:loop index='i' values='data:post.labels' var='label'><a class='label-name' expr:href='data:label.url' rel='tag'><data:label.name/></a></b:loop></div>
+    <div class='byline post-labels'><b:tag cond='data:byline.label' class='byline-label' name='span'><data:byline.label/></b:tag><b:loop index='i' values='data:post.labels' var='label'><a expr:href='data:label.url' rel='tag'><data:label.name/></a></b:loop></div>
    </b:if>
  </b:includable>
     <b:includable id='postLocation'>
