@@ -1072,8 +1072,8 @@ body#layout .sidebar-container {float:left;width:40%}
 
 <b:include cond='not data:view.isPreview' data='{ image: data:skin.vars.body_background.image, selector: &quot;.bg-photo&quot;, imageSizes: [480, 640, 800, 1200, 1600] }' name='responsiveImageStyle'/>
 
-<b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
-  <script async='async' expr:data-ad-client='data:adClientId ?: data:blog.adsenseClientId' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'/>
+<b:if cond='(data:widgets.AdSense.first or data:blog.adsenseClientId) and not data:blog.adsenseAutoAds'>
+  <script async='async' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'/>
 </b:if>
 <b:if cond='data:blog.analyticsAccountNumber'>
   <script>
@@ -1607,7 +1607,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:include name='headerByline'/></header>
       <b:include data='post' name='postBody'/>
       <b:include data='post' name='postFooter'/>
-      <b:include data='post' name='postMeta'/>
       <div class='hidden' id='cbb'>
         <button type='button' class='svg-icon-24-button' id='comment-button' onclick='location.href="#cmt"' expr:aria-label='data:messages.postAComment' ><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='floatingIcon' d='M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z'/></svg></button>
       </div>
@@ -1673,6 +1672,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 
     <!-- Show ad inside post container, after comments, if single item. -->
     <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
+    <b:include cond='data:view.isSingleItem' data='post' name='postMeta'/>
   </article>
 
   <!-- Show ad outside post container (between posts) for feed pages. -->
