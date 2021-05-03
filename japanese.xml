@@ -40,7 +40,6 @@
   <b:if cond='data:blog.adultContent'>
     <meta content='adult' name='rating'/>
   </b:if>
-    <link expr:href='data:view.url.canonical' rel='canonical'/>
     <data:blog.feedLinks/>
     <meta expr:content='data:blog.url.canonical' property='og:url'/>
   <b:if cond='data:view.isArchive or data:view.isLabelSearch'>
