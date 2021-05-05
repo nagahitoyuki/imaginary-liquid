@@ -621,8 +621,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .BlogArchive .post-count::before,.Label .label-count::before{
 content:'('}
 .BlogArchive .post-count::after,.Label .label-count::after{content:')'}
-.remaining-items {height:0;overflow:hidden;opacity:0;line-height:0;padding-top:0;padding-bottom:0;transition:all .3s  ease-out}
-.remaining-items.expanded {height:100%;opacity:1;line-height:inherit;padding-top:initial;padding-bottom:initial;transition:all .3s  ease-out}
+.remaining-items {position:absolute;visibility:hidden;overflow:hidden;transition:all .3s ease-out}
 #ArchiveList > div, .list-label-widget-content, .cloud-label-widget-content {display:flex;flex-direction:column}
 .BlogArchive .flat {margin-bottom:0}
 .sidebar-container .BlogArchive, .sidebar-container .Label {margin-bottom:16px}
@@ -2253,15 +2252,14 @@ if (swc.classList.contains(&quot;hidden&quot;)) {
 swc.classList.remove(&quot;hidden&quot;); floating_share.style.display = &quot;none&quot;; swc.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); } else {
 swc.classList.add(&quot;hidden&quot;); floating_share.style.display = &quot;flex&quot;; swc.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); }});
 /* Expand button */
-var acsbtns = [].slice.call(document.querySelectorAll(&quot;span.show-more&quot;));
-var acebtns = [].slice.call(document.querySelectorAll(&quot;span.show-less&quot;));
-if (acsbtns[0]) {
-acsbtns.forEach((acsbtn) =&gt; {
-acsbtn.addEventListener(&quot;click&quot;, (event) =&gt; {
-exp = event.target; exp.classList.add(&quot;hidden&quot;); exp.previousElementSibling.classList.toggle(&quot;expanded&quot;); exp.nextElementSibling.classList.remove(&quot;hidden&quot;); }); });
-acebtns.forEach((acebtn) =&gt; {
-acebtn.addEventListener(&quot;click&quot;, (event) =&gt; {
-cmp = event.target; cmp.classList.add(&quot;hidden&quot;); cmp.previousElementSibling.previousElementSibling.classList.toggle(&quot;expanded&quot;); cmp.previousElementSibling.classList.remove(&quot;hidden&quot;); }); });}
+var rits = [].slice.call(document.querySelectorAll(&quot;div.remaining-items&quot;));
+if (rits[0]) {
+rits.forEach((rit) =&gt; {
+let rith = rit.clientHeight; rit.style.height = &quot;0&quot;; rit.style.position = &quot;initial&quot;;
+rit.nextElementSibling.addEventListener(&quot;click&quot;, (event) =&gt; {
+exp = event.target; exp.classList.add(&quot;hidden&quot;); rit.style.height = rith + &quot;px&quot;; rit.style.visibility = &quot;visible&quot;; exp.nextElementSibling.classList.remove(&quot;hidden&quot;); }); 
+rit.nextElementSibling.nextElementSibling.addEventListener(&quot;click&quot;, (event) =&gt; {
+cmp = event.target; cmp.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;; rit.style.visibility = &quot;hidden&quot;; cmp.previousElementSibling.classList.remove(&quot;hidden&quot;); }); }); }
 <b:if cond='data:blog.isMobileRequest'>
 /* Share memu */
 shbtn.addEventListener(&quot;click&quot;, () =&gt; {
