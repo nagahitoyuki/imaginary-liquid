@@ -592,7 +592,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 
 /* Side bar */
 .navigation {text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
-.sidebar-container {backgroundcolor:$(sidebar.backgroundColorBottom);max-width:$(sidebar.width);overflow-y:auto;width:$(sidebar.width);box-sizing:border-box;z-index:101;-webkit-overflow-scrolling: touch}
+.sidebar-container {width:$(sidebar.width);backgroundcolor:$(sidebar.backgroundColorBottom);overflow-y:auto;box-sizing:border-box;z-index:101;-webkit-overflow-scrolling: touch}
 .sidebar-container .widget {background:0 0;margin:0 var(--maincolumn-padding);padding:8px 0;color:$(widget.text.color)}
 .sidebar-container .widget .title {color:$(widget.title.color)}
 .sidebar-container .widget ul {list-style:none;padding-$startSide:0}
@@ -620,18 +620,14 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .has-location .profile-snippet.snippet-container{max-height:144px}
 
 /* Archive and Labels */
-.BlogArchive .title, .Label .title {margin-bottom:0}
-.BlogArchive .hierarchy-content .hierarchy, .BlogArchive .remaining-items > ul
-{margin-top:0}
-.BlogArchive .post-count::before,.Label .label-count::before{
-content:'('}
-.BlogArchive .post-count::after,.Label .label-count::after{content:')'}
-.remaining-items {position:absolute;visibility:hidden;overflow:hidden;transition:all .3s ease-out}
+.BlogArchive .title, .Label .title, .BlogArchive .first-items ul {margin-bottom:0}
+.BlogArchive .remaining-items ul {margin-top:0;margin-bottom:0}
+.BlogArchive .post-count::before,.Label .label-count::before {content:'('}
+.BlogArchive .post-count::after,.Label .label-count::after {content:')'}
 #ArchiveList > div, .list-label-widget-content, .cloud-label-widget-content {display:flex;flex-direction:column}
-.BlogArchive .flat {margin-bottom:0}
 .sidebar-container .BlogArchive, .sidebar-container .Label {margin-bottom:16px}
-.show-more, .show-less {margin-$startSide:auto;font-size:medium;color:$(posts.link.color);cursor:pointer}
-.Label .show-more, .Label .show-less {margin-top:24px}
+.remaining-items {position:absolute;visibility:hidden;overflow:hidden;transition:all .3s ease-out}
+.show-more, .show-less {margin-$startSide:auto;font-size:medium;color:$(posts.link.color);margin-top:24px}
 .list-label-widget-content, .cloud-label-widget-content {margin-top:24px}
 .list-label-widget-content .first-items ul {margin-top:0;margin-bottom:0px}
 .list-label-widget-content .remaining-items ul {margin-top:0;margin-bottom:0}
@@ -2222,7 +2218,7 @@ rit.nextElementSibling.nextElementSibling.addEventListener(&quot;click&quot;, (e
 const cmp = event.target;
 cmp.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;; rit.style.visibility = &quot;hidden&quot;; cmp.previousElementSibling.classList.remove(&quot;hidden&quot;); }); }); }
 <b:if cond='data:blog.isMobileRequest'>
-/* Share memu */
+/* Share menu */
 shbtn.addEventListener(&quot;click&quot;, () =&gt; {
 navigator.share( {
 title: &quot;<data:view.title.escaped/>&quot;,
