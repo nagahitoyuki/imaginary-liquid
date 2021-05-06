@@ -587,7 +587,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 
 /* サイドバー */
 .navigation {text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
-.sidebar-container {width:$(sidebar.width);backgroundcolor:$(sidebar.backgroundColorBottom);overflow-y:auto;box-sizing:border-box;z-index:101;-webkit-overflow-scrolling: touch}
+.sidebar-container {width:min($(sidebar.width), 100%);backgroundcolor:$(sidebar.backgroundColorBottom);overflow-y:auto;box-sizing:border-box;z-index:101;-webkit-overflow-scrolling: touch}
 .sidebar-container .widget {background:0 0;margin:0 var(--maincolumn-padding);padding:8px 0;color:$(widget.text.color)}
 .sidebar-container .widget .title {color:$(widget.title.color)}
 .sidebar-container .widget ul {list-style:none;padding-$startSide:0}
