@@ -2178,27 +2178,30 @@ var bdis = document.body;
 var sbct = document.querySelector(&quot;aside.sidebar-container&quot;);
 if (sbct.style.position === &quot;absolute&quot;) {
 sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); }
-/* Hamburger memu */
+/* Hamburger menu */
 var hbm = document.querySelector(&quot;button#hamburger_menu&quot;);
 var bcsd = document.createElement(&quot;div&quot;);
 bcsd.classList.add(&quot;dim-overlay&quot;);
 hbm.addEventListener(&quot;click&quot;, () =&gt; {
-sbct.style.willChange = &quot;transform&quot;; sbct.classList.remove(&quot;slideout&quot;); requestAnimationFrame(() =&gt; {
-sbct.classList.add(&quot;slidein&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); }); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); bdis.appendChild(bcsd); });
+sbct.style.willChange = &quot;transform&quot;; requestAnimationFrame(() =&gt; {
+sbct.classList.add(&quot;slidein&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); }); sbct.classList.remove(&quot;slideout&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); bcsd.animate({opacity : [0, 1]}, 300); bdis.appendChild(bcsd); });
 /* Close button */
 var clb = document.querySelector(&quot;button#close-button&quot;);
-function tosl() {
+function bdfo() {
 const start = new Date().getTime();
-function lpsl(timestamp) {
+function bdfod(timestamp) {
 const progress = new Date().getTime() - start;
 if (progress &gt;= 300) {
-sbct.classList.add(&quot;sidebar-invisible&quot;); return; }
-const cancel = requestAnimationFrame(lpsl); }
-requestAnimationFrame(lpsl); }
+bdis.removeChild(bcsd); return; }
+const cancel = requestAnimationFrame(bdfod); }
+requestAnimationFrame(bdfod); }
 clb.addEventListener(&quot;click&quot;, () =&gt; {
-sbct.classList.add(&quot;slideout&quot;); tosl(); sbct.style.willChange = &quot;auto&quot;; sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); });
+sbct.classList.add(&quot;slideout&quot;); sbct.style.willChange = &quot;auto&quot;; sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdfo(); bcsd.animate({opacity : [1, 0]}, 300); });
 bcsd.addEventListener(&quot;click&quot;, () =&gt; {
-sbct.classList.add(&quot;slideout&quot;); tosl(); sbct.style.willChange = &quot;auto&quot;; sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdis.removeChild(bcsd); });
+sbct.classList.add(&quot;slideout&quot;); sbct.style.willChange = &quot;auto&quot;; sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdfo(); bcsd.animate({opacity : [1, 0]}, 300); });
+sbct.addEventListener(&quot;transitionend&quot;, () =&gt; {
+if (!bdis.classList.contains(&quot;sidebar-visible&quot;)) {
+sbct.classList.add(&quot;sidebar-invisible&quot;); }});
 /* Search button */
 var sce = document.querySelector(&quot;button#search_expand&quot;);
 var shrb = document.querySelector(&quot;div.share-buttons&quot;);
