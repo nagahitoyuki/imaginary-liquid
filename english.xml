@@ -2195,12 +2195,12 @@ if (progress &gt;= 300) {
 bdis.removeChild(bcsd); return; }
 const cancel = requestAnimationFrame(bdfod); }
 requestAnimationFrame(bdfod); }
-clb.addEventListener(&quot;click&quot;, () =&gt; {
-sbct.classList.add(&quot;slideout&quot;); sbct.style.willChange = &quot;auto&quot;; sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdfo(); bcsd.animate({opacity : [1, 0]}, 300); });
-bcsd.addEventListener(&quot;click&quot;, () =&gt; {
-sbct.classList.add(&quot;slideout&quot;); sbct.style.willChange = &quot;auto&quot;; sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdfo(); bcsd.animate({opacity : [1, 0]}, 300); });
+function clsb() {
+sbct.classList.add(&quot;slideout&quot;); sbct.style.willChange = &quot;auto&quot;; sbct.classList.remove(&quot;slidein&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdfo(); bcsd.animate({opacity : [1, 0]}, 300); }
+clb.addEventListener(&quot;click&quot;, clsb);
+bcsd.addEventListener(&quot;click&quot;, clsb);
 sbct.addEventListener(&quot;transitionend&quot;, () =&gt; {
-if (!bdis.classList.contains(&quot;sidebar-visible&quot;)) {
+if (sbct.classList.contains(&quot;slideout&quot;)) {
 sbct.classList.add(&quot;sidebar-invisible&quot;); }});
 /* Search button */
 var sce = document.querySelector(&quot;button#search_expand&quot;);
