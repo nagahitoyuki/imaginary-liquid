@@ -2308,7 +2308,7 @@ const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 180;
 if (window.pageYOffset === 0) {
 const iolm = window.screen.height - entry.boundingClientRect.top + 180;
 const bphg = document.querySelector(&quot;div.blog-posts&quot;).clientHeight;
-if (iolm &lt;= bphg) {
+if (bphg &gt; iolm &amp;&amp; iolm &gt; 0) {
 mnisac(); }} else if (sgtm &gt;= 0) {
 mnisac(); }} else {
 sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; nextIndexObserver.disconnect(); }}); }, {
