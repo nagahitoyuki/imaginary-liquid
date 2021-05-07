@@ -2267,6 +2267,8 @@ ytimg.src = yt.src; }); }
 var nextIndex = document.querySelector(&quot;aside.isf&quot;);
 var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
 var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
+var fpht = document.querySelector("div#FeaturedPost1") ? document.querySelector("div#FeaturedPost1").clientHeight : 0;
+var adht = document.querySelector(&quot;div.blog-posts&quot;).clientHeight + fpht;
 function scrollStop(event) {
 event.preventDefault(); }
 function mnisac(){
@@ -2306,12 +2308,9 @@ entries.forEach((entry) =&gt; {
 if (npl) {
 const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 180;
 if (window.pageYOffset === 0) {
-const iolm = window.screen.height - entry.boundingClientRect.top + 180;
-const bphg = document.querySelector(&quot;div.blog-posts&quot;).clientHeight;
+const iolm = window.screen.height - entry.boundingClientRect.top + 180 + fpht;
 if (iolm &gt; 0) {
-if (bphg !== 0) {
-mnisac(); nextIndex.style.marginTop = iolm + bphg + 180 + &quot;px&quot;; }} else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
-mnisac(); } else if (sgtm &gt;= 0) {
+mnisac(); nextIndex.style.marginTop = iolm + adht + 180 + &quot;px&quot;; } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
 mnisac(); }} else if (sgtm &gt;= 0) {
 mnisac(); }} else {
 sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; nextIndexObserver.disconnect(); }}); }, {
