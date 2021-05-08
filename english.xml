@@ -2235,8 +2235,9 @@ let backButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach((entry) =&gt; {
 if (entry.isIntersecting) {
 if (!bbb.classList.contains(&quot;hidden&quot;)) {
-bbb.classList.add(&quot;fadeout&quot;); bbb.addEventListener(&quot;animationend&quot;, () =&gt; {
-bbb.classList.add(&quot;hidden&quot;); }); }} else {
+bbb.classList.add(&quot;fadeout&quot;); bbb.addEventListener("animationend", () =&gt; {
+if (bbb.classList.contains(&quot;fadeout&quot;)) {
+bbb.classList.add(&quot;hidden&quot;); }}); }} else {
 bbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
 backButtonObserver.observe(backButton);
 <b:if cond='data:view.isMultipleItems'>
@@ -2323,8 +2324,9 @@ let commentButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach((entry) =&gt; {
 if (entry.isIntersecting) {
 if (!cbb.classList.contains(&quot;hidden&quot;)) {
-cbb.classList.add(&quot;fadeout&quot;); cbb.addEventListener(&quot;animationend&quot;, () =&gt; { 
-cbb.classList.add(&quot;hidden&quot;); }); }} else {
+cbb.classList.add(&quot;fadeout&quot;); cbb.addEventListener("animationend", () =&gt; { 
+if (cbb.classList.contains(&quot;fadeout&quot;)) {
+cbb.classList.add(&quot;hidden&quot;); }}); }} else {
 cbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
 commentAllow ? commentButtonObserver.observe(commentButton) : &quot;&quot;;
 /* iframe comment */
