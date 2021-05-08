@@ -411,11 +411,12 @@ html[dir="rtl"] body #back-button, html[dir="rtl"] body #comment-button, html[di
 #back-button, #comment-button {width:var(--floatingbar-height);border-radius:50%}
 #back-button svg {margin-bottom:calc(20px / 6)}
 #add-button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px}
-.fadeout {animation:fadeout .3s ease-out}
 
 /* Fade effect */
 @keyframes fadein {from{ opacity:0} to { opacity:1}}
 @keyframes fadeout {from{ opacity:1} to { opacity:0}}
+.fadein {animation:fadein .3s ease-out}
+.fadeout {animation:fadeout .3s ease-out}
 
 /* Search widget */
 .search {display:flex;align-items:center}
@@ -2184,24 +2185,19 @@ var bcsd = document.createElement(&quot;div&quot;);
 bcsd.classList.add(&quot;dim-overlay&quot;);
 hbm.addEventListener(&quot;click&quot;, () =&gt; {
 sbct.style.willChange = &quot;transform&quot;; requestAnimationFrame(() =&gt; {
-sbct.classList.add(&quot;slidein&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); }); sbct.classList.remove(&quot;slideout&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); bcsd.animate({opacity : [0, 1]}, 300); bdis.appendChild(bcsd); });
+sbct.classList.add(&quot;slidein&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); }); sbct.classList.remove(&quot;slideout&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); bcsd.classList.remove(&quot;fadeout&quot;); bcsd.classList.add(&quot;fadein&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); bdis.appendChild(bcsd); });
 /* Close button */
 var clb = document.querySelector(&quot;button#close-button&quot;);
-function bdfo() {
-const start = new Date().getTime();
-function bdfod(timestamp) {
-const progress = new Date().getTime() - start;
-if (progress &gt;= 300) {
-bdis.removeChild(bcsd); return; }
-const cancel = requestAnimationFrame(bdfod); }
-requestAnimationFrame(bdfod); }
 function clsb() {
-sbct.classList.add(&quot;slideout&quot;); sbct.style.willChange = &quot;auto&quot;; sbct.classList.remove(&quot;slidein&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); bdfo(); bcsd.animate({opacity : [1, 0]}, 300); }
+sbct.classList.add(&quot;slideout&quot;); sbct.style.willChange = &quot;auto&quot;; sbct.classList.remove(&quot;slidein&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bcsd.classList.remove(&quot;fadein&quot;); bcsd.classList.add(&quot;fadeout&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); }
 clb.addEventListener(&quot;click&quot;, clsb);
 bcsd.addEventListener(&quot;click&quot;, clsb);
 sbct.addEventListener(&quot;transitionend&quot;, () =&gt; {
 if (sbct.classList.contains(&quot;slideout&quot;)) {
 sbct.classList.add(&quot;sidebar-invisible&quot;); }});
+bcsd.addEventListener(&quot;animationend&quot;, () =&gt; {
+if (bcsd.classList.contains(&quot;fadeout&quot;)) {
+bdis.removeChild(bcsd); }});
 /* Search button */
 var sce = document.querySelector(&quot;button#search_expand&quot;);
 var shrb = document.querySelector(&quot;div.share-buttons&quot;);
@@ -2235,19 +2231,12 @@ alert (&quot;<data:messages.linkCopiedToClipboard.jsEscaped/>&quot;); }); });
 /* Back button */
 var backButton = document.querySelector(&quot;header.centered-top-container&quot;);
 var ftb = document.querySelector(&quot;div#floatingbar&quot;);
-function tofdb() {
-const start = new Date().getTime();
-function lpfdb(timestamp) {
-const progress = new Date().getTime() - start;
-if (progress &gt;= 300) {
-bbb.classList.add(&quot;hidden&quot;); return; }
-const cancel = requestAnimationFrame(lpfdb); }
-requestAnimationFrame(lpfdb); }
 let backButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach((entry) =&gt; {
 if (entry.isIntersecting) {
 if (!bbb.classList.contains(&quot;hidden&quot;)) {
-bbb.classList.add(&quot;fadeout&quot;); tofdb(); }} else {
+bbb.classList.add(&quot;fadeout&quot;); bbb.addEventListener(&quot;animationend&quot;, () =&gt; {
+bbb.classList.add(&quot;hidden&quot;); }); }} else {
 bbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
 backButtonObserver.observe(backButton);
 <b:if cond='data:view.isMultipleItems'>
@@ -2263,9 +2252,9 @@ const nytimg = document.createElement(&quot;source&quot;);
 const nytpic = ytpic.cloneNode(false);
 nytimg.srcset = yt.dataset.src; nytpic.appendChild(nytimg); nytpic.appendChild(yt); ytpic.parentNode.replaceChild(nytpic, ytpic); }}
 ytimg.src = yt.src; }); }
+/* Snippet display */
 var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
 <b:if cond='data:widgets.Blog.first.posts.size lt 6'>
-/* Snippet and pager */
 var bpht = document.querySelector(&quot;div.blog-posts&quot;).clientHeight;
 bpht === 0 ? document.querySelector(&quot;div.FeaturedPost&quot;).style.marginBottom = &quot;0&quot; : &quot;&quot;;
 npl.addEventListener(&quot;click&quot;, () =&gt; {
@@ -2330,19 +2319,12 @@ nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
 /* Comment button */
 var commentAllow = document.querySelector(&quot;a.cmal&quot;);
 var commentButton = document.querySelector(&quot;article.hentry&quot;);
-function tofdc() {
-const start = new Date().getTime();
-function lpfdc(timestamp) {
-const progress = new Date().getTime() - start;
-if (progress &gt;= 300) {
-cbb.classList.add(&quot;hidden&quot;); return; }
-const cancel = requestAnimationFrame(lpfdc); }
-requestAnimationFrame(lpfdc); }
 let commentButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach((entry) =&gt; {
 if (entry.isIntersecting) {
 if (!cbb.classList.contains(&quot;hidden&quot;)) {
-cbb.classList.add(&quot;fadeout&quot;); tofdc(); }} else {
+cbb.classList.add(&quot;fadeout&quot;); cbb.addEventListener(&quot;animationend&quot;, () =&gt; { 
+cbb.classList.add(&quot;hidden&quot;); }); }} else {
 cbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
 commentAllow ? commentButtonObserver.observe(commentButton) : &quot;&quot;;
 /* iframe comment */
