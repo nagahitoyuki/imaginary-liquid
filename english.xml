@@ -572,7 +572,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 /* Pager */
 .blog-pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.75);margin-bottom:calc(var(--maincolumn-padding) * 1.75)}
 #blog-pager {display:flex;justify-content:space-around}
-.blog-pager a {color:$(posts.navigation.link.color)}
+.blog-pager a {color:$(posts.navigation.link.color);cursor:none}
 .blog-pager a:visited{color:$(posts.navigation.link.visited.color)}
 .blog-pager a:hover {color:$(posts.navigation.link.hover.color)}
 
@@ -2263,12 +2263,17 @@ const nytimg = document.createElement(&quot;source&quot;);
 const nytpic = ytpic.cloneNode(false);
 nytimg.srcset = yt.dataset.src; nytpic.appendChild(nytimg); nytpic.appendChild(yt); ytpic.parentNode.replaceChild(nytpic, ytpic); }}
 ytimg.src = yt.src; }); }
+var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
+<b:if cond='data:widgets.Blog.first.posts.size lt 6'>
+/* Snippet and pager */
+var bpht = document.querySelector(&quot;div.blog-posts&quot;).clientHeight;
+bpht === 0 ? document.querySelector(&quot;div.FeaturedPost&quot;).style.marginBottom = &quot;0&quot; : &quot;&quot;;
+npl.addEventListener(&quot;click&quot;, () =&gt; {
+location.href = npl.dataset.href; });
+<b:else/>
 /* Infinite scroll */
 var nextIndex = document.querySelector(&quot;aside.isf&quot;);
 var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
-var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
-var bpht = document.querySelector(&quot;div.blog-posts&quot;).clientHeight;
-bpht === 0 ? document.querySelector(&quot;div.FeaturedPost&quot;).style.marginBottom = &quot;0&quot; : &quot;&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
 function mnisac(){
@@ -2320,6 +2325,7 @@ requestAnimationFrame(() =&gt; {
 sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; }); nextIndexObserver.disconnect(); }}); }, {
 rootMargin: &quot;180px&quot;});
 nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
+</b:if>
 <b:else/>
 /* Comment button */
 var commentAllow = document.querySelector(&quot;a.cmal&quot;);
