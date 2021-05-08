@@ -1563,7 +1563,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
      <data:messages.olderPosts/>
     </a>
   <b:elseif cond='data:view.isMultipleItems'/>
-    <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:title='data:messages.morePosts' rel='prev'>
+    <a class='blog-pager-older-link' expr:data-href='data:olderPageUrl' expr:title='data:messages.morePosts' rel='prev'>
       <data:messages.morePosts/>
     </a>
   </b:if>
@@ -1719,7 +1719,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='postPagination'>
   <div class='blog-pager'>
     <nav id='blog-pager'>
-    <b:include cond='data:newerPageUrl' name='previousPageLink'/>
+    <b:include cond='data:newerPageUrl and data:view.isSingleItem' name='previousPageLink'/>
     <b:include cond='data:olderPageUrl' name='nextPageLink'/>
    </nav>
   </div>
@@ -2268,9 +2268,10 @@ var nextIndex = document.querySelector(&quot;aside.isf&quot;);
 var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
 var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
 var bpht = document.querySelector(&quot;div.blog-posts&quot;).clientHeight;
+bpht === 0 ? document.querySelector("div.FeaturedPost").style.marginBottom = "0" : "";
 function scrollStop(event) {
 event.preventDefault(); }
-function mnisac(){
+function mnisac(state){
 sub_main.classList.add(&quot;hidden&quot;); attribution.classList.add(&quot;hidden&quot;);
 nextIndex.style.marginTop = &quot;46px&quot;;
 const isac = new Promise (resolve =&gt; {
@@ -2278,7 +2279,7 @@ if (adb.classList.contains(&quot;hidden&quot;)) {
 adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(); }});
 isac.then(() =&gt; {
 (async () =&gt; {
-await fetch(npl.getAttribute(&quot;href&quot;)).then((response) =&gt; response.text()).then((text) =&gt; {
+await fetch(npl.getAttribute(&quot;data-href&quot;)).then((response) =&gt; response.text()).then((text) =&gt; {
 const parserh = new DOMParser();
 const doch = parserh.parseFromString(text, &quot;text/html&quot;);
 const pst = doch.querySelector(&quot;div.blog-posts&quot;);
@@ -2306,7 +2307,11 @@ let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach((entry) =&gt; {
 if (npl) {
 const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 180;
-if (window.pageYOffset !== 0 &amp;&amp; sgtm &gt;= 0 &amp;&amp; bpht !==0) {
+if (window.pageYOffset === 0) {
+const iolm = window.screen.height - entry.boundingClientRect.top + 180;
+if (iolm &gt; 0) {
+npl.addEventListener("click", () =&gt; {
+location.href = npl.dataset.href; }); nextIndexObserver.disconnect(); }} else if (sgtm &gt;= 0) {
 mnisac(); }} else {
 sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; nextIndexObserver.disconnect(); }}); }, {
 rootMargin: &quot;180px&quot;});
