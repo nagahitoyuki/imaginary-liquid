@@ -7,24 +7,21 @@
 <b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
   <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
 </b:if>
-<b:if cond='!data:blog.isMobileRequest'>
 <b:if cond='data:skin.vars.body_background.image'>
+<b:if cond='!data:blog.isMobileRequest'>
   <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 640)' media='(max-width:640px) and (min-width:481px)' rel='preload'/>
   <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image,800)' media='(max-width:800px) and (min-width:641px)' rel='preload'/>
   <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 1200)' media='(max-width:1200px) and (min-width:801px)' rel='preload'/>
   <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 1600)' media='(min-width:1201px)' rel='preload'/>
-</b:if>
-  <link expr:href='data:view.url.canonical + &quot;?m=1&quot;' media='only screen and (max-width: 640px)' rel='alternate'/>
 <b:else/>
-<b:if cond='data:skin.vars.body_background.image'>
   <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 480)' rel='preload'/>
 </b:if>
-  <link expr:href='data:view.url.canonical' rel='canonical'/>
 </b:if>
   <title><data:view.title.escaped/><b:if cond='data:view.isArchive'>: <data:blog.pageName/>&#65288;<data:messages.archive/>&#65289;<b:elseif cond='data:view.isLabelSearch'/>: <data:blog.pageName/>&#65288;<data:messages.labels/>&#65289;<b:elseif cond='data:view.isSearch'/>: <data:messages.search/></b:if></title>
   <b:if cond='data:blog.metaDescription'>
     <meta expr:content='data:blog.metaDescription' name='description'/>
   </b:if>
+  <link expr:href='data:view.url.canonical' rel='canonical'/>
   <b:if cond='data:widgets'>
     <b:comment>Chrome, Firefox OS and Opera</b:comment>
     <meta expr:content='data:skin.vars.body_background_color' name='theme-color'/>
@@ -2238,7 +2235,8 @@ if (!bbb.classList.contains(&quot;hidden&quot;)) {
 bbb.classList.add(&quot;fadeout&quot;); bbb.addEventListener("animationend", () =&gt; {
 if (bbb.classList.contains(&quot;fadeout&quot;)) {
 bbb.classList.add(&quot;hidden&quot;); }}); }} else {
-bbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
+bbb.classList.remove(&quot;fadeout&quot;); requestAnimationFrame(() =&gt; {
+bbb.classList.remove(&quot;hidden&quot;); }); }}); });
 backButtonObserver.observe(backButton);
 <b:if cond='data:view.isMultipleItems'>
 /* YouTube image */
@@ -2327,7 +2325,8 @@ if (!cbb.classList.contains(&quot;hidden&quot;)) {
 cbb.classList.add(&quot;fadeout&quot;); cbb.addEventListener("animationend", () =&gt; { 
 if (cbb.classList.contains(&quot;fadeout&quot;)) {
 cbb.classList.add(&quot;hidden&quot;); }}); }} else {
-cbb.classList.remove(&quot;fadeout&quot;, &quot;hidden&quot;); }}); });
+cbb.classList.remove(&quot;fadeout&quot;); requestAnimationFrame(() =&gt; {
+cbb.classList.remove(&quot;hidden&quot;); }); }}); });
 commentAllow ? commentButtonObserver.observe(commentButton) : &quot;&quot;;
 /* iframe comment */
 var iframeComment = document.querySelector(&quot;iframe.blogger-iframe-colorize&quot;);
