@@ -2309,12 +2309,10 @@ var nextIndex = document.querySelector(&quot;aside.isf&quot;);
 var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
 var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
 var bpht = document.querySelector(&quot;div.blog-posts&quot;).clientHeight;
-bpht === 0 ? document.querySelector("div.FeaturedPost").style.marginBottom = "0" : "";
+bpht === 0 ? document.querySelector(&quot;div.FeaturedPost&quot;).style.marginBottom = &quot;0&quot; : &quot;&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
-function mnisac(state){
-sub_main.classList.add(&quot;hidden&quot;); attribution.classList.add(&quot;hidden&quot;);
-nextIndex.style.marginTop = &quot;46px&quot;;
+function mnisac(){
 const isac = new Promise (resolve =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(); }});
@@ -2343,7 +2341,10 @@ const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pa
 Blog1.appendChild(bpNode); }); return (() =&gt; {
 document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); adb.classList.add(&quot;hidden&quot;); })(); }); })(); });
 if (bpg) {
-bpg.parentNode.remove(); }}
+requestAnimationFrame(() =&gt; {
+bpg.parentNode.remove();
+sub_main.classList.add(&quot;hidden&quot;); attribution.classList.add(&quot;hidden&quot;);
+nextIndex.style.marginTop = &quot;46px&quot;; }); }}
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach((entry) =&gt; {
 if (npl) {
@@ -2351,10 +2352,13 @@ const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 180;
 if (window.pageYOffset === 0) {
 const iolm = window.screen.height - entry.boundingClientRect.top + 180;
 if (iolm &gt; 0) {
-npl.addEventListener("click", () =&gt; {
-location.href = npl.dataset.href; }); nextIndexObserver.disconnect(); }} else if (sgtm &gt;= 0) {
-mnisac(); }} else {
-sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; nextIndexObserver.disconnect(); }}); }, {
+npl.addEventListener(&quot;click&quot;, () =&gt; {
+location.href = npl.dataset.href; }); nextIndexObserver.disconnect(); } else {
+return; }} else if (sgtm &gt; 0) {
+mnisac(); } else {
+return; }} else {
+requestAnimationFrame(() =&gt; {
+sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; }); nextIndexObserver.disconnect(); }}); }, {
 rootMargin: &quot;180px&quot;});
 nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
 <b:else/>
