@@ -2343,9 +2343,9 @@ nextIndex.style.marginTop = &quot;46px&quot;; }); }}}
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach((entry) =&gt; {
 if (npl) {
-const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 180;
+const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 90;
 if (window.pageYOffset === 0) {
-const iolm = window.screen.height - entry.boundingClientRect.top + 180;
+const iolm = window.screen.height - entry.boundingClientRect.top + 90;
 if (iolm &gt; 0) {
 npl.addEventListener(&quot;click&quot;, () =&gt; {
 mnisac(0); }); } else {
@@ -2354,7 +2354,7 @@ mnisac(1); } else {
 return; }} else {
 requestAnimationFrame(() =&gt; {
 sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; }); nextIndexObserver.disconnect(); }}); }, {
-rootMargin: &quot;180px&quot;});
+rootMargin: &quot;90px&quot;});
 nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
 <b:else/>
 /* Comment button */
@@ -2386,7 +2386,7 @@ bdis.onfocus = () =&gt; {
 if (iframeComment !== document.activeElement)
 bbb.classList.remove(&quot;invisible&quot;); }</b:if>
 iframeCommentObserver.disconnect(); }}); }, {
-rootMargin: &quot;180px&quot;});
+rootMargin: &quot;90px&quot;});
 iframeComment ? iframeCommentObserver.observe(iframeComment) : &quot;&quot;;
 /* Comment avatar */
 var cml = document.querySelector(&quot;div.comments-content&quot;);
