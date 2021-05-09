@@ -2262,7 +2262,8 @@ event.preventDefault(); }
 function mnisac(state){
 const isac = new Promise (resolve =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
-adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(); }});
+requestAnimationFrame(() =&gt; {
+adb.classList.remove(&quot;hidden&quot;); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(); }});
 isac.then(() =&gt; {
 (async () =&gt; {
 await fetch(npl.getAttribute(&quot;data-href&quot;)).then((response) =&gt; response.text()).then((text) =&gt; {
@@ -2288,13 +2289,16 @@ const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pa
 Blog1.appendChild(bpNode); }); return (() =&gt; {
 document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); adb.classList.add(&quot;hidden&quot;); })(); }); })(); });
 if (state === 0) {
-Blog1.after(bpg.parentNode.cloneNode(true)); } else if (state === 1) {
-Blog1.nextElementSibling ? Blog1.nextElementSibling.remove() : ""; }
+Blog1.after(bpg.parentNode.cloneNode(true)); Blog1.nextElementSibling.addEventListener(&quot;click&quot;, mnisac);
+if (bpg) {
+requestAnimationFrame(() =&gt; {
+bpg.parentNode.remove(); }); }} else if (state === 1) {
+Blog1.nextElementSibling ? Blog1.nextElementSibling.remove() : &quot;&quot;; 
 if (bpg) {
 requestAnimationFrame(() =&gt; {
 bpg.parentNode.remove();
 sub_main.classList.add(&quot;hidden&quot;); attribution.classList.add(&quot;hidden&quot;);
-nextIndex.style.marginTop = &quot;46px&quot;; }); }}
+nextIndex.style.marginTop = &quot;46px&quot;; }); }}}
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach((entry) =&gt; {
 if (npl) {
@@ -2302,7 +2306,8 @@ const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 180;
 if (window.pageYOffset === 0) {
 const iolm = window.screen.height - entry.boundingClientRect.top + 180;
 if (iolm &gt; 0) {
-mnisac(0); Blog1.nextElementSibling ? Blog1.nextElementSibling.addEventListener("click", mnisac) : ""; } else {
+npl.addEventListener(&quot;click&quot;, () =&gt; {
+mnisac(0); }); } else {
 return; }} else if (sgtm &gt; 0) {
 mnisac(1); } else {
 return; }} else {
