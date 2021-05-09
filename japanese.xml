@@ -1590,8 +1590,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
      <data:messages.olderPosts/>
     </a>
   <b:elseif cond='data:view.isMultipleItems'/>
-    <a class='blog-pager-older-link' expr:data-href='data:olderPageUrl' expr:title='data:messages.morePosts' rel='prev'>
-      <data:messages.morePosts/>
+    <a class='blog-pager-older-link' expr:data-href='data:olderPageUrl' expr:title='data:messages.loadMorePosts' rel='prev'>
+      <data:messages.loadMorePosts/>
     </a>
   </b:if>
 </b:includable>
@@ -2292,20 +2292,15 @@ const nytimg = document.createElement(&quot;source&quot;);
 const nytpic = ytpic.cloneNode(false);
 nytimg.srcset = yt.dataset.src; nytpic.appendChild(nytimg); nytpic.appendChild(yt); ytpic.parentNode.replaceChild(nytpic, ytpic); }}
 ytimg.src = yt.src; }); }
-/* Snippet display */
-var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
-<b:if cond='data:widgets.Blog.first.posts.size lt 6'>
-var bpht = document.querySelector(&quot;div.blog-posts&quot;).clientHeight;
-bpht === 0 ? document.querySelector(&quot;div.FeaturedPost&quot;).style.marginBottom = &quot;0&quot; : &quot;&quot;;
-npl.addEventListener(&quot;click&quot;, () =&gt; {
-location.href = npl.dataset.href; });
-<b:else/>
 /* Infinite scroll */
 var nextIndex = document.querySelector(&quot;aside.isf&quot;);
 var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
+var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
+var bpht = document.querySelector(&quot;div.blog-posts&quot;).clientHeight;
+bpht === 0 ? document.querySelector(&quot;div.FeaturedPost&quot;).style.marginBottom = &quot;0&quot; : &quot;&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
-function mnisac(){
+function mnisac(state){
 const isac = new Promise (resolve =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(); }});
@@ -2333,6 +2328,9 @@ adc.parentNode.removeChild(adc); }); }
 const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); requestAnimationFrame(() =&gt; {
 Blog1.appendChild(bpNode); }); return (() =&gt; {
 document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); adb.classList.add(&quot;hidden&quot;); })(); }); })(); });
+if (state === 0) {
+Blog1.after(bpg.parentNode.cloneNode(true)); } else if (state === 1) {
+Blog1.nextElementSibling ? Blog1.nextElementSibling.remove() : ""; }
 if (bpg) {
 requestAnimationFrame(() =&gt; {
 bpg.parentNode.remove();
@@ -2345,16 +2343,14 @@ const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 180;
 if (window.pageYOffset === 0) {
 const iolm = window.screen.height - entry.boundingClientRect.top + 180;
 if (iolm &gt; 0) {
-npl.addEventListener(&quot;click&quot;, () =&gt; {
-location.href = npl.dataset.href; }); nextIndexObserver.disconnect(); } else {
+mnisac(0); Blog1.nextElementSibling ? Blog1.nextElementSibling.addEventListener("click", mnisac) : ""; } else {
 return; }} else if (sgtm &gt; 0) {
-mnisac(); } else {
+mnisac(1); } else {
 return; }} else {
 requestAnimationFrame(() =&gt; {
 sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; }); nextIndexObserver.disconnect(); }}); }, {
 rootMargin: &quot;180px&quot;});
 nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
-</b:if>
 <b:else/>
 /* Comment button */
 var commentAllow = document.querySelector(&quot;a.cmal&quot;);
