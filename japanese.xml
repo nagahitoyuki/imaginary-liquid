@@ -2302,17 +2302,17 @@ bpht === 0 ? document.querySelector(&quot;div.FeaturedPost&quot;).style.marginBo
 function scrollStop(event) {
 event.preventDefault(); }
 function mnisac(state) {
-if (this.c === 0) {
-requestAnimationFrame(() =&gt; {
-Blog1.after(bpg.parentNode.cloneNode(true)); return Blog1.nextElementSibling.addEventListener(&quot;click&quot;, mnisac); }); 
-if (bpg) {
-requestAnimationFrame(() =&gt; {
-bpg.parentNode.remove(); }); }} else if (state === 1) {
+if (state === 1) {
 Blog1.nextElementSibling ? Blog1.nextElementSibling.remove() : &quot;&quot;; 
 if (bpg) {
 requestAnimationFrame(() =&gt; {
 bpg.parentNode.remove();
-nextIndex.style.marginTop = &quot;46px&quot;; }); }}
+nextIndex.style.marginTop = &quot;46px&quot;; }); }} else if (state.target.parentNode.id !== &quot;Blog1&quot;) {
+npl.removeEventListener(&quot;click&quot;, mnisac); requestAnimationFrame(() =&gt; {
+Blog1.after(bpg.parentNode.cloneNode(true)); return Blog1.nextElementSibling.addEventListener(&quot;click&quot;, mnisac); });
+if (bpg) {
+requestAnimationFrame(() =&gt; {
+bpg.parentNode.remove(); }); }}
 const isac = new Promise (resolve =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 requestAnimationFrame(() =&gt; {
@@ -2346,15 +2346,15 @@ entries.forEach((entry) =&gt; {
 if (npl) {
 const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 46;
 if (window.pageYOffset === 0) {
-const iolm = window.screen.height - entry.boundingClientRect.top + 46;
+const iolm = window.innerHeight - entry.boundingClientRect.top + 46;
+alert(iolm);
 if (iolm &gt; 0) {
-npl.addEventListener(&quot;click&quot;, {
-handleEvent: mnisac, c: 0}); } else {
+npl.addEventListener(&quot;click&quot;, mnisac); } else {
 return; }} else if (sgtm &gt; 0) {
 mnisac(1); } else {
 return; }} else {
 requestAnimationFrame(() =&gt; {
-sub_main.style.display = "initial"; attribution.style.display = "initial"; nextIndex.style.marginTop = &quot;0&quot;; }); nextIndexObserver.disconnect(); }}); }, {
+sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; nextIndex.style.marginTop = &quot;0&quot;; }); nextIndexObserver.disconnect(); }}); }, {
 rootMargin: &quot;46px&quot;});
 nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
 <b:else/>
