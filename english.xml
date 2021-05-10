@@ -344,7 +344,8 @@ blockquote {margin:1em 2.5em}
 .hidden {display:none}
 .invisible {visibility:hidden}
 .clearboth {clear:both}
-.sub_main, #attribution {content-visibility:auto;contain-intrinsic-size:100%}
+aside.isf #sub_main, aside.isf + #attribution {display:none}
+#sub_main, #attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* Widget */
 #comments .comment .comment-actions, .widget.Profile .profile-link, .widget.Profile .profile-link.visit-profile {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0}
@@ -575,11 +576,11 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .blog-pager a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* Sub main */
-.sub_main .widget {margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
-.sub_main .widget ul {list-style:none;padding-$startSide:0}
-.sub_main .widget ul ul {margin-$startSide:1em}
-.sub_main.no-items {display:none}
-.sub_main .widget:last-child {margin-bottom:1.75em}
+#sub_main .widget {margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
+#sub_main .widget ul {list-style:none;padding-$startSide:0}
+#sub_main .widget ul ul {margin-$startSide:1em}
+#sub_main.no-items {display:none}
+#sub_main .widget:last-child {margin-bottom:1.75em}
 
 /* Attribution */
 #attribution {text-align:center;font-size:small;color:$(attribution.text.color);margin-bottom:1.75em}
@@ -2259,7 +2260,18 @@ var bpht = document.querySelector(&quot;div.blog-posts&quot;).clientHeight;
 bpht === 0 ? document.querySelector(&quot;div.FeaturedPost&quot;).style.marginBottom = &quot;0&quot; : &quot;&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
-function mnisac(state){
+function mnisac(state) {
+if (this.c === 0) {
+requestAnimationFrame(() =&gt; {
+Blog1.after(bpg.parentNode.cloneNode(true)); return Blog1.nextElementSibling.addEventListener(&quot;click&quot;, mnisac); }); 
+if (bpg) {
+requestAnimationFrame(() =&gt; {
+bpg.parentNode.remove(); }); }} else if (state === 1) {
+Blog1.nextElementSibling ? Blog1.nextElementSibling.remove() : &quot;&quot;; 
+if (bpg) {
+requestAnimationFrame(() =&gt; {
+bpg.parentNode.remove();
+nextIndex.style.marginTop = &quot;46px&quot;; }); }}
 const isac = new Promise (resolve =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 requestAnimationFrame(() =&gt; {
@@ -2287,18 +2299,7 @@ adcs.forEach ((adc) =&gt; {
 adc.parentNode.removeChild(adc); }); }
 const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); requestAnimationFrame(() =&gt; {
 Blog1.appendChild(bpNode); }); return (() =&gt; {
-document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); adb.classList.add(&quot;hidden&quot;); })(); }); })(); });
-if (state === 0) {
-Blog1.after(bpg.parentNode.cloneNode(true)); Blog1.nextElementSibling.addEventListener(&quot;click&quot;, mnisac);
-if (bpg) {
-requestAnimationFrame(() =&gt; {
-bpg.parentNode.remove(); }); }} else if (state === 1) {
-Blog1.nextElementSibling ? Blog1.nextElementSibling.remove() : &quot;&quot;; 
-if (bpg) {
-requestAnimationFrame(() =&gt; {
-bpg.parentNode.remove();
-sub_main.classList.add(&quot;hidden&quot;); attribution.classList.add(&quot;hidden&quot;);
-nextIndex.style.marginTop = &quot;46px&quot;; }); }}}
+document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); adb.classList.add(&quot;hidden&quot;); })(); }); })(); }); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach((entry) =&gt; {
 if (npl) {
@@ -2306,13 +2307,13 @@ const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 46;
 if (window.pageYOffset === 0) {
 const iolm = window.screen.height - entry.boundingClientRect.top + 46;
 if (iolm &gt; 0) {
-npl.addEventListener(&quot;click&quot;, () =&gt; {
-mnisac(0); }); } else {
+npl.addEventListener(&quot;click&quot;, {
+handleEvent: mnisac, c: 0}); } else {
 return; }} else if (sgtm &gt; 0) {
 mnisac(1); } else {
 return; }} else {
 requestAnimationFrame(() =&gt; {
-sub_main.classList.remove(&quot;hidden&quot;); attribution.classList.remove(&quot;hidden&quot;); nextIndex.style.marginTop = &quot;0&quot;; }); nextIndexObserver.disconnect(); }}); }, {
+sub_main.style.display = "initial"; attribution.style.display = "initial"; nextIndex.style.marginTop = &quot;0&quot;; }); nextIndexObserver.disconnect(); }}); }, {
 rootMargin: &quot;46px&quot;});
 nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
 <b:else/>
