@@ -2300,26 +2300,15 @@ ytimg.src = yt.src; }); }
 var nextIndex = document.querySelector(&quot;aside.isf&quot;);
 var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
 var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
-var bpht = document.querySelector(&quot;div.blog-posts&quot;).clientHeight;
-bpht === 0 ? document.querySelector(&quot;div.FeaturedPost&quot;).style.marginBottom = &quot;0&quot; : &quot;&quot;;
+var bpct = document.querySelector(&quot;div.blog-posts&quot;);
+bpct.clientHeight === 0 ? bpct.remove() : &quot;&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
-function mnisac(state) {
-if (state === 1) {
-Blog1.nextElementSibling ? Blog1.nextElementSibling.remove() : &quot;&quot;; 
-if (bpg) {
-requestAnimationFrame(() =&gt; {
-bpg.parentNode.remove();
-nextIndex.style.marginTop = &quot;46px&quot;; }); }} else if (state.target.parentNode.id !== &quot;Blog1&quot;) {
-npl.removeEventListener(&quot;click&quot;, mnisac); requestAnimationFrame(() =&gt; {
-Blog1.after(bpg.parentNode.cloneNode(true)); return Blog1.nextElementSibling.addEventListener(&quot;click&quot;, mnisac); });
-if (bpg) {
-requestAnimationFrame(() =&gt; {
-bpg.parentNode.remove(); }); }}
+function mnisac() {
 const isac = new Promise (resolve =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 requestAnimationFrame(() =&gt; {
-adb.classList.remove(&quot;hidden&quot;); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(); }});
+adb.classList.remove(&quot;hidden&quot;); bpg.parentNode.remove(); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(); }});
 isac.then(() =&gt; {
 (async () =&gt; {
 await fetch(npl.getAttribute(&quot;data-href&quot;)).then((response) =&gt; response.text()).then((text) =&gt; {
@@ -2343,17 +2332,19 @@ adcs.forEach ((adc) =&gt; {
 adc.parentNode.removeChild(adc); }); }
 const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); requestAnimationFrame(() =&gt; {
 Blog1.appendChild(bpNode); }); return (() =&gt; {
-document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); adb.classList.add(&quot;hidden&quot;); })(); }); })(); }); }
+document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); adb.classList.add(&quot;hidden&quot;); })(); }); })(); });
+nextIndex.style.marginTop = &quot;46px&quot;; }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach((entry) =&gt; {
 if (npl) {
 const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 46;
 if (window.pageYOffset === 0) {
-const iolm = window.innerHeight - entry.boundingClientRect.top + 46;
+const iolm = window.innerHeight - entry.boundingClientRect.top + 46 ;
 if (iolm &gt; 0) {
-npl.addEventListener(&quot;click&quot;, mnisac); } else {
+mnisac(); nextIndex.style.marginTop = iolm + 46 + &quot;px&quot;; } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
+mnisac(); } else {
 return; }} else if (sgtm &gt; 0) {
-mnisac(1); } else {
+mnisac(); } else {
 return; }} else {
 requestAnimationFrame(() =&gt; {
 sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; nextIndex.style.marginTop = &quot;0&quot;; }); nextIndexObserver.disconnect(); }}); }, {
