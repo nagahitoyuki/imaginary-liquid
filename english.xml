@@ -2306,7 +2306,6 @@ if (npl) {
 const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 46;
 if (window.pageYOffset === 0) {
 const iolm = window.innerHeight - entry.boundingClientRect.top + 46;
-alert(iolm);
 if (iolm &gt; 0) {
 npl.addEventListener(&quot;click&quot;, mnisac); } else {
 return; }} else if (sgtm &gt; 0) {
