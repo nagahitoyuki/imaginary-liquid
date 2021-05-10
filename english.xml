@@ -453,10 +453,11 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .FeaturedPost a, .FeaturedPost a:hover, .FeaturedPost a:visited {color:$(posts.link.color)}
 .FeaturedPost article {display:grid;}
 .FeaturedPost .post-title, .FeaturedPost .post-title a, .FeaturedPost .post-title a:hover, .FeaturedPost .post-title a:visited {color:#fff}
-.FeaturedPost .post-title a {background-color:rgba(0, 0, 0, .3);width:min(100vw - var(--maincolumn-padding) * 2, $(content.width) - var(--maincolumn-padding) * 2);height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;justify-content:center;align-items:center;text-align:center;padding:var(--maincolumn-padding);box-sizing:border-box}
+.FeaturedPost .post-title a {width:min(100vw - var(--maincolumn-padding) * 2, $(content.width) - var(--maincolumn-padding) * 2);height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;justify-content:center;align-items:center;text-align:center;padding:var(--maincolumn-padding);box-sizing:border-box}
+.no-image {background-color:#a9a9a9}
 .FeaturedPost .post-title {font:$(posts.stream.title.font);margin:0;grid-column:1/2;grid-row:1/2;z-index:1}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2}
-.FeaturedPost .snippet-thumbnail img {display:block;width:min(100vw - var(--maincolumn-padding) * 2, $(content.width) - var(--maincolumn-padding) * 2);height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3)}
+.FeaturedPost .snippet-thumbnail img {display:block;width:min(100vw - var(--maincolumn-padding) * 2, $(content.width) - var(--maincolumn-padding) * 2);height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);filter:brightness(70%)}
 
 /* Post title */
 .Blog .post-title {margin-top:0;margin-bottom:16px}
@@ -1303,7 +1304,9 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='snippetedPostTitle'>
   <h2 class='post-title'>
-    <a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><span><data:post.title/></span></a>
+    <a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'>
+    <b:class cond='!data:post.featuredImage' name='no-image'/>
+    <span><data:post.title/></span></a>
   </h2>
 </b:includable>
     <b:includable id='snippetedPosts'>
