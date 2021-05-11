@@ -2209,12 +2209,12 @@ swc.classList.add(&quot;hidden&quot;); floating_share.style.display = &quot;flex
 /* Expand button */
 var rits = [].slice.call(document.querySelectorAll(&quot;div.remaining-items&quot;));
 if (rits[0]) {
-rits.forEach((rit) =&gt; {
+rits.forEach(rit =&gt; {
 let rith = rit.clientHeight; rit.style.height = &quot;0&quot;; rit.style.position = &quot;initial&quot;;
-rit.nextElementSibling.addEventListener(&quot;click&quot;, (event) =&gt; {
+rit.nextElementSibling.addEventListener(&quot;click&quot;, event =&gt; {
 const exp = event.target;
 exp.classList.add(&quot;hidden&quot;); rit.style.height = rith + &quot;px&quot;; rit.style.visibility = &quot;visible&quot;; exp.nextElementSibling.classList.remove(&quot;hidden&quot;); }); 
-rit.nextElementSibling.nextElementSibling.addEventListener(&quot;click&quot;, (event) =&gt; {
+rit.nextElementSibling.nextElementSibling.addEventListener(&quot;click&quot;, event =&gt; {
 const cmp = event.target;
 cmp.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;; rit.style.visibility = &quot;hidden&quot;; cmp.previousElementSibling.classList.remove(&quot;hidden&quot;); }); }); }
 <b:if cond='data:blog.isMobileRequest'>
@@ -2233,10 +2233,10 @@ alert (&quot;<data:messages.linkCopiedToClipboard.jsEscaped/>&quot;); }); });
 var backButton = document.querySelector(&quot;header.centered-top-container&quot;);
 var ftb = document.querySelector(&quot;div#floatingbar&quot;);
 let backButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
-entries.forEach((entry) =&gt; {
+entries.forEach(entry =&gt; {
 if (entry.isIntersecting) {
 if (!bbb.classList.contains(&quot;hidden&quot;)) {
-bbb.classList.add(&quot;fadeout&quot;); bbb.addEventListener("animationend", () =&gt; {
+bbb.classList.add(&quot;fadeout&quot;); bbb.addEventListener(&quot;animationend&quot;, () =&gt; {
 if (bbb.classList.contains(&quot;fadeout&quot;)) {
 bbb.classList.add(&quot;hidden&quot;); }}); }} else {
 bbb.classList.remove(&quot;fadeout&quot;); requestAnimationFrame(() =&gt; {
@@ -2246,7 +2246,7 @@ backButtonObserver.observe(backButton);
 /* YouTube image */
 var ytpics = [].slice.call(document.querySelectorAll(&quot;picture.ytpic&quot;));
 if (ytpics[0]) {
-ytpics.forEach((ytpic) =&gt; {
+ytpics.forEach(ytpic =&gt; {
 const yt = ytpic.querySelector(&quot;img&quot;);
 const ytimg = new Image();
 ytimg.onload = () =&gt; {
@@ -2263,21 +2263,28 @@ var bpct = document.querySelector(&quot;div.blog-posts&quot;);
 bpct.clientHeight === 0 ? bpct.remove() : &quot;&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
-function mnisac() {
-const isac = new Promise (resolve =&gt; {
+function alnd() {
+document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); adb.classList.add(&quot;hidden&quot;); }
+function mnisac(state) {
+const isac = new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 requestAnimationFrame(() =&gt; {
-adb.classList.remove(&quot;hidden&quot;); bpg.parentNode.remove(); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(); }});
+nextIndex.style.marginTop = &quot;46px&quot;; bpg.parentNode.remove(); adb.classList.remove(&quot;hidden&quot;); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(&quot;Go ahead&quot;); } else {
+reject(&quot;Too fast&quot;); }});
 isac.then(() =&gt; {
-(async () =&gt; {
-await fetch(npl.getAttribute(&quot;data-href&quot;)).then((response) =&gt; response.text()).then((text) =&gt; {
+fetch(npl.getAttribute(&quot;data-href&quot;)).then(response =&gt; {
+if (!response.ok) {
+throw &quot;Connection failed&quot;; } else {
+return response.text(); }}).catch(() =&gt; {
+requestAnimationFrame(() =&gt; {
+nextIndex.style.marginTop = &quot;0&quot;; Blog1.appendChild(bpg.parentNode); }); bpg.parentNode.addEventListener(&quot;click&quot;, mnisac); return alnd(); }).then(text =&gt; {
 const parserh = new DOMParser();
 const doch = parserh.parseFromString(text, &quot;text/html&quot;);
 const pst = doch.querySelector(&quot;div.blog-posts&quot;);
 const nppics = [].slice.call(pst.querySelectorAll(&quot;picture.ytpic&quot;));
 const adcs = [].slice.call(pst.querySelectorAll(&quot;aside&quot;));
 if (nppics[0]) {
-nppics.forEach((nppic) =&gt; {
+nppics.forEach(nppic =&gt; {
 const np = nppic.querySelector(&quot;img&quot;);
 const npimg = new Image();
 npimg.onload = () =&gt; {
@@ -2287,23 +2294,27 @@ const nnppic = nppic.cloneNode(false);
 nnpimg.srcset = np.dataset.src; nnppic.appendChild(nnpimg); nnppic.appendChild(np); nppic.parentNode.replaceChild(nnppic, nppic); }}
 npimg.src = np.src; }); }
 if (adcs[0]) {
-adcs.forEach ((adc) =&gt; {
+adcs.forEach (adc =&gt; {
 adc.parentNode.removeChild(adc); }); }
 const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); requestAnimationFrame(() =&gt; {
-Blog1.appendChild(bpNode); }); return (() =&gt; {
-document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); adb.classList.add(&quot;hidden&quot;); })(); }); })(); });
-nextIndex.style.marginTop = &quot;46px&quot;; }
+Blog1.appendChild(bpNode); }); return alnd(); }); });
+isac.catch(() =&gt; {
+if (state.target) {
+mnisac(3); } else if (state === 2) {
+mnisac(4); } else {
+return; }}); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
-entries.forEach((entry) =&gt; {
+entries.forEach(entry =&gt; {
 if (npl) {
 const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 46;
 if (window.pageYOffset === 0) {
 const iolm = window.innerHeight - entry.boundingClientRect.top + 46 ;
 if (iolm &gt; 0) {
-mnisac(); nextIndex.style.marginTop = iolm + 46 + &quot;px&quot;; } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
-mnisac(); } else {
+mnisac(0); requestAnimationFrame(() =&gt; {
+nextIndex.style.marginTop = iolm + 46 + &quot;px&quot;; }); } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
+mnisac(1); } else {
 return; }} else if (sgtm &gt; 0) {
-mnisac(); } else {
+mnisac(2); } else {
 return; }} else {
 requestAnimationFrame(() =&gt; {
 sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; nextIndex.style.marginTop = &quot;0&quot;; }); nextIndexObserver.disconnect(); }}); }, {
@@ -2314,10 +2325,10 @@ nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
 var commentAllow = document.querySelector(&quot;a.cmal&quot;);
 var commentButton = document.querySelector(&quot;article.hentry&quot;);
 let commentButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
-entries.forEach((entry) =&gt; {
+entries.forEach(entry =&gt; {
 if (entry.isIntersecting) {
 if (!cbb.classList.contains(&quot;hidden&quot;)) {
-cbb.classList.add(&quot;fadeout&quot;); cbb.addEventListener("animationend", () =&gt; { 
+cbb.classList.add(&quot;fadeout&quot;); cbb.addEventListener(&quot;animationend&quot;, () =&gt; { 
 if (cbb.classList.contains(&quot;fadeout&quot;)) {
 cbb.classList.add(&quot;hidden&quot;); }}); }} else {
 cbb.classList.remove(&quot;fadeout&quot;); requestAnimationFrame(() =&gt; {
@@ -2326,7 +2337,7 @@ commentAllow ? commentButtonObserver.observe(commentButton) : &quot;&quot;;
 /* iframe comment */
 var iframeComment = document.querySelector(&quot;iframe.blogger-iframe-colorize&quot;);
 let iframeCommentObserver = new IntersectionObserver((entries, observer) =&gt; {
-entries.forEach((entry) =&gt; {
+entries.forEach(entry =&gt; {
 if (entry.isIntersecting) {
 const ifc = document.createElement(&quot;script&quot;);
 ifc.insertAdjacentHTML(&quot;afterbegin&quot;, &quot;BLOG_CMT_createIframe(&#39;https://www.blogger.com/rpc_relay.html&#39;);&quot;);
@@ -2345,7 +2356,7 @@ iframeComment ? iframeCommentObserver.observe(iframeComment) : &quot;&quot;;
 var cml = document.querySelector(&quot;div.comments-content&quot;);
 if (cml) {
 var avics = [].slice.call(document.querySelectorAll(&quot;div.avatar-image-container&quot;));
-avics.forEach((avic) =&gt; {
+avics.forEach(avic =&gt; {
 if (avic.firstElementChild.src.includes(&quot;//resources.blogblog.com/img/blank.gif&quot;)) {
 avic.insertAdjacentHTML(&quot;afterbegin&quot;, &quot;<svg aria-label='アバター' class='avatarIcon' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg>&quot;); }}); }
 </b:if>});
