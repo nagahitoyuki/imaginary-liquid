@@ -396,8 +396,8 @@ iframe.b-hbp-video {border:0}
 #floating_share {display:flex;column-gap:4px}
 
 /* SVGアイコン */
-.svg-icon-24-button {appearance:none;padding:0;border:none;outline:none;background:transparent;cursor:none}
-.svg-icon-24 {width:24px;height:24px;vertical-align:bottom}
+.svg-icon-24-button, .loadingIcon {appearance:none;padding:0;border:none;outline:none;background:transparent;}
+.svg-icon-24 {vertical-align:middle;width:24px;height:24px;cursor:pointer}
 .sidebar-container .svg-icon-24 {fill:$(sidebar.icons.color)}
 .centered-bottom .svg-icon-24 {fill:$(posts.icons.color)}
 .floatingIcon {fill:$(sticky.icons.color)}
@@ -424,7 +424,7 @@ html[dir="rtl"] body #back-button, html[dir="rtl"] body #comment-button, html[di
 html[dir="rtl"] body .search-space {vertical-align:middle}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
-.search-action {color:$(search.input.color);cursor:pointer;max-height:30px}
+.search-action {color:$(search.input.color);max-height:30px}
 
 /* アドセンス広告 */
 .top-ad-container {padding:0 var(--maincolumn-padding)}
@@ -488,7 +488,7 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0}
 
 /* ラベル */
-.post-labels a, .label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px;cursor:none}
+.post-labels a, .label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px}
 .label-name:hover, .label-name:visited {color:$(labels.text.color)}
 .Label ul {list-style:none;padding-$startSide:0}
 .Label li {margin-bottom:12px}
@@ -567,7 +567,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 /* ページャー */
 .blog-pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.75);margin-bottom:calc(var(--maincolumn-padding) * 1.75)}
 #blog-pager {display:flex;justify-content:space-around}
-.blog-pager a {color:$(posts.navigation.link.color);cursor:none}
+.blog-pager a {color:$(posts.navigation.link.color)}
 .blog-pager a:visited{color:$(posts.navigation.link.visited.color)}
 .blog-pager a:hover {color:$(posts.navigation.link.hover.color)}
 
