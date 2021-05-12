@@ -1268,8 +1268,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </div>
   <div id='floating_share'>
   <b:class cond='data:blog.isMobileRequest' name='share-buttons'/>
-    <button type='button' class='svg-icon-24-button' expr:onclick='&quot;location.href=&amp;quot;https://www.facebook.com/sharer/sharer.php?u=&quot; + data:blog.url.canonical + &quot;&amp;quot;&quot;' expr:aria-label='data:blog.sharing.platforms[1].shareMessage'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0V0z' fill='transparent'/><path class='floatingIcon' d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 2v3h-2c-.5 0-1 .4-1 1v2h3v3h-3v7h-3v-7h-2v-3h2V7.5C13 5.6 14.6 4 16.5 4H19z'/></svg></button>
-    <button type='button' class='svg-icon-24-button' expr:onclick='&quot;location.href=&amp;quot;https://twitter.com/share?url=&quot; + data:blog.url.canonical + &quot;&amp;text=&quot; + (data:blog.pageType == &quot;index&quot; ? data:blog.pageTitle : data:blog.pageTitle) + &quot;&amp;quot;&quot;' expr:aria-label='data:blog.sharing.platforms[3].shareMessage'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0V0z' fill='transparent'/><path class='floatingIcon' d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2.3 7.3c-.1 4.6-3 7.8-7.4 8-1.8.1-3.1-.5-4.3-1.2 1.3.2 3-.3 3.9-1.1-1.3-.1-2.1-.8-2.5-1.9.4.1.8.1 1.1 0-1.2-.4-2-1.1-2.1-2.7.3.2.7.3 1.1.3-.9-.5-1.6-2.3-.8-3.6C8 8.5 9.6 9.7 12.2 9.9c-.6-2.8 3.1-4.3 4.6-2.4.7-.1 1.2-.4 1.7-.7-.2.7-.6 1.1-1.1 1.5.5-.1 1-.2 1.4-.4 0 .5-.6 1-1.1 1.4z'/></svg></button>
+    <button type='button' class='svg-icon-24-button' id='fbbtn' expr:aria-label='data:blog.sharing.platforms[1].shareMessage'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0V0z' fill='transparent'/><path class='floatingIcon' d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 2v3h-2c-.5 0-1 .4-1 1v2h3v3h-3v7h-3v-7h-2v-3h2V7.5C13 5.6 14.6 4 16.5 4H19z'/></svg></button>
+    <button type='button' class='svg-icon-24-button' id='twbtn' expr:aria-label='data:blog.sharing.platforms[3].shareMessage'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0V0z' fill='transparent'/><path class='floatingIcon' d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2.3 7.3c-.1 4.6-3 7.8-7.4 8-1.8.1-3.1-.5-4.3-1.2 1.3.2 3-.3 3.9-1.1-1.3-.1-2.1-.8-2.5-1.9.4.1.8.1 1.1 0-1.2-.4-2-1.1-2.1-2.7.3.2.7.3 1.1.3-.9-.5-1.6-2.3-.8-3.6C8 8.5 9.6 9.7 12.2 9.9c-.6-2.8 3.1-4.3 4.6-2.4.7-.1 1.2-.4 1.7-.7-.2.7-.6 1.1-1.1 1.5.5-.1 1-.2 1.4-.4 0 .5-.6 1-1.1 1.4z'/></svg></button>
   <b:if cond='data:blog.isMobileRequest'><button type='button' class='svg-icon-24-button' id='shbtn' expr:aria-label='data:messages.shareToOtherApps'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/></svg></button>
 <b:else/><button type='button' class='svg-icon-24-button' id='clpcp' expr:aria-label='data:blog.sharing.platforms[0].shareMessage'><svg class='svg-icon-24 touch-icon sharing-link' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z'/></svg></button>
       </b:if>
@@ -2258,14 +2258,17 @@ exp.classList.add(&quot;hidden&quot;); rit.style.height = rith + &quot;px&quot;;
 rit.nextElementSibling.nextElementSibling.addEventListener(&quot;click&quot;, event =&gt; {
 const cmp = event.target;
 cmp.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;; rit.style.visibility = &quot;hidden&quot;; cmp.previousElementSibling.classList.remove(&quot;hidden&quot;); }); }); }
-<b:if cond='data:blog.isMobileRequest'>
 /* Share menu */
+fbbtn.addEventListener(&quot;click&quot;, () =&gt; {
+location.href = &quot;https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>&quot;; });
+twbtn.addEventListener(&quot;click&quot;, () =&gt; {
+location.href = &quot;https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=&quot; + encodeURIComponent(&#39;<data:blog.pageTitle/>&#39;); });
+<b:if cond='data:blog.isMobileRequest'>
 shbtn.addEventListener(&quot;click&quot;, () =&gt; {
-navigator.share( {
+navigator.share({
 title: &quot;<data:view.title.escaped/>&quot;,
 url: &quot;<data:blog.url.canonical/>&quot; }); });
 <b:else/>
-/* Link share */
 clpcp.addEventListener(&quot;click&quot;, () =&gt; {
 navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; {
 alert (&quot;リンクをクリップボードにコピーしました\u3002&quot;); }); });
