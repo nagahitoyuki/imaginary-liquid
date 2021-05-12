@@ -61,7 +61,7 @@
 
 <!-- Variable definitions -->
 
-<Variable name="keycolor" description="Main Color" type="color" default="#f5f5dc"  value="#f5f5dc"/>
+<Variable name="keycolor" description="Main Color" type="color" default="#e0ffff"  value="#e0ffff"/>
 <Variable name="startSide" description="Start side in blog language" type="automatic" default="left" hideEditor="true" />
 <Variable name="endSide" description="End side in blog language" type="automatic" default="right" hideEditor="true" />
 
@@ -89,7 +89,7 @@
       default="#a9a9a9"  value="#a9a9a9"/>
   <Variable name="body.background.color" description="Body background color"
       type="color"
-      default="#f5f5dc"  value="#f5f5dc"/>
+      default="#e0ffff"  value="#e0ffff"/>
   <Variable name="posts.background.color" description="Post background color"
       type="color"
       default="#ffffff"  value="#ffffff"/>
@@ -103,13 +103,13 @@
 <Group description="Links">
   <Variable name="body.link.color" description="Link color"
       type="color"
-      default="#1e90ff"  value="#1e90ff"/>
+      default="#ff00ff"  value="#ff00ff"/>
   <Variable name="body.link.visited.color" description="Visited link color"
       type="color"
-      default="$(body.link.color)"  value="#1e90ff"/>
+      default="$(body.link.color)"  value="#ff00ff"/>
   <Variable name="body.link.hover.color" description="Link Hover Color"
       type="color"
-      default="$(body.link.color)"  value="#1e90ff"/>
+      default="$(body.link.color)"  value="#ff00ff"/>
 </Group>
 
 <Group description="Blog title" selector="div.widget.Header">
@@ -124,7 +124,7 @@
 <Group description="Tabs text" selector="div.widget.PageList">
   <Variable name="tabs.title.color" description="Tabs title color"
       type="color"
-      default="#dc143c"  value="#dc143c"/>
+      default="#ffa500"  value="#ffa500"/>
   <Variable name="tabs.font" description="Font"
       type="font"
       family="sans-serif"
@@ -153,7 +153,7 @@
       default="$(body.text.color)"  value="#000000"/>
 <Variable name="posts.link.color" description="Post link color"
       type="color"
-      default="#1e90ff"  value="#1e90ff"/>
+      default="#ff00ff"  value="#ff00ff"/>
   <Variable name="posts.byline.color" description="Post byline color"
       type="color"
       red="$(posts.text.color.red)"
@@ -195,14 +195,14 @@
   <Variable name="sticky.background.color"
       description="Sharing background color"
       type="color"
-      default="$(body.background.color)"  value="#f5f5dc"/>
+      default="$(body.background.color)"  value="#e0ffff"/>
 </Group>
 
 <Group description="Popular posts" selector="div.widget.PopularPosts">
   <Variable name="popularposts.background.color"
       description="Popular post background color"
       type="color"
-      default="$(body.background.color)"  value="#f5f5dc"/>
+      default="$(body.background.color)"  value="#e0ffff"/>
   <Variable name="popularposts.title.font" description="Popular post title font"
       type="font"
       default=" bold 21px sans-serif"  value="bold 21px sans-serif"/>
@@ -217,29 +217,29 @@
   <Variable name="popularposts.link.color"
       description="Popular post link color"
       type="color"
-      default="#1e90ff"  value="#1e90ff"/>
+      default="#ff00ff"  value="#ff00ff"/>
 </Group>
 
 <Group description="Post navigation" selector='div.blog-pager'>
   <Variable name="posts.navigation.link.color"
       description="Post navigation links color"
       type="color"
-      default="#dc143c"  value="#dc143c"/>
+      default="#ffa500"  value="#ffa500"/>
   <Variable name="posts.navigation.link.visited.color"
       description="Post navigation links visited color"
       type="color"
-      default="$(posts.navigation.link.color)"  value="#dc143c"/>
+      default="$(posts.navigation.link.color)"  value="#ffa500"/>
   <Variable name="posts.navigation.link.hover.color"
       description="Post navigations links hover color"
       type="color"
-      default="$(posts.navigation.link.color)"  value="#dc143c"/>
+      default="$(posts.navigation.link.color)"  value="#ffa500"/>
 </Group>
 
 <Group description="Sidebar" selector="div.sidebar-container">
   <Variable name="sidebar.backgroundColorTop"
       description="Background color (Top)"
       type="color"
-      default="#f5f5dc"  value="#f5f5dc"/>
+      default="#e0ffff"  value="#e0ffff"/>
   <Variable name="sidebar.backgroundColorTopHD"
       description="Background color (Top) - HD"
       type="color"
@@ -247,7 +247,7 @@
   <Variable name="sidebar.backgroundColorBottom"
       description="Background color (Bottom)"
       type="color"
-      default="#f5f5dc"  value="#f5f5dc"/>
+      default="#e0ffff"  value="#e0ffff"/>
   <Variable name="sidebar.separator.color"
       description="Separator color"
       type="color"
@@ -278,21 +278,21 @@
       default="rgba($(red), $(green), $(blue), 0.8)"  value="rgba(0, 0, 0, 0.8)"/>
   <Variable name="profile.link.color" description="Profile link color"
       type="color"
-      default="#1e90ff"  value="#1e90ff"/>
+      default="#ff00ff"  value="#ff00ff"/>
 </Group>
 
 <Group description="Labels" selector=".widget.Label">
   <Variable name="labels.text.color"
       description="Label text color"
       type="color"
-      default="#ff8c00"  value="#ff8c00"/>
+      default="#a52a2a"  value="#a52a2a"/>
   <Variable name="labels.background.color"
       description="Label background color"
       type="color"
       red="$(labels.text.color.red)"
       green="$(labels.text.color.green)"
       blue="$(labels.text.color.blue)"
-      default="rgba($(red), $(green), $(blue), 0.2)"  value="rgba(255, 140, 0, 0.2)"/>
+      default="rgba($(red), $(green), $(blue), 0.2)"  value="rgba(165, 42, 42, 0.2)"/>
 </Group>
 
 <Group description="Attribution" selector=".widget.Attribution">
@@ -301,7 +301,7 @@
       default="$(body.text.color)"  value="#000000"/>
   <Variable name="attribution.link.color" description="Attribution link color"
       type="color"
-      default="$(body.link.color)"  value="#1e90ff"/>
+      default="$(body.link.color)"  value="#ff00ff"/>
   <Variable name="attribution.icon.color" description="Attribution icon color"
       type="color"
       default="#000000" value="#000000"/>
@@ -1322,11 +1322,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='showDateHeader'>false</b:widget-setting>
-      <b:widget-setting name='style.textcolor'>#1e90ff</b:widget-setting>
+      <b:widget-setting name='style.textcolor'>#ff00ff</b:widget-setting>
       <b:widget-setting name='showShareButtons'>false</b:widget-setting>
       <b:widget-setting name='authorLabel'/>
       <b:widget-setting name='showCommentLink'>true</b:widget-setting>
-      <b:widget-setting name='style.urlcolor'>#dc143c</b:widget-setting>
+      <b:widget-setting name='style.urlcolor'>#ffa500</b:widget-setting>
       <b:widget-setting name='showAuthor'>true</b:widget-setting>
       <b:widget-setting name='disableGooglePlusShare'>true</b:widget-setting>
       <b:widget-setting name='style.linkcolor'>#000000</b:widget-setting>
@@ -2270,14 +2270,11 @@ const isac = new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 requestAnimationFrame(() =&gt; {
 nextIndex.style.marginTop = &quot;46px&quot;; bpg.parentNode.remove(); adb.classList.remove(&quot;hidden&quot;); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(&quot;Go ahead&quot;); } else {
-reject(&quot;Too fast&quot;); }});
-isac.then(() =&gt; {
+reject(&quot;Too fast&quot;); }}).then(() =&gt; {
 fetch(npl.getAttribute(&quot;data-href&quot;)).then(response =&gt; {
 if (!response.ok) {
 throw &quot;Connection failed&quot;; } else {
-return response.text(); }}).catch(() =&gt; {
-requestAnimationFrame(() =&gt; {
-nextIndex.style.marginTop = &quot;0&quot;; Blog1.appendChild(bpg.parentNode); }); bpg.parentNode.addEventListener(&quot;click&quot;, mnisac); return alnd(); }).then(text =&gt; {
+return response.text(); }}).then(text =&gt; {
 const parserh = new DOMParser();
 const doch = parserh.parseFromString(text, &quot;text/html&quot;);
 const pst = doch.querySelector(&quot;div.blog-posts&quot;);
@@ -2297,12 +2294,10 @@ if (adcs[0]) {
 adcs.forEach (adc =&gt; {
 adc.parentNode.removeChild(adc); }); }
 const bpNode = document.adoptNode(pst); npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;); requestAnimationFrame(() =&gt; {
-Blog1.appendChild(bpNode); }); return alnd(); }); });
-isac.catch(() =&gt; {
-if (state.target) {
-mnisac(3); } else if (state === 2) {
-mnisac(4); } else {
-return; }}); }
+Blog1.appendChild(bpNode); }); return alnd(); }).catch(() =&gt; {
+requestAnimationFrame(() =&gt; {
+nextIndex.style.marginTop = &quot;0&quot;; Blog1.appendChild(bpg.parentNode); }); bpg.parentNode.addEventListener(&quot;click&quot;, mnisac); return alnd(); }); }).catch(() =&gt; {
+return; }); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (npl) {
@@ -2310,11 +2305,11 @@ const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 46;
 if (window.pageYOffset === 0) {
 const iolm = window.innerHeight - entry.boundingClientRect.top + 46 ;
 if (iolm &gt; 0) {
-mnisac(0); requestAnimationFrame(() =&gt; {
+mnisac(); requestAnimationFrame(() =&gt; {
 nextIndex.style.marginTop = iolm + 46 + &quot;px&quot;; }); } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
-mnisac(1); } else {
+mnisac(); } else {
 return; }} else if (sgtm &gt; 0) {
-mnisac(2); } else {
+mnisac(); } else {
 return; }} else {
 requestAnimationFrame(() =&gt; {
 sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; nextIndex.style.marginTop = &quot;0&quot;; }); nextIndexObserver.disconnect(); }}); }, {
