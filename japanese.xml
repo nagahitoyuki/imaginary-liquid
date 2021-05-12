@@ -61,7 +61,7 @@
 
 <!-- Variable definitions -->
 
-<Variable name="keycolor" description="Main Color" type="color" default="#e0ffff"  value="#e0ffff"/>
+<Variable name="keycolor" description="Main Color" type="color" default="#f0ffff"  value="#f0ffff"/>
 <Variable name="startSide" description="Start side in blog language" type="automatic" default="left" hideEditor="true" />
 <Variable name="endSide" description="End side in blog language" type="automatic" default="right" hideEditor="true" />
 
@@ -89,7 +89,7 @@
       default="#a9a9a9"  value="#a9a9a9"/>
   <Variable name="body.background.color" description="Body background color"
       type="color"
-      default="#e0ffff"  value="#e0ffff"/>
+      default="#f0ffff"  value="#f0ffff"/>
   <Variable name="posts.background.color" description="Post background color"
       type="color"
       default="#ffffff"  value="#ffffff"/>
@@ -195,14 +195,14 @@
   <Variable name="sticky.background.color"
       description="Sharing background color"
       type="color"
-      default="$(body.background.color)"  value="#e0ffff"/>
+      default="$(body.background.color)"  value="#f0ffff"/>
 </Group>
 
 <Group description="Popular posts" selector="div.widget.PopularPosts">
   <Variable name="popularposts.background.color"
       description="Popular post background color"
       type="color"
-      default="$(body.background.color)"  value="#e0ffff"/>
+      default="$(body.background.color)"  value="#f0ffff"/>
   <Variable name="popularposts.title.font" description="Popular post title font"
       type="font"
       default=" bold 20.9px sans-serif"  value="bold 20.9px sans-serif"/>
@@ -239,7 +239,7 @@
   <Variable name="sidebar.backgroundColorTop"
       description="Background color (Top)"
       type="color"
-      default="#e0ffff"  value="#e0ffff"/>
+      default="#f0ffff"  value="#f0ffff"/>
   <Variable name="sidebar.backgroundColorTopHD"
       description="Background color (Top) - HD"
       type="color"
@@ -247,7 +247,7 @@
   <Variable name="sidebar.backgroundColorBottom"
       description="Background color (Bottom)"
       type="color"
-      default="#e0ffff"  value="#e0ffff"/>
+      default="#f0ffff"  value="#f0ffff"/>
   <Variable name="sidebar.separator.color"
       description="Separator color"
       type="color"
