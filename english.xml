@@ -493,7 +493,7 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .post-body h6 {font-size:11px}
 
 /* Labels */
-.post-labels a, .label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:.8px;display:inline-block;padding:2px 6px}
+.post-labels a, .label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:1px;padding:2px 6px}
 .label-name:hover, .label-name:visited {color:$(labels.text.color)}
 .Label ul {list-style:none;padding-$startSide:0}
 .Label li {margin-bottom:12px}
@@ -627,7 +627,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 #ArchiveList > div, .list-label-widget-content, .cloud-label-widget-content {display:flex;flex-direction:column}
 .sidebar-container .BlogArchive, .sidebar-container .Label {margin-bottom:16px}
 .remaining-items {position:absolute;visibility:hidden;overflow:hidden;transition:all .3s ease-out}
-.show-more, .show-less {margin-$startSide:auto;font-size:medium;color:$(posts.link.color);margin-top:24px}
+.show-more, .show-less {margin-$startSide:auto;font-size:medium;color:$(posts.link.color);margin-top:24px;cursor:pointer}
 .list-label-widget-content, .cloud-label-widget-content {margin-top:24px}
 .list-label-widget-content .first-items ul {margin-top:0;margin-bottom:0px}
 .list-label-widget-content .remaining-items ul {margin-top:0;margin-bottom:0}
