@@ -285,14 +285,14 @@
   <Variable name="labels.text.color"
       description="Label text color"
       type="color"
-      default="#a52a2a"  value="#a52a2a"/>
+      default="#008000"  value="#008000"/>
   <Variable name="labels.background.color"
       description="Label background color"
       type="color"
       red="$(labels.text.color.red)"
       green="$(labels.text.color.green)"
       blue="$(labels.text.color.blue)"
-      default="rgba($(red), $(green), $(blue), 0.2)"  value="rgba(165, 42, 42, 0.2)"/>
+      default="rgba($(red), $(green), $(blue), 0.2)"  value="rgba(0, 128, 0, 0.2)"/>
 </Group>
 
 <Group description="Attribution" selector=".widget.Attribution">
