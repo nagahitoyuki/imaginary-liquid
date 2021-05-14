@@ -483,7 +483,7 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .post-body a,.post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:inline-block;width:min(100%, calc($(content.width) - var(--maincolumn-padding) * 2));margin-bottom:20px}
-.Blog .snippet-thumbnail img {float:$startSide;width:33%;margin-$endSide:var(--maincolumn-padding);line-height:var(--body-lineheight)}
+.Blog .snippet-thumbnail img {float:$startSide;width:max(30%, 8em  - var(--maincolumn-padding));margin-$endSide:var(--maincolumn-padding);line-height:var(--body-lineheight)}
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0}
 
 /* ラベル */
