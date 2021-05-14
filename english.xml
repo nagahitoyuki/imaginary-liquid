@@ -1566,8 +1566,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
      <data:messages.olderPosts/>
     </a>
   <b:elseif cond='data:view.isMultipleItems'/>
-    <a class='blog-pager-older-link' expr:data-href='data:olderPageUrl' expr:title='data:messages.loadMorePosts' rel='prev'>
-      <data:messages.loadMorePosts/>
+    <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:title='data:messages.morePosts' rel='prev nofollow'>
+      <data:messages.morePosts/>
     </a>
   </b:if>
 </b:includable>
@@ -2275,7 +2275,7 @@ if (adb.classList.contains(&quot;hidden&quot;)) {
 requestAnimationFrame(() =&gt; {
 nextIndex.style.marginTop = &quot;46px&quot;; bpg.parentNode.remove(); adb.classList.remove(&quot;hidden&quot;); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(&quot;Go ahead&quot;); } else {
 reject(&quot;Too fast&quot;); }}).then(() =&gt; {
-fetch(npl.getAttribute(&quot;data-href&quot;)).then(response =&gt; {
+fetch(npl.href).then(response =&gt; {
 if (!response.ok) {
 throw &quot;Connection failed&quot;; }
 return response.text(); }).then(text =&gt; {
@@ -2302,7 +2302,7 @@ adc.parentNode.removeChild(adc); }); }
 requestAnimationFrame(() =&gt; {
 Blog1.appendChild(bpNode); }); return alnd(); }).catch(() =&gt; {
 requestAnimationFrame(() =&gt; {
-Blog1.appendChild(bpg.parentNode); }); bpg.parentNode.addEventListener(&quot;click&quot;, mnisac); return alnd(); }); }).catch(() =&gt; {
+nextIndex.style.marginTop = &quot;0&quot;; Blog1.appendChild(bpg.parentNode); }); return alnd(); }); }).catch(() =&gt; {
 return; }); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
