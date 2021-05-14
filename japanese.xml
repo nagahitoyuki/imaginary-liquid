@@ -631,7 +631,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .Text .widget-content {margin-bottom:16px}
 
 /* 連絡フォーム */
-.contact-form-name, .contact-form-email, .contact-form-email-message {max-width:98%}
+.contact-form-name, .contact-form-email, .contact-form-email-message {max-width:100%;box-sizing:border-box}
 
 /* 不正行為を報告 */
 a.report_abuse{font-weight:400}
