@@ -240,10 +240,6 @@
       description="Background color (Top)"
       type="color"
       default="#f0f8ff"  value="#f0f8ff"/>
-  <Variable name="sidebar.backgroundColorTopHD"
-      description="Background color (Top) - HD"
-      type="color"
-      default="$(sidebar.backgroundColorTop)"  value="$(sidebar.backgroundColorTop)"/>
   <Variable name="sidebar.backgroundColorBottom"
       description="Background color (Bottom)"
       type="color"
@@ -341,9 +337,13 @@ blockquote {margin:1em 2.5em}
 .bg-photo {background:$(body.background);background-size:cover;filter:blur($(body.background.blur));height:calc(100% + 2 * $(body.background.blur));left:$(0 - body.background.blur);position:absolute;top:$(0 - body.background.blur);width:calc(100% + 2 * $(body.background.blur));background-color:$(blog.header.color)}
 
 /* バランサー */
-.hidden {display:none}
+.hidden, .no-items {display:none}
 .invisible {visibility:hidden}
-.clearboth {clear:both}
+.sidebar-invisible {visibility:hidden}
+body.sidebar-visible {overflow-y:hidden}
+body.sidebar-visible .page_body {overflow-y:scroll}
+body.sidebar-visible .bg-photo-container {overflow-y:scroll}
+.dim-overlay {background-color:rgba(0,0,0,.7);z-index:100;height:100vh;left:0;position:fixed;top:0;width:100%}
 aside.isf #sub_main, aside.isf + #attribution {display:none}
 #sub_main, #attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
@@ -436,7 +436,7 @@ html[dir="rtl"] body #back-button, html[dir="rtl"] body #comment-button, html[di
 /* ページボディー */
 .page_body {position:relative;z-index:20}
 .page_body .centered {display:flex;flex-direction:column;margin:0 auto;max-width:$(content.width);min-height:100vh}
-.page_body .centered>* {flex:0 0 auto}
+.page_body .centered {flex:auto}
 .blog-posts {background:$(body.background.color);display:grid}
 .Blog article {background:$(posts.background.color);box-sizing:border-box;width:auto;padding:20px var(--maincolumn-padding)}
 .Blog article:not(:first-child) {margin-top:calc(var(--maincolumn-padding) / 2)}
@@ -482,7 +482,7 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .post-body {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin:20px 0 25px}
 .post-body a,.post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
-.total-snippet {display:inline-block;width:min(100%, calc($(content.width) - var(--maincolumn-padding) * 2));margin-bottom:20px}
+.total-snippet {display:flow-root;width:min(100%, calc($(content.width) - var(--maincolumn-padding) * 2));margin-bottom:20px}
 .Blog .snippet-thumbnail img {float:$startSide;width:max(30%, 8em  - var(--maincolumn-padding));margin-$endSide:var(--maincolumn-padding);line-height:var(--body-lineheight)}
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0}
 
@@ -587,22 +587,22 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 
 /* サイドバー */
 .navigation {text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
-.sidebar-container {width:min($(sidebar.width), 100%);backgroundcolor:$(sidebar.backgroundColorBottom);overflow-y:auto;box-sizing:border-box;z-index:101;-webkit-overflow-scrolling: touch}
-.sidebar-container .widget {background:0 0;margin:0 var(--maincolumn-padding);padding:8px 0;color:$(widget.text.color)}
+.sidebar-container {display:flex;flex-direction:column;flex:auto;width:min($(sidebar.width), 100%);overflow-y:auto;box-sizing:border-box;z-index:101;-webkit-overflow-scrolling: touch}
+.navigation, .sidebar_top {background-color:$(sidebar.backgroundColorTop)}
+.sidebar_bottom {background-color:$(sidebar.backgroundColorBottom)}
+.sidebar_top:first-child {padding-top:0}
+.sidebar-container .widget {margin:0 var(--maincolumn-padding);padding:8px 0;color:$(widget.text.color)}
 .sidebar-container .widget .title {color:$(widget.title.color)}
 .sidebar-container .widget ul {list-style:none;padding-$startSide:0}
 .sidebar-container .widget ul ul {margin-$startSide:1em}
 .sidebar-container .widget+.widget {border-top:1px dashed $(sidebar.separator.color)}
-.sidebar-container .sidebar_top {overflow:auto}
-.sidebar-container .navigation, .sidebar-container .sidebar_top_wrapper {background-color:$(sidebar.backgroundColorTop)}
-.sidebar-container .sidebar_bottom {width:100%;background-color:$(sidebar.backgroundColorBottom)}
 
 /* プロフィール */
-.widget.Profile {margin:0 auto;padding:0 var(--maincolumn-padding);box-sizing:border-box}
+.widget.Profile {margin:0 auto;padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box}
 .widget.Profile .profile-link {display:flex}
-.widget.Profile .team-member .default-avatar-wrapper,.widget.Profile .team-member .profile-img {flex:0 0 auto;margin-$endSide:1em}
+.widget.Profile .team-member .default-avatar-wrapper,.widget.Profile .team-member .profile-img {flex:none;margin-$endSide:1em}
 .widget.Profile .individual .profile-link {flex-direction:column}
-.widget.Profile .team .profile-link .profile-name {align-self:center;display:block;flex:1 1 auto}
+.widget.Profile .team .profile-link .profile-name {align-self:center;display:block;flex:auto}
 .sidebar_top .widget.Profile {padding-bottom:16px}
 .widget.Profile h3.title {color:$(profile.title.color);margin-top:24px}
 .widget.Profile .individual {text-align:center}
@@ -657,16 +657,9 @@ body {position:relative}
 #comment-button, #add-button {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin * 2)) / 2 + var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px + $(content.margin + sidebar.width))}
 
 /* サイドバー */
-.sidebar-container .navigation {display:none}
-.sidebar-container {position:absolute;top:0;$startSide:0;$endSide:auto;margin-top:$(body.background.height);min-height:calc(100% - $(body.background.height));overflow:visible;box-shadow:5px 0 10px -5px rgba(0,0,0,.45);z-index:32}
+.navigation {display:none}
+.sidebar-container {visibility:visible;position:absolute;top:0;$startSide:0;$endSide:auto;box-shadow:5px 0 10px -5px rgba(0,0,0,.45);z-index:20}
 html[dir="rtl"] .sidebar-container {box-shadow:-5px 0 10px -5px rgba(0,0,0,.45)}
-.sidebar-container .sidebar_top_wrapper {padding-top:1em;background-color:$(sidebar.backgroundColorTopHD);height:$(body.background.height);min-height:500px;margin-top:$(body.background.height * -1);box-shadow:5px 0 10px -5px rgba(0,0,0,.45);z-index:101}
-html[dir="rtl"] .sidebar-container .sidebar_top_wrapper {box-shadow:-5px 0 10px -5px rgba(0,0,0,.45)}
-.sidebar-container .sidebar_top {display:flex;height:$(body.background.height);flex-direction:row;max-height:$(body.background.height);min-height:500px}
-.sidebar-container .sidebar_bottom {max-width:$(sidebar.width);width:$(sidebar.width)}
-.sidebar-container .sidebar_top:empty {display:none}
-.sidebar-container .sidebar_top>:only-child {flex:0 0 auto;align-self:center;width:100%}
-.sidebar_top_wrapper.no-items {display:none}
 }
 
 /* ブログのコンテンツとサイドバーと隙間の幅以下 */
@@ -677,16 +670,11 @@ html[dir="rtl"] .sidebar-container .sidebar_top_wrapper {box-shadow:-5px 0 10px 
 #comment-button, #add-button {$startSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
 
 /* サイドバー */
-.sidebar-container {bottom:0;position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;transition:transform .3s ease-out;contain:strict}
+.sidebar-container {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s ease-out;z-index:101;contain:strict}
 .slidein {transform:translateX($(sidebar.width))}
 .slideout {transform:translateX(0)}
 html[dir="rtl"] .slidein {transform:translateX(-$(sidebar.width))}
 html[dir="rtl"] .slideout {transform:translateX(0)}
-.sidebar-invisible {visibility:hidden}
-body.sidebar-visible {overflow-y:hidden}
-body.sidebar-visible .page_body {overflow-y:scroll}
-body.sidebar-visible .bg-photo-container {overflow-y:scroll}
-.dim-overlay {background-color:rgba(0,0,0,.7);z-index:100;height:100vh;left:0;position:fixed;top:0;width:100%}
 }
 
 /* 横向きタブレット以上 */
@@ -1101,8 +1089,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
               <div class='centered-top'>
                 <b:class cond='data:view.isSearch and data:view.search.query' name='search-focused'/>
 
-<div class='clearboth'/>                      
-
 <div class='blog-name'>
 
 <b:section id='header' name='Header' showaddelement='false'>
@@ -1158,7 +1144,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:widget>
 </b:section>
 
-<b:section class='clearboth' cond='!data:view.isSingleItem' id='page_list_top' name='Page List (Top)' showaddelement='false'>
+<b:section cond='!data:view.isSingleItem' id='page_list_top' name='Page List (Top)' showaddelement='false'>
   <b:widget id='PageList1' locked='true' title='ページリスト' type='PageList' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='pageListJson'><![CDATA[{'home': {'href': 'https://nagahitoyuki.blogspot.com/', 'title': 'ホーム', 'position': 0}}]]></b:widget-setting>
@@ -1686,7 +1672,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='postFooter' var='post'>
   <footer class='post-bottom'>
-  <b:class cond='data:view.isMultipleItems' name='clearboth'/> 
     <div class='post-footer'>
       <b:if cond='data:view.isPost'>
       <b:include name='footerBylines'/>
@@ -1981,8 +1966,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <div class='navigation'>
     <button type='button' class='svg-icon-24-button' id='close-button' aria-label='サイドバーを閉じる'><svg  class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg></button>
     </div>
-      <div class='sidebar_top_wrapper'>
-        <b:class cond='data:widgets none w =&gt; w.sectionId == &quot;sidebar_top&quot;' name='no-items'/>
         <b:section class='sidebar_top' id='sidebar_top' name='Sidebar (Top)'>
           <b:widget id='Profile1' locked='true' title='プロフィール' type='Profile' visible='true'>
             <b:widget-settings>
@@ -2093,7 +2076,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
           </b:widget>
         </b:section>
-   </div>
+
       <b:section class='sidebar_bottom' id='sidebar_bottom' name='Sidebar (Bottom)'>
         <b:widget id='BlogArchive1' locked='false' title='アーカイブ' type='BlogArchive' visible='true'>
           <b:widget-settings>
