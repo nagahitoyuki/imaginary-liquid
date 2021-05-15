@@ -593,7 +593,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 
 /* Side bar */
 .navigation {text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
-.sidebar-container {display:flex;flex-direction:column;flex:auto;width:min($(sidebar.width), 100%);overflow-y:auto;box-sizing:border-box;z-index:101;-webkit-overflow-scrolling: touch}
+.sidebar-container {display:flex;flex-direction:column;flex:auto;width:min($(sidebar.width), 100%);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch}
 .navigation, .sidebar_top {background-color:$(sidebar.backgroundColorTop)}
 .sidebar_bottom {background-color:$(sidebar.backgroundColorBottom)}
 .sidebar_top:first-child {padding-top:0}
