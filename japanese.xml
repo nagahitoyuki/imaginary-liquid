@@ -2280,6 +2280,7 @@ const nytimg = document.createElement(&quot;source&quot;);
 const nytpic = ytpic.cloneNode(false);
 nytimg.srcset = yt.dataset.src; nytpic.appendChild(nytimg); nytpic.appendChild(yt); ytpic.parentNode.replaceChild(nytpic, ytpic); }}
 ytimg.src = yt.src; }); }
+/* Infinite scroll */
 var nextIndex = document.querySelector(&quot;aside.isf&quot;);
 var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
 var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
@@ -2290,12 +2291,16 @@ event.preventDefault(); }
 function alnd() {
 document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); requestAnimationFrame(() =&gt; {
 adb.classList.add(&quot;hidden&quot;); }); }
-function mgchk(val1, val2) {
-switch (val1) {
-case 0: nextIndex.style.marginTop = val2 + 46 + &quot;px&quot;; bdis.style.marginBottom = &quot;46px&quot;; break;
-case 1: nextIndex.style.marginTop = &quot;46px&quot;; break;
-case 2: nextIndex.style.marginTop !== &quot;&quot; ? nextIndex.style.marginTop = &quot;&quot; : &quot;&quot;; bdis.style.marginBottom === &quot;&quot; ? bdis.style.marginBottom = &quot;46px&quot; : &quot;&quot;; break;
-default: nextIndex.style.marginTop = &quot;&quot;; bdis.style.marginBottom = &quot;&quot;; }}
+function ckmg() {
+if (nextIndex.style.marginTop !== &quot;&quot;) {
+nextIndex.style.marginTop = &quot;&quot;; }
+if (bdis.style.marginBottom === &quot;&quot;) {
+bdis.style.marginBottom = &quot;46px&quot;; }}
+function rmmg() {
+if (nextIndex.style.marginTop !== &quot;&quot;) {
+nextIndex.style.marginTop = &quot;&quot;; }
+if (bdis.style.marginBottom !== &quot;&quot;) {
+bdis.style.marginBottom = &quot;&quot;; }}
 function mnisac() {
 const isac = new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
@@ -2328,8 +2333,7 @@ adcs.forEach (adc =&gt; {
 adc.parentNode.removeChild(adc); }); }
 requestAnimationFrame(() =&gt; {
 Blog1.appendChild(bpNode); }); return alnd(); }).catch(() =&gt; {
-npl.href = npl.dataset.href; requestAnimationFrame(() =&gt; {
-Blog1.appendChild(bpg.parentNode); mgchk(3); }); return alnd(); }); }).catch(() =&gt; {
+npl.href = npl.dataset.href; Blog1.appendChild(bpg.parentNode); rmmg(); return alnd(); }); }).catch(() =&gt; {
 return; });
 if (bpg) {
 bpg.parentNode.remove(); }}
@@ -2340,13 +2344,13 @@ const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 46;
 if (window.pageYOffset === 0) {
 const iolm = window.innerHeight - entry.boundingClientRect.top + 46;
 if (iolm &gt; 0) {
-mnisac(); mgchk(0, iolm); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
-mnisac(); mgchk(1); } else {
-mgchk(2); document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); }
+mnisac(); nextIndex.style.marginTop = iolm + 46 + &quot;px&quot;; bdis.style.marginBottom = &quot;46px&quot;; document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
+mnisac(); nextIndex.style.marginTop = &quot;46px&quot;; } else {
+ckmg(); document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); }
 return; } else if (sgtm &gt; 0) {
-mnisac(); mgchk(2); }
+mnisac(); ckmg(); }
 return; } else {
-sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; mgchk(3); nextIndexObserver.disconnect(); }}); }, {
+sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; rmmg(); nextIndexObserver.disconnect(); }}); }, {
 rootMargin: &quot;46px&quot;});
 nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
 <b:else/>
