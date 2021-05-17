@@ -1578,7 +1578,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
      <data:messages.olderPosts/>
     </a>
   <b:elseif cond='data:view.isMultipleItems'/>
-    <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:title='data:messages.morePosts' rel='prev nofollow'>
+    <a class='blog-pager-older-link' expr:data-href='data:olderPageUrl' expr:title='data:messages.morePosts' rel='prev'>
       <data:messages.morePosts/>
     </a>
   </b:if>
@@ -2294,9 +2294,9 @@ function mnisac(state) {
 const isac = new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 requestAnimationFrame(() =&gt; {
-nextIndex.style.marginTop = &quot;46px&quot;; bpg.parentNode.remove(); adb.classList.remove(&quot;hidden&quot;); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(&quot;Go ahead&quot;); } else {
+bdis.style.marginBottom = &quot;46px&quot;; bpg.parentNode.remove(); adb.classList.remove(&quot;hidden&quot;); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(&quot;Go ahead&quot;); } else {
 reject(&quot;Too fast&quot;); }}).then(() =&gt; {
-fetch(npl.href).then(response =&gt; {
+fetch(npl.dataset.href).then(response =&gt; {
 if (!response.ok) {
 throw &quot;Connection failed&quot;; }
 return response.text(); }).then(text =&gt; {
@@ -2322,8 +2322,8 @@ adcs.forEach (adc =&gt; {
 adc.parentNode.removeChild(adc); }); }
 requestAnimationFrame(() =&gt; {
 Blog1.appendChild(bpNode); }); return alnd(); }).catch(() =&gt; {
-requestAnimationFrame(() =&gt; {
-nextIndex.style.marginTop = &quot;0&quot;; Blog1.appendChild(bpg.parentNode); }); return alnd(); }); }).catch(() =&gt; {
+npl.href = npl.dataset.href; requestAnimationFrame(() =&gt; {
+bdis.style.marginBottom = &quot;0&quot;; Blog1.appendChild(bpg.parentNode); }); return alnd(); }); }).catch(() =&gt; {
 return; }); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
@@ -2333,13 +2333,13 @@ if (window.pageYOffset === 0) {
 const iolm = window.innerHeight - entry.boundingClientRect.top + 46 ;
 if (iolm &gt; 0) {
 mnisac(0); requestAnimationFrame(() =&gt; {
-nextIndex.style.marginTop = iolm + 46 + &quot;px&quot;; }); } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
+bdis.style.marginBottom = iolm + 46 + &quot;px&quot;; }); } else if (parseInt(bdis.style.marginBottom) &gt;= 46) {
 mnisac(1); }
 return; } else if (sgtm &gt; 0) {
 mnisac(2); } 
 return; } else {
 requestAnimationFrame(() =&gt; {
-sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; nextIndex.style.marginTop = &quot;0&quot;; }); nextIndexObserver.disconnect(); }}); }, {
+sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; bdis.style.marginBottom = &quot;0&quot;; }); nextIndexObserver.disconnect(); }}); }, {
 rootMargin: &quot;46px&quot;});
 nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
 <b:else/>
