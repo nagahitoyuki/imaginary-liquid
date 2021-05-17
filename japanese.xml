@@ -339,8 +339,8 @@ blockquote {margin:1em 2.5em}
 /* バランサー */
 .hidden, .no-items {display:none}
 .invisible {visibility:hidden}
-aside.isf #sub_main, aside.isf + #attribution {display:none}
-#sub_main, #attribution {content-visibility:auto;contain-intrinsic-size:100%}
+body:not(.item-view) #sub_main, body:not(.item-view) #attribution {display:none}
+body.item-view #sub_main, body.item-view #attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* ウィジェット */
 #comments .comment .comment-actions, .widget.Profile .profile-link, .widget.Profile .profile-link.visit-profile {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0}
@@ -399,7 +399,7 @@ iframe.b-hbp-video {border:0}
 .avatarIcon {width:24px;height:24px;fill:$(posts.icons.color);padding:5.5px}
 
 /* 戻るボタン／コメントボタン／ローディング */
-#back-button, #comment-button, #add-button {display:flex;justify-content:center;align-items:center;position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50;animation:fadein .3s ease-out}
+#back-button, #comment-button, #add-button {display:flex;justify-content:center;align-items:center;position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50}
 html[dir="rtl"] body #back-button, html[dir="rtl"] body #comment-button, html[dir="rtl"] body #add-button {box-shadow:-5px 5px 10px -5px rgba(0,0,0,.35)}
 #back-button, #comment-button {width:var(--floatingbar-height);border-radius:50%}
 #back-button svg {padding-top:calc(-20px / 6);padding-bottom:calc(20px / 6)}
