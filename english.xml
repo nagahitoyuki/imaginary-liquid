@@ -2165,12 +2165,13 @@ var hbm = document.querySelector(&quot;button#hamburger_menu&quot;);
 var bcsd = document.createElement(&quot;div&quot;);
 bcsd.classList.add(&quot;dim-overlay&quot;);
 hbm.addEventListener(&quot;click&quot;, () =&gt; {
-sbct.style.willChange = &quot;transform&quot;; requestAnimationFrame(() =&gt; {
-sbct.classList.add(&quot;slidein&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); }); sbct.classList.remove(&quot;slideout&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); bcsd.classList.remove(&quot;fadeout&quot;); bcsd.classList.add(&quot;fadein&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); bdis.appendChild(bcsd); });
+sbct.style.willChange = &quot;transform&quot;; sbct.classList.remove(&quot;slideout&quot;); bcsd.classList.remove(&quot;fadeout&quot;); bcsd.classList.add(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
+sbct.classList.add(&quot;slidein&quot;); bdis.appendChild(bcsd); });  sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); });
 /* Close button */
 var clb = document.querySelector(&quot;button#close-button&quot;);
 function clsb() {
-sbct.classList.add(&quot;slideout&quot;); sbct.style.willChange = &quot;auto&quot;; sbct.classList.remove(&quot;slidein&quot;); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bcsd.classList.remove(&quot;fadein&quot;); bcsd.classList.add(&quot;fadeout&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); }
+sbct.classList.remove(&quot;slidein&quot;); bcsd.classList.remove(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
+sbct.classList.add(&quot;slideout&quot;); bcsd.classList.add(&quot;fadeout&quot;); }); sbct.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;); bdis.classList.remove(&quot;sidebar-visible&quot;); sbct.style.willChange = &quot;auto&quot;; }
 clb.addEventListener(&quot;click&quot;, clsb);
 bcsd.addEventListener(&quot;click&quot;, clsb);
 sbct.addEventListener(&quot;transitionend&quot;, () =&gt; {
