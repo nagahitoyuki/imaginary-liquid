@@ -2342,9 +2342,9 @@ const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 46;
 if (window.pageYOffset === 0) {
 const iolm = window.innerHeight - entry.boundingClientRect.top + 46;
 if (iolm &gt; 0) {
-mnisac(); nextIndex.style.marginTop = iolm + 46 + &quot;px&quot;; bdis.style.marginBottom = &quot;46px&quot;; document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
+mnisac(); nextIndex.style.marginTop = iolm + 46 + &quot;px&quot;; bdis.style.marginBottom = &quot;46px&quot;; } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
 mnisac(); nextIndex.style.marginTop = &quot;46px&quot;; } else {
-ckmg(); document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); }
+ckmg(); }
 return; } else if (sgtm &gt; 0) {
 mnisac(); ckmg(); }
 return; } else {
