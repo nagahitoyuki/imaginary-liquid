@@ -2249,16 +2249,10 @@ event.preventDefault(); }
 function alnd() {
 document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); requestAnimationFrame(() =&gt; {
 adb.classList.add(&quot;hidden&quot;); }); }
-function ckmg() {
-if (nextIndex.style.marginTop !== &quot;&quot;) {
-nextIndex.style.marginTop = &quot;&quot;; }
-if (bdis.style.marginBottom === &quot;&quot;) {
-bdis.style.marginBottom = &quot;46px&quot;; }}
-function rmmg() {
-if (nextIndex.style.marginTop !== &quot;&quot;) {
-nextIndex.style.marginTop = &quot;&quot;; }
-if (bdis.style.marginBottom !== &quot;&quot;) {
-bdis.style.marginBottom = &quot;&quot;; }}
+function ismg(value) {
+switch (value) {
+case &#39;check&#39;: nextIndex.style.marginTop !== &quot;&quot; ? nextIndex.style.marginTop = &quot;&quot; : &quot;&quot;; bdis.style.marginBottom === &quot;&quot; ? bdis.style.marginBottom = &quot;46px&quot; : &quot;&quot;; break;
+case &#39;remove&#39;: nextIndex.style.marginTop !== &quot;&quot; ? nextIndex.style.marginTop = &quot;&quot; : &quot;&quot;; bdis.style.marginBottom !== &quot;&quot; ? bdis.style.marginBottom = &quot;&quot; : &quot;&quot;; break; }}
 function mnisac() {
 const isac = new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
@@ -2291,8 +2285,8 @@ adcs.forEach (adc =&gt; {
 adc.parentNode.removeChild(adc); }); }
 requestAnimationFrame(() =&gt; {
 Blog1.appendChild(bpNode); }); return alnd(); }).catch(() =&gt; {
-npl.href = npl.dataset.href; Blog1.appendChild(bpg.parentNode); rmmg(); return alnd(); }); }).catch(() =&gt; {
-return; });
+npl.href = npl.dataset.href; Blog1.appendChild(bpg.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }); }).catch(() =&gt; {
+nextIndexObserver.disconnect(); return; });
 if (bpg) {
 bpg.parentNode.remove(); }}
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
@@ -2304,11 +2298,11 @@ const iolm = window.innerHeight - entry.boundingClientRect.top + 46;
 if (iolm &gt; 0) {
 mnisac(); nextIndex.style.marginTop = iolm + 46 + &quot;px&quot;; bdis.style.marginBottom = &quot;46px&quot;; } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
 mnisac(); nextIndex.style.marginTop = &quot;46px&quot;; } else {
-ckmg(); }
+ismg(&#39;check&#39;); }
 return; } else if (sgtm &gt; 0) {
-mnisac(); ckmg(); }
-return; } else {
-sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; rmmg(); nextIndexObserver.disconnect(); }}); }, {
+mnisac(); ismg(&#39;check&#39;); }
+return; }
+sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; ismg(&#39;remove&#39;); nextIndexObserver.disconnect(); }); }, {
 rootMargin: &quot;46px&quot;});
 nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
 <b:else/>
