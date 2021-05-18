@@ -340,7 +340,7 @@ blockquote {margin:1em 2.5em}
 .hidden, .no-items {display:none}
 .invisible {visibility:hidden}
 body:not(.item-view) #sub_main, body:not(.item-view) #attribution {display:none}
-body.item-view #sub_main, body.item-view #attribution {content-visibility:auto;contain-intrinsic-size:100%}
+.sidebar-invisible, body.item-view #sub_main, body.item-view #attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* ウィジェット */
 #comments .comment .comment-actions, .widget.Profile .profile-link, .widget.Profile .profile-link.visit-profile {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0}
@@ -373,7 +373,7 @@ iframe.b-hbp-video {border:0}
 /* ブログヘッダー */
 .centered-top {margin-top:2em;margin-bottom:2em}
 .centered-top-placeholder{display:none}
-.centered-top-container {text-align:center;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
+.centered-top-container {text-align:center;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding);contain:content}
 #blog-title {color:$(blog.title.color);font:$(blog.title.font);margin:0;line-height:calc(var(--body-lineheight) - .1)}
 #blog-title a,#blog-title a:hover,#blog-title a:visited{color:$(blog.title.color)}
 .Header p {color:$(blog.title.color);margin-top:1.5em;margin-bottom:0}
@@ -430,12 +430,11 @@ html[dir="rtl"] body #back-button, html[dir="rtl"] body #comment-button, html[di
 
 /* ページボディー */
 .page_body {position:relative;z-index:20}
-.page_body .centered {display:flex;flex-direction:column;margin:0 auto;max-width:$(content.width);min-height:100vh}
-.page_body .centered {flex:auto}
-.blog-posts {background:$(body.background.color);display:grid}
-.Blog article {background:$(posts.background.color);box-sizing:border-box;width:auto;padding:20px var(--maincolumn-padding)}
-.Blog article:not(:first-child) {margin-top:calc(var(--maincolumn-padding) / 2)}
-.Blog article:not(:last-child) {margin-bottom:calc(var(--maincolumn-padding) / 2)}
+.centered {display:flex;flex-direction:column;margin:0 auto;width:min(100vw, $(content.width));height:max-content}
+.centered >* {flex:auto}
+.Blog {contain:content}
+.blog-posts {background:$(body.background.color);display:grid;gap:var(--maincolumn-padding)}
+.Blog article {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
 body:not(.item-view) .blog-posts {grid-template-columns:1fr;margin-bottom:var(--maincolumn-padding)}
 body:not(.item-view) .Blog aside {align-self:stretch;display:grid}
 body:not(.item-view) .post-bottom {align-self:end}
@@ -560,7 +559,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .sidebar-container .PopularPosts .snippet-item {color:$(posts.text.color);margin:0}
 
 /* ページャー */
-.blog-pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.75);margin-bottom:calc(var(--maincolumn-padding) * 1.75)}
+.blog-pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.75);margin-bottom:calc(var(--maincolumn-padding) * .75)}
 #blog-pager {display:flex;justify-content:space-around}
 .blog-pager a {color:$(posts.navigation.link.color)}
 .blog-pager a:visited{color:$(posts.navigation.link.visited.color)}
@@ -574,6 +573,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 #sub_main .widget:last-child {margin-bottom:1.75em}
 
 /* ブログの帰属 */
+#sub_main {contain:content}
 #attribution {text-align:center;font-size:small;color:$(attribution.text.color);margin-bottom:2em}
 #attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
 #attribution svg {fill:$(attribution.icon.color);vertical-align:bottom}
@@ -582,7 +582,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 
 /* サイドバー */
 .navigation {text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
-.sidebar-container {display:flex;flex-direction:column;flex:auto;width:min($(sidebar.width), 100%);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch}
+.sidebar-container {display:flex;flex-direction:column;flex:auto;width:min($(sidebar.width), 100%);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch;contain:content}
 .navigation, .sidebar_top {background-color:$(sidebar.backgroundColorTop)}
 .sidebar_bottom {background-color:$(sidebar.backgroundColorBottom)}
 .sidebar_top:first-child {padding-top:0}
@@ -670,7 +670,6 @@ html[dir="rtl"] .sidebar-container {box-shadow:-5px 0 10px -5px rgba(0,0,0,.45)}
 .slideout {transform:translateX(0)}
 html[dir="rtl"] .slidein {transform:translateX(-$(sidebar.width))}
 html[dir="rtl"] .slideout {transform:translateX(0)}
-.sidebar-invisible {content-visibility:hidden}
 .sidebar-visible {overflow-y:hidden}
 .dim-overlay {background-color:rgba(0, 0, 0, .7);position:fixed;top:0;left:0;width:100%;height:100vh;z-index:100}
 }
@@ -757,7 +756,7 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 
 /* IEへの対応 */
 _:-ms-input-placeholder, :root #hamburger_menu, #search_expand, .navigation {display:none}
-_:-ms-input-placeholder, :root #BlogSearch1 .hidden, .sidebar-invisible {display:block}
+_:-ms-input-placeholder, :root #BlogSearch1 .hidden {display:block}
 _:-ms-input-placeholder, :root .sidebar-container {position:static;margin-top:0}
 ]]></b:skin>
 
@@ -1590,9 +1589,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:include name='headerByline'/></header>
       <b:include data='post' name='postBody'/>
       <b:include data='post' name='postFooter'/>
-      <div class='hidden' id='cbb'>
-        <button type='button' class='svg-icon-24-button' id='comment-button' onclick='location.href="#cmt"' expr:aria-label='data:messages.postAComment' ><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='floatingIcon' d='M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z'/></svg></button>
-      </div>
     <b:else/>
       <b:include data='post' name='postTitle'/>
       <b:include data='post' name='postBodySnippet'/>
@@ -1890,6 +1886,10 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 &quot;inLanguage&quot;: &quot;<data:blog.locale.name.jsonEscaped/>&quot;
 }
 </script>
+<b:else/>
+<div class='hidden' id='cbb'>
+<button type='button' class='svg-icon-24-button' id='comment-button' onclick='location.href="#cmt"' expr:aria-label='data:messages.postAComment' ><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='floatingIcon' d='M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z'/></svg></button>
+</div>
 </b:if>
 
 </main>
@@ -2260,7 +2260,9 @@ let backButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (entry.isIntersecting) {
 if (!bbb.classList.contains(&quot;hidden&quot;)) {
-bbb.classList.remove(&quot;fadein&quot;); bbb.classList.add(&quot;fadeout&quot;); bbb.addEventListener(&quot;animationend&quot;, () =&gt; {
+bbb.classList.remove(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
+bbb.classList.add(&quot;fadeout&quot;); });
+bbb.addEventListener(&quot;animationend&quot;, () =&gt; {
 if (bbb.classList.contains(&quot;fadeout&quot;)) {
 bbb.classList.add(&quot;hidden&quot;); }}); }
 return; }
@@ -2361,7 +2363,8 @@ let commentButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (entry.isIntersecting) {
 if (!cbb.classList.contains(&quot;hidden&quot;)) {
-cbb.classList.remove(&quot;fadein&quot;); cbb.classList.add(&quot;fadeout&quot;); cbb.addEventListener(&quot;animationend&quot;, () =&gt; { 
+cbb.classList.remove(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
+cbb.classList.add(&quot;fadeout&quot;); }); cbb.addEventListener(&quot;animationend&quot;, () =&gt; { 
 if (cbb.classList.contains(&quot;fadeout&quot;)) {
 cbb.classList.add(&quot;hidden&quot;); }}); }
 return; }
