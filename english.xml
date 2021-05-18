@@ -1230,9 +1230,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       </b:if>
     </div>
 </div>
-  <div class='hidden' id='bbb'>
-    <button class='svg-icon-24-button' id='back-button' type='button' onclick='location.href="#blog-title"' aria-label='Back to top'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button>
-  </div>
 
 <main class='centered-bottom' id='main' tabindex='-1'>
 
@@ -1859,9 +1856,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 }
 </script>
 <b:else/>
-<div class='hidden' id='cbb'>
-<button type='button' class='svg-icon-24-button' id='comment-button' onclick='location.href="#cmt"' expr:aria-label='data:messages.postAComment' ><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='floatingIcon' d='M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z'/></svg></button>
-</div>
+<div class='hidden' id='bbb'><button aria-label='トップへ戻る' class='svg-icon-24-button' id='back-button' onclick='location.href=&quot;#blog-title&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button></div>
+<div class='hidden' id='cbb'><button class='svg-icon-24-button' expr:aria-label='data:messages.postAComment' id='comment-button' onclick='location.href=&quot;#cmt&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='floatingIcon' d='M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z'/></svg></button></div>
 </b:if>
 
 </main>
