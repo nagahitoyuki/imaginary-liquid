@@ -2329,7 +2329,7 @@ adc.parentNode.removeChild(adc); }); }
 requestAnimationFrame(() =&gt; {
 Blog1.appendChild(bpNode); }); return alnd(); }).catch(() =&gt; {
 npl.href = npl.dataset.href; Blog1.appendChild(bpg.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }); }).catch(() =&gt; {
-nextIndexObserver.disconnect(); return; });
+return; });
 if (bpg) {
 bpg.parentNode.remove(); }}
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
