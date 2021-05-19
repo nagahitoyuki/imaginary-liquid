@@ -445,12 +445,10 @@ body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)
 .FeaturedPost .title a {color:$(posts.title.color)}
 .FeaturedPost {padding:20px var(--maincolumn-padding);background-color:$(posts.background.color);margin-bottom:var(--maincolumn-padding)}
 .FeaturedPost a, .FeaturedPost a:hover, .FeaturedPost a:visited {color:$(posts.link.color)}
-.FeaturedPost article {display:grid;}
 .FeaturedPost .post-title, .FeaturedPost .post-title a, .FeaturedPost .post-title a:hover, .FeaturedPost .post-title a:visited {color:#fff}
-.FeaturedPost .post-title a, .FeaturedPost .snippet-thumbnail img {width:min(100vw - var(--maincolumn-padding) * 2, $(content.width) - var(--maincolumn-padding) * 2);height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3)}
-.FeaturedPost .post-title a {display:grid;justify-content:center;align-items:center;text-align:center;padding:var(--maincolumn-padding);box-sizing:border-box}
+.FeaturedPost article a, .FeaturedPost .snippet-thumbnail img {width:100%;height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;align-items:center;text-align:center}
 .no-image {background-color:#a9a9a9}
-.FeaturedPost .post-title {font:$(posts.stream.title.font);margin:0;grid-column:1/2;grid-row:1/2;z-index:1}
+.FeaturedPost .post-title {font:$(posts.stream.title.font);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2}
 .FeaturedPost .snippet-thumbnail img {display:block;filter:brightness(70%)}
 
@@ -1261,8 +1259,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </div>
 </b:includable>
     <b:includable id='snippetedPostContent'>
+    <a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'>
+    <b:class cond='!data:post.featuredImage or !data:this.postDisplay.showFeaturedImage' name='no-image'/>
   <b:include cond='data:this.postDisplay.showTitle' name='snippetedPostTitle'/>
   <b:include cond='data:post.featuredImage and data:this.postDisplay.showFeaturedImage' data='post' name='snippetedPostThumbnail'/>
+  </a>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <picture class='snippet-thumbnail'>
@@ -1286,9 +1287,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='snippetedPostTitle'>
   <h2 class='post-title'>
-    <a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'>
-    <b:class cond='!data:post.featuredImage' name='no-image'/>
-    <span><data:post.title/></span></a>
+    <data:post.title/>
   </h2>
 </b:includable>
     <b:includable id='snippetedPosts'>
