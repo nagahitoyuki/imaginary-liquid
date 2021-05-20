@@ -584,8 +584,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .sidebar-container {display:flex;flex-direction:column;flex:auto;width:min($(sidebar.width), 100%);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch;contain:content}
 .navigation, .sidebar_top {background-color:$(sidebar.backgroundColorTop)}
 .sidebar_bottom {background-color:$(sidebar.backgroundColorBottom)}
-.sidebar_top:first-child {padding-top:0}
-.sidebar-container .widget {margin:0 var(--maincolumn-padding);padding:8px 0;color:$(widget.text.color)}
+.sidebar-container .widget {margin:0 var(--maincolumn-padding);color:$(widget.text.color)}
 .sidebar-container .widget .title {color:$(widget.title.color)}
 .sidebar-container .widget ul {list-style:none;padding-$startSide:0}
 .sidebar-container .widget ul ul {margin-$startSide:1em}
