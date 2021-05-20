@@ -673,7 +673,7 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 }
 
 /* 横向きタブレット以上 */
-@media screen and (min-width:769px){
+@media screen and (min-width:961px){
 
 /* 記事の題名 */
 .Blog h1.post-title {line-height:calc(var(--body-lineheight) - .2)}
@@ -681,7 +681,6 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 .PopularPosts .post-title {line-height:var(--body-lineheight)}
 
 /* 記事の本文 */
-.FeaturedPost .snippet-thumbnail img {width:calc($(content.width) - var(--maincolumn-padding) * 2);height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
 .post-body h1 {font-size:26.5px;line-height:calc(var(--body-lineheight) - .1)}
 .post-body h2 {font-size:25px;line-height:calc(var(--body-lineheight) - .1)}
 .post-body h3 {font-size:20.9px}
@@ -696,13 +695,12 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 }
 
 /* 横向きタブレット以下 */
-@media screen and (max-width:768px){
+@media screen and (max-width:960px){
 
 /* ページボディー */
 .Blog article {max-width:100vw}
 
 /* 記事の本文 */
-.FeaturedPost .snippet-thumbnail img {width:100%;height:calc((100vw - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
 body:not(.item-view) .Blog aside {align-self:stretch;display:grid}
 
 /* 投稿画像 */
@@ -722,7 +720,7 @@ body:not(.item-view) .mobile-ad .inline-ad {align-self:center}
 }
 
 /* タブレット中心 */
-@media screen and (max-width:768px) and (min-width:481px) {
+@media screen and (max-width:960px) and (min-width:481px) {
 
 /* 文字サイズと行間 */
 #blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 18)}
@@ -736,6 +734,7 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 .post-body h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 55)}
 .PopularPosts .post-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30);line-height:var(--body-lineheight)}
 }
+
 /* スマホ以下 */
 @media screen and (max-width:480px) {
 
