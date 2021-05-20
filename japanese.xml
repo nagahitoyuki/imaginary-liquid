@@ -322,7 +322,7 @@
 /* 一般設定 */
 :root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6}
 html {scroll-behavior:smooth}
-body {width:min(100vw, $(sidebar.width + content.width + content.margin * 2 + body.background.blur * 2));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal}
+body {width:min(100vw, $(sidebar.width + content.width + content.margin * 2));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal}
 a {text-decoration:none;color:$(body.link.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
