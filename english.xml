@@ -679,14 +679,11 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 }
 
 /* More than the width of horizontal tablet */
-@media screen and (min-width:769px){
+@media screen and (min-width:961px){
 
 /* Post title */
 .Blog h1.post-title a {line-height:calc(var(--body-lineheight) - .15)}
 .Blog h2.post-title a, .FeaturedPost .post-title a {line-height:calc(var(--body-lineheight) - .15)}
-
-/* Post body */
-.FeaturedPost .snippet-thumbnail img {width:calc($(content.width) - var(--maincolumn-padding) * 2);height:calc(($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
 
 /* AdSense ads */
 #AdSense1, .desktop-ad .inline-ad {display:block;width:100%;max-width:100%}
@@ -695,7 +692,7 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 }
 
 /* Below the width of horizontal tablet */
-@media screen and (max-width:768px){
+@media screen and (max-width:960px){
 
 /* Page body */
 .Blog article {max-width:100vw}
@@ -704,9 +701,6 @@ body:not(.item-view) .Blog aside {align-self:stretch;display:grid}
 /* Post title */
 .Blog h1.post-title a {line-height:calc(var(--body-lineheight) - .2)}
 .Blog h2.post-title a, .FeaturedPost .post-title a {line-height:calc(var(--body-lineheight) - .15)}
-
-/* Post body */
-.FeaturedPost .snippet-thumbnail img {width:100%;height:calc((100vw - var(--maincolumn-padding) * 2) * 2 / 3);object-fit:cover}
 
 /* Posted image */
 body.item-view .post-body a[imageanchor="1"][style*="float: left;"],body.item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none!important;clear:none!important}
