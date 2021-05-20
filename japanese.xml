@@ -580,7 +580,6 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .theme-attribution, .blogger, .image-attribution {margin-bottom:1em}
 
 /* サイドバー */
-.navigation {text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
 .sidebar-container {display:flex;flex-direction:column;flex:auto;width:min($(sidebar.width), 100%);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch;contain:content}
 .navigation, .sidebar_top {background-color:$(sidebar.backgroundColorTop)}
 .sidebar_bottom {background-color:$(sidebar.backgroundColorBottom)}
@@ -597,7 +596,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .widget.Profile .individual .profile-link {flex-direction:column}
 .widget.Profile .team .profile-link .profile-name {align-self:center;display:block;flex:auto}
 .sidebar_top .widget.Profile {padding-bottom:16px}
-.widget.Profile h3.title {color:$(profile.title.color);margin-top:24px}
+.widget.Profile h3.title {color:$(profile.title.color)}
 .widget.Profile .individual {text-align:center}
 .widget.Profile ul {list-style:none;padding-$startSide:0}
 .widget.Profile li {margin:10px 0}
@@ -663,6 +662,7 @@ html[dir="rtl"] .sidebar-container {box-shadow:-5px 0 10px -5px rgba(0,0,0,.45)}
 #comment-button, #add-button {$startSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
 
 /* サイドバー */
+.navigation {background-color:$(sidebar.backgroundColorTop);text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
 .sidebar-container {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s ease-out;z-index:101}
 .slidein {transform:translateX($(sidebar.width))}
 .slideout {transform:translateX(0)}
