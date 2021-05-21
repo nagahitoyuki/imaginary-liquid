@@ -580,7 +580,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .theme-attribution, .blogger, .image-attribution {margin-bottom:1em}
 
 /* サイドバー */
-.sidebar-container {display:flex;flex-direction:column;flex:auto;width:min($(sidebar.width), 85vw);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch;contain:content}
+.sidebar-container {display:flex;flex-direction:column;width:min($(sidebar.width), 85vw);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch;contain:content}
 .sidebar_top {background-color:$(sidebar.backgroundColorTop)}
 .sidebar_bottom {background-color:$(sidebar.backgroundColorBottom)}
 .sidebar-container .widget {margin:0 var(--maincolumn-padding);color:$(widget.text.color)}
@@ -666,7 +666,7 @@ body {position:relative}
 #comment-button, #add-button {$startSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
 
 /* サイドバー */
-.navigation {background-color:$(sidebar.backgroundColorTop);text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
+.navigation {background-color:$(sidebar.backgroundColorTop);text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding);padding-bottom:var(--maincolumn-padding);margin-bottom:calc(var(--maincolumn-padding) * -1)}
 .sidebar-container {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s ease-out;z-index:101}
 .slidein {transform:translateX($(sidebar.width))}
 .slideout {transform:translateX(0)}
