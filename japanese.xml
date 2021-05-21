@@ -305,11 +305,11 @@
 
 <Group description="Widths">
   <Variable name="sidebar.width" description="Sidebar width" type="length"
-            min="100px" max="1000px" default="285px"  value="285px"/>
+            min="100px" max="1000px" default="295px"  value="295px"/>
   <Variable name="content.width" description="Content width" type="length"
             min="600px" max="2400px" default="925px"  value="925px"/>
   <Variable name="content.margin" description="Content margin" type="length"
-            min="0px" max="1000px" default="60px"  value="60px"/>
+            min="0px" max="1000px" default="20px"  value="20px"/>
 </Group>
  */
 
@@ -322,7 +322,7 @@
 /* 一般設定 */
 :root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6}
 html {scroll-behavior:smooth}
-body {width:min(100vw, $(sidebar.width + content.width + content.margin * 2));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal}
+body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal}
 a {text-decoration:none;color:$(body.link.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
@@ -430,7 +430,7 @@ html[dir="rtl"] body #back-button, html[dir="rtl"] body #comment-button, html[di
 
 /* ページボディー */
 .page_body {position:relative;z-index:20}
-.centered {display:flex;flex-direction:column;margin:0 auto;width:min(100vw, $(content.width));height:max-content}
+.centered {display:flex;flex-direction:column;margin:0 auto;max-width:100%}
 .centered >* {flex:auto}
 .Blog {contain:content}
 .blog-posts {background:$(body.background.color);display:grid;gap:var(--maincolumn-padding)}
@@ -580,7 +580,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .theme-attribution, .blogger, .image-attribution {margin-bottom:1em}
 
 /* サイドバー */
-.sidebar-container {display:flex;flex-direction:column;flex:auto;width:min($(sidebar.width), 100%);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch;contain:content}
+.sidebar-container {display:flex;flex-direction:column;flex:auto;width:min($(sidebar.width), 85vw);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch;contain:content}
 .sidebar_top {background-color:$(sidebar.backgroundColorTop)}
 .sidebar_bottom {background-color:$(sidebar.backgroundColorBottom)}
 .sidebar-container .widget {margin:0 var(--maincolumn-padding);color:$(widget.text.color)}
@@ -635,27 +635,31 @@ a.report_abuse{font-weight:400}
 .error-view .post-outer-container {background:$(body.background.color);padding:var(--maincolumn-padding);border-bottom:4px #c0c0c0 double}
 
 /* ブログのコンテンツとサイドバーと隙間の幅以上 */
-@media screen and (min-width:$(sidebar.width + content.width + content.margin * 2)){
+@media screen and (min-width:$(sidebar.width + content.width + content.margin)){
 
 /* 位置取り */
 body {position:relative}
-.page_body {margin-$startSide:$(sidebar.width)}
 .search {margin-$startSide:0}
 .search.focused {width:100%}
 .centered-top-container {margin-top:30px;margin-bottom:30px}
+#content_wrapper {position:relative}
+#main, #sub_main {width:$(content.width)}
+
+/* Floating bar */
+#hamburger_menu, #search_expand {display:none}
+#swc.hidden {display:block}
 
 /* 戻るボタン／コメントボタン／ローディング */
-#back-button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin * 2)) / 2 + var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px + $(content.margin))}
-#comment-button, #add-button {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin * 2)) / 2 + var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px + $(content.margin + sidebar.width))}
+#back-button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
+#comment-button, #add-button {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
 
 /* サイドバー */
 .navigation {display:none}
-.sidebar-container {position:absolute;top:0;$startSide:0;$endSide:auto;box-shadow:5px 0 10px -5px rgba(0,0,0,.45);z-index:20}
-html[dir="rtl"] .sidebar-container {box-shadow:-5px 0 10px -5px rgba(0,0,0,.45)}
+.sidebar-container {position:absolute;top:var(--floatingbar-height);$endSide:0;margin-$startSide:$(content.margin);z-index:20}
 }
 
 /* ブログのコンテンツとサイドバーと隙間の幅以下 */
-@media screen and (max-width:$(sidebar.width + content.width + content.margin * 2 - 1px)){
+@media screen and (max-width:$(sidebar.width + content.width + content.margin - 1px)){
 
 /* 戻るボタン／コメントボタン／ローディング */
 #back-button {$endSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
@@ -751,21 +755,16 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 .PopularPosts .post-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 20);line-height:var(--body-lineheight)}
 }
 
-/* IEへの対応 */
-_:-ms-input-placeholder, :root #hamburger_menu, #search_expand, .navigation {display:none}
-_:-ms-input-placeholder, :root #BlogSearch1 .hidden {display:block}
-_:-ms-input-placeholder, :root .sidebar-container {position:static;margin-top:0}
 ]]></b:skin>
 
 <b:if cond='data:view.isLayoutMode'>
 <b:template-skin>
 <![CDATA[
-body#layout .bg-photo, body#layout .bg-photo-overlay, body#layout .navigation {display:none}
-body#layout .centered {display:block;max-width:925px;width:60%;float:right}
+body#layout .bg-photo, body#layout .bg-photo-overlay {display:none}
+body#layout .centered {display:block;max-width:925px;margin:0 auto}
 body#layout .centered-top {margin-top:0;margin-bottom:0}
 body#layout #floatingbar {position:initial;display:initial}
 body#layout #floating_menu {display:initial}
-body#layout .sidebar-container {float:left;width:40%}
 ]]>
 </b:template-skin></b:if>
 
@@ -1211,6 +1210,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     </b:widget>
   </b:section>
 
+<div id='content_wrapper'>
 <div id='floatingbar'>
   <div id='floating_menu'>
     <button type='button' class='svg-icon-24-button' id='hamburger_menu' aria-label='サイドバーを開く'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'/></svg></button>
@@ -1912,50 +1912,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:section>
 </aside>
 
-<footer id='attribution'>
-  <div class='theme-attribution'>with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow'>Imaginary theme</a></div>
-
-            <b:section class='footer' id='footer' name='Footer' showaddelement='false'>
-              <b:widget id='Attribution1' locked='true' title='' type='Attribution' visible='true'>
-                <b:widget-settings>
-                  <b:widget-setting name='copyright'/>
-                </b:widget-settings>
-                <b:includable id='main' var='this'>
-  <div class='widget-content'>
-    <div class='blogger'>
-      <a expr:href='data:bloggerUrl' rel='nofollow'>
-        <b:include name='flatBloggerIcon'/>
-        <b:message name='messages.poweredByBlogger'/>
-      </a>
-    </div>
-
-    <b:if cond='data:imageAuthor'>
-      <div class='image-attribution'>
-        <b:if cond='data:imageAuthor.url'>
-          <b:message name='messages.templateImagesByLink'>
-            <b:param expr:value='data:imageAuthor.url'/>
-            <b:param expr:value='data:imageAuthor.name'/>
-          </b:message>
-        <b:else/>
-          <b:message name='messages.templateImagesBy'>
-            <b:param expr:value='data:imageAuthor.name'/>
-          </b:message>
-        </b:if>
-      </div>
-    </b:if>
-
-    <b:if cond='data:copyright != &quot;&quot;'>
-      <div class='copyright'><data:copyright/></div>
-    </b:if>
-  </div>
-</b:includable>
-              </b:widget>
-            </b:section>
-            </footer>
-          </div>
-        </div>
-    </div>
-
 <aside aria-hidden='true' class='sidebar-container sidebar-invisible'>
   <div class='navigation'>
     <button type='button' class='svg-icon-24-button' id='close-button' aria-label='サイドバーを閉じる'><svg  class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg></button>
@@ -2191,6 +2147,52 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
         </b:widget>
       </b:section>
 </aside>
+</div>
+
+<footer id='attribution'>
+  <div class='theme-attribution'>with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow'>Imaginary theme</a></div>
+
+            <b:section class='footer' id='footer' name='Footer' showaddelement='false'>
+              <b:widget id='Attribution1' locked='true' title='' type='Attribution' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='copyright'/>
+                </b:widget-settings>
+                <b:includable id='main' var='this'>
+  <div class='widget-content'>
+    <div class='blogger'>
+      <a expr:href='data:bloggerUrl' rel='nofollow'>
+        <b:include name='flatBloggerIcon'/>
+        <b:message name='messages.poweredByBlogger'/>
+      </a>
+    </div>
+
+    <b:if cond='data:imageAuthor'>
+      <div class='image-attribution'>
+        <b:if cond='data:imageAuthor.url'>
+          <b:message name='messages.templateImagesByLink'>
+            <b:param expr:value='data:imageAuthor.url'/>
+            <b:param expr:value='data:imageAuthor.name'/>
+          </b:message>
+        <b:else/>
+          <b:message name='messages.templateImagesBy'>
+            <b:param expr:value='data:imageAuthor.name'/>
+          </b:message>
+        </b:if>
+      </div>
+    </b:if>
+
+    <b:if cond='data:copyright != &quot;&quot;'>
+      <div class='copyright'><data:copyright/></div>
+    </b:if>
+  </div>
+</b:includable>
+              </b:widget>
+            </b:section>
+            </footer>
+          </div>
+        </div>
+    </div>
+
 <script>
 document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
 var bdis = document.body;
@@ -2204,7 +2206,7 @@ var bcsd = document.createElement(&quot;div&quot;);
 bcsd.classList.add(&quot;dim-overlay&quot;);
 hbm.addEventListener(&quot;click&quot;, () =&gt; {
 sbct.style.willChange = &quot;transform&quot;; sbct.classList.remove(&quot;slideout&quot;); bcsd.classList.remove(&quot;fadeout&quot;); bcsd.classList.add(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
-sbct.classList.add(&quot;slidein&quot;); bdis.appendChild(bcsd); });  sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); });
+sbct.classList.add(&quot;slidein&quot;); content_wrapper.appendChild(bcsd); });  sbct.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); });
 /* Close button */
 var clb = document.querySelector(&quot;button#close-button&quot;);
 function clsb() {
@@ -2217,7 +2219,7 @@ if (sbct.classList.contains(&quot;slideout&quot;)) {
 sbct.classList.add(&quot;sidebar-invisible&quot;); }});
 bcsd.addEventListener(&quot;animationend&quot;, () =&gt; {
 if (bcsd.classList.contains(&quot;fadeout&quot;)) {
-bdis.removeChild(bcsd); }});
+content_wrapper.removeChild(bcsd); }});
 /* Search button */
 var sce = document.querySelector(&quot;button#search_expand&quot;);
 var shrb = document.querySelector(&quot;div.share-buttons&quot;);
