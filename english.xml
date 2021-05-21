@@ -385,7 +385,7 @@ iframe.b-hbp-video {border:0}
 .tabs li a {color:$(tabs.color)}
 
 /* Floating bar */
-#floatingbar {position:sticky;top:0;left:0;right:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
+#floatingbar {position:sticky;top:0;left:0;right:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50;contain:content}
 #floating_menu {display:flex;column-gap:8px}
 #floating_share {display:flex;column-gap:4px}
 
