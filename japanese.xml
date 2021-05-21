@@ -580,7 +580,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .theme-attribution, .blogger, .image-attribution {margin-bottom:1em}
 
 /* サイドバー */
-.sidebar-container {display:flex;flex-direction:column;width:min($(sidebar.width), 79%);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch;contain:content}
+.sidebar-container {display:flex;flex-direction:column;width:min($(sidebar.width), 80%);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch;contain:content}
 .sidebar_top {background-color:$(sidebar.backgroundColorTop)}
 .sidebar_bottom {background-color:$(sidebar.backgroundColorBottom)}
 .sidebar-container .widget {margin:0 var(--maincolumn-padding);color:$(widget.text.color)}
