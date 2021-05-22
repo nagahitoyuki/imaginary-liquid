@@ -340,11 +340,11 @@ blockquote {margin:1em 2.5em}
 .hidden, .no-items {display:none}
 .invisible {visibility:hidden}
 body:not(.item-view) #sub_main, body:not(.item-view) #attribution {display:none}
-.sidebar-invisible, body.item-view #sub_main, body.item-view #attribution {content-visibility:auto;contain-intrinsic-size:100%}
+.sidebar-invisible, .item-view #sub_main, .item-view #attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* ウィジェット */
-#comments .comment .comment-actions, .widget.Profile .profile-link, .widget.Profile .profile-link.visit-profile {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0}
-.widget .title {font-size:large;color:$(widget.title.color)}
+#comments .comment .comment-actions, .profile-link {color:$(body.link.color);cursor:pointer;font-weight:bold;outline:0}
+.widget>.title {font-size:large;color:$(widget.title.color)}
 
 /* スキップナビ */
 .skip-navigation {background-color:#fff;box-sizing:border-box;color:#000;display:block;height:0;$startSide:0;line-height:50px;overflow:hidden;padding-top:0;position:fixed;text-align:center;top:0;transition:box-shadow .3s, height .3s, padding-top .3s;width:100%;z-index:900}
@@ -352,15 +352,15 @@ body:not(.item-view) #sub_main, body:not(.item-view) #attribution {display:none}
 
 /* アーカイブと検索のメッセージ */
 .post-filter-message {background-color:rgba(0, 0, 0, .8);color:#fff;padding-top:calc(var(--maincolumn-padding) * 2.25);padding-bottom:calc(var(--maincolumn-padding) * 2.25);text-align:center}
-.post-filter-message a {margin-$startSide:1em;color:#fff}
+.pfm-link {margin-$startSide:1em;color:#fff}
 .post-filter-message .search-label, .post-filter-message .search-query {font-weight:bold}
 
 /* 補足 */
 #main {outline:0}
 .BLOG_mobile_video_class {display:none}
-body .CSS_LIGHTBOX {z-index:900}
+.CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
-iframe.b-hbp-video {border:0}
+.b-hbp-video {border:0}
 .noscript {background:#ff0;color:#000;padding:var(--maincolumn-padding);margin-bottom:2em}
 
 /* 通知 */
@@ -372,37 +372,38 @@ iframe.b-hbp-video {border:0}
 
 /* ブログヘッダー */
 .centered-top {margin-top:2em;margin-bottom:2em}
-.centered-top-placeholder{display:none}
+.centered-top-placeholder {display:none}
 .centered-top-container {text-align:center;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding);contain:content}
 #blog-title {color:$(blog.title.color);font:$(blog.title.font);margin:0;line-height:calc(var(--body-lineheight) - .1)}
-#blog-title a,#blog-title a:hover,#blog-title a:visited{color:$(blog.title.color)}
-.Header p {color:$(blog.title.color);margin-top:1.5em;margin-bottom:0}
+#blog-title>a, #blog-title>a:hover, #blog-title>a:visited{color:$(blog.title.color)}
+.blog-desc {color:$(blog.title.color);margin-top:1.5em;margin-bottom:0}
 
 /* タブ */
-#page_list_top .title {color:$(tabs.title.color);font-size:large;margin-top:1.25em;margin-bottom:0}
+.PageList>.title {color:$(tabs.title.color);font-size:large;margin-top:1.25em;margin-bottom:0}
 .tabs {list-style:none;padding-$startSide:0;display:flex;justify-content:space-evenly;align-items:center;flex-wrap:wrap;margin-top:1em;margin-bottom:-.5em}
-.tabs li {font:$(tabs.font);min-width:15%;line-height:2.6}
-.tabs li a {color:$(tabs.color)}
+.pl-items {font:$(tabs.font);min-width:15%;line-height:2.6}
+.pl-items>a {color:$(tabs.color)}
 
 /* フローティングバー */
-#floatingbar {position:sticky;top:0;left:0;right:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50;contain:content}
+#floating_bar {position:sticky;top:0;left:0;right:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50;contain:content}
 #floating_menu {display:flex;column-gap:8px}
 #floating_share {display:flex;column-gap:4px}
 
 /* SVGアイコン */
 .svg-icon-24-button, .loadingIcon {appearance:none;padding:0;border:none;outline:none;background:transparent;}
 .svg-icon-24 {vertical-align:middle;width:24px;height:24px;cursor:pointer}
-.sidebar-container .svg-icon-24 {fill:$(sidebar.icons.color)}
-.centered-bottom .svg-icon-24 {fill:$(posts.icons.color)}
+#close-button>.svg-icon-24 {fill:$(sidebar.icons.color)}
+.post-icons .svg-icon-24 {fill:$(posts.icons.color)}
 .floatingIcon {fill:$(sticky.icons.color)}
 .svg-icon-back {stroke-width:2px;stroke:$(sticky.icons.color);fill:transparent}
 .avatarIcon {width:24px;height:24px;fill:$(posts.icons.color);padding:5.5px}
+.blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical-align:bottom}
 
 /* 戻るボタン／コメントボタン／ローディング */
 #back-button, #comment-button, #add-button {display:flex;justify-content:center;align-items:center;position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50}
 html[dir="rtl"] body #back-button, html[dir="rtl"] body #comment-button, html[dir="rtl"] body #add-button {box-shadow:-5px 5px 10px -5px rgba(0,0,0,.35)}
 #back-button, #comment-button {width:var(--floatingbar-height);border-radius:50%}
-#back-button svg {padding-top:calc(-20px / 6);padding-bottom:calc(20px / 6)}
+#back-button>.svg-icon-24 {padding-top:calc(-20px / 6);padding-bottom:calc(20px / 6)}
 #add-button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px}
 
 /* フェード */
@@ -429,16 +430,15 @@ html[dir="rtl"] body #back-button, html[dir="rtl"] body #comment-button, html[di
 .top-ad-placeholder span, .inline-ad-placeholder span {margin-top:36px;display:block;text-transform:uppercase;font-weight:700;color:$(posts.title.color)}
 
 /* ページボディー */
-.page_body {position:relative;z-index:20}
-.centered {display:flex;flex-direction:column;margin:0 auto;max-width:100%}
-.centered >* {flex:auto}
+.centered {position:relative;display:flex;flex-direction:column;margin:0 auto;max-width:100%;z-index:20}
+.centered>* {flex:auto}
 .Blog {contain:content}
 .blog-posts {background:$(body.background.color);display:grid;gap:var(--maincolumn-padding)}
 .Blog article {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
 body:not(.item-view) .blog-posts {grid-template-columns:1fr;margin-bottom:var(--maincolumn-padding)}
 body:not(.item-view) .Blog aside {align-self:stretch;display:grid}
 body:not(.item-view) .post-bottom {align-self:end}
-body.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
+.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
 
 /* 注目の投稿 */
 .FeaturedPost .title {margin-top:0;margin-bottom:20px}
@@ -525,7 +525,7 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .comment-link .num_comments {margin-$startSide:.5em;vertical-align:top}
 #comment-holder .continue {display:none}
 #comment-editor {margin-bottom:2em}
-#comments h2.title {color:$(posts.title.color);margin-top:0;margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
+#comments>.title {font-size:large;color:$(posts.title.color);margin-top:0;margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
 #comments.embed .footer p {margin-top:0}
 #cf-message {margin-bottom:0}
 .item-control {display:none}
@@ -540,43 +540,43 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 
 /* 人気の投稿 */
 .PopularPosts {background-color:$(popularposts.background.color)}
-.PopularPosts .item-content {display:grid;grid-auto-flow:column}
-.PopularPosts a,.PopularPosts a:hover,.PopularPosts a:visited {color:$(popularposts.link.color)}
-.PopularPosts .post-title,.PopularPosts .post-title a,.PopularPosts .post-title a:hover,.PopularPosts .post-title a:visited {color:$(popularposts.title.color)}
-.PopularPosts,PopularPosts .title a {color:$(posts.text.color)}
-.PopularPosts .post-title {font:$(popularposts.title.font)}
+.PopularPosts, .PopularPosts>.title a {color:$(posts.text.color)}
+.PopularPosts .item-content {display:flex;column-gap:var(--maincolumn-padding)}
+.PopularPosts .post-title.url {font:$(popularposts.title.font)}
+.PopularPosts .post-title.url, .PopularPosts .post-title.url:hover, .PopularPosts .post-title.url:visited {color:$(popularposts.title.color)}
+.PopularPosts .post-footer a, .PopularPosts .post-footer a:hover, .PopularPosts .post-footer a:visited {color:$(popularposts.link.color)}
+.PopularPosts .item-thumbnail {flex:none;height:auto}
+.PopularPosts .item-thumbnail>img {width:100%}
 .PopularPosts .post+.post {border-top:1px dashed $(sidebar.separator.color)}
-.PopularPosts .item-thumbnail img {width:94px;height:94px;margin-$endSide:var(--maincolumn-padding)}
 #page_body .PopularPosts {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
-.page .item-content {margin-bottom:16px}
-.page .PopularPosts .post-title {margin-top:20px;margin-bottom:20px}
-.page .PopularPosts .post {margin-bottom:20px;padding:0}
-.page .PopularPosts p.snippet-item {color:$(popularposts.text.color);margin:0}
-.page .PopularPosts .footerbox {display:flex}
+.centered .item-content {margin-bottom:16px}
+.centered .PopularPosts .post-title {margin-top:20px;margin-bottom:20px}
+.centered .PopularPosts .post {margin-bottom:20px;padding:0}
+.centered .PopularPosts .snippet-item {color:$(popularposts.text.color);margin:0}
+.centered .PopularPosts .item-thumbnail {width:max(20%, 7em - var(--maincolumn-padding))}
 .sidebar-container .PopularPosts .post {margin-bottom:24px}
 .sidebar-container .PopularPosts .post-title {margin-top:24px}
 .sidebar-container .PopularPosts .snippet-item {color:$(posts.text.color);margin:0}
+.sidebar-container .PopularPosts .item-thumbnail {width:calc(35% - var(--maincolumn-padding) * 2)}
 
 /* ページャー */
 .blog-pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.75);margin-bottom:calc(var(--maincolumn-padding) * .75)}
 #blog-pager {display:flex;justify-content:space-around}
-.blog-pager a {color:$(posts.navigation.link.color)}
-.blog-pager a:visited{color:$(posts.navigation.link.visited.color)}
-.blog-pager a:hover {color:$(posts.navigation.link.hover.color)}
+.blog-pager>a {color:$(posts.navigation.link.color)}
+.blog-pager>a:visited{color:$(posts.navigation.link.visited.color)}
+.blog-pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* サブメイン */
+#sub_main {contain:content}
 #sub_main .widget {margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
 #sub_main .widget ul {list-style:none;padding-$startSide:0}
 #sub_main .widget ul ul {margin-$startSide:1em}
-#sub_main.no-items {display:none}
 #sub_main .widget:last-child {margin-bottom:1.75em}
 
 /* ブログの帰属 */
-#sub_main {contain:content}
 #attribution {text-align:center;font-size:small;color:$(attribution.text.color);margin-bottom:2em}
+#attribution>div {line-height:24px;margin-top:.5em}
 #attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
-#attribution svg {fill:$(attribution.icon.color);vertical-align:bottom}
-#attribution div {line-height:24px;margin-top:.5em}
 .theme-attribution, .blogger, .image-attribution {margin-bottom:1em}
 
 /* サイドバー */
@@ -584,27 +584,23 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .sidebar_top {background-color:$(sidebar.backgroundColorTop)}
 .sidebar_bottom {background-color:$(sidebar.backgroundColorBottom)}
 .sidebar-container .widget {margin:0 var(--maincolumn-padding);color:$(widget.text.color)}
-.sidebar-container .widget .title {color:$(widget.title.color)}
+.sidebar-container .widget>.title {color:$(widget.title.color)}
 .sidebar-container .widget ul {list-style:none;padding-$startSide:0}
 .sidebar-container .widget ul ul {margin-$startSide:1em}
 .sidebar-container .widget+.widget {border-top:1px dashed $(sidebar.separator.color)}
 
 /* プロフィール */
-.widget.Profile {margin:0 auto;padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box}
-.widget.Profile .profile-link {display:flex}
-.widget.Profile .team-member .default-avatar-wrapper,.widget.Profile .team-member .profile-img {flex:none;margin-$endSide:1em}
-.widget.Profile .individual .profile-link {flex-direction:column}
-.widget.Profile .team .profile-link .profile-name {align-self:center;display:block;flex:auto}
-.sidebar_top .widget.Profile {padding-bottom:16px}
-.widget.Profile h3.title {color:$(profile.title.color)}
-.widget.Profile .individual {text-align:center}
-.widget.Profile ul {list-style:none;padding-$startSide:0}
-.widget.Profile li {margin:10px 0}
-.widget.Profile .profile-img {border-radius:50%}
-.widget.Profile .profile-link {color:$(profile.link.color)}
-.widget.Profile dd {color:$(profile.text.color);margin-$startSide:0;padding-top:8px}
-.profile-snippet.snippet-container {max-height:192px}
-.has-location .profile-snippet.snippet-container{max-height:144px}
+.Profile {margin:0 auto;box-sizing:border-box}
+.Profile .title {color:$(profile.title.color)}
+.individual {text-align:center}
+.profile-img {border-radius:50%}
+.team-member .default-avatar-wrapper, .team-member .profile-img {flex:none;margin-$endSide:1em}
+.individual .profile-link {flex-direction:column}
+.team .profile-link .profile-name {align-self:center;display:block;flex:auto}
+.profile-link {display:flex;color:$(profile.link.color)}
+.Profile ul {list-style:none;padding-$startSide:0}
+.profile-data, .profile-textblock {color:$(profile.text.color);margin-$startSide:0;padding-top:8px}
+.sidebar_top .Profile {padding-bottom:16px}
 
 /* アーカイブとラベル */
 .BlogArchive .title, .Label .title, .BlogArchive .first-items ul {margin-bottom:0}
@@ -626,10 +622,10 @@ color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.col
 .contact-form-name, .contact-form-email, .contact-form-email-message {max-width:100%;box-sizing:border-box}
 
 /* 不正行為を報告 */
-a.report_abuse{font-weight:400}
+.report_abuse{font-weight:400}
 
 /* 翻訳 */
-.widget.Translate .skiptranslate>div{display:block!important}
+.Translate .skiptranslate>div{display:block!important}
 
 /* エラー */
 .error-view .post-outer-container {background:$(body.background.color);padding:var(--maincolumn-padding);border-bottom:4px #c0c0c0 double}
@@ -708,13 +704,13 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 body:not(.item-view) .Blog aside {align-self:stretch;display:grid}
 
 /* 投稿画像 */
-body.item-view .post-body a[imageanchor="1"][style*="float: left;"],body.item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none!important;clear:none!important}
-body.item-view .post-body a[imageanchor="1"] img{display:block;margin:0 auto}
-body.item-view .post-body>.separator:first-child>a[imageanchor="1"]:first-child {
+.item-view .post-body a[imageanchor="1"][style*="float: left;"],.item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none!important;clear:none!important}
+.item-view .post-body a[imageanchor="1"] img{display:block;margin:0 auto}
+.item-view .post-body>.separator:first-child>a[imageanchor="1"]:first-child {
 margin-top:20px}
 .post-body a[imageanchor] {display:block}
-body.item-view .post-body a[imageanchor="1"] {margin-left:0!important;margin-right:0!important}
-body.item-view .post-body a[imageanchor="1"]+a[imageanchor="1"] {margin-top:16px}
+.item-view .post-body a[imageanchor="1"] {margin-left:0!important;margin-right:0!important}
+.item-view .post-body a[imageanchor="1"]+a[imageanchor="1"] {margin-top:16px}
 
 /* アドセンス広告 */
 #AdSense1, .mobile-ad .inline-ad {display:block;width:min(100%, calc(100vw - var(--maincolumn-padding) * 2))}
@@ -763,7 +759,7 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 body#layout .bg-photo, body#layout .bg-photo-overlay {display:none}
 body#layout .centered {display:block;max-width:925px;margin:0 auto}
 body#layout .centered-top {margin-top:0;margin-bottom:0}
-body#layout #floatingbar {position:initial;display:initial}
+body#layout #floating_bar {position:initial;display:initial}
 body#layout #floating_menu {display:initial}
 ]]>
 </b:template-skin></b:if>
@@ -1074,7 +1070,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
      <div class='bg-photo-container'>
        <div class='bg-photo'/>
       </div>
-       <div class='page_body'>
 
           <div class='centered'>
             <div class='centered-top-placeholder'/>
@@ -1112,7 +1107,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:if>
 </b:includable>
     <b:includable id='description'>
-  <b:tag cond='data:this.description' name='p'><data:this.description/></b:tag>
+  <b:tag class='blog-desc' cond='data:this.description' name='p'><data:this.description/></b:tag>
 </b:includable>
     <b:includable id='image'>
   <a class='header-image-wrapper' expr:href='data:blog.homepageUrl'>
@@ -1170,7 +1165,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </div>
 </b:includable>
     <b:includable id='pageLink'>
-  <li>
+  <li class='pl-items'>
     <a expr:href='data:link.href'><data:link.title/></a>
   </li>
 </b:includable>
@@ -1211,7 +1206,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:section>
 
 <div id='content_wrapper'>
-<div id='floatingbar'>
+<div id='floating_bar'>
   <div id='floating_menu'>
     <button type='button' class='svg-icon-24-button' id='hamburger_menu' aria-label='サイドバーを開く'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'/></svg></button>
      <b:if cond='data:widgets any (w =&gt; w.sectionId == &quot;search_top&quot;)'>
@@ -1265,7 +1260,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:elseif cond='data:view.isSearch and data:view.search.resultsMessageHtml'/>
       <data:view.search.resultsMessageHtml/>
     </b:if>
-      <a expr:href='data:blog.homepageUrl'><data:messages.showAll/></a>
+      <a class='pfm-link' expr:href='data:blog.homepageUrl'><data:messages.showAll/></a>
   </div>
 </b:if>
 
@@ -1578,7 +1573,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:if>
 </b:includable>
     <b:includable id='post' var='post'>
-  <div class='post'>
     <b:if cond='data:view.isSingleItem'>
       <header><b:include data='post' name='postTitle'/>
       <b:include name='headerByline'/></header>
@@ -1589,7 +1583,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:include data='post' name='postBodySnippet'/>
       <b:include data='post' name='postFooter'/>
     </b:if>
-  </div>
 </b:includable>
     <b:includable id='postAuthor'>
   <span class='byline post-author author vcard'><span class='post-author-label'><data:byline.label/></span>
@@ -1636,7 +1629,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     </a>
 </b:includable>
     <b:includable id='postCommentsAndAd' var='post'>
-  <article class='post-outer'>
+  <article class='post'>
   <b:class cond='data:view.isPost' name='hentry'/>
     <!-- Post title and body -->
       <b:include data='post' name='post'/>
@@ -2191,7 +2184,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
             </footer>
           </div>
         </div>
-    </div>
 
 <script>
 document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
