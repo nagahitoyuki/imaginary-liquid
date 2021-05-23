@@ -459,7 +459,10 @@ body:not(.item-view) .post-bottom {align-self:end}
 /* 記事のヘッダー／フッター */
 .post-footer, .post-header {display:flex;color:$(posts.byline.color)}
 .byline, .fn>.uid, .post-timestamp>a, .post-updatedtime, .pft-profile>span {color:$(posts.byline.color)}
-.photo {vertical-align:bottom;border-radius:50%;margin-$endSide:4px}
+.post-header-line-1{display:flex;align-items:flex-start;column-gap:4px}
+.pa-label {vertical-align:top}
+.fn>a {display:inline-flex;align-items:center;column-gap:4px}
+.photo {border-radius:50%}
 .post-footer a {color:$(posts.link.color)}
 .hentry .post-footer {flex-direction:column}
 .post-footer-line>span {display:block;margin-bottom:16px}
@@ -470,7 +473,7 @@ body:not(.item-view) .post-bottom {align-self:end}
 .author-desc {color:$(profile.text.color)}
 
 /* 記事の本文とスニペット */
-.post-body {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin:20px 0 25px}
+.post-body {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin:25px 0}
 .post-body a, .post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:flow-root;width:min(100%, calc($(content.width) - var(--maincolumn-padding) * 2));margin-bottom:20px}
@@ -775,7 +778,6 @@ body#layout #floating_menu {display:initial}
     <b:include name='super.main'/>
 </b:includable>
     <b:includable id='postSnippet'>
-  <div expr:class='(data:snippetPrefix ?: &quot;post&quot;) + &quot;-snippet snippet-container&quot;'>
     <p class='snippet-item'>
     <b:if cond='data:widget.sectionId == &quot;sidebar_top&quot; or data:widget.sectionId == &quot;sidebar_bottom&quot;'>
       <b:eval expr='data:post.body snippet { length: 45, links: false, linebreaks: false, ellipsis: true }'/>
@@ -785,7 +787,6 @@ body#layout #floating_menu {display:initial}
        <data:post.snippets.short/>
     </b:if>
     </p>
-  </div>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
   <span class='jump-link'>
@@ -1327,7 +1328,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:widget-setting name='style.linkcolor'>#000000</b:widget-setting>
       <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
       <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
-      <b:widget-setting name='timestampLabel'/>
+      <b:widget-setting name='timestampLabel'>-</b:widget-setting>
       <b:widget-setting name='reactionsLabel'/>
       <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
       <b:widget-setting name='style.layout'>336x280</b:widget-setting>
@@ -1578,7 +1579,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     </b:if>
 </b:includable>
     <b:includable id='postAuthor'>
-  <span class='byline post-author author vcard'><span class='post-author-label'><data:byline.label/></span>
+  <span class='byline author vcard'><span class='pa-label'><data:byline.label/></span>
   <span class='fn'>
   <b:if cond='data:post.author.profileUrl'>
     <a class='url uid' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
@@ -1802,7 +1803,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
    </span>
  </b:includable>
     <b:includable id='postSnippet'>
-  <div expr:class='(data:snippetPrefix ?: &quot;post&quot;) + &quot;-snippet snippet-container&quot;'>
     <p class='snippet-item'>
     <b:if cond='data:blog.isMobileRequest'>
       <b:eval expr='data:post.body snippet { length: 90, links: false, linebreaks: false, ellipsis: true }'/>
@@ -1810,7 +1810,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <data:post.snippets.short/>
     </b:if>
     </p>
-  </div>
 </b:includable>
     <b:includable id='snippetedPostContent'>
   <b:include name='snippetedPostTitle'/>
