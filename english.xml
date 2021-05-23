@@ -473,7 +473,7 @@ body:not(.item-view) .post-bottom {align-self:end}
 .author-desc {color:$(profile.text.color)}
 
 /* Post body and snippet */
-.post-body {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin:20px 0}
+.post-body {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin:16px 0}
 .post-body a, .post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:flow-root;width:min(100%, calc($(content.width) - var(--maincolumn-padding) * 2));margin-bottom:16px}
