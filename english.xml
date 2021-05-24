@@ -326,7 +326,7 @@ body {width:min(100vw, $(sidebar.width + content.width + content.margin));height
 a {text-decoration:none;color:$(body.link.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
-h1, h2, h3, h4, h5, h6, #blog-title {scroll-margin-top:calc(1em + var(--floatingbar-height))}
+h1, h2, h3, h4, h5, h6, .item-view #blog-title {scroll-margin-top:calc(1em + var(--floatingbar-height))}
 img {max-width:100%;height:auto}
 iframe {max-width:100%}
 input {font-size:100%}
