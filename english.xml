@@ -355,7 +355,7 @@ body:not(.item-view) #sub_main, body:not(.item-view) #attribution {display:none}
 .post-filter-message .search-label, .post-filter-message .search-query {font-weight:bold}
 
 /* Appendix */
-#main {outline:0}
+#page_body {outline:0}
 .BLOG_mobile_video_class {display:none}
 .CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
@@ -370,9 +370,8 @@ body:not(.item-view) #sub_main, body:not(.item-view) #attribution {display:none}
 .no-posts-message {line-height:40px;text-align:center}
 
 /* Blog header */
-.centered-top {margin-top:1.75em;margin-bottom:1.75em}
 .centered-top-placeholder {display:none}
-.centered-top-container {text-align:center;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
+.centered-top {margin-top:1.75em;margin-bottom:1.75em;text-align:center;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
 #blog-title {color:$(blog.title.color);font:$(blog.title.font);margin:0;line-height:calc(var(--body-lineheight) - .15)}
 #blog-title>a, #blog-title>a:hover, #blog-title>a:visited{color:$(blog.title.color)}
 .blog-desc {color:$(blog.title.color);margin-top:1.25em;margin-bottom:0}
@@ -384,9 +383,8 @@ body:not(.item-view) #sub_main, body:not(.item-view) #attribution {display:none}
 .pl-items>a {color:$(tabs.color)}
 
 /* Floating bar */
-#floating_bar {position:sticky;top:0;left:0;right:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50;contain:content}
-#floating_menu {display:flex;column-gap:8px}
-#floating_share {display:flex;column-gap:4px}
+#floating_bar {position:sticky;top:0;left:0;right:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50;contain:content}
+#floating_menu, #floating_share {display:flex;column-gap:4px}
 
 /* SVG icons */
 .svg-icon-24-button, .loadingIcon {appearance:none;padding:0;border:none;outline:none;background:transparent;}
@@ -400,7 +398,7 @@ body:not(.item-view) #sub_main, body:not(.item-view) #attribution {display:none}
 
 /* Back button / Comment button / Loading */
 #back-button, #comment-button, #add-button {display:flex;justify-content:center;align-items:center;position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50}
-html[dir="rtl"] body #back-button, html[dir="rtl"] body #comment-button, html[dir="rtl"] body #add-button {box-shadow:-5px 5px 10px -5px rgba(0,0,0,.35)}
+html[dir="rtl"] #back-button, html[dir="rtl"] #comment-button, html[dir="rtl"] #add-button {box-shadow:-5px 5px 10px -5px rgba(0,0,0,.35)}
 #back-button, #comment-button {width:var(--floatingbar-height);border-radius:50%}
 #back-button>.svg-icon-24 {padding-top:calc(-20px / 6);padding-bottom:calc(20px / 6)}
 #add-button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px}
@@ -412,9 +410,7 @@ html[dir="rtl"] body #back-button, html[dir="rtl"] body #comment-button, html[di
 .fadeout {animation:fadeout .3s ease-out}
 
 /* Search widget */
-.search {display:flex;align-items:center}
-#swc {padding-$endSide:8px;animation:fadein .3s ease-out}
-.search-input {display:flex;align-items:center;gap:4px}
+.search-input {display:inline-flex;align-items:center;column-gap:6px;animation:fadein .3s ease-out}
 .search-space {color:$(search.input.color);font:$(search.input.font);max-width:73%}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
@@ -639,11 +635,9 @@ color:rgba($(posts.title.color.red), $(posts.title.color.green), $(posts.title.c
 
 /* Placement */
 body {position:relative}
-.search {margin-$startSide:0}
-.search.focused {width:100%}
-.centered-top-container {margin-top:30px;margin-bottom:30px}
+.centered-top {margin-top:30px;margin-bottom:30px}
 #content_wrapper {position:relative}
-#main, #sub_main {width:$(content.width)}
+#page_body, #sub_main {width:$(content.width)}
 
 /* Floating bar */
 #hamburger_menu, #search_expand {display:none}
@@ -660,6 +654,9 @@ body {position:relative}
 
 /* Below the width of the blog content and sidebar and gaps */
 @media screen and (max-width:$(sidebar.width + content.width + content.margin - 1px)){
+
+/* Placement */
+.search-input {margin-left:8px;margin-right:8px}
 
 /* Back button / Comment button / Loading */
 #back-button {$endSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
@@ -1034,11 +1031,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 
           <div class='centered'>
             <div class='centered-top-placeholder'/>
-            <header class='centered-top-container'>
-              <div class='centered-top'>
-                <b:class cond='data:view.isSearch and data:view.search.query' name='search-focused'/>
-
-<div class='blog-name'>
+              <header class='centered-top'>
 
 <b:section id='header' name='Header' showaddelement='false'>
   <b:widget id='Header1' locked='true' title='Blog Name (Header)' type='Header' visible='true'>
@@ -1140,10 +1133,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
   </b:widget>
 </b:section>
-</div>
-</div>
-  <noscript><div class='noscript'>To use this site properly, please enable JavaScript on your browser.</div></noscript>
 </header>
+  <noscript><div class='noscript'>To use this site properly, please enable JavaScript on your browser.</div></noscript>
 
   <b:section ads='true' class='top-ad-container' cond='data:widgets.AdSense.first.id == &quot;AdSense1&quot;' id='ads' name='Advertisements (Horizontal format)' showaddelement='false' tag='aside'>
     <b:widget id='AdSense1' locked='true' title='AdSense' type='AdSense' version='2' visible='false'>
@@ -1171,8 +1162,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <div id='floating_menu'>
     <button type='button' class='svg-icon-24-button' id='hamburger_menu' aria-label='Open sidebar'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'/></svg></button>
      <b:if cond='data:widgets any (w =&gt; w.sectionId == &quot;search_top&quot;)'>
-        <div class='search'>
-        <b:class cond='data:view.isSearch and data:view.search.query' name='focused'/>
         <b:section id='search_top' name='Search (Top)' showaddelement='false'>
           <b:widget id='BlogSearch1' locked='true' title='このブログを検索' type='BlogSearch' visible='true'>
             <b:includable id='main'>
@@ -1199,7 +1188,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           </b:widget>
         </b:section>
      <button type='button' class='svg-icon-24-button' id='search_expand' expr:aria-label='data:messages.search.escaped'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='floatingIcon' d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/><path d='M0 0h24v24H0z' fill='transparent'/></svg></button>
-    </div>
     </b:if>
   </div>
   <div id='floating_share'>
@@ -1212,8 +1200,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     </div>
 </div>
 
-<main class='centered-bottom' id='main' tabindex='-1'>
-
 <b:if cond='data:view.isArchive or (data:view.isSearch and data:view.search.resultsMessageHtml)'>
   <div class='post-filter-message'>
     <b:if cond='data:view.isArchive'>
@@ -1225,7 +1211,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </div>
 </b:if>
 
-<b:section class='main' id='page_body' name='Page Body' showaddelement='false'>
+<b:section class='centered-bottom' id='page_body' name='Page Body' showaddelement='false' tag='main'>
   <b:widget cond='data:view.isHomepage' id='FeaturedPost1' locked='true' title='' type='FeaturedPost' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='showSnippet'>true</b:widget-setting>
@@ -1600,7 +1586,20 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 
     <!-- Show ad inside post container, after comments, if single item. -->
     <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
-    <b:include cond='data:view.isSingleItem' data='post' name='postMeta'/>
+    <b:if cond='data:view.isMultipleItems'>
+    <script type='application/ld+json'> {
+&quot;@context&quot;: &quot;http://schema.org&quot;,
+&quot;@type&quot;: &quot;CreativeWork&quot;,
+&quot;mainEntity&quot;: {
+&quot;@type&quot;: &quot;Blog&quot;,
+&quot;@id&quot;: &quot;<data:blog.url.canonical.jsonEscaped/>&quot; },
+&quot;name&quot;: &quot;<data:blog.pageTitle.jsonEscaped/>&quot;,
+&quot;description&quot;: &quot;<b:eval expr='data:blog.description ? data:blog.description.jsonEscaped : &quot;Blog posting site by Blogger&quot;'/>&quot;,
+&quot;inLanguage&quot;: &quot;<data:blog.locale.name.jsonEscaped/>&quot;
+}</script>
+    <b:else/>
+    <b:include data='post' name='postMeta'/>
+    </b:if>
   </article>
 
   <!-- Show ad outside post container (between posts) for feed pages. -->
@@ -1820,22 +1819,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
   </b:widget>
 </b:section>
-
-<b:if cond='data:view.isMultipleItems'>
-<script type='application/ld+json'> {
-&quot;@context&quot;: &quot;http://schema.org&quot;,
-&quot;@type&quot;: &quot;CreativeWork&quot;,
-&quot;mainEntity&quot;: {
-&quot;@type&quot;: &quot;Blog&quot;,
-&quot;@id&quot;: &quot;<data:blog.url.canonical.jsonEscaped/>&quot; },
-&quot;name&quot;: &quot;<data:blog.pageTitle.jsonEscaped/>&quot;,
-&quot;description&quot;: &quot;<b:eval expr='data:blog.description ? data:blog.description.jsonEscaped : &quot;Blog posting site by Blogger&quot;'/>&quot;,
-&quot;inLanguage&quot;: &quot;<data:blog.locale.name.jsonEscaped/>&quot;
-}
-</script>
-</b:if>
-
-</main>
 
 <div class='hidden' id='bbb'><button aria-label='トップへ戻る' class='svg-icon-24-button' id='back-button' onclick='location.href=&quot;#blog-title&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button></div>
 <b:if cond='data:view.isSingleItem'>
@@ -2197,7 +2180,7 @@ navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&
 alert (&quot;<data:messages.linkCopiedToClipboard.jsEscaped/>&quot;); }); });
 </b:if>
 /* Back button */
-var backButton = document.querySelector(&quot;header.centered-top-container&quot;);
+var backButton = document.querySelector(&quot;header.centered-top&quot;);
 let backButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (entry.isIntersecting) {
