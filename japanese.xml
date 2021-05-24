@@ -807,7 +807,7 @@ body#layout #floating_menu {display:initial}
     <span class='byline archive-link'>
     <b:if cond='data:post.url and data:post.date.month lt 10'>
       <a expr:href='data:view.url path (data:post.date.year + &quot;/0&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
-    <else/>
+    <b:else/>
       <a expr:href='data:view.url path (data:post.date.year + &quot;/&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
     </b:if>
     </span>
@@ -1563,6 +1563,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:include data='post' name='postBodySnippet'/>
       <b:include data='post' name='postFooter'/>
     </b:if>
+      <b:include data='post' name='postMeta'/>
 </b:includable>
     <b:includable id='postAuthor'>
   <span class='byline author vcard'><span class='pa-label'><data:byline.label/></span>
@@ -1619,20 +1620,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 
     <!-- Show ad inside post container, after comments, if single item. -->
     <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
-    <b:if cond='data:view.isMultipleItems'>
-    <script type='application/ld+json'> {
-&quot;@context&quot;: &quot;http://schema.org&quot;,
-&quot;@type&quot;: &quot;CreativeWork&quot;,
-&quot;mainEntity&quot;: {
-&quot;@type&quot;: &quot;Blog&quot;,
-&quot;@id&quot;: &quot;<data:blog.url.canonical.jsonEscaped/>&quot; },
-&quot;name&quot;: &quot;<data:blog.pageTitle.jsonEscaped/>&quot;,
-&quot;description&quot;: &quot;<b:eval expr='data:blog.description ? data:blog.description.jsonEscaped : &quot;Blog posting site by Blogger&quot;'/>&quot;,
-&quot;inLanguage&quot;: &quot;<data:blog.locale.name.jsonEscaped/>&quot;
-}</script>
-    <b:else/>
-    <b:include data='post' name='postMeta'/>
-    </b:if>
   </article>
 
   <!-- Show ad outside post container (between posts) for feed pages. -->
@@ -1705,7 +1692,20 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </a></span>
 </b:includable>
     <b:includable id='postMeta' var='post'>
-  <b:include data='post' name='postMetadataJSON'/>
+    <b:if cond='data:view.isMultipleItems'>
+    <script type='application/ld+json'> {
+&quot;@context&quot;: &quot;http://schema.org&quot;,
+&quot;@type&quot;: &quot;CreativeWork&quot;,
+&quot;mainEntity&quot;: {
+&quot;@type&quot;: &quot;Blog&quot;,
+&quot;@id&quot;: &quot;<data:blog.url.canonical.jsonEscaped/>&quot; },
+&quot;name&quot;: &quot;<data:blog.pageTitle.jsonEscaped/>&quot;,
+&quot;description&quot;: &quot;<b:eval expr='data:blog.description ? data:blog.description.jsonEscaped : &quot;Blog posting site by Blogger&quot;'/>&quot;,
+&quot;inLanguage&quot;: &quot;<data:blog.locale.name.jsonEscaped/>&quot;
+}</script>
+    <b:else/>
+    <b:include data='post' name='postMetadataJSON'/>
+    </b:if>
 </b:includable>
     <b:includable id='postPagination'>
   <div class='blog-pager'>
@@ -1722,7 +1722,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <span class='byline post-timestamp'><data:byline.label/>
   <b:if cond='data:post.url and data:post.date.month lt 10'>
     <a class='timestamp-link published' expr:href='data:view.url path (data:post.date.year + &quot;/0&quot; + data:post.date.month + &quot;/&quot;)' rel='archives'><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></a>
-  <else/>
+  <b:else/>
     <a class='timestamp-link published' expr:href='data:view.url path (data:post.date.year + &quot;/&quot; + data:post.date.month + &quot;/&quot;)' rel='archives'><time class='published' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></a>
   </b:if>
   </span>
@@ -1824,7 +1824,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <span class='byline archive-link'>
     <b:if cond='data:post.url and data:post.date.month lt 10'>
       <a expr:href='data:view.url path (data:post.date.year + &quot;/0&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
-    <else/>
+    <b:else/>
       <a expr:href='data:view.url path (data:post.date.year + &quot;/&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
     </b:if>
     </span>
