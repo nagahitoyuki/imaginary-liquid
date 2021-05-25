@@ -555,11 +555,10 @@ color:rgba($(posts.title.color.red), $(posts.title.color.green), $(posts.title.c
 .sidebar-container .PopularPosts .item-thumbnail {width:calc(35% - var(--maincolumn-padding))}
 
 /* ページャー */
-.blog-pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.75);margin-bottom:calc(var(--maincolumn-padding) * .75)}
-#blog-pager {display:flex;justify-content:space-around}
-.blog-pager>a {color:$(posts.navigation.link.color)}
-.blog-pager>a:visited{color:$(posts.navigation.link.visited.color)}
-.blog-pager>a:hover {color:$(posts.navigation.link.hover.color)}
+#blog-pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.75);margin-bottom:calc(var(--maincolumn-padding) * .75);display:flex;justify-content:space-around}
+#blog-pager>a {color:$(posts.navigation.link.color)}
+#blog-pager>a:visited{color:$(posts.navigation.link.visited.color)}
+#blog-pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* サブメイン */
 #sub_main {contain:content}
@@ -2274,7 +2273,7 @@ bpct.clientHeight === 0 ? bpct.remove() : &quot;&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
 function alnd() {
-document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = "false"; requestAnimationFrame(() =&gt; {
+document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; requestAnimationFrame(() =&gt; {
 adb.classList.add(&quot;hidden&quot;); }); }
 function ismg(value) {
 switch (value) {
@@ -2284,23 +2283,23 @@ function mnisac() {
 const isac = new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 requestAnimationFrame(() =&gt; {
-adb.classList.remove(&quot;hidden&quot;); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = "true"; resolve(&quot;Go ahead&quot;); } else {
+adb.classList.remove(&quot;hidden&quot;); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(&quot;Go ahead&quot;); } else {
 reject(&quot;Too fast&quot;); }}).then(() =&gt; {
 fetch(npl.dataset.href).then(response =&gt; {
 if (!response.ok) {
 throw &quot;Connection failed&quot;; }
 return response.body.getReader(); }).then(reader =&gt; {
-let gttx;
+let pstx;
+let psdm;
 reader.read().then(function processResult(result) {
-const prtx = new TextDecoder().decode(result.value, {stream:true});
-gttx += prtx;
-if (prtx.includes(&quot;<data:messages.morePosts/>&quot;)) {
+const prchk = new TextDecoder().decode(result.value, {stream:true});
+pstx += prchk; psdm = new DOMParser().parseFromString(pstx, &quot;text/html&quot;);
+if (psdm.querySelector(&quot;a.blog-pager-older-link&quot;)) {
 return reader.releaseLock(); }
 return reader.read().then(processResult); }).then(() =&gt; {
-const docm = new DOMParser().parseFromString(gttx, &quot;text/html&quot;);
-const nppics = [].slice.call(docm.querySelectorAll(&quot;picture.ytpic&quot;));
-const bats = [].slice.call(docm.querySelectorAll(&quot;article&quot;));
-npl = docm.querySelector(&quot;a.blog-pager-older-link&quot;);
+const nppics = [].slice.call(psdm.querySelectorAll(&quot;picture.ytpic&quot;));
+const bats = [].slice.call(psdm.querySelectorAll(&quot;article&quot;));
+npl = psdm.querySelector(&quot;a.blog-pager-older-link&quot;);
 if (nppics[0]) {
 nppics.forEach(nppic =&gt; {
 const np = nppic.querySelector(&quot;img&quot;);
@@ -2317,10 +2316,10 @@ const nbat = document.adoptNode(bat);
 requestAnimationFrame(() =&gt; {
 bpct.appendChild(document.adoptNode(bat)); }); }
 return alnd(); })(); }); }).catch(() =&gt; {
-npl.href = npl.dataset.href; bpct.after(bpg.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }); }).catch(() =&gt; {
+npl.href = npl.dataset.href; bpct.after(bpg); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }); }).catch(() =&gt; {
 return; });
 if (bpg) {
-bpg.parentNode.remove(); }}
+bpg.remove(); }}
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (npl) {
