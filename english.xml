@@ -1729,7 +1729,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <footer class='comment-form'>
     <a name='comment-form'/>
     <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
-      <p id='switch'><data:this.messages.blogComment/></p>
+      <p><data:this.messages.blogComment/></p>
     </b:if>
     <b:include data='post' name='commentFormIframeSrc'/>
     <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
@@ -2270,9 +2270,9 @@ npimg.src = np.src; }); }
 for (const bat of bats) {
 const nbat = document.adoptNode(bat);
 requestAnimationFrame(() =&gt; {
-Blog1.appendChild(document.adoptNode(bat)); }); }
+bpct.appendChild(document.adoptNode(bat)); }); }
 return alnd(); })(); }); }).catch(() =&gt; {
-npl.href = npl.dataset.href; Blog1.appendChild(bpg.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }); }).catch(() =&gt; {
+npl.href = npl.dataset.href; bpct.after(bpg.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }); }).catch(() =&gt; {
 return; });
 if (bpg) {
 bpg.parentNode.remove(); }}
