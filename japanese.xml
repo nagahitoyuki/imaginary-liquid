@@ -2292,7 +2292,7 @@ throw &quot;Connection failed&quot;; }
 return response.body.getReader(); }).then(reader =&gt; {
 let gttx;
 reader.read().then(function processResult(result) {
-const prtx = new TextDecoder().decode(result.value);
+const prtx = new TextDecoder().decode(result.value, {stream:true});
 gttx += prtx;
 if (prtx.includes(&quot;<data:messages.morePosts/>&quot;)) {
 return reader.releaseLock(); }
