@@ -432,7 +432,6 @@ html[dir="rtl"] #back-button, html[dir="rtl"] #comment-button, html[dir="rtl"] #
 .blog-posts .post {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
 body:not(.item-view) .blog-posts {grid-template-columns:1fr;margin-bottom:var(--maincolumn-padding)}
 body:not(.item-view) .post+aside {align-self:stretch;display:grid}
-body:not(.item-view) .post-bottom {align-self:end}
 .item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
 
 /* 注目の投稿 */
@@ -453,12 +452,12 @@ body:not(.item-view) .post-bottom {align-self:end}
 .blog-posts h2.post-title {font:$(posts.stream.title.font);color:$(posts.title.color)}
 
 /* 記事のヘッダー／フッター */
-.post-footer, .post-header {display:flex;color:$(posts.byline.color)}
-.byline, .fn>.uid, .post-timestamp>a, .post-updatedtime, .pft-profile>span {color:$(posts.byline.color)}
-.post-header-line-1{display:flex;align-items:flex-start;column-gap:4px}
+.post-header-line-1 {display:flex;column-gap:4px;color:$(posts.byline.color)}
 .pa-label {vertical-align:top}
 .fn>a {display:inline-flex;align-items:center;column-gap:4px}
 .photo {border-radius:50%}
+.byline, .fn>.uid, .post-timestamp>a, .post-updatedtime, .pft-profile>span {color:$(posts.byline.color)}
+.post-footer {display:flex;color:$(posts.byline.color)}
 .post-footer a {color:$(posts.link.color)}
 .hentry .post-footer {flex-direction:column}
 .post-footer-line>span {display:block;margin-bottom:16px}
@@ -803,7 +802,7 @@ body#layout #floating_menu {display:initial}
     </b:if>
   </a>
   <b:if cond='data:widget.sectionId == &quot;sub_main&quot;'>
-  <div class='post-footer'>
+  <footer class='post-footer'>
     <span class='byline archive-link'>
     <b:if cond='data:post.url and data:post.date.month lt 10'>
       <a expr:href='data:view.url path (data:post.date.year + &quot;/0&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
@@ -812,7 +811,7 @@ body#layout #floating_menu {display:initial}
     </b:if>
     </span>
     <b:include data='post' name='postFooterJumpLink'/>
-  </div>
+  </footer>
   </b:if>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
@@ -828,7 +827,7 @@ body#layout #floating_menu {display:initial}
     <b:includable id='snippetedPosts'>
   <div role='feed'>
     <b:loop values='data:posts' var='post'>
-    <article class='post'>
+    <article class='post' expr:aria-setsize='data:posts.length'>
       <b:include name='snippetedPostContent'/>
     </article>
     </b:loop>
@@ -1294,7 +1293,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='snippetedPosts'>
   <div role='feed'>
     <b:loop values='data:posts' var='post'>
-    <article class='post'>
+    <article class='post' expr:aria-setsize='data:posts.length'>
       <b:include name='snippetedPostContent'/>
     </article>
     </b:loop>
@@ -1337,8 +1336,23 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <b:comment>Filter out the featured post, but only on the homepage.</b:comment>
   <b:with value='data:widgets.FeaturedPost filter (w =&gt; w.sectionId == &quot;page_body&quot;) map (w =&gt; w.postId)' var='featuredPostIds'>
   <b:with value='data:view.isHomepage ? data:posts filter (post =&gt; post.id not in data:featuredPostIds) : data:posts' var='posts'>
-  <b:include name='super.main'/>
-  <b:include cond='data:view.isPost' name='postPagination'/>
+  <div aria-busy='false' class='blog-posts'>
+  <b:loop index='i' values='data:posts' var='post'>
+  <b:include data='post' name='postCommentsAndAd'/>
+  </b:loop></div>
+  <b:if cond='data:view.isMultipleItems'>
+  <script type='application/ld+json'> {
+&quot;@context&quot;: &quot;http://schema.org&quot;,
+&quot;@type&quot;: &quot;CreativeWork&quot;,
+&quot;mainEntity&quot;: {
+&quot;@type&quot;: &quot;Blog&quot;,
+&quot;@id&quot;: &quot;<data:blog.url.canonical.jsonEscaped/>&quot; },
+&quot;name&quot;: &quot;<data:blog.pageTitle.jsonEscaped/>&quot;,
+&quot;description&quot;: &quot;<b:eval expr='data:blog.description ? data:blog.description.jsonEscaped : &quot;Blog posting site by Blogger&quot;'/>&quot;,
+&quot;inLanguage&quot;: &quot;<data:blog.locale.name.jsonEscaped/>&quot;
+}</script>
+  </b:if>
+  <b:include name='postPagination'/>
   </b:with>
   </b:with>
   </b:with>
@@ -1526,6 +1540,18 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='footerBylines'>
   <b:include name='super.footerBylines'/>
 </b:includable>
+    <b:includable id='headerByline' var='post'>
+  <b:if cond='data:widgets.Blog.first.headerByline'>
+    <header class='post-header'>
+      <b:include data='post' name='postTitle'/>
+      <div class='post-header-line-1'>
+        <b:with value='&quot;header-1&quot;' var='regionName'>
+          <b:include data='data:widgets.Blog.first.headerByline.items' name='bylineRegion'/>
+        </b:with>
+      </div>
+    </header>
+  </b:if>
+</b:includable>
     <b:includable id='homePageLink'>
   <a class='home-link' expr:href='data:blog.homepageUrl'>
     <data:messages.home/>
@@ -1554,16 +1580,15 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='post' var='post'>
     <b:if cond='data:view.isSingleItem'>
-      <header><b:include data='post' name='postTitle'/>
-      <b:include name='headerByline'/></header>
+      <b:include data='post' name='postHeader'/>
       <b:include data='post' name='postBody'/>
       <b:include data='post' name='postFooter'/>
+      <b:include data='post' name='postMeta'/>
     <b:else/>
       <b:include data='post' name='postTitle'/>
       <b:include data='post' name='postBodySnippet'/>
       <b:include data='post' name='postFooter'/>
     </b:if>
-      <b:include data='post' name='postMeta'/>
 </b:includable>
     <b:includable id='postAuthor'>
   <span class='byline author vcard'><span class='pa-label'><data:byline.label/></span>
@@ -1612,6 +1637,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='postCommentsAndAd' var='post'>
   <article class='post'>
   <b:class cond='data:view.isPost' name='hentry'/>
+  <b:attr cond='data:view.isMultipleItems' name='aria-setsize' value='-1'/>
     <!-- Post title and body -->
       <b:include data='post' name='post'/>
 
@@ -1633,8 +1659,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:if>
 </b:includable>
     <b:includable id='postFooter' var='post'>
-  <footer class='post-bottom'>
-    <div class='post-footer'>
+    <footer class='post-footer'>
       <b:if cond='data:view.isPost'>
       <b:include name='footerBylines'/>
         <div class='pf-last'>
@@ -1653,8 +1678,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:include data='post' name='postFooterJumpLink'/>
     </b:if>
       <b:include cond='data:widget.type == &quot;Blog&quot;' data='post' name='postFooterAuthorProfile'/>
-    </div>
-  </footer>
+    </footer>
 </b:includable>
     <b:includable id='postFooterAuthorProfile' var='post'>
   <b:if cond='data:post.author.aboutMe and data:view.isPost'>
@@ -1678,7 +1702,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
    </span>
  </b:includable>
     <b:includable id='postHeader' var='post'>
-  <b:include name='headerByline'/>
+  <b:include data='post' name='headerByline'/>
 </b:includable>
     <b:includable id='postLabels'>
   <b:comment>We don&#39;t display labels on the home page.</b:comment>
@@ -1692,20 +1716,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </a></span>
 </b:includable>
     <b:includable id='postMeta' var='post'>
-    <b:if cond='data:view.isMultipleItems'>
-    <script type='application/ld+json'> {
-&quot;@context&quot;: &quot;http://schema.org&quot;,
-&quot;@type&quot;: &quot;CreativeWork&quot;,
-&quot;mainEntity&quot;: {
-&quot;@type&quot;: &quot;Blog&quot;,
-&quot;@id&quot;: &quot;<data:blog.url.canonical.jsonEscaped/>&quot; },
-&quot;name&quot;: &quot;<data:blog.pageTitle.jsonEscaped/>&quot;,
-&quot;description&quot;: &quot;<b:eval expr='data:blog.description ? data:blog.description.jsonEscaped : &quot;Blog posting site by Blogger&quot;'/>&quot;,
-&quot;inLanguage&quot;: &quot;<data:blog.locale.name.jsonEscaped/>&quot;
-}</script>
-    <b:else/>
     <b:include data='post' name='postMetadataJSON'/>
-    </b:if>
 </b:includable>
     <b:includable id='postPagination'>
   <div class='blog-pager'>
@@ -1820,7 +1831,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     </b:with>
     </b:if>
   </a>
-  <div class='post-footer'>
+  <footer class='post-footer'>
     <span class='byline archive-link'>
     <b:if cond='data:post.url and data:post.date.month lt 10'>
       <a expr:href='data:view.url path (data:post.date.year + &quot;/0&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
@@ -1829,7 +1840,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     </b:if>
     </span>
     <b:include data='post' name='postFooterJumpLink'/>
-  </div>
+  </footer>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <div class='item-thumbnail'>
@@ -1844,7 +1855,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='snippetedPosts'>
   <div role='feed'>
     <b:loop values='data:posts' var='post'>
-    <article class='post'>
+    <article class='post' expr:aria-setsize='data:posts.length'>
       <b:include name='snippetedPostContent'/>
     </article>
     </b:loop>
@@ -2261,7 +2272,7 @@ bpct.clientHeight === 0 ? bpct.remove() : &quot;&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
 function alnd() {
-document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); requestAnimationFrame(() =&gt; {
+document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; requestAnimationFrame(() =&gt; {
 adb.classList.add(&quot;hidden&quot;); }); }
 function ismg(value) {
 switch (value) {
@@ -2271,7 +2282,7 @@ function mnisac() {
 const isac = new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 requestAnimationFrame(() =&gt; {
-adb.classList.remove(&quot;hidden&quot;); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); resolve(&quot;Go ahead&quot;); } else {
+adb.classList.remove(&quot;hidden&quot;); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(&quot;Go ahead&quot;); } else {
 reject(&quot;Too fast&quot;); }}).then(() =&gt; {
 fetch(npl.dataset.href).then(response =&gt; {
 if (!response.ok) {
@@ -2279,11 +2290,9 @@ throw &quot;Connection failed&quot;; }
 return response.text(); }).then(text =&gt; {
 const parserh = new DOMParser();
 const doch = parserh.parseFromString(text, &quot;text/html&quot;);
-const pst = doch.querySelector(&quot;div.blog-posts&quot;);
-const bpNode = document.adoptNode(pst);
+const nppics = [].slice.call(doch.querySelectorAll(&quot;picture.ytpic&quot;));
+const bats = [].slice.call(doch.querySelectorAll(&quot;article&quot;));
 npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;);
-const nppics = [].slice.call(pst.querySelectorAll(&quot;picture.ytpic&quot;));
-const adcs = [].slice.call(pst.querySelectorAll(&quot;aside&quot;));
 if (nppics[0]) {
 nppics.forEach(nppic =&gt; {
 const np = nppic.querySelector(&quot;img&quot;);
@@ -2294,12 +2303,11 @@ const nnpimg = document.createElement(&quot;source&quot;);
 const nnppic = nppic.cloneNode(false);
 nnpimg.srcset = np.dataset.src; nnppic.appendChild(nnpimg); nnppic.appendChild(np); nppic.parentNode.replaceChild(nnppic, nppic); }}
 npimg.src = np.src; }); }
-if (adcs[0]) {
-adcs.forEach (adc =&gt; {
-adc.parentNode.removeChild(adc); }); }
+bats.forEach(bat =&gt; {
 requestAnimationFrame(() =&gt; {
-Blog1.appendChild(bpNode); }); return alnd(); }).catch(() =&gt; {
-npl.href = npl.dataset.href; Blog1.appendChild(bpg.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }); }).catch(() =&gt; {
+bpct.appendChild(document.adoptNode(bat)); }); });
+return alnd(); }).catch(() =&gt; {
+npl.href = npl.dataset.href; bpct.after(bpg.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }); }).catch(() =&gt; {
 return; });
 if (bpg) {
 bpg.parentNode.remove(); }}
