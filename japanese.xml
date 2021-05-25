@@ -1336,7 +1336,9 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <b:comment>Filter out the featured post, but only on the homepage.</b:comment>
   <b:with value='data:widgets.FeaturedPost filter (w =&gt; w.sectionId == &quot;page_body&quot;) map (w =&gt; w.postId)' var='featuredPostIds'>
   <b:with value='data:view.isHomepage ? data:posts filter (post =&gt; post.id not in data:featuredPostIds) : data:posts' var='posts'>
-  <div aria-busy='false' class='blog-posts'>
+  <div expr:class='data:view.isMultipleItems ? &quot;blog-posts hfeed&quot; : &quot;blog-posts&quot;'>
+  <b:attr cond='data:view.isMultipleItems' name='role' value='feed'/>
+  <b:attr cond='data:view.isMultipleItems' name='aria-busy' value='false'/>
   <b:loop index='i' values='data:posts' var='post'>
   <b:include data='post' name='postCommentsAndAd'/>
   </b:loop></div>
