@@ -2229,7 +2229,7 @@ bpct.clientHeight === 0 ? bpct.remove() : &quot;&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
 function alnd() {
-document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; requestAnimationFrame(() =&gt; {
+document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = "false"; requestAnimationFrame(() =&gt; {
 adb.classList.add(&quot;hidden&quot;); }); }
 function ismg(value) {
 switch (value) {
@@ -2239,17 +2239,23 @@ function mnisac() {
 const isac = new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 requestAnimationFrame(() =&gt; {
-adb.classList.remove(&quot;hidden&quot;); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(&quot;Go ahead&quot;); } else {
+adb.classList.remove(&quot;hidden&quot;); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = "true"; resolve(&quot;Go ahead&quot;); } else {
 reject(&quot;Too fast&quot;); }}).then(() =&gt; {
 fetch(npl.dataset.href).then(response =&gt; {
 if (!response.ok) {
 throw &quot;Connection failed&quot;; }
-return response.text(); }).then(text =&gt; {
-const parserh = new DOMParser();
-const doch = parserh.parseFromString(text, &quot;text/html&quot;);
-const nppics = [].slice.call(doch.querySelectorAll(&quot;picture.ytpic&quot;));
-const bats = [].slice.call(doch.querySelectorAll(&quot;article&quot;));
-npl = doch.querySelector(&quot;a.blog-pager-older-link&quot;);
+return response.body.getReader(); }).then(reader =&gt; {
+let gttx;
+reader.read().then(function processResult(result) {
+const prtx = new TextDecoder().decode(result.value);
+gttx += prtx;
+if (prtx.includes(&quot;<data:messages.morePosts/>&quot;)) {
+return reader.releaseLock(); }
+return reader.read().then(processResult); }).then(() =&gt; {
+const docm = new DOMParser().parseFromString(gttx, &quot;text/html&quot;);
+const nppics = [].slice.call(docm.querySelectorAll(&quot;picture.ytpic&quot;));
+const bats = [].slice.call(docm.querySelectorAll(&quot;article&quot;));
+npl = docm.querySelector(&quot;a.blog-pager-older-link&quot;);
 if (nppics[0]) {
 nppics.forEach(nppic =&gt; {
 const np = nppic.querySelector(&quot;img&quot;);
@@ -2260,11 +2266,13 @@ const nnpimg = document.createElement(&quot;source&quot;);
 const nnppic = nppic.cloneNode(false);
 nnpimg.srcset = np.dataset.src; nnppic.appendChild(nnpimg); nnppic.appendChild(np); nppic.parentNode.replaceChild(nnppic, nppic); }}
 npimg.src = np.src; }); }
-bats.forEach(bat =&gt; {
+(async () =&gt; {
+for (const bat of bats) {
+const nbat = document.adoptNode(bat);
 requestAnimationFrame(() =&gt; {
-bpct.appendChild(document.adoptNode(bat)); }); });
-return alnd(); }).catch(() =&gt; {
-npl.href = npl.dataset.href; bpct.after(bpg.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }); }).catch(() =&gt; {
+Blog1.appendChild(document.adoptNode(bat)); }); }
+return alnd(); })(); }); }).catch(() =&gt; {
+npl.href = npl.dataset.href; Blog1.appendChild(bpg.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }); }).catch(() =&gt; {
 return; });
 if (bpg) {
 bpg.parentNode.remove(); }}
