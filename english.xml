@@ -371,7 +371,7 @@ body:not(.item-view) #sub_main, body:not(.item-view) #attribution {display:none}
 
 /* Blog header */
 .centered-top-placeholder {display:none}
-.centered-top {margin-top:1.75em;margin-bottom:1.75em;text-align:center;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
+.centered-top {padding-top:1.75em;padding-bottom:1.75em;text-align:center;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
 #blog-title {color:$(blog.title.color);font:$(blog.title.font);margin:0;line-height:calc(var(--body-lineheight) - .15)}
 #blog-title>a, #blog-title>a:hover, #blog-title>a:visited{color:$(blog.title.color)}
 .blog-desc {color:$(blog.title.color);margin-top:1.25em;margin-bottom:0}
