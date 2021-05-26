@@ -2251,6 +2251,8 @@ const prchk = new TextDecoder().decode(result.value, {stream:true});
 pstx += prchk; psdm = new DOMParser().parseFromString(pstx, &quot;text/html&quot;);
 if (psdm.querySelector(&quot;a.blog-pager-older-link&quot;)) {
 return reader.releaseLock(); }
+if (pstx.includes(&quot;&lt;main&quot;)) {
+pstx.substring(pstx.indexOf(&quot;&lt;main&quot;)); }
 return reader.read().then(processResult); }).then(() =&gt; {
 const nppics = [].slice.call(psdm.querySelectorAll(&quot;picture.ytpic&quot;));
 const bats = [].slice.call(psdm.querySelectorAll(&quot;article&quot;));
