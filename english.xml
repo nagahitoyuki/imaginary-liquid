@@ -512,9 +512,9 @@ body:not(.item-view) .post+aside {align-self:stretch;display:grid}
 bottom:0;margin-bottom:1em;position:absolute}
 .comment-actions>* {
 margin-$endSide:.5em}
-.comment-header>.datetime {bottom:0;color:rgba($(posts.title.color.red), $(posts.title.color.green), $(posts.title.color.blue), .6);display:inline-block;margin-$startSide:.5em}
+.comment-header>.datetime {bottom:0;color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.byline.color.blue), .6);display:inline-block;margin-$startSide:.5em}
 .comment-timestamp>a, .comment-header>.datetime>a {
-color:rgba($(posts.title.color.red), $(posts.title.color.green), $(posts.title.color.blue), .6)}
+color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.byline.color.blue), .6)}
 .comment-content, .comment-body {margin-top:.75em;word-break:break-word}
 #comment-post-message a, #comments .footer a, .comment-content a, .comment-body a, .comment-actions>a, .comment-actions>a:visited, .comment-actions>a:hover, .blog-admin>a {color:$(posts.link.color)}
 .comment-reply, .blog-admin>a {font-weight:normal}
@@ -616,7 +616,8 @@ color:rgba($(posts.title.color.red), $(posts.title.color.green), $(posts.title.c
 /* Text widget */
 .Text .widget-content {margin-bottom:16px}
 
-/* Comment form */
+/* Contact form */
+.contact-form-button {color:inherit}
 .contact-form-name, .contact-form-email, .contact-form-email-message {max-width:100%;box-sizing:border-box}
 
 /* Report abuse */
@@ -2224,7 +2225,7 @@ var nextIndex = document.querySelector(&quot;aside.isf&quot;);
 var bpg = document.querySelector(&quot;nav#blog-pager&quot;);
 var npl = document.querySelector(&quot;a.blog-pager-older-link&quot;);
 var bpct = document.querySelector(&quot;div.blog-posts&quot;);
-bpct.clientHeight === 0 ? bpct.remove() : &quot;&quot;;
+bpct.clientHeight === 0 ? bpct.style.marginTop = &quot;0&quot; : &quot;&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
 function alnd() {
