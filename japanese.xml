@@ -2311,7 +2311,7 @@ const nnppic = nppic.cloneNode(false);
 nnpimg.srcset = np.dataset.src; nnppic.appendChild(nnpimg); nnppic.appendChild(np); nppic.parentNode.replaceChild(nnppic, nppic); }}
 npimg.src = np.src; }); }
 bats.forEach(bat =&gt; {
-bpct.appendChild(document.adoptNode(bat)); }); }); return alnd(); }).catch(() =&gt; {
+bpct.appendChild(document.adoptNode(bat)); }); return alnd(); }); }).catch(() =&gt; {
 npl.href = npl.dataset.href; bpct.after(bpg); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }); }).catch(() =&gt; {
 return; });
 if (bpg) {
