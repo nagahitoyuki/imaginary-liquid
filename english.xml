@@ -2228,8 +2228,7 @@ bpct.clientHeight === 0 ? bpct.remove() : &quot;&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
 function alnd() {
-document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; requestAnimationFrame(() =&gt; {
-adb.classList.add(&quot;hidden&quot;); }); }
+document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; adb.classList.add(&quot;hidden&quot;); }
 function ismg(value) {
 switch (value) {
 case &#39;check&#39;: nextIndex.style.marginTop !== &quot;&quot; ? nextIndex.style.marginTop = &quot;&quot; : &quot;&quot;; bdis.style.marginBottom === &quot;&quot; ? bdis.style.marginBottom = &quot;46px&quot; : &quot;&quot;; break;
@@ -2237,8 +2236,7 @@ case &#39;remove&#39;: nextIndex.style.marginTop !== &quot;&quot; ? nextIndex.st
 function mnisac() {
 const isac = new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
-requestAnimationFrame(() =&gt; {
-adb.classList.remove(&quot;hidden&quot;); }); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(&quot;Go ahead&quot;); } else {
+adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(&quot;Go ahead&quot;); } else {
 reject(&quot;Too fast&quot;); }}).then(() =&gt; {
 fetch(npl.dataset.href).then(response =&gt; {
 if (!response.ok) {
@@ -2267,12 +2265,8 @@ const nnpimg = document.createElement(&quot;source&quot;);
 const nnppic = nppic.cloneNode(false);
 nnpimg.srcset = np.dataset.src; nnppic.appendChild(nnpimg); nnppic.appendChild(np); nppic.parentNode.replaceChild(nnppic, nppic); }}
 npimg.src = np.src; }); }
-(async () =&gt; {
-for (const bat of bats) {
-const nbat = document.adoptNode(bat);
-requestAnimationFrame(() =&gt; {
-bpct.appendChild(document.adoptNode(bat)); }); }
-return alnd(); })(); }); }).catch(() =&gt; {
+bats.forEach(bat =&gt; {
+bpct.appendChild(document.adoptNode(bat)); }); }); return alnd(); }).catch(() =&gt; {
 npl.href = npl.dataset.href; bpct.after(bpg); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }); }).catch(() =&gt; {
 return; });
 if (bpg) {
