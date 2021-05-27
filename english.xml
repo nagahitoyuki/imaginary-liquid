@@ -543,22 +543,19 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 /* Popular posts */
 .PopularPosts {background-color:$(popularposts.background.color)}
 .PopularPosts, .PopularPosts>.title a {color:$(posts.text.color)}
-.PopularPosts .item-content {display:flex;column-gap:var(--maincolumn-padding)}
 .PopularPosts .post-title>a {font:$(popularposts.title.font)}
 .PopularPosts .post-title>a, .PopularPosts .post-title>a:hover, .PopularPosts .post-title>a:visited {color:$(popularposts.title.color)}
+.PopularPosts .post-title {margin-top:20px;margin-bottom:16px}
 .PopularPosts .post-footer a, .PopularPosts .post-footer a:hover, .PopularPosts .post-footer a:visited {color:$(popularposts.link.color)}
-.PopularPosts .item-thumbnail {flex:none;height:auto}
-.PopularPosts .item-thumbnail>img {width:100%}
+.snippet-item {color:$(popularposts.text.color);margin:0}
+.item-content {display:flex;column-gap:var(--maincolumn-padding)}
+.item-content>img {flex:none;height:100%}
 .PopularPosts .post+.post {border-top:1px dashed $(sidebar.separator.color)}
-#page_body .PopularPosts {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
-.centered .item-content {margin-bottom:16px}
-.centered .PopularPosts .post-title {margin-top:20px;margin-bottom:16px}
+#page_body .PopularPosts {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);margin-bottom:calc(var(--maincolumn-padding) * 2.25)} 
 .centered .PopularPosts .post {margin-bottom:20px;padding:0}
-.centered .PopularPosts .snippet-item {color:$(popularposts.text.color);margin:0}
-.centered .PopularPosts .item-thumbnail {width:max(20%, 7em - var(--maincolumn-padding))}
-.sidebar-container .PopularPosts .post-title {margin-top:20px;margin-bottom:20px}
-.sidebar-container .PopularPosts .snippet-item {color:$(posts.text.color);margin:0}
-.sidebar-container .PopularPosts .item-thumbnail {width:calc(35% - var(--maincolumn-padding))}
+.centered .item-content {margin-bottom:16px}
+.centered .item-content>img {width:max(20%, 7em - var(--maincolumn-padding))}
+.sidebar-container .item-content>img {width:calc(35% - var(--maincolumn-padding))}
 
 /* Pager */
 #blog-pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.5);margin-bottom:calc(var(--maincolumn-padding) * .5);display:flex;justify-content:space-around}
@@ -738,7 +735,10 @@ body#layout #floating_menu {display:initial}
 </b:defaultmarkup>
 <b:defaultmarkup type='PopularPosts'>
     <b:includable id='main' var='this'>
-    <b:include name='super.main'/>
+  <b:include name='widget-title'/>
+  <div class='widget-content' expr:aria-setsize='data:posts.length' role='feed'>
+    <b:include name='snippetedPosts'/>
+  </div>
 </b:includable>
     <b:includable id='postSnippet'>
     <p class='snippet-item'>
@@ -782,9 +782,7 @@ body#layout #floating_menu {display:initial}
   </b:if>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
-  <div class='item-thumbnail'>
     <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' sizes='(max-width:480px) 20vw, 188px'/>
-  </div>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
   <h3 class='post-title'>
@@ -792,13 +790,11 @@ body#layout #floating_menu {display:initial}
   </h3>
 </b:includable>
     <b:includable id='snippetedPosts'>
-  <div role='feed'>
     <b:loop values='data:posts' var='post'>
     <article class='post' expr:aria-setsize='data:posts.length'>
       <b:include name='snippetedPostContent'/>
     </article>
     </b:loop>
-  </div>
 </b:includable>
 </b:defaultmarkup>
 <b:defaultmarkup type='Profile'>
@@ -1221,7 +1217,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     </b:widget-settings>
     <b:includable id='main' var='this'>
   <b:include name='widget-title'/>
-  <div class='widget-content'>
+  <div class='widget-content' expr:aria-setsize='data:posts.length' role='feed'>
     <b:include name='snippetedPosts'/>
   </div>
 </b:includable>
@@ -1258,13 +1254,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </h2>
 </b:includable>
     <b:includable id='snippetedPosts'>
-  <div role='feed'>
     <b:loop values='data:posts' var='post'>
     <article class='post' expr:aria-setsize='data:posts.length'>
       <b:include name='snippetedPostContent'/>
     </article>
     </b:loop>
-  </div>
 </b:includable>
   </b:widget>
   <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' visible='true'>
@@ -1772,7 +1766,10 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:widget-setting name='timeRange'>LAST_WEEK</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-    <b:include name='super.main'/>
+  <b:include name='widget-title'/>
+  <div class='widget-content' expr:aria-setsize='data:posts.length' role='feed'>
+    <b:include name='snippetedPosts'/>
+  </div>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
   <span class='jump-link'>
@@ -1812,9 +1809,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </footer>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
-  <div class='item-thumbnail'>
     <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' sizes='(max-width:480px) 20vw, 188px' loading='lazy'/>
-  </div>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
   <h3 class='post-title'>
@@ -1822,13 +1817,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </h3>
 </b:includable>
     <b:includable id='snippetedPosts'>
-  <div role='feed'>
     <b:loop values='data:posts' var='post'>
     <article class='post' expr:aria-setsize='data:posts.length'>
       <b:include name='snippetedPostContent'/>
     </article>
     </b:loop>
-  </div>
 </b:includable>
   </b:widget>
 </b:section>
