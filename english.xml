@@ -268,10 +268,7 @@
       default="#000000"  value="#000000"/>
   <Variable name="profile.text.color" description="Profile text color"
       type="color"
-      red="$(posts.text.color.red)"
-      green="$(posts.text.color.green)"
-      blue="$(posts.text.color.blue)"
-      default="rgba($(red), $(green), $(blue), 0.8)"  value="rgba(0, 0, 0, 0.8)"/>
+      default="$(posts.text.color)"  value="#000000"/>
   <Variable name="profile.link.color" description="Profile link color"
       type="color"
       default="#ff00ff"  value="#ff00ff"/>
