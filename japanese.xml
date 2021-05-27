@@ -2281,8 +2281,7 @@ fetch(npl.dataset.href).then(response =&gt; {
 if (!response.ok) {
 throw &quot;Connection failed&quot;; }
 return response.body.getReader(); }).then(reader =&gt; {
-let pstx;
-let psdm;
+let pstx, psdm;
 reader.read().then(function processResult(result) {
 const prchk = new TextDecoder().decode(result.value, {stream:true});
 pstx += prchk; psdm = new DOMParser().parseFromString(pstx, &quot;text/html&quot;);
@@ -2307,9 +2306,8 @@ npimg.src = np.src; }); }
 bats.forEach(bat =&gt; {
 bpct.appendChild(document.adoptNode(bat)); }); return alnd(); }); }).catch(() =&gt; {
 npl.href = npl.dataset.href; bpct.after(bpg); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }); }).catch(() =&gt; {
-return; });
-if (bpg) {
-bpg.remove(); }}
+return; }).then(() =&gt; {
+bpg.remove(); }); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (npl) {
