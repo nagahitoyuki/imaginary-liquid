@@ -2231,7 +2231,7 @@ const reader = response.body.getReader();
 const file = document.createElement(&quot;pre&quot;);
 let result = await reader.read();
 while (!result.done) {
-file.insertAdjacentHTML(&quot;beforeend&quot;, new TextDecoder().decode(result.value, {stream:true}));
+file.innerHTML += new TextDecoder().decode(result.value, {stream:true});
 if (file.querySelector(&quot;a.blog-pager-older-link&quot;)) {
 return file; }
 result = await reader.read(); }
