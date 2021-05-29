@@ -2273,11 +2273,10 @@ const response = await fetch(npl.dataset.href);
 if (!response.ok) {
 throw &quot;Connection failed&quot;; }
 const reader = response.body.getReader();
-let text = &quot;&quot;
+let text = &quot;&quot;;
 let result = await reader.read();
 while (!result.done) {
-const chunk = new TextDecoder().decode(result.value, {stream:true});
-text += chunk;
+text += new TextDecoder().decode(result.value, {stream:true});
 const file = new DOMParser().parseFromString(text, &quot;text/html&quot;);
 if (file.querySelector(&quot;a.blog-pager-older-link&quot;)) {
 return file; }
