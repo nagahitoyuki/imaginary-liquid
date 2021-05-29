@@ -2268,23 +2268,25 @@ function mnisac() {
 const isac = new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(&quot;Go ahead&quot;); } else {
-reject(&quot;Too fast&quot;); }}).then(() =&gt; {
-fetch(npl.dataset.href).then(response =&gt; {
+reject(&quot;Too fast&quot;); }}).then(async () =&gt; {
+const response = await fetch(npl.dataset.href);
 if (!response.ok) {
 throw &quot;Connection failed&quot;; }
-return response.body.getReader(); }).then(reader =&gt; {
-let pstx, psdm;
-reader.read().then(function processResult(result) {
-const prchk = new TextDecoder().decode(result.value, {stream:true});
-pstx += prchk; psdm = new DOMParser().parseFromString(pstx, &quot;text/html&quot;);
-if (psdm.querySelector(&quot;a.blog-pager-older-link&quot;)) {
-return reader.releaseLock(); }
-if (pstx.includes(&quot;&lt;main&quot;)) {
-pstx.substring(pstx.indexOf(&quot;&lt;main&quot;)); }
-return reader.read().then(processResult); }).then(() =&gt; {
-const nppics = [].slice.call(psdm.querySelectorAll(&quot;picture.ytpic&quot;));
-const bats = [].slice.call(psdm.querySelectorAll(&quot;article&quot;));
-npl = psdm.querySelector(&quot;a.blog-pager-older-link&quot;);
+const reader = response.body.getReader();
+let text = &quot;&quot;, result = await reader.read();
+while (!result.done) {
+const chunk = new TextDecoder().decode(result.value, {stream:true});
+text += chunk;
+if (text.includes(&quot;&lt;main&quot;)) {
+text.substring(text.indexOf(&quot;&lt;main&quot;)); }
+const file = new DOMParser().parseFromString(text, &quot;text/html&quot;);
+if (file.querySelector(&quot;a.blog-pager-older-link&quot;)) {
+return file; }
+result = await reader.read(); }
+throw &quot;Unreadable&quot; }).then(file =&gt; { 
+const nppics = [].slice.call(file.querySelectorAll(&quot;picture.ytpic&quot;));
+const bats = [].slice.call(file.querySelectorAll(&quot;article&quot;));
+npl = file.querySelector(&quot;a.blog-pager-older-link&quot;);
 if (nppics[0]) {
 nppics.forEach(nppic =&gt; {
 const np = nppic.querySelector(&quot;img&quot;);
@@ -2296,11 +2298,11 @@ const nnppic = nppic.cloneNode(false);
 nnpimg.srcset = np.dataset.src; nnppic.appendChild(nnpimg); nnppic.appendChild(np); nppic.parentNode.replaceChild(nnppic, nppic); }}
 npimg.src = np.src; }); }
 bats.forEach(bat =&gt; {
-bpct.appendChild(document.adoptNode(bat)); }); return alnd(); }); }).catch(() =&gt; {
-npl.href = npl.dataset.href; bpct.after(npl.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }); }).catch(() =&gt; {
-return; }).then(() =&gt; {
+bpct.appendChild(document.adoptNode(bat)); }); return alnd(); }).catch(() =&gt; {
+npl.href = npl.dataset.href; bpct.after(npl.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }).catch(() =&gt; {
+return; });
 if (document.getElementById(&quot;blog-pager&quot;)) {
-npl.parentNode.remove(); }}); }
+npl.parentNode.remove(); }}
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (npl) {
