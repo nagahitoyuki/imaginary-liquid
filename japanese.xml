@@ -2272,11 +2272,11 @@ reject(&quot;Too fast&quot;); }}).then(async () =&gt; {
 const response = await fetch(npl.dataset.href);
 if (!response.ok) {
 throw &quot;Connection failed&quot;; }
-const reader = response.body.getReader();
+const reader = response.body.pipeThrough(new TextDecoder()).getReader();
 const file = document.createElement(&quot;pre&quot;);
 let result = await reader.read();
 while (!result.done) {
-file.innerHTML += new TextDecoder().decode(result.value, {stream:true});
+file.innerHTML += result.value;
 if (file.querySelector(&quot;a.blog-pager-older-link&quot;)) {
 return file; }
 result = await reader.read(); }
