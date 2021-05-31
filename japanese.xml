@@ -436,11 +436,10 @@ body:not(.item-view) .post+aside {align-self:stretch;display:grid}
 .FeaturedPost>.title {margin-top:0;margin-bottom:20px}
 .FeaturedPost>.title>a {color:$(posts.title.color)}
 .FeaturedPost .post>a, .FeaturedPost .post>a:hover, .FeaturedPost .post>a:visited {color:#fff}
-.FeaturedPost .post>a, .FeaturedPost .snippet-thumbnail>img {width:100%;height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;align-items:center;text-align:center}
+.FeaturedPost .post>a, .FeaturedPost .snippet-thumbnail {width:100%;height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;align-items:center;text-align:center}
 .no-image {background-color:#a9a9a9}
 .FeaturedPost .post-title {font:$(posts.stream.title.font);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
-.FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2}
-.FeaturedPost .snippet-thumbnail>img {display:block;filter:brightness(70%)}
+.FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%)}
 
 /* 記事の題名 */
 .blog-posts .post-title {margin-top:0;margin-bottom:20px}
@@ -469,7 +468,7 @@ body:not(.item-view) .post+aside {align-self:stretch;display:grid}
 .post-body a, .post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:flow-root;width:min(100%, calc($(content.width) - var(--maincolumn-padding) * 2));margin-bottom:20px}
-.blog-posts .snippet-thumbnail>img {float:$startSide;width:max(30%, 8em  - var(--maincolumn-padding));margin-$endSide:var(--maincolumn-padding);line-height:var(--body-lineheight)}
+.blog-posts .snippet-thumbnail {float:$startSide;width:max(30%, 8em  - var(--maincolumn-padding));margin-$endSide:var(--maincolumn-padding);line-height:var(--body-lineheight)}
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0}
 
 /* ラベル */
@@ -812,7 +811,7 @@ body#layout #floating_menu {display:initial}
   </b:if>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
-    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' sizes='(max-width:480px) 20vw, 188px'/>
+    <img expr:alt='data:messages.image' height='94' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' width='94' loading='lazy' sizes='(max-width:480px) 20vw, 188px'/>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
   <h3 class='post-title'>
@@ -1259,24 +1258,14 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </a>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
-  <picture class='snippet-thumbnail'>
-  <b:class cond='data:post.featuredImage.isYoutube' name='ytpic'/>
-  <b:loop index='i' values='resizeImage((data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage), [480,768,1024], &quot;3:2&quot;)' var='image'>
-  <b:switch var='data:i'>
-  <b:case value='0'/>
-    <source expr:srcset='data:image.url' media='(max-width:480px)'/>
-  <b:case value='1'/>
-    <source expr:srcset='data:image.url' media='(max-width:768px)'/>
-  <b:default/>
-    <source expr:srcset='data:image.url' media='(min-width:769px)'/>
-  </b:switch>
-  </b:loop>
-  <b:if cond='data:post.featuredImage.isYoutube'>
-    <img decoding='async' expr:alt='data:messages.image' expr:data-src='resizeImage(data:post.featuredImage, 480, &quot;3:2&quot;)' expr:src='data:post.featuredImage.youtubeMaxResDefaultUrl'/>
-    <b:else/>
-    <img decoding='async' expr:alt='data:messages.image' expr:src='data:post.featuredImage'/>
+    <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='image'>
+    <b:tag decoding='async' expr:alt='data:messages.image' expr:class='data:post.featuredImage.isYoutube ? &quot;snippet-thumbnail ytpic&quot; : &quot;snippet-thumbnail&quot;' height='320' expr:src='data:image' expr:srcset='sourceset(data:image, [480,768,1024], &quot;3:2&quot;)' width='480' name='img' sizes='(max-width:960px) 100vw, 1024px'>
+    <b:if cond='data:post.featuredImage.isYoutube'>
+    <b:attr expr:value='data:post.featuredImage' name='data-src'/>
+    <b:attr expr:value='sourceset(data:post.featuredImage, [480,768,1024], &quot;3:2&quot;)' name='data-srcset'/>
     </b:if>
-    </picture>
+    </b:tag>
+    </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
   <h2 class='post-title'>
@@ -1605,24 +1594,14 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='postBodySnippet' var='post'>
   <a class='total-snippet' expr:href='data:post.url'>
     <b:if cond='data:post.featuredImage'>
-  <picture class='snippet-thumbnail'>
-  <b:class cond='data:post.featuredImage.isYoutube' name='ytpic'/>
-  <b:loop index='i' values='resizeImage((data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage), [240,359,512], "1:1")' var='image'>
-  <b:switch var='data:i'>
-  <b:case value='0'/>
-    <source expr:srcset='data:image.url' media='(max-width:480px)'/>
-  <b:case value='1'/>
-    <source expr:srcset='data:image.url' media='(max-width:768px)'/>
-  <b:default/>
-    <source expr:srcset='data:image.url' media='(min-width:769px)'/>
-  </b:switch>
-  </b:loop>
-  <b:if cond='data:post.featuredImage.isYoutube'>
-    <img expr:alt='data:messages.image' expr:data-src='resizeImage(data:post.featuredImage, 360, &quot;1:1&quot;)' expr:src='data:post.featuredImage.youtubeMaxResDefaultUrl' loading='lazy'/>
-    <b:else/>
-    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' loading='lazy'/>
+    <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='image'>
+    <b:tag expr:alt='data:messages.image' expr:class='data:post.featuredImage.isYoutube ? &quot;snippet-thumbnail ytpic&quot; : &quot;snippet-thumbnail&quot;' height='240' expr:src='data:image' expr:srcset='sourceset(data:image, [240,359,512], &quot;1:1&quot;)' width='240' loading='lazy' name='img' sizes='(max-width:960px) 30vw, 512px'>
+    <b:if cond='data:post.featuredImage.isYoutube'>
+    <b:attr expr:value='data:post.featuredImage' name='data-src'/>
+    <b:attr expr:value='sourceset(data:post.featuredImage, [240,359,512], &quot;1:1&quot;)' name='data-srcset'/>
     </b:if>
-    </picture>
+    </b:tag>
+    </b:with>
     </b:if>
     <p class='summary'><b:eval expr='data:post.body snippet { length:(data:blog.isMobileRequest ? 140 : 320), links: false, linebreaks: false, ellipsis: true }'/></p>
     </a>
@@ -1837,7 +1816,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </footer>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
-    <img expr:alt='data:messages.image' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' sizes='(max-width:480px) 20vw, 188px' loading='lazy'/>
+    <img expr:alt='data:messages.image' height='94' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' width='94' loading='lazy' sizes='(max-width:480px) 20vw, 188px'/>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
   <h3 class='post-title'>
@@ -2240,17 +2219,16 @@ bbb.classList.remove(&quot;hidden&quot;); }); }); });
 backButtonObserver.observe(backButton);
 <b:if cond='data:view.isMultipleItems'>
 /* YouTube image */
-const ytpics = [].slice.call(bdis.querySelectorAll(&quot;picture.ytpic&quot;));
-if (ytpics[0]) {
-ytpics.forEach(ytpic =&gt; {
-const yt = ytpic.querySelector(&quot;img&quot;);
+const ytpics = [].slice.call(bdis.querySelectorAll(&quot;img.ytpic&quot;));
+function yt(image) {
 const ytimg = new Image();
 ytimg.onload = () =&gt; {
 if (ytimg.naturalWidth &lt; 121) {
-const nytimg = document.createElement(&quot;source&quot;);
-const nytpic = ytpic.cloneNode(false);
-nytimg.srcset = yt.dataset.src; nytpic.appendChild(nytimg); nytpic.appendChild(yt); ytpic.parentNode.replaceChild(nytpic, ytpic); }}
-ytimg.src = yt.src; }); }
+image.src = image.dataset.src; image.srcset = image.dataset.srcset; }
+return; }
+ytimg.src = image.src;}
+if (ytpics[0]) {
+ytpics.forEach(yt); }
 /* Infinite scroll */
 const nextIndex = bdis.querySelector(&quot;aside.isf&quot;);
 const bpct = bdis.querySelector(&quot;div.blog-posts&quot;);
@@ -2272,28 +2250,20 @@ reject(&quot;Too fast&quot;); }}).then(async () =&gt; {
 const response = await fetch(npl.dataset.href);
 if (!response.ok) {
 throw &quot;Connection failed&quot;; }
-const reader = response.body.getReader();
+const reader = response.body.pipeThrough(new TextDecoderStream()).getReader();
 const file = document.createElement(&quot;pre&quot;);
 let result = await reader.read();
 while (!result.done) {
-file.innerHTML += new TextDecoder().decode(result.value, {stream:true});
+file.innerHTML += result.value;
 if (file.querySelector(&quot;a.blog-pager-older-link&quot;)) {
 return file; }
 result = await reader.read(); }
 throw &quot;Unreadable&quot; }).then(file =&gt; { 
-const nppics = [].slice.call(file.querySelectorAll(&quot;picture.ytpic&quot;));
+const nppics = [].slice.call(file.querySelectorAll(&quot;img.ytpic&quot;));
 const bats = [].slice.call(file.querySelectorAll(&quot;article&quot;));
 npl = file.querySelector(&quot;a.blog-pager-older-link&quot;);
 if (nppics[0]) {
-nppics.forEach(nppic =&gt; {
-const np = nppic.querySelector(&quot;img&quot;);
-const npimg = new Image();
-npimg.onload = () =&gt; {
-if (npimg.naturalWidth &lt; 121) {
-const nnpimg = document.createElement(&quot;source&quot;);
-const nnppic = nppic.cloneNode(false);
-nnpimg.srcset = np.dataset.src; nnppic.appendChild(nnpimg); nnppic.appendChild(np); nppic.parentNode.replaceChild(nnppic, nppic); }}
-npimg.src = np.src; }); }
+nppics.forEach(yt); }
 bats.forEach(bat =&gt; {
 bpct.appendChild(document.adoptNode(bat)); }); return alnd(); }).catch(() =&gt; {
 npl.href = npl.dataset.href; bpct.after(npl.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }).catch(() =&gt; {
