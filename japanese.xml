@@ -1833,18 +1833,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:widget>
 </b:section>
 
-<div class='hidden' id='bbb'><button aria-label='トップへ戻る' class='svg-icon-24-button' id='back-button' onclick='location.href=&quot;#blog-title&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button></div>
-<b:if cond='data:view.isSingleItem'>
-<div class='hidden' id='cbb'><button class='svg-icon-24-button' expr:aria-label='data:messages.comments' id='comment-button' onclick='location.href=&quot;#cmt&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='floatingIcon' d='M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z'/></svg></button></div>
-</b:if>
-
 <aside>
 <b:class cond='data:view.isMultipleItems' name='isf'/>
-<b:if cond='data:view.isMultipleItems'>
-  <div class='hidden' id='adb'>
-    <button type='button' class='svg-icon-24-button' id='add-button'  expr:aria-label='data:messages.loading'><data:messages.loading/></button>
-  </div>
-</b:if>
 <b:section class='sub_main' cond='!data:view.isError' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true'>
   <b:widget id='Text1' locked='false' title='お知らせ' type='Text' visible='true'>
     <b:widget-settings>
@@ -1859,6 +1849,13 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:widget>
 </b:section>
 </aside>
+
+<div class='hidden' id='bbb'><button aria-label='トップへ戻る' class='svg-icon-24-button' id='back-button' onclick='location.href=&quot;#blog-title&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button></div>
+<b:if cond='data:view.isMultipleItems'>
+<div class='hidden' id='adb'><button type='button' class='svg-icon-24-button' id='add-button'  expr:aria-label='data:messages.loading'><data:messages.loading/></button></div>
+<b:else/>
+<div class='hidden' id='cbb'><button class='svg-icon-24-button' expr:aria-label='data:messages.comments' id='comment-button' onclick='location.href=&quot;#cmt&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='floatingIcon' d='M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z'/></svg></button></div>
+</b:if>
 
 <aside aria-hidden='true' class='sidebar-container sidebar-invisible'>
   <div class='navigation'>
@@ -2204,15 +2201,16 @@ alert (&quot;リンクをクリップボードにコピーしました\u3002&quo
 </b:if>
 /* Back button */
 const backButton = bdis.querySelector(&quot;header.centered-top&quot;);
+function foam(event) {
+if (event.target.classList.contains(&quot;fadeout&quot;)) {
+event.target.classList.add(&quot;hidden&quot;); }}
 let backButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (entry.isIntersecting) {
 if (!bbb.classList.contains(&quot;hidden&quot;)) {
 bbb.classList.remove(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
 bbb.classList.add(&quot;fadeout&quot;); });
-bbb.addEventListener(&quot;animationend&quot;, () =&gt; {
-if (bbb.classList.contains(&quot;fadeout&quot;)) {
-bbb.classList.add(&quot;hidden&quot;); }}); }
+bbb.addEventListener(&quot;animationend&quot;, foam); }
 return; }
 bbb.classList.remove(&quot;fadeout&quot;); bbb.classList.add(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
 bbb.classList.remove(&quot;hidden&quot;); }); }); });
@@ -2295,9 +2293,7 @@ entries.forEach(entry =&gt; {
 if (entry.isIntersecting) {
 if (!cbb.classList.contains(&quot;hidden&quot;)) {
 cbb.classList.remove(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
-cbb.classList.add(&quot;fadeout&quot;); }); cbb.addEventListener(&quot;animationend&quot;, () =&gt; { 
-if (cbb.classList.contains(&quot;fadeout&quot;)) {
-cbb.classList.add(&quot;hidden&quot;); }}); }
+cbb.classList.add(&quot;fadeout&quot;); }); cbb.addEventListener(&quot;animationend&quot;, foam); }
 return; }
 cbb.classList.remove(&quot;fadeout&quot;); cbb.classList.add(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
 cbb.classList.remove(&quot;hidden&quot;); }); }); });
