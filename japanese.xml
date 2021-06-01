@@ -2236,16 +2236,17 @@ bpct.clientHeight === 0 ? bpct.style.marginTop = &quot;0&quot; : &quot;&quot;;
 let npl = bdis.querySelector(&quot;a.blog-pager-older-link&quot;);
 function scrollStop(event) {
 event.preventDefault(); }
-function alnd() {
-document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; adb.classList.add(&quot;hidden&quot;); }
 function ismg(value) {
 switch (value) {
 case &#39;check&#39;: nextIndex.style.marginTop !== &quot;&quot; ? nextIndex.style.marginTop = &quot;&quot; : &quot;&quot;; bdis.style.marginBottom === &quot;&quot; ? bdis.style.marginBottom = &quot;46px&quot; : &quot;&quot;; break;
 case &#39;remove&#39;: nextIndex.style.marginTop !== &quot;&quot; ? nextIndex.style.marginTop = &quot;&quot; : &quot;&quot;; bdis.style.marginBottom !== &quot;&quot; ? bdis.style.marginBottom = &quot;&quot; : &quot;&quot;; break; }}
-function mnisac() {
-const isac = new Promise ((resolve, reject) =&gt; {
+function isac() {
+new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
-adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(&quot;Go ahead&quot;); } else {
+adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false});
+if (document.getElementById(&quot;blog-pager&quot;)) {
+npl.parentNode.remove(); }
+bpct.ariaBusy = &quot;true&quot;; resolve(); } else {
 reject(&quot;Too fast&quot;); }}).then(async () =&gt; {
 const response = await fetch(npl.dataset.href);
 if (!response.ok) {
@@ -2265,11 +2266,10 @@ npl = file.querySelector(&quot;a.blog-pager-older-link&quot;);
 if (nppics[0]) {
 nppics.forEach(yt); }
 bats.forEach(bat =&gt; {
-bpct.appendChild(document.adoptNode(bat)); }); return alnd(); }).catch(() =&gt; {
-npl.href = npl.dataset.href; bpct.after(npl.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); return alnd(); }).catch(() =&gt; {
-return; });
-if (document.getElementById(&quot;blog-pager&quot;)) {
-npl.parentNode.remove(); }}
+bpct.appendChild(document.adoptNode(bat)); }); }).catch(error =&gt; {
+npl.href = npl.dataset.href; bpct.after(npl.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); }).catch(error =&gt; {
+return; }).then(() =&gt; {
+document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; adb.classList.add(&quot;hidden&quot;); }); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (npl) {
@@ -2277,11 +2277,11 @@ const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 46;
 if (window.pageYOffset === 0) {
 const iolm = window.innerHeight - entry.boundingClientRect.top + 46;
 if (iolm &gt; 0) {
-mnisac(); nextIndex.style.marginTop = iolm + 46 + &quot;px&quot;; bdis.style.marginBottom = &quot;46px&quot;; } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
-mnisac(); nextIndex.style.marginTop = &quot;46px&quot;; } else {
+isac(); nextIndex.style.marginTop = iolm + 46 + &quot;px&quot;; bdis.style.marginBottom = &quot;46px&quot;; } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
+isac(); nextIndex.style.marginTop = &quot;46px&quot;; } else {
 ismg(&#39;check&#39;); }
 return; } else if (sgtm &gt; 0) {
-mnisac(); ismg(&#39;check&#39;); }
+isac(); ismg(&#39;check&#39;); }
 return; }
 sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; ismg(&#39;remove&#39;); nextIndexObserver.disconnect(); }); }, {
 rootMargin: &quot;46px&quot;});
