@@ -2200,7 +2200,10 @@ case &#39;remove&#39;: nextIndex.style.marginTop !== &quot;&quot; ? nextIndex.st
 function isac() {
 new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
-adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(); } else {
+adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false});
+if (document.getElementById(&quot;blog_pager&quot;)) {
+npl.parentNode.remove(); }
+bpct.ariaBusy = &quot;true&quot;; resolve(); } else {
 reject(&quot;Too fast&quot;); }}).then(async () =&gt; {
 const response = await fetch(npl.dataset.href);
 if (!response.ok) {
@@ -2210,22 +2213,20 @@ const file = document.createElement(&quot;pre&quot;);
 let result = await reader.read();
 while (!result.done) {
 file.innerHTML += result.value;
-npl = file.querySelector(&quot;a.blog-pager-older-link&quot;);
-if (npl) {
+if (file.querySelector(&quot;a.blog-pager-older-link&quot;)) {
 return file; }
 result = await reader.read(); }
 throw &quot;Unreadable&quot; }).then(file =&gt; { 
 const nppics = [].slice.call(file.querySelectorAll(&quot;img.ytpic&quot;));
 const bats = [].slice.call(file.querySelectorAll(&quot;article&quot;));
+npl = file.querySelector(&quot;a.blog-pager-older-link&quot;);
 if (nppics[0]) {
 nppics.forEach(yt); }
 bats.forEach(bat =&gt; {
 bpct.appendChild(document.adoptNode(bat)); }); }).catch(error =&gt; {
 npl.href = npl.dataset.href; bpct.after(npl.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); }).catch(error =&gt; {
 return; }).then(() =&gt; {
-document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; adb.classList.add(&quot;hidden&quot;); });
-if (document.getElementById(&quot;blog_pager&quot;)) {
-npl.parentNode.remove(); }}
+document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; adb.classList.add(&quot;hidden&quot;); }); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (npl) {
