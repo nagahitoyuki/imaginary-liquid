@@ -554,10 +554,10 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 .sidebar-container .item-content>img {width:calc(35% - var(--maincolumn-padding))}
 
 /* Pager */
-#blog-pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.5);margin-bottom:calc(var(--maincolumn-padding) * .5);display:flex;justify-content:space-around}
-#blog-pager>a {color:$(posts.navigation.link.color)}
-#blog-pager>a:visited{color:$(posts.navigation.link.visited.color)}
-#blog-pager>a:hover {color:$(posts.navigation.link.hover.color)}
+#blog_pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.5);margin-bottom:calc(var(--maincolumn-padding) * .5);display:flex;justify-content:space-around}
+#blog_pager>a {color:$(posts.navigation.link.color)}
+#blog_pager>a:visited{color:$(posts.navigation.link.visited.color)}
+#blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* Sub main */
 #sub_main {contain:content}
@@ -1658,7 +1658,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:include data='post' name='postMetadataJSON'/>
 </b:includable>
     <b:includable id='postPagination'>
-    <nav id='blog-pager'>
+    <nav id='blog_pager'>
     <b:include cond='data:newerPageUrl and data:view.isSingleItem' name='previousPageLink'/>
     <b:include cond='data:olderPageUrl' name='nextPageLink'/>
    </nav>
@@ -2200,10 +2200,7 @@ case &#39;remove&#39;: nextIndex.style.marginTop !== &quot;&quot; ? nextIndex.st
 function isac() {
 new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
-adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false});
-if (document.getElementById(&quot;blog-pager&quot;)) {
-npl.parentNode.remove(); }
-bpct.ariaBusy = &quot;true&quot;; resolve(); } else {
+adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(); } else {
 reject(&quot;Too fast&quot;); }}).then(async () =&gt; {
 const response = await fetch(npl.dataset.href);
 if (!response.ok) {
@@ -2213,20 +2210,22 @@ const file = document.createElement(&quot;pre&quot;);
 let result = await reader.read();
 while (!result.done) {
 file.innerHTML += result.value;
-if (file.querySelector(&quot;a.blog-pager-older-link&quot;)) {
+npl = file.querySelector(&quot;a.blog-pager-older-link&quot;);
+if (npl) {
 return file; }
 result = await reader.read(); }
 throw &quot;Unreadable&quot; }).then(file =&gt; { 
 const nppics = [].slice.call(file.querySelectorAll(&quot;img.ytpic&quot;));
 const bats = [].slice.call(file.querySelectorAll(&quot;article&quot;));
-npl = file.querySelector(&quot;a.blog-pager-older-link&quot;);
 if (nppics[0]) {
 nppics.forEach(yt); }
 bats.forEach(bat =&gt; {
 bpct.appendChild(document.adoptNode(bat)); }); }).catch(error =&gt; {
 npl.href = npl.dataset.href; bpct.after(npl.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); }).catch(error =&gt; {
 return; }).then(() =&gt; {
-document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; adb.classList.add(&quot;hidden&quot;); }); }
+document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; adb.classList.add(&quot;hidden&quot;); });
+if (document.getElementById(&quot;blog_pager&quot;)) {
+npl.parentNode.remove(); }}
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (npl) {
