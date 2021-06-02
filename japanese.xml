@@ -580,11 +580,11 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 .Profile {margin:0 auto;box-sizing:border-box}
 .Profile .title {color:$(profile.title.color)}
 .individual {text-align:center}
-.profile-img {border-radius:50%}
+.profile-img {border-radius:50%;vertical-align:top}
+.profile-link {display:flex;color:$(profile.link.color);font-weight:bold}
 .team-member .default-avatar-wrapper, .team-member .profile-img {flex:none;margin-$endSide:1em}
 .individual .profile-link {flex-direction:column}
 .team .profile-link .profile-name {align-self:center;display:block;flex:auto}
-.profile-link {display:flex;color:$(profile.link.color);font-weight:bold}
 .Profile ul {list-style:none;padding-$startSide:0}
 .profile-data, .profile-textblock {color:$(profile.text.color);margin-$startSide:0;padding-top:8px}
 
