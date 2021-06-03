@@ -617,7 +617,7 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 .error-view .post-outer-container {background:$(body.background.color);padding:var(--maincolumn-padding);border-bottom:4px #c0c0c0 double}
 
 /* ブログのコンテンツとサイドバーと隙間の幅以上 */
-@media screen and (min-width:$(sidebar.width + content.width + content.margin)){
+@media screen and (min-width:$(sidebar.width + content.width + content.margin)) {
 
 /* 位置取り */
 body {position:relative}
@@ -639,7 +639,7 @@ body {position:relative}
 }
 
 /* ブログのコンテンツとサイドバーと隙間の幅以下 */
-@media screen and (max-width:$(sidebar.width + content.width + content.margin - 1px)){
+@media screen and (max-width:$(sidebar.width + content.width + content.margin - 1px)) {
 
 /* 位置取り */
 .search-input {margin-left:8px;margin-right:8px}
@@ -659,8 +659,8 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 .dim-overlay {background-color:rgba(0, 0, 0, .7);position:fixed;top:0;left:0;width:100%;height:100vh;z-index:100}
 }
 
-/* 横向きタブレット以上 */
-@media screen and (min-width:961px){
+/* コンテンツの幅以上 */
+@media screen and (min-width:$(content.width)) {
 
 /* 記事の題名 */
 .blog-posts h1.post-title {line-height:calc(var(--body-lineheight) - .2)}
@@ -681,11 +681,8 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 .desktop-ad>.inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
 }
 
-/* 横向きタブレット以下 */
-@media screen and (max-width:960px){
-
-/* ページボディー */
-.blog-posts .post {max-width:100vw}
+/* コンテンツの幅以下 */
+@media screen and (max-width:$(content.width - 1px)) {
 
 /* 記事の本文 */
 body:not(.item-view) .post+aside {align-self:stretch;display:grid}
@@ -707,7 +704,7 @@ body:not(.item-view) .mobile-ad>.inline-ad {align-self:center}
 }
 
 /* タブレット中心 */
-@media screen and (max-width:960px) and (min-width:481px) {
+@media screen and (max-width:$(content.width - 1px)) and (min-width:481px) {
 
 /* 文字サイズと行間 */
 #blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 18)}
@@ -1238,7 +1235,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 <b:section class='centered-bottom' id='page_body' name='Page Body' showaddelement='false' tag='main'>
   <b:widget cond='data:view.isHomepage' id='FeaturedPost1' locked='true' title='' type='FeaturedPost' visible='true'>
     <b:widget-settings>
-      <b:widget-setting name='showSnippet'>true</b:widget-setting>
+      <b:widget-setting name='showSnippet'>false</b:widget-setting>
       <b:widget-setting name='showPostTitle'>true</b:widget-setting>
       <b:widget-setting name='postId'>6748730658026948177</b:widget-setting>
       <b:widget-setting name='showFirstImage'>true</b:widget-setting>
@@ -2230,11 +2227,23 @@ bpct.clientHeight === 0 ? bpct.style.marginTop = &quot;0&quot; : &quot;&quot;;
 let npl = bdis.querySelector(&quot;a.blog-pager-older-link&quot;);
 function scrollStop(event) {
 event.preventDefault(); }
-function ismg(value) {
-switch (value) {
-case &#39;check&#39;: nextIndex.style.marginTop !== &quot;&quot; ? nextIndex.style.marginTop = &quot;&quot; : &quot;&quot;; bdis.style.marginBottom === &quot;&quot; ? bdis.style.marginBottom = &quot;46px&quot; : &quot;&quot;; break;
-case &#39;remove&#39;: nextIndex.style.marginTop !== &quot;&quot; ? nextIndex.style.marginTop = &quot;&quot; : &quot;&quot;; bdis.style.marginBottom !== &quot;&quot; ? bdis.style.marginBottom = &quot;&quot; : &quot;&quot;; break; }}
-function isac() {
+function rmmg(state) {
+if (nextIndex.style.marginTop !== &quot;&quot;) {
+nextIndex.style.marginTop = &quot;&quot;; }
+if (bdis.style.marginBottom !== &quot;&quot;) {
+bdis.style.marginBottom = &quot;&quot; }
+if (state === &#39;end&#39;) {
+nextIndexObserver.disconnect(); }}
+function isac(state, scroll) {
+switch (state) {
+case 0: nextIndex.style.marginTop = scroll + 46 + &quot;px&quot;; bdis.style.marginBottom = &quot;46px&quot;; break;
+case 1: nextIndex.style.marginTop = &quot;46px&quot;; break;
+case 2: if (nextIndex.style.marginTop !== &quot;&quot;) {
+nextIndex.style.marginTop = &quot;&quot;; }
+if (bdis.style.marginBottom === &quot;&quot;) {
+bdis.style.marginBottom = &quot;46px&quot;; }
+default: if (scroll !== &#39;on&#39;) {
+return; }}
 new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(); } else {
@@ -2251,7 +2260,7 @@ if (nppics[0]) {
 nppics.forEach(yt); }
 bats.forEach(bat =&gt; {
 bpct.appendChild(document.adoptNode(bat)); }); }); }).catch(error =&gt; {
-npl.href = npl.dataset.href; bpct.after(npl.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); }).catch(error =&gt; {
+npl.href = npl.dataset.href; bpct.after(npl.parentNode); rmmg(&#39;end&#39;); }).catch(error =&gt; {
 return; }).then(() =&gt; {
 document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; adb.classList.add(&quot;hidden&quot;); });
 if (document.getElementById(&quot;blog_pager&quot;)) {
@@ -2263,13 +2272,13 @@ const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 46;
 if (window.pageYOffset === 0) {
 const iolm = window.innerHeight - entry.boundingClientRect.top + 46;
 if (iolm &gt; 0) {
-isac(); nextIndex.style.marginTop = iolm + 46 + &quot;px&quot;; bdis.style.marginBottom = &quot;46px&quot;; } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
-isac(); nextIndex.style.marginTop = &quot;46px&quot;; } else {
-ismg(&#39;check&#39;); }
+isac(0, iolm); } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
+isac(1, 46); } else {
+isac(2, 0); }
 return; } else if (sgtm &gt; 0) {
-isac(); ismg(&#39;check&#39;); }
+isac(2, &#39;on&#39;); }
 return; }
-sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; ismg(&#39;remove&#39;); nextIndexObserver.disconnect(); }); }, {
+sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; rmmg(&#39;end&#39;); }); }, {
 rootMargin: &quot;46px&quot;});
 nextIndexObserver.observe(nextIndex);
 <b:else/>
