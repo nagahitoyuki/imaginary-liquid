@@ -1258,14 +1258,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </a>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
-    <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='image'>
-    <b:tag decoding='async' expr:alt='data:messages.image' expr:class='data:post.featuredImage.isYoutube ? &quot;snippet-thumbnail ytpic&quot; : &quot;snippet-thumbnail&quot;' height='320' expr:src='data:image' expr:srcset='sourceset(data:image, [480,768,1024], &quot;3:2&quot;)' width='480' name='img' sizes='(max-width:960px) 100vw, 1024px'>
     <b:if cond='data:post.featuredImage.isYoutube'>
-    <b:attr expr:value='data:post.featuredImage' name='data-src'/>
-    <b:attr expr:value='sourceset(data:post.featuredImage, [480,768,1024], &quot;3:2&quot;)' name='data-srcset'/>
+    <img decoding='async' expr:alt='data:messages.image' class='snippet-thumbnail ytpic' expr:src='data:post.featuredImage.youtubeMaxResDefaultUrl' expr:srcset='sourceset(data:post.featuredImage.youtubeMaxResDefaultUrl, [480,768,1024], &quot;3:2&quot;)' height='320' sizes='(max-width:960px) 100vw, 1024px' width='480' expr:data-src='data:post.featuredImage' expr:data-srcset='sourceset(data:post.featuredImage, [480,768,1024], &quot;3:2&quot;)'/>
+    <b:else/>
+    <img decoding='async' expr:alt='data:messages.image' class='snippet-thumbnail' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [480,768,1024], &quot;3:2&quot;)' height='320' sizes='(max-width:960px) 100vw, 1024px' width='480'/>
     </b:if>
-    </b:tag>
-    </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
   <h2 class='post-title'>
@@ -1593,15 +1590,10 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='postBodySnippet' var='post'>
   <a class='total-snippet' expr:href='data:post.url'>
-    <b:if cond='data:post.featuredImage'>
-    <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='image'>
-    <b:tag expr:alt='data:messages.image' expr:class='data:post.featuredImage.isYoutube ? &quot;snippet-thumbnail ytpic&quot; : &quot;snippet-thumbnail&quot;' height='240' expr:src='data:image' expr:srcset='sourceset(data:image, [240,359,512], &quot;1:1&quot;)' width='240' loading='lazy' name='img' sizes='(max-width:960px) 30vw, 512px'>
     <b:if cond='data:post.featuredImage.isYoutube'>
-    <b:attr expr:value='data:post.featuredImage' name='data-src'/>
-    <b:attr expr:value='sourceset(data:post.featuredImage, [240,359,512], &quot;1:1&quot;)' name='data-srcset'/>
-    </b:if>
-    </b:tag>
-    </b:with>
+    <img expr:alt='data:messages.image' class='snippet-thumbnail ytpic' expr:src='data:post.featuredImage.youtubeMaxResDefaultUrl' expr:srcset='sourceset(data:post.featuredImage.youtubeMaxResDefaultUrl, [240,359,512], &quot;1:1&quot;)' height='240' loading='lazy' sizes='(max-width:960px) 30vw, 512px' width='240' expr:data-src='data:post.featuredImage' expr:data-srcset='sourceset(data:post.featuredImage, [359], &quot;1:1&quot;)'/>
+    <b:elseif cond='data:post.featuredImage'/>
+    <img expr:alt='data:messages.image' class='snippet-thumbnail' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [240,359,512], &quot;1:1&quot;)' height='240' loading='lazy' sizes='(max-width:960px) 30vw, 512px' width='240'/>
     </b:if>
     <p class='summary'><b:eval expr='data:post.body snippet { length:(data:blog.isMobileRequest ? 140 : 320), links: false, linebreaks: false, ellipsis: true }'/></p>
     </a>
@@ -2245,33 +2237,25 @@ case &#39;remove&#39;: nextIndex.style.marginTop !== &quot;&quot; ? nextIndex.st
 function isac() {
 new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
-adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false});
-if (document.getElementById(&quot;blog_pager&quot;)) {
-npl.parentNode.remove(); }
-bpct.ariaBusy = &quot;true&quot;; resolve(); } else {
+adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(); } else {
 reject(&quot;Too fast&quot;); }}).then(async () =&gt; {
-const response = await fetch(npl.dataset.href);
+await fetch(npl.dataset.href).then(response =&gt; {
 if (!response.ok) {
 throw &quot;Connection failed&quot;; }
-const reader = response.body.pipeThrough(new TextDecoderStream()).getReader();
-const file = document.createElement(&quot;pre&quot;);
-let result = await reader.read();
-while (!result.done) {
-file.innerHTML += result.value;
+return response.text(); }).then(text =&gt; {
+const file = new DOMParser().parseFromString(text, &quot;text/html&quot;);
 npl = file.querySelector(&quot;a.blog-pager-older-link&quot;);
-if (npl) {
-return file; }
-result = await reader.read(); }
-throw &quot;Unreadable&quot; }).then(file =&gt; { 
 const nppics = [].slice.call(file.querySelectorAll(&quot;img.ytpic&quot;));
 const bats = [].slice.call(file.querySelectorAll(&quot;article&quot;));
 if (nppics[0]) {
 nppics.forEach(yt); }
 bats.forEach(bat =&gt; {
-bpct.appendChild(document.adoptNode(bat)); }); }).catch(error =&gt; {
+bpct.appendChild(document.adoptNode(bat)); }); }); }).catch(error =&gt; {
 npl.href = npl.dataset.href; bpct.after(npl.parentNode); ismg(&#39;check&#39;); nextIndexObserver.disconnect(); }).catch(error =&gt; {
 return; }).then(() =&gt; {
-document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; adb.classList.add(&quot;hidden&quot;); }); }
+document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; adb.classList.add(&quot;hidden&quot;); });
+if (document.getElementById(&quot;blog_pager&quot;)) {
+npl.parentNode.remove(); }}
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (npl) {
@@ -2287,7 +2271,7 @@ isac(); ismg(&#39;check&#39;); }
 return; }
 sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; ismg(&#39;remove&#39;); nextIndexObserver.disconnect(); }); }, {
 rootMargin: &quot;46px&quot;});
-nextIndex ? nextIndexObserver.observe(nextIndex) : &quot;&quot;;
+nextIndexObserver.observe(nextIndex);
 <b:else/>
 /* Comment button */
 const commentAllow = bdis.querySelector(&quot;a.cmal&quot;);
