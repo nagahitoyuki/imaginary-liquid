@@ -2217,11 +2217,11 @@ const bats = [].slice.call(file.querySelectorAll(&quot;article&quot;));
 if (nppics[0]) {
 nppics.forEach(yt); }
 bats.forEach(bat =&gt; {
-bpct.appendChild(document.adoptNode(bat)); return alnd(); }); }); }).catch(error =&gt; {
-npl.href = npl.dataset.href; bpct.after(npl.parentNode); rmmg(); return alnd(); }).catch(error =&gt; {
+bpct.appendChild(document.adoptNode(bat)); }); return alnd(); }).catch(error =&gt; {
+npl.href = npl.dataset.href; bpct.after(npl.parentNode); rmmg(); return alnd(); }); }).catch(error =&gt; {
 return; }).then(() =&gt; {
-if (document.getElementById(&quot;blog_pager&quot;)) {
-npl.parentNode.remove(); }}); }
+if (blog_pager) {
+blog_pager.remove(); }}); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (npl) {
