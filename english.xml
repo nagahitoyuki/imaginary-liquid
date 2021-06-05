@@ -2196,8 +2196,8 @@ default: if (scroll !== &#39;on&#39;) {
 return; }}
 new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
-adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(); } else {
-reject(&quot;Too fast&quot;); }}).then(async () =&gt; {
+adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(&#39;Go ahead&#39;); } else {
+reject(&#39;Too fast&#39;); }}).then(async state =&gt; {
 const response = await fetch(npl.dataset.href);
 if (!response.ok) throw &quot;Connection failed&quot;;
 const text = await response.text();
@@ -2207,9 +2207,9 @@ const nppics = [].slice.call(file.querySelectorAll(&quot;img.ytpic&quot;));
 const bats = [].slice.call(file.querySelectorAll(&quot;article&quot;));
 if (nppics[0]) nppics.forEach(yt);
 bats.forEach(bat =&gt; {
-bpct.appendChild(document.adoptNode(bat)); }); }).catch(error =&gt; {
-npl.href = npl.dataset.href; bpct.after(bpg); rmmg(); }).catch(error =&gt; {
-return; }).then(() =&gt; {
+bpct.appendChild(document.adoptNode(bat)); return &#39;All right&#39;; }); }).catch(error =&gt; {
+npl.href = npl.dataset.href; bpct.after(bpg); bpg.style.marginBottom = &quot;46px&quot;; rmmg(); return error; }).then(state =&gt; {
+if (state === &#39;Too fast&#39;) return;
 document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; adb.classList.add(&quot;hidden&quot;); });
 if (Blog1.querySelector(&quot;nav#blog_pager&quot;)) bpg.remove(); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
