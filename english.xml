@@ -2180,10 +2180,11 @@ const bpg = Blog1.querySelector(&quot;nav#blog_pager&quot;);
 let npl = bpg.querySelector(&quot;a.older-link&quot;);
 function scrollStop(event) {
 event.preventDefault(); }
-function rmmg() {
+function rmmg(state) {
 if (nextIndex.style.marginTop !== &quot;&quot;) nextIndex.style.marginTop = &quot;&quot;;
 if (bdis.style.marginBottom !== &quot;&quot;) bdis.style.marginBottom = &quot;&quot;
-nextIndexObserver.disconnect(); }
+if (state !== &#39;end&#39;) nextIndex.style.marginTop = &quot;46px&quot;;
+if (state !== &#39;pass&#39;) nextIndexObserver.disconnect(); }
 function isac(state, scroll) {
 switch (state) {
 case 0: nextIndex.style.marginTop = scroll + 46 + &quot;px&quot;; bdis.style.marginBottom = &quot;46px&quot;; break;
@@ -2196,8 +2197,8 @@ default: if (scroll !== &#39;on&#39;) {
 return; }}
 new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
-adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(&#39;Go ahead&#39;); } else {
-reject(&#39;Too fast&#39;); }}).then(async state =&gt; {
+adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(); } else {
+reject(&#39;Too fast&#39;); }}).then(async () =&gt; {
 const response = await fetch(npl.dataset.href);
 if (!response.ok) throw &quot;Connection failed&quot;;
 const text = await response.text();
@@ -2207,9 +2208,11 @@ const nppics = [].slice.call(file.querySelectorAll(&quot;img.ytpic&quot;));
 const bats = [].slice.call(file.querySelectorAll(&quot;article&quot;));
 if (nppics[0]) nppics.forEach(yt);
 bats.forEach(bat =&gt; {
-bpct.appendChild(document.adoptNode(bat)); return &#39;All right&#39;; }); }).catch(error =&gt; {
-npl.href = npl.dataset.href; bpct.after(bpg); bpg.style.marginBottom = &quot;46px&quot;; rmmg(); return error; }).then(state =&gt; {
-if (state === &#39;Too fast&#39;) return;
+bpct.appendChild(document.adoptNode(bat)); }); }).catch(error =&gt; {
+if (error === &#39;Connection failed&#39;) {
+npl.href = npl.dataset.href; bpct.after(bpg); rmmg(&#39;stop&#39;); return &#39;stop&#39;; }
+return &#39;pass&#39;; }).then(state =&gt; {
+if (state === &#39;pass&#39;) rmmg(&#39;pass&#39;);
 document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; adb.classList.add(&quot;hidden&quot;); });
 if (Blog1.querySelector(&quot;nav#blog_pager&quot;)) bpg.remove(); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
@@ -2225,7 +2228,7 @@ isac(2, 0); }
 return; } else if (sgtm &gt; 0) {
 isac(2, &#39;on&#39;); }
 return; }
-sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; rmmg(); }); }, {
+sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; rmmg(&#39;end&#39;); }); }, {
 rootMargin: &quot;46px&quot;});
 nextIndexObserver.observe(nextIndex);
 <b:else/>
