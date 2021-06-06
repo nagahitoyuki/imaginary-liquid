@@ -2290,9 +2290,9 @@ const ifc = document.createElement(&quot;script&quot;);
 ifc.insertAdjacentHTML(&quot;afterbegin&quot;, &quot;BLOG_CMT_createIframe(&#39;https://www.blogger.com/rpc_relay.html&#39;);&quot;);
 iframeComment.parentNode.appendChild(ifc);
 <b:if cond='data:blog.isMobileRequest'>
-document.onblur = () =&gt; {
+bdis.onblur = () =&gt; {
 if (iframeComment === document.activeElement) bbb.classList.add(&quot;invisible&quot;); }
-document.onfocus = () =&gt; {
+bdis.onfocus = () =&gt; {
 if (iframeComment !== document.activeElement) bbb.classList.remove(&quot;invisible&quot;); }</b:if>
 iframeCommentObserver.disconnect(); }}); }, {
 rootMargin: &quot;46px&quot;});
