@@ -2252,10 +2252,9 @@ const bats = [].slice.call(file.querySelectorAll(&quot;article&quot;));
 if (nppics[0]) nppics.forEach(yt);
 bats.forEach(bat =&gt; {
 bpct.appendChild(document.adoptNode(bat)); }); }).catch(error =&gt; {
-if (error === &#39;Connection failed&#39;) {
-npl.href = npl.dataset.href; bpct.after(bpg); rmmg(&#39;stop&#39;); return &#39;stop&#39;; }
-return &#39;pass&#39;; }).then(state =&gt; {
-if (state === &#39;pass&#39;) rmmg(&#39;pass&#39;);
+switch (error) {
+case &#39;Too fast&#39;: rmmg(&#39;pass&#39;); throw &#39;&#39;;
+case &#39;Connection failed&#39;: npl.href = npl.dataset.href; bpct.after(bpg); rmmg(&#39;stop&#39;); }}).then(() =&gt; {
 document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; adb.classList.add(&quot;hidden&quot;); });
 if (Blog1.querySelector(&quot;nav#blog_pager&quot;)) bpg.remove(); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
