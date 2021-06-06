@@ -1357,7 +1357,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </footer>
 </b:includable>
     <b:includable id='commentFormIframeSrc' var='post'>
-  <a class='cmal' expr:href='data:post.commentFormIframeSrc + &quot;&amp;skin=essential&quot;' id='comment-editor-src' rel='nofollow'/>
+  <a class='cmal' expr:href='data:post.commentFormIframeSrc' id='comment-editor-src' rel='nofollow'/>
 </b:includable>
     <b:includable id='commentItem' var='comment'>
   <div class='comment' expr:id='&quot;c&quot; + data:comment.id'>
@@ -2247,10 +2247,10 @@ const ifc = document.createElement(&quot;script&quot;);
 ifc.insertAdjacentHTML(&quot;afterbegin&quot;, &quot;BLOG_CMT_createIframe(&#39;https://www.blogger.com/rpc_relay.html&#39;);&quot;);
 iframeComment.parentNode.appendChild(ifc);
 <b:if cond='data:blog.isMobileRequest'>
-bdis.onblur = () =&gt; {
-if (iframeComment === document.activeElement) bbb.classList.add(&quot;invisible&quot;); }
-bdis.onfocus = () =&gt; {
-if (iframeComment !== document.activeElement) bbb.classList.remove(&quot;invisible&quot;); }</b:if>
+window.addEventListener(&quot;blur&quot;, () =&gt; {
+if (iframeComment === document.activeElement) bbb.classList.add(&quot;invisible&quot;); });
+window.addEventListener(&quot;focus&quot;, () =&gt; {
+if (iframeComment !== document.activeElement) bbb.classList.remove(&quot;invisible&quot;); });</b:if>
 iframeCommentObserver.disconnect(); }}); }, {
 rootMargin: &quot;46px&quot;});
 if (iframeComment) iframeCommentObserver.observe(iframeComment);
