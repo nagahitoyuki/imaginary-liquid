@@ -995,7 +995,6 @@ body#layout #floating_menu {display:initial}
 </b:includable>
           <b:includable id='content'>
   <div class='contact-form-widget'>
-    <div class='form'>
       <form name='contact-form'>
         <p/>
         <data:contactFormNameMsg/>
@@ -1017,7 +1016,6 @@ body#layout #floating_menu {display:initial}
           <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
         </div>
       </form>
-    </div>
   </div>
 </b:includable>
 </b:defaultmarkup>
@@ -1125,18 +1123,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <b:include name='verticalMoreIcon'/>
 </b:includable>
     <b:includable id='overflowablePageList'>
-  <div class='overflowable-container'>
-    <div class='overflowable-contents'>
         <b:with value='true' var='overflow'>
         <b:with value='&quot;tabs&quot;' var='pageListClass'>
           <b:include name='pageList'/>
         </b:with>
         </b:with>
-    </div>
-    <div class='overflow-button hidden'>
-      <b:include name='overflowButton'/>
-    </div>
-  </div>
 </b:includable>
     <b:includable id='pageLink'>
   <li class='pl-items'>
@@ -1156,7 +1147,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </header>
   <noscript><div class='noscript'>このサイトを適切に使用するためにはブラウザのJavaScriptの実行を許可して下さい。</div></noscript>
 
-  <b:section ads='true' class='top-ad-container' cond='data:widgets.AdSense.first.id == &quot;AdSense1&quot;' id='ads' name='広告 (水平型)' showaddelement='false' tag='aside'>
+  <b:section class='top-ad-container' cond='data:widgets.AdSense.first.id == &quot;AdSense1&quot;' id='ads' name='広告 (水平型)' showaddelement='false' tag='aside'>
     <b:widget id='AdSense1' locked='true' title='アドセンス' type='AdSense' version='2' visible='false'>
       <b:widget-settings>
         <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
@@ -2053,7 +2044,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
           <b:includable id='content'>
   <div class='contact-form-widget'>
-    <div class='form'>
       <form name='contact-form'>
         <p/>
         <data:contactFormNameMsg/>
@@ -2075,7 +2065,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
         </div>
       </form>
-    </div>
   </div>
 </b:includable>
         </b:widget>
@@ -2129,7 +2118,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
 const bdis = document.body;
 /* Screen reader */
-const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
+const sbct = content_wrapper.querySelector(&quot;aside.sidebar-container&quot;);
 if (sbct.style.position === &quot;absolute&quot;) sbct.ariaHidden = &quot;false&quot;;
 /* Hamburger menu */
 const bcsd = document.createElement(&quot;div&quot;);
@@ -2148,7 +2137,7 @@ if (sbct.classList.contains(&quot;slideout&quot;)) sbct.classList.add(&quot;side
 bcsd.addEventListener(&quot;animationend&quot;, () =&gt; {
 if (bcsd.classList.contains(&quot;fadeout&quot;)) content_wrapper.removeChild(bcsd); });
 /* Search button */
-const shrb = bdis.querySelector(&quot;div.share-buttons&quot;);
+const shrb = content_wrapper.querySelector(&quot;div.share-buttons&quot;);
 search_expand.addEventListener(&quot;click&quot;, () =&gt; {
 if (swc.classList.contains(&quot;hidden&quot;)) {
 <b:if cond='data:blog.isMobileRequest'>
@@ -2206,7 +2195,7 @@ entries.forEach(flbt); });
 backButtonObserver.observe(backButton);
 <b:if cond='data:view.isMultipleItems'>
 /* YouTube image */
-const ytpics = [].slice.call(Blog1.querySelectorAll(&quot;img.ytpic&quot;));
+const ytpics = [].slice.call(page_body.querySelectorAll(&quot;img.ytpic&quot;));
 function yt(image) {
 const ytimg = new Image();
 ytimg.onload = () =&gt; {
@@ -2216,7 +2205,7 @@ return; }
 ytimg.src = image.src; }
 if (ytpics[0]) ytpics.forEach(yt);
 /* Infinite scroll */
-const nextIndex = bdis.querySelector(&quot;aside.isf&quot;);
+const nextIndex = content_wrapper.querySelector(&quot;aside.isf&quot;);
 const bpct = Blog1.querySelector(&quot;div.blog-posts&quot;);
 if (bpct.clientHeight === 0) bpct.style.marginTop = &quot;0&quot;;
 const bpg = Blog1.querySelector(&quot;nav#blog_pager&quot;);
