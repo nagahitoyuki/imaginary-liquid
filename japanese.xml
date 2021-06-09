@@ -684,6 +684,7 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 
 /* 記事の本文 */
 body:not(.item-view) .post+aside {align-self:stretch;display:grid}
+.post {max-width:100vw}
 
 /* 投稿画像 */
 .item-view .post-body a[imageanchor="1"][style*="float: left;"], .item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none !important;clear:none!important}
@@ -1812,23 +1813,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:widget>
 </b:section>
 
-<aside>
-<b:class cond='data:view.isMultipleItems' name='isf'/>
-<b:section class='sub_main' cond='!data:view.isError' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true'>
-  <b:widget id='Text1' locked='false' title='お知らせ' type='Text' visible='true'>
-    <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<p>テーマデザイナーでの文字サイズの変更は横向きタブレットかパソコン以上の画面でしか反映しません。縦向きタブレット、スマホでの文字サイズの変更はBloggerのテーマのhtml編集かバックアップ／復元からskin内の二つに振り分けられたmedia screen内のfont-sizeを変更して下さい。</p><p>例＿<code>font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}</code></p><p>右端の数字が一行当たりの文字数になり、減らすと文字サイズが大きくなり、増やすと文字サイズが小さくなります。</p><h4>対応する指定先</h4><dl><dt>#blog-title</dt><dd>ブログ名</dd><dt>body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4</dt><dd>ブログ、記事／追加ページの本文、ブログの投稿のスニペット、注目と人気の投稿のスニペット、記事／追加ページの引用、記事／追加ページの見出しのh4</dd><dt>.Blog h1.post-title a</dt><dd>記事／追加ページの記事／追加タイトル</dd><dt>.Blog h2.post-title a, .FeaturedPost .post-title a</dt><dd>ブログと注目の投稿のスニペットの記事タイトル</dd><dt>.post-body h1</dt><dd>記事／追加ページの見出しのh1</dd><dt>.post-body h2</dt><dd>記事／追加ページの見出しのh2</dd><dt>.post-body h3</dt><dd>記事／追加ページの見出しのh3</dd><dt>.post-body h5</dt><dd>記事／追加ページの見出しのh5</dd><dt>.post-body h6</dt><dd>記事／追加ページの見出しのh6</dd><dt>.PopularPosts .post-title a</dt><dd>人気の投稿のスニペットの記事タイトル</dd></dl>]]></b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-  <b:include name='widget-title'/>
-  <div class='widget-content'>
-    <data:content/>
-  </div>
-</b:includable>
-  </b:widget>
-</b:section>
-</aside>
-
 <div class='hidden' id='bbb'><button aria-label='トップへ戻る' class='svg-icon-24-button' id='back-button' onclick='location.href=&quot;#blog-title&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button></div>
 <b:if cond='data:view.isMultipleItems'>
 <div class='hidden' id='adb'><button type='button' class='svg-icon-24-button' id='add-button'  expr:aria-label='data:messages.loading'><data:messages.loading/></button></div>
@@ -2072,6 +2056,23 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </aside>
 </div>
 
+<aside>
+<b:class cond='data:view.isMultipleItems' name='isf'/>
+<b:section class='sub_main' cond='!data:view.isError' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true'>
+  <b:widget id='Text1' locked='false' title='お知らせ' type='Text' visible='true'>
+    <b:widget-settings>
+      <b:widget-setting name='content'><![CDATA[<p>テーマデザイナーでの文字サイズの変更は横向きタブレットかパソコン以上の画面でしか反映しません。縦向きタブレット、スマホでの文字サイズの変更はBloggerのテーマのhtml編集かバックアップ／復元からskin内の二つに振り分けられたmedia screen内のfont-sizeを変更して下さい。</p><p>例＿<code>font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}</code></p><p>右端の数字が一行当たりの文字数になり、減らすと文字サイズが大きくなり、増やすと文字サイズが小さくなります。</p><h4>対応する指定先</h4><dl><dt>#blog-title</dt><dd>ブログ名</dd><dt>body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4</dt><dd>ブログ、記事／追加ページの本文、ブログの投稿のスニペット、注目と人気の投稿のスニペット、記事／追加ページの引用、記事／追加ページの見出しのh4</dd><dt>.Blog h1.post-title a</dt><dd>記事／追加ページの記事／追加タイトル</dd><dt>.Blog h2.post-title a, .FeaturedPost .post-title a</dt><dd>ブログと注目の投稿のスニペットの記事タイトル</dd><dt>.post-body h1</dt><dd>記事／追加ページの見出しのh1</dd><dt>.post-body h2</dt><dd>記事／追加ページの見出しのh2</dd><dt>.post-body h3</dt><dd>記事／追加ページの見出しのh3</dd><dt>.post-body h5</dt><dd>記事／追加ページの見出しのh5</dd><dt>.post-body h6</dt><dd>記事／追加ページの見出しのh6</dd><dt>.PopularPosts .post-title a</dt><dd>人気の投稿のスニペットの記事タイトル</dd></dl>]]></b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main'>
+  <b:include name='widget-title'/>
+  <div class='widget-content'>
+    <data:content/>
+  </div>
+</b:includable>
+  </b:widget>
+</b:section>
+</aside>
+
 <footer id='attribution'>
   <div class='theme-attribution'>with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow'>Imaginary theme</a></div>
 
@@ -2124,12 +2125,12 @@ if (sbct.style.position === &quot;absolute&quot;) sbct.ariaHidden = &quot;false&
 const bcsd = document.createElement(&quot;div&quot;);
 bcsd.classList.add(&quot;dim-overlay&quot;);
 hamburger_menu.addEventListener(&quot;click&quot;, () =&gt; {
-sbct.style.willChange = &quot;transform&quot;; sbct.classList.remove(&quot;slideout&quot;); bcsd.classList.remove(&quot;fadeout&quot;); bcsd.classList.add(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
+sbct.classList.remove(&quot;slideout&quot;); bcsd.classList.remove(&quot;fadeout&quot;); bcsd.classList.add(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
 sbct.classList.add(&quot;slidein&quot;); content_wrapper.appendChild(bcsd); });  sbct.ariaHidden = &quot;false&quot;; sbct.classList.remove(&quot;sidebar-invisible&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); });
 /* Close button */
 function clsb() {
 sbct.classList.remove(&quot;slidein&quot;); bcsd.classList.remove(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
-sbct.classList.add(&quot;slideout&quot;); bcsd.classList.add(&quot;fadeout&quot;); }); sbct.ariaHidden = &quot;true&quot;; bdis.classList.remove(&quot;sidebar-visible&quot;); sbct.style.willChange = &quot;auto&quot;; }
+sbct.classList.add(&quot;slideout&quot;); bcsd.classList.add(&quot;fadeout&quot;); }); sbct.ariaHidden = &quot;true&quot;; bdis.classList.remove(&quot;sidebar-visible&quot;); }
 close_button.addEventListener(&quot;click&quot;, clsb);
 bcsd.addEventListener(&quot;click&quot;, clsb);
 sbct.addEventListener(&quot;transitionend&quot;, () =&gt; {
@@ -2205,7 +2206,7 @@ return; }
 ytimg.src = image.src; }
 if (ytpics[0]) ytpics.forEach(yt);
 /* Infinite scroll */
-const nextIndex = content_wrapper.querySelector(&quot;aside.isf&quot;);
+const nextIndex = bdis.querySelector(&quot;aside.isf&quot;);
 const bpct = Blog1.querySelector(&quot;div.blog-posts&quot;);
 if (bpct.clientHeight === 0) bpct.style.marginTop = &quot;0&quot;;
 const bpg = Blog1.querySelector(&quot;nav#blog_pager&quot;);
