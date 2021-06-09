@@ -422,8 +422,9 @@ html[dir="rtl"] #back-button, html[dir="rtl"] #comment-button, html[dir="rtl"] #
 .top-ad-placeholder span, .inline-ad-placeholder span {margin-top:36px;display:block;text-transform:uppercase;font-weight:700;color:$(posts.title.color)}
 
 /* Page body */
-.centered {position:relative;display:flex;flex-direction:column;margin:0 auto;z-index:20}
+.centered {position:relative;display:flex;flex-direction:column;z-index:20}
 .centered>* {flex:auto}
+#content_wrapper {margin:0 auto}
 #page_body {width:min(100vw, $(content.width))}
 .Blog {contain:content}
 .blog-posts {background:$(body.background.color);display:grid;gap:var(--maincolumn-padding)}
@@ -648,7 +649,6 @@ body {position:relative}
 
 /* Placement */
 .search-input {margin-left:8px;margin-right:8px}
-#content_wrapper {margin:0 auto}
 #sub_main {width:min(100vw, $(content.width))}
 
 /* Back button / Comment button / Loading */
