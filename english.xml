@@ -424,6 +424,7 @@ html[dir="rtl"] #back-button, html[dir="rtl"] #comment-button, html[dir="rtl"] #
 /* Page body */
 .centered {position:relative;display:flex;flex-direction:column;margin:0 auto;z-index:20}
 .centered>* {flex:auto}
+#page_body {width:min(100vw, $(content.width))}
 .Blog {contain:content}
 .blog-posts {background:$(body.background.color);display:grid;gap:var(--maincolumn-padding)}
 .blog-posts .post {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
@@ -627,7 +628,7 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 body {position:relative}
 .centered-top {margin-top:30px;margin-bottom:30px}
 #content_wrapper {position:relative}
-#page_body, #sub_main {width:$(content.width)}
+#sub_main {width:$(content.width + sidebar.width + content.margin)}
 
 /* Floating bar */
 #hamburger_menu, #search_expand {display:none}
@@ -647,6 +648,8 @@ body {position:relative}
 
 /* Placement */
 .search-input {margin-left:8px;margin-right:8px}
+#content_wrapper {margin:0 auto}
+#sub_main {width:min(100vw, $(content.width))}
 
 /* Back button / Comment button / Loading */
 #back-button {$endSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
@@ -681,7 +684,6 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 
 /* Page body */
 body:not(.item-view) .post+aside {align-self:stretch;display:grid}
-.hentry {max-width:100vw}
 
 /* Post title */
 .blog-posts h1.post-title, .blog-posts h2.post-title, .FeaturedPost .post-title {line-height:calc(var(--body-lineheight) - .2)}
@@ -1782,6 +1784,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:widget>
 </b:section>
 
+<aside>
+<b:class cond='data:view.isMultipleItems' name='isf'/>
+<b:section class='sub_main' cond='!data:view.isError' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true'/>
+</aside>
+
 <div class='hidden' id='bbb'><button aria-label='トップへ戻る' class='svg-icon-24-button' id='back-button' onclick='location.href=&quot;#blog-title&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button></div>
 <b:if cond='data:view.isMultipleItems'>
 <div class='hidden' id='adb'><button type='button' class='svg-icon-24-button' id='add-button'  expr:aria-label='data:messages.loading'><data:messages.loading/></button></div>
@@ -2024,11 +2031,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       </b:section>
 </aside>
 </div>
-
-<aside>
-<b:class cond='data:view.isMultipleItems' name='isf'/>
-<b:section class='sub_main' cond='!data:view.isError' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true'/>
-</aside>
 
 <footer id='attribution'>
   <div class='theme-attribution'>with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow'>Imaginary theme</a></div>
