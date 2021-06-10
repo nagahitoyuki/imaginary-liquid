@@ -415,7 +415,7 @@ html[dir="rtl"] #back-button, html[dir="rtl"] #comment-button, html[dir="rtl"] #
 
 /* アドセンス広告 */
 .top-ad-container {padding:0 var(--maincolumn-padding)}
-#AdSense1 {overflow:hidden}
+#AdSense1 {margin:0 auto 20px;overflow:hidden}
 .inline-ad {display:none;overflow:hidden}
 .adsbygoogle {display:block;overflow:hidden}
 .top-ad-placeholder, .inline-ad-placeholder {height:90px;background:$(posts.background.color);border:1px solid #000;opacity:.9;vertical-align:middle;text-align:center}
@@ -678,7 +678,6 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 
 /* アドセンス広告 */
 #AdSense1, .desktop-ad>.inline-ad {display:block;width:100%;max-width:100%}
-#AdSense1 {margin:0 auto 20px}
 .desktop-ad>.inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
 }
 
@@ -699,7 +698,6 @@ margin-top:20px}
 
 /* アドセンス広告 */
 #AdSense1, .mobile-ad>.inline-ad {display:block;width:min(100%, calc(100vw - var(--maincolumn-padding) * 2))}
-#AdSense1 {margin:0 auto 20px}
 .mobile-ad>.inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
 body:not(.item-view) .mobile-ad>.inline-ad {align-self:center}
 }
@@ -1140,12 +1138,12 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </header>
   <noscript><div class='noscript'>このサイトを適切に使用するためにはブラウザのJavaScriptの実行を許可して下さい。</div></noscript>
 
-  <b:section class='top-ad-container' cond='data:widgets.AdSense.first.id == &quot;AdSense1&quot;' id='ads' name='広告 (水平型)' showaddelement='false' tag='aside'>
-    <b:widget id='AdSense1' locked='true' title='アドセンス' type='AdSense' version='2' visible='false'>
+  <b:section class='top-ad-container' cond='data:widgets.AdSense.first.id == &quot;AdSense1&quot;' id='ad' name='Ads' showaddelement='false' tag='aside'>
+    <b:widget id='AdSense1' locked='true' title='' type='AdSense' version='2' visible='false'>
       <b:widget-settings>
         <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
         <b:widget-setting name='style.textcolor'>#2196f3</b:widget-setting>
-        <b:widget-setting name='style.layout'>234x60</b:widget-setting>
+        <b:widget-setting name='style.layout'>1x1</b:widget-setting>
         <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
         <b:widget-setting name='style.urlcolor'>#757575</b:widget-setting>
         <b:widget-setting name='style.linkcolor'>#212121</b:widget-setting>
@@ -1153,10 +1151,18 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       </b:widget-settings>
       <b:includable id='main'>
     <div aria-label='広告' class='widget-content'>
-  <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
-    <ins class='adsbygoogle' data-ad-format='horizontal' expr:data-ad-client='data:adClientId ?: data:blog.adsenseClientId' expr:data-ad-host='data:blog.adsenseHostId' expr:data-analytics-uacct='data:blog.analyticsAccountNumber' style='/* Done in css. */'/>
-<script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+    <b:if cond='data:adCode'>
+      <data:adCode/>
+    <b:else/>
+      <b:include name='defaultAdUnit'/>
+    </b:if>
     </div>
+  </b:includable>
+      <b:includable id='defaultAdUnit'>
+  <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
+  <b:with value='&quot;/* Done in css. */&quot;' var='style'>
+    <b:include name='super.defaultAdUnit'/>
+  </b:with>
   </b:includable>
     </b:widget>
   </b:section>
