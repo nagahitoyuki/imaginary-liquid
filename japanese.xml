@@ -353,7 +353,6 @@ body:not(.item-view) #sub_main, body:not(.item-view) #attribution {display:none}
 .post-filter-message .search-label, .post-filter-message .search-query {font-weight:bold}
 
 /* 補足 */
-#page_body {outline:0}
 .BLOG_mobile_video_class {display:none}
 .CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
@@ -385,7 +384,7 @@ body:not(.item-view) #sub_main, body:not(.item-view) #attribution {display:none}
 #floating_menu, #floating_share {display:flex;column-gap:4px}
 
 /* SVGアイコン */
-.svg-icon-24-button, .loadingIcon {appearance:none;padding:0;border:none;outline:none;background:transparent;}
+.svg-icon-24-button, .loadingIcon {appearance:none;padding:0;border:none;background:transparent;}
 .svg-icon-24 {vertical-align:middle;width:24px;height:24px;cursor:pointer}
 #close_button>.svg-icon-24 {fill:$(sidebar.icons.color)}
 .post-icons .svg-icon-24 {fill:$(posts.icons.color)}
