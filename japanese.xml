@@ -374,7 +374,7 @@ body:not(.item-view) #sub_main, body:not(.item-view) #attribution {display:none}
 .blog-desc {color:$(blog.title.color);margin-top:1.5em;margin-bottom:0}
 
 /* タブ */
-.PageList>.title {color:$(tabs.title.color);font-size:large;margin-top:1.25em;margin-bottom:0}
+.tabs-title {color:$(tabs.title.color);font-size:large;margin-top:1.25em;margin-bottom:0}
 .tabs {list-style:none;padding-$startSide:0;display:flex;justify-content:space-evenly;align-items:center;flex-wrap:wrap;margin-top:1em;margin-bottom:-.5em}
 .pl-items {font:$(tabs.font);min-width:15%;line-height:2.6}
 .pl-items>a {color:$(tabs.color)}
@@ -1113,24 +1113,14 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:widget-setting name='pageListJson'><![CDATA[{'home': {'href': 'https://nagahitoyuki.blogspot.com/', 'title': 'ホーム', 'position': 0}}]]></b:widget-setting>
       <b:widget-setting name='homeTitle'>ホーム</b:widget-setting>
     </b:widget-settings>
-    <b:includable id='main'>
-  <b:tag class='title' cond='data:title' name='h2'><data:title/></b:tag>
-  <b:include name='content'/>
-</b:includable>
-    <b:includable id='content'>
+     <b:includable id='main'>
   <nav class='widget-content'>
-    <b:include name='pageList'/>
+  <b:tag class='tabs-title' cond='data:title' name='h2'><data:title/></b:tag>
+  <b:include name='content'/>
   </nav>
 </b:includable>
-    <b:includable id='overflowButton'>
-  <b:include name='verticalMoreIcon'/>
-</b:includable>
-    <b:includable id='overflowablePageList'>
-        <b:with value='true' var='overflow'>
-        <b:with value='&quot;tabs&quot;' var='pageListClass'>
-          <b:include name='pageList'/>
-        </b:with>
-        </b:with>
+    <b:includable id='content'>
+    <b:include name='pageList'/>
 </b:includable>
     <b:includable id='pageLink'>
   <li class='pl-items'>
