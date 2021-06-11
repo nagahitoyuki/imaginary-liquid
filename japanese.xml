@@ -10,10 +10,11 @@
 </b:if>
 <b:if cond='data:skin.vars.body_background.image'>
 <b:if cond='!data:blog.isMobileRequest'>
-  <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 640)' media='(max-width:640px) and (min-width:481px)' rel='preload'/>
-  <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image,800)' media='(max-width:800px) and (min-width:641px)' rel='preload'/>
-  <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 1200)' media='(max-width:1200px) and (min-width:801px)' rel='preload'/>
-  <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 1600)' media='(min-width:1201px)' rel='preload'/>
+  <b:with value='[481, 641, 801]' var='minWidth'>
+  <b:loop index='i' values='resizeImage(data:skin.vars.body_background.image, [640, 800, 1200, 1600])' var='headerImage'>
+  <link as='image' expr:href='data:headerImage.url' expr:media='&quot;(&quot; + (data:i != 3 ? &quot;max-width:&quot; + data:headerImage.size + &quot;px) and (min-width:&quot; + data:minWidth[i] + &quot;px)&quot; : &quot;min-width:1201px)&quot;)' rel='preload'/>
+  </b:loop>
+  </b:with>
 <b:else/>
   <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 480)' rel='preload'/>
 </b:if>
@@ -425,7 +426,6 @@ html[dir="rtl"] #back-button, html[dir="rtl"] #comment-button, html[dir="rtl"] #
 .centered {position:relative;display:flex;flex-direction:column;z-index:20}
 .centered>* {flex:auto}
 #content_wrapper {margin:0 auto}
-#page_body {width:min(100vw, $(content.width))}
 .Blog {contain:content}
 .blog-posts {background:$(body.background.color);display:grid;gap:var(--maincolumn-padding)}
 .blog-posts .post {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
@@ -441,7 +441,7 @@ body:not(.item-view) .post+aside {align-self:stretch;display:grid}
 .FeaturedPost .post>a, .FeaturedPost .snippet-thumbnail {width:100%;height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;align-items:center;text-align:center}
 .no-image {background-color:#a9a9a9}
 .FeaturedPost .post-title {font:$(posts.stream.title.font);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
-.FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%)}
+.FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
 
 /* 記事の題名 */
 .blog-posts .post-title {margin-top:0;margin-bottom:20px}
@@ -623,7 +623,8 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 body {position:relative}
 .centered-top {margin-top:30px;margin-bottom:30px}
 #content_wrapper {position:relative}
-#sub_main {width:$(content.width + sidebar.width + content.margin)}
+#content_wrapper, #sub_main {width:$(content.width + sidebar.width + content.margin)}
+#page_body {width:$(content.width)}
 
 /* フローティングバー */
 #hamburger_menu, #search_expand {display:none}
@@ -643,7 +644,7 @@ body {position:relative}
 
 /* 位置取り */
 .search-input {margin-left:8px;margin-right:8px}
-#sub_main {width:min(100vw, $(content.width))}
+#content_wrapper {width:min(100vw, $(content.width))}
 
 /* 戻るボタン／コメントボタン／ローディング */
 #back-button {$endSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
