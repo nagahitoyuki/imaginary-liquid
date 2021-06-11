@@ -338,7 +338,7 @@ blockquote {margin:1em 2.5em}
 /* Balancer */
 .hidden, .no-items {display:none}
 .invisible {visibility:hidden}
-body:not(.item-view) #sub_main, body:not(.item-view) #attribution {display:none}
+.feed-view #sub_main, .feed-view #attribution {display:none}
 .sidebar-invisible, .item-view #sub_main, .item-view #attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* Widget */
@@ -429,8 +429,8 @@ html[dir="rtl"] #back-button, html[dir="rtl"] #comment-button, html[dir="rtl"] #
 .Blog {contain:content}
 .blog-posts {background:$(body.background.color);display:grid;gap:var(--maincolumn-padding)}
 .blog-posts .post {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
-body:not(.item-view) .blog-posts {grid-template-columns:1fr;margin-bottom:var(--maincolumn-padding)}
-body:not(.item-view) .post+aside {align-self:stretch;display:grid}
+.feed-view .blog-posts {grid-template-columns:1fr;margin-bottom:var(--maincolumn-padding)}
+.feed-view .post+aside {align-self:stretch;display:grid}
 .item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
 
 /* Featured post */
@@ -683,7 +683,7 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 @media screen and (max-width:$(content.width - 1px)){
 
 /* Page body */
-body:not(.item-view) .post+aside {align-self:stretch;display:grid}
+.feed-view .post+aside {align-self:stretch;display:grid}
 
 /* Post title */
 .blog-posts h1.post-title, .blog-posts h2.post-title, .FeaturedPost .post-title {line-height:calc(var(--body-lineheight) - .2)}
@@ -701,7 +701,7 @@ margin-top:20px}
 /* AdSense ads */
 #AdSense1, .mobile-ad>.inline-ad {display:block;width:min(100%, calc(100vw - var(--maincolumn-padding) * 2))}
 .mobile-ad>.inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
-body:not(.item-view) .mobile-ad>.inline-ad {align-self:center}
+.feed-view .mobile-ad>.inline-ad {align-self:center}
 }
 ]]></b:skin>
 
@@ -1007,6 +1007,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 
 <body>
    <b:class cond='data:view.isPreview' name='preview'/>
+   <b:class cond='data:view.isMultipleItems' name='feed-view'/>
    <b:class cond='data:view.isSingleItem' name='item-view'/>
    <b:class cond='data:view.isArchive' name='archive-view'/>
    <b:class cond='data:view.isLabelSearch' name='label-view'/>
