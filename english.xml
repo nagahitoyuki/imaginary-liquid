@@ -428,7 +428,7 @@ html[dir="rtl"] #back-button, html[dir="rtl"] #comment-button, html[dir="rtl"] #
 #content_wrapper {margin:0 auto}
 .Blog {contain:content}
 .blog-posts {background:$(body.background.color);display:grid;gap:var(--maincolumn-padding)}
-.blog-posts .post {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
+.blog-posts>.post {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
 .feed-view .blog-posts {grid-template-columns:1fr;margin-bottom:var(--maincolumn-padding)}
 .feed-view .post+aside {align-self:stretch;display:grid}
 .item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
@@ -781,7 +781,7 @@ body#layout #floating_menu {display:initial}
 </b:includable>
     <b:includable id='snippetedPostTitle'>
   <h3 class='post-title'>
-    <a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
+    <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
   </h3>
 </b:includable>
     <b:includable id='snippetedPosts'>
@@ -1769,7 +1769,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='snippetedPostTitle'>
   <h3 class='post-title'>
-    <a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
+    <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
   </h3>
 </b:includable>
     <b:includable id='snippetedPosts'>
