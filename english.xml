@@ -83,7 +83,7 @@
       max="640px"
       default="480px"  value="430px"/>
   <Variable name="body.background" description="Background"
-      color="$(body.background.color)"
+      color="$(blog.header.color)"
       type="background"
       default="$(color) none repeat scroll center center" value="$(color) none no-repeat scroll center center"/>
   <Variable name="blog.header.color" description="Blog header color"
@@ -333,7 +333,7 @@ blockquote {margin:1em 2.5em}
 
 /* Header background image */
 .bg-photo-container {height:$(body.background.height);overflow:hidden;position:absolute;width:100%;z-index:1}
-.bg-photo {background:$(body.background);background-size:cover;filter:blur($(body.background.blur));height:calc(100% + 2 * $(body.background.blur));left:$(0 - body.background.blur);position:absolute;top:$(0 - body.background.blur);width:calc(100% + 2 * $(body.background.blur));background-color:$(blog.header.color)}
+.bg-photo {background:$(body.background);background-size:cover;filter:blur($(body.background.blur));height:calc(100% + 2 * $(body.background.blur));width:calc(100% + 2 * $(body.background.blur));position:absolute;left:$(0 - body.background.blur);top:$(0 - body.background.blur)}
 
 /* Balancer */
 .hidden, .no-items {display:none}
@@ -558,7 +558,7 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 /* Pager */
 #blog_pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.5);margin-bottom:calc(var(--maincolumn-padding) * .5);display:flex;justify-content:space-around}
 #blog_pager>a {color:$(posts.navigation.link.color)}
-#blog_pager>a:visited{color:$(posts.navigation.link.visited.color)}
+#blog_pager>a:visited {color:$(posts.navigation.link.visited.color)}
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* Sub main */
@@ -614,7 +614,7 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 .contact-form-name, .contact-form-email, .contact-form-email-message {max-width:100%;box-sizing:border-box}
 
 /* Report abuse */
-.report_abuse{font-weight:400}
+.report_abuse {font-weight:400}
 
 /* Translation */
 .Translate .skiptranslate>div{display:block!important}
