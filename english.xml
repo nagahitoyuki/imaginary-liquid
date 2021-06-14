@@ -683,6 +683,7 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 @media screen and (max-width:$(content.width - 1px)){
 
 /* Page body */
+.post {max-width:100vw}
 .feed-view .post+aside {align-self:stretch;display:grid}
 
 /* Post title */
@@ -739,10 +740,8 @@ body#layout #floating_menu {display:initial}
     <p class='snippet-item'>
     <b:if cond='data:widget.sectionId == &quot;sidebar_top&quot; or data:widget.sectionId == &quot;sidebar_bottom&quot;'>
       <b:eval expr='data:post.body snippet { length: 90, links: false, linebreaks: false, ellipsis: true }'/>
-    <b:elseif cond='data:blog.isMobileRequest'/>
-      <b:eval expr='data:post.body snippet { length: 180, links: false, linebreaks: false, ellipsis: true }'/>
     <b:else/>
-      <b:eval expr='data:post.body snippet { length: 280, links: false, linebreaks: false, ellipsis: true }'/>
+      <data:post.snippets.short/>
     </b:if>
     </p>
 </b:includable>
@@ -1552,7 +1551,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:elseif cond='data:post.featuredImage'/>
     <img expr:alt='data:messages.image' class='snippet-thumbnail' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [240,359,512], &quot;1:1&quot;)' height='240' loading='lazy' sizes='(max-width:960px) 30vw, 512px' width='240'/>
     </b:if>
-    <p class='summary'><b:eval expr='data:post.body snippet { length:(data:blog.isMobileRequest ? 160 : 380), links: false, linebreaks: false, ellipsis: true }'/></p>
+    <p class='summary'><b:eval expr='data:blog.isMobileRequest ? data:post.snippets.short : data:post.body snippet { length: 380, links: false, linebreaks: false, ellipsis: true }'/></p>
   </a>
 </b:includable>
     <b:includable id='postCommentsAndAd' var='post'>
@@ -1736,11 +1735,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
  </b:includable>
     <b:includable id='postSnippet'>
     <p class='snippet-item'>
-    <b:if cond='data:blog.isMobileRequest'>
-      <b:eval expr='data:post.body snippet { length: 180, links: false, linebreaks: false, ellipsis: true }'/>
-    <b:else/>
-      <b:eval expr='data:post.body snippet { length: 280, links: false, linebreaks: false, ellipsis: true }'/>
-    </b:if>
+      <data:post.snippets.short/>
     </p>
 </b:includable>
     <b:includable id='snippetedPostContent'>
