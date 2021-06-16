@@ -470,7 +470,7 @@ html[dir="rtl"] #back-button, html[dir="rtl"] #comment-button, html[dir="rtl"] #
 .post-body a, .post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:flow-root;width:min(100%, calc($(content.width) - var(--maincolumn-padding) * 2));margin-bottom:16px}
-.blog-posts .snippet-thumbnail {float:$startSide;width:max(30%, 8em  - var(--maincolumn-padding));margin-$endSide:var(--maincolumn-padding);line-height:var(--body-lineheight)}
+.total-snippet .snippet-thumbnail {float:$startSide;width:max(30%, 8em  - var(--maincolumn-padding));margin-$endSide:var(--maincolumn-padding)}
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0}
 .post-body h1 {font-size:26px;line-height:calc(var(--body-lineheight) - .15)}
 .post-body h2 {font-size:24px;line-height:calc(var(--body-lineheight) - .15)}
@@ -739,7 +739,7 @@ body#layout #floating_menu {display:initial}
     <b:includable id='postSnippet'>
     <p class='snippet-item'>
     <b:if cond='data:widget.sectionId == &quot;sidebar_top&quot; or data:widget.sectionId == &quot;sidebar_bottom&quot;'>
-      <b:eval expr='data:post.body snippet { length: 90, links: false, linebreaks: false, ellipsis: true }'/>
+      <b:eval expr='data:post.body snippet { length: 70, links: false, linebreaks: false, ellipsis: true }'/>
     <b:else/>
       <data:post.snippets.short/>
     </b:if>
@@ -1551,7 +1551,15 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:elseif cond='data:post.featuredImage'/>
     <img expr:alt='data:messages.image' class='snippet-thumbnail' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [240,359,512], &quot;1:1&quot;)' height='240' loading='lazy' sizes='(max-width:960px) 30vw, 512px' width='240'/>
     </b:if>
-    <p class='summary'><data:post.snippets.short/></p>
+    <p class='summary'>
+    <b:with value='data:post.body snippet { length:(data:blog.isMobileRequest ? 250 : 450), links: false, linebreaks: false, ellipsis: true }' var='chros'>
+<b:if cond='data:chros contains &quot;&lt;strong&gt;&quot; or data:chros contains &quot;&lt;b&gt;&quot; or data:chros contains &quot;&lt;em&gt;&quot; or data:chros contains &quot;&lt;i&gt;&quot;'>
+    <data:post.snippets.short/>
+    <b:else/>
+    <b:eval expr='data:chros'/>
+    </b:if>
+    </b:with>
+    </p>
   </a>
 </b:includable>
     <b:includable id='postCommentsAndAd' var='post'>
