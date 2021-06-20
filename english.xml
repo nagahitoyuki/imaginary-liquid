@@ -5,6 +5,18 @@
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
   <link href='//www.blogger.com' rel='dns-prefetch'/>
+<b:with value='data:widgets.Blog.first.posts filter (p =&gt; p.featuredImage)' var='pswi'>
+<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;1.bp.blogspot.com&quot;)'><link href='//1.bp.blogspot.com' rel='dns-prefetch'/></b:if>
+<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;2.bp.blogspot.com&quot;)'><link href='//2.bp.blogspot.com' rel='dns-prefetch'/></b:if>
+<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;3.bp.blogspot.com&quot;)'><link href='//3.bp.blogspot.com' rel='dns-prefetch'/></b:if>
+<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;4.bp.blogspot.com&quot;)'><link href='//4.bp.blogspot.com' rel='dns-prefetch'/></b:if>
+<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;lh1.googleusercontent.com&quot;)'><link href='//lh1.googleusercontent.com' rel='dns-prefetch'/></b:if>
+<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;lh2.googleusercontent.com&quot;)'><link href='//lh2.googleusercontent.com' rel='dns-prefetch'/></b:if>
+<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;lh3.googleusercontent.com&quot;)'><link href='//lh3.googleusercontent.com' rel='dns-prefetch'/></b:if>
+<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;lh4.googleusercontent.com&quot;)'><link href='//lh4.googleusercontent.com' rel='dns-prefetch'/></b:if>
+<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;lh5.googleusercontent.com&quot;)'><link href='//lh5.googleusercontent.com' rel='dns-prefetch'/></b:if>
+<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;lh6.googleusercontent.com&quot;)'><link href='//lh6.googleusercontent.com' rel='dns-prefetch'/></b:if>
+</b:with>
 <b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
   <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
 </b:if>
@@ -2141,12 +2153,12 @@ twbtn.addEventListener(&quot;click&quot;, () =&gt; {
 location.href = &quot;https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=&quot; + encodeURIComponent(&#39;<data:blog.pageTitle/>&#39;); });
 <b:if cond='data:blog.isMobileRequest'>
 shbtn.addEventListener(&quot;click&quot;, () =&gt; {
-navigator.share({
+window.navigator.share({
 title: &quot;<data:view.title.escaped/>&quot;,
 url: &quot;<data:blog.url.canonical/>&quot; }); });
 <b:else/>
 clpcp.addEventListener(&quot;click&quot;, () =&gt; {
-navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; {
+window.navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; {
 alert (&quot;<data:messages.linkCopiedToClipboard.jsEscaped/>&quot;); }); });
 </b:if>
 /* Back button */
