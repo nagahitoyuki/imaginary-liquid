@@ -5,32 +5,32 @@
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
   <link href='//www.blogger.com' rel='dns-prefetch'/>
-<b:with value='data:widgets.Blog.first.posts' var='pswi'>
-<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;1.bp.blogspot.com&quot;)'><link href='//1.bp.blogspot.com' rel='dns-prefetch'/></b:if>
-<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;2.bp.blogspot.com&quot;)'><link href='//2.bp.blogspot.com' rel='dns-prefetch'/></b:if>
-<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;3.bp.blogspot.com&quot;)'><link href='//3.bp.blogspot.com' rel='dns-prefetch'/></b:if>
-<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;4.bp.blogspot.com&quot;)'><link href='//4.bp.blogspot.com' rel='dns-prefetch'/></b:if>
-<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;lh1.googleusercontent.com&quot;)'><link href='//lh1.googleusercontent.com' rel='dns-prefetch'/></b:if>
-<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;lh2.googleusercontent.com&quot;)'><link href='//lh2.googleusercontent.com' rel='dns-prefetch'/></b:if>
-<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;lh3.googleusercontent.com&quot;)'><link href='//lh3.googleusercontent.com' rel='dns-prefetch'/></b:if>
-<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;lh4.googleusercontent.com&quot;)'><link href='//lh4.googleusercontent.com' rel='dns-prefetch'/></b:if>
-<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;lh5.googleusercontent.com&quot;)'><link href='//lh5.googleusercontent.com' rel='dns-prefetch'/></b:if>
-<b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;lh6.googleusercontent.com&quot;)'><link href='//lh6.googleusercontent.com' rel='dns-prefetch'/></b:if>
-</b:with>
-<b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
-  <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
-</b:if>
-<b:if cond='data:skin.vars.body_background.image'>
-<b:if cond='!data:blog.isMobileRequest'>
-<b:with value='[481, 641]' var='minWidth'> 
-<b:loop index='i' values='resizeImage(data:skin.vars.body_background.image, [640, 1024, 1600])' var='headerImage'>
-  <link as='image' expr:href='data:headerImage.url' expr:media='&quot;(&quot; + (data:i != 2 ? &quot;max-width:&quot; + data:headerImage.size + &quot;px) and (min-width:&quot; + data:minWidth[i] + &quot;px)&quot; : &quot;min-width:1201px)&quot;)' rel='preload'/>
+  <b:with value='data:widgets.Blog.first.posts map (p =&gt; p.featuredImage)' var='pswi'>
+  <b:if cond='data:pswi first (p =&gt; p contains &quot;1.bp.blogspot.com&quot;)'><link href='//1.bp.blogspot.com' rel='dns-prefetch'/></b:if>
+  <b:if cond='data:pswi first (p =&gt; p contains &quot;2.bp.blogspot.com&quot;)'><link href='//2.bp.blogspot.com' rel='dns-prefetch'/></b:if>
+  <b:if cond='data:pswi first (p =&gt; p contains &quot;3.bp.blogspot.com&quot;)'><link href='//3.bp.blogspot.com' rel='dns-prefetch'/></b:if>
+  <b:if cond='data:pswi first (p =&gt; p contains &quot;4.bp.blogspot.com&quot;)'><link href='//4.bp.blogspot.com' rel='dns-prefetch'/></b:if>
+  <b:if cond='data:pswi first (p =&gt; p contains &quot;lh1.googleusercontent.com&quot;)'><link href='//lh1.googleusercontent.com' rel='dns-prefetch'/></b:if>
+  <b:if cond='data:pswi first (p =&gt; p contains &quot;lh2.googleusercontent.com&quot;)'><link href='//lh2.googleusercontent.com' rel='dns-prefetch'/></b:if>
+  <b:if cond='data:pswi first (p =&gt; p contains &quot;lh3.googleusercontent.com&quot;)'><link href='//lh3.googleusercontent.com' rel='dns-prefetch'/></b:if>
+  <b:if cond='data:pswi first (p =&gt; p contains &quot;lh4.googleusercontent.com&quot;)'><link href='//lh4.googleusercontent.com' rel='dns-prefetch'/></b:if>
+  <b:if cond='data:pswi first (p =&gt; p contains &quot;lh5.googleusercontent.com&quot;)'><link href='//lh5.googleusercontent.com' rel='dns-prefetch'/></b:if>
+  <b:if cond='data:pswi first (p =&gt; p contains &quot;lh6.googleusercontent.com&quot;)'><link href='//lh6.googleusercontent.com' rel='dns-prefetch'/></b:if>
+  </b:with>
+  <b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
+    <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
+  </b:if>
+  <b:if cond='data:skin.vars.body_background.image'>
+  <b:if cond='!data:blog.isMobileRequest'>
+  <b:with value='[481, 641]' var='minWidth'>
+  <b:loop index='i' values='resizeImage(data:skin.vars.body_background.image, [640, 1024, 1600])' var='headerImage'>
+    <link as='image' expr:href='data:headerImage.url' expr:media='&quot;(&quot; + (data:i != 2 ? &quot;max-width:&quot; + data:headerImage.size + &quot;px) and (min-width:&quot; + data:minWidth[i] + &quot;px)&quot; : &quot;min-width:1201px)&quot;)' rel='preload'/>
   </b:loop>
   </b:with>
-<b:else/>
-  <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 480)' rel='preload'/>
-</b:if>
-</b:if>
+  <b:else/>
+    <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 480)' rel='preload'/>
+  </b:if>
+  </b:if>
   <title><data:view.title.escaped/><b:if cond='data:view.isArchive'>: <data:blog.pageName/>&#65288;<data:messages.archive/>&#65289;<b:elseif cond='data:view.isLabelSearch'/>: <data:blog.pageName/>&#65288;<data:messages.labels/>&#65289;<b:elseif cond='data:view.isSearch'/>: <data:messages.search/></b:if></title>
   <b:if cond='data:blog.metaDescription'>
     <meta expr:content='data:blog.metaDescription' name='description'/>
@@ -62,11 +62,10 @@
   </b:if>
     <meta expr:content='data:view.description.escaped' property='og:description'/>
   <b:if cond='data:view.isMultipleItems'>
-  <b:with value='data:widgets.Blog.first.posts where (p =&gt; p.featuredImage) map (p =&gt; p.featuredImage)' var='imageUrl'>
-    <meta expr:content='resizeImage(data:imageUrl[0], 1200, &quot;1200:630&quot;)' property='og:image'/></b:with>
+  <b:tag cond='data:widgets.Blog.first.posts.first.featuredImage' expr:content='resizeImage(data:widgets.Blog.first.posts.first.featuredImage, 1200, &quot;1200:630&quot;)' property='og:image' name='meta'></b:tag>
     <meta content='website' property='og:type'/>
   <b:else/>
-    <meta expr:content='resizeImage(data:view.featuredImage, 1200, &quot;1200:630&quot;)' property='og:image'/>
+    <b:tag cond='data:view.featuredImage' expr:content='resizeImage(data:view.featuredImage, 1200, &quot;1200:630&quot;)' property='og:image' name='meta'></b:tag>
     <meta content='article' property='og:type'/>
   </b:if>
     <meta expr:content='data:blog.title.escaped' property='og:site_name'/>
