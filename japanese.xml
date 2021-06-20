@@ -5,7 +5,7 @@
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
   <link href='//www.blogger.com' rel='dns-prefetch'/>
-<b:with value='data:widgets.Blog.first.posts filter (p =&gt; p.featuredImage)' var='pswi'>
+<b:with value='data:widgets.Blog.first.posts' var='pswi'>
 <b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;1.bp.blogspot.com&quot;)'><link href='//1.bp.blogspot.com' rel='dns-prefetch'/></b:if>
 <b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;2.bp.blogspot.com&quot;)'><link href='//2.bp.blogspot.com' rel='dns-prefetch'/></b:if>
 <b:if cond='data:pswi first (p =&gt; p.featuredImage contains &quot;3.bp.blogspot.com&quot;)'><link href='//3.bp.blogspot.com' rel='dns-prefetch'/></b:if>
