@@ -617,6 +617,8 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 /* 連絡フォーム */
 .contact-form-button {color:inherit}
 .contact-form-name, .contact-form-email, .contact-form-email-message {max-width:100%;box-sizing:border-box}
+.contact-form-asterisk {font-weight:bolder}
+.contact-form-error {text-align:center;width:min(100%, $(sidebar.width) - var(--maincolumn-padding) * 2)}
 
 /* 不正行為を報告 */
 .report_abuse {font-weight:400}
@@ -751,7 +753,7 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 <b:if cond='data:view.isLayoutMode'>
 <b:template-skin>
 <![CDATA[
-body#layout .bg-photo, body#layout .bg-photo-overlay {display:none}
+body#layout .bg-photo {display:none}
 body#layout .centered {display:block;max-width:925px;margin:0 auto}
 body#layout .centered-top {margin-top:0;margin-bottom:0}
 body#layout #floating_bar {position:initial;display:initial}
@@ -1013,17 +1015,17 @@ body#layout #floating_menu {display:initial}
         <br/>
         <input class='contact-form-name' expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' name='name' size='30' type='text' value=''/>
         <p/>
-        <data:contactFormEmailMsg/> <span style='font-weight: bolder;'>*</span>
+        <data:contactFormEmailMsg/> <span class='contact-form-asterisk'>*</span>
         <br/>
         <input class='contact-form-email' expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' name='email' size='30' type='text' value=''/>
         <p/>
-        <data:contactFormMessageMsg/> <span style='font-weight: bolder;'>*</span>
+        <data:contactFormMessageMsg/> <span class='contact-form-asterisk'>*</span>
         <br/>
         <textarea class='contact-form-email-message' cols='25' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'/>
         <p/>
         <input class='contact-form-button contact-form-button-submit' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' expr:value='data:contactFormSendMsg' type='button'/>
         <p/>
-        <div style='text-align: center; max-width: 222px; width: 100%'>
+        <div class='contact-form-error'>
           <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
           <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
         </div>
@@ -2065,17 +2067,17 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
         <br/>
         <input class='contact-form-name' expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' name='name' size='30' type='text' value=''/>
         <p/>
-        <data:contactFormEmailMsg/> <span style='font-weight: bolder;'>*</span>
+        <data:contactFormEmailMsg/> <span class='contact-form-asterisk'>*</span>
         <br/>
         <input class='contact-form-email' expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' name='email' size='30' type='text' value=''/>
         <p/>
-        <data:contactFormMessageMsg/> <span style='font-weight: bolder;'>*</span>
+        <data:contactFormMessageMsg/> <span class='contact-form-asterisk'>*</span>
         <br/>
         <textarea class='contact-form-email-message' cols='25' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'/>
         <p/>
         <input class='contact-form-button contact-form-button-submit' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' expr:value='data:contactFormSendMsg' type='button'/>
         <p/>
-        <div style='text-align: center; max-width: 222px; width: 100%'>
+        <div class='contact-form-error'>
           <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
           <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
         </div>
@@ -2190,9 +2192,9 @@ const cmp = event.target;
 cmp.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;; rit.style.visibility = &quot;hidden&quot;; cmp.previousElementSibling.classList.remove(&quot;hidden&quot;); }); }); }
 /* Share menu */
 fbbtn.addEventListener(&quot;click&quot;, () =&gt; {
-location.href = &quot;https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>&quot;; });
+window.location.href = &quot;https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>&quot;; });
 twbtn.addEventListener(&quot;click&quot;, () =&gt; {
-location.href = &quot;https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=&quot; + encodeURIComponent(&#39;<data:blog.pageTitle/>&#39;); });
+window.location.href = &quot;https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=&quot; + encodeURIComponent(&#39;<data:blog.pageTitle/>&#39;); });
 <b:if cond='data:blog.isMobileRequest'>
 shbtn.addEventListener(&quot;click&quot;, () =&gt; {
 window.navigator.share({
@@ -2266,7 +2268,7 @@ const text = await response.text();
 const file = new DOMParser().parseFromString(text, &quot;text/html&quot;);
 npl = file.querySelector(&quot;a.older-link&quot;);
 const nppics = [].slice.call(file.querySelectorAll(&quot;img.ytpic&quot;));
-const bats = [].slice.call(file.querySelectorAll(&quot;article&quot;));
+const bats = [].slice.call(file.querySelectorAll(&quot;article.post&quot;));
 if (nppics[0]) nppics.forEach(yt);
 bats.forEach(bat =&gt; {
 bpct.appendChild(document.adoptNode(bat)); }); }).catch(error =&gt; {
