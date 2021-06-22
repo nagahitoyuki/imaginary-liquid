@@ -384,6 +384,7 @@ blockquote {margin:1em 2.5em}
 #blog-title {color:$(blog.title.color);font:$(blog.title.font);margin:0;line-height:calc(var(--body-lineheight) - .15)}
 #blog-title>a, #blog-title>a:hover, #blog-title>a:visited{color:$(blog.title.color)}
 .blog-desc {color:$(blog.title.color);margin-top:1.25em;margin-bottom:0}
+.header-widget {background-position:$startSide;background-repeat:no-repeat}
 
 /* Tabs */
 .tabs-title {color:$(tabs.title.color);font-size:large;margin-top:1.em;margin-bottom:0}
@@ -1057,9 +1058,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='behindImageStyle'>
   <b:if cond='data:sourceUrl'>
     <b:include cond='data:this.image' data='{ image: data:this.image, selector: &quot;.header-widget&quot; }' name='responsiveImageStyle'/>
-<style>
-.header-widget { background-position: <data:blog.locale.languageAlignment/>; background-repeat: no-repeat; }
- </style>
   </b:if>
 </b:includable>
     <b:includable id='description'>
