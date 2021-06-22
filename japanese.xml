@@ -1065,9 +1065,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 
           <div class='centered'>
             <div class='centered-top-placeholder'/>
-              <header class='centered-top'>
 
-<b:section id='header' name='Header' showaddelement='false'>
+<b:section class='centered-top' id='header' name='Header' showaddelement='false' tag='header'>
   <b:widget id='Header1' locked='true' title='ブログ名 (Header)' type='Header' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='displayUrl'/>
@@ -1115,10 +1114,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:if>
 </b:includable>
   </b:widget>
-</b:section>
 
-<b:section cond='!data:view.isSingleItem' id='page_list_top' name='Page List (Top)' showaddelement='false'>
-  <b:widget id='PageList1' locked='true' title='ページリスト' type='PageList' visible='true'>
+  <b:widget cond='!data:view.isSingleItem' id='PageList1' locked='true' title='ページリスト' type='PageList' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='pageListJson'><![CDATA[{'home': {'href': 'https://nagahitoyuki.blogspot.com/', 'title': 'ホーム', 'position': 0}}]]></b:widget-setting>
       <b:widget-setting name='homeTitle'>ホーム</b:widget-setting>
@@ -1147,7 +1144,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
   </b:widget>
 </b:section>
-</header>
+
   <noscript><div class='noscript'>このサイトを適切に使用するためにはブラウザのJavaScriptの実行を許可して下さい。</div></noscript>
 
   <b:section class='top-ad-container' cond='data:widgets.AdSense.first.id == &quot;AdSense1&quot;' id='ad' name='Ads' showaddelement='false' tag='aside'>
@@ -1179,7 +1176,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     </b:widget>
   </b:section>
 
-<div id='content_wrapper'>
+<main id='content_wrapper'>
 <div id='floating_bar'>
   <div id='floating_menu'>
     <button aria-label='サイドバーを開く' class='svg-icon-24-button' id='hamburger_menu' type='button'><svg class='svg-icon-24' role='img'><use href='#ic_expand_more_black_24dp'/></svg></button>
@@ -1233,7 +1230,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </div>
 </b:if>
 
-<b:section class='centered-bottom' id='page_body' name='Page Body' showaddelement='false' tag='main'>
+<b:section class='centered-bottom' id='page_body' name='Page Body' showaddelement='false'>
   <b:widget cond='data:view.isHomepage' id='FeaturedPost1' locked='true' title='' type='FeaturedPost' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='showSnippet'>false</b:widget-setting>
@@ -1872,11 +1869,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <b:if cond='data:blog.isMobileRequest'>
-  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' loading='lazy' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
-  <b:else/>
-  <img class='profile-img' expr:alt='data:messages.myPhoto' decoding='async' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
-  </b:if>
+  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
@@ -2085,7 +2078,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
         </b:widget>
       </b:section>
 </aside>
-</div>
+</main>
 
 <footer id='attribution'>
   <div class='theme-attribution'>with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow'>Imaginary theme</a></div>
@@ -2300,7 +2293,7 @@ switch (content.tagName) {
 case &#39;IMG&#39; : if (window.innerHeight - content.getBoundingClientRect().top &gt;= 0) content.setAttribute(&quot;decoding&quot;, &quot;async&quot;); 
 default : if (window.innerHeight - content.getBoundingClientRect().top &lt; 0) content.setAttribute(&quot;loading&quot;, &quot;lazy&quot;); }}
 if (postImages[0]) postImages.forEach(ldlz);
-if (postIframes[0]) postIframes(ldlz);
+if (postIframes[0]) postIframes.forEach(ldlz);
 /* Comment button */
 const commentAllow = Blog1.querySelector(&quot;a.cmal&quot;);
 const commentButton = Blog1.querySelector(&quot;article.hentry&quot;);
