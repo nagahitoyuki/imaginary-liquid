@@ -817,7 +817,7 @@ body#layout #floating_menu {display:initial}
           </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width' loading='lazy'/>
+  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width' expr:loading='data:blog.isMobileRequest ? &quot;lazy&quot; : &quot;eager&quot;'/>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
@@ -1825,7 +1825,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
+  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width' expr:loading='data:blog.isMobileRequest ? &quot;lazy&quot; : &quot;eager&quot;'/>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
