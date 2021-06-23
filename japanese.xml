@@ -2121,18 +2121,18 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
             </footer>
           </div>
 
-<svg class='hidden' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><defs>
-<g id='ic_expand_more_black_24dp'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'/></g>
-<g id='ic_search_black_24dp'><path class='floatingIcon' d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/><path d='M0 0h24v24H0z' fill='transparent'/></g>
-<g id='ic_24_facebook_dark'><path d='M0 0h24v24H0V0z' fill='transparent'/><path class='floatingIcon' d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 2v3h-2c-.5 0-1 .4-1 1v2h3v3h-3v7h-3v-7h-2v-3h2V7.5C13 5.6 14.6 4 16.5 4H19z'/></g>
-<g id='ic_24_twitter_dark'><path d='M0 0h24v24H0V0z' fill='transparent'/><path class='floatingIcon' d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2.3 7.3c-.1 4.6-3 7.8-7.4 8-1.8.1-3.1-.5-4.3-1.2 1.3.2 3-.3 3.9-1.1-1.3-.1-2.1-.8-2.5-1.9.4.1.8.1 1.1 0-1.2-.4-2-1.1-2.1-2.7.3.2.7.3 1.1.3-.9-.5-1.6-2.3-.8-3.6C8 8.5 9.6 9.7 12.2 9.9c-.6-2.8 3.1-4.3 4.6-2.4.7-.1 1.2-.4 1.7-.7-.2.7-.6 1.1-1.1 1.5.5-.1 1-.2 1.4-.4 0 .5-.6 1-1.1 1.4z'/></g>
-<g id='ic_more_vert_black_24dp'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/></g>
-<g id='ic_24_link_dark'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z'/></g>
-<g id='ic_person_black_24dp'>
-<path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/><path d='M0 0h24v24H0z' fill='transparent'/></g>
-<g id='ic_triangle_black_24dp'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></g>
-<g id='ic_mode_comment_black_24dp'><path class='floatingIcon' d='M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z'/></g>
-<g id='ic_close_black_24dp'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/><path d='M0 0h24v24H0z' fill='transparent'/></g>
+<svg class='hidden' xmlns='http://www.w3.org/2000/svg'><defs>
+<symbol id='ic_expand_more_black_24dp' viewBox='0 0 24 24'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'/></symbol>
+<symbol id='ic_search_black_24dp' viewBox='0 0 24 24'><path class='floatingIcon' d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/><path d='M0 0h24v24H0z' fill='transparent'/></symbol>
+<symbol id='ic_24_facebook_dark' viewBox='0 0 24 24'><path d='M0 0h24v24H0V0z' fill='transparent'/><path class='floatingIcon' d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 2v3h-2c-.5 0-1 .4-1 1v2h3v3h-3v7h-3v-7h-2v-3h2V7.5C13 5.6 14.6 4 16.5 4H19z'/></symbol>
+<symbol id='ic_24_twitter_dark' viewBox='0 0 24 24'><path d='M0 0h24v24H0V0z' fill='transparent'/><path class='floatingIcon' d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2.3 7.3c-.1 4.6-3 7.8-7.4 8-1.8.1-3.1-.5-4.3-1.2 1.3.2 3-.3 3.9-1.1-1.3-.1-2.1-.8-2.5-1.9.4.1.8.1 1.1 0-1.2-.4-2-1.1-2.1-2.7.3.2.7.3 1.1.3-.9-.5-1.6-2.3-.8-3.6C8 8.5 9.6 9.7 12.2 9.9c-.6-2.8 3.1-4.3 4.6-2.4.7-.1 1.2-.4 1.7-.7-.2.7-.6 1.1-1.1 1.5.5-.1 1-.2 1.4-.4 0 .5-.6 1-1.1 1.4z'/></symbol>
+<symbol id='ic_more_vert_black_24dp' viewBox='0 0 24 24'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/></symbol>
+<symbol id='ic_24_link_dark' viewBox='0 0 24 24'><path d='M0 0h24v24H0z' fill='transparent'/><path class='floatingIcon' d='M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z'/></symbol>
+<symbol id='ic_person_black_24dp' viewBox='0 0 24 24'>
+<path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/><path d='M0 0h24v24H0z' fill='transparent'/></symbol>
+<symbol id='ic_triangle_black_24dp' viewBox='0 0 24 24'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></symbol>
+<symbol id='ic_mode_comment_black_24dp' viewBox='0 0 24 24'><path class='floatingIcon' d='M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z'/></symbol>
+<symbol id='ic_close_black_24dp' viewBox='0 0 24 24'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/><path d='M0 0h24v24H0z' fill='transparent'/></symbol>
 </defs></svg>
 
 <script>
