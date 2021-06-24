@@ -2287,10 +2287,10 @@ nextIndexObserver.observe(nextIndex);
 /* Loading lazy */
 const postImages = [].slice.call(Blog1.querySelectorAll(&quot;div.post-body img&quot;));
 const postIframes = [].slice.call(Blog1.querySelectorAll(&quot;div.post-body iframe&quot;));
-function ldlz(content) {
-switch (content.tagName) {
-case &#39;IMG&#39; : if (window.innerHeight - content.getBoundingClientRect().top &gt;= 0) content.setAttribute(&quot;decoding&quot;, &quot;async&quot;); 
-default : if (window.innerHeight - content.getBoundingClientRect().top &lt; 0) content.setAttribute(&quot;loading&quot;, &quot;lazy&quot;); }}
+function ldlz(item) {
+switch (item.tagName) {
+case &#39;IMG&#39; : if (window.innerHeight + window.pageYOffset - item.getBoundingClientRect().top &gt;= 0) item.setAttribute(&quot;decoding&quot;, &quot;async&quot;); 
+default : if (window.innerHeight + window.pageYOffset - item.getBoundingClientRect().top &lt; 0) item.setAttribute(&quot;loading&quot;, &quot;lazy&quot;); }}
 if (postImages[0]) postImages.forEach(ldlz);
 if (postIframes[0]) postIframes.forEach(ldlz);
 /* Comment button */
