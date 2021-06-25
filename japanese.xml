@@ -2284,15 +2284,6 @@ sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;
 rootMargin: &quot;46px&quot;});
 nextIndexObserver.observe(nextIndex);
 <b:else/>
-/* Loading lazy */
-const postImages = [].slice.call(Blog1.querySelectorAll(&quot;div.post-body img&quot;));
-const postIframes = [].slice.call(Blog1.querySelectorAll(&quot;div.post-body iframe&quot;));
-function ldlz(item) {
-switch (item.tagName) {
-case &#39;IMG&#39; : if (window.innerHeight + window.pageYOffset - item.getBoundingClientRect().top &gt;= 0) item.setAttribute(&quot;decoding&quot;, &quot;async&quot;); 
-default : if (window.innerHeight + window.pageYOffset - item.getBoundingClientRect().top &lt; 0) item.setAttribute(&quot;loading&quot;, &quot;lazy&quot;); }}
-if (postImages[0]) postImages.forEach(ldlz);
-if (postIframes[0]) postIframes.forEach(ldlz);
 /* Comment button */
 const commentAllow = Blog1.querySelector(&quot;a.cmal&quot;);
 const commentButton = Blog1.querySelector(&quot;article.hentry&quot;);
