@@ -353,7 +353,8 @@ blockquote {margin:1em 2.5em}
 .sidebar-invisible, .item-view #sub_main, .item-view #attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* ウィジェット */
-.widget>.title {font-size:large;color:$(widget.title.color)}
+.title, .feed-title {font-size:large;color:$(widget.title.color)}
+.feed-title {font-weight:bold}
 
 /* スキップナビ */
 .skip-navigation {background-color:#fff;box-sizing:border-box;color:#000;display:block;height:0;$startSide:0;line-height:50px;overflow:hidden;padding-top:0;position:fixed;text-align:center;top:0;transition:box-shadow .3s, height .3s, padding-top .3s;width:100%;z-index:900}
@@ -447,8 +448,8 @@ html[dir="rtl"] #back-button, html[dir="rtl"] #comment-button, html[dir="rtl"] #
 
 /* 注目の投稿 */
 .FeaturedPost {padding:20px var(--maincolumn-padding);background-color:$(posts.background.color);margin-bottom:var(--maincolumn-padding)}
-.FeaturedPost>.title {margin-top:0;margin-bottom:20px}
-.FeaturedPost>.title>a {color:$(posts.title.color)}
+.FeaturedPost>.feed-title {margin-top:0;margin-bottom:20px}
+.FeaturedPost>.feed-title>a {color:$(posts.title.color)}
 .FeaturedPost .post>a, .FeaturedPost .post>a:hover, .FeaturedPost .post>a:visited {color:#fff}
 .FeaturedPost .post>a, .FeaturedPost .snippet-thumbnail {width:100%;height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;align-items:center;text-align:center}
 .no-image {background-color:#a9a9a9}
@@ -546,7 +547,7 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 
 /* 人気の投稿 */
 .PopularPosts {background-color:$(popularposts.background.color)}
-.PopularPosts, .PopularPosts>.title a {color:$(posts.text.color)}
+.PopularPosts, .PopularPosts>.feed-title a, .PopularPosts>.title a {color:$(posts.text.color)}
 .PopularPosts .post-title>a {font:$(popularposts.title.font)}
 .PopularPosts .post-title>a, .PopularPosts .post-title>a:hover, .PopularPosts .post-title>a:visited {color:$(popularposts.title.color)}
 .PopularPosts .post-title {margin-top:20px;margin-bottom:20px}
@@ -1239,7 +1240,9 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:widget-setting name='useMostRecentPost'>true</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-  <b:include name='widget-title'/>
+  <b:if cond='data:title'>
+    <p class='feed-title'><data:title/></p>
+  </b:if>
   <div class='widget-content' role='feed'>
     <b:include name='snippetedPosts'/>
   </div>
@@ -1767,7 +1770,9 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-  <b:include name='widget-title'/>
+  <b:if cond='data:title'>
+    <p class='feed-title'><data:title/></p>
+  </b:if>
   <div class='widget-content' role='feed'>
     <b:include name='snippetedPosts'/>
   </div>
@@ -1809,9 +1814,9 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <img expr:alt='data:messages.image' height='94' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' width='94' loading='lazy' sizes='(max-width:480px) 20vw, 188px'/>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <h3 class='post-title'>
+  <h2 class='post-title'>
     <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
-  </h3>
+  </h2>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts' var='post'>
