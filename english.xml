@@ -585,7 +585,7 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 #attribution {text-align:center;font-size:small;color:$(attribution.text.color);margin-bottom:1.75em}
 #attribution>div {line-height:24px;margin-top:.5em}
 #attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
-.theme-attribution, .blogger, .image-attribution {margin-bottom:1em}
+#Text1, .blogger, .image-attribution {margin-bottom:1em}
 
 /* Side bar */
 .sidebar-container {display:flex;flex-direction:column;width:min($(sidebar.width), 80%);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch;contain:content}
@@ -2041,10 +2041,18 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </aside>
 </main>
 
-<footer id='attribution'>
-  <div class='theme-attribution'>with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow'>Imaginary theme</a></div>
-
-            <b:section class='footer' id='footer' name='Footer' showaddelement='false'>
+            <b:section class='footer' id='attribution' name='Footer' showaddelement='false' tag='footer'>
+              <b:widget id='Text1' locked='true' title='' type='Text' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='content'><![CDATA[with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow'>Imaginary theme</a>]]></b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+  <b:include name='widget-title'/>
+  <div class='widget-content'>
+    <data:content/>
+  </div>
+</b:includable>
+              </b:widget>
               <b:widget id='Attribution1' locked='true' title='' type='Attribution' visible='true'>
                 <b:widget-settings>
                   <b:widget-setting name='copyright'/>
@@ -2080,7 +2088,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
               </b:widget>
             </b:section>
-            </footer>
           </div>
 
 <svg class='hidden'>
