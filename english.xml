@@ -473,6 +473,7 @@ html[dir="rtl"] #back-button, html[dir="rtl"] #comment-button, html[dir="rtl"] #
 .hentry .post-footer {flex-direction:column}
 .post-footer-line>span {display:block;margin-bottom:16px}
 .pf-last {width:100%;text-align:$endSide;margin-bottom:16px;font-style:oblique}
+.pf-last>.url {color:$(posts.byline.color)}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
 .author-profile {margin-bottom:16px}
@@ -1601,10 +1602,10 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:if cond='data:view.isPost'>
       <b:include name='footerBylines'/>
         <div class='pf-last'>
-          <span class='byline post-timestamp updated'>Last updated:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<data:post.url.canonical/>
+          <span class='byline post-timestamp updated'>Last updated:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url uid' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a>
         </div>
       <b:elseif cond='data:view.isPage'/>
-      <div class='pf-last'>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<data:post.url.canonical/></div>
+      <div class='pf-last'>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url uid' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a></div>
       <b:else/>
         <span class='byline archive-link'>
         <b:if cond='data:post.url and data:post.date.month lt 10'>
@@ -1682,7 +1683,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
        </h2>
       <b:else/>
        <h1 class='post-title entry-title' id='post-title'>
-         <a class='url uid' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
+         <data:post.title/>
        </h1>
      </b:if>
   </b:if>
