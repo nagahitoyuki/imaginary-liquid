@@ -458,7 +458,7 @@ html[dir="rtl"] #back-button, html[dir="rtl"] #comment-button, html[dir="rtl"] #
 
 /* Post title */
 .blog-posts .post-title {margin-top:0;margin-bottom:20px}
-.blog-posts .post-title>a, .blog-posts .post-title>a:hover, .blog-posts .post-title>a:visited {color:$(posts.title.color)}
+.blog-posts h1.post-title, .blog-posts h2.post-title>a, .blog-posts h2.post-title>a:hover, .blog-posts h2.post-title>a:visited {color:$(posts.title.color)}
 .blog-posts h1.post-title {font:$(posts.title.font)}
 .blog-posts h2.post-title {font:$(posts.stream.title.font);color:$(posts.title.color)}
 
@@ -1682,7 +1682,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
         <a expr:href='data:post.link ?: data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
        </h2>
       <b:else/>
-       <h1 class='post-title entry-title' id='post-title'>
+       <h1 class='post-title entry-title'>
          <data:post.title/>
        </h1>
      </b:if>
