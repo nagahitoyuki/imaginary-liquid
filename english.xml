@@ -2127,7 +2127,7 @@ if (sbct.classList.contains(&quot;slideout&quot;)) sbct.classList.add(&quot;side
 bcsd.addEventListener(&quot;animationend&quot;, () =&gt; {
 if (bcsd.classList.contains(&quot;fadeout&quot;)) content_wrapper.removeChild(bcsd); });
 /* Search button */
-<b:if cond='data:widgets.BlogSearch.first'>
+<b:if cond='data:widgets.BlogSearch.first.id == &quot;BlogSearch1&quot;'>
 const shrb = content_wrapper.querySelector(&quot;div.share-buttons&quot;);
 search_expand.addEventListener(&quot;click&quot;, () =&gt; {
 if (swc.classList.contains(&quot;hidden&quot;)) {
