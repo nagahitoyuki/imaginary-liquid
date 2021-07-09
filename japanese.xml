@@ -2170,6 +2170,7 @@ if (sbct.classList.contains(&quot;slideout&quot;)) sbct.classList.add(&quot;side
 bcsd.addEventListener(&quot;animationend&quot;, () =&gt; {
 if (bcsd.classList.contains(&quot;fadeout&quot;)) content_wrapper.removeChild(bcsd); });
 /* Search button */
+<b:if cond='data:widgets.BlogSearch.first'>
 const shrb = content_wrapper.querySelector(&quot;div.share-buttons&quot;);
 search_expand.addEventListener(&quot;click&quot;, () =&gt; {
 if (swc.classList.contains(&quot;hidden&quot;)) {
@@ -2180,6 +2181,7 @@ swc.classList.add(&quot;hidden&quot;); floating_share.style.display = &quot;flex
 swc.classList.remove(&quot;hidden&quot;); swc.ariaHidden = &quot;false&quot;; return; }
 swc.classList.add(&quot;hidden&quot;); swc.ariaHidden = &quot;true&quot;;
 </b:if>});
+</b:if>
 /* Expand button */
 const rits = [].slice.call(bdis.querySelectorAll(&quot;div.remaining-items&quot;));
 if (rits[0]) {
