@@ -681,7 +681,7 @@ body {position:relative}
 .slideout {transform:translateX(0)}
 html[dir="rtl"] .slidein {transform:translateX(-$(sidebar.width))}
 html[dir="rtl"] .slideout {transform:translateX(0)}
-.sidebar-visible {overflow-y:hidden}
+.sidebar-visible {content-visibility:visible;overflow-y:hidden}
 .dim-overlay {background-color:rgba(0, 0, 0, .7);position:fixed;top:0;left:0;width:100%;height:100vh;z-index:100}
 }
 
