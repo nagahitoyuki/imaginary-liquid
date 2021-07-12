@@ -660,6 +660,7 @@ body {position:relative}
 /* Side bar */
 .navigation {display:none}
 .sidebar-container {position:absolute;top:var(--floatingbar-height);$endSide:0;margin-$startSide:$(content.margin);z-index:20}
+.sidebar-invisible {content-visibility:visible}
 }
 
 /* Below the width of the blog content and sidebar and gaps */
