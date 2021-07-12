@@ -654,6 +654,7 @@ body {position:relative}
 /* サイドバー */
 .navigation {display:none}
 .sidebar-container {position:absolute;top:var(--floatingbar-height);$endSide:0;margin-$startSide:$(content.margin);z-index:20}
+.sidebar-invisible {content-visibility:visible}
 }
 
 /* ブログのコンテンツとサイドバーと隙間の幅以下 */
