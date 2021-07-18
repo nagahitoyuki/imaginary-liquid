@@ -1520,7 +1520,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
      <data:messages.olderPosts/>
     </a>
   <b:elseif cond='data:view.isMultipleItems'/>
-    <a class='older-link' expr:data-href='data:olderPageUrl' expr:title='data:messages.morePosts' rel='prev'>
+    <a class='older-link' expr:href='data:olderPageUrl' expr:title='data:messages.morePosts' rel='prev'>
       <data:messages.morePosts/>
     </a>
   </b:if>
@@ -2224,7 +2224,7 @@ new Promise ((resolve, reject) =&gt; {
 if (adb.classList.contains(&quot;hidden&quot;)) {
 adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(); } else {
 reject(&#39;Too fast&#39;); }}).then(async () =&gt; {
-const response = await fetch(npl.dataset.href);
+const response = await fetch(npl.href);
 if (!response.ok) throw &quot;Connection failed&quot;;
 const text = await response.text();
 const file = new DOMParser().parseFromString(text, &quot;text/html&quot;);
@@ -2241,7 +2241,7 @@ pssm.insertAdjacentHTML(&quot;afterbegin&quot;, pssc.slice(pssc.indexOf(&quot;`&
 bpct.appendChild(nbat); }); }).catch(error =&gt; {
 switch (error) {
 case &#39;Too fast&#39;: rmmg(&#39;pass&#39;); throw &#39;&#39;;
-case &#39;Connection failed&#39;: npl.href = npl.dataset.href; bpct.after(bpg); rmmg(&#39;stop&#39;); }}).then(() =&gt; {
+case &#39;Connection failed&#39;: bpct.after(bpg); rmmg(&#39;stop&#39;); }}).then(() =&gt; {
 document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; adb.classList.add(&quot;hidden&quot;); });
 if (Blog1.querySelector(&quot;nav#blog_pager&quot;)) bpg.remove(); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
