@@ -796,9 +796,9 @@ body#layout #floating_menu {display:initial}
     <img expr:alt='data:messages.image' height='94' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' width='94' loading='lazy' sizes='(max-width:480px) 20vw, 188px'/>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <h3 class='post-title'>
+  <b:tag expr:name='data:title ? &quot;h4&quot; : &quot;h3&quot;' class='post-title'>
     <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
-  </h3>
+  </b:tag>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts' var='post'>
@@ -1201,7 +1201,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </div>
 </b:if>
 
-<b:section class='centered-bottom' id='page_body' name='Page Body' showaddelement='false'>
+<b:section class='centered-bottom' id='page_body' name='Page Body' preferred='yes' showaddelement='false'>
   <b:widget cond='data:view.isHomepage' id='FeaturedPost1' locked='true' title='' type='FeaturedPost' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='showSnippet'>false</b:widget-setting>
@@ -1741,12 +1741,12 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:widget-setting name='timeRange'>LAST_WEEK</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
+  <aside class='widget-content' role='feed'>
   <b:if cond='data:title'>
-    <p class='feed-title'><data:title/></p>
+    <h2 class='feed-title'><data:title/></h2>
   </b:if>
-  <div class='widget-content' role='feed'>
     <b:include name='snippetedPosts'/>
-  </div>
+  </aside>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
   <span class='jump-link'>
@@ -1785,9 +1785,9 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <img expr:alt='data:messages.image' height='94' expr:src='data:post.featuredImage' expr:srcset='sourceset(data:post.featuredImage, [94,188], &quot;1:1&quot;)' width='94' loading='lazy' sizes='(max-width:480px) 20vw, 188px'/>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <h2 class='post-title'>
+  <b:tag expr:name='data:title ? &quot;h3&quot; : &quot;h2&quot;' class='post-title'>
     <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
-  </h2>
+  </b:tag>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts' var='post'>
