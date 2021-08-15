@@ -46,7 +46,7 @@
     <meta expr:content='data:skin.vars.body_background_color' name='msapplication-navbutton-color'/>
  </b:if>
     <meta content='blogger' name='generator'/>
-    <link href='http://microformats.org/profile/hatom' rel='profile'/>
+    <link href='https://microformats.org/profile/hatom' rel='profile'/>
     <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
     <link expr:href='data:blog.homepageUrl.canonical' expr:title='data:messages.home' rel='home'/>
     <link expr:href='data:blog.searchUrl' expr:title='data:messages.search' rel='search'/>
