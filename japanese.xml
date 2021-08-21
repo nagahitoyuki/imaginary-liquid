@@ -911,7 +911,7 @@ body#layout #floating_menu {display:initial}
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
-  <a expr:href='data:userUrl' rel='author'>
+  <a expr:href='data:userUrl' rel='author external'>
     <b:include name='profileImage'/>
   </a>
 </b:includable>
@@ -926,7 +926,7 @@ body#layout #floating_menu {display:initial}
     <b:include name='viewProfileLink'/>
 </b:includable>
             <b:includable id='userProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author'>
+  <a class='profile-link' expr:href='data:userUrl' rel='author external'>
     <data:displayname/>
   </a>
 </b:includable>
@@ -936,7 +936,7 @@ body#layout #floating_menu {display:initial}
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author'>
+  <a class='profile-link' expr:href='data:userUrl' rel='author external'>
     <data:messages.viewMyCompleteProfile/>
   </a>
 </b:includable>
@@ -1343,7 +1343,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='aboutPostAuthor'>
   <div class='author-name'>
-    <a class='pft-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+    <a class='pft-profile' expr:href='data:post.author.profileUrl' rel='author external' title='author profile'>
       <span><data:post.author.name/></span>
     </a>
   </div>
@@ -1576,7 +1576,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <span class='byline author vcard'><span class='pa-label'><data:byline.label/></span>
   <span class='fn'>
   <b:if cond='data:post.author.profileUrl'>
-    <a class='url uid' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+    <a class='url uid' expr:href='data:post.author.profileUrl' rel='author external' title='author profile'>
       <img class='photo' decoding='async' expr:alt='data:messages.myPhoto' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24' width='24'/><span><data:post.author.name/></span>
     </a>
   <b:else/>
@@ -1935,7 +1935,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
-  <a expr:href='data:userUrl' rel='author'>
+  <a expr:href='data:userUrl' rel='author external'>
     <b:include name='profileImage'/>
   </a>
 </b:includable>
@@ -1950,7 +1950,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:include name='viewProfileLink'/>
 </b:includable>
             <b:includable id='userProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author'>
+  <a class='profile-link' expr:href='data:userUrl' rel='author external'>
     <data:displayname/>
   </a>
 </b:includable>
@@ -1960,7 +1960,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author'>
+  <a class='profile-link' expr:href='data:userUrl' rel='author external'>
     <data:messages.viewMyCompleteProfile/>
   </a>
 </b:includable>
@@ -2093,7 +2093,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
             <b:section class='footer' id='attribution' name='Footer' showaddelement='false' tag='footer'>
               <b:widget id='Text1' locked='true' title='' type='Text' visible='true'>
                 <b:widget-settings>
-                  <b:widget-setting name='content'><![CDATA[with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow'>Imaginary theme</a>]]></b:widget-setting>
+                  <b:widget-setting name='content'><![CDATA[with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow external'>Imaginary theme</a>]]></b:widget-setting>
                 </b:widget-settings>
                 <b:includable id='main'>
   <b:include name='widget-title'/>
