@@ -378,7 +378,7 @@ blockquote {margin:1em 2.5em}
 .CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
 .b-hbp-video {border:0}
-.noscript {background:#ff0;color:#000;padding:var(--maincolumn-padding);margin-bottom:2em}
+.noscript {text-align:center;background:#ff0;color:#000;padding:var(--maincolumn-padding);margin-bottom:2em}
 
 /* Notification */
 .b-notification {color:#000;background-color:#fff;border-bottom:solid 1px #000;box-sizing:border-box;padding:16px 32px;text-align:center}
