@@ -2115,6 +2115,9 @@ const bdis = document.body;
 /* Screen reader */
 const sbct = content_wrapper.querySelector(&quot;aside.sidebar-container&quot;);
 if (sbct.style.position === &quot;absolute&quot;) sbct.ariaHidden = &quot;false&quot;;
+/* Header image link */
+const hil = bdis.querySelector(&quot;div.image-attribution a&quot;);
+if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);
 /* Hamburger menu */
 const bcsd = document.createElement(&quot;div&quot;);
 bcsd.classList.add(&quot;dim-overlay&quot;);
