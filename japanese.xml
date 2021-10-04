@@ -10,12 +10,14 @@
   <b:if cond='data:pswi first (p =&gt; p contains &quot;2.bp.blogspot.com&quot;)'><link href='//2.bp.blogspot.com' rel='dns-prefetch'/></b:if>
   <b:if cond='data:pswi first (p =&gt; p contains &quot;3.bp.blogspot.com&quot;)'><link href='//3.bp.blogspot.com' rel='dns-prefetch'/></b:if>
   <b:if cond='data:pswi first (p =&gt; p contains &quot;4.bp.blogspot.com&quot;)'><link href='//4.bp.blogspot.com' rel='dns-prefetch'/></b:if>
+  <b:if cond='data:view.isMultipleItems'>
   <b:if cond='data:pswi first (p =&gt; p contains &quot;lh1.googleusercontent.com&quot;)'><link href='//lh1.googleusercontent.com' rel='dns-prefetch'/></b:if>
   <b:if cond='data:pswi first (p =&gt; p contains &quot;lh2.googleusercontent.com&quot;)'><link href='//lh2.googleusercontent.com' rel='dns-prefetch'/></b:if>
   <b:if cond='data:pswi first (p =&gt; p contains &quot;lh3.googleusercontent.com&quot;)'><link href='//lh3.googleusercontent.com' rel='dns-prefetch'/></b:if>
   <b:if cond='data:pswi first (p =&gt; p contains &quot;lh4.googleusercontent.com&quot;)'><link href='//lh4.googleusercontent.com' rel='dns-prefetch'/></b:if>
   <b:if cond='data:pswi first (p =&gt; p contains &quot;lh5.googleusercontent.com&quot;)'><link href='//lh5.googleusercontent.com' rel='dns-prefetch'/></b:if>
   <b:if cond='data:pswi first (p =&gt; p contains &quot;lh6.googleusercontent.com&quot;)'><link href='//lh6.googleusercontent.com' rel='dns-prefetch'/></b:if>
+  </b:if>
   </b:with>
   <b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
     <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
@@ -54,7 +56,6 @@
     <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
     <link expr:href='data:blog.homepageUrl.canonical' expr:title='data:messages.home' rel='home'/>
     <link expr:href='data:blog.searchUrl' expr:title='data:messages.search' rel='search'/>
-  <b:eval expr='data:blog.meTag'/>
   <b:if cond='data:blog.adultContent'>
     <meta content='adult' name='rating'/>
   </b:if>
@@ -911,7 +912,7 @@ body#layout #floating_menu {display:initial}
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
-  <a expr:href='data:userUrl' rel='author external'>
+  <a expr:href='data:userUrl' rel='me external'>
     <b:include name='profileImage'/>
   </a>
 </b:includable>
@@ -926,7 +927,7 @@ body#layout #floating_menu {display:initial}
     <b:include name='viewProfileLink'/>
 </b:includable>
             <b:includable id='userProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author external'>
+  <a class='profile-link' expr:href='data:userUrl' rel='me external'>
     <data:displayname/>
   </a>
 </b:includable>
@@ -936,7 +937,7 @@ body#layout #floating_menu {display:initial}
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author external'>
+  <a class='profile-link' expr:href='data:userUrl' rel='me external'>
     <data:messages.viewMyCompleteProfile/>
   </a>
 </b:includable>
@@ -1343,7 +1344,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='aboutPostAuthor'>
   <div class='author-name'>
-    <a class='pft-profile' expr:href='data:post.author.profileUrl' rel='author external' title='author profile'>
+    <a class='pft-profile' expr:href='data:post.author.profileUrl' rel='me external' title='author profile'>
       <span><data:post.author.name/></span>
     </a>
   </div>
@@ -1576,7 +1577,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <span class='byline author vcard'><span class='pa-label'><data:byline.label/></span>
   <span class='fn'>
   <b:if cond='data:post.author.profileUrl'>
-    <a class='url uid' expr:href='data:post.author.profileUrl' rel='author external' title='author profile'>
+    <a class='url uid' expr:href='data:post.author.profileUrl' rel='me external' title='author profile'>
       <img class='photo' decoding='async' expr:alt='data:messages.myPhoto' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24' width='24'/><span><data:post.author.name/></span>
     </a>
   <b:else/>
@@ -1935,7 +1936,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
-  <a expr:href='data:userUrl' rel='author external'>
+  <a expr:href='data:userUrl' rel='me external'>
     <b:include name='profileImage'/>
   </a>
 </b:includable>
@@ -1950,7 +1951,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:include name='viewProfileLink'/>
 </b:includable>
             <b:includable id='userProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author external'>
+  <a class='profile-link' expr:href='data:userUrl' rel='me external'>
     <data:displayname/>
   </a>
 </b:includable>
@@ -1960,7 +1961,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author external'>
+  <a class='profile-link' expr:href='data:userUrl' rel='me external'>
     <data:messages.viewMyCompleteProfile/>
   </a>
 </b:includable>
