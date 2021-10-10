@@ -6,7 +6,10 @@
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
   <link href='//www.blogger.com' rel='dns-prefetch'/>
   <b:with value='data:widgets.Blog.first.posts map (p =&gt; p.featuredImage)' var='pswi'>
-  <b:if cond='data:pswi first (p =&gt; p contains &quot;googleusercontent.com&quot;)'>
+  <b:if cond='data:pswi first (p =&gt; p contains &quot;1.bp.blogspot.com&quot;)'><link href='//1.bp.blogspot.com' rel='dns-prefetch'/></b:if>
+  <b:if cond='data:pswi first (p =&gt; p contains &quot;2.bp.blogspot.com&quot;)'><link href='//2.bp.blogspot.com' rel='dns-prefetch'/></b:if>
+  <b:if cond='data:pswi first (p =&gt; p contains &quot;3.bp.blogspot.com&quot;)'><link href='//3.bp.blogspot.com' rel='dns-prefetch'/></b:if>
+  <b:if cond='data:pswi first (p =&gt; p contains &quot;4.bp.blogspot.com&quot;)'><link href='//4.bp.blogspot.com' rel='dns-prefetch'/></b:if>
   <b:if cond='data:pswi first (p =&gt; p contains &quot;blogger.googleusercontent.com&quot;)'><link href='//blogger.googleusercontent.com' rel='dns-prefetch'/></b:if>
   <b:if cond='data:view.isMultipleItems'>
   <b:if cond='data:pswi first (p =&gt; p contains &quot;lh1.googleusercontent.com&quot;)'><link href='//lh1.googleusercontent.com' rel='dns-prefetch'/></b:if>
@@ -15,12 +18,6 @@
   <b:if cond='data:pswi first (p =&gt; p contains &quot;lh4.googleusercontent.com&quot;)'><link href='//lh4.googleusercontent.com' rel='dns-prefetch'/></b:if>
   <b:if cond='data:pswi first (p =&gt; p contains &quot;lh5.googleusercontent.com&quot;)'><link href='//lh5.googleusercontent.com' rel='dns-prefetch'/></b:if>
   <b:if cond='data:pswi first (p =&gt; p contains &quot;lh6.googleusercontent.com&quot;)'><link href='//lh6.googleusercontent.com' rel='dns-prefetch'/></b:if>
-  </b:if>
-  <b:else/>
-  <b:if cond='data:pswi first (p =&gt; p contains &quot;1.bp.blogspot.com&quot;)'><link href='//1.bp.blogspot.com' rel='dns-prefetch'/></b:if>
-  <b:if cond='data:pswi first (p =&gt; p contains &quot;2.bp.blogspot.com&quot;)'><link href='//2.bp.blogspot.com' rel='dns-prefetch'/></b:if>
-  <b:if cond='data:pswi first (p =&gt; p contains &quot;3.bp.blogspot.com&quot;)'><link href='//3.bp.blogspot.com' rel='dns-prefetch'/></b:if>
-  <b:if cond='data:pswi first (p =&gt; p contains &quot;4.bp.blogspot.com&quot;)'><link href='//4.bp.blogspot.com' rel='dns-prefetch'/></b:if>
   </b:if>
   </b:with>
   <b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
