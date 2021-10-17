@@ -403,11 +403,11 @@ blockquote {margin:1em 2.5em}
 .blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical-align:bottom}
 
 /* 戻るボタン／コメントボタン／ローディング */
-#back-button, #comment-button, #add-button {display:flex;justify-content:center;align-items:center;position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50}
-html[dir="rtl"] #back-button, html[dir="rtl"] #comment-button, html[dir="rtl"] #add-button {box-shadow:-5px 5px 10px -5px rgba(0,0,0,.35)}
-#back-button, #comment-button {width:var(--floatingbar-height);border-radius:50%}
-#back-button>.svg-icon-24 {padding-top:calc(-20px / 6);padding-bottom:calc(20px / 6)}
-#add-button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px}
+#back_button, #comment_button, #add_button {display:flex;justify-content:center;align-items:center;position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50}
+html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #add_button {box-shadow:-5px 5px 10px -5px rgba(0,0,0,.35)}
+#back_button, #comment_button {width:var(--floatingbar-height);border-radius:50%}
+#back_button>.svg-icon-24 {padding-top:calc(-20px / 6);padding-bottom:calc(20px / 6)}
+#add_button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px}
 
 /* フェード */
 @keyframes fadein {from{ opacity:0} to { opacity:1}}
@@ -480,7 +480,6 @@ html[dir="rtl"] #back-button, html[dir="rtl"] #comment-button, html[dir="rtl"] #
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:flow-root;width:min(100%, calc($(content.width) - var(--maincolumn-padding) * 2));margin-bottom:20px}
 .total-snippet .snippet-thumbnail {float:$startSide;width:max(30%, 8em  - var(--maincolumn-padding));height:auto;margin-$endSide:var(--maincolumn-padding)}
-.ytpic {background-color:#000}
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0}
 
 /* ラベル */
@@ -643,8 +642,8 @@ body {position:relative}
 #swc.hidden {display:block}
 
 /* 戻るボタン／コメントボタン／ローディング */
-#back-button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
-#comment-button, #add-button {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
+#back_button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
+#comment_button, #add_button {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
 
 /* サイドバー */
 .navigation {display:none}
@@ -660,8 +659,8 @@ body {position:relative}
 #content_wrapper {width:min(100vw, $(content.width))}
 
 /* 戻るボタン／コメントボタン／ローディング */
-#back-button {$endSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
-#comment-button, #add-button {$startSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
+#back_button {$endSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
+#comment_button, #add_button {$startSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
 
 /* サイドバー */
 .navigation {background-color:$(sidebar.backgroundColorTop);text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding);padding-bottom:var(--maincolumn-padding);margin-bottom:calc(var(--maincolumn-padding) * -1)}
@@ -884,7 +883,7 @@ body#layout #floating_menu {display:initial}
   </ul>
 </b:includable>
             <b:includable id='teamProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl'>
+  <a class='profile-link' expr:href='data:userUrl' rel='external'>
     <b:include name='profileImage'/>
     <span class='profile-name'><data:display-name/></span>
   </a>
@@ -1865,11 +1864,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:section>
 </aside>
 
-<div class='hidden' id='bbb'><button aria-label='トップへ戻る' class='svg-icon-24-button' id='back-button' onclick='location.href=&quot;#blog-title&quot;' type='button'><svg class='svg-icon-24' role='img'><use href='#ic_triangle_black_24dp'/></svg></button></div>
+<div class='hidden' id='bbb'><button aria-label='トップへ戻る' class='svg-icon-24-button' id='back_button' onclick='location.href=&quot;#blog-title&quot;' type='button'><svg class='svg-icon-24' role='img'><use href='#ic_triangle_black_24dp'/></svg></button></div>
 <b:if cond='data:view.isMultipleItems'>
-<div class='hidden' id='adb'><button class='svg-icon-24-button' expr:aria-label='data:messages.loading' id='add-button' type='button'><data:messages.loading/></button></div>
+<div class='hidden' id='adb'><button class='svg-icon-24-button' expr:aria-label='data:messages.loading' id='add_button' type='button'><data:messages.loading/></button></div>
 <b:else/>
-<div class='hidden' id='cbb'><button class='svg-icon-24-button' expr:aria-label='data:messages.comments' id='comment-button' onclick='location.href=&quot;#cmt&quot;' type='button'><svg class='svg-icon-24' role='img'><use href='#ic_mode_comment_black_24dp'/></svg></button></div>
+<div class='hidden' id='cbb'><button class='svg-icon-24-button' expr:aria-label='data:messages.comments' id='comment_button' onclick='location.href=&quot;#cmt&quot;' type='button'><svg class='svg-icon-24' role='img'><use href='#ic_mode_comment_black_24dp'/></svg></button></div>
 </b:if>
 
 <aside aria-hidden='true' class='sidebar-container sidebar-invisible'>
@@ -1928,7 +1927,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </ul>
 </b:includable>
             <b:includable id='teamProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl'>
+  <a class='profile-link' expr:href='data:userUrl' rel='external'>
     <b:include name='profileImage'/>
     <span class='profile-name'><data:display-name/></span>
   </a>
@@ -2107,7 +2106,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
             <b:section class='footer' id='attribution' name='Footer' showaddelement='false' tag='footer'>
               <b:widget id='Text1' locked='true' title='' type='Text' visible='true'>
                 <b:widget-settings>
-                  <b:widget-setting name='content'><![CDATA[with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow external'>Imaginary theme</a>]]></b:widget-setting>
+                  <b:widget-setting name='content'><![CDATA[with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='external nofollow'>Imaginary theme</a>]]></b:widget-setting>
                 </b:widget-settings>
                 <b:includable id='main'>
   <b:include name='widget-title'/>
@@ -2257,8 +2256,8 @@ function yt(image) {
 const ytimg = new Image();
 ytimg.onload = () =&gt; {
 if (ytimg.naturalWidth &lt; 121) {
-image.src = image.dataset.src; image.srcset = image.dataset.srcset; }
-return; }
+image.src = image.dataset.src; image.srcset = image.dataset.srcset; } else {
+image.style.backgroundColor = &quot;#000&quot; }}
 ytimg.src = image.src; }
 if (ytpics[0]) ytpics.forEach(yt);
 /* Infinite scroll */
