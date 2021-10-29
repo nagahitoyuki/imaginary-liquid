@@ -84,9 +84,9 @@
 <Group description="Backgrounds">
   <Variable name="body.background.height" description="Background height"
       type="length"
-      min="420px"
-      max="640px"
-      default="480px"  value="430px"/>
+      min="310px"
+      max="620px"
+      default="413px"  value="413px"/>
   <Variable name="body.background" description="Background"
       color="$(blog.header.color)"
       type="background"
