@@ -183,6 +183,9 @@
   <Variable name="search.input.color" description="Input color"
       type="color"
       default="#000000"  value="#000000"/>
+  <Variable name="search.action.color" description="Action color"
+      type="color"
+      default="#000000"  value="#000000"/>
   <Variable name="search.input.font" description="Input font"
       type="font"
       default="15.8px sans-serif"  value="15.8px sans-serif"/>
@@ -417,10 +420,10 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 
 /* ブログ内検索 */
 .search-input {display:inline-flex;align-items:center;column-gap:6px;animation:fadein .3s ease-out}
-.search-space {color:$(search.input.color);font:$(search.input.font)}
+.search-space {color:$(search.input.color);background-color:transparent;font:$(search.input.font)}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
-.search-action {color:$(search.input.color)}
+.search-action {color:$(search.action.color)}
 
 /* アドセンス広告 */
 .top-ad-container {padding:0 var(--maincolumn-padding)}
