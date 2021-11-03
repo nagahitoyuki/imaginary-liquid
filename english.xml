@@ -76,9 +76,12 @@
   <Variable name="body.text.font" description="Font"
       type="font"
       default="16px sans-serif"  value="16px sans-serif"/>
-  <Variable name="body.text.color" description="Color"
+  <Variable name="body.text.base.color" description="Color"
       type="color"
       default="#000000"  value="#000000"/>
+  <Variable name="body.text.color" description="Comment form color"
+      type="color"
+      default="$(posts.text.color)"  value="#000000"/>
 </Group>
 
 <Group description="Backgrounds">
@@ -108,15 +111,18 @@
 </Group>
 
 <Group description="Links">
-  <Variable name="body.link.color" description="Link color"
+  <Variable name="body.link.base.color" description="Link color"
       type="color"
       default="#ff00ff"  value="#ff00ff"/>
   <Variable name="body.link.visited.color" description="Visited link color"
       type="color"
-      default="$(body.link.color)"  value="#ff00ff"/>
+      default="$(body.link.base.color)"  value="#ff00ff"/>
   <Variable name="body.link.hover.color" description="Link Hover Color"
       type="color"
-      default="$(body.link.color)"  value="#ff00ff"/>
+      default="$(body.link.base.color)"  value="#ff00ff"/>
+  <Variable name="body.link.color" description="Comment form link color"
+      type="color"
+      default="$(posts.link.color)"  value="#ff00ff"/>
 </Group>
 
 <Group description="Blog title" selector="div.widget.Header">
@@ -157,7 +163,7 @@
       default="16px sans-serif"  value="16px sans-serif"/>
   <Variable name="posts.text.color" description="Post text color"
       type="color"
-      default="$(body.text.color)"  value="#000000"/>
+      default="$(body.text.base.color)"  value="#000000"/>
 <Variable name="posts.link.color" description="Post link color"
       type="color"
       default="#ff00ff"  value="#ff00ff"/>
@@ -172,11 +178,11 @@
       default="16px sans-serif"  value="16px sans-serif"/>
   <Variable name="blockquote.color" description="Blockquote color"
       type="color"
-      default="$(body.text.color)"  value="#000000"/>
+      default="$(body.text.base.color)"  value="#000000"/>
   <Variable name="posts.icons.color"
       description="Post icons color"
       type="color"
-      default="$(body.text.color)"  value="#000000"/>
+      default="$(body.text.base.color)"  value="#000000"/>
 </Group>
 
 <Group description="Search">
@@ -201,7 +207,7 @@
   <Variable name="sticky.icons.color"
       description="Sharing icons color"
       type="color"
-      default="$(body.text.color)"  value="#000000"/>
+      default="$(body.text.base.color)"  value="#000000"/>
   <Variable name="sticky.background.color"
       description="Sharing background color"
       type="color"
@@ -219,11 +225,11 @@
   <Variable name="popularposts.title.color"
       description="Popular post title color"
       type="color"
-      default="$(body.text.color)"  value="#000000"/>
+      default="$(body.text.base.color)"  value="#000000"/>
   <Variable name="popularposts.text.color"
       description="Popular post text color"
       type="color"
-      default="$(body.text.color)"  value="#000000"/>
+      default="$(body.text.base.color)"  value="#000000"/>
   <Variable name="popularposts.link.color"
       description="Popular post link color"
       type="color"
@@ -301,10 +307,10 @@
 <Group description="Attribution" selector=".widget.Attribution">
   <Variable name="attribution.text.color" description="Attribution text color"
       type="color"
-      default="$(body.text.color)"  value="#000000"/>
+      default="$(body.text.base.color)"  value="#000000"/>
   <Variable name="attribution.link.color" description="Attribution link color"
       type="color"
-      default="$(body.link.color)"  value="#ff00ff"/>
+      default="$(body.link.base.color)"  value="#ff00ff"/>
   <Variable name="attribution.icon.color" description="Attribution icon color"
       type="color"
       default="#000000" value="#000000"/>
@@ -329,8 +335,8 @@
 /* General settings */
 :root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6}
 html {scroll-behavior:smooth}
-body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal}
-a {text-decoration:none;color:$(body.link.color)}
+body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.base.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal}
+a {text-decoration:none;color:$(body.link.base.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
 h1, h2, h3, h4, h5, h6, .item-view #blog-title {scroll-margin-top:calc(1em + var(--floatingbar-height))}
@@ -1365,7 +1371,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </footer>
 </b:includable>
     <b:includable id='commentFormIframeSrc' var='post'>
-  <a class='cmal' expr:href='data:post.commentFormIframeSrc' id='comment-editor-src' rel='nofollow'/>
+  <a class='cmal' expr:href='data:post.commentFormIframeSrc + &quot;&amp;skin=essential&quot;' id='comment-editor-src' rel='nofollow'/>
 </b:includable>
     <b:includable id='commentItem' var='comment'>
   <div class='comment' expr:id='&quot;c&quot; + data:comment.id'>
