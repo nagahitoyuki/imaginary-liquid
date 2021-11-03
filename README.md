@@ -14,7 +14,7 @@
 
 <p>I took measures against Google ranking factors such as Website's Crawlability, Mobile First Index and Core Web Vitals.</p>
 
-<p>Note: If you use even one AdSense widget, your blog performance will drop by about 30%.</p>
+<p>Note: If you use even one of AdSense widgets, your blog performance will drop by about 30%.</p>
 
 <h3>Sample blog</h3>
 
