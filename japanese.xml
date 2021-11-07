@@ -489,6 +489,7 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:flow-root;width:min(100%, calc($(content.width) - var(--maincolumn-padding) * 2));margin-bottom:20px}
 .total-snippet .snippet-thumbnail {float:$startSide;width:max(30%, 8em  - var(--maincolumn-padding));height:auto;margin-$endSide:var(--maincolumn-padding)}
+.ytpic {background-color:#000}
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0}
 
 /* ラベル */
@@ -2264,9 +2265,7 @@ const ytpics = [].slice.call(page_body.querySelectorAll(&quot;img.ytpic&quot;));
 function yt(image) {
 const ytimg = new Image();
 ytimg.onload = () =&gt; {
-if (ytimg.naturalWidth &lt; 121) {
-image.src = image.dataset.src; image.srcset = image.dataset.srcset; } else {
-image.style.backgroundColor = &quot;#000&quot; }}
+if (ytimg.naturalWidth &lt; 121) image.src = image.dataset.src; image.srcset = image.dataset.srcset; }
 ytimg.src = image.src; }
 if (ytpics[0]) ytpics.forEach(yt);
 /* Infinite scroll */
