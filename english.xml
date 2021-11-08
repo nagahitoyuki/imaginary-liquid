@@ -78,10 +78,10 @@
       default="16px sans-serif"  value="16px sans-serif"/>
   <Variable name="body.text.base.color" description="Color"
       type="color"
-      default="#000000"  value="#000000"/>
+      default="#000"  value="#000"/>
   <Variable name="body.text.color" description="Comment form color"
       type="color"
-      default="$(posts.text.color)"  value="#000000"/>
+      default="$(posts.text.color)"  value="#000"/>
 </Group>
 
 <Group description="Backgrounds">
@@ -102,7 +102,7 @@
       default="#f0f8ff"  value="#f0f8ff"/>
   <Variable name="posts.background.color" description="Post background color"
       type="color"
-      default="#ffffff"  value="#ffffff"/>
+      default="#fff"  value="#fff"/>
   <Variable name="body.background.blur" description="Background blur"
       type="length"
       min="0px"
@@ -131,7 +131,7 @@
       default="bold 31px sans-serif"  value="bold 31px sans-serif"/>
   <Variable name="blog.title.color" description="Color"
       type="color"
-      default="#ffffff"  value="#ffffff"/>
+      default="#fff"  value="#fff"/>
 </Group>
 
 <Group description="Tabs text" selector="div.widget.PageList">
@@ -151,7 +151,7 @@
 <Group description="Posts" selector="div.widget.Blog">
   <Variable name="posts.title.color" description="Post title color"
       type="color"
-      default="#000000"  value="#000000"/>
+      default="#000"  value="#000"/>
   <Variable name="posts.title.font" description="Post title font"
       type="font"
       default="bold 26px sans-serif"  value="bold 26px sans-serif"/>
@@ -163,7 +163,7 @@
       default="16px sans-serif"  value="16px sans-serif"/>
   <Variable name="posts.text.color" description="Post text color"
       type="color"
-      default="$(body.text.base.color)"  value="#000000"/>
+      default="$(body.text.base.color)"  value="#000"/>
 <Variable name="posts.link.color" description="Post link color"
       type="color"
       default="#ff00ff"  value="#ff00ff"/>
@@ -178,20 +178,20 @@
       default="16px sans-serif"  value="16px sans-serif"/>
   <Variable name="blockquote.color" description="Blockquote color"
       type="color"
-      default="$(body.text.base.color)"  value="#000000"/>
+      default="$(body.text.base.color)"  value="#000"/>
   <Variable name="posts.icons.color"
       description="Post icons color"
       type="color"
-      default="$(body.text.base.color)"  value="#000000"/>
+      default="$(body.text.base.color)"  value="#000"/>
 </Group>
 
 <Group description="Search">
   <Variable name="search.input.color" description="Input color"
       type="color"
-      default="#000000"  value="#000000"/>
+      default="#000"  value="#000"/>
   <Variable name="search.action.color" description="Action color"
       type="color"
-      default="#000000"  value="#000000"/>
+      default="#000"  value="#000"/>
   <Variable name="search.input.font" description="Input font"
       type="font"
       default="16px sans-serif"  value="16px sans-serif"/>
@@ -207,7 +207,7 @@
   <Variable name="sticky.icons.color"
       description="Sharing icons color"
       type="color"
-      default="$(body.text.base.color)"  value="#000000"/>
+      default="$(body.text.base.color)"  value="#000"/>
   <Variable name="sticky.background.color"
       description="Sharing background color"
       type="color"
@@ -225,11 +225,11 @@
   <Variable name="popularposts.title.color"
       description="Popular post title color"
       type="color"
-      default="$(body.text.base.color)"  value="#000000"/>
+      default="$(body.text.base.color)"  value="#000"/>
   <Variable name="popularposts.text.color"
       description="Popular post text color"
       type="color"
-      default="$(body.text.base.color)"  value="#000000"/>
+      default="$(body.text.base.color)"  value="#000"/>
   <Variable name="popularposts.link.color"
       description="Popular post link color"
       type="color"
@@ -267,24 +267,24 @@
   <Variable name="widget.title.color"
       description="Gadget title color"
       type="color"
-      default="$(posts.title.color)"  value="#000000"/>
+      default="$(posts.title.color)"  value="#000"/>
   <Variable name="widget.text.color"
       description="Gadget text color"
       type="color"
-      default="$(posts.text.color)"  value="#000000"/>
+      default="$(posts.text.color)"  value="#000"/>
   <Variable name="sidebar.icons.color"
       description="Sidebar icons color"
       type="color"
-      default="#000000"  value="#000000"/>
+      default="#000"  value="#000"/>
 </Group>
 
 <Group description="Author profile" selector='.widget.Profile'>
   <Variable name="profile.title.color" description="Profile title color"
       type="color"
-      default="#000000"  value="#000000"/>
+      default="#000"  value="#000"/>
   <Variable name="profile.text.color" description="Profile text color"
       type="color"
-      default="$(posts.text.color)"  value="#000000"/>
+      default="$(posts.text.color)"  value="#000"/>
   <Variable name="profile.link.color" description="Profile link color"
       type="color"
       default="#ff00ff"  value="#ff00ff"/>
@@ -307,13 +307,13 @@
 <Group description="Attribution" selector=".widget.Attribution">
   <Variable name="attribution.text.color" description="Attribution text color"
       type="color"
-      default="$(body.text.base.color)"  value="#000000"/>
+      default="$(body.text.base.color)"  value="#000"/>
   <Variable name="attribution.link.color" description="Attribution link color"
       type="color"
       default="$(body.link.base.color)"  value="#ff00ff"/>
   <Variable name="attribution.icon.color" description="Attribution icon color"
       type="color"
-      default="#000000" value="#000000"/>
+      default="#000" value="#000"/>
 </Group>
 
 <Group description="Widths">
@@ -1128,10 +1128,10 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <b:section class='top-ad-container' cond='data:widgets.AdSense.first.id == &quot;AdSense1&quot;' id='ad' name='Ads' showaddelement='false' tag='aside'>
     <b:widget id='AdSense1' locked='true' title='' type='AdSense' version='2' visible='false'>
       <b:widget-settings>
-        <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+        <b:widget-setting name='style.bgcolor'>#fff</b:widget-setting>
         <b:widget-setting name='style.textcolor'>#2196f3</b:widget-setting>
         <b:widget-setting name='style.layout'>1x1</b:widget-setting>
-        <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+        <b:widget-setting name='style.bordercolor'>#fff</b:widget-setting>
         <b:widget-setting name='style.urlcolor'>#757575</b:widget-setting>
         <b:widget-setting name='style.linkcolor'>#212121</b:widget-setting>
         <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
@@ -1268,9 +1268,9 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:widget-setting name='style.urlcolor'>#ffa500</b:widget-setting>
       <b:widget-setting name='showAuthor'>true</b:widget-setting>
       <b:widget-setting name='disableGooglePlusShare'>true</b:widget-setting>
-      <b:widget-setting name='style.linkcolor'>#000000</b:widget-setting>
+      <b:widget-setting name='style.linkcolor'>#000</b:widget-setting>
       <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
-      <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+      <b:widget-setting name='style.bgcolor'>#fff</b:widget-setting>
       <b:widget-setting name='timestampLabel'>-</b:widget-setting>
       <b:widget-setting name='reactionsLabel'/>
       <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
@@ -1281,7 +1281,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:widget-setting name='showTimestamp'>true</b:widget-setting>
       <b:widget-setting name='postsPerAd'>3</b:widget-setting>
       <b:widget-setting name='showBacklinks'>false</b:widget-setting>
-      <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+      <b:widget-setting name='style.bordercolor'>#fff</b:widget-setting>
       <b:widget-setting name='showInlineAds'>false</b:widget-setting>
       <b:widget-setting name='showReactions'>false</b:widget-setting>
     </b:widget-settings>
