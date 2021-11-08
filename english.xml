@@ -145,7 +145,7 @@
       default="bold 16px sans-serif"  value="bold 16px sans-serif"/>
   <Variable name="tabs.color" description="Text color"
       type="color"
-      default="#fffaf0"  value="#fffaf0"/>
+      default="#fff"  value="#fff"/>
 </Group>
 
 <Group description="Posts" selector="div.widget.Blog">
