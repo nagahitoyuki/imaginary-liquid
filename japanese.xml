@@ -8,16 +8,17 @@
   <b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
     <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
   </b:if>
+  <b:with value='data:skin.vars.body_background.image' var='bgimg'>
   <b:if cond='data:blog.isMobileRequest'>
-  <b:if cond='data:skin.vars.body_background.image'>
-    <link as='image' expr:href='resizeImage(data:skin.vars.body_background.image, 480)' rel='preload'/>
+  <b:if cond='data:bgimg'>
+    <link as='image' expr:href='data:bgimg contains &quot;googleusercontent&quot; ? data:bgimg + &quot;=w480-rw-e60&quot; : resizeImage(data:bgimg, 480)' rel='preload'/>
   </b:if>
     <link expr:href='data:view.url.canonical' rel='canonical'/>
   <b:else/>
-  <b:if cond='data:skin.vars.body_background.image'>
+  <b:if cond='data:bgimg'>
   <b:with value='[481, 641]' var='minWidth'>
-  <b:loop index='i' values='resizeImage(data:skin.vars.body_background.image, [640, 1024, 1600])' var='headerImage'>
-    <link as='image' expr:href='data:headerImage.url' expr:media='&quot;(&quot; + (data:i != 2 ? &quot;max-width:&quot; + data:headerImage.size + &quot;px) and (min-width:&quot; + data:minWidth[i] + &quot;px)&quot; : &quot;min-width:1201px)&quot;)' rel='preload'/>
+  <b:loop index='i' values='resizeImage(data:bgimg, [640, 1024, 1240])' var='headerImage'>
+    <link as='image' expr:href='data:headerImage.url contains &quot;googleusercontent&quot; ? data:headerImage.url + &quot;-rw-e60&quot; : data:headerImage.url' expr:media='&quot;(&quot; + (data:i != 2 ? &quot;max-width:&quot; + data:headerImage.size + &quot;px) and (min-width:&quot; + data:minWidth[i] + &quot;px)&quot; : &quot;min-width:1025px)&quot;)' rel='preload'/>
   </b:loop>
   </b:with>
   </b:if>
@@ -27,6 +28,7 @@
     <link expr:href='data:view.url.canonical' rel='canonical'/>
   </b:if>
   </b:if>
+  </b:with>
   <title><data:view.title.escaped/><b:if cond='data:view.isArchive'>: <data:blog.pageName/>&#65288;<data:messages.archive/>&#65289;<b:elseif cond='data:view.isLabelSearch'/>: <data:blog.pageName/>&#65288;<data:messages.labels/>&#65289;<b:elseif cond='data:view.isSearch'/>: <data:messages.search/></b:if></title>
   <b:if cond='data:blog.metaDescription'>
     <meta expr:content='data:blog.metaDescription' name='description'/>
@@ -1046,7 +1048,20 @@ body#layout #floating_menu {display:initial}
 </b:defaultmarkup>
 </b:defaultmarkups>
 
-<b:include cond='not data:view.isPreview' data='{ image: data:skin.vars.body_background.image, selector: &quot;.bg-photo&quot;, imageSizes: [480, 640, 1024, 1600] }' name='responsiveImageStyle'/>
+<b:with value='data:skin.vars.body_background.image' var='bgimg'>
+<b:if cond='not data:view.isPreview and data:bgimg'>
+<style>
+.bg-photo {background-image:url(<data:bgimg.cssEscaped/>);}
+<b:if cond='data:blog.isMobileRequest'>
+  @media (max-width: 480px) { .bg-photo {background-image:url(<b:eval expr='data:bgimg contains &quot;googleusercontent&quot; ? data:bgimg.cssEscaped + &quot;=w480-rw-e60&quot; : resizeImage(data:bgimg, 480).cssEscaped'/>);}}
+<b:else/>
+  <b:with value='[481, 641]' var='minWidth'><b:loop index='i' values='resizeImage(data:bgimg, [640, 1024, 1240])' var='headerImage'>
+<b:eval expr='&quot;@media &quot; + (data:i != 2 ? &quot;(max-width: &quot; + data:headerImage.size + &quot;px) and (min-width: &quot; + data:minWidth[i] + &quot;px)&quot; : &quot;(min-width: 1025px)&quot;) + &quot;{.bg-photo {background-image:url(&quot; + (data:headerImage.url contains &quot;googleusercontent&quot; ? data:headerImage.url.cssEscaped + &quot;-rw-e60&quot; : data:headerImage.url.cssEscaped) + &quot;;);}}&quot;'/></b:loop>
+  </b:with>
+</b:if>
+</style>
+</b:if>
+</b:with>
 
 <b:if cond='(data:widgets.AdSense.first or data:blog.adsenseClientId) and not data:blog.adsenseAutoAds'>
   <script async='async' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'/>
@@ -1205,7 +1220,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
            <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
              <b:include name='urlParamsAsFormInput'/>
              <div class='search-input'>
-               <input autocomplete='off' autofocus='autofocus' class='search-space' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+               <input autocomplete='off' autofocus='autofocus' class='search-space' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' type='search'/>
               <b:include name='searchSubmit'/>
               </div>
            </form>
