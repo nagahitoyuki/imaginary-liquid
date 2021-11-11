@@ -320,7 +320,7 @@
 
 <Group description="Widths">
   <Variable name="sidebar.width" description="Sidebar width" type="length"
-            min="100px" max="1000px" default="295px"  value="295px"/>
+            min="0px" max="1000px" default="295px"  value="295px"/>
   <Variable name="content.width" description="Content width" type="length"
             min="600px" max="2400px" default="925px"  value="925px"/>
   <Variable name="content.margin" description="Content margin" type="length"
@@ -648,9 +648,7 @@ body {position:relative}
 #content_wrapper {position:relative}
 #content_wrapper, #sub_main {width:$(content.width + sidebar.width + content.margin)}
 #page_body {width:$(content.width)}
-
-/* フローティングバー */
-#hamburger_menu, #search_expand {display:none}
+#hamburger_menu, #search_expand, #febtn {display:none}
 #swc.hidden {display:block}
 
 /* 戻るボタン／コメントボタン／ローディング */
@@ -667,7 +665,8 @@ body {position:relative}
 @media screen and (max-width:$(sidebar.width + content.width + content.margin - 1px)) {
 
 /* 位置取り */
-.search-input {margin-left:8px;margin-right:8px}
+.search-input {margin-$startSide:4px;margin-$endSide:8px}
+#search_expand {margin-$startSide:-4px}
 #content_wrapper {width:min(100vw, $(content.width))}
 
 /* 戻るボタン／コメントボタン／ローディング */
@@ -1203,7 +1202,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 <main id='content_wrapper'>
 <div id='floating_bar'>
   <div id='floating_menu'>
-    <button aria-label='サイドバーを開く' class='svg-icon-24-button' id='hamburger_menu' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_menu_black_24dp'/></svg></button>
+  <b:if cond='data:skin.vars.sidebar_width + data:skin.vars.content_margin != &quot;0px0px&quot;'><button aria-label='サイドバーを開く' class='svg-icon-24-button' id='hamburger_menu' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_menu_black_24dp'/></svg></button><b:else/><button aria-label='RSSフィード' class='svg-icon-24-button' id='febtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_rss_feed_black_24dp'/></svg></button></b:if>
      <b:if cond='data:widgets any (w =&gt; w.sectionId == &quot;search_top&quot;)'>
         <b:section id='search_top' name='Search (Top)' showaddelement='false'>
           <b:widget id='BlogSearch1' locked='true' title='このブログを検索' type='BlogSearch' version='2' visible='true'>
@@ -1220,7 +1219,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
            <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
              <b:include name='urlParamsAsFormInput'/>
              <div class='search-input'>
-               <input autocomplete='off' autofocus='autofocus' class='search-space' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' type='search'/>
+               <input autocomplete='off' class='search-space' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' type='search'/>
               <b:include name='searchSubmit'/>
               </div>
            </form>
@@ -1230,7 +1229,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
          </b:includable>
           </b:widget>
         </b:section>
-     <button class='svg-icon-24-button' expr:aria-label='data:messages.search.escaped' id='search_expand' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_search_black_24dp'/></svg></button>
+          <button class='svg-icon-24-button' expr:aria-label='data:messages.search.escaped' id='search_expand' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_search_black_24dp'/></svg></button>
     </b:if>
   </div>
   <div id='floating_share'>
@@ -1896,6 +1895,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 <div class='hidden' id='cbb'><button class='svg-icon-24-button' expr:aria-label='data:messages.comments' id='comment_button' onclick='location.href=&quot;#cmt&quot;' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_mode_comment_black_24dp'/></svg></button></div>
 </b:if>
 
+<b:if cond='data:skin.vars.sidebar_width + data:skin.vars.content_margin != &quot;0px0px&quot;'>
 <aside aria-hidden='true' class='sidebar-container sidebar-invisible'>
   <div class='navigation'>
     <button aria-label='サイドバーを閉じる' class='svg-icon-24-button' id='close_button' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_close_black_24dp'/></svg></button>
@@ -2126,6 +2126,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
         </b:widget>
       </b:section>
 </aside>
+</b:if>
 </main>
 
             <b:section class='footer' id='attribution' name='Footer' showaddelement='false' tag='footer'>
@@ -2180,12 +2181,13 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 <script>
 document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
 const bdis = document.body;
-/* Screen reader */
-const sbct = content_wrapper.querySelector(&quot;aside.sidebar-container&quot;);
-if (sbct.style.position === &quot;absolute&quot;) sbct.ariaHidden = &quot;false&quot;;
 /* Header image link */
 const hil = bdis.querySelector(&quot;div.image-attribution a&quot;);
 if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);
+<b:if cond='data:skin.vars.sidebar_width + data:skin.vars.content_margin != &quot;0px0px&quot;'>
+/* Screen reader */
+const sbct = content_wrapper.querySelector(&quot;aside.sidebar-container&quot;);
+if (sbct.style.position === &quot;absolute&quot;) sbct.ariaHidden = &quot;false&quot;;
 /* Hamburger menu */
 const bcsd = document.createElement(&quot;div&quot;);
 bcsd.classList.add(&quot;dim-overlay&quot;);
@@ -2202,18 +2204,14 @@ sbct.addEventListener(&quot;transitionend&quot;, () =&gt; {
 if (sbct.classList.contains(&quot;slideout&quot;)) sbct.classList.add(&quot;sidebar-invisible&quot;); });
 bcsd.addEventListener(&quot;animationend&quot;, () =&gt; {
 if (bcsd.classList.contains(&quot;fadeout&quot;)) content_wrapper.removeChild(bcsd); });
-/* Search button */
+</b:if>
 <b:if cond='data:widgets.BlogSearch.first.id == &quot;BlogSearch1&quot;'>
-const shrb = content_wrapper.querySelector(&quot;div.share-buttons&quot;);
+/* Search button */
+const scsp = content_wrapper.querySelector(&quot;input.search-space&quot;), shrb = content_wrapper.querySelector(&quot;div.share-buttons&quot;);
 search_expand.addEventListener(&quot;click&quot;, () =&gt; {
 if (swc.classList.contains(&quot;hidden&quot;)) {
-<b:if cond='data:blog.isMobileRequest'>
-swc.classList.remove(&quot;hidden&quot;); floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; return; }
-swc.classList.add(&quot;hidden&quot;); floating_share.style.display = &quot;flex&quot;; swc.ariaHidden = &quot;true&quot;; 
-<b:else/>
-swc.classList.remove(&quot;hidden&quot;); swc.ariaHidden = &quot;false&quot;; return; }
-swc.classList.add(&quot;hidden&quot;); swc.ariaHidden = &quot;true&quot;;
-</b:if>});
+swc.classList.remove(&quot;hidden&quot;); floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
+swc.classList.add(&quot;hidden&quot;); floating_share.style.display = &quot;flex&quot;; swc.ariaHidden = &quot;true&quot;; });
 </b:if>
 /* Expand button */
 const rits = [].slice.call(bdis.querySelectorAll(&quot;div.remaining-items&quot;));
@@ -2241,6 +2239,10 @@ url: &quot;<data:blog.url.canonical/>&quot; }); });
 clpcp.addEventListener(&quot;click&quot;, () =&gt; {
 window.navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; {
 alert (&quot;リンクをクリップボードにコピーしました\u3002&quot;); }); });
+</b:if>
+<b:if cond='data:skin.vars.sidebar_width + data:skin.vars.content_margin == &quot;0px0px&quot;'>
+febtn.addEventListener(&quot;click&quot;, () =&gt; {
+window.location.href = &quot;<b:eval expr='data:view.isHomepage.canonical + &quot;feeds/posts/default?alt=rss&quot;'/>&quot;; });
 </b:if>
 /* Back button */
 const backButton = bdis.querySelector(&quot;header.centered-top&quot;);
