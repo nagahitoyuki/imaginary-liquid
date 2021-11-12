@@ -11,7 +11,7 @@
   <b:with value='data:skin.vars.body_background.image' var='bgimg'>
   <b:if cond='data:blog.isMobileRequest'>
   <b:if cond='data:bgimg'>
-    <link as='image' expr:href='data:bgimg contains &quot;googleusercontent&quot; ? data:bgimg + &quot;=w480-rw-e60&quot; : resizeImage(data:bgimg, 480)' rel='preload'/>
+    <link as='image' expr:href='data:bgimg contains &quot;googleusercontent&quot; ? resizeImage(data:bgimg, 480) + &quot;-rw-e60&quot; : resizeImage(data:bgimg, 480)' rel='preload'/>
   </b:if>
     <link expr:href='data:view.url.canonical' rel='canonical'/>
   <b:else/>
