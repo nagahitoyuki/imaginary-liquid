@@ -434,8 +434,6 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .search-action {color:$(search.action.color)}
 
 /* アドセンス広告 */
-.top-ad-container {padding:0 var(--maincolumn-padding)}
-#AdSense1 {margin:0 auto 20px;overflow:hidden}
 .inline-ad {display:none;overflow:hidden}
 .adsbygoogle {display:block;overflow:hidden}
 .top-ad-placeholder, .inline-ad-placeholder {height:90px;background:$(posts.background.color);border:1px solid #000;opacity:.9;vertical-align:middle;text-align:center}
@@ -701,7 +699,7 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 .post-body h6 {font-size:10.7px}
 
 /* アドセンス広告 */
-#AdSense1, .desktop-ad>.inline-ad {display:block;width:100%;max-width:100%}
+.desktop-ad>.inline-ad {display:block;width:100%;max-width:100%}
 .desktop-ad>.inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
 }
 
@@ -722,7 +720,7 @@ margin-top:20px}
 .item-view .post-body a[imageanchor="1"]+a[imageanchor="1"] {margin-top:16px}
 
 /* アドセンス広告 */
-#AdSense1, .mobile-ad>.inline-ad {display:block;width:min(100%, calc(100vw - var(--maincolumn-padding) * 2))}
+.mobile-ad>.inline-ad {display:block;width:min(100%, calc(100vw - var(--maincolumn-padding) * 2))}
 .mobile-ad>.inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
 .feed-view .mobile-ad>.inline-ad {align-self:center}
 }
@@ -1169,35 +1167,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:section>
 
   <noscript><div class='noscript'>このサイトを適切に使用するためにはブラウザのJavaScriptの実行を許可して下さい。</div></noscript>
-
-  <b:section class='top-ad-container' cond='data:widgets.AdSense.first.id == &quot;AdSense1&quot;' id='ad' name='Ads' showaddelement='false' tag='aside'>
-    <b:widget id='AdSense1' locked='true' title='' type='AdSense' version='2' visible='false'>
-      <b:widget-settings>
-        <b:widget-setting name='style.bgcolor'>#fff</b:widget-setting>
-        <b:widget-setting name='style.textcolor'>#2196f3</b:widget-setting>
-        <b:widget-setting name='style.layout'>1x1</b:widget-setting>
-        <b:widget-setting name='style.bordercolor'>#fff</b:widget-setting>
-        <b:widget-setting name='style.urlcolor'>#757575</b:widget-setting>
-        <b:widget-setting name='style.linkcolor'>#212121</b:widget-setting>
-        <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
-      </b:widget-settings>
-      <b:includable id='main'>
-    <div aria-label='広告' class='widget-content'>
-    <b:if cond='data:adCode'>
-      <data:adCode/>
-    <b:else/>
-      <b:include name='defaultAdUnit'/>
-    </b:if>
-    </div>
-  </b:includable>
-      <b:includable id='defaultAdUnit'>
-  <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
-  <b:with value='&quot;/* Done in css. */&quot;' var='style'>
-    <b:include name='super.defaultAdUnit'/>
-  </b:with>
-  </b:includable>
-    </b:widget>
-  </b:section>
 
 <main id='content_wrapper'>
 <div id='floating_bar'>
@@ -2124,6 +2093,32 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </div>
 </b:includable>
         </b:widget>
+    <b:widget id='AdSense1' locked='false' title='AdSense' type='AdSense' version='2' visible='false'>
+      <b:widget-settings>
+        <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+        <b:widget-setting name='style.textcolor'>#ffffff</b:widget-setting>
+        <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+        <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+        <b:widget-setting name='style.urlcolor'>#ffffff</b:widget-setting>
+        <b:widget-setting name='style.linkcolor'>#ffffff</b:widget-setting>
+        <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+    <div aria-label='広告' class='widget-content'>
+    <b:if cond='data:adCode'>
+      <data:adCode/>
+    <b:else/>
+      <b:include name='defaultAdUnit'/>
+    </b:if>
+    </div>
+  </b:includable>
+      <b:includable id='defaultAdUnit'>
+  <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
+  <b:with value='&quot;/* Done in css. */&quot;' var='style'>
+    <b:include name='super.defaultAdUnit'/>
+  </b:with>
+  </b:includable>
+    </b:widget>
       </b:section>
 </aside>
 </b:if>
@@ -2273,11 +2268,9 @@ if (ytimg.naturalWidth &lt; 121) image.src = image.dataset.src; image.srcset = i
 ytimg.src = image.src; }
 if (ytpics[0]) ytpics.forEach(yt);
 /* Infinite scroll */
-const nextIndex = bdis.querySelector(&quot;aside.isf&quot;);
-const bpct = Blog1.querySelector(&quot;div.blog-posts&quot;);
-if (bpct.clientHeight === 0) bpct.style.marginTop = &quot;0&quot;;
-const bpg = Blog1.querySelector(&quot;nav#blog_pager&quot;);
+const nextIndex = bdis.querySelector(&quot;aside.isf&quot;), bpct = Blog1.querySelector(&quot;div.blog-posts&quot;), bpg = Blog1.querySelector(&quot;nav#blog_pager&quot;);
 let npl = bpg.querySelector(&quot;a.older-link&quot;);
+if (bpct.clientHeight === 0) bpct.style.marginTop = &quot;0&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
 function rmmg(state) {
@@ -2301,15 +2294,11 @@ adb.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousew
 reject(&#39;Too fast&#39;); }}).then(async () =&gt; {
 const response = await fetch(npl.href);
 if (!response.ok) throw &quot;Connection failed&quot;;
-const text = await response.text();
-const file = new DOMParser().parseFromString(text, &quot;text/html&quot;);
+const text = await response.text(), file = new DOMParser().parseFromString(text, &quot;text/html&quot;), nppics = [].slice.call(file.querySelectorAll(&quot;img.ytpic&quot;)), bats = [].slice.call(file.querySelectorAll(&quot;article.post&quot;));
 npl = file.querySelector(&quot;a.older-link&quot;);
-const nppics = [].slice.call(file.querySelectorAll(&quot;img.ytpic&quot;));
-const bats = [].slice.call(file.querySelectorAll(&quot;article.post&quot;));
 if (nppics[0]) nppics.forEach(yt);
 bats.forEach(bat =&gt; {
-const nbat = document.adoptNode(bat);
-const pssm = nbat.querySelector(&quot;p.summary&quot;);
+const nbat = document.adoptNode(bat), pssm = nbat.querySelector(&quot;p.summary&quot;);
 if (pssm.querySelector(&quot;script&quot;)) {
 const pssc = pssm.querySelector(&quot;script&quot;).innerHTML;
 pssm.insertAdjacentHTML(&quot;afterbegin&quot;, pssc.slice(pssc.indexOf(&quot;`&quot;) + 1, pssc.indexOf(&quot;`&quot;, pssc.indexOf(&quot;`&quot;) + 1)).replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;)); }
@@ -2337,8 +2326,7 @@ rootMargin: &quot;46px&quot;});
 nextIndexObserver.observe(nextIndex);
 <b:else/>
 /* Comment button */
-const commentAllow = Blog1.querySelector(&quot;a.cmal&quot;);
-const commentButton = Blog1.querySelector(&quot;article.hentry&quot;);
+const commentAllow = Blog1.querySelector(&quot;a.cmal&quot;), commentButton = Blog1.querySelector(&quot;article.hentry&quot;);
 let commentButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(flbt); });
 if (commentAllow) commentButtonObserver.observe(commentButton);
