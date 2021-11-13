@@ -1810,7 +1810,19 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 
 <aside>
 <b:class cond='data:view.isMultipleItems' name='isf'/>
-<b:section class='sub_main' cond='!data:view.isError' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true'/>
+<b:section class='sub_main' cond='!data:view.isError' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true'>
+  <b:widget id='Text2' locked='false' title='Information' type='Text' visible='true'>
+    <b:widget-settings>
+      <b:widget-setting name='content'><![CDATA[<p>You can place the widget you want to use here.</p><p>Blogger dashboard >> Layout >> Page Sub (Add a Gadget)</p><p>If you remove all the widgets here, the section itself will disappear.</p>]]></b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main'>
+  <b:include name='widget-title'/>
+  <div class='widget-content'>
+    <data:content/>
+  </div>
+</b:includable>
+  </b:widget>
+</b:section>
 </aside>
 
 <div class='hidden' id='bbb'><button aria-label='Back to top' class='svg-icon-24-button' id='back_button' onclick='location.href=&quot;#blog-title&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button></div>
