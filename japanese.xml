@@ -436,10 +436,6 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 /* アドセンス広告 */
 .inline-ad {display:none;overflow:hidden}
 .adsbygoogle {display:block;overflow:hidden}
-.widget-ad-placeholder, .inline-ad-placeholder {background:$(posts.background.color);border:1px solid #000;opacity:.9;vertical-align:middle;text-align:center}
-.widget-ad-placeholder span, .inline-ad-placeholder span {margin-top:36px;display:block;text-transform:uppercase;font-weight:700;color:$(posts.title.color)}
-.widget-ad-placeholder {height:336px}
-.inline-ad-placeholder {height:90px}
 
 /* ページボディー */
 .centered {position:relative;display:flex;flex-direction:column;z-index:20}
@@ -760,16 +756,16 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 }
 ]]></b:skin>
 
-<b:if cond='data:view.isLayoutMode'>
-<b:template-skin>
-<![CDATA[
-body#layout .bg-photo {display:none}
+<b:if cond='data:view.isLayoutMode'><b:template-skin>
+<![CDATA[body#layout .bg-photo {display:none}
 body#layout .centered {display:block;max-width:925px;margin:0 auto}
 body#layout .centered-top {margin-top:0;margin-bottom:0}
 body#layout #floating_bar {position:initial;display:initial}
-body#layout #floating_menu {display:initial}
-]]>
-</b:template-skin></b:if>
+body#layout #floating_menu {display:initial}]]></b:template-skin><b:elseif cond='data:view.isPreview'/>
+<style>.widget-ad-placeholder, .inline-ad-placeholder {background:$(posts.background.color);border:1px solid #000;opacity:.9;vertical-align:middle;text-align:center}
+.widget-ad-placeholder span, .inline-ad-placeholder span {margin-top:36px;display:block;text-transform:uppercase;font-weight:700;color:$(posts.title.color)}
+.widget-ad-placeholder {height:336px}
+.inline-ad-placeholder {height:90px}</style></b:if>
 
 <b:defaultmarkups>
   <b:defaultmarkup type='Common'>
