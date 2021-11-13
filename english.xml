@@ -436,8 +436,10 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 /* AdSense ads */
 .inline-ad {display:none;overflow:hidden}
 .adsbygoogle {display:block;overflow:hidden}
-.top-ad-placeholder, .inline-ad-placeholder {height:90px;background:$(posts.background.color);border:1px solid #000;opacity:.9;vertical-align:middle;text-align:center}
-.top-ad-placeholder span, .inline-ad-placeholder span {margin-top:36px;display:block;text-transform:uppercase;font-weight:700;color:$(posts.title.color)}
+.widget-ad-placeholder, .inline-ad-placeholder {background:$(posts.background.color);border:1px solid #000;opacity:.9;vertical-align:middle;text-align:center}
+.widget-ad-placeholder span, .inline-ad-placeholder span {margin-top:36px;display:block;text-transform:uppercase;font-weight:700;color:$(posts.title.color)}
+.widget-ad-placeholder {height:336px}
+.inline-ad-placeholder {height:90px}
 
 /* Page body */
 .centered {position:relative;display:flex;flex-direction:column;z-index:20}
@@ -742,7 +744,7 @@ body#layout #floating_menu {display:initial}
   <b:defaultmarkup type='Common'>
    <b:includable id='widgetNotAvailableInPreview'>
    <b:if cond='data:widget.type == &quot;AdSense&quot;'>
-     <div class='top-ad-placeholder'>
+     <div class='widget-ad-placeholder'>
        <span><b:message name='messages.adsGoHere'/></span>
      </div>
    <b:else/>
