@@ -16,6 +16,10 @@
 
 <p>Note: If you use even one of AdSense widgets, your blog performance will drop by about 30%.</p>
 
+<h4>Tips</h4>
+
+<ul><li><a href="/imaginary-liquid/issues/3#issuecomment-953474499">About the width of the header image</a></li><li><a href="/imaginary-grid/issues/2#issuecomment-966766927">How to not show the sidebar</a></li></ul>
+
 <h3>Sample blog</h3>
 
 <ul><li><a href="https://imaginary-theme.blogspot.com/">One of Imaginary series for Japanese</a> </li></ul>
