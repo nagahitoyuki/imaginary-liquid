@@ -1597,7 +1597,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     </b:if>
   </b:with>
     <p class='summary'>
-    <b:with value='data:post.body snippet { length:(data:blog.isMobileRequest ? 180 : 380), links: false, linebreaks: false, ellipsis: true }' var='chros'>
+    <b:with value='data:post.body snippet { length:(data:blog.isMobileRequest ? 200 : 400), links: false, linebreaks: false, ellipsis: true }' var='chros'>
 <b:if cond='data:chros contains &quot;&lt;strong&gt;&quot; or data:chros contains &quot;&lt;b&gt;&quot; or data:chros contains &quot;&lt;em&gt;&quot; or data:chros contains &quot;&lt;i&gt;&quot;'>
     <script>crsc = document.currentScript; crsc.insertAdjacentHTML(&quot;beforebegin&quot;, `<data:chros/>`.replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;));</script>
     <b:else/>
