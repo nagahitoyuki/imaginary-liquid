@@ -1318,8 +1318,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;<b:eval expr='(data:posts.first.featuredImage ? resizeImage(data:posts.first.featuredImage, 1200, &quot;1200:630&quot;) : &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200&quot;).jsonEscaped'/>&quot;, &quot;height&quot;: <b:eval expr='data:posts.first.featuredImage ? 630 : 348'/>, &quot;width&quot;: 1200 }, &quot;publisher&quot;: {
 &quot;@type&quot;: &quot;Organization&quot;, &quot;name&quot;: &quot;Blogger&quot;, &quot;logo&quot;: {
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60&quot;, &quot;width&quot;: 206, &quot;height&quot;: 60 } }, &quot;author&quot;: {
-&quot;@type&quot;: &quot;Person&quot;, &quot;name&quot;: &quot;<data:posts.first.author.name.jsonEscaped/>&quot;, &quot;url&quot;: &quot;<data:posts.first.author.profileUrl.jsonEscaped/>&quot;, &quot;image&quot;: {
-&quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https:<data:posts.first.author.authorPhoto.image.jsonEscaped/>&quot;, &quot;height&quot;: <data:posts.first.author.authorPhoto.height/>, &quot;width&quot;: <data:posts.first.author.authorPhoto.width/> } } }</script></b:if>
+&quot;@type&quot;: &quot;Person&quot;, &quot;name&quot;: &quot;<data:posts.first.author.name.jsonEscaped/>&quot;, &quot;url&quot;: &quot;<data:posts.first.author.profileUrl.jsonEscaped/>&quot;<b:if cond='data:posts.first.author.authorPhoto.image'>, &quot;image&quot;: {
+&quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https:<data:posts.first.author.authorPhoto.image.jsonEscaped/>&quot;, &quot;height&quot;: <data:posts.first.author.authorPhoto.height/>, &quot;width&quot;: <data:posts.first.author.authorPhoto.width/> }</b:if> } }</script></b:if>
   <b:include name='postPagination'/>
   </b:with>
   </b:with>
@@ -1691,8 +1691,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;<b:eval expr='(data:post.featuredImage ? resizeImage(data:post.featuredImage, 1200, &quot;1200:630&quot;) : &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200&quot;).jsonEscaped'/>&quot;, &quot;height&quot;: <b:eval expr='data:post.featuredImage ? 630 : 348'/>, &quot;width&quot;: 1200 }, &quot;publisher&quot;: {
 &quot;@type&quot;: &quot;Organization&quot;, &quot;name&quot;: &quot;Blogger&quot;, &quot;logo&quot;: {
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60&quot;, &quot;width&quot;: 206, &quot;height&quot;: 60 } }, &quot;author&quot;: {
-&quot;@type&quot;: &quot;Person&quot;, &quot;name&quot;: &quot;<data:post.author.name.jsonEscaped/>&quot;, &quot;url&quot;: &quot;<data:post.author.profileUrl.jsonEscaped/>&quot;, &quot;image&quot;: {
-&quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https:<data:post.author.authorPhoto.image.jsonEscaped/>&quot;, &quot;height&quot;: <data:post.author.authorPhoto.height/>, &quot;width&quot;: <data:post.author.authorPhoto.width/> } } }</script>
+&quot;@type&quot;: &quot;Person&quot;, &quot;name&quot;: &quot;<data:post.author.name.jsonEscaped/>&quot;, &quot;url&quot;: &quot;<data:post.author.profileUrl.jsonEscaped/>&quot;<b:if cond='data:post.author.authorPhoto.image'>, &quot;image&quot;: {
+&quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https:<data:post.author.authorPhoto.image.jsonEscaped/>&quot;, &quot;height&quot;: <data:post.author.authorPhoto.height/>, &quot;width&quot;: <data:post.author.authorPhoto.width/> }</b:if> } }</script>
 </b:includable>
     <b:includable id='postPagination'>
     <nav id='blog_pager'>
