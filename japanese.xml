@@ -1605,7 +1605,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='postCommentsAndAd' var='post'>
   <article class='post'>
-  <b:class cond='data:view.isPost' name='hentry'/>
+  <b:class cond='data:view.isSingleItem' name='hentry'/>
   <b:attr cond='data:view.isMultipleItems' name='aria-setsize' value='-1'/>
     <!-- Post title and body -->
       <b:include data='post' name='post'/>
@@ -1693,10 +1693,10 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60&quot;, &quot;width&quot;: 206, &quot;height&quot;: 60 }}, &quot;author&quot;: {
 &quot;@type&quot;: &quot;Person&quot;, &quot;name&quot;: &quot;<data:post.author.name.jsonEscaped/>&quot;, &quot;url&quot;: &quot;<data:post.author.profileUrl.jsonEscaped/>&quot;<b:if cond='data:post.author.authorPhoto.image'>, &quot;image&quot;: {
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https:<data:post.author.authorPhoto.image.jsonEscaped/>&quot;, &quot;height&quot;: <data:post.author.authorPhoto.height/>, &quot;width&quot;: <data:post.author.authorPhoto.width/> }</b:if>}}</script>
-<b:if cond='data:post.labels.any'><script type='application/ld+json'> [<b:loop index='i' values='data:post.labels' var='label'>{
+<b:if cond='data:view.isPost'><script type='application/ld+json'> {
 &quot;@context&quot;: &quot;http://schema.org&quot;, &quot;@type&quot;: &quot;BreadcrumbList&quot;, &quot;itemListElement&quot;: [{
-&quot;@type&quot;: &quot;ListItem&quot;, &quot;position&quot;: 1, &quot;name&quot;: &quot;<data:label.name.jsonEscaped/>&quot;, &quot;item&quot;: &quot;<data:label.url.canonical/>&quot;}, {
-&quot;@type&quot;: &quot;ListItem&quot;, &quot;position&quot;: 2, &quot;name&quot;: &quot;<data:blog.pageName.jsonEscaped/>&quot; }]<b:eval expr='data:post.labels.size - data:i == 1 ? &quot;}&quot; : &quot;}, &quot;'/></b:loop>]</script></b:if>
+&quot;@type&quot;: &quot;ListItem&quot;, &quot;position&quot;: 1, &quot;name&quot;: &quot;<data:blog.title.jsonEscaped/>&quot;, &quot;item&quot;: &quot;<data:blog.homepageUrl.canonical/>&quot;}, {
+&quot;@type&quot;: &quot;ListItem&quot;, &quot;position&quot;: 2, &quot;name&quot;: &quot;<data:blog.pageName.jsonEscaped/>&quot; }]}</script></b:if>
 </b:includable>
     <b:includable id='postPagination'>
     <nav id='blog_pager'>
