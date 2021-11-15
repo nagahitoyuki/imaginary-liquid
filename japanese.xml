@@ -4,6 +4,19 @@
   <head expr:prefix='&quot;og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# &quot; + (data:view.isMultipleItems ? &quot;website: http://ogp.me/ns/website#&quot; : &quot;article: http://ogp.me/ns/article#&quot;)'>
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <b:if cond='data:view.isSingleItem and data:view.featuredImage'>
+  <b:if cond='data:view.featuredImage contains &quot;blogger.googleusercontent&quot;'>
+     <link href='//blogger.googleusercontent.com' rel='dns-prefetch'/>
+  <b:elseif cond='data:view.featuredImage contains &quot;1.bp.blogspot&quot;'/>
+     <link href='//1.bp.blogspot.com' rel='dns-prefetch'/>
+  <b:elseif cond='data:view.featuredImage contains &quot;2.bp.blogspot&quot;'/>
+     <link href='//2.bp.blogspot.com' rel='dns-prefetch'/>
+  <b:elseif cond='data:view.featuredImage contains &quot;3.bp.blogspot&quot;'/>
+     <link href='//3.bp.blogspot.com' rel='dns-prefetch'/>
+  <b:else/>
+     <link href='//4.bp.blogspot.com' rel='dns-prefetch'/>
+  </b:if>
+  </b:if>
   <link href='//www.blogger.com' rel='dns-prefetch'/>
   <b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
     <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
