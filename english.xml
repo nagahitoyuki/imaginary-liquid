@@ -4,14 +4,14 @@
   <head expr:prefix='&quot;og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# &quot; + (data:view.isMultipleItems ? &quot;website: http://ogp.me/ns/website#&quot; : &quot;article: http://ogp.me/ns/article#&quot;)'>
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <link href='//www.blogger.com' rel='dns-prefetch'/>
   <b:if cond='data:view.isSingleItem and data:view.featuredImage'>
   <b:loop values='[&quot;blogger.googleusercontent&quot;, &quot;1.bp.blogspot&quot;, &quot;2.bp.blogspot&quot;, &quot;3.bp.blogspot&quot;, &quot;4.bp.blogspot&quot;]' var='dmn'>
   <b:if cond='data:view.featuredImage contains data:dmn'>
-     <link expr:href='&quot;//&quot; + data:dmn + &quot;.com&quot;' rel='dns-prefetch'/>
+     <link expr:href='&quot;//&quot; + data:dmn + &quot;.com&quot;' rel='preconnect'/>
   </b:if>
   </b:loop>
   </b:if>
-  <link href='//www.blogger.com' rel='dns-prefetch'/>
   <b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
     <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
   </b:if>
