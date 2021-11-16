@@ -2049,7 +2049,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'> <data:label.name/><b:if cond='data:this.showFreqNumbers'><span class='label-count'><data:label.count/></span></b:if></a></li></b:loop></ul>
         </b:includable>
         </b:widget>
-        <b:widget id='ContactForm1' locked='false' title='Comtact form' type='ContactForm' visible='true'>
+        <b:widget id='ContactForm1' locked='false' title='Contact form' type='ContactForm' visible='true'>
           <b:includable id='main'>
   <b:include name='widget-title'/>
   <address><b:include name='content'/></address>
