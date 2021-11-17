@@ -2308,7 +2308,7 @@ const commentAllow = Blog1.querySelector(&quot;a.cmal&quot;), commentButton = Bl
 let commentButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(flbt); });
 if (commentAllow) commentButtonObserver.observe(commentButton);
-/* iframecomment */
+/* iframe comment */
 const iframeComment = Blog1.querySelector(&quot;iframe.blogger-iframe-colorize&quot;);
 let iframeCommentObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
