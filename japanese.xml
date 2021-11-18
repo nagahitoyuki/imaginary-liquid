@@ -612,13 +612,14 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 .Profile {margin:0 auto;box-sizing:border-box}
 .Profile .title {color:$(profile.title.color)}
 .individual {text-align:center}
-.profile-img {border-radius:50%;vertical-align:top}
+.team-members {list-style:none;padding-$startSide:0}
 .profile-link {display:flex;color:$(profile.link.color);font-weight:bold}
-.team-member .default-avatar-wrapper, .team-member .profile-img {flex:none;margin-$endSide:1em}
-.individual .profile-link {flex-direction:column}
-.team .profile-link .profile-name {align-self:center;display:block;flex:auto}
-.Profile ul {list-style:none;padding-$startSide:0}
+.profile-img {border-radius:50%;vertical-align:top}
+.i-type, .v-type {flex-direction:column}
 .profile-data, .profile-textblock {color:$(profile.text.color);margin-$startSide:0;padding-top:8px}
+.t-type {width:auto;height:44px;}
+.t-type>.profile-img {flex:none;margin-$endSide:1em}
+.t-type .profile-name {align-self:center}
 
 /* アーカイブとラベル */
 .BlogArchive>.title, .Label>.title, .BlogArchive .first-items>ul, .list-label-widget-content .remaining-items>ul li:last-child {margin-bottom:0}
@@ -859,8 +860,6 @@ body#layout #floating_menu {display:initial}]]></b:template-skin><b:elseif cond=
 <b:defaultmarkup type='Profile'>
             <b:includable id='main' var='this'>
           <div class='wrapper'>
-            <b:class cond='!data:this.team' name='solo'/>
-            <b:comment>No title for single profiles. Default to &#39;Blog authors&#39; for team.</b:comment>
             <b:with value='data:messages.blogAuthors' var='defaultTitle'>
               <b:include name='widget-title'/>
             </b:with>
@@ -868,7 +867,7 @@ body#layout #floating_menu {display:initial}]]></b:template-skin><b:elseif cond=
           </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width' expr:loading='data:blog.isMobileRequest ? &quot;lazy&quot; : &quot;eager&quot;'/>
+  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:team ? 44 : data:authorPhoto.height' expr:loading='data:blog.isMobileRequest ? &quot;lazy&quot; : &quot;eager&quot;' expr:src='data:authorPhoto.image' expr:width='data:team ? 44 : data:authorPhoto.width'/>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
@@ -882,7 +881,7 @@ body#layout #floating_menu {display:initial}]]></b:template-skin><b:elseif cond=
   </b:if>
 </b:includable>
             <b:includable id='defaultProfileImage'>
-  <div class='default-avatar'/>
+  <b:comment>Don&#39;t show avatar icon.</b:comment>
 </b:includable>
             <b:includable id='profileImage'>
   <b:if cond='data:authorPhoto.image'>
@@ -892,18 +891,16 @@ body#layout #floating_menu {display:initial}]]></b:template-skin><b:elseif cond=
   </b:if>
 </b:includable>
             <b:includable id='teamProfile'>
-  <ul>
+  <ul class='team-members'>
     <b:loop values='data:authors' var='author'>
       <li>
-        <div class='team-member'>
           <b:include data='author' name='teamProfileLink'/>
-        </div>
       </li>
     </b:loop>
   </ul>
 </b:includable>
             <b:includable id='teamProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='external'>
+  <a class='profile-link t-type' expr:href='data:userUrl' rel='nofollow'>
     <b:include name='profileImage'/>
     <span class='profile-name'><data:display-name/></span>
   </a>
@@ -924,7 +921,7 @@ body#layout #floating_menu {display:initial}]]></b:template-skin><b:elseif cond=
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
-  <a expr:href='data:userUrl' rel='me external nofollow'>
+  <a expr:href='data:userUrl' rel='me nofollow'>
     <b:include name='profileImage'/>
   </a>
 </b:includable>
@@ -939,7 +936,7 @@ body#layout #floating_menu {display:initial}]]></b:template-skin><b:elseif cond=
     <b:include name='viewProfileLink'/>
 </b:includable>
             <b:includable id='userProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='me external nofollow'>
+  <a class='profile-link i-type' expr:href='data:userUrl' rel='me nofollow'>
     <data:displayname/>
   </a>
 </b:includable>
@@ -949,7 +946,7 @@ body#layout #floating_menu {display:initial}]]></b:template-skin><b:elseif cond=
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='me external nofollow'>
+  <a class='profile-link v-type' expr:href='data:userUrl' rel='me nofollow'>
     <data:messages.viewMyCompleteProfile/>
   </a>
 </b:includable>
@@ -1895,8 +1892,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
             </b:widget-settings>
             <b:includable id='main' var='this'>
           <div class='wrapper'>
-            <b:class cond='!data:this.team' name='solo'/>
-            <b:comment>No title for single profiles. Default to &#39;Blog authors&#39; for team.</b:comment>
             <b:with value='data:messages.blogAuthors' var='defaultTitle'>
               <b:include name='widget-title'/>
             </b:with>
@@ -1904,7 +1899,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width' expr:loading='data:blog.isMobileRequest ? &quot;lazy&quot; : &quot;eager&quot;'/>
+  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:team ? 44 : data:authorPhoto.height' expr:loading='data:blog.isMobileRequest ? &quot;lazy&quot; : &quot;eager&quot;' expr:src='data:authorPhoto.image' expr:width='data:team ? 44 : data:authorPhoto.width'/>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
@@ -1918,7 +1913,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:if>
 </b:includable>
             <b:includable id='defaultProfileImage'>
-  <div class='default-avatar'/>
+  <b:comment>Don&#39;t show avatar icon.</b:comment>
 </b:includable>
             <b:includable id='profileImage'>
   <b:if cond='data:authorPhoto.image'>
@@ -1928,18 +1923,16 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:if>
 </b:includable>
             <b:includable id='teamProfile'>
-  <ul>
+  <ul class='team-members'>
     <b:loop values='data:authors' var='author'>
       <li>
-        <div class='team-member'>
           <b:include data='author' name='teamProfileLink'/>
-        </div>
       </li>
     </b:loop>
   </ul>
 </b:includable>
             <b:includable id='teamProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='external'>
+  <a class='profile-link t-type' expr:href='data:userUrl' rel='nofollow'>
     <b:include name='profileImage'/>
     <span class='profile-name'><data:display-name/></span>
   </a>
@@ -1960,7 +1953,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
-  <a expr:href='data:userUrl' rel='me external nofollow'>
+  <a expr:href='data:userUrl' rel='me nofollow'>
     <b:include name='profileImage'/>
   </a>
 </b:includable>
@@ -1975,7 +1968,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:include name='viewProfileLink'/>
 </b:includable>
             <b:includable id='userProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='me external nofollow'>
+  <a class='profile-link i-type' expr:href='data:userUrl' rel='me nofollow'>
     <data:displayname/>
   </a>
 </b:includable>
@@ -1985,7 +1978,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='me external nofollow'>
+  <a class='profile-link v-type' expr:href='data:userUrl' rel='me nofollow'>
     <data:messages.viewMyCompleteProfile/>
   </a>
 </b:includable>
