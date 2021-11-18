@@ -870,7 +870,7 @@ body#layout #floating_menu {display:initial}]]></b:template-skin><b:elseif cond=
   </ul>
 </b:includable>
             <b:includable id='teamProfileLink'>
-  <a class='profile-link t-type' expr:href='data:userUrl' rel='nofollow'>
+  <a class='profile-link t-type' expr:href='data:userUrl' rel='me nofollow'>
     <b:include name='profileImage'/>
     <span class='profile-name'><data:display-name/></span>
   </a>
@@ -1309,7 +1309,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='aboutPostAuthor'>
   <div class='author-name'>
-    <a class='pft-profile' expr:href='data:post.author.profileUrl' rel='me external' title='author profile'>
+    <a class='pft-profile' expr:href='data:post.author.profileUrl' rel='me' title='author profile'>
       <span><data:post.author.name/></span>
     </a>
   </div>
@@ -1898,7 +1898,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </ul>
 </b:includable>
             <b:includable id='teamProfileLink'>
-  <a class='profile-link t-type' expr:href='data:userUrl' rel='nofollow'>
+  <a class='profile-link t-type' expr:href='data:userUrl' rel='me nofollow'>
     <b:include name='profileImage'/>
     <span class='profile-name'><data:display-name/></span>
   </a>
@@ -2104,7 +2104,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
             <b:section class='footer' id='attribution' name='Footer' showaddelement='false' tag='footer'>
               <b:widget id='Text1' locked='true' title='' type='Text' visible='true'>
                 <b:widget-settings>
-                  <b:widget-setting name='content'><![CDATA[with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='external nofollow'>Imaginary theme</a>]]></b:widget-setting>
+                  <b:widget-setting name='content'><![CDATA[with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow'>Imaginary theme</a>]]></b:widget-setting>
                 </b:widget-settings>
                 <b:includable id='main'>
   <b:include name='widget-title'/>
