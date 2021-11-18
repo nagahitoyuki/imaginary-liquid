@@ -480,9 +480,9 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 /* 記事のヘッダー／フッター */
 .post-header-line-1 {display:flex;column-gap:4px;color:$(posts.byline.color)}
 .pa-label {vertical-align:top}
-.fn>a {display:inline-flex;align-items:center;column-gap:4px}
+.fn {display:inline-flex;align-items:center;column-gap:4px}
 .photo {border-radius:50%}
-.byline, .fn>.uid, .post-timestamp>a, .post-updatedtime, .pft-profile>span {color:$(posts.byline.color)}
+.byline, .fn, .post-timestamp>a, .post-updatedtime, .pft-profile>span {color:$(posts.byline.color)}
 .post-footer {display:flex;color:$(posts.byline.color)}
 .post-footer a {color:$(posts.link.color)}
 .hentry .post-footer {flex-direction:column}
@@ -492,6 +492,7 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
 .author-profile {margin-bottom:16px}
+.author-image {border-radius:50%}
 .author-desc {color:$(profile.text.color)}
 
 /* 記事の本文とスニペット */
@@ -1328,7 +1329,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;<b:eval expr='(data:posts.first.featuredImage ? resizeImage(data:posts.first.featuredImage, 1200, &quot;1200:630&quot;) : &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200&quot;).jsonEscaped'/>&quot;, &quot;height&quot;: <b:eval expr='data:posts.first.featuredImage ? 630 : 348'/>, &quot;width&quot;: 1200 }, &quot;publisher&quot;: {
 &quot;@type&quot;: &quot;Organization&quot;, &quot;name&quot;: &quot;Blogger&quot;, &quot;logo&quot;: {
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60&quot;, &quot;width&quot;: 206, &quot;height&quot;: 60 }}<b:if cond='data:posts.first.author.profileUrl'>, &quot;author&quot;: {
-&quot;@type&quot;: &quot;Person&quot;, &quot;name&quot;: &quot;<data:posts.first.author.name.jsonEscaped/>&quot;, &quot;url&quot;: &quot;<data:posts.first.author.profileUrl.jsonEscaped/>&quot;<b:if cond='data:posts.first.author.authorPhoto.image'>, &quot;image&quot;: {
+&quot;@type&quot;: &quot;Person&quot;, &quot;name&quot;: &quot;<data:posts.first.author.name.jsonEscaped/>&quot;, &quot;url&quot;: &quot;<data:posts.first.author.profileUrl.jsonEscaped/>&quot;<b:if cond='data:posts.first.author.authorPhoto'>, &quot;image&quot;: {
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https:<data:posts.first.author.authorPhoto.image.jsonEscaped/>&quot;, &quot;height&quot;: <data:posts.first.author.authorPhoto.height/>, &quot;width&quot;: <data:posts.first.author.authorPhoto.width/> }</b:if>}</b:if>}</script></b:if>
   <b:include name='postPagination'/>
   </b:with>
@@ -1569,16 +1570,12 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     </b:if>
 </b:includable>
     <b:includable id='postAuthor'>
-  <span class='byline author vcard'><span class='pa-label'><data:byline.label/></span>
-  <span class='fn'>
+  <span class='byline author vcard'><b:if cond='data:byline.label'><span class='pa-label'><data:byline.label/></span></b:if>
   <b:if cond='data:post.author.profileUrl'>
-    <a class='url uid' expr:href='data:post.author.profileUrl' rel='me external' title='author profile'>
-      <img class='photo' decoding='async' expr:alt='data:messages.myPhoto' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24' width='24'/><span><data:post.author.name/></span>
-    </a>
+    <a class='url uid fn' expr:href='data:post.author.profileUrl' rel='me' title='author profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24' width='24'/><span><data:post.author.name/></span></a>
   <b:else/>
-    <span><data:post.author.name/></span>
+    <span class='fn'><data:post.author.name/></span>
   </b:if>
-  </span>
   </span>
 </b:includable>
     <b:includable id='postBody' var='post'>
@@ -1662,8 +1659,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='postFooterAuthorProfile' var='post'>
   <b:if cond='data:post.author.aboutMe and data:view.isPost'>
     <div class='author-profile'>
-      <b:if cond='data:post.author.authorPhoto.url'>
-        <img class='author-image' expr:src='data:post.author.authorPhoto.url' height='50' width='50'/>
+      <b:if cond='data:post.author.authorPhoto'>
+        <img class='author-image' expr:alt='data:post.author.authorPhoto.alt' expr:src='data:post.author.authorPhoto.image' height='50' width='50'/>
         <div class='author-about'>
           <b:include data='post' name='aboutPostAuthor'/>
         </div>
@@ -1701,7 +1698,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;<b:eval expr='(data:post.featuredImage ? resizeImage(data:post.featuredImage, 1200, &quot;1200:630&quot;) : &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200&quot;).jsonEscaped'/>&quot;, &quot;height&quot;: <b:eval expr='data:post.featuredImage ? 630 : 348'/>, &quot;width&quot;: 1200 }, &quot;publisher&quot;: {
 &quot;@type&quot;: &quot;Organization&quot;, &quot;name&quot;: &quot;Blogger&quot;, &quot;logo&quot;: {
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60&quot;, &quot;width&quot;: 206, &quot;height&quot;: 60 }}<b:if cond='data:post.author.profileUrl'>, &quot;author&quot;: {
-&quot;@type&quot;: &quot;Person&quot;, &quot;name&quot;: &quot;<data:post.author.name.jsonEscaped/>&quot;, &quot;url&quot;: &quot;<data:post.author.profileUrl.jsonEscaped/>&quot;<b:if cond='data:post.author.authorPhoto.image'>, &quot;image&quot;: {
+&quot;@type&quot;: &quot;Person&quot;, &quot;name&quot;: &quot;<data:post.author.name.jsonEscaped/>&quot;, &quot;url&quot;: &quot;<data:post.author.profileUrl.jsonEscaped/>&quot;<b:if cond='data:post.author.authorPhoto'>, &quot;image&quot;: {
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https:<data:post.author.authorPhoto.image.jsonEscaped/>&quot;, &quot;height&quot;: <data:post.author.authorPhoto.height/>, &quot;width&quot;: <data:post.author.authorPhoto.width/> }</b:if>}</b:if>}</script>
 <b:if cond='data:view.isPost'><script type='application/ld+json'>{
 &quot;@context&quot;: &quot;http://schema.org&quot;, &quot;@type&quot;: &quot;BreadcrumbList&quot;, &quot;itemListElement&quot;: [{
