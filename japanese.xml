@@ -491,8 +491,8 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .pf-last>.url {color:$(posts.byline.color)}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
-.author-profile {margin-bottom:16px}
-.author-image {border-radius:50%}
+.author-profile {display:flex;column-gap:var(--maincolumn-padding);margin-bottom:16px}
+.author-image {flex-shrink:0;width:50px;height:50px;border-radius:50%}
 .author-desc {color:$(profile.text.color)}
 
 /* 記事の本文とスニペット */
@@ -807,11 +807,9 @@ body#layout #floating_menu {display:initial}]]></b:template-skin><b:elseif cond=
     </p>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
-  <span class='jump-link'>
-    <a expr:href='data:post.hasJumpLink ? data:post.url fragment &quot;more&quot; : data:post.url' expr:title='data:post.title'>
+    <a class='jump-link' expr:href='data:post.hasJumpLink ? data:post.url fragment &quot;more&quot; : data:post.url' expr:title='data:post.title'>
       <data:blog.jumpLinkMessage/>
     </a>
-   </span>
  </b:includable>
     <b:includable id='snippetedPostContent'>
   <b:include name='snippetedPostTitle'/>
@@ -825,13 +823,9 @@ body#layout #floating_menu {display:initial}]]></b:template-skin><b:elseif cond=
   </a>
   <b:if cond='data:widget.sectionId == &quot;sub_main&quot;'>
   <footer class='post-footer'>
-    <span class='byline archive-link'>
-    <b:if cond='data:post.url and data:post.date.month lt 10'>
-      <a expr:href='data:view.url path (data:post.date.year + &quot;/0&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
-    <b:else/>
-      <a expr:href='data:view.url path (data:post.date.year + &quot;/&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
+    <b:if cond='data:post.url'>
+      <a class='byline archive-link' expr:href='&quot;/&quot; + data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
     </b:if>
-    </span>
     <b:include data='post' name='postFooterJumpLink'/>
   </footer>
   </b:if>
@@ -1644,13 +1638,9 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:elseif cond='data:view.isPage'/>
       <div class='pf-last'>題名:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url uid' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a></div>
       <b:else/>
-        <span class='byline archive-link'>
-        <b:if cond='data:post.url and data:post.date.month lt 10'>
-          <a expr:href='data:view.url path (data:post.date.year + &quot;/0&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
-        <b:else/>
-          <a expr:href='data:view.url path (data:post.date.year + &quot;/&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
+        <b:if cond='data:post.url'>
+          <a class='byline archive-link' expr:href='&quot;/&quot; + data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
         </b:if>
-      </span>
       <b:include data='post' name='postFooterJumpLink'/>
     </b:if>
       <b:include cond='data:widget.type == &quot;Blog&quot;' data='post' name='postFooterAuthorProfile'/>
@@ -1671,11 +1661,9 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:if>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
-  <span class='jump-link'>
-    <a expr:href='data:post.hasJumpLink ? data:post.url fragment &quot;more&quot; : data:post.url' expr:title='data:post.title'>
+    <a class='jump-link' expr:href='data:post.hasJumpLink ? data:post.url fragment &quot;more&quot; : data:post.url' expr:title='data:post.title'>
       <data:blog.jumpLinkMessage/>
     </a>
-   </span>
  </b:includable>
     <b:includable id='postHeader' var='post'>
   <b:include data='post' name='headerByline'/>
@@ -1716,10 +1704,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='postTimestamp'>
   <span class='byline post-timestamp'><data:byline.label/>
-  <b:if cond='data:post.url and data:post.date.month lt 10'>
-    <a class='timestamp-link published' expr:href='data:view.url path (data:post.date.year + &quot;/0&quot; + data:post.date.month + &quot;/&quot;)' rel='archives'><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></a>
-  <b:else/>
-    <a class='timestamp-link published' expr:href='data:view.url path (data:post.date.year + &quot;/&quot; + data:post.date.month + &quot;/&quot;)' rel='archives'><time class='published' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></a>
+  <b:if cond='data:post.url'>
+    <a class='timestamp-link published' expr:href='&quot;/&quot; + data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;' rel='archives'><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></a>
   </b:if>
   </span>
 </b:includable>
@@ -1796,11 +1782,9 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </aside>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
-  <span class='jump-link'>
-    <a expr:href='data:post.hasJumpLink ? data:post.url fragment &quot;more&quot; : data:post.url' expr:title='data:post.title'>
+    <a class='jump-link' expr:href='data:post.hasJumpLink ? data:post.url fragment &quot;more&quot; : data:post.url' expr:title='data:post.title'>
       <data:blog.jumpLinkMessage/>
     </a>
-   </span>
  </b:includable>
     <b:includable id='postSnippet'>
     <p class='snippet-item'>
@@ -1818,13 +1802,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     </b:if>
   </a>
   <footer class='post-footer'>
-    <span class='byline archive-link'>
-    <b:if cond='data:post.url and data:post.date.month lt 10'>
-      <a expr:href='data:view.url path (data:post.date.year + &quot;/0&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
-    <b:else/>
-      <a expr:href='data:view.url path (data:post.date.year + &quot;/&quot; + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
-    </b:if>
-    </span>
+      <a class='byline archive-link' expr:href='&quot;/&quot; + data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
     <b:include data='post' name='postFooterJumpLink'/>
   </footer>
 </b:includable>
