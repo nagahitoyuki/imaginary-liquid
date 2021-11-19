@@ -951,11 +951,9 @@ body#layout #floating_menu {display:initial}]]></b:template-skin><b:elseif cond=
               <b:include name='super.main'/>
         </b:includable>
           <b:includable id='content'>
-  <div class='widget-content'>
-    <div id='ArchiveList'>
-        <b:include cond='data:this.style == &quot;HIERARCHY&quot;' name='hierarchy'/>
-        <b:include cond='data:this.style in {&quot;FLAT&quot;, &quot;MENU&quot;}' name='flat'/>
-    </div>
+  <div class='widget-content' id='ArchiveList'>
+      <b:include cond='data:this.style == &quot;HIERARCHY&quot;' name='hierarchy'/>
+      <b:include cond='data:this.style in {&quot;FLAT&quot;, &quot;MENU&quot;}' name='flat'/>
   </div>
 </b:includable>
           <b:includable id='flat'>
@@ -1977,11 +1975,9 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
               <b:include name='super.main'/>
         </b:includable>
           <b:includable id='content'>
-  <div class='widget-content'>
-    <div id='ArchiveList'>
-        <b:include cond='data:this.style == &quot;HIERARCHY&quot;' name='hierarchy'/>
-        <b:include cond='data:this.style in {&quot;FLAT&quot;, &quot;MENU&quot;}' name='flat'/>
-    </div>
+  <div class='widget-content' id='ArchiveList'>
+      <b:include cond='data:this.style == &quot;HIERARCHY&quot;' name='hierarchy'/>
+      <b:include cond='data:this.style in {&quot;FLAT&quot;, &quot;MENU&quot;}' name='flat'/>
   </div>
 </b:includable>
           <b:includable id='flat'>
