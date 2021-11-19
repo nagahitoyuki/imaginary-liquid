@@ -482,7 +482,7 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .pa-label {vertical-align:top}
 .fn {display:inline-flex;align-items:center;column-gap:4px}
 .photo {border-radius:50%}
-.byline, .fn, .post-timestamp>a, .post-updatedtime, .pft-profile>span {color:$(posts.byline.color)}
+.byline, .fn>span, .post-timestamp>a, .post-updatedtime, .pft-profile>span {color:$(posts.byline.color)}
 .post-footer {display:flex;color:$(posts.byline.color)}
 .post-footer a {color:$(posts.link.color)}
 .hentry .post-footer {flex-direction:column}
@@ -1533,7 +1533,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='postAuthor'>
   <span class='byline author vcard'><b:if cond='data:byline.label'><span class='pa-label'><data:byline.label/></span></b:if>
   <b:if cond='data:post.author.profileUrl'>
-    <a class='url uid fn' expr:href='data:post.author.profileUrl' rel='me' title='author profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24' width='24'/><data:post.author.name/></a>
+    <a class='url uid fn' expr:href='data:post.author.profileUrl' rel='me' title='author profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24' width='24'/><span><data:post.author.name/></span></a>
   <b:else/>
     <span class='fn'><data:post.author.name/></span>
   </b:if>
