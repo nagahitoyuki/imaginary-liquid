@@ -6,17 +6,7 @@
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
   <link href='//www.blogger.com' rel='dns-prefetch'/>
   <b:if cond='data:view.isSingleItem and data:view.featuredImage'>
-  <b:if cond='data:view.featuredImage contains &quot;blogger.googleusercontent.com&quot;'>
-     <link href='//blogger.googleusercontent.com' rel='preconnect'/>
-  <b:elseif cond='data:view.featuredImage contains &quot;1.bp.blogspot.com&quot;'/>
-     <link href='//1.bp.blogspot.com' rel='preconnect'/>
-  <b:elseif cond='data:view.featuredImage contains &quot;2.bp.blogspot.com&quot;'/>
-     <link href='//2.bp.blogspot.com' rel='preconnect'/>
-  <b:elseif cond='data:view.featuredImage contains &quot;3.bp.blogspot.com&quot;'/>
-     <link href='//3.bp.blogspot.com' rel='preconnect'/>
-  <b:elseif cond='data:view.featuredImage contains &quot;4.bp.blogspot.com&quot;'/>
-     <link href='//4.bp.blogspot.com' rel='preconnect'/>
-  </b:if>
+     <link expr:href='&quot;//&quot; + (data:view.featuredImage contains &quot;blogger.googleusercontent.com&quot; ? &quot;//blogger.googleusercontent.com&quot; : data:view.featuredImage contains &quot;1.bp.blogspot.com&quot; ? &quot;1.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;2.bp.blogspot.com&quot; ? &quot;2.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;3.bp.blogspot.com&quot; ? &quot;3.bp.blogspot.com&quot; : &quot;4.bp.blogspot.com&quot;)' rel='preconnect'/>
   </b:if>
   <b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
     <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
@@ -468,14 +458,14 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .FeaturedPost .post>a, .FeaturedPost .post>a:hover, .FeaturedPost .post>a:visited {color:#fff}
 .FeaturedPost .post>a, .FeaturedPost .snippet-thumbnail {width:100%;height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;align-items:center;text-align:center}
 .no-image {background-color:#a9a9a9}
-.FeaturedPost .post-title {font:$(posts.stream.title.font);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
+.fp-title {font:$(posts.stream.title.font);line-height:calc(var(--body-lineheight) - .2);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
 
 /* Post title */
-.blog-posts .post-title {margin-top:0;margin-bottom:20px}
-.blog-posts h1.post-title, .blog-posts h2.post-title>a, .blog-posts h2.post-title>a:hover, .blog-posts h2.post-title>a:visited {color:$(posts.title.color)}
-.blog-posts h1.post-title {font:$(posts.title.font)}
-.blog-posts h2.post-title {font:$(posts.stream.title.font);color:$(posts.title.color)}
+.entry-title, .snippet-title {line-height:calc(var(--body-lineheight) - .2);margin-top:0;margin-bottom:20px}
+.entry-title, .snippet-title>a, .snippet-title>a:hover, .snippet-title>a:visited {color:$(posts.title.color)}
+.entry-title {font:$(posts.title.font)}
+.snippet-title {font:$(posts.stream.title.font);color:$(posts.title.color)}
 
 /* Post header / footer */
 .post-header-line-1 {display:flex;column-gap:4px;color:$(posts.byline.color)}
@@ -503,7 +493,7 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .total-snippet .snippet-thumbnail {float:$startSide;width:max(30%, 8em  - var(--maincolumn-padding));height:auto;margin-$endSide:var(--maincolumn-padding)}
 .ytpic {background-color:#000}
 .summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0}
-.post-body h1 {font-size:26px;line-height:calc(var(--body-lineheight) - .15)}
+.post-body h1 {font-size:26px;line-height:calc(var(--body-lineheight) - .2)}
 .post-body h2 {font-size:24px;line-height:calc(var(--body-lineheight) - .15)}
 .post-body h3 {font-size:21px;line-height:calc(var(--body-lineheight) - .1)}
 .post-body h4 {font-size:16px}
@@ -572,9 +562,8 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 /* Popular posts */
 .PopularPosts {background-color:$(popularposts.background.color)}
 .PopularPosts, .PopularPosts>.feed-title a, .PopularPosts>.title a {color:$(posts.text.color)}
-.PopularPosts .post-title>a {font:$(popularposts.title.font)}
-.PopularPosts .post-title>a, .PopularPosts .post-title>a:hover, .PopularPosts .post-title>a:visited {color:$(popularposts.title.color)}
-.PopularPosts .post-title {margin-top:20px;margin-bottom:16px}
+.pp-title {font:$(popularposts.title.font);line-height:calc(var(--body-lineheight) - .15);margin-top:20px;margin-bottom:16px}
+.pp-title>a, .pp-title>a:hover, .pp-title>a:visited {color:$(popularposts.title.color)}
 .PopularPosts .post-footer a, .PopularPosts .post-footer a:hover, .PopularPosts .post-footer a:visited {color:$(popularposts.link.color)}
 .snippet-item {color:$(popularposts.text.color);margin:0}
 .item-content {display:flex;column-gap:var(--maincolumn-padding)}
@@ -704,10 +693,6 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 /* More than the width of the blog content */
 @media screen and (min-width:$(content.width)) {
 
-/* Post title */
-.blog-posts h1.post-title, .blog-posts h2.post-title, .FeaturedPost .post-title {line-height:calc(var(--body-lineheight) - .1)}
-.PopularPosts .post-title {line-height:calc(var(--body-lineheight) - .05)}
-
 /* AdSense ads */
 .desktop-ad>.inline-ad {display:block;width:100%;max-width:100%}
 .desktop-ad>.inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
@@ -719,10 +704,6 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 /* Page body */
 .post {max-width:100vw}
 .feed-view .post+aside {align-self:stretch;display:grid}
-
-/* Post title */
-.blog-posts h1.post-title, .blog-posts h2.post-title, .FeaturedPost .post-title {line-height:calc(var(--body-lineheight) - .2)}
-.PopularPosts .post-title {line-height:calc(var(--body-lineheight) - .15)}
 
 /* Posted image */
 .item-view .post-body a[imageanchor="1"][style*="float: left;"], .item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none !important;clear:none!important}
@@ -809,7 +790,7 @@ body#layout #floating_menu {display:initial}]]></b:template-skin><b:elseif cond=
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <b:tag expr:name='data:title ? &quot;h4&quot; : &quot;h3&quot;' class='post-title'>
+  <b:tag expr:name='data:title ? &quot;h4&quot; : &quot;h3&quot;' class='pp-title'>
     <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
   </b:tag>
 </b:includable>
@@ -1218,7 +1199,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <b:with value='data:post.featuredImage' var='imgurl'>
-    <b:tag class='snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl contains &quot;googleusercontent.com&quot; ? (data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl) : data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage((data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl), 480, &quot;3:2&quot;) + &quot;-rw-e60 480w, &quot; + resizeImage(data:imgurl, 768, &quot;3:2&quot;) + &quot;-rw-e60 768w, &quot; + resizeImage(data:imgurl, 1024, &quot;3:2&quot;) + &quot;-rw-e60 1024w&quot; : sourceSet(data:imgurl, [480,768,1024], &quot;3:2&quot;)' height='320' name='img' sizes='(max-width:960px) 100vw, 1024px' width='480'>
+    <b:tag class='snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl contains &quot;googleusercontent.com&quot; ? data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl : data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage((data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl), 480, &quot;3:2&quot;) + &quot;-rw-e60 480w, &quot; + resizeImage(data:imgurl, 768, &quot;3:2&quot;) + &quot;-rw-e60 768w, &quot; + resizeImage(data:imgurl, 1024, &quot;3:2&quot;) + &quot;-rw-e60 1024w&quot; : sourceSet(data:imgurl, [480,768,1024], &quot;3:2&quot;)' height='320' name='img' sizes='(max-width:960px) 100vw, 1024px' width='480'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
     <b:attr name='data-src' value='data:imgurl'/>
@@ -1229,7 +1210,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <h2 class='post-title'>
+  <h2 class='fp-title'>
     <data:post.title/>
   </h2>
 </b:includable>
@@ -1548,7 +1529,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <a class='total-snippet' expr:href='data:post.url'>
   <b:if cond='data:post.featuredImage'>
   <b:with value='data:post.featuredImage' var='imgurl'>
-    <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl contains &quot;googleusercontent.com&quot; ? (data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl) : data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage((data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl), 240, &quot;1:1&quot;) + &quot;-rw-e60 240w, &quot; + resizeImage(data:imgurl, 359, &quot;1:1&quot;) + &quot;-rw-e60 359w, &quot; + resizeImage(data:imgurl, 512, &quot;1:1&quot;) + &quot;-rw-e60 512w&quot; : sourceSet(data:imgurl, [240, 359, 512], &quot;1:1&quot;)' height='240' name='img' sizes='(max-width:960px) 30vw, 512px' width='240'>
+    <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl contains &quot;googleusercontent.com&quot; ? data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl : data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage((data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl), 240, &quot;1:1&quot;) + &quot;-rw-e60 240w, &quot; + resizeImage(data:imgurl, 359, &quot;1:1&quot;) + &quot;-rw-e60 359w, &quot; + resizeImage(data:imgurl, 512, &quot;1:1&quot;) + &quot;-rw-e60 512w&quot; : sourceSet(data:imgurl, [240, 359, 512], &quot;1:1&quot;)' height='240' name='img' sizes='(max-width:960px) 30vw, 512px' width='240'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
     <b:attr name='data-src' expr:value='data:imgurl'/>
@@ -1682,11 +1663,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='postTitle' var='post'>
   <b:if cond='data:post.title != &quot;&quot;'>
      <b:if cond='data:post.link or (data:post.url and data:view.url != data:post.url)'>
-       <h2 class='post-title'>
+       <h2 class='snippet-title'>
         <a expr:href='data:post.link ?: data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
        </h2>
       <b:else/>
-       <h1 class='post-title entry-title'>
+       <h1 class='entry-title'>
          <data:post.title/>
        </h1>
      </b:if>
@@ -1786,7 +1767,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <b:tag expr:name='data:title ? &quot;h3&quot; : &quot;h2&quot;' class='post-title'>
+  <b:tag expr:name='data:title ? &quot;h3&quot; : &quot;h2&quot;' class='pp-title'>
     <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
   </b:tag>
 </b:includable>
