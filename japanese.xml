@@ -6,17 +6,7 @@
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
   <link href='//www.blogger.com' rel='dns-prefetch'/>
   <b:if cond='data:view.isSingleItem and data:view.featuredImage'>
-  <b:if cond='data:view.featuredImage contains &quot;blogger.googleusercontent.com&quot;'>
-     <link href='//blogger.googleusercontent.com' rel='preconnect'/>
-  <b:elseif cond='data:view.featuredImage contains &quot;1.bp.blogspot.com&quot;'/>
-     <link href='//1.bp.blogspot.com' rel='preconnect'/>
-  <b:elseif cond='data:view.featuredImage contains &quot;2.bp.blogspot.com&quot;'/>
-     <link href='//2.bp.blogspot.com' rel='preconnect'/>
-  <b:elseif cond='data:view.featuredImage contains &quot;3.bp.blogspot.com&quot;'/>
-     <link href='//3.bp.blogspot.com' rel='preconnect'/>
-  <b:elseif cond='data:view.featuredImage contains &quot;4.bp.blogspot.com&quot;'/>
-     <link href='//4.bp.blogspot.com' rel='preconnect'/>
-  </b:if>
+     <link expr:href='&quot;//&quot; + (data:view.featuredImage contains &quot;blogger.googleusercontent.com&quot; ? &quot;//blogger.googleusercontent.com&quot; : data:view.featuredImage contains &quot;1.bp.blogspot.com&quot; ? &quot;1.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;2.bp.blogspot.com&quot; ? &quot;2.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;3.bp.blogspot.com&quot; ? &quot;3.bp.blogspot.com&quot; : &quot;4.bp.blogspot.com&quot;)' rel='preconnect'/>
   </b:if>
   <b:if cond='data:widgets.AdSense.first or data:blog.adsenseClientId'>
     <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
@@ -468,14 +458,14 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .FeaturedPost .post>a, .FeaturedPost .post>a:hover, .FeaturedPost .post>a:visited {color:#fff}
 .FeaturedPost .post>a, .FeaturedPost .snippet-thumbnail {width:100%;height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;align-items:center;text-align:center}
 .no-image {background-color:#a9a9a9}
-.FeaturedPost .post-title {font:$(posts.stream.title.font);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
+.fp-title {font:$(posts.stream.title.font);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
 
 /* 記事の題名 */
-.blog-posts .post-title {margin-top:0;margin-bottom:20px}
-.blog-posts h1.post-title, .blog-posts h2.post-title>a, .blog-posts h2.post-title>a:hover, .blog-posts h2.post-title>a:visited {color:$(posts.title.color)}
-.blog-posts h1.post-title {font:$(posts.title.font)}
-.blog-posts h2.post-title {font:$(posts.stream.title.font);color:$(posts.title.color)}
+.entry-title, .snippet-title {margin-top:0;margin-bottom:20px}
+.entry-title, .snippet-title>a, .snippet-title>a:hover, .snippet-title>a:visited {color:$(posts.title.color)}
+.entry-title {font:$(posts.title.font)}
+.snippet-title {font:$(posts.stream.title.font);color:$(posts.title.color)}
 
 /* 記事のヘッダー／フッター */
 .post-header-line-1 {display:flex;column-gap:4px;color:$(posts.byline.color)}
@@ -566,9 +556,8 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 /* 人気の投稿 */
 .PopularPosts {background-color:$(popularposts.background.color)}
 .PopularPosts, .PopularPosts>.feed-title a, .PopularPosts>.title a {color:$(posts.text.color)}
-.PopularPosts .post-title>a {font:$(popularposts.title.font)}
-.PopularPosts .post-title>a, .PopularPosts .post-title>a:hover, .PopularPosts .post-title>a:visited {color:$(popularposts.title.color)}
-.PopularPosts .post-title {margin-top:20px;margin-bottom:20px}
+.pp-title {font:$(popularposts.title.font);margin-top:20px;margin-bottom:20px}
+.pp-title>a, .pp-title>a:hover, .pp-title>a:visited {color:$(popularposts.title.color)}
 .PopularPosts .post-footer a, .PopularPosts .post-footer a:hover, .PopularPosts .post-footer a:visited {color:$(popularposts.link.color)}
 .snippet-item {color:$(popularposts.text.color);margin:0}
 .item-content {display:flex;column-gap:var(--maincolumn-padding)}
@@ -699,9 +688,8 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 @media screen and (min-width:$(content.width)) {
 
 /* 記事の題名 */
-.blog-posts h1.post-title {line-height:calc(var(--body-lineheight) - .2)}
-.blog-posts h2.post-title, .FeaturedPost .post-title {line-height:calc(var(--body-lineheight) - .2)}
-.PopularPosts .post-title {line-height:var(--body-lineheight)}
+.entry-title, .snippet-title, .fp-title {line-height:calc(var(--body-lineheight) - .2)}
+.pp-title {line-height:calc(var(--body-lineheight) - .1)}
 
 /* 記事の本文 */
 .post-body h1 {font-size:26.5px;line-height:calc(var(--body-lineheight) - .1)}
@@ -742,32 +730,35 @@ margin-top:20px}
 @media screen and (max-width:$(content.width - 1px)) and (min-width:481px) {
 
 /* 文字サイズと行間 */
+.entry-title, .snippet-title, .fp-title, .post-body h1 {line-height:calc(var(--body-lineheight) - .2)}
+.post-body h2, .pp-title {line-height:calc(var(--body-lineheight) - .1)}
 #blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 18)}
 body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 36)}
-.blog-posts h1.post-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22);line-height:calc(var(--body-lineheight) - .2)}
-.blog-posts h2.post-title, .FeaturedPost .post-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22);line-height:calc(var(--body-lineheight) - .2)}
-.post-body h1 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22);line-height:calc(var(--body-lineheight) - .2)}
-.post-body h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 26);line-height:calc(var(--body-lineheight) - .05)}
+.entry-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
+.snippet-title, .fp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
+.post-body h1 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
+.post-body h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 25)}
 .post-body h3 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30)}
 .post-body h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 44)}
 .post-body h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 55)}
-.PopularPosts .post-title>a {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30)}
+.pp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30)}
 }
 
 /* スマホ以下 */
 @media screen and (max-width:480px) {
 
 /* 文字サイズと行間 */
+.entry-title, .snippet-title, .fp-title, .post-body h1, .post-body h2{line-height:calc(var(--body-lineheight) - .1)}
 #blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 12.5)}
 body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
-.blog-posts h1.post-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15);line-height:calc(var(--body-lineheight) - .1)}
-.blog-posts h2.post-title, .FeaturedPost .post-title  {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15);line-height:calc(var(--body-lineheight) - .1)}
-.post-body h1 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15);line-height:calc(var(--body-lineheight) - .2)}
-.post-body h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 17);line-height:calc(var(--body-lineheight) - .05)}
+.entry-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15)}
+.snippet-title, .fp-title  {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15)}
+.post-body h1 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15)}
+.post-body h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 17)}
 .post-body h3 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 20)}
 .post-body h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 25)}
 .post-body h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30)}
-.PopularPosts .post-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 20)}
+.pp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 17)}
 }
 ]]></b:skin>
 
@@ -840,7 +831,7 @@ body#layout #floating_menu {display:initial}]]></b:template-skin><b:elseif cond=
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <b:tag expr:name='data:title ? &quot;h4&quot; : &quot;h3&quot;' class='post-title'>
+  <b:tag expr:name='data:title ? &quot;h4&quot; : &quot;h3&quot;' class='pp-title'>
     <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
   </b:tag>
 </b:includable>
@@ -1249,7 +1240,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <b:with value='data:post.featuredImage' var='imgurl'>
-    <b:tag class='snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl contains &quot;googleusercontent.com&quot; ? (data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl) : data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage((data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl), 480, &quot;3:2&quot;) + &quot;-rw-e60 480w, &quot; + resizeImage(data:imgurl, 768, &quot;3:2&quot;) + &quot;-rw-e60 768w, &quot; + resizeImage(data:imgurl, 1024, &quot;3:2&quot;) + &quot;-rw-e60 1024w&quot; : sourceSet(data:imgurl, [480,768,1024], &quot;3:2&quot;)' height='320' name='img' sizes='(max-width:960px) 100vw, 1024px' width='480'>
+    <b:tag class='snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl contains &quot;googleusercontent.com&quot; ? data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl : data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage((data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl), 480, &quot;3:2&quot;) + &quot;-rw-e60 480w, &quot; + resizeImage(data:imgurl, 768, &quot;3:2&quot;) + &quot;-rw-e60 768w, &quot; + resizeImage(data:imgurl, 1024, &quot;3:2&quot;) + &quot;-rw-e60 1024w&quot; : sourceSet(data:imgurl, [480,768,1024], &quot;3:2&quot;)' height='320' name='img' sizes='(max-width:960px) 100vw, 1024px' width='480'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
     <b:attr name='data-src' value='data:imgurl'/>
@@ -1260,7 +1251,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <h2 class='post-title'>
+  <h2 class='fp-title'>
     <data:post.title/>
   </h2>
 </b:includable>
@@ -1579,7 +1570,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <a class='total-snippet' expr:href='data:post.url'>
   <b:if cond='data:post.featuredImage'>
   <b:with value='data:post.featuredImage' var='imgurl'>
-    <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl contains &quot;googleusercontent.com&quot; ? (data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl) : data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage((data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl), 240, &quot;1:1&quot;) + &quot;-rw-e60 240w, &quot; + resizeImage(data:imgurl, 359, &quot;1:1&quot;) + &quot;-rw-e60 359w, &quot; + resizeImage(data:imgurl, 512, &quot;1:1&quot;) + &quot;-rw-e60 512w&quot; : sourceSet(data:imgurl, [240, 359, 512], &quot;1:1&quot;)' height='240' name='img' sizes='(max-width:960px) 30vw, 512px' width='240'>
+    <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl contains &quot;googleusercontent.com&quot; ? data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl : data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage((data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl), 240, &quot;1:1&quot;) + &quot;-rw-e60 240w, &quot; + resizeImage(data:imgurl, 359, &quot;1:1&quot;) + &quot;-rw-e60 359w, &quot; + resizeImage(data:imgurl, 512, &quot;1:1&quot;) + &quot;-rw-e60 512w&quot; : sourceSet(data:imgurl, [240, 359, 512], &quot;1:1&quot;)' height='240' name='img' sizes='(max-width:960px) 30vw, 512px' width='240'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
     <b:attr name='data-src' expr:value='data:imgurl'/>
@@ -1713,11 +1704,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='postTitle' var='post'>
   <b:if cond='data:post.title != &quot;&quot;'>
      <b:if cond='data:post.link or (data:post.url and data:view.url != data:post.url)'>
-       <h2 class='post-title'>
+       <h2 class='snippet-title'>
         <a expr:href='data:post.link ?: data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
        </h2>
       <b:else/>
-       <h1 class='post-title entry-title'>
+       <h1 class='entry-title'>
          <data:post.title/>
        </h1>
      </b:if>
@@ -1817,7 +1808,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <b:tag expr:name='data:title ? &quot;h3&quot; : &quot;h2&quot;' class='post-title'>
+  <b:tag expr:name='data:title ? &quot;h3&quot; : &quot;h2&quot;' class='pp-title'>
     <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
   </b:tag>
 </b:includable>
@@ -1836,7 +1827,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 <b:section class='sub_main' cond='!data:view.isError' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true'>
   <b:widget id='Text2' locked='false' title='お知らせ' type='Text' visible='true'>
     <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<p>テーマデザイナーでの文字サイズの変更は横向きタブレットかパソコン以上の画面でしか反映しません。縦向きタブレット、スマホでの文字サイズの変更はBloggerのテーマのhtml編集かバックアップ／復元からskin内の二つに振り分けられたmedia screen内のfont-sizeを変更して下さい。</p><p>例＿<code>font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}</code></p><p>右端の数字が一行当たりの文字数になり、減らすと文字サイズが大きくなり、増やすと文字サイズが小さくなります。</p><h4>対応する指定先</h4><dl><dt>#blog-title</dt><dd>ブログ名</dd><dt>body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4</dt><dd>ブログ、記事／追加ページの本文、ブログの投稿のスニペット、注目と人気の投稿のスニペット、記事／追加ページの引用、記事／追加ページの見出しのh4</dd><dt>.Blog h1.post-title a</dt><dd>記事／追加ページの記事／追加タイトル</dd><dt>.Blog h2.post-title a, .FeaturedPost .post-title a</dt><dd>ブログと注目の投稿のスニペットの記事タイトル</dd><dt>.post-body h1</dt><dd>記事／追加ページの見出しのh1</dd><dt>.post-body h2</dt><dd>記事／追加ページの見出しのh2</dd><dt>.post-body h3</dt><dd>記事／追加ページの見出しのh3</dd><dt>.post-body h5</dt><dd>記事／追加ページの見出しのh5</dd><dt>.post-body h6</dt><dd>記事／追加ページの見出しのh6</dd><dt>.PopularPosts .post-title a</dt><dd>人気の投稿のスニペットの記事タイトル</dd></dl>]]></b:widget-setting>
+      <b:widget-setting name='content'><![CDATA[<p>テーマデザイナーでの文字サイズの変更は横向きタブレットかパソコン以上の画面でしか反映しません。縦向きタブレット、スマホでの文字サイズの変更はBloggerのテーマのhtml編集かバックアップ／復元からskin内の二つに振り分けられたmedia screen内のfont-sizeを変更して下さい。</p><p>例＿<code>font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}</code></p><p>右端の数字が一行当たりの文字数になり、減らすと文字サイズが大きくなり、増やすと文字サイズが小さくなります。</p><h4>対応する指定先</h4><dl><dt>#blog-title</dt><dd>ブログ名</dd><dt>body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4</dt><dd>ブログ、記事／追加ページの本文、ブログの投稿のスニペット、注目と人気の投稿のスニペット、記事／追加ページの引用、記事／追加ページの見出しのh4</dd><dt>.entry-title</dt><dd>記事／追加ページの記事／追加タイトル</dd><dt>.snippet-title, .fp-title</dt><dd>ブログと注目の投稿のスニペットの記事タイトル</dd><dt>.post-body h1</dt><dd>記事／追加ページの見出しのh1</dd><dt>.post-body h2</dt><dd>記事／追加ページの見出しのh2</dd><dt>.post-body h3</dt><dd>記事／追加ページの見出しのh3</dd><dt>.post-body h5</dt><dd>記事／追加ページの見出しのh5</dd><dt>.post-body h6</dt><dd>記事／追加ページの見出しのh6</dd><dt>.pp-title</dt><dd>人気の投稿のスニペットの記事タイトル</dd></dl>]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <b:include name='widget-title'/>
