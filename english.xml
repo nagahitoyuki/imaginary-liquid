@@ -461,12 +461,6 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .fp-title {font:$(posts.stream.title.font);line-height:calc(var(--body-lineheight) - .2);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
 
-/* Post title */
-.entry-title, .snippet-title {line-height:calc(var(--body-lineheight) - .2);margin-top:0;margin-bottom:20px}
-.entry-title, .snippet-title>a, .snippet-title>a:hover, .snippet-title>a:visited {color:$(posts.title.color)}
-.entry-title {font:$(posts.title.font)}
-.snippet-title {font:$(posts.stream.title.font);color:$(posts.title.color)}
-
 /* Post header / footer */
 .post-header-line-1 {display:flex;column-gap:4px;color:$(posts.byline.color)}
 .pa-label {vertical-align:top}
@@ -484,6 +478,12 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .author-profile {display:flex;column-gap:var(--maincolumn-padding);margin-bottom:16px}
 .author-image {flex-shrink:0;width:50px;height:50px;border-radius:50%}
 .author-desc {color:$(profile.text.color)}
+
+/* Post title */
+.entry-title {font:$(posts.title.font)}
+.snippet-title {font:$(posts.stream.title.font)}
+.entry-title, .snippet-title {line-height:calc(var(--body-lineheight) - .2);margin-top:0;margin-bottom:20px}
+.entry-title, .snippet-title, .snippet-title>a, .snippet-title>a:hover, .snippet-title>a:visited {color:$(posts.title.color)}
 
 /* Post body and snippet */
 .post-body {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin:16px 0}
