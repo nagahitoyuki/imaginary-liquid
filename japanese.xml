@@ -4,11 +4,14 @@
   <head expr:prefix='&quot;og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# &quot; + (data:view.isMultipleItems ? &quot;website: http://ogp.me/ns/website#&quot; : &quot;article: http://ogp.me/ns/article#&quot;)'>
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
-<b:if cond='data:view.isSingleItem and (data:widgets.AdSense.first or data:blog.adsenseClientId)'>
-  <link href='//pagead2.googlesyndication.com' rel='dns-prefetch'/>
-</b:if>
+  <link href='//www.blogger.com' rel='dns-prefetch'/>
 <b:if cond='data:blog.analyticsAccountNumber'>
   <link href='//www.google-analytics.com' rel='dns-prefetch'/>
+</b:if>
+<b:if cond='data:blog.adsenseAutoAds'>
+  <link href='//pagead2.googlesyndication.com' rel='dns-prefetch'/>
+<b:elseif cond='data:widgets.AdSense.first'/>
+  <link href='//pagead2.googlesyndication.com' rel='dns-preconnect'/>
 </b:if>
 <b:if cond='data:view.isSingleItem and data:view.featuredImage'>
    <link expr:href='&quot;//&quot; + (data:view.featuredImage contains &quot;blogger.googleusercontent.com&quot; ? &quot;blogger.googleusercontent.com&quot; : data:view.featuredImage contains &quot;1.bp.blogspot.com&quot; ? &quot;1.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;2.bp.blogspot.com&quot; ? &quot;2.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;3.bp.blogspot.com&quot; ? &quot;3.bp.blogspot.com&quot; : &quot;4.bp.blogspot.com&quot;)' rel='preconnect'/>
