@@ -360,8 +360,10 @@ blockquote {margin:1em 2.5em}
 .hidden, .no-items {display:none}
 .invisible {visibility:hidden}
 .feed-view #sub_main, .feed-view #attribution {display:none}
-.sidebar-invisible {content-visibility:hidden;contain-intrinsic-size:100%}
 .item-view #sub_main, .item-view #attribution {content-visibility:auto;contain-intrinsic-size:100%}
+.sidebar-invisible {content-visibility:hidden;contain-intrinsic-size:100%;visibility:hidden}
+.sidebar-visible {content-visibility:visible;overflow-y:hidden;visibility:visible}
+.dim-overlay {background-color:rgba(0, 0, 0, .7);position:fixed;top:0;$startSide:0;width:100%;height:100vh;z-index:100}
 
 /* ウィジェット */
 .title, .feed-title {font-size:large;color:$(widget.title.color)}
@@ -659,7 +661,7 @@ body {position:relative}
 /* サイドバー */
 .navigation {display:none}
 .sidebar-container {position:absolute;top:var(--floatingbar-height);$endSide:0;margin-$startSide:$(content.margin);z-index:20}
-.sidebar-invisible {content-visibility:visible}
+.sidebar-invisible {content-visibility:visible;visibility:visible}
 }
 
 /* ブログのコンテンツとサイドバーと隙間の幅以下 */
@@ -681,8 +683,6 @@ body {position:relative}
 .slideout {transform:translateX(0)}
 html[dir="rtl"] .slidein {transform:translateX(-$(sidebar.width))}
 html[dir="rtl"] .slideout {transform:translateX(0)}
-.sidebar-visible {content-visibility:visible;overflow-y:hidden}
-.dim-overlay {background-color:rgba(0, 0, 0, .7);position:fixed;top:0;$startSide:0;width:100%;height:100vh;z-index:100}
 }
 
 /* コンテンツの幅以上 */
