@@ -106,7 +106,7 @@
       default="$(color) none repeat scroll center center" value="$(color) none no-repeat scroll center center"/>
   <Variable name="blog.header.color" description="Blog header color"
       type="color"
-      default="#a9a9a9"  value="#a9a9a9"/>
+      default="#999999"  value="#999999"/>
   <Variable name="body.background.color" description="Body background color"
       type="color"
       default="#f0f8ff"  value="#f0f8ff"/>
@@ -123,16 +123,16 @@
 <Group description="Links">
   <Variable name="body.link.base.color" description="Link color"
       type="color"
-      default="#ff00ff"  value="#ff00ff"/>
+      default="#dc143c"  value="#dc143c"/>
   <Variable name="body.link.visited.color" description="Visited link color"
       type="color"
-      default="$(body.link.base.color)"  value="#ff00ff"/>
+      default="$(body.link.base.color)"  value="#dc143c"/>
   <Variable name="body.link.hover.color" description="Link Hover Color"
       type="color"
-      default="$(body.link.base.color)"  value="#ff00ff"/>
+      default="$(body.link.base.color)"  value="#dc143c"/>
   <Variable name="body.link.color" description="Comment form link color"
       type="color"
-      default="$(posts.link.color)"  value="#ff00ff"/>
+      default="$(posts.link.color)"  value="#dc143c"/>
 </Group>
 
 <Group description="Blog title" selector="div.widget.Header">
@@ -147,7 +147,7 @@
 <Group description="Tabs text" selector="div.widget.PageList">
   <Variable name="tabs.title.color" description="Tabs title color"
       type="color"
-      default="#ffa500"  value="#ffa500"/>
+      default="#eee8aa"  value="#eee8aa"/>
   <Variable name="tabs.font" description="Font"
       type="font"
       family="sans-serif"
@@ -176,7 +176,7 @@
       default="$(body.text.base.color)"  value="#000"/>
 <Variable name="posts.link.color" description="Post link color"
       type="color"
-      default="#ff00ff"  value="#ff00ff"/>
+      default="#dc143c"  value="#dc143c"/>
   <Variable name="posts.byline.color" description="Post byline color"
       type="color"
       red="$(posts.text.color.red)"
@@ -243,22 +243,22 @@
   <Variable name="popularposts.link.color"
       description="Popular post link color"
       type="color"
-      default="#ff00ff"  value="#ff00ff"/>
+      default="#dc143c"  value="#dc143c"/>
 </Group>
 
 <Group description="Post navigation" selector='nav#blog_pager'>
   <Variable name="posts.navigation.link.color"
       description="Post navigation links color"
       type="color"
-      default="#ffa500"  value="#ffa500"/>
+      default="#008000"  value="#008000"/>
   <Variable name="posts.navigation.link.visited.color"
       description="Post navigation links visited color"
       type="color"
-      default="$(posts.navigation.link.color)"  value="#ffa500"/>
+      default="$(posts.navigation.link.color)"  value="#008000"/>
   <Variable name="posts.navigation.link.hover.color"
       description="Post navigations links hover color"
       type="color"
-      default="$(posts.navigation.link.color)"  value="#ffa500"/>
+      default="$(posts.navigation.link.color)"  value="#008000"/>
 </Group>
 
 <Group description="Sidebar" selector="div.sidebar-container">
@@ -297,21 +297,21 @@
       default="$(posts.text.color)"  value="#000"/>
   <Variable name="profile.link.color" description="Profile link color"
       type="color"
-      default="#ff00ff"  value="#ff00ff"/>
+      default="#dc143c"  value="#dc143c"/>
 </Group>
 
 <Group description="Labels" selector=".widget.Label">
   <Variable name="labels.text.color"
       description="Label text color"
       type="color"
-      default="#008000"  value="#008000"/>
+      default="#191970"  value="#191970"/>
   <Variable name="labels.background.color"
       description="Label background color"
       type="color"
       red="$(labels.text.color.red)"
       green="$(labels.text.color.green)"
       blue="$(labels.text.color.blue)"
-      default="rgba($(red), $(green), $(blue), 0.2)"  value="rgba(0, 128, 0, 0.2)"/>
+      default="rgba($(red), $(green), $(blue), 0.1)"  value="rgba(25, 25, 112, 0.1)"/>
 </Group>
 
 <Group description="Attribution" selector=".widget.Attribution">
@@ -320,7 +320,7 @@
       default="$(body.text.base.color)"  value="#000"/>
   <Variable name="attribution.link.color" description="Attribution link color"
       type="color"
-      default="$(body.link.base.color)"  value="#ff00ff"/>
+      default="$(body.link.base.color)"  value="#dc143c"/>
   <Variable name="attribution.icon.color" description="Attribution icon color"
       type="color"
       default="#000" value="#000"/>
@@ -463,7 +463,7 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .FeaturedPost>.feed-title>a {color:$(posts.title.color)}
 .FeaturedPost .post>a, .FeaturedPost .post>a:hover, .FeaturedPost .post>a:visited {color:#fff}
 .FeaturedPost .post>a, .FeaturedPost .snippet-thumbnail {width:100%;height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;align-items:center;text-align:center}
-.no-image {background-color:#a9a9a9}
+.no-image {background-color:#696969}
 .fp-title {font:$(posts.stream.title.font);line-height:calc(var(--body-lineheight) - .2);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
 
@@ -630,7 +630,7 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 .BlogArchive .post-count::after, .Label .label-count::after {content:')'}
 #ArchiveList, .list-label-widget-content, .cloud-label-widget-content {display:flex;flex-direction:column}
 .remaining-items {position:absolute;visibility:hidden;overflow:hidden;transition:all .3s ease-out}
-.show-more, .show-less {margin-$startSide:auto;font-size:medium;color:$(posts.link.color);margin-top:24px;cursor:pointer}
+.show-more, .show-less {margin-$startSide:auto;font-size:medium;color:$(body.link.base.color);margin-top:24px;cursor:pointer}
 .list-label-widget-content, .cloud-label-widget-content {margin-top:24px}
 
 /* Text widget */
@@ -1229,11 +1229,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='showDateHeader'>false</b:widget-setting>
-      <b:widget-setting name='style.textcolor'>#ff00ff</b:widget-setting>
+      <b:widget-setting name='style.textcolor'>#dc143c</b:widget-setting>
       <b:widget-setting name='showShareButtons'>false</b:widget-setting>
       <b:widget-setting name='authorLabel'/>
       <b:widget-setting name='showCommentLink'>true</b:widget-setting>
-      <b:widget-setting name='style.urlcolor'>#ffa500</b:widget-setting>
+      <b:widget-setting name='style.urlcolor'>#008000</b:widget-setting>
       <b:widget-setting name='showAuthor'>true</b:widget-setting>
       <b:widget-setting name='disableGooglePlusShare'>true</b:widget-setting>
       <b:widget-setting name='style.linkcolor'>#000</b:widget-setting>
@@ -1328,7 +1328,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:include data='post' name='commentFormIframeSrc'/>
     <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' expr:title='data:messages.postAComment' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
     <data:post.cmtfpIframe/>
-    <a name='comment-form'/>
     <p id='comment-post-message'><data:messages.postAComment/></p>
     <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
       <p><data:this.messages.blogComment/></p>
@@ -1384,7 +1383,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='comments' var='post'>
   <section expr:class='&quot;comments&quot; + (data:post.embedCommentForm ? &quot; embed&quot; : &quot;&quot;)' expr:data-num-comments='data:post.numberOfComments' id='comments'>
-    <a name='comments'/>
     <b:if cond='data:post.allowComments'>
 
       <b:include name='commentsTitle'/>
@@ -1435,7 +1433,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     </b:if>
     <b:if cond='data:showCmtPopup'>
       <div id='comment-popup'>
-        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        <iframe allowtransparency='allowtransparency' expr:title='data:messages.postAComment' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
         </iframe>
       </div>
     </b:if>
@@ -1684,12 +1682,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='threadedCommentForm' var='post'>
   <footer class='comment-form'>
-    <a name='comment-form'/>
     <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
       <p><data:this.messages.blogComment/></p>
     </b:if>
     <b:include data='post' name='commentFormIframeSrc'/>
-    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' expr:title='data:messages.postAComment' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
     <data:post.cmtfpIframe/>
   </footer>
 </b:includable>
@@ -1698,7 +1695,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='threadedComments' var='post'>
   <section class='comments threaded' expr:data-embed='data:post.embedCommentForm' expr:data-num-comments='data:post.numberOfComments' id='comments'>
-    <a name='comments'/>
     <b:include name='commentsTitle'/>
     <div class='comments-content'>
       <div id='comment-holder'>
@@ -1714,7 +1710,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     </div>
     <b:if cond='data:showCmtPopup'>
       <div id='comment-popup'>
-        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        <iframe allowtransparency='allowtransparency' expr:title='data:messages.postAComment' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
         </iframe>
       </div>
     </b:if>
@@ -2281,7 +2277,7 @@ if (cml) {
 const avics = [].slice.call(Blog1.querySelectorAll(&quot;div.avatar-image-container&quot;));
 avics.forEach(avic =&gt; {
 if (avic.firstElementChild.src.includes(&quot;//resources.blogblog.com/img/blank.gif&quot;)) {
-avic.insertAdjacentHTML(&quot;afterbegin&quot;, &quot;<svg aria-label='Avatar' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>&quot;); }}); }</b:if>});
+avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>&quot;; }}); }</b:if>});
 </script>
 </body>
 </html>
