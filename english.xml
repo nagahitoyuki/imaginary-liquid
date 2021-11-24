@@ -147,7 +147,7 @@
 <Group description="Tabs text" selector="div.widget.PageList">
   <Variable name="tabs.title.color" description="Tabs title color"
       type="color"
-      default="#eee8aa"  value="#eee8aa"/>
+      default="#ffd700"  value="#ffd700"/>
   <Variable name="tabs.font" description="Font"
       type="font"
       family="sans-serif"
@@ -541,19 +541,20 @@ margin-$endSide:.5em}
 .comment-timestamp>a, .comment-header>.datetime>a {
 color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.byline.color.blue), .6)}
 .comment-content, .comment-body {margin-top:.75em;word-break:break-word}
-#comment-post-message a, #comments .footer a, .comment-content a, .comment-body a, .comment-actions>a, .comment-actions>a:visited, .comment-actions>a:hover, .blog-admin>a {color:$(posts.link.color)}
+#comment-post-message a, .footer a, .comment-content a, .comment-body a, .comment-actions>a, .comment-actions>a:visited, .comment-actions>a:hover, .blog-admin>a {color:$(posts.link.color)}
 .comment-reply, .blog-admin>a {font-weight:normal}
-.comment-replybox-single, .comment-replies a, #comments .footer a {color:$(posts.link.color)}
+.comment-replybox-single, .comment-replies a, .footer a {color:$(posts.link.color)}
 .comment-body {margin-bottom:12px}
 .embed[data-num-comments="0"] {border:0;margin-top:0;padding-top:0}
 #comment-post-message, #comment-editor-src {display:none}
 .loadmore.loaded {max-height:0;opacity:0;overflow:hidden}
 .comment-link {color:$(posts.link.color);position:relative}
 .comment-link .num_comments {margin-$startSide:.5em;vertical-align:top}
-#comment-holder .continue {display:none}
-#comment-editor {margin-bottom:2em}
+#comments .continue {display:none}
 #comments>.title {font-size:large;color:$(posts.title.color);margin-top:0;margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
 .embed .footer p {margin-top:0}
+.comment-thread+.footer {margin-bottom:1em}
+#cmt+.footer, #comments-block+.footer {margin-bottom:.5em}
 #cf-message {margin-bottom:0}
 .item-control {display:none}
 
@@ -1214,9 +1215,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <h2 class='fp-title'>
-    <data:post.title/>
-  </h2>
+  <b:tag class='fp-title' expr:name='data:title ? &quot;h3&quot; : &quot;h2&quot;'><data:post.title/></b:tag>
+  </b:tag>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts' var='post'>
@@ -1324,7 +1324,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </span>
 </b:includable>
     <b:includable id='commentForm' var='post'>
-  <footer class='comment-form'>
+  <footer class='footer'>
     <b:include data='post' name='commentFormIframeSrc'/>
     <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' expr:title='data:messages.postAComment' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
     <data:post.cmtfpIframe/>
@@ -1387,9 +1387,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 
       <b:include name='commentsTitle'/>
 
-      <div expr:id='data:widget.instanceId + &quot;_comments-block-wrapper&quot;'>
         <b:include cond='data:post.comments' data='post.comments' name='commentList'/>
-      </div>
 
       <b:if cond='data:post.commentPagingRequired'>
         <div class='paging-control-container'>
@@ -1417,7 +1415,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
         </div>
       </b:if>
 
-      <div class='footer'>
         <b:if cond='data:post.embedCommentForm'>
           <b:if cond='data:post.allowNewComments'>
             <b:include data='post' name='commentForm'/>
@@ -1425,11 +1422,12 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
             <data:post.noNewCommentsText/>
           </b:if>
         <b:else/>
+      <footer class='footer'>
           <b:if cond='data:post.allowComments'>
             <b:include data='post' name='addComments'/>
           </b:if>
+      </footer>
         </b:if>
-      </div>
     </b:if>
     <b:if cond='data:showCmtPopup'>
       <div id='comment-popup'>
@@ -1681,7 +1679,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </a>
 </b:includable>
     <b:includable id='threadedCommentForm' var='post'>
-  <footer class='comment-form'>
+  <footer class='footer'>
     <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
       <p><data:this.messages.blogComment/></p>
     </b:if>
@@ -1696,18 +1694,12 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='threadedComments' var='post'>
   <section class='comments threaded' expr:data-embed='data:post.embedCommentForm' expr:data-num-comments='data:post.numberOfComments' id='comments'>
     <b:include name='commentsTitle'/>
-    <div class='comments-content'>
-      <div id='comment-holder'>
          <data:post.commentHtml/>
-      </div>
-    </div>
-    <div class='comment-footer'>
       <b:if cond='data:post.allowNewComments'>
         <b:include data='post' name='threadedCommentForm'/>
       <b:else/>
         <data:post.noNewCommentsText/>
       </b:if>
-    </div>
     <b:if cond='data:showCmtPopup'>
       <div id='comment-popup'>
         <iframe allowtransparency='allowtransparency' expr:title='data:messages.postAComment' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
@@ -2272,8 +2264,7 @@ iframeCommentObserver.disconnect(); }}); }, {
 rootMargin: &quot;46px&quot;});
 if (iframeComment) iframeCommentObserver.observe(iframeComment);
 /* Comment avatar */
-const cml = Blog1.querySelector(&quot;div.comments-content&quot;);
-if (cml) {
+if (comments) {
 const avics = [].slice.call(Blog1.querySelectorAll(&quot;div.avatar-image-container&quot;));
 avics.forEach(avic =&gt; {
 if (avic.firstElementChild.src.includes(&quot;//resources.blogblog.com/img/blank.gif&quot;)) {
