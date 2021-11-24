@@ -779,7 +779,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
   <b:if cond='data:widget.sectionId == &quot;sub_main&quot;'>
   <footer class='post-footer'>
     <b:if cond='data:post.url'>
-      <a class='byline archive-link' expr:href='&quot;/&quot; + data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
+      <a class='byline archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
     </b:if>
     <b:include data='post' name='postFooterJumpLink'/>
   </footer>
@@ -965,7 +965,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;listOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='listOrder'>
-          <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'> <data:label.name/><b:if cond='data:this.showFreqNumbers'><span class='label-count'><data:label.count/></span></b:if></a></li></b:loop></ul>
+          <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'><span class='label-count'><data:label.count/></span></b:if></a></li></b:loop></ul>
         </b:includable>
 </b:defaultmarkup>
 <b:defaultmarkup type='ContactForm'>
@@ -1592,7 +1592,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <div class='pf-last'>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url uid' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a></div>
       <b:else/>
         <b:if cond='data:post.url'>
-          <a class='byline archive-link' expr:href='&quot;/&quot; + data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
+          <a class='byline archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
         </b:if>
       <b:include data='post' name='postFooterJumpLink'/>
     </b:if>
@@ -1623,8 +1623,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='postLabels'>
   <b:comment>We don&#39;t display labels on the home page.</b:comment>
-  <b:if cond='data:view.isSingleItem and data:widget.type == &quot;Blog&quot;'>
-    <div class='byline post-labels'><b:tag cond='data:byline.label' class='byline-label' name='span'><data:byline.label/></b:tag><b:loop index='i' values='data:post.labels' var='label'><a expr:href='data:label.url' rel='tag'><data:label.name/></a></b:loop></div>
+  <b:if cond='data:view.isSingleItem'>
+    <div class='byline post-labels'><b:tag class='byline-label' cond='data:byline.label' name='span'><data:byline.label/></b:tag><b:loop index='i' values='data:post.labels' var='label'><a expr:href='data:label.url' rel='tag'><data:label.name/></a></b:loop></div>
    </b:if>
  </b:includable>
     <b:includable id='postLocation'>
@@ -1753,7 +1753,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     </b:if>
   </a>
   <footer class='post-footer'>
-      <a class='byline archive-link' expr:href='&quot;/&quot; + data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
+      <a class='byline archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
     <b:include data='post' name='postFooterJumpLink'/>
   </footer>
 </b:includable>
@@ -1994,7 +1994,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;listOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='listOrder'>
-          <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'> <data:label.name/><b:if cond='data:this.showFreqNumbers'><span class='label-count'><data:label.count/></span></b:if></a></li></b:loop></ul>
+          <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'><span class='label-count'><data:label.count/></span></b:if></a></li></b:loop></ul>
         </b:includable>
         </b:widget>
         <b:widget id='ContactForm1' locked='false' title='Contact form' type='ContactForm' visible='true'>
