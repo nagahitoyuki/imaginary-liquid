@@ -512,7 +512,7 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .post-labels:last-child {margin-bottom:16px}
 
 /* コメント */
-#comments, .embed {color:$(posts.text.color)}
+#comments {color:$(posts.text.color)}
 .comment-thread ol {margin:0 0 0 18px;padding-$startSide:0}
 #comments-block {margin-$startSide:18px}
 .comment-replybox-single, .comment-replies {margin-$startSide:2em}
@@ -550,6 +550,7 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 .comment-thread+.footer {margin-bottom:1em}
 #cmt+.footer, #comments-block+.footer {margin-bottom:.5em}
 #cf-message {margin-bottom:0}
+#eb-message {transform:translateY(.5em)}
 .item-control {display:none}
 
 /* ページングコントロール */
@@ -804,7 +805,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
     </p>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
-    <a class='jump-link' expr:href='data:post.hasJumpLink ? data:post.url fragment &quot;more&quot; : data:post.url' expr:title='data:post.title'>
+    <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title'>
       <data:blog.jumpLinkMessage/>
     </a>
  </b:includable>
@@ -1342,13 +1343,13 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:if>
 </b:includable>
     <b:includable id='commentAuthorAvatar'>
-  <div class='avatar-image-container'>
+  <span class='avatar-image-container'>
   <b:if cond='data:comment.authorUserType == &quot;blogger&quot;'>
     <img class='author-avatar' alt='アバター' expr:src='data:comment.authorAvatarSrc' height='35' width='35'/>
   <b:else/>
     <svg aria-label='アバター' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>
   </b:if>
-  </div>
+  </span>
 </b:includable>
     <b:includable id='commentDeleteIcon' var='comment'>
   <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
@@ -1393,17 +1394,15 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           </b:message>
         </b:if>
       </div>
-      <div expr:class='&quot;comment-body&quot; + (data:comment.isDeleted ? &quot; deleted&quot; : &quot;&quot;)'>
+      <p expr:class='&quot;comment-body&quot; + (data:comment.isDeleted ? &quot; deleted&quot; : &quot;&quot;)'>
         <data:comment.body/>
-      </div>
-      <div class='comment-footer'>
+      </p>
         <span class='comment-timestamp'>
           <a expr:href='data:comment.url' title='comment permalink'>
             <data:comment.timestamp/>
           </a>
           <b:include data='comment' name='commentDeleteIcon'/>
         </span>
-      </div>
     </div>
   </div>
 </b:includable>
@@ -1652,7 +1651,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:if>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
-    <a class='jump-link' expr:href='data:post.hasJumpLink ? data:post.url fragment &quot;more&quot; : data:post.url' expr:title='data:post.title'>
+    <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title'>
       <data:blog.jumpLinkMessage/>
     </a>
  </b:includable>
@@ -1721,7 +1720,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='threadedCommentForm' var='post'>
   <footer class='footer'>
     <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
-      <p><data:this.messages.blogComment/></p>
+      <p id='eb-message'><data:this.messages.blogComment/></p>
     </b:if>
     <b:include data='post' name='commentFormIframeSrc'/>
     <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' expr:title='data:messages.postAComment' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
@@ -1765,7 +1764,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </aside>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
-    <a class='jump-link' expr:href='data:post.hasJumpLink ? data:post.url fragment &quot;more&quot; : data:post.url' expr:title='data:post.title'>
+    <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title'>
       <data:blog.jumpLinkMessage/>
     </a>
  </b:includable>
