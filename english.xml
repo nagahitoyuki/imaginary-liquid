@@ -1216,7 +1216,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='snippetedPostTitle'>
   <b:tag class='fp-title' expr:name='data:title ? &quot;h3&quot; : &quot;h2&quot;'><data:post.title/></b:tag>
-  </b:tag>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts' var='post'>
