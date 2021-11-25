@@ -1568,11 +1568,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <a class='total-snippet' expr:href='data:post.url'>
   <b:if cond='data:post.featuredImage'>
   <b:with value='data:post.featuredImage' var='imgurl'>
-    <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl contains &quot;googleusercontent.com&quot; ? data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl : data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage((data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl), 240, &quot;1:1&quot;) + &quot;-rw-e60 240w, &quot; + resizeImage(data:imgurl, 359, &quot;1:1&quot;) + &quot;-rw-e60 359w, &quot; + resizeImage(data:imgurl, 512, &quot;1:1&quot;) + &quot;-rw-e60 512w&quot; : sourceSet(data:imgurl, [240, 359, 512], &quot;1:1&quot;)' height='240' name='img' sizes='(max-width:960px) 30vw, 512px' width='240'>
+    <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl contains &quot;googleusercontent.com&quot; ? data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl : data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage((data:imgurl.youtubeMaxResDefaultUrl ?: data:imgurl), 180, &quot;1:1&quot;) + &quot;-rw-e60 180w, &quot; + resizeImage(data:imgurl, 360, &quot;1:1&quot;) + &quot;-rw-e60 360w, &quot; : sourceSet(data:imgurl, [180, 360], &quot;1:1&quot;)' height='180' name='img' sizes='(max-width:960px) 30vw, 360px' width='180'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
-    <b:attr name='data-src' expr:value='data:imgurl'/>
-    <b:attr expr:value='data:imgurl + &quot;=w240-h240-n-k-no-nu-rw-e60 240w, &quot; + data:imgurl + &quot;=w359-h359-n-k-no-nu-rw-e60 359w, &quot; + data:imgurl + &quot;=w512-h512-n-k-no-nu-rw-e60 512w&quot;' name='data-srcset'/>
+    <b:attr expr:value='data:imgurl' name='data-src'/>
+    <b:attr expr:value='data:imgurl + &quot;=w180-h180-n-k-no-nu-rw-e60 180w, &quot; + data:imgurl + &quot;=w360-h360-n-k-no-nu-rw-e60 360w&quot;' name='data-srcset'/>
     <b:class name='ytpic'/>
     </b:if>
     <b:if cond='data:widgets.FeaturedPost.any and data:i &gt; 0 or !data:widgets.FeaturedPost.any and data:i &gt; 1'>
