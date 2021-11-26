@@ -356,8 +356,8 @@ input {font-size:100%}
 blockquote {margin:1em 2.5em}
 
 /* Header background image */
-.bg-photo-container {height:$(body.background.height);overflow:hidden;position:absolute;width:100%;z-index:1}
-.bg-photo {background:$(body.background);background-size:cover;filter:blur($(body.background.blur));height:calc(100% + 2 * $(body.background.blur));width:calc(100% + 2 * $(body.background.blur));position:absolute;left:$(0 - body.background.blur);top:$(0 - body.background.blur)}
+.bg-photo-container {position:absolute;width:100%;height:$(body.background.height);overflow:hidden}
+.bg-photo {width:calc(100% + $(body.background.blur * 2));height:calc(100% + $(body.background.blur * 2));position:absolute;left:-$(body.background.blur);top:-$(body.background.blur);background:$(body.background);background-size:auto;filter:blur($(body.background.blur))}
 
 /* Balancer */
 .hidden, .no-items {display:none}
