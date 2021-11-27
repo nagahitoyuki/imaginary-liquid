@@ -18,7 +18,7 @@
 
 <h4>Tips</h4>
 
-<ul><li><a href="/imaginary-liquid/issues/3#issuecomment-953474499">About the width of the header image</a></li><li><a href="/imaginary-grid/issues/2#issuecomment-966766927">How to not show the sidebar</a></li></ul>
+<ul><li><a href="/imaginary-liquid/issues/3#issuecomment-953474499">About the width of the header image</a></li><li><a href="/imaginary-grid/issues/2#issuecomment-966766927">How to not show the sidebar</a></li><li><a href="/imaginary-liquid/issues/5#issuecomment-980491606">How to not show the floating bar</p></li></ul>
 
 <h3>Sample blog</h3>
 
