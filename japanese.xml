@@ -357,7 +357,7 @@ blockquote {margin:1em 2.5em}
 
 /* ヘッダーの背景画像 */
 .bg-photo-container {position:absolute;width:100%;height:$(body.background.height);overflow:hidden}
-.bg-photo {width:calc(100% + $(body.background.blur * 2));height:calc(100% + $(body.background.blur * 2));position:absolute;left:-$(body.background.blur);top:-$(body.background.blur);background:$(body.background);background-size:auto;filter:blur($(body.background.blur))}
+.bg-photo {width:calc(100% + $(body.background.blur * 2));height:calc(100% + $(body.background.blur * 2));position:absolute;left:-$(body.background.blur);top:-$(body.background.blur);background:$(body.background);background-size:100%;filter:blur($(body.background.blur))}
 
 /* バランサー */
 .hidden, .no-items {display:none}
@@ -584,14 +584,12 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* サブメイン */
-#sub_main {contain:content}
-#sub_main .widget {margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
+#sub_main {contain:content;margin-bottom:1em;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
 #sub_main .widget ul {list-style:none;padding-$startSide:0}
 #sub_main .widget ul ul {margin-$startSide:1em}
-#sub_main .widget:last-child {margin-bottom:1.75em}
 
 /* ブログの帰属 */
-#attribution {text-align:center;font-size:small;color:$(attribution.text.color);margin-bottom:2em}
+#attribution {text-align:center;font-size:small;color:$(attribution.text.color);margin-bottom:2em;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
 #attribution>div {line-height:24px;margin-top:.5em}
 #attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
 #Text1, .blogger, .image-attribution {margin-bottom:1em}
@@ -1045,12 +1043,12 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
 </b:defaultmarkups>
 
 <b:with value='data:skin.vars.body_background.image' var='bgimg'>
-<b:if cond='data:bgimg'>
+<b:if cond='not data:view.isPreview and data:bgimg'>
 <style>
   .bg-photo {background-image:url(<data:bgimg.cssEscaped/>)}
-<b:if cond='data:blog.isMobileRequest or data:view.isPreview'>
-  @media (max-width: 480px) { .bg-photo {background-image:url(<b:eval expr='data:bgimg contains &quot;googleusercontent&quot; ? resizeImage(data:bgimg, 480).cssEscaped + &quot;-rw-e60&quot; : resizeImage(data:bgimg, 480).cssEscaped'/>)}}</b:if>
-<b:if cond='!data:blog.isMobileRequest'>
+<b:if cond='data:blog.isMobileRequest'>
+  @media (max-width: 480px) { .bg-photo {background-image:url(<b:eval expr='data:bgimg contains &quot;googleusercontent&quot; ? resizeImage(data:bgimg, 480).cssEscaped + &quot;-rw-e60&quot; : resizeImage(data:bgimg, 480).cssEscaped'/>)}}
+<b:else/>
 <b:with value='[481, 641]' var='minWidth'>
   <b:loop index='i' values='resizeImage(data:bgimg, [640, 1024, 1240])' var='headerImage'>
 <b:eval expr='&quot;@media &quot; + (data:i != 2 ? &quot;(max-width: &quot; + data:headerImage.size + &quot;px) and (min-width: &quot; + data:minWidth[i] + &quot;px)&quot; : &quot;(min-width: 1025px)&quot;) + &quot;{.bg-photo {background-image:url(&quot; + (data:headerImage.url contains &quot;googleusercontent&quot; ? data:headerImage.url.cssEscaped + &quot;-rw-e60&quot; : data:headerImage.url.cssEscaped) + &quot;;)}}&quot;'/></b:loop>
