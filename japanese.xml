@@ -117,7 +117,7 @@
       type="length"
       min="0px"
       max="50px"
-      default="7px"  value="7px"/>
+      default="6px"  value="6px"/>
 </Group>
 
 <Group description="Links">
