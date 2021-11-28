@@ -450,8 +450,7 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .centered {position:relative;display:flex;flex-direction:column;z-index:20}
 .centered>* {flex:auto}
 #content_wrapper {margin:0 auto}
-.Blog {contain:content}
-.blog-posts {background:$(body.background.color);display:grid;gap:var(--maincolumn-padding)}
+.blog-posts {background:$(body.background.color);display:grid;gap:var(--maincolumn-padding);contain:content}
 .blog-posts>.post {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
 .feed-view .blog-posts {grid-template-columns:1fr;margin-bottom:var(--maincolumn-padding)}
 .feed-view .post+aside {align-self:stretch;display:grid}
@@ -578,7 +577,7 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 .sidebar-container .item-content>img {width:calc(35% - var(--maincolumn-padding))}
 
 /* ページャー */
-#blog_pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.75);margin-bottom:calc(var(--maincolumn-padding) * .75);display:flex;justify-content:space-around}
+#blog_pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.25);margin-bottom:calc(var(--maincolumn-padding) * 1.75);display:flex;justify-content:space-around}
 #blog_pager>a {color:$(posts.navigation.link.color)}
 #blog_pager>a:visited {color:$(posts.navigation.link.visited.color)}
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
