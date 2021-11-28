@@ -971,10 +971,10 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
 <b:defaultmarkup type='ContactForm'>
           <b:includable id='main'>
   <b:include name='widget-title'/>
-  <address><b:include name='content'/></address>
+  <b:include name='content'/>
 </b:includable>
           <b:includable id='content'>
-  <div class='contact-form-widget'>
+  <address class='contact-form-widget'>
       <form name='contact-form'>
         <p/>
         <data:contactFormNameMsg/>
@@ -996,7 +996,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
           <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
         </div>
       </form>
-  </div>
+  </address>
 </b:includable>
 </b:defaultmarkup>
 </b:defaultmarkups>
@@ -1988,10 +1988,10 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
         <b:widget id='ContactForm1' locked='false' title='Contact form' type='ContactForm' visible='true'>
           <b:includable id='main'>
   <b:include name='widget-title'/>
-  <address><b:include name='content'/></address>
+  <b:include name='content'/>
 </b:includable>
           <b:includable id='content'>
-  <div class='contact-form-widget'>
+  <address class='contact-form-widget'>
       <form name='contact-form'>
         <p/>
         <data:contactFormNameMsg/>
@@ -2013,7 +2013,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
         </div>
       </form>
-  </div>
+  </address>
 </b:includable>
         </b:widget>
     <b:widget id='AdSense1' locked='false' title='AdSense' type='AdSense' version='2' visible='false'>
