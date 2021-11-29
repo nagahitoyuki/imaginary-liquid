@@ -534,9 +534,8 @@ margin-$endSide:.5em}
 .comment-timestamp>a, .comment-header>.datetime>a {
 color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.byline.color.blue), .6)}
 .comment-content, .comment-body {margin-top:.75em;word-break:break-word}
-.footer a, .comment-content a, .comment-body a, .comment-actions>a, .comment-actions>a:visited, .comment-actions>a:hover, .blog-admin>a {color:$(posts.link.color)}
+.comment-footer a, .comment-content a, .comment-body a, .comment-actions>a, .comment-actions>a:visited, .comment-actions>a:hover, .blog-admin>a, .comment-replybox-single, .comment-replies a {color:$(posts.link.color)}
 .comment-reply, .blog-admin>a {font-weight:normal}
-.comment-replybox-single, .comment-replies a, .footer a {color:$(posts.link.color)}
 .comment-body {margin-bottom:12px}
 .embed[data-num-comments="0"] {border:0;margin-top:0;padding-top:0}
 #comment-editor-src {display:none}
@@ -545,9 +544,9 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 .comment-link .num_comments {margin-$startSide:.5em;vertical-align:top}
 #comments .continue {display:none}
 #comments>.title {font-size:large;color:$(posts.title.color);margin-top:0;margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
-.embed .footer p {margin-top:0}
-.comment-thread+.footer {margin-bottom:1em}
-#cmt+.footer, #comments-block+.footer {margin-bottom:.5em}
+.embed .comment-footer p {margin-top:0}
+.comment-thread+.comment-footer {margin-bottom:1em}
+#cmt+.comment-footer, #comments-block+.comment-footer {margin-bottom:.5em}
 #cf-message {margin-bottom:0}
 #eb-message-1 {margin-top:1em;margin-bottom:.5em}
 #eb-message-2 {transform:translateY(.5em)}
@@ -1364,7 +1363,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </span>
 </b:includable>
     <b:includable id='commentForm' var='post'>
-  <footer class='footer'>
+  <footer class='comment-footer'>
     <b:include data='post' name='commentFormIframeSrc'/>
     <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' expr:title='data:messages.postAComment' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
     <data:post.cmtfpIframe/>
@@ -1459,7 +1458,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
             <data:post.noNewCommentsText/>
           </b:if>
         <b:else/>
-      <footer class='footer'>
+      <footer class='comment-footer'>
           <b:if cond='data:post.allowComments'>
             <b:include data='post' name='addComments'/>
           </b:if>
@@ -1716,7 +1715,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </a>
 </b:includable>
     <b:includable id='threadedCommentForm' var='post'>
-  <footer class='footer'>
+  <footer class='comment-footer'>
     <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
       <p id='eb-message-2'><data:this.messages.blogComment/></p>
     </b:if>
