@@ -182,7 +182,7 @@
       red="$(posts.text.color.red)"
       green="$(posts.text.color.green)"
       blue="$(posts.text.color.blue)"
-      default="rgba($(red), $(green), $(blue), 0.6)"  value="rgba(0, 0, 0, 0.6)"/>
+      default="rgba($(red), $(green), $(blue), 0.6)"  value="rgba($(red), $(green), $(blue), 0.6)"/>
   <Variable name="blockquote.font" description="Blockquote font"
       type="font"
       default="16px sans-serif"  value="16px sans-serif"/>
@@ -210,7 +210,7 @@
       red="$(search.input.color.red)"
       green="$(search.input.color.green)"
       blue="$(search.input.color.blue)"
-      default="rgba($(red), $(green), $(blue), 0.6)"  value="rgba(0, 0, 0, 0.6)"/>
+      default="rgba($(red), $(green), $(blue), 0.6)"  value="rgba($(red), $(green), $(blue), 0.6)"/>
 </Group>
 
 <Group description="Sharing">
@@ -311,7 +311,7 @@
       red="$(labels.text.color.red)"
       green="$(labels.text.color.green)"
       blue="$(labels.text.color.blue)"
-      default="rgba($(red), $(green), $(blue), 0.1)"  value="rgba(25, 25, 112, 0.1)"/>
+      default="rgba($(red), $(green), $(blue), 0.1)"  value="rgba($(red), $(green), $(blue), 0.1)"/>
 </Group>
 
 <Group description="Attribution" selector=".widget.Attribution">
@@ -1908,7 +1908,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
             <b:widget-setting name='dayPattern'>MMM dd</b:widget-setting>
             <b:widget-setting name='weekPattern'>MM/dd</b:widget-setting>
             <b:widget-setting name='chronological'>false</b:widget-setting>
-            <b:widget-setting name='showPosts'>false</b:widget-setting>
+            <b:widget-setting name='showPosts'>true</b:widget-setting>
             <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
           </b:widget-settings>
           <b:includable id='main' var='this'>
