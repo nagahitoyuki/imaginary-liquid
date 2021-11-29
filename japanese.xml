@@ -182,7 +182,7 @@
       red="$(posts.text.color.red)"
       green="$(posts.text.color.green)"
       blue="$(posts.text.color.blue)"
-      default="rgba($(red), $(green), $(blue), 0.6)"  value="rgba(0, 0, 0, 0.6)"/>
+      default="rgba($(red), $(green), $(blue), 0.6)"  value="rgba($(red), $(green), $(blue), 0.6)"/>
   <Variable name="blockquote.font" description="Blockquote font"
       type="font"
       default="15.8px sans-serif"  value="15.8px sans-serif"/>
@@ -210,7 +210,7 @@
       red="$(search.input.color.red)"
       green="$(search.input.color.green)"
       blue="$(search.input.color.blue)"
-      default="rgba($(red), $(green), $(blue), 0.6)"  value="rgba(0, 0, 0, 0.6)"/>
+      default="rgba($(red), $(green), $(blue), 0.6)"  value="rgba($(red), $(green), $(blue), 0.6)"/>
 </Group>
 
 <Group description="Sharing">
@@ -311,7 +311,7 @@
       red="$(labels.text.color.red)"
       green="$(labels.text.color.green)"
       blue="$(labels.text.color.blue)"
-      default="rgba($(red), $(green), $(blue), 0.1)"  value="rgba(25, 25, 112, 0.1)"/>
+      default="rgba($(red), $(green), $(blue), 0.1)"  value="rgba($(red), $(green), $(blue), 0.1)"/>
 </Group>
 
 <Group description="Attribution" selector=".widget.Attribution">
@@ -466,12 +466,6 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .fp-title {font:$(posts.stream.title.font);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
 
-/* 記事の題名 */
-.entry-title {font:$(posts.title.font)}
-.snippet-title {font:$(posts.stream.title.font);color:$(posts.title.color)}
-.entry-title, .snippet-title>a, .snippet-title>a:hover, .snippet-title>a:visited {color:$(posts.title.color)}
-.entry-title, .snippet-title {margin-top:0;margin-bottom:20px}
-
 /* 記事のヘッダー／フッター */
 .post-header-line-1 {display:flex;column-gap:4px;color:$(posts.byline.color)}
 .pa-label {vertical-align:top}
@@ -489,6 +483,12 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .author-profile {display:flex;column-gap:var(--maincolumn-padding);margin-bottom:16px}
 .author-image {flex-shrink:0;width:50px;height:50px;border-radius:50%}
 .author-desc {color:$(profile.text.color)}
+
+/* 記事の題名 */
+.entry-title {font:$(posts.title.font)}
+.snippet-title {font:$(posts.stream.title.font);color:$(posts.title.color)}
+.entry-title, .snippet-title>a, .snippet-title>a:hover, .snippet-title>a:visited {color:$(posts.title.color)}
+.entry-title, .snippet-title {margin-top:0;margin-bottom:20px}
 
 /* 記事の本文とスニペット */
 .post-body {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin:20px 0}
@@ -1949,7 +1949,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
             <b:widget-setting name='dayPattern'>MMM dd</b:widget-setting>
             <b:widget-setting name='weekPattern'>MM/dd</b:widget-setting>
             <b:widget-setting name='chronological'>false</b:widget-setting>
-            <b:widget-setting name='showPosts'>false</b:widget-setting>
+            <b:widget-setting name='showPosts'>true</b:widget-setting>
             <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
           </b:widget-settings>
           <b:includable id='main' var='this'>
