@@ -103,7 +103,7 @@
   <Variable name="body.background" description="Background"
       color="$(blog.header.color)"
       type="background"
-      default="$(color) none repeat scroll center center" value="$(color) none no-repeat scroll center center"/>
+      default="$(color) none no-repeat scroll center center" value="$(color) none no-repeat scroll center center"/>
   <Variable name="blog.header.color" description="ブログのヘッダーのテキストの色"
       type="color"
       default="#999999"  value="#999999"/>
@@ -357,7 +357,7 @@ blockquote {margin:1em 2.5em}
 
 /* ヘッダーの背景画像 */
 .bg-photo-container {position:absolute;width:100%;height:$(body.background.height);overflow:hidden;z-index:-1}
-.bg-photo {width:calc(100% + $(body.background.blur * 2));height:calc(100% + $(body.background.blur * 2));position:absolute;left:-$(body.background.blur);top:-$(body.background.blur);background:$(body.background);background-size:100%;filter:blur($(body.background.blur))}
+.bg-photo {width:calc(100% + $(body.background.blur * 2));height:calc(100% + $(body.background.blur * 2));position:absolute;left:-$(body.background.blur);top:-$(body.background.blur);background:$(body.background);background-size:cover;filter:blur($(body.background.blur))}
 
 /* バランサー */
 .hidden, .no-items {display:none}
