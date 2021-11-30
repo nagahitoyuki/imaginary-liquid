@@ -345,7 +345,7 @@
 /* General settings */
 :root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6}
 html {scroll-behavior:smooth}
-body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.base.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal}
+body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.base.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal;display:flex;flex-direction:column}
 a {text-decoration:none;color:$(body.link.base.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
@@ -356,7 +356,7 @@ input {font-size:100%}
 blockquote {margin:1em 2.5em}
 
 /* Header background image */
-.bg-photo-container {position:absolute;width:100%;height:$(body.background.height);overflow:hidden}
+.bg-photo-container {position:absolute;width:100%;height:$(body.background.height);overflow:hidden;z-index:-1}
 .bg-photo {width:calc(100% + $(body.background.blur * 2));height:calc(100% + $(body.background.blur * 2));position:absolute;left:-$(body.background.blur);top:-$(body.background.blur);background:$(body.background);background-size:100%;filter:blur($(body.background.blur))}
 
 /* Balancer */
@@ -447,8 +447,6 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .adsbygoogle {display:block;overflow:hidden}
 
 /* Page body */
-.centered {position:relative;display:flex;flex-direction:column;z-index:20}
-.centered>* {flex:auto}
 #main {margin:0 auto}
 .blog-posts {background:$(body.background.color);display:grid;gap:var(--maincolumn-padding);contain:content}
 .blog-posts>.post {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
@@ -576,11 +574,11 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 .item-content {display:flex;column-gap:var(--maincolumn-padding)}
 .item-content>img {flex:none;height:100%}
 .PopularPosts .post+.post {border-top:1px dashed $(sidebar.separator.color)}
-#page_body .PopularPosts {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);margin-bottom:calc(var(--maincolumn-padding) * 2.25)} 
-.centered .PopularPosts .post {margin-bottom:20px;padding:0}
-.centered .item-content {margin-bottom:16px}
-.centered .item-content>img {width:max(20%, 7em - var(--maincolumn-padding))}
-.sidebar-container .item-content>img {width:calc(35% - var(--maincolumn-padding))}
+#PopularPosts1 {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);margin-bottom:calc(var(--maincolumn-padding) * 2.25)} 
+.ctpp .post {margin-bottom:20px;padding:0}
+.ctpp .item-content {margin-bottom:16px}
+.ctpp .item-content>img {width:max(20%, 7em - var(--maincolumn-padding))}
+.sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
 
 /* Pager */
 #blog_pager {text-align:center;margin-top:var(--maincolumn-padding);margin-bottom:calc(var(--maincolumn-padding) * 1.75);display:flex;justify-content:space-around}
@@ -726,8 +724,8 @@ margin-top:20px}
 ]]></b:skin>
 
 <b:if cond='data:view.isLayoutMode'><b:template-skin>
-<![CDATA[body#layout .bg-photo {display:none}
-body#layout .centered {display:block;max-width:925px;margin:0 auto}
+<![CDATA[body#layout {display:block;max-width:925px;margin:0 auto}
+body#layout .bg-photo {display:none}
 body#layout .centered-top {margin-top:0;margin-bottom:0}
 body#layout #floating_bar {position:initial;display:initial}
 body#layout #floating_menu {display:initial}
@@ -752,7 +750,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
 <b:defaultmarkup type='PopularPosts'>
     <b:includable id='main' var='this'>
   <b:include name='widget-title'/>
-  <div class='widget-content' role='feed'>
+  <div expr:class='data:widget.sectionId == &quot;sub_main&quot; ? &quot;ctpp&quot; : &quot;sbpp&quot;' role='feed'>
     <b:include name='snippetedPosts'/>
   </div>
 </b:includable>
@@ -1040,8 +1038,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
      <div class='bg-photo-container'>
        <div class='bg-photo'/>
       </div>
-
-          <div class='centered'>
 
 <b:section class='centered-top' id='header' name='Header' showaddelement='false' tag='header'>
   <b:widget id='Header1' locked='true' title='Blog Name (Header)' type='Header' visible='true'>
@@ -1712,7 +1708,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:widget-setting name='timeRange'>LAST_WEEK</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-  <aside class='widget-content' role='feed'>
+  <aside class='ctpp' role='feed'>
   <b:if cond='data:title'>
     <h2 class='feed-title'><data:title/></h2>
   </b:if>
@@ -2093,7 +2089,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
               </b:widget>
             </b:section>
-          </div>
 
 <script>
 document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
