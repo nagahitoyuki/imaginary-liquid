@@ -909,7 +909,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
           <b:include data='{ items: data:this.data, itemSet: &quot;data&quot;, itemsMarkup: &quot;flatOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='flatOrder'>
-          <ul class='flat'><b:loop values='data:data' var='i'><li><a expr:href='data:i.url'><data:i.name/>(<data:i.post-count/>)</a></li></b:loop></ul>
+          <ul class='flat'><b:loop values='data:data' var='i'><li><a expr:href='data:i.url'><data:i.name/> (<data:i.post-count/>)</a></li></b:loop></ul>
           </b:includable>
           <b:includable id='hierarchy'>
           <b:include data='{ limit: 1, items: data:this.data, itemSet: &quot;data&quot;, itemsMarkup: &quot;super.hierarchy&quot; }' name='extendableItems'/>
@@ -919,7 +919,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
     <b:loop values='data:intervals' var='interval'>
       <li>
           <a expr:href='data:interval.url'>
-            <data:interval.name/>(<data:interval.post-count/>)
+            <data:interval.name/> (<data:interval.post-count/>)
           </a>
           <b:include cond='data:interval.data' data='interval.data' name='interval'/>
           <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
@@ -945,7 +945,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;cloudOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='cloudOrder'>
-          <b:loop values='data:labels' var='label'><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'>(<data:label.count/>)</b:if></a></b:loop>
+          <b:loop values='data:labels' var='label'><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'> (<data:label.count/>)</b:if></a></b:loop>
           </b:includable>
           <b:includable id='content'>
   <div class='widget-content'>
@@ -958,7 +958,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;listOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='listOrder'>
-          <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'>(<data:label.count/>)</b:if></a></li></b:loop></ul>
+          <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'> (<data:label.count/>)</b:if></a></li></b:loop></ul>
         </b:includable>
 </b:defaultmarkup>
 <b:defaultmarkup type='ContactForm'>
@@ -1438,7 +1438,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <div class='feed-links'>
   <data:messages.subscribeTo/>
   <b:loop values='data:links' var='f'>
-     <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' rel='nofollow' target='_blank'><data:f.name/> (<data:f.feedType/>)</a>
+     <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' rel='nofollow' target='_blank'><data:f.name/>(<data:f.feedType/>)</a>
   </b:loop>
   </div>
 </b:includable>
@@ -1912,7 +1912,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           <b:include data='{ items: data:this.data, itemSet: &quot;data&quot;, itemsMarkup: &quot;flatOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='flatOrder'>
-          <ul class='flat'><b:loop values='data:data' var='i'><li><a expr:href='data:i.url'><data:i.name/>(<data:i.post-count/>)</a></li></b:loop></ul>
+          <ul class='flat'><b:loop values='data:data' var='i'><li><a expr:href='data:i.url'><data:i.name/> (<data:i.post-count/>)</a></li></b:loop></ul>
           </b:includable>
           <b:includable id='hierarchy'>
           <b:include data='{ limit: 1, items: data:this.data, itemSet: &quot;data&quot;, itemsMarkup: &quot;super.hierarchy&quot; }' name='extendableItems'/>
@@ -1922,7 +1922,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:loop values='data:intervals' var='interval'>
       <li>
           <a expr:href='data:interval.url'>
-            <data:interval.name/>(<data:interval.post-count/>)
+            <data:interval.name/> (<data:interval.post-count/>)
           </a>
           <b:include cond='data:interval.data' data='interval.data' name='interval'/>
           <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
@@ -1955,7 +1955,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;cloudOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='cloudOrder'>
-          <b:loop values='data:labels' var='label'><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'>(<data:label.count/>)</b:if></a></b:loop>
+          <b:loop values='data:labels' var='label'><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'> (<data:label.count/>)</b:if></a></b:loop>
           </b:includable>
           <b:includable id='content'>
   <div class='widget-content'>
@@ -1968,7 +1968,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;listOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='listOrder'>
-          <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'>(<data:label.count/>)</b:if></a></li></b:loop></ul>
+          <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'> (<data:label.count/>)</b:if></a></li></b:loop></ul>
         </b:includable>
         </b:widget>
         <b:widget id='ContactForm1' locked='false' title='Contact form' type='ContactForm' visible='true'>
