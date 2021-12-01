@@ -1479,7 +1479,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <div class='feed-links'>
   <data:messages.subscribeTo/>
   <b:loop values='data:links' var='f'>
-     <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' rel='nofollow' target='_blank'><data:f.name/>(<data:f.feedType/>)</a>
+     <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' rel='nofollow' target='_blank'><data:f.name/> (<data:f.feedType/>)</a>
   </b:loop>
   </div>
 </b:includable>
