@@ -618,8 +618,6 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 /* アーカイブとラベル */
 .BlogArchive>.title, .Label>.title, .BlogArchive .first-items>ul, .list-label-widget-content .remaining-items>ul li:last-child {margin-bottom:0}
 .BlogArchive .remaining-items>ul, .list-label-widget-content .first-items>ul, .list-label-widget-content .remaining-items>ul {margin-top:0;margin-bottom:0}
-.BlogArchive .post-count::before, .Label .label-count::before {content:'('}
-.BlogArchive .post-count::after, .Label .label-count::after {content:')'}
 #ArchiveList, .list-label-widget-content, .cloud-label-widget-content {display:flex;flex-direction:column}
 .remaining-items {position:absolute;visibility:hidden;overflow:hidden;transition:all .3s ease-out}
 .show-more, .show-less {margin-$startSide:auto;font-size:medium;color:$(body.link.base.color);margin-top:24px;cursor:pointer}
@@ -848,12 +846,10 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
 </b:defaultmarkup>
 <b:defaultmarkup type='Profile'>
             <b:includable id='main' var='this'>
-          <div class='wrapper'>
             <b:with value='data:messages.blogAuthors' var='defaultTitle'>
               <b:include name='widget-title'/>
             </b:with>
             <b:include name='content'/>
-          </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
   <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:team ? 44 : data:authorPhoto.height' expr:loading='data:blog.isMobileRequest ? &quot;lazy&quot; : &quot;eager&quot;' expr:src='data:authorPhoto.image' expr:width='data:team ? 44 : data:authorPhoto.width'/>
@@ -954,7 +950,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
           <b:include data='{ items: data:this.data, itemSet: &quot;data&quot;, itemsMarkup: &quot;flatOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='flatOrder'>
-          <ul class='flat'><b:loop values='data:data' var='i'><li><a expr:href='data:i.url'><data:i.name/><span class='post-count'><data:i.post-count/></span></a></li></b:loop></ul>
+          <ul class='flat'><b:loop values='data:data' var='i'><li><a expr:href='data:i.url'><data:i.name/>(<data:i.post-count/>)</a></li></b:loop></ul>
           </b:includable>
           <b:includable id='hierarchy'>
           <b:include data='{ limit: 1, items: data:this.data, itemSet: &quot;data&quot;, itemsMarkup: &quot;super.hierarchy&quot; }' name='extendableItems'/>
@@ -964,8 +960,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
     <b:loop values='data:intervals' var='interval'>
       <li>
           <a expr:href='data:interval.url'>
-            <data:interval.name/>
-            <span class='post-count'><data:interval.post-count/></span>
+            <data:interval.name/> (<data:interval.post-count/>)
           </a>
           <b:include cond='data:interval.data' data='interval.data' name='interval'/>
           <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
@@ -991,7 +986,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;cloudOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='cloudOrder'>
-          <b:loop values='data:labels' var='label'><span><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'><span class='label-count'><data:label.count/></span></b:if></a></span></b:loop>
+          <b:loop values='data:labels' var='label'><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'>(<data:label.count/>)</b:if></a></b:loop>
           </b:includable>
           <b:includable id='content'>
   <div class='widget-content'>
@@ -1004,7 +999,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;listOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='listOrder'>
-          <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'><span class='label-count'><data:label.count/></span></b:if></a></li></b:loop></ul>
+          <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'>(<data:label.count/>)</b:if></a></li></b:loop></ul>
         </b:includable>
 </b:defaultmarkup>
 <b:defaultmarkup type='ContactForm'>
@@ -1158,9 +1153,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   </b:widget>
 </b:section>
 
-  <noscript><div class='noscript'>このサイトを適切に使用するためにはブラウザのJavaScriptの実行を許可して下さい。</div></noscript>
-
 <main id='main' tabindex='-1'>
+<noscript><div class='noscript'>このサイトを適切に使用するためにはブラウザのJavaScriptの実行を許可して下さい。</div></noscript>
 <div id='floating_bar'>
   <div id='floating_menu'>
   <b:if cond='data:skin.vars.sidebar_width + data:skin.vars.content_margin != &quot;0px0px&quot;'><button aria-label='サイドバーを開く' class='svg-icon-24-button' id='hamburger_menu' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_menu_black_24dp'/></svg></button><b:else/><button aria-label='RSSフィード' class='svg-icon-24-button' id='febtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_rss_feed_black_24dp'/></svg></button></b:if>
@@ -1841,12 +1835,10 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
               <b:widget-setting name='showlocation'>true</b:widget-setting>
             </b:widget-settings>
             <b:includable id='main' var='this'>
-          <div class='wrapper'>
             <b:with value='data:messages.blogAuthors' var='defaultTitle'>
               <b:include name='widget-title'/>
             </b:with>
             <b:include name='content'/>
-          </div>
         </b:includable>
             <b:includable id='authorProfileImage'>
   <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:team ? 44 : data:authorPhoto.height' expr:loading='data:blog.isMobileRequest ? &quot;lazy&quot; : &quot;eager&quot;' expr:src='data:authorPhoto.image' expr:width='data:team ? 44 : data:authorPhoto.width'/>
@@ -1961,7 +1953,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           <b:include data='{ items: data:this.data, itemSet: &quot;data&quot;, itemsMarkup: &quot;flatOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='flatOrder'>
-          <ul class='flat'><b:loop values='data:data' var='i'><li><a expr:href='data:i.url'><data:i.name/><span class='post-count'><data:i.post-count/></span></a></li></b:loop></ul>
+          <ul class='flat'><b:loop values='data:data' var='i'><li><a expr:href='data:i.url'><data:i.name/>(<data:i.post-count/>)</a></li></b:loop></ul>
           </b:includable>
           <b:includable id='hierarchy'>
           <b:include data='{ limit: 1, items: data:this.data, itemSet: &quot;data&quot;, itemsMarkup: &quot;super.hierarchy&quot; }' name='extendableItems'/>
@@ -1971,8 +1963,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:loop values='data:intervals' var='interval'>
       <li>
           <a expr:href='data:interval.url'>
-            <data:interval.name/>
-            <span class='post-count'><data:interval.post-count/></span>
+            <data:interval.name/>(<data:interval.post-count/>)
           </a>
           <b:include cond='data:interval.data' data='interval.data' name='interval'/>
           <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
@@ -2005,7 +1996,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;cloudOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='cloudOrder'>
-          <b:loop values='data:labels' var='label'><span><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'><span class='label-count'><data:label.count/></span></b:if></a></span></b:loop>
+          <b:loop values='data:labels' var='label'><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'>(<data:label.count/>)</b:if></a></b:loop>
           </b:includable>
           <b:includable id='content'>
   <div class='widget-content'>
@@ -2018,7 +2009,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;listOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='listOrder'>
-          <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'><span class='label-count'><data:label.count/></span></b:if></a></li></b:loop></ul>
+          <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'>(<data:label.count/>)</b:if></a></li></b:loop></ul>
         </b:includable>
         </b:widget>
         <b:widget id='ContactForm1' locked='false' title='連絡フォーム' type='ContactForm' visible='true'>
