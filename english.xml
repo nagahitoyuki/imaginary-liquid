@@ -400,7 +400,7 @@ blockquote {margin:1em 2.5em}
 #blog-title {color:$(blog.title.color);font:$(blog.title.font);margin:0;line-height:calc(var(--body-lineheight) - .15)}
 #blog-title>a, #blog-title>a:hover, #blog-title>a:visited{color:$(blog.title.color)}
 .blog-desc {color:$(blog.title.color);margin-top:1.25em;margin-bottom:0}
-.header-widget {background-position:$startSide;background-repeat:no-repeat}
+.Header {background-position:center center;background-repeat:no-repeat}
 
 /* Tabs */
 .tabs-title {color:$(tabs.title.color);font-size:large;margin-top:1.em;margin-bottom:0}
@@ -918,22 +918,14 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
           <b:includable id='interval' var='intervals'>
   <ul class='hierarchy'>
     <b:loop values='data:intervals' var='interval'>
-      <li>
-          <a expr:href='data:interval.url'>
-            <data:interval.name/> (<data:interval.post-count/>)
-          </a>
-          <b:include cond='data:interval.data' data='interval.data' name='interval'/>
-          <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
-      </li>
+      <li><a expr:href='data:interval.url'><data:interval.name/> (<data:interval.post-count/>)</a><b:include cond='data:interval.data' data='interval.data' name='interval'/><b:include cond='data:interval.posts' data='interval.posts' name='posts'/></li>
     </b:loop>
   </ul>
 </b:includable>
           <b:includable id='posts' var='posts'>
   <ul class='hierarchy'>
     <b:loop values='data:posts' var='post'>
-      <li>
-        <a expr:href='data:post.url'><data:post.title/></a>
-      </li>
+      <li><a expr:href='data:post.url'><data:post.title/></a></li>
     </b:loop>
   </ul>
 </b:includable>
@@ -1069,16 +1061,14 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:widget-setting name='displayWidth'>0</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-  <div class='header-widget'>
     <b:include cond='data:imagePlacement in {&quot;REPLACE&quot;, &quot;BEFORE_DESCRIPTION&quot;}' name='image'/>
      <b:include cond='data:imagePlacement not in {&quot;REPLACE&quot;, &quot;BEFORE_DESCRIPTION&quot;}' name='title'/>
      <b:include cond='data:imagePlacement != &quot;REPLACE&quot;' name='description'/>
-   </div>
      <b:include cond='data:imagePlacement == &quot;BEHIND&quot;' name='behindImageStyle'/>
 </b:includable>
     <b:includable id='behindImageStyle'>
   <b:if cond='data:sourceUrl'>
-    <b:include cond='data:this.image' data='{ image: data:this.image, selector: &quot;.header-widget&quot; }' name='responsiveImageStyle'/>
+    <b:include cond='data:this.image' data='{ image: data:this.image, selector: &quot;.Header&quot; }' name='responsiveImageStyle'/>
   </b:if>
 </b:includable>
     <b:includable id='description'>
@@ -1119,10 +1109,15 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
     <b:includable id='content'>
     <b:include name='pageList'/>
 </b:includable>
+    <b:includable id='overflowButton'>
+  <b:comment>We don&#39;t use overflow
+button</b:comment>
+</b:includable>
+    <b:includable id='overflowablePageList'>
+  <b:comment>We don&#39;t use overflowable page list</b:comment>
+</b:includable>
     <b:includable id='pageLink'>
-  <li class='pl-items'>
-    <a expr:href='data:link.href'><data:link.title/></a>
-  </li>
+  <li class='pl-items'><a expr:href='data:link.href'><data:link.title/></a></li>
 </b:includable>
     <b:includable id='pageList'>
   <ul class='tabs'>
@@ -1936,22 +1931,14 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
           <b:includable id='interval' var='intervals'>
   <ul class='hierarchy'>
     <b:loop values='data:intervals' var='interval'>
-      <li>
-          <a expr:href='data:interval.url'>
-            <data:interval.name/> (<data:interval.post-count/>)
-          </a>
-          <b:include cond='data:interval.data' data='interval.data' name='interval'/>
-          <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
-      </li>
+      <li><a expr:href='data:interval.url'><data:interval.name/> (<data:interval.post-count/>)</a><b:include cond='data:interval.data' data='interval.data' name='interval'/><b:include cond='data:interval.posts' data='interval.posts' name='posts'/></li>
     </b:loop>
   </ul>
 </b:includable>
           <b:includable id='posts' var='posts'>
   <ul class='hierarchy'>
     <b:loop values='data:posts' var='post'>
-      <li>
-        <a expr:href='data:post.url'><data:post.title/></a>
-      </li>
+      <li><a expr:href='data:post.url'><data:post.title/></a></li>
     </b:loop>
   </ul>
 </b:includable>
