@@ -436,10 +436,10 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .fadeout {animation:fadeout .3s ease-out}
 
 /* Search widget */
-.search-input {display:inline-flex;align-items:center;column-gap:6px;animation:fadein .3s ease-out}
 .search-space {color:$(search.input.color);background-color:rgba(255, 255, 255, .2);font:$(search.input.font);max-width:73%}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
+html[dir="rtl"] .search-space {vertical-align:text-top}
 .search-action {color:$(search.action.color)}
 
 /* AdSense ads */
@@ -674,7 +674,7 @@ body {position:relative}
 @media screen and (max-width:$(sidebar.width + content.width + content.margin - 1px)) {
 
 /* Placement */
-.search-input {margin-$startSide:4px;margin-$endSide:8px}
+#swc {margin-$startSide:4px;margin-$endSide:8px;animation:fadein .3s ease-out}
 #search_expand {margin-$startSide:-4px}
 #main {width:min(100vw, $(content.width))}
 
@@ -993,6 +993,28 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
   </address>
 </b:includable>
 </b:defaultmarkup>
+<b:defaultmarkup type='BlogSearch'>
+    <b:includable id='main'>
+  <b:include name='widget-title'/>
+  <b:include name='content'/>
+</b:includable>
+    <b:includable id='content'>
+  <div class='widget-content' role='search'>
+    <b:include name='searchForm'/>
+  </div>
+</b:includable>
+    <b:includable id='searchForm'>
+  <form expr:action='data:blog.searchUrl'>
+    <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+    <b:include name='urlParamsAsFormInput'/>
+      <input autocomplete='off' class='search-space' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' type='search'/>
+    <b:include name='searchSubmit'/>
+  </form>
+</b:includable>
+    <b:includable id='searchSubmit'>
+  <input class='search-action' expr:value='data:messages.search.escaped' type='submit'/>
+</b:includable>
+</b:defaultmarkup>
 </b:defaultmarkups>
 
 <b:with value='data:skin.vars.body_background.image' var='bgimg'>
@@ -1125,15 +1147,16 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
            <b:include name='content'/>
          </b:includable>
             <b:includable id='content'>
-           <form aria-hidden='true' class='hidden' expr:action='data:blog.searchUrl' id='swc' role='search'>
-           <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
-             <b:include name='urlParamsAsFormInput'/>
-             <div class='search-input'>
-               <input autocomplete='off' class='search-space' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' type='search'/>
-              <b:include name='searchSubmit'/>
-              </div>
-           </form>
+             <b:include name='searchForm'/>
          </b:includable>
+            <b:includable id='searchForm'>
+  <form aria-hidden='true' class='hidden' expr:action='data:blog.searchUrl' id='swc' role='search'>
+    <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+    <b:include name='urlParamsAsFormInput'/>
+      <input autocomplete='off' class='search-space' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' type='search'/>
+    <b:include name='searchSubmit'/>
+  </form>
+</b:includable>
             <b:includable id='searchSubmit'>
            <input class='search-action' expr:value='data:messages.search.escaped' type='submit'/>
          </b:includable>
