@@ -1166,12 +1166,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
            <b:include name='content'/>
          </b:includable>
             <b:includable id='content'>
-           <div aria-hidden='true' class='widget-content hidden' id='swc' role='search'>
-             <b:include name='searchForm'/>
-           </div>
-         </b:includable>
-            <b:includable id='searchForm'>
-           <form expr:action='data:blog.searchUrl'>
+           <form aria-hidden='true' class='hidden' expr:action='data:blog.searchUrl' id='swc' role='search'>
            <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
              <b:include name='urlParamsAsFormInput'/>
              <div class='search-input'>
