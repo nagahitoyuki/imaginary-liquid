@@ -445,7 +445,7 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 /* AdSense ads */
 .inline-ad {display:none;overflow:hidden}
 .adsbygoogle {display:block;overflow:hidden}
-.hentry .desktop-ad, .hentry .mobile-ad {transform:translateY(.25em)}
+.hentry .desktop-ad, .hentry .mobile-ad {transform:translateY(5px)}
 
 /* Page body */
 #main {margin:0 auto}
