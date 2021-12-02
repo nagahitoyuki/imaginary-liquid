@@ -1246,8 +1246,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <b:include name='noContentPlaceholder'/>
   <b:comment>Cap the total number of ads (widgets and inline ads).</b:comment>
   <b:with value='3' var='maxNumAds'>
-  <b:with value='data:widgets.AdSense.size' var='numDesktopAds'>
-  <b:with value='data:widgets.AdSense count (w =&gt; w.sectionId != &quot;ads&quot;)' var='numMobileAds'>
+  <b:with value='data:widgets.AdSense.size' var='numAds'>
   <b:comment>Filter out the featured post, but only on the homepage.</b:comment>
   <b:with value='data:widgets.FeaturedPost filter (w =&gt; w.sectionId == &quot;page_body&quot;) map (w =&gt; w.postId)' var='featuredPostIds'>
   <b:with value='data:view.isHomepage ? data:posts filter (post =&gt; post.id not in data:featuredPostIds) : data:posts' var='posts'>
@@ -1266,7 +1265,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 &quot;@type&quot;: &quot;Person&quot;, &quot;name&quot;: &quot;<data:posts.first.author.name.jsonEscaped/>&quot;, &quot;url&quot;: &quot;<data:posts.first.author.profileUrl.jsonEscaped/>&quot;<b:if cond='data:posts.first.author.authorPhoto'>, &quot;image&quot;: {
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https:<data:posts.first.author.authorPhoto.image.jsonEscaped/>&quot;, &quot;height&quot;: <data:posts.first.author.authorPhoto.height/>, &quot;width&quot;: <data:posts.first.author.authorPhoto.width/> }</b:if>}</b:if>}</script></b:if>
   <b:include name='postPagination'/>
-  </b:with>
   </b:with>
   </b:with>
   </b:with>
@@ -1468,8 +1466,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
 </b:includable>
     <b:includable id='inlineAd' var='post'>
   <aside aria-label='Advertisements'>
-  <b:class cond='data:post.adNumber + data:numDesktopAds lt data:maxNumAds' name='desktop-ad'/>
-  <b:class cond='data:post.adNumber + data:numMobileAds lt data:maxNumAds' name='mobile-ad'/>
+  <b:class cond='data:post.adNumber + data:numAds lt data:maxNumAds' name='desktop-ad mobile-ad'/>
     <b:include data='post' name='super.inlineAd'/>
   </aside>
 </b:includable>
