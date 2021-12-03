@@ -784,7 +784,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
     <b:with value='data:post.featuredImage' var='imgurl'>
-      <img expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 94, &quot;1:1&quot;) + &quot;-rw-e60 94w, &quot; + resizeImage(data:imgurl, 188, &quot;1:1&quot;) + &quot;-rw-e60 188w&quot; : sourceSet(data:imgurl, [94,188], &quot;1:1&quot;)' height='94' loading='lazy' sizes='(max-width:480px) 20vw, 188px' width='94'/>
+      <img expr:alt='data:messages.image' expr:src='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 188, &quot;1:1&quot;) + &quot;-rw-e60&quot; : resizeImage(data:imgurl, 188, &quot;1:1&quot;)' height='188' loading='lazy' width='188'/>
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
@@ -1736,7 +1736,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
     <b:with value='data:post.featuredImage' var='imgurl'>
-      <img expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 94, &quot;1:1&quot;) + &quot;-rw-e60 94w, &quot; + resizeImage(data:imgurl, 188, &quot;1:1&quot;) + &quot;-rw-e60 188w&quot; : sourceSet(data:imgurl, [94,188], &quot;1:1&quot;)' height='94' loading='lazy' sizes='(max-width:480px) 20vw, 188px' width='94'/>
+      <img expr:alt='data:messages.image' expr:src='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 188, &quot;1:1&quot;) + &quot;-rw-e60&quot; : resizeImage(data:imgurl, 188, &quot;1:1&quot;)' height='188' loading='lazy' width='188'/>
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
