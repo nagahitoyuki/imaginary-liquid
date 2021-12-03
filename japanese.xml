@@ -1682,7 +1682,7 @@ button</b:comment>
     <b:includable id='postTimestamp'>
   <span class='byline post-timestamp'><data:byline.label/>
   <b:if cond='data:post.url'>
-    <a class='timestamp-link published' expr:href='&quot;/&quot; + data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;' rel='archives'><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></a>
+    <a class='timestamp-link published' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' rel='archives'><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></a>
   </b:if>
   </span>
 </b:includable>
