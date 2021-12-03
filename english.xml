@@ -588,7 +588,7 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* Sub main */
-#sub_main {margin-bottom:1em;contain:content}
+#sub_main {margin-bottom:.5em;contain:content}
 #sub_main>.widget {margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
 #sub_main .widget-content ul {list-style:none;padding-$startSide:0}
 #sub_main .widget-content ul ul {margin-$startSide:1em}
