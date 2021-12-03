@@ -403,10 +403,10 @@ blockquote {margin:1em 2.5em}
 .Header {background-position:center center;background-repeat:no-repeat}
 
 /* Tabs */
-.tabs-title {color:$(tabs.title.color);font-size:large;margin-top:1.em;margin-bottom:0}
-.tabs {list-style:none;padding-$startSide:0;display:flex;justify-content:space-evenly;align-items:center;flex-wrap:wrap;margin-top:.75em;margin-bottom:-.5em}
-.pl-items {font:$(tabs.font);min-width:10%;line-height:2.6}
-.pl-items>a {color:$(tabs.color)}
+.tabs {display:flex;justify-content:space-evenly;align-items:center;flex-wrap:wrap;margin-top:.75em;margin-bottom:-.5em}
+.tabs-title {color:$(tabs.title.color);font-size:large;margin-top:1em;margin-bottom:0}
+.pl-items {font:$(tabs.font);padding-left:.5em;padding-right:.5em;line-height:calc(var(--body-lineheight) * 1.5)}
+.pl-items, .pl-items:hover, .pl-items:visited {color:$(tabs.color)}
 
 /* Floating bar */
 #floating_bar {position:sticky;top:0;left:0;right:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50;contain:content}
@@ -784,11 +784,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
     <b:with value='data:post.featuredImage' var='imgurl'>
-    <b:if cond='data:imgurl contains &quot;googleusercontent.com&quot;'>
-      <img expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='resizeImage(data:imgurl, 94, &quot;1:1&quot;) + &quot;-rw-e60 94w, &quot; + resizeImage(data:imgurl, 188, &quot;1:1&quot;) + &quot;-rw-e60 188w&quot;' height='94' loading='lazy' sizes='(max-width:480px) 20vw, 188px' width='94'/>
-    <b:else/>
-      <img expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='sourceSet(data:imgurl, [94,188], &quot;1:1&quot;)' height='94' loading='lazy' sizes='(max-width:480px) 20vw, 188px' width='94'/>
-    </b:if>
+      <img expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 94, &quot;1:1&quot;) + &quot;-rw-e60 94w, &quot; + resizeImage(data:imgurl, 188, &quot;1:1&quot;) + &quot;-rw-e60 188w&quot; : sourceSet(data:imgurl, [94,188], &quot;1:1&quot;)' height='94' loading='lazy' sizes='(max-width:480px) 20vw, 188px' width='94'/>
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
@@ -1101,10 +1097,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:widget-setting name='homeTitle'>Home</b:widget-setting>
     </b:widget-settings>
      <b:includable id='main'>
-  <nav class='widget-content'>
   <b:tag class='tabs-title' cond='data:title' name='h2'><data:title/></b:tag>
   <b:include name='content'/>
-  </nav>
 </b:includable>
     <b:includable id='content'>
     <b:include name='pageList'/>
@@ -1117,15 +1111,14 @@ button</b:comment>
   <b:comment>We don&#39;t use overflowable page list</b:comment>
 </b:includable>
     <b:includable id='pageLink'>
-  <li class='pl-items'><a expr:href='data:link.href'><data:link.title/></a></li>
+  <a class='pl-items' expr:href='data:link.href'><data:link.title/></a>
 </b:includable>
     <b:includable id='pageList'>
-  <ul class='tabs'>
-    <b:class cond='data:pageListClass' expr:name='data:pageListClass'/>
+  <nav class='tabs'>
     <b:loop values='data:links' var='link'>
       <b:include name='pageLink'/>
     </b:loop>
-  </ul>
+  </nav>
 </b:includable>
   </b:widget>
 </b:section>
@@ -1509,7 +1502,7 @@ button</b:comment>
     <b:includable id='postAuthor'>
   <span class='byline author vcard'><b:if cond='data:byline.label'><span class='pa-label'><data:byline.label/></span></b:if>
   <b:if cond='data:post.author.profileUrl'>
-    <a class='url uid fn' expr:href='data:post.author.profileUrl' rel='me' title='author profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24' width='24'/><span><data:post.author.name/></span></a>
+    <a class='url fn' expr:href='data:post.author.profileUrl' rel='me' title='author profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24' width='24'/><span><data:post.author.name/></span></a>
   <b:else/>
     <span class='fn'><data:post.author.name/></span>
   </b:if>
@@ -1569,21 +1562,17 @@ button</b:comment>
   <b:include cond='data:view.isMultipleItems and data:post.includeAd' data='post' name='inlineAd'/>
 </b:includable>
     <b:includable id='postCommentsLink'>
-  <b:if cond='data:view.isMultipleItems'>
-    <span class='byline post-comment-link'>
-      <b:include name='commentsLink'/>
-    </span>
-  </b:if>
+  <b:comment>Don&#39;t show comment buttons.</b:comment>
 </b:includable>
     <b:includable id='postFooter' var='post'>
     <footer class='post-footer'>
       <b:if cond='data:view.isPost'>
       <b:include name='footerBylines'/>
         <div class='pf-last'>
-          <span class='byline post-timestamp updated'>Last updated:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url uid' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a>
+          <span class='byline post-timestamp updated'>Last updated:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a>
         </div>
       <b:elseif cond='data:view.isPage'/>
-      <div class='pf-last'>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url uid' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a></div>
+      <div class='pf-last'>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a></div>
       <b:else/>
         <b:if cond='data:post.url'>
           <a class='byline archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
@@ -1658,9 +1647,9 @@ button</b:comment>
 </b:includable>
     <b:includable id='postTitle' var='post'>
   <b:if cond='data:post.title != &quot;&quot;'>
-     <b:if cond='data:post.link or (data:post.url and data:view.url != data:post.url)'>
+     <b:if cond='data:post.url and data:view.url != data:post.url'>
        <h2 class='snippet-title'>
-        <a expr:href='data:post.link ?: data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
+        <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
        </h2>
       <b:else/>
        <h1 class='entry-title'>
@@ -1747,11 +1736,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
     <b:with value='data:post.featuredImage' var='imgurl'>
-    <b:if cond='data:imgurl contains &quot;googleusercontent.com&quot;'>
-      <img expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='resizeImage(data:imgurl, 94, &quot;1:1&quot;) + &quot;-rw-e60 94w, &quot; + resizeImage(data:imgurl, 188, &quot;1:1&quot;) + &quot;-rw-e60 188w&quot;' height='94' loading='lazy' sizes='(max-width:480px) 20vw, 188px' width='94'/>
-    <b:else/>
-      <img expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='sourceSet(data:imgurl, [94,188], &quot;1:1&quot;)' height='94' loading='lazy' sizes='(max-width:480px) 20vw, 188px' width='94'/>
-    </b:if>
+      <img expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 94, &quot;1:1&quot;) + &quot;-rw-e60 94w, &quot; + resizeImage(data:imgurl, 188, &quot;1:1&quot;) + &quot;-rw-e60 188w&quot; : sourceSet(data:imgurl, [94,188], &quot;1:1&quot;)' height='94' loading='lazy' sizes='(max-width:480px) 20vw, 188px' width='94'/>
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
