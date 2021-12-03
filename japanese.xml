@@ -1138,10 +1138,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
       <b:widget-setting name='homeTitle'>ホーム</b:widget-setting>
     </b:widget-settings>
      <b:includable id='main'>
-  <nav class='widget-content'>
   <b:tag class='tabs-title' cond='data:title' name='h2'><data:title/></b:tag>
   <b:include name='content'/>
-  </nav>
 </b:includable>
     <b:includable id='content'>
     <b:include name='pageList'/>
@@ -1154,15 +1152,14 @@ button</b:comment>
   <b:comment>We don&#39;t use overflowable page list</b:comment>
 </b:includable>
     <b:includable id='pageLink'>
-  <li class='pl-items'><a expr:href='data:link.href'><data:link.title/></a></li>
+  <a class='pl-items' expr:href='data:link.href'><data:link.title/></a>
 </b:includable>
     <b:includable id='pageList'>
-  <ul class='tabs'>
-    <b:class cond='data:pageListClass' expr:name='data:pageListClass'/>
+  <nav class='tabs'>
     <b:loop values='data:links' var='link'>
       <b:include name='pageLink'/>
     </b:loop>
-  </ul>
+  </nav>
 </b:includable>
   </b:widget>
 </b:section>
