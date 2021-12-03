@@ -1771,7 +1771,7 @@ button</b:comment>
 </b:section>
 </aside>
 
-<button id='back_button' aria-label='トップへ戻る' class='svg-icon-24-button hidden' onclick='location.href=&quot;#blog-title&quot;' type='button'><svg class='svg-icon-24' id='' role='img' viewBox='0 0 24 24'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button>
+<button aria-label='トップへ戻る' class='svg-icon-24-button hidden' id='back_button' onclick='location.href=&quot;#blog-title&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button>
 <b:if cond='data:view.isMultipleItems'>
 <button class='svg-icon-24-button hidden' expr:aria-label='data:messages.loading' id='add_button' type='button'><data:messages.loading/></button>
 <b:else/>
