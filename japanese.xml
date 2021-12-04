@@ -569,26 +569,25 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 .item-content {display:flex;column-gap:var(--maincolumn-padding)}
 .item-content>img {flex:none;height:100%}
 .PopularPosts .post+.post {border-top:1px dashed $(sidebar.separator.color)}
-#PopularPosts1 {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
+#PopularPosts1 {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)}
 .ctpp .post {margin-bottom:20px;padding:0}
 .ctpp .item-content {margin-bottom:16px}
 .ctpp .item-content>img {width:max(20%, 7em - var(--maincolumn-padding))}
 .sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
 
 /* ページャー */
-#blog_pager {text-align:center;margin-top:calc(var(--maincolumn-padding) * 2.25);margin-bottom:calc(var(--maincolumn-padding) * 1.75);display:flex;justify-content:space-around}
+#blog_pager {margin-top:1.5em;margin-bottom:1.5em;display:flex;justify-content:space-around}
 #blog_pager>a {color:$(posts.navigation.link.color)}
 #blog_pager>a:visited {color:$(posts.navigation.link.visited.color)}
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* サブメイン */
-#sub_main {margin-bottom:.75em;contain:content}
-#sub_main>.widget {margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
+#sub_main {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);contain:content}
 #sub_main .widget-content ul {list-style:none;padding-$startSide:0}
 #sub_main .widget-content ul ul {margin-$startSide:1em}
 
 /* ブログの帰属 */
-#attribution {text-align:center;font-size:small;color:$(attribution.text.color);margin-bottom:2em;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
+#attribution {text-align:center;font-size:small;color:$(attribution.text.color);padding:.5em var(--maincolumn-padding) 2em}
 #attribution>div {line-height:24px;margin-top:.5em}
 #attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
 #Text1, .blogger, .image-attribution {margin-bottom:1em}
@@ -677,7 +676,7 @@ body {position:relative}
 #comment_button, #add_button {$startSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
 
 /* サイドバー */
-#close_button {background-color:$(sidebar.backgroundColorTop);text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding);padding-bottom:var(--maincolumn-padding);margin-bottom:calc(var(--maincolumn-padding) * -1)}
+#close_button {background-color:$(sidebar.backgroundColorTop);text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
 .sidebar-container {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s ease-out;z-index:101}
 .slidein {transform:translateX($(sidebar.width))}
 .slideout {transform:translateX(0)}
