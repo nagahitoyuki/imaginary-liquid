@@ -460,7 +460,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .FeaturedPost>.feed-title {margin-top:0;margin-bottom:16px}
 .FeaturedPost>.feed-title>a {color:$(posts.title.color)}
 .FeaturedPost .post>a, .FeaturedPost .post>a:hover, .FeaturedPost .post>a:visited {color:#fff}
-.FeaturedPost .post>a, .FeaturedPost .snippet-thumbnail {width:100%;height:min((100vw - var(--maincolumn-padding) * 2) * 2 / 3, ($(content.width) - var(--maincolumn-padding) * 2) * 2 / 3);display:grid;align-items:center;text-align:center}
+.FeaturedPost .post>a, .FeaturedPost .snippet-thumbnail {aspect-ratio:1.5;width:100%;height:auto;display:grid;align-items:center;text-align:center}
 .no-image {background-color:#696969}
 .fp-title {font:$(posts.stream.title.font);line-height:calc(var(--body-lineheight) - .2);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
