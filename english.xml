@@ -579,7 +579,7 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 .ctpp .item-content {margin-bottom:16px}
 .ctpp .item-content>img {width:max(20%, 7em - var(--maincolumn-padding))}
 .sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
-#PopularPosts1 {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)}
+#PopularPosts1 {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);padding-bottom:.25em}
 #PopularPosts1 .post:last-child {margin-bottom:0}
 
 /* Pager */
