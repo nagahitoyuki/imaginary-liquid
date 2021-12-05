@@ -449,7 +449,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 
 /* ページボディー */
 #main {margin:0 auto}
-.blog-posts {background:$(body.background.color);display:grid;gap:var(--maincolumn-padding);contain:content}
+.blog-posts {display:grid;gap:var(--maincolumn-padding);contain:content}
 .blog-posts>.post {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
 .feed-view .blog-posts {grid-template-columns:1fr;margin-bottom:var(--maincolumn-padding)}
 .feed-view .post+aside {align-self:stretch;display:grid}
