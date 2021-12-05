@@ -581,7 +581,8 @@ margin-$endSide:.5em}
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* サブメイン */
-#sub_main {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);contain:content}
+#sub_main {contain:content}
+#sub_main>.widget {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)}
 #sub_main .widget-content ul {list-style:none;padding-$startSide:0}
 #sub_main .widget-content ul ul {margin-$startSide:1em}
 
