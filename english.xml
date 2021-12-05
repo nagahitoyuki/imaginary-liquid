@@ -534,9 +534,8 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 bottom:0;margin-bottom:1em;position:absolute}
 .comment-actions>* {
 margin-$endSide:.5em}
-.comment-header>.datetime {bottom:0;color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.byline.color.blue), .6);display:inline-block;margin-$startSide:.5em}
-.comment-timestamp>a, .comment-header>.datetime>a {
-color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.byline.color.blue), .6)}
+.comment-header>.datetime {bottom:0;display:inline-block;margin-$startSide:.5em}
+.comment-timestamp>a, .comment-header>.datetime>a {color:$(posts.byline.color)}
 .comment-content, .comment-body {margin-top:.75em;word-break:break-word}
 .comment-footer a, .comment-content a, .comment-body a, .comment-actions>a, .comment-actions>a:visited, .comment-actions>a:hover, .blog-admin>a, .comment-replybox-single, .comment-replies a {color:$(posts.link.color)}
 .comment-reply, .blog-admin>a {font-weight:normal}
