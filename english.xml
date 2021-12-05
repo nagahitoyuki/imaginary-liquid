@@ -396,7 +396,7 @@ blockquote {margin:1em 2.5em}
 .no-posts-message {line-height:40px;text-align:center}
 
 /* Blog header */
-.centered-top {padding-top:1.75em;padding-bottom:1.75em;text-align:center;margin-left:var(--maincolumn-padding);margin-right:var(--maincolumn-padding)}
+.centered-top {padding:2em var(--maincolumn-padding);text-align:center}
 #blog-title {color:$(blog.title.color);font:$(blog.title.font);margin:0;line-height:calc(var(--body-lineheight) - .15)}
 #blog-title>a, #blog-title>a:hover, #blog-title>a:visited{color:$(blog.title.color)}
 .blog-desc {color:$(blog.title.color);margin-top:1.25em;margin-bottom:0}
@@ -453,7 +453,6 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .blog-posts>.post {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
 .feed-view .blog-posts {grid-template-columns:1fr;margin-bottom:var(--maincolumn-padding)}
 .feed-view .post+aside {align-self:stretch;display:grid}
-.item-view .blog-posts {margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
 
 /* Featured post */
 .FeaturedPost {padding:20px var(--maincolumn-padding);background-color:$(posts.background.color);margin-bottom:var(--maincolumn-padding)}
@@ -567,7 +566,8 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 
 /* Popular posts */
 .PopularPosts {background-color:$(popularposts.background.color)}
-.PopularPosts, .PopularPosts>.feed-title a, .PopularPosts>.title a {color:$(posts.text.color)}
+.ctpp>.feed-title a, .ctpp>.title a, .sbpp>.titles a {color:$(posts.text.color)}
+.ctpp>.feed-title {margin-top:0}
 .pp-title {font:$(popularposts.title.font);line-height:calc(var(--body-lineheight) - .15);margin-top:20px;margin-bottom:16px}
 .pp-title>a, .pp-title>a:hover, .pp-title>a:visited {color:$(popularposts.title.color)}
 .PopularPosts .post-footer a, .PopularPosts .post-footer a:hover, .PopularPosts .post-footer a:visited {color:$(popularposts.link.color)}
@@ -575,20 +575,21 @@ color:rgba($(posts.byline.color.red), $(posts.byline.color.green), $(posts.bylin
 .item-content {display:flex;column-gap:var(--maincolumn-padding)}
 .item-content>img {flex:none;height:100%}
 .PopularPosts .post+.post {border-top:1px dashed $(sidebar.separator.color)}
-#PopularPosts1 {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)} 
-.ctpp .post {margin-bottom:20px;padding:0}
+.ctpp .post {margin-bottom:20px}
 .ctpp .item-content {margin-bottom:16px}
 .ctpp .item-content>img {width:max(20%, 7em - var(--maincolumn-padding))}
 .sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
+#PopularPosts1 {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)}
+#PopularPosts1 .post:last-child {margin-bottom:0}
 
 /* Pager */
-#blog_pager {margin-top:1.5em;margin-bottom:1.5em;display:flex;justify-content:space-around}
+#blog_pager {padding-top:1.5em;padding-bottom:1.5em;display:flex;justify-content:space-around}
 #blog_pager>a {color:$(posts.navigation.link.color)}
 #blog_pager>a:visited {color:$(posts.navigation.link.visited.color)}
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* Sub main */
-#sub_main {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);contain:content}
+#sub_main {padding:var(--maincolumn-padding);contain:content}
 #sub_main .widget-content ul {list-style:none;padding-$startSide:0}
 #sub_main .widget-content ul ul {margin-$startSide:1em}
 
