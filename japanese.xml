@@ -568,12 +568,11 @@ margin-$endSide:.5em}
 .item-content {display:flex;column-gap:var(--maincolumn-padding)}
 .item-content>img {flex:none;height:100%}
 .PopularPosts .post+.post {border-top:1px dashed $(sidebar.separator.color)}
+#PopularPosts1 {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)}
 .ctpp .post {margin-bottom:20px}
 .ctpp .item-content {margin-bottom:16px}
 .ctpp .item-content>img {width:max(20%, 7em - var(--maincolumn-padding))}
 .sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
-#PopularPosts1 {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);padding-bottom:.5em}
-#PopularPosts1 .post:last-child {margin-bottom:0}
 
 /* ページャー */
 #blog_pager {padding-top:1.5em;padding-bottom:1.5em;display:flex;justify-content:space-around}
