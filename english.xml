@@ -564,7 +564,7 @@ margin-$endSide:.5em}
 .comment-range-text:last-child::after, .paging-control:last-child::after {content:none}
 
 /* Popular posts */
-.PopularPosts {background-color:$(popularposts.background.color)}
+.PopularPosts {background-color:$(popularposts.background.color);overflow:hidden}
 .ctpp>.feed-title a, .ctpp>.title a, .sbpp>.titles a {color:$(posts.text.color)}
 .ctpp>.feed-title {margin-top:0}
 .pp-title {font:$(popularposts.title.font);line-height:calc(var(--body-lineheight) - .15);margin-top:20px;margin-bottom:16px}
@@ -579,7 +579,6 @@ margin-$endSide:.5em}
 .ctpp .item-content>img {width:max(20%, 7em - var(--maincolumn-padding))}
 .sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
 #PopularPosts1 {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);padding-bottom:.25em}
-#PopularPosts1 .post:last-child {margin-bottom:0}
 
 /* Pager */
 #blog_pager {padding-top:1.5em;padding-bottom:1.5em;display:flex;justify-content:space-around}
@@ -588,7 +587,7 @@ margin-$endSide:.5em}
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* Sub main */
-#sub_main {padding:var(--maincolumn-padding);contain:content}
+#sub_main {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);contain:content}
 #sub_main .widget-content ul {list-style:none;padding-$startSide:0}
 #sub_main .widget-content ul ul {margin-$startSide:1em}
 
