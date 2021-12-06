@@ -1273,7 +1273,7 @@ button</b:comment>
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60&quot;, &quot;width&quot;: 206, &quot;height&quot;: 60 }}<b:if cond='data:posts.first.author.profileUrl'>, &quot;author&quot;: {
 &quot;@type&quot;: &quot;Person&quot;, &quot;name&quot;: &quot;<data:posts.first.author.name.jsonEscaped/>&quot;, &quot;url&quot;: &quot;<data:posts.first.author.profileUrl.jsonEscaped/>&quot;<b:if cond='data:posts.first.author.authorPhoto'>, &quot;image&quot;: {
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https:<data:posts.first.author.authorPhoto.image.jsonEscaped/>&quot;, &quot;height&quot;: <data:posts.first.author.authorPhoto.height/>, &quot;width&quot;: <data:posts.first.author.authorPhoto.width/> }</b:if>}</b:if>}</script></b:if>
-  <b:include name='postPagination'/>
+  <b:include cond='!data:view.isError' name='postPagination'/>
   </b:with>
   </b:with>
   </b:with>
@@ -1759,7 +1759,7 @@ button</b:comment>
 
 <aside>
 <b:class cond='data:view.isMultipleItems' name='isf'/>
-<b:section class='sub_main' cond='!data:view.isError' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true'>
+<b:section class='sub_main' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true'>
   <b:widget id='Text2' locked='false' title='Information' type='Text' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='content'><![CDATA[<p>You can place the widget you want to use here.</p><p>Blogger dashboard >> Layout >> Page Sub (Add a Gadget)</p><p>If you remove all the widgets here, the section itself will disappear.</p>]]></b:widget-setting>
