@@ -396,7 +396,7 @@ blockquote {margin:1em 2.5em}
 .no-posts-message {line-height:40px;text-align:center}
 
 /* Blog header */
-.centered-top {padding:2em var(--maincolumn-padding);text-align:center}
+.centered-top {padding:1.75em var(--maincolumn-padding);text-align:center}
 #blog-title {color:$(blog.title.color);font:$(blog.title.font);margin:0;line-height:calc(var(--body-lineheight) - .15)}
 #blog-title>a, #blog-title>a:hover, #blog-title>a:visited{color:$(blog.title.color)}
 .blog-desc {color:$(blog.title.color);margin-top:1.25em;margin-bottom:0}
@@ -420,7 +420,7 @@ blockquote {margin:1em 2.5em}
 .post-icons .svg-icon-24 {fill:$(posts.icons.color)}
 .svg-icon-back {stroke-width:2px;stroke:$(sticky.icons.color);fill:transparent}
 .avatarIcon {width:24px;height:24px;fill:$(posts.icons.color);padding:5.5px}
-.blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical-align:bottom}
+.blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical-align:-.5em}
 
 /* Back button / Comment button / Loading */
 #back_button, #comment_button, #add_button {position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50}
@@ -593,10 +593,9 @@ margin-$endSide:.5em}
 #sub_main .widget-content ul ul {margin-$startSide:1em}
 
 /* Attribution */
-#attribution {text-align:center;font-size:small;color:$(attribution.text.color);padding:.25em var(--maincolumn-padding) 1.75em}
-#attribution>div {line-height:24px;margin-top:.5em}
+#attribution {text-align:center;font-size:small;color:$(attribution.text.color);padding:.75em var(--maincolumn-padding) 1.75em;line-height:calc(var(--body-lineheight) * 1.2)}
 #attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
-#Text1, .blogger, .image-attribution {margin-bottom:1em}
+.blogger, .image-attribution, .copyright {margin-top:1em}
 
 /* Side bar */
 .sidebar-container {display:flex;flex-direction:column;width:min($(sidebar.width), 80%);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch;contain:content}
