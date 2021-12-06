@@ -356,8 +356,9 @@ input {font-size:100%}
 blockquote {margin:1em 2.5em}
 
 /* ヘッダーの背景画像 */
-.bg-image {position:absolute;width:100%;height:$(body.background.height);background:$(body.background);background-size:cover;z-index:-1}
-.bg-image-blur {width:100%;height:100%;backdrop-filter:blur($(body.background.blur))}
+.bg-image-container {position:absolute;width:100%;height:$(body.background.height);overflow:hidden;z-index:-1}
+.bg-image {position:absolute;top:-$(body.background.blur);left:-$(body.background.blur);width:calc(100% + $(body.background.blur * 2));height:calc(100% + $(body.background.blur * 2));background:$(body.background);background-size:cover;filter:blur($(body.background.blur))}
+.no-bg-image {background-color:$(blog.header.color)}
 
 /* バランサー */
 .hidden, .no-items {display:none}
@@ -1080,8 +1081,12 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
    <b:class cond='data:view.isError' name='error-view'/>
    <b:include name='skipNavigation'/>
 
-    <div class='bg-image'>
-      <b:tag class='bg-image-blur' cond='data:skin.vars.body_background.image and data:skin.vars.body_background_blur != &quot;0px&quot;' name='div'/>
+    <div class='bg-image-container'>
+     <b:if cond='data:skin.vars.body_background.image'>
+       <div class='bg-image'/>
+     <b:else/>
+       <b:class name='no-bg-image'/>
+      </b:if>     
     </div>
 
 <b:section class='centered-top' id='header' name='Header' showaddelement='false' tag='header'>
