@@ -452,8 +452,8 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 #main {margin:0 auto}
 .blog-posts {display:grid;gap:var(--maincolumn-padding);contain:content}
 .blog-posts>.post {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
-.feed-view .blog-posts {grid-template-columns:1fr;margin-bottom:var(--maincolumn-padding)}
-.feed-view .post+aside {align-self:stretch;display:grid}
+.hfeed {grid-template-columns:1fr;margin-bottom:var(--maincolumn-padding)}
+.hfeed .post+aside {align-self:stretch;display:grid}
 
 /* Featured post */
 .FeaturedPost {padding:20px var(--maincolumn-padding);background-color:$(posts.background.color);margin-bottom:var(--maincolumn-padding)}
@@ -703,7 +703,7 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 
 /* Page body */
 .post {max-width:100vw}
-.feed-view .post+aside {align-self:stretch;display:grid}
+.hfeed .post+aside {align-self:stretch;display:grid}
 
 /* Posted image */
 .item-view .post-body a[imageanchor="1"][style*="float: left;"], .item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none !important;clear:none!important}
@@ -717,7 +717,7 @@ margin-top:20px}
 /* AdSense ads */
 .mobile-ad>.inline-ad {display:block;width:min(100%, calc(100vw - var(--maincolumn-padding) * 2))}
 .mobile-ad>.inline-ad {margin:calc(var(--maincolumn-padding) / 2) auto}
-.feed-view .mobile-ad>.inline-ad {align-self:center}
+.hfeed .mobile-ad>.inline-ad {align-self:center}
 }
 ]]></b:skin>
 
