@@ -117,7 +117,7 @@
       type="length"
       min="0px"
       max="50px"
-      default="9px"  value="9px"/>
+      default="10px"  value="10px"/>
 </Group>
 
 <Group description="Links">
@@ -593,7 +593,7 @@ margin-$endSide:.5em}
 #sub_main .widget-content ul ul {margin-$startSide:1em}
 
 /* Attribution */
-#attribution {text-align:center;font-size:small;color:$(attribution.text.color);padding:.75em var(--maincolumn-padding) 1.75em;line-height:calc(var(--body-lineheight) * 1.2)}
+#attribution {text-align:center;font-size:small;color:$(attribution.text.color);padding:.75em var(--maincolumn-padding) 1.75em}
 #attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
 .blogger, .image-attribution, .copyright {margin-top:1em}
 
