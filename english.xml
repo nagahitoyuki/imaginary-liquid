@@ -613,9 +613,9 @@ margin-$endSide:.5em}
 .label-name:hover, .label-name:visited {color:$(labels.text.color)}
 .list-label, .hierarchy-archive, .flat-archive, #ArchiveList, .list-label-widget-content, .cloud-label-widget-content {display:flex;flex-direction:column}
 .post-labels, .cloud-label {display:flex;flex-wrap:wrap}
-.post-labels,.list-label, .cloud-label {gap:12px} 
+.post-labels, .list-label, .cloud-label {gap:12px} 
 .post-labels>a, .label-name {display:list-item;list-style:none}
-.list-label>.label-name, .hierarchy-archive>a, .flat-archive>a {margin-$startSide:0;margin-$endSide:auto}
+.list-label>.label-name, .hierarchy-archive>a, .flat-archive>a {margin-$endSide:auto}
 .hierarchy-archive .hierarchy-archive {margin-$startSide:1em}
 .list-label-widget-content>.remaining-items, .cloud-label-widget-content>.remaining-items {margin-top:12px;margin-bottom:-12px}
 .remaining-items>.list-label, .remaining-items>.cloud-label {margin-bottom:12px}
