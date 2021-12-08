@@ -745,7 +745,7 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 
 /* 文字サイズと行間 */
 .entry-title, .snippet-title, .fp-title, .post-body h1, .post-body h2{line-height:calc(var(--body-lineheight) - .1)}
-#blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 12.5)}
+#blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 12)}
 body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
 .entry-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15)}
 .snippet-title, .fp-title  {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15)}
