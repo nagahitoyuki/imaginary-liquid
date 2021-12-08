@@ -502,17 +502,6 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .post-body h5 {font-size:14px}
 .post-body h6 {font-size:11px}
 
-/* Labels */
-.post-labels>a, .label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:1px;padding:2px 6px}
-.label-name {display:inline-block}
-.label-name:hover, .label-name:visited {color:$(labels.text.color)}
-.list-label-widget-content ul {list-style:none;padding-$startSide:0}
-.list-label-widget-content li {margin-bottom:12px}
-.post-labels, .cloud-label-widget-content>.first-items, .cloud-label-widget-content>.remaining-items {display:flex;flex-wrap:wrap;gap:12px}
-.cloud-label-widget-content>.remaining-items {margin-top:12px;margin-bottom:-12px}
-.list-label-widget-content .remaining-items>li:last-child, .cloud-label-widget-content .remaining-items>span:last-child {margin-bottom:12px}
-.post-labels:last-child {margin-bottom:16px}
-
 /* Comments */
 #comments {color:$(posts.text.color)}
 .comment-thread ol {margin:0 0 0 18px;padding-$startSide:0}
@@ -619,13 +608,22 @@ margin-$endSide:.5em}
 .t-type>.profile-img {flex:none;margin-$endSide:1em}
 .t-type .profile-name {align-self:center}
 
-/* Archive and Labels */
-.BlogArchive>.title, .Label>.title, .BlogArchive .first-items>ul, .list-label-widget-content .remaining-items>ul li:last-child {margin-bottom:0}
-.BlogArchive .remaining-items>ul, .list-label-widget-content .first-items>ul, .list-label-widget-content .remaining-items>ul {margin-top:0;margin-bottom:0}
-#ArchiveList, .list-label-widget-content, .cloud-label-widget-content {display:flex;flex-direction:column}
+/* Labels and Archives */
+.post-labels>a, .label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:1px;padding:2px 6px}
+.label-name:hover, .label-name:visited {color:$(labels.text.color)}
+.list-label, .hierarchy-archive, .flat-archive, #ArchiveList, .list-label-widget-content, .cloud-label-widget-content {display:flex;flex-direction:column}
+.post-labels, .cloud-label {display:flex;flex-wrap:wrap}
+.post-labels,.list-label, .cloud-label {gap:12px} 
+.post-labels>a, .label-name {display:list-item;list-style:none}
+.list-label>.label-name, .hierarchy-archive>a, .flat-archive>a {margin-$startSide:0;margin-$endSide:auto}
+.hierarchy-archive .hierarchy-archive {margin-$startSide:1em}
+.list-label-widget-content>.remaining-items, .cloud-label-widget-content>.remaining-items {margin-top:12px;margin-bottom:-12px}
+.remaining-items>.list-label, .remaining-items>.cloud-label {margin-bottom:12px}
+.post-labels {margin-bottom:16px}
+.BlogArchive>.title, .Label>.title
+#ArchiveList, .list-label-widget-content, .cloud-label-widget-content {margin-top:24px}
 .remaining-items {position:absolute;visibility:hidden;overflow:hidden;transition:all .3s ease-out}
 .show-more, .show-less {margin-$startSide:auto;font-size:medium;color:$(body.link.base.color);margin-top:24px;cursor:pointer}
-.list-label-widget-content, .cloud-label-widget-content {margin-top:24px}
 
 /* Text widget */
 .Text .widget-content {margin-bottom:16px}
@@ -903,24 +901,16 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
           <b:include data='{ items: data:this.data, itemSet: &quot;data&quot;, itemsMarkup: &quot;flatOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='flatOrder'>
-          <ul class='flat'><b:loop values='data:data' var='i'><li><a expr:href='data:i.url'><data:i.name/> (<data:i.post-count/>)</a></li></b:loop></ul>
+          <div class='flat-archive'><b:loop values='data:data' var='i'><a expr:href='data:i.url'><data:i.name/> (<data:i.post-count/>)</a></b:loop></div>
           </b:includable>
           <b:includable id='hierarchy'>
           <b:include data='{ limit: 1, items: data:this.data, itemSet: &quot;data&quot;, itemsMarkup: &quot;super.hierarchy&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='interval' var='intervals'>
-  <ul class='hierarchy'>
-    <b:loop values='data:intervals' var='interval'>
-      <li><a expr:href='data:interval.url'><data:interval.name/> (<data:interval.post-count/>)</a><b:include cond='data:interval.data' data='interval.data' name='interval'/><b:include cond='data:interval.posts' data='interval.posts' name='posts'/></li>
-    </b:loop>
-  </ul>
+  <div class='hierarchy-archive'><b:loop values='data:intervals' var='interval'><a expr:href='data:interval.url'><data:interval.name/> (<data:interval.post-count/>)</a><b:include cond='data:interval.data' data='interval.data' name='interval'/><b:include cond='data:interval.posts' data='interval.posts' name='posts'/></b:loop></div>
 </b:includable>
           <b:includable id='posts' var='posts'>
-  <ul class='hierarchy'>
-    <b:loop values='data:posts' var='post'>
-      <li><a expr:href='data:post.url'><data:post.title/></a></li>
-    </b:loop>
-  </ul>
+  <div class='hierarchy-archive'><b:loop values='data:posts' var='post'><a expr:href='data:post.url'><data:post.title/></a></b:loop></div>
 </b:includable>
 </b:defaultmarkup>
 <b:defaultmarkup type='Label'>
@@ -931,7 +921,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;cloudOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='cloudOrder'>
-          <b:loop values='data:labels' var='label'><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'> (<data:label.count/>)</b:if></a></b:loop>
+          <div class='cloud-label'><b:loop values='data:labels' var='label'><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'> (<data:label.count/>)</b:if></a></b:loop></div>
           </b:includable>
           <b:includable id='content'>
   <div class='widget-content'>
@@ -944,7 +934,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;listOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='listOrder'>
-          <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'> (<data:label.count/>)</b:if></a></li></b:loop></ul>
+          <div class='list-label'><b:loop values='data:labels' var='label'><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'> (<data:label.count/>)</b:if></a></b:loop></div>
         </b:includable>
 </b:defaultmarkup>
 <b:defaultmarkup type='ContactForm'>
@@ -1907,24 +1897,16 @@ button</b:comment>
           <b:include data='{ items: data:this.data, itemSet: &quot;data&quot;, itemsMarkup: &quot;flatOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='flatOrder'>
-          <ul class='flat'><b:loop values='data:data' var='i'><li><a expr:href='data:i.url'><data:i.name/> (<data:i.post-count/>)</a></li></b:loop></ul>
+          <div class='flat-archive'><b:loop values='data:data' var='i'><a expr:href='data:i.url'><data:i.name/> (<data:i.post-count/>)</a></b:loop></div>
           </b:includable>
           <b:includable id='hierarchy'>
           <b:include data='{ limit: 1, items: data:this.data, itemSet: &quot;data&quot;, itemsMarkup: &quot;super.hierarchy&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='interval' var='intervals'>
-  <ul class='hierarchy'>
-    <b:loop values='data:intervals' var='interval'>
-      <li><a expr:href='data:interval.url'><data:interval.name/> (<data:interval.post-count/>)</a><b:include cond='data:interval.data' data='interval.data' name='interval'/><b:include cond='data:interval.posts' data='interval.posts' name='posts'/></li>
-    </b:loop>
-  </ul>
+  <div class='hierarchy-archive'><b:loop values='data:intervals' var='interval'><a expr:href='data:interval.url'><data:interval.name/> (<data:interval.post-count/>)</a><b:include cond='data:interval.data' data='interval.data' name='interval'/><b:include cond='data:interval.posts' data='interval.posts' name='posts'/></b:loop></div>
 </b:includable>
           <b:includable id='posts' var='posts'>
-  <ul class='hierarchy'>
-    <b:loop values='data:posts' var='post'>
-      <li><a expr:href='data:post.url'><data:post.title/></a></li>
-    </b:loop>
-  </ul>
+  <div class='hierarchy-archive'><b:loop values='data:posts' var='post'><a expr:href='data:post.url'><data:post.title/></a></b:loop></div>
 </b:includable>
         </b:widget>
         <b:widget id='Label1' locked='false' title='Labels' type='Label' visible='true'>
@@ -1942,7 +1924,7 @@ button</b:comment>
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;cloudOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='cloudOrder'>
-          <b:loop values='data:labels' var='label'><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'> (<data:label.count/>)</b:if></a></b:loop>
+          <div class='cloud-label'><b:loop values='data:labels' var='label'><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'> (<data:label.count/>)</b:if></a></b:loop></div>
           </b:includable>
           <b:includable id='content'>
   <div class='widget-content'>
@@ -1955,7 +1937,7 @@ button</b:comment>
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;listOrder&quot; }' name='extendableItems'/>
         </b:includable>
           <b:includable id='listOrder'>
-          <ul><b:loop values='data:labels' var='label'><li><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'> (<data:label.count/>)</b:if></a></li></b:loop></ul>
+          <div class='list-label'><b:loop values='data:labels' var='label'><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'> (<data:label.count/>)</b:if></a></b:loop></div>
         </b:includable>
         </b:widget>
         <b:widget id='ContactForm1' locked='false' title='Contact form' type='ContactForm' visible='true'>
