@@ -360,6 +360,7 @@ blockquote {margin:1em 2.5em}
 /* バランサー */
 .hidden, .no-items {display:none}
 .invisible {visibility:hidden}
+#floating_bar, .hfeed, .hentry, #sub_main, .sidebar_top, .sidebar_bottom {contain:content}
 .feed-view #sub_main, .feed-view #attribution {display:none}
 .item-view #sub_main, .item-view #attribution {content-visibility:auto;contain-intrinsic-size:100%}
 .sidebar-invisible {content-visibility:hidden;contain-intrinsic-size:100%;visibility:hidden}
@@ -407,7 +408,7 @@ blockquote {margin:1em 2.5em}
 .pl-items, .pl-items:hover, .pl-items:visited {color:$(tabs.color)}
 
 /* フローティングバー */
-#floating_bar {position:sticky;top:0;left:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50;contain:content}
+#floating_bar {position:sticky;top:0;left:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
 #floating_menu, #floating_share {display:flex;column-gap:calc(var(--maincolumn-padding) / 3)}
 
 /* SVGアイコン */
@@ -447,7 +448,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 
 /* ページボディー */
 #main {margin:0 auto}
-.hfeed {display:grid;gap:var(--maincolumn-padding);contain:content}
+.hfeed {display:grid;gap:var(--maincolumn-padding)}
 .hfeed>.post, .hentry {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
 .hfeed>.post+aside {align-self:stretch;display:grid}
@@ -568,7 +569,6 @@ margin-$endSide:.5em}
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* サブメイン */
-#sub_main {contain:content}
 #sub_main>.widget {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)}
 #sub_main .widget-content ul {list-style:none;padding-$startSide:0}
 #sub_main .widget-content ul ul {margin-$startSide:1em}
@@ -579,7 +579,7 @@ margin-$endSide:.5em}
 .blogger, .image-attribution, .copyright {margin-top:1em}
 
 /* サイドバー */
-.sidebar-container {display:flex;flex-direction:column;width:min($(sidebar.width), 80%);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch;contain:content}
+.sidebar-container {display:flex;flex-direction:column;width:min($(sidebar.width), 80%);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch}
 .sidebar_top {background-color:$(sidebar.backgroundColorTop)}
 .sidebar_bottom {background-color:$(sidebar.backgroundColorBottom)}
 .sidebar-container .widget {margin:0 var(--maincolumn-padding) 20px;color:$(widget.text.color)}
