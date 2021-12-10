@@ -14,19 +14,19 @@
   <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
 </b:if>
 <b:if cond='data:view.isSingleItem and data:view.featuredImage'>
-   <link expr:href='&quot;//&quot; + (data:view.featuredImage contains &quot;blogger.googleusercontent.com&quot; ? &quot;blogger.googleusercontent.com&quot; : data:view.featuredImage contains &quot;1.bp.blogspot.com&quot; ? &quot;1.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;2.bp.blogspot.com&quot; ? &quot;2.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;3.bp.blogspot.com&quot; ? &quot;3.bp.blogspot.com&quot; : &quot;4.bp.blogspot.com&quot;)' rel='preconnect'/>
+   <link expr:href='&quot;//&quot; + (data:view.featuredImage contains &quot;googleusercontent.com&quot; ? &quot;googleusercontent.com&quot; : data:view.featuredImage contains &quot;1.bp.blogspot.com&quot; ? &quot;1.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;2.bp.blogspot.com&quot; ? &quot;2.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;3.bp.blogspot.com&quot; ? &quot;3.bp.blogspot.com&quot; : &quot;4.bp.blogspot.com&quot;)' rel='preconnect'/>
 </b:if>
 <b:with value='data:skin.vars.body_background.image' var='bgimg'>
 <b:if cond='data:blog.isMobileRequest'>
 <b:if cond='not data:view.isPreview and data:bgimg'>
-  <link as='image' expr:href='resizeImage(data:bgimg, 480) + (data:bgimg contains &quot;googleusercontent&quot; ? &quot;-rw-e60&quot; : &quot;&quot;)' rel='preload'/>
+  <link as='image' expr:href='resizeImage(data:bgimg, 480) + (data:bgimg contains &quot;googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;)' rel='preload'/>
 </b:if>
   <link expr:href='data:view.url.canonical' rel='canonical'/>
 <b:else/>
 <b:if cond='not data:view.isPreview and data:bgimg'>
 <b:with value='[481, 641]' var='minWidth'>
 <b:loop index='i' values='resizeImage(data:bgimg, [640, 1024, 1240])' var='headerImage'>
-  <link as='image' expr:href='data:headerImage.url + (data:headerImage.url contains &quot;googleusercontent&quot; ? &quot;-rw-e60&quot; : &quot;&quot;)' expr:media='&quot;(&quot; + (data:i != 2 ? &quot;max-width:&quot; + data:headerImage.size + &quot;px) and (min-width:&quot; + data:minWidth[i] + &quot;px)&quot; : &quot;min-width:1025px)&quot;)' rel='preload'/>
+  <link as='image' expr:href='data:headerImage.url + (data:headerImage.url contains &quot;googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;)' expr:media='&quot;(&quot; + (data:i != 2 ? &quot;max-width:&quot; + data:headerImage.size + &quot;px) and (min-width:&quot; + data:minWidth[i] + &quot;px)&quot; : &quot;min-width:1025px)&quot;)' rel='preload'/>
 </b:loop>
 </b:with>
 </b:if>
@@ -447,10 +447,10 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 
 /* ページボディー */
 #main {margin:0 auto}
-.blog-posts {display:grid;gap:var(--maincolumn-padding);contain:content}
-.blog-posts>.post {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
-.hfeed {grid-template-columns:1fr}
-.hfeed .post+aside {align-self:stretch;display:grid}
+.hfeed {display:grid;gap:var(--maincolumn-padding);contain:content}
+.hfeed>.post, .hentry {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
+.hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
+.hfeed>.post+aside {align-self:stretch;display:grid}
 
 /* 注目の投稿 */
 .FeaturedPost {padding:20px var(--maincolumn-padding);background-color:$(posts.background.color);margin-bottom:var(--maincolumn-padding)}
@@ -704,7 +704,7 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 
 /* ページボディー */
 .post {max-width:100vw}
-.hfeed .post+aside {align-self:stretch;display:grid}
+.hfeed>.post+aside {align-self:stretch;display:grid}
 
 /* 投稿画像 */
 .item-view .post-body a[imageanchor="1"][style*="float: left;"], .item-view .post-body a[imageanchor="1"][style*="float: right;"] {float:none !important;clear:none!important}
@@ -1037,11 +1037,11 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
 <style>
   .bg-image {background-image:url(<data:bgimg.cssEscaped/>)}
 <b:if cond='data:blog.isMobileRequest'>
-  @media (max-width: 480px) {.bg-image {background-image:url(<b:eval expr='resizeImage(data:bgimg, 480).cssEscaped + (data:bgimg contains &quot;googleusercontent&quot; ? &quot;-rw-e60&quot; : &quot;&quot;)'/>)}}
+  @media (max-width: 480px) {.bg-image {background-image:url(<b:eval expr='resizeImage(data:bgimg, 480).cssEscaped + (data:bgimg contains &quot;googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;)'/>)}}
 <b:else/>
 <b:with value='[481, 641]' var='minWidth'>
   <b:loop index='i' values='resizeImage(data:bgimg, [640, 1024, 1240])' var='headerImage'>
-<b:eval expr='&quot;@media &quot; + (data:i != 2 ? &quot;(max-width: &quot; + data:headerImage.size + &quot;px) and (min-width: &quot; + data:minWidth[i] + &quot;px)&quot; : &quot;(min-width: 1025px)&quot;) + &quot;{.bg-image {background-image:url(&quot; + data:headerImage.url.cssEscaped + (data:headerImage.url contains &quot;googleusercontent&quot; ? &quot;-rw-e60&quot; : &quot;&quot;) + &quot;;)}}&quot;'/></b:loop>
+<b:eval expr='&quot;@media &quot; + (data:i != 2 ? &quot;(max-width: &quot; + data:headerImage.size + &quot;px) and (min-width: &quot; + data:minWidth[i] + &quot;px)&quot; : &quot;(min-width: 1025px)&quot;) + &quot;{.bg-image {background-image:url(&quot; + data:headerImage.url.cssEscaped + (data:headerImage.url contains &quot;googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;) + &quot;;)}}&quot;'/></b:loop>
 </b:with>
 </b:if>
 </style>
@@ -1283,12 +1283,10 @@ button</b:comment>
   <b:comment>Filter out the featured post, but only on the homepage.</b:comment>
   <b:with value='data:widgets.FeaturedPost filter (w =&gt; w.sectionId == &quot;page_body&quot;) map (w =&gt; w.postId)' var='featuredPostIds'>
   <b:with value='data:view.isHomepage ? data:posts filter (post =&gt; post.id not in data:featuredPostIds) : data:posts' var='posts'>
-  <div expr:class='data:view.isMultipleItems ? &quot;blog-posts hfeed&quot; : &quot;blog-posts&quot;'>
-  <b:attr cond='data:view.isMultipleItems' name='role' value='feed'/>
-  <b:attr cond='data:view.isMultipleItems' name='aria-busy' value='false'/>
+  <b:tag aria-busy='false' cond='data:view.isMultipleItems' class='hfeed' name='div' role='feed'>
   <b:loop index='i' values='data:posts' var='post'>
   <b:include data='post' name='postCommentsAndAd'/>
-  </b:loop></div>
+  </b:loop></b:tag>
   <b:if cond='data:view.isMultipleItems'><script type='application/ld+json'>{
 &quot;@context&quot;: &quot;http://schema.org&quot;, &quot;@type&quot;: &quot;CreativeWork&quot;, &quot;mainEntity&quot;: {
 &quot;@type&quot;: &quot;Blog&quot;, &quot;@id&quot;: &quot;<data:blog.url.canonical.jsonEscaped/>&quot; }, &quot;name&quot;: &quot;<data:blog.pageTitle.jsonEscaped/>&quot;, &quot;description&quot;: &quot;<b:eval expr='(data:posts.first.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }).jsonEscaped'/>&quot;, &quot;datePublished&quot;: &quot;<data:posts.last.date.iso8601.jsonEscaped/>&quot;, &quot;dateModified&quot;: &quot;<data:posts.first.date.iso8601.jsonEscaped/>&quot;, &quot;image&quot;: {
@@ -2172,7 +2170,7 @@ if (ytimg.naturalWidth &lt; 121) image.src = image.dataset.src; image.srcset = i
 ytimg.src = image.src; }
 if (ytpics[0]) ytpics.forEach(yt);
 /* Infinite scroll */
-const nextIndex = bdis.querySelector(&quot;aside.isf&quot;), bpct = Blog1.querySelector(&quot;div.blog-posts&quot;), bpg = Blog1.querySelector(&quot;nav#blog_pager&quot;);
+const nextIndex = bdis.querySelector(&quot;aside.isf&quot;), bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav#blog_pager&quot;);
 let npl = bpg.querySelector(&quot;a.older-link&quot;);
 if (bpct.clientHeight === 0) bpct.style.marginTop = &quot;0&quot;;
 function scrollStop(event) {
