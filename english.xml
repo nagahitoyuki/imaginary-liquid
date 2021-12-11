@@ -578,7 +578,7 @@ margin-$endSide:.5em}
 
 /* Sub main */
 #sub_main>.widget {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)}
-#sub_main .widget-content ul {list-style:none;padding-$startSide:0}
+#sub_main .widget-content ul {list-style-type:none;padding-$startSide:0}
 #sub_main .widget-content ul ul {margin-$startSide:1em}
 
 /* Attribution */
@@ -593,14 +593,14 @@ margin-$endSide:.5em}
 .sidebar-container .widget {margin:0 var(--maincolumn-padding) 20px;color:$(widget.text.color)}
 .sidebar-container .widget>.title {color:$(widget.title.color)}
 .sidebar-container .widget+.widget {border-top:1px dashed $(sidebar.separator.color)}
-.sidebar-container .widget-content ul {list-style:none;padding-$startSide:0}
+.sidebar-container .widget-content ul {list-style-type:none;padding-$startSide:0}
 .sidebar-container .widget-content ul ul {margin-$startSide:1em}
 
 /* Profile */
 .Profile {margin:0 auto;box-sizing:border-box}
 .Profile .title {color:$(profile.title.color)}
 .individual {text-align:center}
-.team-members {list-style:none;padding-$startSide:0}
+.team-members {list-style-type:none;padding-$startSide:0}
 .profile-link {display:flex;color:$(profile.link.color);font-weight:bold}
 .profile-img {border-radius:50%;vertical-align:top}
 .i-type, .v-type {flex-direction:column}
@@ -612,19 +612,20 @@ margin-$endSide:.5em}
 /* Labels and Archives */
 .post-labels>a, .label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:1px;padding:2px 6px}
 .label-name:hover, .label-name:visited {color:$(labels.text.color)}
-.list-label, .hierarchy-archive, .flat-archive, #ArchiveList, .list-label-widget-content, .cloud-label-widget-content {display:flex;flex-direction:column}
+.BlogArchive, .Label, .list-label, .hierarchy-archive, .flat-archive {display:flex;flex-direction:column}
 .post-labels, .cloud-label {display:flex;flex-wrap:wrap}
 .post-labels, .list-label, .cloud-label {gap:12px} 
-.post-labels>a, .label-name {display:list-item;list-style:none}
+.post-labels>a, .label-name {display:list-item;list-style-type:none}
 .list-label>.label-name, .hierarchy-archive>a, .flat-archive>a {margin-$endSide:auto}
 .hierarchy-archive .hierarchy-archive {margin-$startSide:1em}
-.list-label-widget-content>.remaining-items, .cloud-label-widget-content>.remaining-items {margin-top:12px;margin-bottom:-12px}
-.remaining-items>.list-label, .remaining-items>.cloud-label {margin-bottom:12px}
 .post-labels {margin-bottom:16px}
 .BlogArchive>.title, .Label>.title
-#ArchiveList, .list-label-widget-content, .cloud-label-widget-content {margin-top:24px}
+.first-items {margin-top:24px}
 .remaining-items {position:absolute;visibility:hidden;overflow:hidden;transition:all .3s ease-out}
+.Label .remaining-items {margin-top:12px;margin-bottom:-12px}
+.remaining-items>.list-label, .remaining-items>.cloud-label {margin-bottom:12px}
 .show-more, .show-less {margin-$startSide:auto;font-size:medium;color:$(body.link.base.color);margin-top:24px;cursor:pointer}
+
 
 /* Text widget */
 .Text .widget-content {margin-bottom:16px}
@@ -893,10 +894,8 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
               <b:include name='super.main'/>
         </b:includable>
           <b:includable id='content'>
-  <div class='widget-content' id='ArchiveList'>
       <b:include cond='data:this.style == &quot;HIERARCHY&quot;' name='hierarchy'/>
       <b:include cond='data:this.style in {&quot;FLAT&quot;, &quot;MENU&quot;}' name='flat'/>
-  </div>
 </b:includable>
           <b:includable id='flat'>
           <b:include data='{ items: data:this.data, itemSet: &quot;data&quot;, itemsMarkup: &quot;flatOrder&quot; }' name='extendableItems'/>
@@ -925,11 +924,8 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
           <div class='cloud-label'><b:loop values='data:labels' var='label'><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'> (<data:label.count/>)</b:if></a></b:loop></div>
           </b:includable>
           <b:includable id='content'>
-  <div class='widget-content'>
-    <b:class expr:name='data:this.display + &quot;-label-widget-content&quot;'/>
     <b:include cond='data:this.display == &quot;list&quot;' name='list'/>
     <b:include cond='data:this.display == &quot;cloud&quot;' name='cloud'/>
-  </div>
 </b:includable>
           <b:includable id='list'>
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;listOrder&quot; }' name='extendableItems'/>
@@ -1059,23 +1055,14 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <b:tag class='blog-desc' cond='data:this.description' name='p'><data:this.description/></b:tag>
 </b:includable>
     <b:includable id='image'>
-  <a class='header-image-wrapper' expr:href='data:blog.homepageUrl'>
-    <b:include data='{ image: data:image, altText: data:blog.title.escaped, originalWidth: data:width, originalHeight: data:height }' name='responsiveImage'/>
-  </a>
+  <a class='header-image-wrapper' expr:href='data:blog.homepageUrl'><b:include data='{ image: data:image, altText: data:blog.title.escaped, originalWidth: data:width, originalHeight: data:height }' name='responsiveImage'/></a>
 </b:includable>
     <b:includable id='title'>
-   <b:if cond='data:view.isHomepage'>
-     <h1 id='blog-title'>
-     <data:title/>
-     </h1>
+   <b:if cond='data:view.isHomepage'><h1 id='blog-title'><data:title/></h1>
   <b:elseif cond='data:view.isSingleItem'/>
-    <p id='blog-title'>
-      <a expr:href='data:blog.homepageUrl'><data:title/></a>
-    </p>
+    <p id='blog-title'><a expr:href='data:blog.homepageUrl'><data:title/></a></p>
   <b:else/>
-     <h1 id='blog-title'>
-       <a expr:href='data:blog.homepageUrl'><data:title/></a>
-     </h1>
+     <h1 id='blog-title'><a expr:href='data:blog.homepageUrl'><data:title/></a></h1>
   </b:if>
 </b:includable>
   </b:widget>
@@ -1243,7 +1230,7 @@ button</b:comment>
   <b:with value='data:widgets.AdSense.size' var='numAds'>
   <b:comment>Filter out the featured post, but only on the homepage.</b:comment>
   <b:with value='data:widgets.FeaturedPost filter (w =&gt; w.sectionId == &quot;page_body&quot;) map (w =&gt; w.postId)' var='featuredPostIds'>
-  <b:with value='data:view.isHomepage ? data:posts filter (post =&gt; post.id not in data:featuredPostIds) : data:posts' var='posts'>
+  <b:with value='data:view.isHomepage and not data:view.isPreview ? data:posts filter (post =&gt; post.id not in data:featuredPostIds) : data:posts' var='posts'>
   <b:tag aria-busy='false' cond='data:view.isMultipleItems' class='hfeed' name='div' role='feed'>
   <b:loop index='i' values='data:posts' var='post'>
   <b:include data='post' name='postCommentsAndAd'/>
@@ -1883,10 +1870,8 @@ button</b:comment>
               <b:include name='super.main'/>
         </b:includable>
           <b:includable id='content'>
-  <div class='widget-content' id='ArchiveList'>
       <b:include cond='data:this.style == &quot;HIERARCHY&quot;' name='hierarchy'/>
       <b:include cond='data:this.style in {&quot;FLAT&quot;, &quot;MENU&quot;}' name='flat'/>
-  </div>
 </b:includable>
           <b:includable id='flat'>
           <b:include data='{ items: data:this.data, itemSet: &quot;data&quot;, itemsMarkup: &quot;flatOrder&quot; }' name='extendableItems'/>
@@ -1922,11 +1907,8 @@ button</b:comment>
           <div class='cloud-label'><b:loop values='data:labels' var='label'><a class='label-name' expr:href='data:label.url'><data:label.name/><b:if cond='data:this.showFreqNumbers'> (<data:label.count/>)</b:if></a></b:loop></div>
           </b:includable>
           <b:includable id='content'>
-  <div class='widget-content'>
-    <b:class expr:name='data:this.display + &quot;-label-widget-content&quot;'/>
     <b:include cond='data:this.display == &quot;list&quot;' name='list'/>
     <b:include cond='data:this.display == &quot;cloud&quot;' name='cloud'/>
-  </div>
 </b:includable>
           <b:includable id='list'>
           <b:include data='{ items: data:this.labels, itemSet: &quot;labels&quot;, itemsMarkup: &quot;listOrder&quot; }' name='extendableItems'/>
