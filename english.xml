@@ -1098,7 +1098,6 @@ button</b:comment>
   </b:widget>
 </b:section>
 
-<main id='main' tabindex='-1'>
 <noscript><div class='noscript'>To use this site properly, please enable JavaScript on your browser.</div></noscript>
 <div id='floating_bar'>
   <div id='floating_menu'>
@@ -1132,11 +1131,13 @@ button</b:comment>
   <b:class cond='data:blog.isMobileRequest' name='share-buttons'/>
     <button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[1].shareMessage' id='fbbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark'/></svg></button>
     <button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[3].shareMessage' id='twbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark'/></svg></button>
-  <b:if cond='data:blog.isMobileRequest'><button class='svg-icon-24-button' expr:aria-label='data:messages.shareToOtherApps' id='shbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_more_vert_black_24dp'/></svg></button>
+  <b:if cond='data:blog.isMobileRequest'><button class='svg-icon-24-button' expr:aria-label='data:messages.shareToOtherApps' id='shbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_share_black_24dp'/></svg></button>
 <b:else/><button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[0].shareMessage' id='clpcp' type='button'><svg class='svg-icon-24 touch-icon sharing-link' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_link_dark'/></svg></button>
       </b:if>
     </div>
 </div>
+
+<main id='main' tabindex='-1'>
 
 <b:if cond='data:view.isArchive or (data:view.isSearch and data:view.search.resultsMessageHtml)'>
   <div class='post-filter-message'>
