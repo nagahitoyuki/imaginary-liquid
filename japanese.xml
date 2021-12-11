@@ -1209,12 +1209,14 @@ button</b:comment>
   </a>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
-  <b:with value='data:post.featuredImage' var='imgurl'>
-  <b:if cond='data:imgurl.isYoutube'>
-    <img class='snippet-thumbnail ytpic' decoding='async' expr:alt='data:messages.image' expr:data-src='data:imgurl' expr:data-srcset='data:imgurl + &quot;=w480-h320-n-k-no-nu-rw-e60 480w, &quot; + data:imgurl + &quot;=w768-h512-n-k-no-nu-rw-e60 768w, &quot; + data:imgurl + &quot;=w1024-h682-n-k-no-nu-rw-e60 1024w&quot;' expr:src='data:imgurl.youtubeMaxResDefaultUrl' expr:srcset=' resizeImage(data:imgurl.youtubeMaxResDefaultUrl, 480, &quot;3:2&quot;) + &quot;-rw-e60 480w, &quot; + resizeImage(data:imgurl.youtubeMaxResDefaultUrl, 768, &quot;3:2&quot;) + &quot;-rw-e60 768w, &quot; + resizeImage(data:imgurl.youtubeMaxResDefaultUrl, 1024, &quot;3:2&quot;) + &quot;-rw-e60 1024w&quot;' height='320' name='img' sizes='(max-width:960px) 100vw, 1024px' width='480'/>
-  <b:else/>
-    <img class='snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 480, &quot;3:2&quot;) + &quot;-rw-e60 480w, &quot; + resizeImage(data:imgurl, 768, &quot;3:2&quot;) + &quot;-rw-e60 768w, &quot; + resizeImage(data:imgurl, 1024, &quot;3:2&quot;) + &quot;-rw-e60 1024w&quot; : sourceSet(data:imgurl, [480,768,1024], &quot;3:2&quot;)' height='320' name='img' sizes='(max-width:960px) 100vw, 1024px' width='480'/>
-  </b:if>
+  <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
+    <b:tag class='snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 480, &quot;3:2&quot;) + &quot;-rw-e60 480w, &quot; + resizeImage(data:imgurl, 768, &quot;3:2&quot;) + &quot;-rw-e60 768w, &quot; + resizeImage(data:imgurl, 1024, &quot;3:2&quot;) + &quot;-rw-e60 1024w&quot; : sourceSet(data:imgurl, [480,768,1024], &quot;3:2&quot;)' height='320' name='img' sizes='(max-width:960px) 100vw, 1024px' width='480'>
+    <b:attr name='b:whitespace' value='remove'/>
+    <b:if cond='data:imgurl.isYoutube'>
+    <b:attr expr:value='data:post.featuredImage + &quot;=w480-h320-n-k-no-nu-rw-e60&quot;' name='data-src'/>
+    <b:class name='ytpic'/>
+    </b:if>
+    </b:tag>
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
@@ -1522,26 +1524,19 @@ button</b:comment>
     <b:includable id='postBodySnippet' var='post'>
   <a class='total-snippet' expr:href='data:post.url'>
   <b:if cond='data:post.featuredImage'>
-  <b:with value='data:post.featuredImage' var='imgurl'>
+  <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
+    <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 180, &quot;1:1&quot;) + &quot;-rw-e60 180, &quot; + resizeImage(data:imgurl, 360, &quot;1:1&quot;) + &quot;-rw-e60 360w, &quot; : sourceSet(data:imgurl, [180, 360], &quot;1:1&quot;)' height='180' name='img' sizes='(max-width:960px) 30vw, 360px' width='180'>
+    <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
-    <b:tag class='snippet-thumbnail ytpic' expr:alt='data:messages.image' expr:data-src='data:imgurl' expr:data-srcset='data:imgurl + &quot;=w180-h180-n-k-no-nu-rw-e60 180w, &quot; + data:imgurl + &quot;=w360-h360-n-k-no-nu-rw-e60 360w&quot;' expr:src='data:imgurl.youtubeMaxResDefaultUrl' expr:srcset=' resizeImage(data:imgurl.youtubeMaxResDefaultUrl, 180, &quot;1:1&quot;) + &quot;-rw-e60 180, &quot; + resizeImage(data:imgurl.youtubeMaxResDefaultUrl, 360, &quot;1:1&quot;) + &quot;-rw-e60 360w, &quot;' height='180' name='img' sizes='(max-width:960px) 30vw, 360px' width='180'>
-    <b:attr name='b:whitespace' value='remove'/>
+    <b:attr expr:value='data:post.featuredImage + &quot;=w320-h320-n-k-no-nu-rw-e60&quot;' name='data-src'/>
+    <b:class name='ytpic'/>
+    </b:if>
     <b:if cond='data:widgets.FeaturedPost.any and data:i &gt; 0 or !data:widgets.FeaturedPost.any and data:i &gt; 1'>
     <b:attr name='loading' value='lazy'/>
     <b:else/>
     <b:attr name='decoding' value='async'/>
     </b:if>
     </b:tag>
-  <b:else/>
-    <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 180, &quot;1:1&quot;) + &quot;-rw-e60 180w, &quot; + resizeImage(data:imgurl, 360, &quot;1:1&quot;) + &quot;-rw-e60 360w, &quot; : sourceSet(data:imgurl, [180, 360], &quot;1:1&quot;)' height='180' name='img' sizes='(max-width:960px) 30vw, 360px' width='180'>
-    <b:attr name='b:whitespace' value='remove'/>
-    <b:if cond='data:widgets.FeaturedPost.any and data:i &gt; 0 or !data:widgets.FeaturedPost.any and data:i &gt; 1'>
-    <b:attr name='loading' value='lazy'/>
-    <b:else/>
-    <b:attr name='decoding' value='async'/>
-    </b:if>
-    </b:tag>
-  </b:if>
   </b:with>
   </b:if>
     <p class='summary'>
@@ -2147,7 +2142,7 @@ const ytpics = [].slice.call(page_body.querySelectorAll(&quot;img.ytpic&quot;));
 function yt(image) {
 const ytimg = new Image();
 ytimg.onload = () =&gt; {
-if (ytimg.naturalWidth &lt; 121) image.src = image.dataset.src; image.srcset = image.dataset.srcset; }
+if (ytimg.naturalWidth &lt; 121) image.removeAttribute(&quot;srcset&quot;, &quot;sizes&quot;); image.src = image.dataset.src; }
 ytimg.src = image.src; }
 if (ytpics[0]) ytpics.forEach(yt);
 /* Infinite scroll */
