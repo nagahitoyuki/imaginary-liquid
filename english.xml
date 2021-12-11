@@ -672,7 +672,7 @@ body {position:relative}
 
 /* Placement */
 #swc {margin-$startSide:calc(var(--maincolumn-padding) / 2);margin-$endSide:calc(var(--maincolumn-padding) / 2);animation:fadein .3s ease-out}
-#search_expand {margin-$startSide:calc(var(--maincolumn-padding) / -8)}
+#search_expand {margin-$startSide:calc(var(--maincolumn-padding) / -16)}
 #main {width:min(100vw, $(content.width))}
 
 /* Back button / Comment button / Loading */
