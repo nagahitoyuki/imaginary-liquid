@@ -466,7 +466,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 /* 記事のヘッダー／フッター */
 .post-header-line-1 {color:$(posts.byline.color)}
 .vcard, .fn, .vcard+.post-timestamp {display:inline-flex;gap:.5em;vertical-align:middle}
-.photo {border-radius:50%}
+.photo {flex-shrink:0;width:24px;height:24px;border-radius:50%}
 .byline, .vcard>a, .published>.value-title, .post-footer, .pft-profile>span, .pf-last>.url {color:$(posts.byline.color)}
 .post-footer {display:flex}
 .post-footer a {color:$(posts.link.color)}
