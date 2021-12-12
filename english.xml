@@ -465,10 +465,10 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 
 /* Post header / footer */
 .post-header-line-1 {color:$(posts.byline.color)}
-.fn, .vcard+.post-timestamp {display:inline-flex;gap:.5em;vertical-align:middle}
+.vcard, .fn, .vcard+.post-timestamp {display:inline-flex;gap:.5em;vertical-align:middle}
 .photo {border-radius:50%}
-.byline, .fn>span, .post-timestamp>a, .post-updatedtime, .pft-profile>span {color:$(posts.byline.color)}
-.post-footer {display:flex;color:$(posts.byline.color)}
+.byline, .vcard>a, .published>.value-title, .post-footer, .pft-profile>span, .pf-last>.url {color:$(posts.byline.color)}
+.post-footer {display:flex}
 .post-footer a {color:$(posts.link.color)}
 .hentry .post-footer {flex-direction:column}
 .post-footer-line>span {display:block;margin-bottom:16px}
@@ -1469,7 +1469,7 @@ button</b:comment>
     <b:includable id='postAuthor'>
   <span class='byline author vcard'><b:eval cond='data:byline.label' expr='data:byline.label'/>
   <b:if cond='data:post.author.profileUrl'>
-    <a class='url fn' expr:href='data:post.author.profileUrl' rel='me' title='author profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24' width='24'/><span><data:post.author.name/></span></a>
+    <a class='url fn' expr:href='data:post.author.profileUrl' rel='me' title='author profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24' width='24'/><data:post.author.name/></a>
   <b:else/>
     <span class='fn'><data:post.author.name/></span>
   </b:if>
