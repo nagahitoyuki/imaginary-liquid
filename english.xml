@@ -464,10 +464,9 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
 
 /* Post header / footer */
-.post-header-line-1 {display:flex;column-gap:4px;color:$(posts.byline.color)}
-.pa-label {vertical-align:top}
-.fn {display:inline-flex;align-items:center;column-gap:4px}
-.photo {border-radius:50%}
+.post-header-line-1 {display:flex;column-gap:.5em;color:$(posts.byline.color)}
+.photo {display:inline-block;margin-$endSide:.5em;vertical-align:top;border-radius:50%}
+.published>.value-title {margin-left:.5em}
 .byline, .fn>span, .post-timestamp>a, .post-updatedtime, .pft-profile>span {color:$(posts.byline.color)}
 .post-footer {display:flex;color:$(posts.byline.color)}
 .post-footer a {color:$(posts.link.color)}
@@ -1468,7 +1467,7 @@ button</b:comment>
     </b:if>
 </b:includable>
     <b:includable id='postAuthor'>
-  <span class='byline author vcard'><b:if cond='data:byline.label'><span class='pa-label'><data:byline.label/></span></b:if>
+  <span class='byline author vcard'><b:if cond='data:byline.label'><data:byline.label/></b:if>
   <b:if cond='data:post.author.profileUrl'>
     <a class='url fn' expr:href='data:post.author.profileUrl' rel='me' title='author profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24' width='24'/><span><data:post.author.name/></span></a>
   <b:else/>
@@ -1564,9 +1563,7 @@ button</b:comment>
   </b:if>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
-    <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title'>
-      <data:blog.jumpLinkMessage/>
-    </a>
+    <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title'><data:blog.jumpLinkMessage/></a>
  </b:includable>
     <b:includable id='postHeader' var='post'>
   <b:include data='post' name='headerByline'/>
@@ -1578,9 +1575,7 @@ button</b:comment>
    </b:if>
  </b:includable>
     <b:includable id='postLocation'>
-  <span class='byline post-location'><data:byline.label/>
-<a expr:href='data:post.location.mapsUrl' rel='nofollow' target='_blank'><data:post.location.name/>
-</a></span>
+  <span class='byline post-location'><data:byline.label/><a expr:href='data:post.location.mapsUrl' rel='nofollow' target='_blank'><data:post.location.name/></a></span>
 </b:includable>
     <b:includable id='postMeta' var='post'>
 <script type='application/ld+json'>{
@@ -1606,22 +1601,14 @@ button</b:comment>
   <b:comment>Don&#39;t show share buttons.</b:comment>
 </b:includable>
     <b:includable id='postTimestamp'>
-  <span class='byline post-timestamp'><data:byline.label/>
-  <b:if cond='data:post.url'>
-    <a class='timestamp-link published' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' rel='archives'><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></a>
-  </b:if>
-  </span>
+  <span class='byline post-timestamp'><data:byline.label/><b:if cond='data:post.url'><a class='timestamp-link published' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' rel='archives'><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></a></b:if></span>
 </b:includable>
     <b:includable id='postTitle' var='post'>
   <b:if cond='data:post.title != &quot;&quot;'>
      <b:if cond='data:post.url and data:view.url != data:post.url'>
-       <h2 class='snippet-title'>
-        <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
-       </h2>
+       <h2 class='snippet-title'><a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a></h2>
       <b:else/>
-       <h1 class='entry-title'>
-         <data:post.title/>
-       </h1>
+       <h1 class='entry-title'><data:post.title/></h1>
      </b:if>
   </b:if>
 </b:includable>
