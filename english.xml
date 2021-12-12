@@ -662,7 +662,7 @@ body {position:relative}
 
 /* Side bar */
 #close_button {display:none}
-.sidebar-container {position:absolute;top:var(--floatingbar-height);$endSide:0;margin-$startSide:$(content.margin);z-index:20}
+.sidebar-container {position:absolute;top:0;$endSide:0;margin-$startSide:$(content.margin);z-index:20}
 .sidebar-invisible {content-visibility:visible;visibility:visible}
 }
 
