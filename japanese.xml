@@ -448,7 +448,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 
 /* ページボディー */
 #main {margin:0 auto}
-.hfeed {display:grid;gap:var(--maincolumn-padding)}
+.hfeed {display:grid;gap:var(--maincolumn-padding);padding-bottom:1em}
 .hfeed>.post, .hentry {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
 .hfeed>.post+aside {align-self:stretch;display:grid}
