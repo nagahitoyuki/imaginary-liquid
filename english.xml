@@ -583,6 +583,7 @@ margin-$endSide:.5em}
 /* Attribution */
 #attribution {text-align:center;font-size:small;color:$(attribution.text.color);padding:.75em var(--maincolumn-padding) 1.75em}
 #attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
+#Text1>.title {margin-top:0}
 .blogger, .image-attribution, .copyright {margin-top:1em}
 
 /* Side bar */
