@@ -354,8 +354,8 @@ input {font-size:100%}
 blockquote {margin:1em 2.5em}
 
 /* Header background image */
-.bg-image-container {grid-column:1/1;grid-row:1/7;width:100%;height:$(body.background.height);overflow:hidden;z-index:-1}
-.bg-image {transform:translate(-$(body.background.blur), -$(body.background.blur));width:calc(100% + $(body.background.blur * 2));height:calc(100% + $(body.background.blur * 2));background:$(body.background);background-size:cover;filter:blur($(body.background.blur))}
+.bg-image {grid-column:1/1;grid-row:1/7;width:100%;height:$(body.background.height);background:$(body.background);background-size:cover;z-index:-1}
+.bg-blur {width:100%;height:100%;backdrop-filter:blur($(body.background.blur))}
 
 /* Balancer */
 .hidden, .no-items {display:none}
@@ -1020,8 +1020,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
    <b:class cond='data:view.isError' name='error-view'/>
    <b:include name='skipNavigation'/>
 
-    <div class='bg-image-container'>
-      <div class='bg-image'/>
+    <div class='bg-image'>
+      <b:tag class='bg-blur' cond='data:skin.vars.body_background.image and data:skin.vars.body_background_blur != &quot;0px&quot;' name='div'/>
     </div>
 
 <b:section class='centered-top' id='header' name='Header' showaddelement='false' tag='header'>
@@ -1462,7 +1462,7 @@ button</b:comment>
     <b:includable id='postAuthor'>
   <span class='byline author vcard'><b:eval cond='data:byline.label' expr='data:byline.label'/>
   <b:if cond='data:post.author.profileUrl'>
-    <a class='url fn' expr:href='data:post.author.profileUrl' rel='me' title='author profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;)' height='24' width='24'/><data:post.author.name/></a>
+    <a class='url fn' expr:href='data:post.author.profileUrl' rel='me' title='author profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 24, &quot;1:1&quot;)' height='24' width='24'/><data:post.author.name/></a>
   <b:else/>
     <span class='fn'><data:post.author.name/></span>
   </b:if>
@@ -2079,7 +2079,7 @@ if (ytimg.naturalWidth &lt; 121) image.removeAttribute(&quot;srcset&quot;, &quot
 ytimg.src = image.src; }
 if (ytpics[0]) ytpics.forEach(yt);
 /* Infinite scroll */
-const nextIndex = bdis.querySelector(&quot;aside.isf&quot;), bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav#blog_pager&quot;);
+const nextIndex = bdis.querySelector(&quot;aside.isf&quot;), bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav#blog_pager&quot;), bthg = floating_bar.clientHeight;
 let npl = bpg.querySelector(&quot;a.older-link&quot;);
 if (bpct.clientHeight === 0) bpct.style.marginTop = &quot;0&quot;;
 function scrollStop(event) {
@@ -2087,16 +2087,16 @@ event.preventDefault(); }
 function rmmg(state) {
 if (nextIndex.style.marginTop !== &quot;&quot;) nextIndex.style.marginTop = &quot;&quot;;
 if (bdis.style.marginBottom !== &quot;&quot;) bdis.style.marginBottom = &quot;&quot;
-if (state !== &#39;end&#39;) nextIndex.style.marginTop = &quot;46px&quot;;
+if (state !== &#39;end&#39;) nextIndex.style.marginTop = bthg + &quot;px&quot;;
 if (state !== &#39;pass&#39;) nextIndexObserver.disconnect(); }
 function isac(state, scroll) {
 switch (state) {
-case 0: nextIndex.style.marginTop = scroll + 46 + &quot;px&quot;; bdis.style.marginBottom = &quot;46px&quot;; break;
-case 1: nextIndex.style.marginTop = &quot;46px&quot;; break;
+case 0: nextIndex.style.marginTop = scroll + bthg + &quot;px&quot;; bdis.style.marginBottom = bthg + &quot;px&quot;; break;
+case 1: nextIndex.style.marginTop = bthg + &quot;px&quot;; break;
 case 2: if (nextIndex.style.marginTop !== &quot;&quot;) {
 nextIndex.style.marginTop = &quot;&quot;; }
 if (bdis.style.marginBottom === &quot;&quot;) {
-bdis.style.marginBottom = &quot;46px&quot;; }
+bdis.style.marginBottom = bthg + &quot;px&quot;; }
 default: if (scroll !== &#39;on&#39;) {
 return; }}
 new Promise ((resolve, reject) =&gt; {
@@ -2122,18 +2122,18 @@ if (Blog1.querySelector(&quot;nav#blog_pager&quot;)) bpg.remove(); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (npl) {
-const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - 46;
+const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - bthg;
 if (window.pageYOffset === 0) {
-const iolm = window.innerHeight - entry.boundingClientRect.top + 46;
+const iolm = window.innerHeight - entry.boundingClientRect.top + bthg;
 if (iolm &gt; 0) {
-isac(0, iolm); } else if (parseInt(nextIndex.style.marginTop) &gt;= 46) {
+isac(0, iolm); } else if (parseInt(nextIndex.style.marginTop) &gt;= bthg) {
 isac(1, 0); } else {
 isac(2, 0); }
 return; } else if (sgtm &gt; 0) {
 isac(2, &#39;on&#39;); }
 return; }
 sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; rmmg(&#39;end&#39;); }); }, {
-rootMargin: &quot;46px&quot;});
+rootMargin: bthg + &quot;px&quot;});
 nextIndexObserver.observe(nextIndex);<b:else/>
 /* Comment button */
 const commentAllow = Blog1.querySelector(&quot;a.cmal&quot;), commentButton = Blog1.querySelector(&quot;article.hentry&quot;);
@@ -2153,7 +2153,7 @@ if (iframeComment === document.activeElement) back_button.classList.add(&quot;in
 window.addEventListener(&quot;focus&quot;, () =&gt; {
 if (iframeComment !== document.activeElement) back_button.classList.remove(&quot;invisible&quot;); });</b:if>
 iframeCommentObserver.disconnect(); }}); }, {
-rootMargin: &quot;46px&quot;});
+rootMargin: &quot;180px&quot;});
 if (iframeComment) iframeCommentObserver.observe(iframeComment);
 /* Comment avatar */
 if (comments) {
