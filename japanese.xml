@@ -442,7 +442,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .hentry .desktop-ad, .hentry .mobile-ad {transform:translateY(5px)}
 
 /* ページボディー */
-#main {grid-column:1/2;grid-row:4/5;width:min(100vw, $(content.width))}
+#main {grid-column:1/2;grid-row:4/5}
 .hfeed {display:grid;gap:var(--maincolumn-padding);padding-bottom:1em}
 .hfeed>.post, .hentry {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
@@ -642,6 +642,7 @@ margin-$endSide:.5em}
 
 /* 位置取り */
 .centered-top {margin-top:30px;margin-bottom:30px}
+#main {width:$(content.width)}
 #attribution {margin-bottom:25px}
 #hamburger_menu, #search_expand, #febtn {display:none}
 #swc.hidden {display:block}
