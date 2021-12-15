@@ -343,7 +343,7 @@
 /* General settings */
 :root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6}
 html {scroll-behavior:smooth}
-body {position:relative;width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.base.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal;display:flex;flex-direction:column}
+body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.base.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal;display:grid;grid-template-columns:100%}
 a {text-decoration:none;color:$(body.link.base.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
@@ -354,8 +354,8 @@ input {font-size:100%}
 blockquote {margin:1em 2.5em}
 
 /* Header background image */
-.bg-image {position:absolute;width:100%;height:$(body.background.height);background:$(body.background);background-size:cover;z-index:-1}
-.bg-blur {width:100%;height:100%;backdrop-filter:blur($(body.background.blur))}
+.bg-image-container {grid-column:1/1;grid-row:1/7;width:100%;height:$(body.background.height);overflow:hidden;z-index:-1}
+.bg-image {transform:translate(-$(body.background.blur), -$(body.background.blur));width:calc(100% + $(body.background.blur * 2));height:calc(100% + $(body.background.blur * 2));background:$(body.background);background-size:cover;filter:blur($(body.background.blur))}
 
 /* Balancer */
 .hidden, .no-items {display:none}
@@ -375,17 +375,12 @@ blockquote {margin:1em 2.5em}
 .skip-navigation {background-color:#fff;box-sizing:border-box;color:#000;display:block;height:0;$startSide:0;line-height:50px;overflow:hidden;padding-top:0;position:fixed;text-align:center;top:0;transition:box-shadow .3s, height .3s, padding-top .3s;width:100%;z-index:900}
 .skip-navigation:focus{box-shadow:0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);height:50px}
 
-/* Message of archive and search pages */
-.post-filter-message {background-color:#333;color:#fff;padding-top:calc(var(--maincolumn-padding) * 2.25);padding-bottom:calc(var(--maincolumn-padding) * 2.25);text-align:center}
-.pfm-link {margin-$startSide:1em;color:#fff}
-.post-filter-message .search-label, .post-filter-message .search-query {font-weight:bold}
-
 /* Appendix */
 .BLOG_mobile_video_class {display:none}
 .CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
 .b-hbp-video {border:0}
-.noscript {text-align:center;background:#ff0;color:#000;padding:var(--maincolumn-padding)}
+.noscript {grid-column:1/1;grid-row:2/3;text-align:center;background:#ff0;color:#000;padding:var(--maincolumn-padding)}
 
 /* Notification */
 .b-notification {color:#000;background-color:#fff;border-bottom:solid 1px #000;box-sizing:border-box;padding:16px 32px;text-align:center}
@@ -395,7 +390,7 @@ blockquote {margin:1em 2.5em}
 .no-posts-message {line-height:40px;text-align:center}
 
 /* Blog header */
-.centered-top {padding:1.75em var(--maincolumn-padding);text-align:center}
+.centered-top {grid-column:1/1;grid-row:1/2;padding:1.75em var(--maincolumn-padding);text-align:center}
 #blog-title {color:$(blog.title.color);font:$(blog.title.font);margin:0;line-height:calc(var(--body-lineheight) - .15)}
 #blog-title>a, #blog-title>a:hover, #blog-title>a:visited{color:$(blog.title.color)}
 .blog-desc {color:$(blog.title.color);margin-top:1.25em;margin-bottom:0}
@@ -408,7 +403,7 @@ blockquote {margin:1em 2.5em}
 .pl-items, .pl-items:hover, .pl-items:visited {color:$(tabs.color)}
 
 /* Floating bar */
-#floating_bar {position:sticky;top:0;left:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
+#floating_bar {grid-column:1/1;grid-row:3/4;position:sticky;top:0;left:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
 #floating_menu, #floating_share {display:flex;column-gap:calc(var(--maincolumn-padding) / 3)}
 
 /* SVG icons */
@@ -447,12 +442,16 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .hentry .desktop-ad, .hentry .mobile-ad {transform:translateY(5px)}
 
 /* Page body */
-#main {display:flex;column-gap:$(content.margin)}
-#page_body {width:min(100vw, $(content.width))}
+#main {grid-column:1/2;grid-row:4/5;width:min(100vw, $(content.width))}
 .hfeed {display:grid;gap:var(--maincolumn-padding);padding-bottom:1em}
 .hfeed>.post, .hentry {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
 .hfeed>.post+aside {align-self:stretch;display:grid}
+
+/* Message of archive and search pages */
+.post-filter-message {background-color:#333;color:#fff;padding-top:calc(var(--maincolumn-padding) * 2.25);padding-bottom:calc(var(--maincolumn-padding) * 2.25);text-align:center}
+.pfm-link {margin-$startSide:1em;color:#fff}
+.post-filter-message .search-label, .post-filter-message .search-query {font-weight:bold}
 
 /* Featured post */
 .FeaturedPost {padding:20px var(--maincolumn-padding);background-color:$(posts.background.color);margin-bottom:var(--maincolumn-padding)}
@@ -577,7 +576,7 @@ margin-$endSide:.5em}
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* Side bar */
-.sidebar-container {display:flex;flex-direction:column;width:min($(sidebar.width), 80vw);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch}
+.sidebar-container {grid-column:1/1;grid-row:4/5;width:min($(sidebar.width), 80vw);justify-self:end;display:flex;flex-direction:column;overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch}
 .sidebar_top {background-color:$(sidebar.backgroundColorTop)}
 .sidebar_bottom {background-color:$(sidebar.backgroundColorBottom)}
 .sidebar-container .widget {margin:0 var(--maincolumn-padding) 20px;color:$(widget.text.color)}
@@ -632,12 +631,13 @@ margin-$endSide:.5em}
 .Translate .skiptranslate>div{display:block!important}
 
 /* Sub main */
+.centered-bottom {grid-column:1/1;grid-row:5/6}
 #sub_main>.widget {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)}
 #sub_main .widget-content ul {list-style-type:none;padding-$startSide:0}
 #sub_main .widget-content ul ul {margin-$startSide:1em}
 
 /* Attribution */
-#attribution {text-align:center;font-size:small;color:$(attribution.text.color);padding:.75em var(--maincolumn-padding) 1.75em}
+#attribution {grid-column:1/1;grid-row:6/7;text-align:center;font-size:small;color:$(attribution.text.color);padding:.75em var(--maincolumn-padding) 1.75em}
 #attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
 #Text1>.title {margin-top:0}
 .blogger, .image-attribution, .copyright {margin-top:1em}
@@ -650,7 +650,7 @@ margin-$endSide:.5em}
 
 /* Placement */
 .centered-top {margin-top:30px;margin-bottom:30px}
-#attribution {margin-top:20px;margin-bottom:25px}
+#attribution {margin-bottom:25px}
 #hamburger_menu, #search_expand, #febtn {display:none}
 #swc.hidden {display:block}
 
@@ -1020,8 +1020,8 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
    <b:class cond='data:view.isError' name='error-view'/>
    <b:include name='skipNavigation'/>
 
-    <div class='bg-image'>
-      <b:tag cond='data:skin.vars.body_background.image and data:skin.vars.body_background_blur != &quot;0px&quot;' class='bg-blur' name='div'/>
+    <div class='bg-image-container'>
+      <div class='bg-image'/>
     </div>
 
 <b:section class='centered-top' id='header' name='Header' showaddelement='false' tag='header'>
@@ -1127,19 +1127,7 @@ button</b:comment>
     </div>
 </div>
 
-<b:if cond='data:view.isArchive or (data:view.isSearch and data:view.search.resultsMessageHtml)'>
-  <div class='post-filter-message'>
-    <b:if cond='data:view.isArchive'>
-      <data:view.archive.rangeMessage/>
-    <b:elseif cond='data:view.isSearch and data:view.search.resultsMessageHtml'/>
-      <data:view.search.resultsMessageHtml/>
-    </b:if>
-      <a class='pfm-link' expr:href='data:blog.homepageUrl'><data:messages.showAll/></a>
-  </div>
-</b:if>
-
-<main id='main' tabindex='-1'>
-<b:section class='centered-middle' id='page_body' name='Page Body' preferred='yes' showaddelement='false'>
+<b:section class='centered-middle' id='main' name='Page Body' preferred='yes' showaddelement='false' tag='main'>
   <b:widget cond='data:view.isHomepage' id='FeaturedPost1' locked='true' title='' type='FeaturedPost' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='showSnippet'>false</b:widget-setting>
@@ -1214,11 +1202,21 @@ button</b:comment>
     </b:widget-settings>
     <b:includable id='main'>
   <b:include name='noContentPlaceholder'/>
+  <b:if cond='data:view.isArchive or (data:view.isSearch and data:view.search.resultsMessageHtml)'>
+  <div class='post-filter-message'>
+    <b:if cond='data:view.isArchive'>
+      <data:view.archive.rangeMessage/>
+    <b:elseif cond='data:view.isSearch and data:view.search.resultsMessageHtml'/>
+      <data:view.search.resultsMessageHtml/>
+    </b:if>
+      <a class='pfm-link' expr:href='data:blog.homepageUrl'><data:messages.showAll/></a>
+  </div>
+  </b:if>
   <b:comment>Cap the total number of ads (widgets and inline ads).</b:comment>
   <b:with value='3' var='maxNumAds'>
   <b:with value='data:widgets.AdSense.size' var='numAds'>
   <b:comment>Filter out the featured post, but only on the homepage.</b:comment>
-  <b:with value='data:widgets.FeaturedPost filter (w =&gt; w.sectionId == &quot;page_body&quot;) map (w =&gt; w.postId)' var='featuredPostIds'>
+  <b:with value='data:widgets.FeaturedPost filter (w =&gt; w.sectionId == &quot;main&quot;) map (w =&gt; w.postId)' var='featuredPostIds'>
   <b:with value='data:view.isHomepage and not data:view.isPreview ? data:posts filter (post =&gt; post.id not in data:featuredPostIds) : data:posts' var='posts'>
   <b:tag aria-busy='false' cond='data:view.isMultipleItems' class='hfeed' name='div' role='feed'>
   <b:loop index='i' values='data:posts' var='post'>
@@ -1929,9 +1927,8 @@ button</b:comment>
       </b:section>
 </aside>
 </b:if>
-</main>
 
-<aside>
+<aside class='centered-bottom'>
 <b:class cond='data:view.isMultipleItems' name='isf'/>
 <b:section class='sub_main' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true'>
   <b:widget id='Text2' locked='false' title='Information' type='Text' visible='true'>
@@ -2010,7 +2007,7 @@ const bdis = document.body;
 const hil = bdis.querySelector(&quot;div.image-attribution a&quot;);
 if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);<b:if cond='data:skin.vars.sidebar_width + data:skin.vars.content_margin != &quot;0px0px&quot;'>
 /* Screen reader */
-const sbct = main.querySelector(&quot;aside.sidebar-container&quot;);
+const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
 if (sbct.style.position === &quot;absolute&quot;) sbct.ariaHidden = &quot;false&quot;;
 /* Hamburger menu */
 const bcsd = document.createElement(&quot;div&quot;);
@@ -2074,7 +2071,7 @@ let backButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(flbt); });
 backButtonObserver.observe(backButton);<b:if cond='data:view.isMultipleItems'>
 /* YouTube image */
-const ytpics = [].slice.call(page_body.querySelectorAll(&quot;img.ytpic&quot;));
+const ytpics = [].slice.call(main.querySelectorAll(&quot;img.ytpic&quot;));
 function yt(image) {
 const ytimg = new Image();
 ytimg.onload = () =&gt; {
