@@ -106,7 +106,7 @@
       default="$(color) none no-repeat scroll center center" value="$(color) none no-repeat scroll center center"/>
   <Variable name="blog.header.color" description="Blog header color"
       type="color"
-      default="#999999"  value="#999999"/>
+      default="#808080"  value="#808080"/>
   <Variable name="body.background.color" description="Body background color"
       type="color"
       default="#f0f8ff"  value="#f0f8ff"/>
@@ -354,8 +354,9 @@ input {font-size:100%}
 blockquote {margin:1em 2.5em}
 
 /* Header background image */
-.bg-image {grid-column:1/1;grid-row:1/7;width:100%;height:$(body.background.height);background:$(body.background);background-size:cover;z-index:-1}
-.bg-blur {width:100%;height:100%;backdrop-filter:blur($(body.background.blur))}
+.bg-image-container {grid-column:1/1;grid-row:1/7;width:100%;height:$(body.background.height);position:relative;overflow:hidden;z-index:-1}
+.bg-image {width:calc(100% + $(body.background.blur * 3));height:calc(100% + $(body.background.blur * 3));position:absolute;top:$(body.background.blur * -1.5);left:$(body.background.blur * -1.5);background:$(body.background);background-size:cover;filter:blur($(body.background.blur))}
+.no-bg-image {background-color:$(blog.header.color)}
 
 /* Balancer */
 .hidden, .no-items {display:none}
@@ -459,7 +460,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .FeaturedPost>.feed-title>a {color:$(posts.title.color)}
 .FeaturedPost .post>a, .FeaturedPost .post>a:hover, .FeaturedPost .post>a:visited {color:#fff}
 .FeaturedPost .post>a, .FeaturedPost .snippet-thumbnail {aspect-ratio:1.5;width:100%;height:auto;display:grid;align-items:center;text-align:center}
-.no-image {background-color:#696969}
+.no-image {background-color:#808080}
 .fp-title {font:$(posts.stream.title.font);line-height:calc(var(--body-lineheight) - .2);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
 
@@ -1021,8 +1022,12 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
    <b:class cond='data:view.isError' name='error-view'/>
    <b:include name='skipNavigation'/>
 
-    <div class='bg-image'>
-      <b:tag class='bg-blur' cond='data:skin.vars.body_background.image and data:skin.vars.body_background_blur != &quot;0px&quot;' name='div'/>
+    <div class='bg-image-container'>
+    <b:if cond='data:skin.vars.body_background.image'>
+      <div class='bg-image'/>
+    <b:else/>
+      <b:class name='no-bg-image'/>
+    </b:if>
     </div>
 
 <b:section class='centered-top' id='header' name='Header' showaddelement='false' tag='header'>
