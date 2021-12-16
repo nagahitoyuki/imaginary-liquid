@@ -757,8 +757,7 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 
 <b:if cond='data:view.isLayoutMode'><b:template-skin>
 <![CDATA[body#layout {display:block;max-width:925px;margin:0 auto}
-body#layout .bg-image {display:none}
-body#layout .centered-top {margin-top:0;margin-bottom:0}
+body#layout .bg-image-container {display:none}
 body#layout #floating_bar {position:initial;display:initial}
 body#layout #floating_menu {display:initial}
 body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elseif cond='data:view.isPreview'/>
