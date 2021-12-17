@@ -337,7 +337,8 @@
 /*!************************************************
  * Blogger Template Style
  * Name: Imaginary with liquid design in English
- * Copyright: Nagahito Yuki 2019 | The MIT License | https://github.com/nagahitoyuki/imaginary-liquid
+ * Copyright: Nagahito Yuki 2019 | https://github.com/nagahitoyuki/imaginary-liquid
+ * License: The MIT License
 **************************************************/
 
 /* General settings */
@@ -1145,9 +1146,7 @@ button</b:comment>
   <b:if cond='data:title'>
     <p class='feed-title'><data:title/></p>
   </b:if>
-  <div class='widget-content' role='feed'>
     <b:include name='snippetedPosts'/>
-  </div>
 </b:includable>
     <b:includable id='snippetedPostContent'>
     <a expr:href='data:post.url' rel='bookmark' title='permanent link'>
@@ -1172,7 +1171,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts' var='post'>
-    <article class='post' expr:aria-setsize='data:posts.length'>
+    <article class='post'>
       <b:include name='snippetedPostContent'/>
     </article>
     </b:loop>
@@ -1243,7 +1242,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='aboutPostAuthor'>
   <div class='author-name'>
-    <a class='pft-profile' expr:href='data:post.author.profileUrl' rel='me' title='author profile'>
+    <a class='pft-profile' expr:href='data:post.author.profileUrl' rel='me nofollow' title='author profile'>
       <span><data:post.author.name/></span>
     </a>
   </div>
@@ -1467,7 +1466,7 @@ button</b:comment>
     <b:includable id='postAuthor'>
   <span class='byline author vcard'><b:eval cond='data:byline.label' expr='data:byline.label'/>
   <b:if cond='data:post.author.profileUrl'>
-    <a class='url fn' expr:href='data:post.author.profileUrl' rel='me' title='author profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 24, &quot;1:1&quot;)' height='24' width='24'/><data:post.author.name/></a>
+    <a class='url fn' expr:href='data:post.author.profileUrl' rel='me nofollow' title='author profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 24, &quot;1:1&quot;)' height='24' width='24'/><data:post.author.name/></a>
   <b:else/>
     <span class='fn'><data:post.author.name/></span>
   </b:if>
