@@ -355,7 +355,7 @@ input {font-size:100%}
 blockquote {margin:1em 2.5em}
 
 /* Header background image */
-.bg-image-container {grid-column:1/1;grid-row:1/7;width:100%;height:$(body.background.height);position:relative;overflow:hidden;z-index:-1}
+.bg-image-container {grid-column:1/1;grid-row:1/6;width:100%;height:$(body.background.height);position:relative;overflow:hidden;z-index:-1}
 .bg-image {width:calc(100% + $(body.background.blur * 3));height:calc(100% + $(body.background.blur * 3));position:absolute;top:$(body.background.blur * -1.5);left:$(body.background.blur * -1.5);background:$(body.background);background-size:cover;filter:blur($(body.background.blur))}
 .no-bg-image {background-color:$(blog.header.color)}
 
@@ -373,16 +373,12 @@ blockquote {margin:1em 2.5em}
 .title, .feed-title {font-size:large;color:$(widget.title.color)}
 .feed-title {font-weight:bold}
 
-/* Skip navigation */
-.skip-navigation {background-color:#fff;box-sizing:border-box;color:#000;display:block;height:0;$startSide:0;line-height:50px;overflow:hidden;padding-top:0;position:fixed;text-align:center;top:0;transition:box-shadow .3s, height .3s, padding-top .3s;width:100%;z-index:900}
-.skip-navigation:focus{box-shadow:0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);height:50px}
-
 /* Appendix */
 .BLOG_mobile_video_class {display:none}
 .CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
 .b-hbp-video {border:0}
-.noscript {grid-column:1/1;grid-row:2/3;text-align:center;background:#ff0;color:#000;padding:var(--maincolumn-padding)}
+noscript {grid-column:1/1;grid-row:2/3;background:#ff0;color:#000;padding:var(--maincolumn-padding);margin-top:var(--floatingbar-height)}
 
 /* Notification */
 .b-notification {color:#000;background-color:#fff;border-bottom:solid 1px #000;box-sizing:border-box;padding:16px 32px;text-align:center}
@@ -405,7 +401,7 @@ blockquote {margin:1em 2.5em}
 .pl-items, .pl-items:hover, .pl-items:visited {color:$(tabs.color)}
 
 /* Floating bar */
-#floating_bar {grid-column:1/1;grid-row:3/4;position:sticky;top:0;left:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
+#floating_bar {grid-column:1/1;grid-row:2/3;position:sticky;top:0;left:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
 #floating_menu, #floating_share {display:flex;column-gap:calc(var(--maincolumn-padding) / 3)}
 
 /* SVG icons */
@@ -444,7 +440,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .hentry .desktop-ad, .hentry .mobile-ad {transform:translateY(5px)}
 
 /* Page body */
-#main {grid-column:1/2;grid-row:4/5}
+#main {grid-column:1/2;grid-row:3/4}
 .hfeed {display:grid;gap:var(--maincolumn-padding);padding-bottom:1em}
 .hfeed>.post, .hentry {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
@@ -578,7 +574,7 @@ margin-$endSide:.5em}
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* Side bar */
-.sidebar-container {grid-column:1/1;grid-row:4/5;width:min($(sidebar.width), 80vw);justify-self:end;display:flex;flex-direction:column;overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch}
+.sidebar-container {grid-column:1/1;grid-row:3/4;width:min($(sidebar.width), 80vw);justify-self:end;display:flex;flex-direction:column;overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch}
 .sidebar_top {background-color:$(sidebar.backgroundColorTop)}
 .sidebar_bottom {background-color:$(sidebar.backgroundColorBottom)}
 .sidebar-container .widget {margin:0 var(--maincolumn-padding) 20px;color:$(widget.text.color)}
@@ -633,13 +629,13 @@ margin-$endSide:.5em}
 .Translate .skiptranslate>div{display:block!important}
 
 /* Sub main */
-.centered-bottom {grid-column:1/1;grid-row:5/6}
+.centered-bottom {grid-column:1/1;grid-row:4/5}
 #sub_main>.widget {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)}
 #sub_main .widget-content ul {list-style-type:none;padding-$startSide:0}
 #sub_main .widget-content ul ul {margin-$startSide:1em}
 
 /* Attribution */
-#attribution {grid-column:1/1;grid-row:6/7;text-align:center;font-size:small;color:$(attribution.text.color);padding:.75em var(--maincolumn-padding) 1.75em}
+#attribution {grid-column:1/1;grid-row:5/6;text-align:center;font-size:small;color:$(attribution.text.color);padding:.75em var(--maincolumn-padding) 1.75em}
 #attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
 #Text1>.title {margin-top:0}
 .blogger, .image-attribution, .copyright {margin-top:1em}
@@ -1020,7 +1016,6 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
    <b:class cond='data:view.isLabelSearch' name='label-view'/>
    <b:class cond='data:view.isSearch and !data:view.isLabelSearch' name='search-view'/>
    <b:class cond='data:view.isError' name='error-view'/>
-   <b:include name='skipNavigation'/>
 
     <div class='bg-image-container'>
     <b:if cond='data:skin.vars.body_background.image'>
@@ -1099,7 +1094,6 @@ button</b:comment>
   </b:widget>
 </b:section>
 
-<noscript><div class='noscript'>To use this site properly, please enable JavaScript on your browser.</div></noscript>
 <div id='floating_bar'>
   <div id='floating_menu'>
   <b:if cond='data:skin.vars.sidebar_width + data:skin.vars.content_margin != &quot;0px0px&quot;'><button aria-label='Open sidebar' class='svg-icon-24-button' id='hamburger_menu' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_menu_black_24dp'/></svg></button><b:else/><button aria-label='RSS feed' class='svg-icon-24-button' id='febtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_rss_feed_black_24dp'/></svg></button></b:if>
@@ -1132,6 +1126,8 @@ button</b:comment>
     <button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[1].shareMessage' id='fbbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark'/></svg></button><button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[3].shareMessage' id='twbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark'/></svg></button>
     </div>
 </div>
+
+<noscript>To use this site properly, please enable JavaScript on your browser.</noscript>
 
 <b:section class='centered-middle' id='main' name='Page Body' preferred='yes' showaddelement='false' tag='main'>
   <b:widget cond='data:view.isHomepage' id='FeaturedPost1' locked='true' title='' type='FeaturedPost' visible='true'>
