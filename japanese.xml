@@ -441,7 +441,8 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 
 /* ページボディー */
 #main {grid-column:1/2;grid-row:3/4}
-.hfeed {display:grid;gap:var(--maincolumn-padding);padding-bottom:1em}
+.feed-view #main {margin-bottom:20px}
+.hfeed {display:grid;gap:var(--maincolumn-padding)}
 .hfeed>.post, .hentry {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
 .hfeed>.post+aside {align-self:stretch;display:grid}
@@ -469,8 +470,8 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .post-footer {display:flex}
 .post-footer a {color:$(posts.link.color)}
 .hentry .post-footer {flex-direction:column}
-.post-footer-line>span {display:block;margin-bottom:16px}
-.pf-last {width:100%;text-align:$endSide;margin-bottom:16px;font-style:oblique}
+.post-footer-line>span {display:block;margin-bottom:20px}
+.pf-last {width:100%;text-align:$endSide;font-style:oblique}
 .pf-last>.url {color:$(posts.byline.color)}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
@@ -498,8 +499,8 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .comment-thread>ol {margin-top:0;margin-bottom:0;padding-$startSide:0}
 .comment-replybox-single, .comment-replies {margin-$startSide:2.5em}
 .thread-count {display:none}
-.comment {list-style-type:none;position:relative;margin-bottom:2em}
-#top-ra>.comment {padding-bottom:2em}
+.comment {list-style-type:none;position:relative;margin-bottom:1.5em}
+#top-ra>.comment {padding-bottom:1.5em}
 .comment .comment {margin-bottom:1em;padding-top:.5em;padding-bottom:.5em;position:relative}
 .avatar-image-container {position:absolute}
 .avatar-image-container>img {border-radius:50%}
@@ -525,10 +526,9 @@ margin-$endSide:.5em}
 .comment-link {color:$(posts.link.color);position:relative}
 .comment-link .num_comments {margin-$startSide:.5em;vertical-align:top}
 #comments .continue {display:none}
-#comments>.title {font-size:large;color:$(posts.title.color);margin-top:0;margin-bottom:calc(var(--maincolumn-padding) * 2.25)}
+#comment-editor {display:block}
+#comments>.title {font-size:large;color:$(posts.title.color);margin-top:20px;margin-bottom:1.5em}
 .embed .comment-footer p {margin-top:0}
-.comment-thread+.comment-footer {margin-bottom:1em}
-#cmt+.comment-footer, #comments-block+.comment-footer {margin-bottom:.5em}
 #cf-message {margin-bottom:0}
 #eb-message-1 {margin-top:1em;margin-bottom:.5em}
 #eb-message-2 {transform:translateY(.5em)}
@@ -543,24 +543,26 @@ margin-$endSide:.5em}
 .comment-range-text:last-child::after, .paging-control:last-child::after {content:none}
 
 /* 人気の投稿 */
-.PopularPosts {background-color:$(popularposts.background.color)}
-.ctpp>.feed-title a, .ctpp>.title a, .sbpp>.titles a {color:$(posts.text.color)}
-.ctpp>.feed-title {margin-top:0}
-.pp-title {font:$(popularposts.title.font);margin-top:20px;margin-bottom:20px}
-.pp-title>a, .pp-title>a:hover, .pp-title>a:visited {color:$(popularposts.title.color)}
-.PopularPosts .post-footer a, .PopularPosts .post-footer a:hover, .PopularPosts .post-footer a:visited {color:$(popularposts.link.color)}
-.snippet-item {color:$(popularposts.text.color);margin:0}
+#PopularPosts1 {background-color:$(popularposts.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);overflow:hidden}
+.pp-title {font:$(popularposts.title.font);line-height:normal;margin-top:20px;margin-bottom:20px}
+.mnpp .pp-title>a {color:$(popularposts.title.color)}
+.mnpp .post-footer>a {color:$(popularposts.link.color)}
+#sub_main .ctpp .pp-title>a {color:$(body.text.base.color)}
+#sub_main .ctpp .post-footer>a {color:$(body.link.base.color)}
+.sbpp .pp-title>a {color:$(widget.title.color)}
+.snippet-item {margin:0}
+.mnpp .snippet-item {color:$(popularposts.text.color)}
+#sub_main .ctpp .snippet-item {color:$(body.text.base.color)}
 .item-content {display:flex;column-gap:var(--maincolumn-padding)}
 .item-content>img {flex:none;height:100%}
 .PopularPosts .post+.post {border-top:1px dashed $(sidebar.separator.color)}
-#PopularPosts1 {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)}
-.ctpp .post {padding-bottom:20px}
-.ctpp .item-content {margin-bottom:16px}
+.PopularPosts .post {margin-bottom:20px}
+.ctpp .item-content {margin-bottom:20px}
 .ctpp .item-content>img {width:max(20%, 7em - var(--maincolumn-padding))}
 .sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
 
 /* ページャー */
-#blog_pager {background-color:$(body.background.color);padding-top:1.5em;padding-bottom:1.5em;display:flex;justify-content:space-around}
+#blog_pager {background-color:$(posts.background.color);padding-bottom:20px;display:flex;justify-content:space-around}
 #blog_pager>a {color:$(posts.navigation.link.color)}
 #blog_pager>a:visited {color:$(posts.navigation.link.visited.color)}
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
@@ -1550,7 +1552,7 @@ button</b:comment>
       <b:include data='post' name='post'/>
 
     <!-- Comments -->
-    <b:include cond='data:view.isSingleItem' data='post' name='commentPicker'/>
+    <b:include cond='data:view.isSingleItem and data:post.allowComments' data='post' name='commentPicker'/>
 
     <!-- Show ad inside post container, after comments, if single item. -->
     <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
@@ -1688,7 +1690,7 @@ button</b:comment>
       <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-  <aside class='ctpp' role='feed'>
+  <aside class='mnpp ctpp' role='feed'>
   <b:if cond='data:title'>
     <h2 class='feed-title'><data:title/></h2>
   </b:if>
