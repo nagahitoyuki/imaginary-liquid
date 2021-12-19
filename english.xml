@@ -456,10 +456,9 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .FeaturedPost {padding:20px var(--maincolumn-padding);background-color:$(posts.background.color);margin-bottom:var(--maincolumn-padding)}
 .FeaturedPost>.feed-title {margin-top:0;margin-bottom:16px}
 .FeaturedPost>.feed-title>a {color:$(posts.title.color)}
-.ft-post>a {color:#fff}
 .ft-post>a, .ft-snippet-thumbnail {aspect-ratio:1.5;width:100%;height:auto;display:grid;align-items:center;text-align:center}
 .no-image {background-color:#808080}
-.fp-title {font:$(posts.stream.title.font);line-height:var(--body-lineheight);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
+.fp-title {font:$(posts.stream.title.font);line-height:var(--body-lineheight);color:#fff;margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
 .ft-snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
 
 /* Post header / footer */
