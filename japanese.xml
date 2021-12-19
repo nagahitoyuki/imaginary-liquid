@@ -456,11 +456,11 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .FeaturedPost {padding:20px var(--maincolumn-padding);background-color:$(posts.background.color);margin-bottom:var(--maincolumn-padding)}
 .FeaturedPost>.feed-title {margin-top:0;margin-bottom:20px}
 .FeaturedPost>.feed-title>a {color:$(posts.title.color)}
-.FeaturedPost .post>a, .FeaturedPost .post>a:hover, .FeaturedPost .post>a:visited {color:#fff}
-.FeaturedPost .post>a, .FeaturedPost .snippet-thumbnail {aspect-ratio:1.5;width:100%;height:auto;display:grid;align-items:center;text-align:center}
+.ft-post>a {color:#fff}
+.ft-post>a, .ft-snippet-thumbnail {aspect-ratio:1.5;width:100%;height:auto;display:grid;align-items:center;text-align:center}
 .no-image {background-color:#808080}
 .fp-title {font:$(posts.stream.title.font);line-height:var(--body-lineheight);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
-.FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
+.ft-snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
 
 /* 記事のヘッダー／フッター */
 .post-header-line-1 {color:$(posts.byline.color)}
@@ -555,8 +555,8 @@ margin-$endSide:.5em}
 #sub_main .ctpp .snippet-item {color:$(body.text.base.color)}
 .item-content {display:flex;column-gap:var(--maincolumn-padding)}
 .item-content>img {flex:none;height:100%}
-.PopularPosts .post+.post {border-top:1px dashed $(sidebar.separator.color)}
-.PopularPosts .post {margin-bottom:20px}
+.pp-post+.pp-post {border-top:1px dashed $(sidebar.separator.color)}
+.pp-post {margin-bottom:20px}
 .ctpp .item-content {margin-bottom:20px}
 .ctpp .item-content>img {width:max(20%, 7em - var(--maincolumn-padding))}
 .sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
@@ -825,7 +825,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts' var='post'>
-    <article class='post' expr:aria-setsize='data:posts.length'>
+    <article class='pp-post' expr:aria-setsize='data:posts.length'>
       <b:include name='snippetedPostContent'/>
     </article>
     </b:loop>
@@ -1194,7 +1194,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
-    <b:tag class='snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 480, &quot;3:2&quot;) + &quot;-rw-e60 480w, &quot; + resizeImage(data:imgurl, 768, &quot;3:2&quot;) + &quot;-rw-e60 768w, &quot; + resizeImage(data:imgurl, 1024, &quot;3:2&quot;) + &quot;-rw-e60 1024w&quot; : sourceSet(data:imgurl, [480,768,1024], &quot;3:2&quot;)' height='320' name='img' sizes='(max-width:960px) 100vw, 1024px' width='480'>
+    <b:tag class='ft-snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 480, &quot;3:2&quot;) + &quot;-rw-e60 480w, &quot; + resizeImage(data:imgurl, 768, &quot;3:2&quot;) + &quot;-rw-e60 768w, &quot; + resizeImage(data:imgurl, 1024, &quot;3:2&quot;) + &quot;-rw-e60 1024w&quot; : sourceSet(data:imgurl, [480,768,1024], &quot;3:2&quot;)' height='320' name='img' sizes='(max-width:960px) 100vw, 1024px' width='480'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
     <b:attr expr:value='data:post.featuredImage + &quot;=w480-h320-n-k-no-nu-rw-e60&quot;' name='data-src'/>
@@ -1208,7 +1208,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts' var='post'>
-    <article class='post'>
+    <article class='ft-post'>
       <b:include name='snippetedPostContent'/>
     </article>
     </b:loop>
@@ -1734,7 +1734,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts' var='post'>
-    <article class='post' expr:aria-setsize='data:posts.length'>
+    <article class='pp-post' expr:aria-setsize='data:posts.length'>
       <b:include name='snippetedPostContent'/>
     </article>
     </b:loop>
