@@ -389,7 +389,7 @@ noscript {grid-column:1/1;grid-row:2/3;background:#ff0;color:#000;padding:var(--
 
 /* Blog header */
 .centered-top {grid-column:1/1;grid-row:1/2;padding:1.75em var(--maincolumn-padding);text-align:center}
-#blog-title {color:$(blog.title.color);font:$(blog.title.font);margin:0;line-height:calc(var(--body-lineheight) - .15)}
+#blog-title {font:$(blog.title.font);line-height:calc(var(--body-lineheight) - .1);color:$(blog.title.color);margin:0}
 #blog-title>a, #blog-title>a:hover, #blog-title>a:visited{color:$(blog.title.color)}
 .blog-desc {color:$(blog.title.color);margin-top:1.25em;margin-bottom:0}
 .Header {background-position:center center;background-repeat:no-repeat}
@@ -428,7 +428,7 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .fadeout {animation:fadeout .3s ease-out}
 
 /* Search widget */
-.search-space {color:$(search.input.color);background-color:rgba(255, 255, 255, .2);font:$(search.input.font);max-width:73%}
+.search-space {color:$(search.input.color);background-color:rgba(255, 255, 255, .2);font:$(search.input.font);line-height:var(--body-lineheight);max-width:73%}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
 html[dir="rtl"] .search-space {vertical-align:text-top}
@@ -459,7 +459,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .FeaturedPost .post>a, .FeaturedPost .post>a:hover, .FeaturedPost .post>a:visited {color:#fff}
 .FeaturedPost .post>a, .FeaturedPost .snippet-thumbnail {aspect-ratio:1.5;width:100%;height:auto;display:grid;align-items:center;text-align:center}
 .no-image {background-color:#808080}
-.fp-title {font:$(posts.stream.title.font);line-height:calc(var(--body-lineheight) - .2);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
+.fp-title {font:$(posts.stream.title.font);line-height:var(--body-lineheight);margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
 .FeaturedPost .snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
 
 /* Post header / footer */
@@ -480,19 +480,19 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .author-desc {color:$(profile.text.color)}
 
 /* Post title */
-.entry-title {font:$(posts.title.font)}
-.snippet-title {font:$(posts.stream.title.font)}
+.entry-title {font:$(posts.title.font);line-height:var(--body-lineheight)}
+.snippet-title {font:$(posts.stream.title.font);line-height:var(--body-lineheight)}
 .entry-title, .snippet-title {line-height:calc(var(--body-lineheight) - .2);margin-top:0;margin-bottom:20px}
 .entry-title, .snippet-title, .snippet-title>a, .snippet-title>a:hover, .snippet-title>a:visited {color:$(posts.title.color)}
 
 /* Post body and snippet */
-.post-body {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin:16px 0}
+.post-body {font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color);margin:16px 0}
 .post-body a, .post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
 .post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:flow-root;width:min(100%, calc($(content.width) - var(--maincolumn-padding) * 2));margin-bottom:16px}
 .total-snippet .snippet-thumbnail {float:$startSide;width:max(30%, 8em  - var(--maincolumn-padding));height:auto;margin-$endSide:var(--maincolumn-padding);margin-bottom:calc((var(--body-lineheight) - 1) * .5em)}
 .ytpic {background-color:#000}
-.summary {font:$(posts.text.font);color:$(posts.text.color);line-height:var(--body-lineheight);margin-top:0;margin-bottom:0}
+.summary {font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color);margin-top:0;margin-bottom:0}
 .post-body h1 {font-size:26px;line-height:calc(var(--body-lineheight) - .2)}
 .post-body h2 {font-size:24px;line-height:calc(var(--body-lineheight) - .15)}
 .post-body h3 {font-size:21px;line-height:calc(var(--body-lineheight) - .1)}
@@ -550,7 +550,7 @@ margin-$endSide:.5em}
 
 /* Popular posts */
 #PopularPosts1 {background-color:$(popularposts.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);overflow:hidden}
-.pp-title {font:$(popularposts.title.font);line-height:calc(var(--body-lineheight) - .15);margin-top:20px;margin-bottom:20px}
+.pp-title {font:$(popularposts.title.font);line-height:var(--body-lineheight);margin-top:20px;margin-bottom:20px}
 .mnpp .pp-title>a {color:$(popularposts.title.color)}
 .mnpp .post-footer>a {color:$(popularposts.link.color)}
 #sub_main .ctpp .pp-title>a {color:$(body.text.base.color)}
