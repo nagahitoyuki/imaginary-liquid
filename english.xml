@@ -259,13 +259,9 @@
       default="$(posts.navigation.link.color)"  value="#008000"/>
 </Group>
 
-<Group description="Sidebar" selector="div.sidebar-container">
-  <Variable name="sidebar.backgroundColorTop"
-      description="Background color (Top)"
-      type="color"
-      default="#f0f8ff"  value="#f0f8ff"/>
-  <Variable name="sidebar.backgroundColorBottom"
-      description="Background color (Bottom)"
+<Group description="Sidebar" selector="div.sidebar">
+  <Variable name="sidebar.backgroundColor"
+      description="Background color"
       type="color"
       default="#f0f8ff"  value="#f0f8ff"/>
   <Variable name="sidebar.separator.color"
@@ -372,6 +368,8 @@ blockquote {margin:1em 2.5em}
 /* Widget */
 .title, .feed-title {font-size:large;color:$(widget.title.color)}
 .feed-title {font-weight:bold}
+.widget-content ul {list-style-type:none;padding-$startSide:0}
+.widget-content ul ul {margin-$startSide:1em}
 
 /* Appendix */
 .BLOG_mobile_video_class {display:none}
@@ -573,14 +571,10 @@ margin-$endSide:.5em}
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* Side bar */
-.sidebar-container {grid-column:1/1;grid-row:3/4;width:min($(sidebar.width), 80vw);justify-self:end;display:flex;flex-direction:column;overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch}
-.sidebar_top {background-color:$(sidebar.backgroundColorTop)}
-.sidebar_bottom {background-color:$(sidebar.backgroundColorBottom)}
-.sidebar-container .widget {margin:0 var(--maincolumn-padding) 20px;color:$(widget.text.color)}
-.sidebar-container .widget>.title {color:$(widget.title.color)}
-.sidebar-container .widget+.widget {border-top:1px dashed $(sidebar.separator.color)}
-.sidebar-container .widget-content ul {list-style-type:none;padding-$startSide:0}
-.sidebar-container .widget-content ul ul {margin-$startSide:1em}
+.sidebar-container {grid-column:1/1;grid-row:3/4;width:min($(sidebar.width), 80vw);justify-self:end;align-self:start;display:flex;flex-direction:column;background-color:$(sidebar.backgroundColor);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch}
+.sidebar>.widget {margin:0 var(--maincolumn-padding) 20px;color:$(widget.text.color)}
+.sidebar>.widget>.title {color:$(widget.title.color)}
+.sidebar>.widget+.widget {border-top:1px dashed $(sidebar.separator.color)}
 
 /* Profile */
 .Profile {margin:0 auto;box-sizing:border-box}
@@ -605,12 +599,12 @@ margin-$endSide:.5em}
 .list-label>.label-name, .hierarchy-archive>a, .flat-archive>a {margin-$endSide:auto}
 .hierarchy-archive .hierarchy-archive {margin-$startSide:1em}
 .post-labels {margin-bottom:16px}
-.BlogArchive>.title, .Label>.title
-.first-items {margin-top:24px}
+.BlogArchive>.title, .Label>.title {margin-bottom:0}
+.first-items {margin-top:1.2em}
 .remaining-items {position:absolute;visibility:hidden;overflow:hidden;transition:all .3s ease-out}
 .Label .remaining-items {margin-top:12px;margin-bottom:-12px}
 .remaining-items>.list-label, .remaining-items>.cloud-label {margin-bottom:12px}
-.show-more, .show-less {margin-$startSide:auto;font-size:medium;color:$(body.link.base.color);margin-top:24px;cursor:pointer}
+.show-more, .show-less {margin-$startSide:auto;font-size:medium;color:$(body.link.base.color);margin-top:1.2em;cursor:pointer}
 
 /* Text widget */
 .Text .widget-content {margin-bottom:16px}
@@ -630,8 +624,6 @@ margin-$endSide:.5em}
 /* Sub main */
 .centered-bottom {grid-column:1/1;grid-row:4/5}
 #sub_main>.widget {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)}
-#sub_main .widget-content ul {list-style-type:none;padding-$startSide:0}
-#sub_main .widget-content ul ul {margin-$startSide:1em}
 
 /* Attribution */
 #attribution {grid-column:1/1;grid-row:5/6;text-align:center;font-size:small;color:$(attribution.text.color);padding:.75em var(--maincolumn-padding) 1.75em}
@@ -673,7 +665,7 @@ margin-$endSide:.5em}
 #comment_button, #add_button {$startSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
 
 /* Side bar */
-#close_button {background-color:$(sidebar.backgroundColorTop);text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
+#close_button {text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
 .sidebar-container {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s ease-out;z-index:101}
 .slidein {transform:translateX($(sidebar.width))}
 .slideout {transform:translateX(0)}
@@ -801,11 +793,11 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
-    <div class='widget-content team'>
+    <div class='team'>
       <b:include name='teamProfile'/>
     </div>
   <b:else/>
-    <div class='widget-content individual'>
+    <div class='individual'>
       <b:include name='userProfile'/>
     </div>
   </b:if>
@@ -1703,8 +1695,8 @@ button</b:comment>
 <b:if cond='data:skin.vars.sidebar_width + data:skin.vars.content_margin != &quot;0px0px&quot;'>
 <aside aria-hidden='true' class='sidebar-container sidebar-invisible'>
   <button aria-label='Close sidebar' class='svg-icon-24-button' id='close_button' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_close_black_24dp'/></svg></button>
-        <b:section class='sidebar_top' id='sidebar_top' name='Sidebar (Top)'>
-          <b:widget id='Profile1' locked='true' title='Profile' type='Profile' visible='true'>
+        <b:section class='sidebar' id='sidebar' name='Sidebar'>
+          <b:widget id='Profile1' locked='false' title='Profile' type='Profile' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='showaboutme'>true</b:widget-setting>
               <b:widget-setting name='showlocation'>true</b:widget-setting>
@@ -1720,11 +1712,11 @@ button</b:comment>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
-    <div class='widget-content team'>
+    <div class='team'>
       <b:include name='teamProfile'/>
     </div>
   <b:else/>
-    <div class='widget-content individual'>
+    <div class='individual'>
       <b:include name='userProfile'/>
     </div>
   </b:if>
@@ -1800,9 +1792,6 @@ button</b:comment>
   </a>
 </b:includable>
           </b:widget>
-        </b:section>
-
-      <b:section class='sidebar_bottom' id='sidebar_bottom' name='Sidebar (Bottom)'>
         <b:widget id='BlogArchive1' locked='false' title='Archive' type='BlogArchive' visible='true'>
           <b:widget-settings>
             <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
