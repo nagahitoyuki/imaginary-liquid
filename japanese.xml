@@ -472,7 +472,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .pf-last>.url {color:$(posts.byline.color)}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
-.author-profile {display:flex;column-gap:var(--maincolumn-padding);margin-bottom:16px}
+.author-profile {display:flex;column-gap:var(--maincolumn-padding);margin-bottom:20px}
 .author-image {flex-shrink:0;width:50px;height:50px;border-radius:50%}
 .author-desc {color:$(profile.text.color)}
 
@@ -566,9 +566,10 @@ margin-$endSide:.5em}
 
 /* サイドバー */
 .sidebar-container {grid-column:1/1;grid-row:3/4;width:min($(sidebar.width), 80vw);justify-self:end;align-self:start;display:flex;flex-direction:column;background-color:$(sidebar.backgroundColor);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch}
-.sidebar>.widget {margin:0 var(--maincolumn-padding) 20px;color:$(widget.text.color)}
+.sidebar>.widget {margin:1em var(--maincolumn-padding);color:$(widget.text.color)}
 .sidebar>.widget>.title {color:$(widget.title.color)}
 .sidebar>.widget+.widget {border-top:1px dashed $(sidebar.separator.color)}
+.sidebar .widget-content {margin-top:1em}
 
 /* プロフィール */
 .Profile {margin:0 auto;box-sizing:border-box}
@@ -589,19 +590,14 @@ margin-$endSide:.5em}
 .BlogArchive, .Label, .list-label, .hierarchy-archive, .flat-archive {display:flex;flex-direction:column}
 .post-labels, .cloud-label {display:flex;flex-wrap:wrap}
 .post-labels, .list-label, .cloud-label {gap:12px} 
-.post-labels>a, .label-name {display:list-item;list-style-type:none}
+.post-labels>a, .label-name, .hierarchy-archive>a, .flat-archive>a {display:list-item;list-style-type:none}
 .list-label>.label-name, .hierarchy-archive>a, .flat-archive>a {margin-$endSide:auto}
 .hierarchy-archive .hierarchy-archive {margin-$startSide:1em}
-.post-labels {margin-bottom:16px}
-.BlogArchive>.title, .Label>.title {margin-bottom:0}
-.first-items {margin-top:1.2em}
-.remaining-items {position:absolute;visibility:hidden;overflow:hidden;transition:all .3s ease-out}
+.post-labels {margin-bottom:20px}
+.remaining-items {position:absolute;overflow:hidden;transition:all .3s ease-out}
 .Label .remaining-items {margin-top:12px;margin-bottom:-12px}
 .remaining-items>.list-label, .remaining-items>.cloud-label {margin-bottom:12px}
-.show-more, .show-less {margin-$startSide:auto;font-size:medium;color:$(body.link.base.color);margin-top:1.2em;cursor:pointer}
-
-/* テキスト */
-.Text .widget-content {margin-bottom:16px}
+.show-more, .show-less {margin-top:1.2em;margin-$startSide:auto;font-size:medium;color:$(body.link.base.color);cursor:pointer}
 
 /* 連絡フォーム */
 .contact-form-button {color:inherit}
@@ -815,7 +811,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
   </b:tag>
 </b:includable>
     <b:includable id='snippetedPosts'>
-    <b:loop values='data:posts' var='post'>
+    <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
     <article class='pp-post' expr:aria-setsize='data:posts.length'>
       <b:include name='snippetedPostContent'/>
     </article>
@@ -1249,7 +1245,7 @@ button</b:comment>
   <b:with value='data:widgets.AdSense.size' var='numAds'>
   <b:comment>Filter out the featured post, but only on the homepage.</b:comment>
   <b:with value='data:widgets.FeaturedPost filter (w =&gt; w.sectionId == &quot;main&quot;) map (w =&gt; w.postId)' var='featuredPostIds'>
-  <b:with value='data:view.isHomepage and not data:view.isPreview ? data:posts filter (post =&gt; post.id not in data:featuredPostIds) : data:posts' var='posts'>
+  <b:with value='data:view.isHomepage and not data:view.isPreview ? data:posts filter (post =&gt; post.id != data:featuredPostIds) : data:posts' var='posts'>
   <b:tag aria-busy='false' cond='data:view.isMultipleItems' class='hfeed' name='div' role='feed'>
   <b:loop index='i' values='data:posts' var='post'>
   <b:include data='post' name='postCommentsAndAd'/>
@@ -1724,7 +1720,7 @@ button</b:comment>
   </b:tag>
 </b:includable>
     <b:includable id='snippetedPosts'>
-    <b:loop values='data:posts' var='post'>
+    <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
     <article class='pp-post' expr:aria-setsize='data:posts.length'>
       <b:include name='snippetedPostContent'/>
     </article>
@@ -2071,10 +2067,10 @@ const rith = rit.clientHeight;
 rit.style.height = &quot;0&quot;; rit.style.position = &quot;initial&quot;;
 rit.nextElementSibling.addEventListener(&quot;click&quot;, event =&gt; {
 const exp = event.target;
-exp.classList.add(&quot;hidden&quot;); rit.style.height = rith + &quot;px&quot;; rit.style.visibility = &quot;visible&quot;; exp.nextElementSibling.classList.remove(&quot;hidden&quot;); }); 
+exp.classList.add(&quot;hidden&quot;); rit.style.height = rith + &quot;px&quot;; exp.nextElementSibling.classList.remove(&quot;hidden&quot;); }); 
 rit.nextElementSibling.nextElementSibling.addEventListener(&quot;click&quot;, event =&gt; {
 const cmp = event.target;
-cmp.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;; rit.style.visibility = &quot;hidden&quot;; cmp.previousElementSibling.classList.remove(&quot;hidden&quot;); }); }); }
+cmp.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;; cmp.previousElementSibling.classList.remove(&quot;hidden&quot;); }); }); }
 /* Share menu */
 fbbtn.addEventListener(&quot;click&quot;, () =&gt; {
 window.location.href = &quot;https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>&quot;; });
