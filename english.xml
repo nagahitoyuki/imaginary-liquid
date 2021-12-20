@@ -571,7 +571,7 @@ margin-$endSide:.5em}
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* Side bar */
-.sidebar-container {grid-column:1/1;grid-row:3/4;width:min($(sidebar.width), 80vw);justify-self:end;align-self:start;display:flex;flex-direction:column;background-color:$(sidebar.backgroundColor);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch}
+.sidebar-container {grid-column:1/1;grid-row:3/4;width:min($(sidebar.width), 85vw - var(--maincolumn-padding) * 1.7);justify-self:end;align-self:start;display:flex;flex-direction:column;background-color:$(sidebar.backgroundColor);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch}
 .sidebar>.widget {margin:1em var(--maincolumn-padding);color:$(widget.text.color)}
 .sidebar>.widget>.title {color:$(widget.title.color)}
 .sidebar>.widget+.widget {border-top:1px dashed $(sidebar.separator.color)}
