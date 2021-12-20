@@ -1992,7 +1992,7 @@ const hil = bdis.querySelector(&quot;div.image-attribution a&quot;);
 if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);<b:if cond='data:skin.vars.sidebar_width + data:skin.vars.content_margin != &quot;0px0px&quot;'>
 /* Screen reader */
 const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
-if (sbct.style.position === &quot;absolute&quot;) sbct.ariaHidden = &quot;false&quot;;
+if (getComputedStyle(sbct).getPropertyValue(&quot;position&quot;) !== &quot;fixed&quot;) sbct.ariaHidden = &quot;false&quot;;
 /* Hamburger menu */
 const bcsd = document.createElement(&quot;div&quot;);
 bcsd.classList.add(&quot;dim-overlay&quot;);
