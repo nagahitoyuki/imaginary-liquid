@@ -393,9 +393,9 @@ noscript {grid-column:1/1;grid-row:2/3;background:#ff0;color:#000;padding:var(--
 .Header {background-position:center center;background-repeat:no-repeat}
 
 /* タブ */
-.tabs {display:flex;justify-content:space-evenly;align-items:center;flex-wrap:wrap;margin-top:1em;margin-bottom:-.5em}
-.tabs-title {color:$(tabs.title.color);font-size:large;margin-top:1.25em;margin-bottom:0}
-.pl-items {font:$(tabs.font);line-height:calc(var(--body-lineheight) * 1.5);padding-left:.5em;padding-right:.5em;box-sizing:border-box}
+.tabs {display:flex;justify-content:space-evenly;flex-wrap:wrap;gap:1em}
+.tabs-title {color:$(tabs.title.color);font-size:large;margin-top:1.25em;margin-bottom:1.25em}
+.pl-items {font:$(tabs.font)}
 .pl-items, .pl-items:hover, .pl-items:visited {color:$(tabs.color)}
 
 /* フローティングバー */
