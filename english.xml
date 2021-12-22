@@ -356,11 +356,11 @@ blockquote {margin:1em 2.5em}
 .no-bg-image {background-color:$(blog.header.color)}
 
 /* Balancer */
-.hidden, .no-items {display:none}
+.hidden, :not(.feed-view>#sub_main).section.no-items {display:none}
 .invisible {visibility:hidden}
-#floating_bar, #Blog1, #sub_main, .sidebar-container {contain:content}
-.feed-view #sub_main, .feed-view #attribution {display:none}
-.item-view #sub_main, .item-view #attribution {content-visibility:auto;contain-intrinsic-size:100%}
+#floating_bar, .hfeed, .hentry, #sub_main, .sidebar-container {contain:content}
+.feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
+.item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
 .sidebar-invisible {content-visibility:hidden;contain-intrinsic-size:100%;visibility:hidden}
 .sidebar-visible {content-visibility:visible;overflow-y:hidden;visibility:visible}
 .dim-overlay {background-color:rgba(0, 0, 0, .8);position:fixed;top:0;$startSide:0;width:100%;height:100vh;z-index:100}
@@ -386,7 +386,7 @@ noscript {grid-column:1/1;grid-row:2/3;background:#ff0;color:#000;padding:var(--
 .no-posts-message {line-height:40px;text-align:center}
 
 /* Blog header */
-.centered-top {grid-column:1/1;grid-row:1/2;padding:1.75em var(--maincolumn-padding);text-align:center}
+#header {grid-column:1/1;grid-row:1/2;padding:1.75em var(--maincolumn-padding);text-align:center}
 #blog-title {font:$(blog.title.font);line-height:calc(var(--body-lineheight) - .1);color:$(blog.title.color);margin:0}
 #blog-title>a, #blog-title>a:hover, #blog-title>a:visited{color:$(blog.title.color)}
 .blog-desc {color:$(blog.title.color);margin-top:1.25em;margin-bottom:0}
@@ -703,8 +703,8 @@ margin-top:20px}
 <b:if cond='data:view.isLayoutMode'><b:template-skin>
 <![CDATA[body#layout {display:block;max-width:925px;margin:0 auto}
 body#layout .bg-image-container {display:none}
-body#layout #floating_bar {position:initial;display:initial}
-body#layout #floating_menu {display:initial}
+body#layout #floating_bar {position:static;display:block}
+body#layout #floating_menu {display:block}
 body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elseif cond='data:view.isPreview'/>
 <style>.widget-ad-placeholder, .inline-ad-placeholder {background:$(posts.background.color);border:1px solid #000;opacity:.9;vertical-align:middle;text-align:center}
 .widget-ad-placeholder span, .inline-ad-placeholder span {margin-top:36px;display:block;text-transform:uppercase;font-weight:700;color:$(posts.title.color)}
@@ -1910,9 +1910,7 @@ button</b:comment>
 </aside>
 </b:if>
 
-<aside class='centered-bottom'>
-<b:class cond='data:view.isMultipleItems' name='isf'/>
-<b:section class='sub_main' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true'>
+<b:section class='centered-bottom' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true' tag='aside'>
   <b:widget id='Text2' locked='false' title='Information' type='Text' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='content'><![CDATA[<p>You can place the widget you want to use here.</p><p>Blogger dashboard >> Layout >> Page Sub (Add a Gadget)</p><p>If you remove all the widgets here, the section itself will disappear.</p>]]></b:widget-setting>
@@ -1925,7 +1923,6 @@ button</b:comment>
 </b:includable>
   </b:widget>
 </b:section>
-</aside>
 
 <button aria-label='Back to top' class='svg-icon-24-button hidden' id='back_button' onclick='location.href=&quot;#blog-title&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button>
 <b:if cond='data:view.isMultipleItems'>
@@ -2021,7 +2018,7 @@ const rits = [].slice.call(bdis.querySelectorAll(&quot;div.remaining-items&quot;
 if (rits[0]) {
 rits.forEach(rit =&gt; {
 const rith = rit.clientHeight;
-rit.style.height = &quot;0&quot;; rit.style.position = &quot;initial&quot;;
+rit.style.height = &quot;0&quot;; rit.style.position = &quot;static&quot;;
 rit.nextElementSibling.addEventListener(&quot;click&quot;, event =&gt; {
 const exp = event.target;
 exp.classList.add(&quot;hidden&quot;); rit.style.height = rith + &quot;px&quot;; exp.nextElementSibling.classList.remove(&quot;hidden&quot;); }); 
@@ -2061,22 +2058,22 @@ if (ytimg.naturalWidth &lt; 121) image.removeAttribute(&quot;srcset&quot;, &quot
 ytimg.src = image.src; }
 if (ytpics[0]) ytpics.forEach(yt);
 /* Infinite scroll */
-const nextIndex = bdis.querySelector(&quot;aside.isf&quot;), bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav#blog_pager&quot;), bthg = floating_bar.clientHeight;
+const bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav#blog_pager&quot;), bthg = floating_bar.clientHeight, smwds = [].slice.call(sub_main.querySelectorAll(&quot;div.widget&quot;));
 let npl = bpg.querySelector(&quot;a.older-link&quot;);
 if (bpct.clientHeight === 0) bpct.style.marginTop = &quot;0&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
 function rmmg(state) {
-if (nextIndex.style.marginTop) nextIndex.style.marginTop = &quot;&quot;;
+if (sub_main.style.marginTop) sub_main.style.marginTop = &quot;&quot;;
 if (bdis.style.marginBottom) bdis.style.marginBottom = &quot;&quot;
-if (state !== &#39;end&#39;) nextIndex.style.marginTop = bthg + &quot;px&quot;;
+if (state !== &#39;end&#39;) sub_main.style.marginTop = bthg + &quot;px&quot;;
 if (state !== &#39;pass&#39;) nextIndexObserver.disconnect(); }
 function isac(state, scroll) {
 switch (state) {
-case 0: nextIndex.style.marginTop = scroll + bthg + &quot;px&quot;; bdis.style.marginBottom = bthg + &quot;px&quot;; break;
-case 1: nextIndex.style.marginTop = bthg + &quot;px&quot;; break;
-case 2: if (nextIndex.style.marginTop) {
-nextIndex.style.marginTop = &quot;&quot;; }
+case 0: sub_main.style.marginTop = scroll + bthg + &quot;px&quot;; bdis.style.marginBottom = bthg + &quot;px&quot;; break;
+case 1: sub_main.style.marginTop = bthg + &quot;px&quot;; break;
+case 2: if (sub_main.style.marginTop) {
+sub_main.style.marginTop = &quot;&quot;; }
 if (!bdis.style.marginBottom) {
 bdis.style.marginBottom = bthg + &quot;px&quot;; }
 default: if (scroll !== &#39;on&#39;) {
@@ -2108,15 +2105,18 @@ const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - bthg;
 if (window.pageYOffset === 0) {
 const iolm = window.innerHeight - entry.boundingClientRect.top + bthg;
 if (iolm &gt; 0) {
-isac(0, iolm); } else if (parseInt(nextIndex.style.marginTop) &gt;= bthg) {
+isac(0, iolm); } else if (parseInt(sub_main.style.marginTop) &gt;= bthg) {
 isac(1, 0); } else {
 isac(2, 0); }
 return; } else if (sgtm &gt; 0) {
 isac(2, &#39;on&#39;); }
 return; }
-sub_main.style.display = &quot;initial&quot;; attribution.style.display = &quot;initial&quot;; rmmg(&#39;end&#39;); }); }, {
+if (smwds[0]) {
+smwds.forEach(smwd =&gt; {
+smwd.style.display = &quot;block&quot;; }); }
+attribution.style.display = &quot;block&quot;; rmmg(&#39;end&#39;); }); }, {
 rootMargin: bthg + &quot;px&quot;});
-nextIndexObserver.observe(nextIndex);<b:else/>
+nextIndexObserver.observe(sub_main);<b:else/>
 /* Comment button */
 const commentAllow = Blog1.querySelector(&quot;a.cmal&quot;), commentButton = Blog1.querySelector(&quot;article.hentry&quot;);
 let commentButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
