@@ -519,6 +519,8 @@ margin-$endSide:.5em}
 .comment-body {margin-bottom:12px}
 .embed[data-num-comments="0"] {border:0;margin-top:0;padding-top:0}
 #comment-editor-src {display:none}
+#comment-editor {display:block}
+.comment-replybox-single>#comment-editor {margin-bottom:1em}
 .loadmore.loaded {max-height:0;opacity:0;overflow:hidden}
 .comment-link {color:$(posts.link.color);position:relative}
 .comment-link .num_comments {margin-$startSide:.5em;vertical-align:top}
@@ -602,6 +604,7 @@ margin-$endSide:.5em}
 /* 連絡フォーム */
 .contact-form-button {color:inherit}
 .contact-form-name, .contact-form-email, .contact-form-email-message {max-width:100%;box-sizing:border-box}
+.contact-form-email-message {font-size:100%}
 .contact-form-asterisk {font-weight:bolder}
 .contact-form-error {text-align:center;width:min(100%, $(sidebar.width) - var(--maincolumn-padding) * 2)}
 
