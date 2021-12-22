@@ -395,7 +395,7 @@ noscript {grid-column:1/1;grid-row:2/3;background:#ff0;color:#000;padding:var(--
 /* Tabs */
 .tabs {display:flex;justify-content:space-evenly;align-items:center;flex-wrap:wrap;margin-top:.75em;margin-bottom:-.5em}
 .tabs-title {color:$(tabs.title.color);font-size:large;margin-top:1em;margin-bottom:0}
-.pl-items {font:$(tabs.font);padding-left:.5em;padding-right:.5em;line-height:calc(var(--body-lineheight) * 1.5)}
+.pl-items {font:$(tabs.font);line-height:calc(var(--body-lineheight) * 1.5);padding-left:.5em;padding-right:.5em;box-sizing:border-box}
 .pl-items, .pl-items:hover, .pl-items:visited {color:$(tabs.color)}
 
 /* Floating bar */
@@ -441,7 +441,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 #main {grid-column:1/2;grid-row:3/4}
 .feed-view #main {margin-bottom:20px}
 .hfeed {display:grid;gap:var(--maincolumn-padding)}
-.hfeed>.post, .hentry {background:$(posts.background.color);box-sizing:border-box;padding:20px var(--maincolumn-padding)}
+.hfeed>.post, .hentry {background:$(posts.background.color);padding:20px var(--maincolumn-padding);box-sizing:border-box}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
 .hfeed>.post+aside {align-self:stretch;display:grid}
 
@@ -571,14 +571,14 @@ margin-$endSide:.5em}
 #blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* Side bar */
-.sidebar-container {grid-column:1/1;grid-row:3/4;width:min($(sidebar.width), 85vw - var(--maincolumn-padding) * 1.7);justify-self:end;align-self:start;display:flex;flex-direction:column;background-color:$(sidebar.backgroundColor);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling: touch}
+.sidebar-container {grid-column:1/1;grid-row:3/4;width:min($(sidebar.width), 85vw - var(--maincolumn-padding) * 1.7);justify-self:end;align-self:start;display:flex;flex-direction:column;background-color:$(sidebar.backgroundColor);overflow-y:auto;-webkit-overflow-scrolling: touch}
 .sidebar>.widget {margin:1em var(--maincolumn-padding);color:$(widget.text.color)}
 .sidebar>.widget>.title {color:$(widget.title.color)}
 .sidebar>.widget+.widget {border-top:1px dashed $(sidebar.separator.color)}
 .sidebar .widget-content {margin-top:1em}
 
 /* Profile */
-.Profile {margin:0 auto;box-sizing:border-box}
+.Profile {margin:0 auto}
 .Profile .title {color:$(profile.title.color)}
 .individual {text-align:center}
 .team-members {list-style-type:none;padding-$startSide:0}
@@ -591,7 +591,7 @@ margin-$endSide:.5em}
 .t-type .profile-name {align-self:center}
 
 /* Labels and Archives */
-.post-labels>a, .label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:1px;padding:2px 6px}
+.post-labels>a, .label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:1px;padding:2px 6px;box-sizing:border-box}
 .label-name:hover, .label-name:visited {color:$(labels.text.color)}
 .BlogArchive, .Label, .list-label, .hierarchy-archive, .flat-archive {display:flex;flex-direction:column}
 .post-labels, .cloud-label {display:flex;flex-wrap:wrap}
