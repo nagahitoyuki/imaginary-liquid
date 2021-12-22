@@ -606,7 +606,7 @@ margin-$endSide:.5em}
 .contact-form-name, .contact-form-email, .contact-form-email-message {max-width:100%;box-sizing:border-box}
 .contact-form-email-message {font-size:100%}
 .contact-form-asterisk {font-weight:bolder}
-.contact-form-error {text-align:center;width:min(100%, $(sidebar.width) - var(--maincolumn-padding) * 2)}
+.contact-form-error {font-style:normal}
 
 /* 不正行為を報告 */
 .report_abuse {font-weight:400}
@@ -979,12 +979,12 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
         <br/>
         <textarea class='contact-form-email-message' cols='25' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'/>
         <p/>
-        <input class='contact-form-button contact-form-button-submit' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' expr:value='data:contactFormSendMsg' type='button'/>
-        <p/>
         <div class='contact-form-error'>
           <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
           <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
         </div>
+        <input class='contact-form-button contact-form-button-submit' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' expr:value='data:contactFormSendMsg' type='button'/>
+        <p/>
       </form>
   </address>
 </b:includable>
@@ -1914,12 +1914,12 @@ button</b:comment>
         <br/>
         <textarea class='contact-form-email-message' cols='25' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'/>
         <p/>
-        <input class='contact-form-button contact-form-button-submit' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' expr:value='data:contactFormSendMsg' type='button'/>
-        <p/>
         <div class='contact-form-error'>
           <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
           <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
         </div>
+        <input class='contact-form-button contact-form-button-submit' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' expr:value='data:contactFormSendMsg' type='button'/>
+        <p/>
       </form>
   </address>
 </b:includable>
