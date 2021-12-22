@@ -394,7 +394,7 @@ noscript {grid-column:1/1;grid-row:2/3;background:#ff0;color:#000;padding:var(--
 
 /* Tabs */
 .tabs {display:flex;justify-content:space-evenly;flex-wrap:wrap;gap:1em}
-.tabs-title {color:$(tabs.title.color);font-size:large;margin-top:1em;margin-bottom:1em}
+.tabs-title {color:$(tabs.title.color);font-size:large;margin-top:1.25em;margin-bottom:1em}
 .pl-items {font:$(tabs.font)}
 .pl-items, .pl-items:hover, .pl-items:visited {color:$(tabs.color)}
 
