@@ -463,13 +463,12 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .post-header-line-1 {color:$(posts.byline.color)}
 .vcard, .fn, .vcard+.post-timestamp {display:inline-flex;gap:.5em;vertical-align:middle}
 .photo {flex-shrink:0;width:24px;height:24px;border-radius:50%}
-.byline, .vcard>a, .published>.value-title, .post-footer, .pft-profile>span, .pf-last>.url {color:$(posts.byline.color)}
+.vcard>a, .published>.value-title, .post-footer, .pft-profile>span, .pf-last, .pf-last>.url, .post-location {color:$(posts.byline.color)}
 .post-footer {display:flex}
 .post-footer a {color:$(posts.link.color)}
 .hentry .post-footer {flex-direction:column}
 .post-footer-line>span {display:block;margin-bottom:20px}
 .pf-last {width:100%;text-align:$endSide;font-style:oblique}
-.pf-last>.url {color:$(posts.byline.color)}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
 .author-profile {display:flex;column-gap:var(--maincolumn-padding);margin-bottom:20px}
@@ -753,7 +752,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
   <b:if cond='data:widget.sectionId == &quot;sub_main&quot;'>
   <footer class='post-footer'>
     <b:if cond='data:post.url'>
-      <a class='byline archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
+      <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
     </b:if>
     <b:include data='post' name='postFooterJumpLink'/>
   </footer>
@@ -1445,7 +1444,7 @@ button</b:comment>
     </b:if>
 </b:includable>
     <b:includable id='postAuthor'>
-  <span class='byline author vcard'><b:eval cond='data:byline.label' expr='data:byline.label'/>
+  <span class='author vcard'><b:eval cond='data:byline.label' expr='data:byline.label'/>
   <b:if cond='data:post.author.profileUrl'>
     <a class='url fn' expr:href='data:post.author.profileUrl' rel='me nofollow' title='author profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 36, &quot;1:1&quot;)' height='24' width='24'/><data:post.author.name/></a>
   <b:else/>
@@ -1513,13 +1512,13 @@ button</b:comment>
       <b:if cond='data:view.isPost'>
       <b:include name='footerBylines'/>
         <div class='pf-last'>
-          <span class='byline post-timestamp updated'>Last updated:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a>
+          <span class='post-timestamp updated'>Last updated:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a>
         </div>
       <b:elseif cond='data:view.isPage'/>
       <div class='pf-last'>Title:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a></div>
       <b:else/>
         <b:if cond='data:post.url'>
-          <a class='byline archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
+          <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
         </b:if>
       <b:include data='post' name='postFooterJumpLink'/>
     </b:if>
@@ -1549,11 +1548,11 @@ button</b:comment>
     <b:includable id='postLabels'>
   <b:comment>We don&#39;t display labels on the home page.</b:comment>
   <b:if cond='data:view.isSingleItem'>
-    <div class='byline post-labels'><b:tag class='byline-label' cond='data:byline.label' name='span'><data:byline.label/></b:tag><b:loop index='i' values='data:post.labels' var='label'><a expr:href='data:label.url' rel='tag'><data:label.name/></a></b:loop></div>
+    <div class='post-labels'><b:tag class='byline-label' cond='data:byline.label' name='span'><data:byline.label/></b:tag><b:loop index='i' values='data:post.labels' var='label'><a expr:href='data:label.url' rel='tag'><data:label.name/></a></b:loop></div>
    </b:if>
  </b:includable>
     <b:includable id='postLocation'>
-  <span class='byline post-location'><data:byline.label/><a expr:href='data:post.location.mapsUrl' rel='nofollow' target='_blank'><data:post.location.name/></a></span>
+  <span class='post-location'><data:byline.label/><a expr:href='data:post.location.mapsUrl' rel='nofollow' target='_blank'><data:post.location.name/></a></span>
 </b:includable>
     <b:includable id='postMeta' var='post'>
 <script type='application/ld+json'>{
@@ -1579,7 +1578,7 @@ button</b:comment>
   <b:comment>Don&#39;t show share buttons.</b:comment>
 </b:includable>
     <b:includable id='postTimestamp'>
-  <span class='byline post-timestamp'><b:eval cond='data:byline.label' expr='data:byline.label'/><b:if cond='data:post.url'><a class='timestamp-link published' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' rel='archives'><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></a></b:if></span>
+  <span class='post-timestamp'><b:eval cond='data:byline.label' expr='data:byline.label'/><b:if cond='data:post.url'><a class='timestamp-link published' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' rel='archives'><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></a></b:if></span>
 </b:includable>
     <b:includable id='postTitle' var='post'>
   <b:if cond='data:post.title != &quot;&quot;'>
@@ -1662,7 +1661,7 @@ button</b:comment>
     </b:if>
   </a>
   <footer class='post-footer'>
-      <a class='byline archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
+      <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
     <b:include data='post' name='postFooterJumpLink'/>
   </footer>
 </b:includable>
