@@ -513,10 +513,8 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .comment-author-header-wrapper {margin-$startSide:40px}
 .thread-expanded .comment-block {padding-bottom:1.5em}
 .comment-header>.user, .comment-header>.user>a, .comment-author, .comment-author>a {color:$(posts.byline.color);font-style:normal}
-.comment-actions {
-bottom:0;position:absolute}
-.comment-actions>* {
-margin-$endSide:.5em}
+.comment-actions {bottom:0;position:absolute}
+.comment-actions>* {margin-$endSide:.5em}
 .comment-header>.datetime {bottom:0;display:inline-block;margin-$startSide:.5em}
 .comment-timestamp>a, .comment-header>.datetime>a {color:$(posts.byline.color)}
 .comment-content, .comment-body {margin-top:.75em;margin-bottom:.75em;word-break:break-word}
@@ -621,7 +619,7 @@ margin-$endSide:.5em}
 
 /* Sub main */
 .centered-bottom {grid-column:1/1;grid-row:4/5}
-#sub_main>.widget {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding)}
+#sub_main>.widget {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box}
 
 /* Attribution */
 #attribution {grid-column:1/1;grid-row:5/6;text-align:center;font-size:small;color:$(attribution.text.color);padding:.75em var(--maincolumn-padding) 1.75em}
@@ -630,7 +628,7 @@ margin-$endSide:.5em}
 .blogger, .image-attribution, .copyright {margin-top:1em}
 
 /* Error page */
-.error-view .post-outer-container {background:$(body.background.color);padding:var(--maincolumn-padding);border-bottom:4px #c0c0c0 double}
+.error-view .post-outer-container {background:$(body.background.color);padding:var(--maincolumn-padding);border-bottom:4px #c0c0c0 double;box-sizing:border-box}
 
 /* More than the width of the blog content and sidebar and gaps */
 @media screen and (min-width:$(sidebar.width + content.width + content.margin)) {
