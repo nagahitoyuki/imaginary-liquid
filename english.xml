@@ -358,7 +358,7 @@ blockquote {margin:1em 2.5em}
 /* Balancer */
 .hidden, :not(.feed-view>#sub_main).section.no-items {display:none}
 .invisible {visibility:hidden}
-#floating_bar, .hfeed, .entry-content, .comment-footer, #sub_main, .sidebar-container {contain:content}
+#floating_bar, .hfeed, .entry-content, .threaded, #sub_main, .sidebar-container {contain:content}
 .feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
 .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
 .sidebar-invisible {content-visibility:hidden;contain-intrinsic-size:100%;visibility:hidden}
