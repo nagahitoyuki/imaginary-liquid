@@ -358,7 +358,7 @@ blockquote {margin:1em 2.5em}
 /* バランサー */
 .hidden, :not(.feed-view>#sub_main).section.no-items {display:none}
 .invisible {visibility:hidden}
-#floating_bar, #Blog1, #sub_main, .sidebar-container {contain:content}
+#floating_bar, .hfeed, .entry-content, .comment-footer, #sub_main, .sidebar-container {contain:content}
 .feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
 .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
 .sidebar-invisible {content-visibility:hidden;contain-intrinsic-size:100%;visibility:hidden}
@@ -439,7 +439,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 
 /* ページボディー */
 #main {grid-column:1/2;grid-row:3/4}
-.feed-view #main {margin-bottom:20px}
+.feed-view #main {margin-bottom:1em}
 .hfeed {display:grid;gap:var(--maincolumn-padding)}
 .hfeed>.post, .hentry {background:$(posts.background.color);padding:20px var(--maincolumn-padding);box-sizing:border-box}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
