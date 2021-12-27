@@ -652,6 +652,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 @media screen and (max-width:$(sidebar.width + content.width + content.margin - 1px)) {
 
 /* Placement */
+#main {width:100vw}
 #swc {margin-$startSide:calc(var(--maincolumn-padding) / 2);margin-$endSide:calc(var(--maincolumn-padding) / 2);animation:fadein .3s ease-out}
 #search_expand {margin-$startSide:calc(var(--maincolumn-padding) / -3)}
 
@@ -964,6 +965,15 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
 </b:includable>
     <b:includable id='searchSubmit'>
   <input class='search-action' expr:value='data:messages.search.escaped' type='submit'/>
+</b:includable>
+</b:defaultmarkup>
+<b:defaultmarkup type='Feed'>
+            <b:includable id='main'>
+  <b:include name='widget-title'/>
+  <b:include name='content'/>
+</b:includable>
+            <b:includable id='content'>
+  <div class='widget-content' expr:id='data:widget.instanceId + &quot;_feedItemListDisplay&quot;'><a expr:href='data:feedUrl'><data:loadingMsg/></a></div>
 </b:includable>
 </b:defaultmarkup>
 </b:defaultmarkups>
