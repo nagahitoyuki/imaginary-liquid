@@ -652,7 +652,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 @media screen and (max-width:$(sidebar.width + content.width + content.margin - 1px)) {
 
 /* Placement */
-#main {width:100vw}
+#main {width:100%}
 #swc {margin-$startSide:calc(var(--maincolumn-padding) / 2);margin-$endSide:calc(var(--maincolumn-padding) / 2);animation:fadein .3s ease-out}
 #search_expand {margin-$startSide:calc(var(--maincolumn-padding) / -3)}
 
