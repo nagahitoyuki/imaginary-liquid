@@ -244,7 +244,7 @@
       default="#dc143c"  value="#dc143c"/>
 </Group>
 
-<Group description="Post navigation" selector='nav#blog_pager'>
+<Group description="Post navigation" selector='nav.blog-pager'>
   <Variable name="posts.navigation.link.color"
       description="Post navigation links color"
       type="color"
@@ -441,8 +441,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 #main {grid-column:1/2;grid-row:3/4}
 .feed-view #main {margin-bottom:1em}
 .hfeed {display:grid;gap:var(--maincolumn-padding)}
-.hfeed>.post, .item-view #Blog1 {background:$(posts.background.color)}
-.hfeed>.post, .hentry {padding:20px var(--maincolumn-padding);box-sizing:border-box}
+.hfeed>.post, .hentry {background:$(posts.background.color);padding:20px var(--maincolumn-padding);box-sizing:border-box}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
 .hfeed>.post+aside {align-self:stretch;display:grid}
 
@@ -483,19 +482,19 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .entry-title, .snippet-title, .snippet-title>a, .snippet-title>a:hover, .snippet-title>a:visited {color:$(posts.title.color)}
 
 /* Post body and snippet */
-.post-body {font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color);margin:20px 0}
-.post-body a, .post-body a:hover,.post-body a:visited {color:$(posts.link.color)}
-.post-body blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
+.entry-content {font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color);margin-top:20px;margin-bottom:20px}
+.entry-content a, .entry-content a:hover,.entry-content a:visited {color:$(posts.link.color)}
+.entry-content blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:flow-root;margin-bottom:20px}
 .total-snippet>.snippet-thumbnail {float:$startSide;width:max(30%, 8em  - var(--maincolumn-padding));height:auto;margin-$endSide:var(--maincolumn-padding);margin-bottom:calc((var(--body-lineheight) - 1) * .5em)}
 .ytpic {background-color:#000}
 .summary {font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color);margin-top:0;margin-bottom:0}
-.post-body h1 {font-size:26px;line-height:calc(var(--body-lineheight) - .2)}
-.post-body h2 {font-size:24px;line-height:calc(var(--body-lineheight) - .15)}
-.post-body h3 {font-size:21px;line-height:calc(var(--body-lineheight) - .1)}
-.post-body h4 {font-size:16px}
-.post-body h5 {font-size:14px}
-.post-body h6 {font-size:11px}
+.entry-content h1 {font-size:26px;line-height:calc(var(--body-lineheight) - .2)}
+.entry-content h2 {font-size:24px;line-height:calc(var(--body-lineheight) - .15)}
+.entry-content h3 {font-size:21px;line-height:calc(var(--body-lineheight) - .1)}
+.entry-content h4 {font-size:16px}
+.entry-content h5 {font-size:14px}
+.entry-content h6 {font-size:11px}
 
 /* Comments */
 #comments {color:$(posts.text.color)}
@@ -545,10 +544,10 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .comment-range-text:last-child::after, .paging-control:last-child::after {content:none}
 
 /* Pager */
-#blog_pager {padding-bottom:20px;display:flex;justify-content:space-around}
-#blog_pager>a {color:$(posts.navigation.link.color)}
-#blog_pager>a:visited {color:$(posts.navigation.link.visited.color)}
-#blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
+.blog-pager {margin-top:20px;display:flex;justify-content:space-around}
+.blog-pager>a {color:$(posts.navigation.link.color)}
+.blog-pager>a:visited {color:$(posts.navigation.link.visited.color)}
+.blog-pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* Popular posts */
 #PopularPosts1 {background-color:$(popularposts.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);overflow:hidden}
@@ -1198,7 +1197,6 @@ button</b:comment>
       <b:widget-setting name='showReactions'>false</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
-  <b:include name='noContentPlaceholder'/>
   <b:if cond='data:view.isArchive or (data:view.isSearch and data:view.search.resultsMessageHtml)'>
   <div class='post-filter-message'>
     <b:if cond='data:view.isArchive'>
@@ -1209,6 +1207,7 @@ button</b:comment>
       <a class='pfm-link' expr:href='data:blog.homepageUrl'><data:messages.showAll/></a>
   </div>
   </b:if>
+  <b:include name='noContentPlaceholder'/>
   <b:comment>Cap the total number of ads (widgets and inline ads).</b:comment>
   <b:with value='3' var='maxNumAds'>
   <b:with value='data:widgets.AdSense.size' var='numAds'>
@@ -1218,15 +1217,6 @@ button</b:comment>
   <b:loop index='i' values='data:posts' var='post'>
   <b:include data='post' name='postCommentsAndAd'/>
   </b:loop></b:tag>
-  <b:if cond='data:view.isMultipleItems'><script type='application/ld+json'>{
-&quot;@context&quot;: &quot;http://schema.org&quot;, &quot;@type&quot;: &quot;CreativeWork&quot;, &quot;mainEntity&quot;: {
-&quot;@type&quot;: &quot;Blog&quot;, &quot;@id&quot;: &quot;<data:blog.url.canonical.jsonEscaped/>&quot; }, &quot;name&quot;: &quot;<data:blog.pageTitle.jsonEscaped/>&quot;, &quot;description&quot;: &quot;<b:eval expr='(data:posts.first.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }).jsonEscaped'/>&quot;, &quot;datePublished&quot;: &quot;<data:posts.last.date.iso8601.jsonEscaped/>&quot;, &quot;dateModified&quot;: &quot;<data:posts.first.date.iso8601.jsonEscaped/>&quot;, &quot;image&quot;: {
-&quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;<b:eval expr='(data:posts.first.featuredImage ? resizeImage(data:posts.first.featuredImage, 1200, &quot;1200:630&quot;) : &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200&quot;).jsonEscaped'/>&quot;, &quot;height&quot;: <b:eval expr='data:posts.first.featuredImage ? 630 : 348'/>, &quot;width&quot;: 1200 }, &quot;publisher&quot;: {
-&quot;@type&quot;: &quot;Organization&quot;, &quot;name&quot;: &quot;Blogger&quot;, &quot;logo&quot;: {
-&quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60&quot;, &quot;width&quot;: 206, &quot;height&quot;: 60 }}<b:if cond='data:posts.first.author.profileUrl'>, &quot;author&quot;: {
-&quot;@type&quot;: &quot;Person&quot;, &quot;name&quot;: &quot;<data:posts.first.author.name.jsonEscaped/>&quot;, &quot;url&quot;: &quot;<data:posts.first.author.profileUrl.jsonEscaped/>&quot;<b:if cond='data:posts.first.author.authorPhoto'>, &quot;image&quot;: {
-&quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https:<data:posts.first.author.authorPhoto.image.jsonEscaped/>&quot;, &quot;height&quot;: <data:posts.first.author.authorPhoto.height/>, &quot;width&quot;: <data:posts.first.author.authorPhoto.width/> }</b:if>}</b:if>}</script></b:if>
-  <b:include cond='!data:view.isError' name='postPagination'/>
   </b:with>
   </b:with>
   </b:with>
@@ -1446,13 +1436,12 @@ button</b:comment>
     <b:if cond='data:view.isSingleItem'>
       <b:include data='post' name='postHeader'/>
       <b:include data='post' name='postBody'/>
-      <b:include data='post' name='postFooter'/>
-      <b:include data='post' name='postMeta'/>
     <b:else/>
       <b:include data='post' name='postTitle'/>
       <b:include data='post' name='postBodySnippet'/>
-      <b:include data='post' name='postFooter'/>
     </b:if>
+      <b:include data='post' name='postFooter'/>
+      <b:include data='post' name='postMeta'/>
 </b:includable>
     <b:includable id='postAuthor'>
   <span class='author vcard'><b:eval cond='data:byline.label' expr='data:byline.label'/>
@@ -1510,6 +1499,8 @@ button</b:comment>
 
     <!-- Show ad inside post container, after comments, if single item. -->
     <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
+
+     <b:include cond='data:posts.length - data:i == 1' name='postPagination'/>
   </article>
 
   <!-- Show ad outside post container (between posts) for feed pages. -->
@@ -1566,7 +1557,7 @@ button</b:comment>
   <span class='post-location'><data:byline.label/><a expr:href='data:post.location.mapsUrl' rel='nofollow' target='_blank'><data:post.location.name/></a></span>
 </b:includable>
     <b:includable id='postMeta' var='post'>
-<script type='application/ld+json'>{
+<b:if cond='data:view.isSingleItem'><script type='application/ld+json'>{
 &quot;@context&quot;: &quot;http://schema.org&quot;, &quot;@type&quot;: &quot;BlogPosting&quot;, &quot;mainEntityOfPage&quot;: {
 &quot;@type&quot;: &quot;WebPage&quot;, &quot;@id&quot;: &quot;<data:post.url.canonical.jsonEscaped/>&quot; }, &quot;headline&quot;: &quot;<data:post.title.jsonEscaped/>&quot;, &quot;description&quot;: &quot;<b:eval expr='(data:post.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }).jsonEscaped'/>&quot;, &quot;datePublished&quot;: &quot;<data:post.date.iso8601.jsonEscaped/>&quot;, &quot;dateModified&quot;: &quot;<data:post.lastUpdated.iso8601.jsonEscaped/>&quot;, &quot;image&quot;: {
 &quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;<b:eval expr='(data:post.featuredImage ? resizeImage(data:post.featuredImage, 1200, &quot;1200:630&quot;) : &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200&quot;).jsonEscaped'/>&quot;, &quot;height&quot;: <b:eval expr='data:post.featuredImage ? 630 : 348'/>, &quot;width&quot;: 1200 }, &quot;publisher&quot;: {
@@ -1578,9 +1569,18 @@ button</b:comment>
 &quot;@context&quot;: &quot;http://schema.org&quot;, &quot;@type&quot;: &quot;BreadcrumbList&quot;, &quot;itemListElement&quot;: [{
 &quot;@type&quot;: &quot;ListItem&quot;, &quot;position&quot;: 1, &quot;name&quot;: &quot;<data:blog.title.jsonEscaped/>&quot;, &quot;item&quot;: &quot;<data:blog.homepageUrl.canonical/>&quot;}, {
 &quot;@type&quot;: &quot;ListItem&quot;, &quot;position&quot;: 2, &quot;name&quot;: &quot;<data:blog.pageName.jsonEscaped/>&quot; }]}</script></b:if>
+<b:else/>
+<script type='application/ld+json'>{
+&quot;@context&quot;: &quot;http://schema.org&quot;, &quot;@type&quot;: &quot;CreativeWork&quot;, &quot;mainEntity&quot;: {
+&quot;@type&quot;: &quot;Blog&quot;, &quot;@id&quot;: &quot;<data:blog.url.canonical.jsonEscaped/>&quot; }, &quot;name&quot;: &quot;<data:blog.pageTitle.jsonEscaped/>&quot;, &quot;description&quot;: &quot;<b:eval expr='(data:posts.first.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }).jsonEscaped'/>&quot;, &quot;datePublished&quot;: &quot;<data:posts.last.date.iso8601.jsonEscaped/>&quot;, &quot;dateModified&quot;: &quot;<data:posts.first.date.iso8601.jsonEscaped/>&quot;, &quot;image&quot;: {
+&quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;<b:eval expr='(data:posts.first.featuredImage ? resizeImage(data:posts.first.featuredImage, 1200, &quot;1200:630&quot;) : &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200&quot;).jsonEscaped'/>&quot;, &quot;height&quot;: <b:eval expr='data:posts.first.featuredImage ? 630 : 348'/>, &quot;width&quot;: 1200 }, &quot;publisher&quot;: {
+&quot;@type&quot;: &quot;Organization&quot;, &quot;name&quot;: &quot;Blogger&quot;, &quot;logo&quot;: {
+&quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60&quot;, &quot;width&quot;: 206, &quot;height&quot;: 60 }}<b:if cond='data:posts.first.author.profileUrl'>, &quot;author&quot;: {
+&quot;@type&quot;: &quot;Person&quot;, &quot;name&quot;: &quot;<data:posts.first.author.name.jsonEscaped/>&quot;, &quot;url&quot;: &quot;<data:posts.first.author.profileUrl.jsonEscaped/>&quot;<b:if cond='data:posts.first.author.authorPhoto'>, &quot;image&quot;: {
+&quot;@type&quot;: &quot;ImageObject&quot;, &quot;url&quot;: &quot;https:<data:posts.first.author.authorPhoto.image.jsonEscaped/>&quot;, &quot;height&quot;: <data:posts.first.author.authorPhoto.height/>, &quot;width&quot;: <data:posts.first.author.authorPhoto.width/> }</b:if>}</b:if>}</script></b:if>
 </b:includable>
     <b:includable id='postPagination'>
-    <nav id='blog_pager'>
+    <nav class='blog-pager'>
     <b:include cond='data:newerPageUrl and data:view.isSingleItem' name='previousPageLink'/>
     <b:include cond='data:olderPageUrl' name='nextPageLink'/>
    </nav>
@@ -2068,7 +2068,7 @@ if (ytimg.naturalWidth &lt; 121) image.removeAttribute(&quot;srcset&quot;, &quot
 ytimg.src = image.src; }
 if (ytpics[0]) ytpics.forEach(yt);
 /* Infinite scroll */
-const bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav#blog_pager&quot;), bthg = floating_bar.clientHeight, smwds = [].slice.call(sub_main.querySelectorAll(&quot;div.widget&quot;));
+const bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav.blog-pager&quot;), bthg = floating_bar.clientHeight, smwds = [].slice.call(sub_main.querySelectorAll(&quot;div.widget&quot;));
 let npl = bpg.querySelector(&quot;a.older-link&quot;);
 if (bpct.clientHeight === 0) bpct.style.marginTop = &quot;0&quot;;
 function scrollStop(event) {
@@ -2099,6 +2099,7 @@ npl = file.querySelector(&quot;a.older-link&quot;);
 if (nppics[0]) nppics.forEach(yt);
 bats.forEach(bat =&gt; {
 const nbat = document.adoptNode(bat), pssm = nbat.querySelector(&quot;p.summary&quot;);
+if (bat.querySelector(&quot;nav.blog-pager&quot;)) npl.parentNode.remove();
 if (pssm.querySelector(&quot;script&quot;)) {
 const pssc = pssm.querySelector(&quot;script&quot;).innerHTML;
 pssm.insertAdjacentHTML(&quot;afterbegin&quot;, pssc.slice(pssc.indexOf(&quot;`&quot;) + 1, pssc.indexOf(&quot;`&quot;, pssc.indexOf(&quot;`&quot;) + 1)).replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;)); }
@@ -2107,7 +2108,7 @@ switch (error) {
 case &#39;Too fast&#39;: rmmg(&#39;pass&#39;); throw &#39;&#39;;
 case &#39;Connection failed&#39;: bpct.after(bpg); rmmg(&#39;stop&#39;); }}).then(() =&gt; {
 document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; add_button.classList.add(&quot;hidden&quot;); });
-if (Blog1.querySelector(&quot;nav#blog_pager&quot;)) bpg.remove(); }
+if (Blog1.querySelector(&quot;nav.blog-pager&quot;)) bpg.remove(); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (npl) {
