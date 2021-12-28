@@ -710,8 +710,6 @@ margin-top:20px}
 @media screen and (max-width:$(content.width - 1px)) and (min-width:481px) {
 
 /* 文字サイズと行間 */
-.entry-title, .snippet-title, .fp-title, .post-body h1 {line-height:calc(var(--body-lineheight) - .2)}
-.post-body h2, .pp-title {line-height:calc(var(--body-lineheight) - .1)}
 #blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 18)}
 body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 36)}
 .entry-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
@@ -722,13 +720,14 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 .post-body h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 44)}
 .post-body h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 55)}
 .pp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30)}
+.entry-title, .snippet-title, .fp-title, .post-body h1 {line-height:calc(var(--body-lineheight) - .2)}
+.post-body h2, .pp-title {line-height:calc(var(--body-lineheight) - .1)}
 }
 
 /* スマホ中心 */
 @media screen and (max-width:480px) and (min-width:321px) {
 
 /* 文字サイズと行間 */
-.entry-title, .snippet-title, .fp-title, .post-body h1, .post-body h2{line-height:calc(var(--body-lineheight) - .1)}
 #blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 13)}
 body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
 .entry-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15)}
@@ -739,6 +738,7 @@ body, .post-body, .summary, .snippet-item, .post-body blockquote, .post-body h4 
 .post-body h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 25)}
 .post-body h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30)}
 .pp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 17)}
+.entry-title, .snippet-title, .fp-title, .post-body h1, .post-body h2 {line-height:calc(var(--body-lineheight) - .1)}
 }
 ]]></b:skin>
 
