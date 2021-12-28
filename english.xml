@@ -150,7 +150,7 @@
       default="#ffd700"  value="#ffd700"/>
   <Variable name="tabs.font" description="Font"
       type="font"
-      default="bold 100% sans-serif"  value="bold 100% sans-serif"/>
+      default="100% sans-serif"  value="100% sans-serif"/>
   <Variable name="tabs.color" description="Text color"
       type="color"
       default="#fff"  value="#fff"/>
