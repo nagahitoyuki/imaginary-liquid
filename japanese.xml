@@ -340,7 +340,7 @@
 /* 一般設定 */
 :root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6}
 html {scroll-behavior:smooth}
-body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.base.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal;display:grid;grid-template-columns:100%}
+body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.base.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal;display:grid}
 a {text-decoration:none;color:$(body.link.base.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
@@ -358,7 +358,7 @@ blockquote {margin:1em 2.5em}
 /* バランサー */
 .hidden, :not(.feed-view>#sub_main).section.no-items {display:none}
 .invisible {visibility:hidden}
-#floating_bar, .hfeed, .item-view>#Blog1, #sub_main, .sidebar-container {contain:content}
+#floating_bar, .hfeed, .hentry, .threaded, #sub_main, .sidebar-container {contain:content}
 .feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
 .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
 .sidebar-invisible {content-visibility:hidden;contain-intrinsic-size:100%;visibility:hidden}
@@ -441,7 +441,8 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 #main {grid-column:1/2;grid-row:3/4}
 .feed-view #main {margin-bottom:1em}
 .hfeed {display:grid;gap:var(--maincolumn-padding)}
-.hfeed>.post, .hentry {background:$(posts.background.color);padding:20px var(--maincolumn-padding);box-sizing:border-box}
+.hfeed>.post, .item-view #Blog1 {background:$(posts.background.color)}
+.hfeed>.post, .hentry {padding:20px var(--maincolumn-padding);box-sizing:border-box}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
 .hfeed>.post+aside {align-self:stretch;display:grid}
 
@@ -538,6 +539,12 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .comment-range-text::after, .paging-control::after {content:'\00B7';cursor:default;padding-$startSide:8px;pointer-events:none}
 .comment-range-text:last-child::after, .paging-control:last-child::after {content:none}
 
+/* ページャー */
+#blog_pager {padding-bottom:20px;display:flex;justify-content:space-around}
+#blog_pager>a {color:$(posts.navigation.link.color)}
+#blog_pager>a:visited {color:$(posts.navigation.link.visited.color)}
+#blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
+
 /* 人気の投稿 */
 #PopularPosts1 {background-color:$(popularposts.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);overflow:hidden}
 .pp-title {font:$(popularposts.title.font);line-height:var(--body-lineheight);margin-top:20px;margin-bottom:20px}
@@ -556,12 +563,6 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .ctpp .item-content {margin-bottom:20px}
 .ctpp .item-content>img {width:max(20%, 7em - var(--maincolumn-padding))}
 .sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
-
-/* ページャー */
-#blog_pager {background-color:$(posts.background.color);padding-bottom:20px;display:flex;justify-content:space-around}
-#blog_pager>a {color:$(posts.navigation.link.color)}
-#blog_pager>a:visited {color:$(posts.navigation.link.visited.color)}
-#blog_pager>a:hover {color:$(posts.navigation.link.hover.color)}
 
 /* サイドバー */
 .sidebar-container {grid-column:1/1;grid-row:3/4;width:min($(sidebar.width), 85vw - var(--maincolumn-padding) * 1.7);justify-self:end;align-self:start;display:flex;flex-direction:column;background-color:$(sidebar.backgroundColor);overflow-y:auto;-webkit-overflow-scrolling: touch}
