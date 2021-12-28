@@ -1441,7 +1441,6 @@ button</b:comment>
       <b:include data='post' name='postBodySnippet'/>
     </b:if>
       <b:include data='post' name='postFooter'/>
-      <b:include data='post' name='postMeta'/>
 </b:includable>
     <b:includable id='postAuthor'>
   <span class='author vcard'><b:eval cond='data:byline.label' expr='data:byline.label'/>
@@ -1500,7 +1499,10 @@ button</b:comment>
     <!-- Show ad inside post container, after comments, if single item. -->
     <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
 
-     <b:include cond='data:posts.length - data:i == 1' name='postPagination'/>
+  <b:if cond='data:posts.length - data:i == 1'>
+     <b:include data='post' name='postMeta'/>
+     <b:include  name='postPagination'/>
+  </b:if>
   </article>
 
   <!-- Show ad outside post container (between posts) for feed pages. -->
@@ -2097,9 +2099,11 @@ if (!response.ok) throw &quot;Connection failed&quot;;
 const text = await response.text(), file = new DOMParser().parseFromString(text, &quot;text/html&quot;), nppics = [].slice.call(file.querySelectorAll(&quot;img.ytpic&quot;)), bats = [].slice.call(file.querySelectorAll(&quot;article.post&quot;));
 npl = file.querySelector(&quot;a.older-link&quot;);
 if (nppics[0]) nppics.forEach(yt);
+if (npl) {
+npl.parentNode.remove(); } else {
+file.querySelector(&quot;nav.blog-pager&quot;).remove(); }
 bats.forEach(bat =&gt; {
 const nbat = document.adoptNode(bat), pssm = nbat.querySelector(&quot;p.summary&quot;);
-if (bat.querySelector(&quot;nav.blog-pager&quot;)) npl.parentNode.remove();
 if (pssm.querySelector(&quot;script&quot;)) {
 const pssc = pssm.querySelector(&quot;script&quot;).innerHTML;
 pssm.insertAdjacentHTML(&quot;afterbegin&quot;, pssc.slice(pssc.indexOf(&quot;`&quot;) + 1, pssc.indexOf(&quot;`&quot;, pssc.indexOf(&quot;`&quot;) + 1)).replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;)); }
