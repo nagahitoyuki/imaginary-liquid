@@ -150,7 +150,7 @@
       default="#ffd700"  value="#ffd700"/>
   <Variable name="tabs.font" description="Font"
       type="font"
-      default="bold 100% sans-serif"  value="bold 100% sans-serif"/>
+      default="100% sans-serif"  value="100% sans-serif"/>
   <Variable name="tabs.color" description="Text color"
       type="color"
       default="#fff"  value="#fff"/>
@@ -715,13 +715,11 @@ body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry
 .entry-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
 .snippet-title, .fp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
 .entry-content h1 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
-.entry-content h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 25)}
+.entry-content h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 24)}
 .entry-content h3 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30)}
-.entry-content h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 44)}
-.entry-content h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 55)}
+.entry-content h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 40)}
+.entry-content h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 50)}
 .pp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30)}
-.entry-title, .snippet-title, .fp-title, .entry-content h1 {line-height:calc(var(--body-lineheight) - .2)}
-.entry-content h2, .pp-title {line-height:calc(var(--body-lineheight) - .1)}
 }
 
 /* スマホ中心 */
@@ -729,16 +727,16 @@ body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry
 
 /* 文字サイズと行間 */
 #blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 13)}
-body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry-content h4 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
+body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry-content h4 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 20)}
 .entry-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15)}
 .snippet-title, .fp-title  {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15)}
 .entry-content h1 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15)}
-.entry-content h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 17)}
-.entry-content h3 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 20)}
-.entry-content h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 25)}
-.entry-content h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 30)}
-.pp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 17)}
-.entry-title, .snippet-title, .fp-title, .entry-content h1, .entry-content h2 {line-height:calc(var(--body-lineheight) - .1)}
+.entry-content h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 16)}
+.entry-content h3 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 18)}
+.entry-content h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
+.entry-content h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 25)}
+.pp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 18)}
+.entry-content h5, .entry-content h6 {line-height:calc(var(--body-lineheight) - .5)}
 }
 ]]></b:skin>
 
@@ -1518,7 +1516,7 @@ button</b:comment>
   </b:with>
   </b:if>
     <p class='summary'>
-    <b:with value='data:post.body snippet { length:(data:blog.isMobileRequest ? 200 : 400), links: false, linebreaks: false, ellipsis: true }' var='chros'>
+    <b:with value='data:post.body snippet { length:(data:blog.isMobileRequest ? 180 : 380), links: false, linebreaks: false, ellipsis: true }' var='chros'>
 <b:if cond='data:chros contains &quot;&lt;strong&gt;&quot; or data:chros contains &quot;&lt;b&gt;&quot; or data:chros contains &quot;&lt;em&gt;&quot; or data:chros contains &quot;&lt;i&gt;&quot;'>
     <script>crsc = document.currentScript; crsc.insertAdjacentHTML(&quot;beforebegin&quot;, `<data:chros/>`.replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;));</script>
     <b:else/>
