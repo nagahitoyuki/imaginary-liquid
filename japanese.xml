@@ -736,7 +736,7 @@ body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry
 .entry-content h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}
 .entry-content h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 25)}
 .pp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 18)}
-.entry-content h5, .entry-content h6 {line-height:calc(var(--body-lineheight) - .5)}
+.entry-content h5, .entry-content h6 {line-height:var(--body-lineheight)}
 }
 ]]></b:skin>
 
