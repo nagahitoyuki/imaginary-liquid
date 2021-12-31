@@ -448,7 +448,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 
 /* Message of archive and search pages */
 .post-filter-message {background-color:#333;color:#fff;padding-top:calc(var(--maincolumn-padding) * 2.25);padding-bottom:calc(var(--maincolumn-padding) * 2.25);text-align:center}
-.pfm-link {margin-$startSide:1em;color:#fff}
+.pfm-link {margin-$startSide:1em;color:#fff !important}
 .post-filter-message .search-label, .post-filter-message .search-query {font-weight:bold}
 
 /* Featured post */
