@@ -397,6 +397,7 @@ noscript {grid-column:1/1;grid-row:2/3;background:#ff0;color:#000;padding:var(--
 .tabs-title {color:$(tabs.title.color);font-size:large;margin-top:1em;margin-bottom:1em}
 .pl-items {font:$(tabs.font)}
 .pl-items, .pl-items:hover, .pl-items:visited {color:$(tabs.color)}
+.indicate {text-decoration:underline 4px $(tabs.color) solid;text-underline-offset:.4em}
 
 /* Floating bar */
 #floating_bar {grid-column:1/1;grid-row:2/3;position:sticky;top:0;left:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
@@ -576,17 +577,12 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .sidebar .widget-content {margin-top:1em}
 
 /* Profile */
-.Profile {margin:0 auto}
-.Profile .title {color:$(profile.title.color)}
+.Profile>.title {color:$(profile.title.color)}
 .individual {text-align:center}
-.team-members {list-style-type:none;padding-$startSide:0}
-.profile-link {display:flex;color:$(profile.link.color);font-weight:bold}
+.team-members {list-style-type:none;padding-$startSide:0;display:flex;flex-direction:column;gap:.5em}
+.profile-link {display:inline-flex;align-items:center;gap:1em;color:$(profile.link.color)}
 .profile-img {border-radius:50%;vertical-align:top}
-.i-type, .v-type {flex-direction:column}
 .profile-data, .profile-textblock {color:$(profile.text.color);margin-$startSide:0;padding-top:8px}
-.t-type {width:auto;height:44px;}
-.t-type>.profile-img {flex:none;margin-$endSide:1em}
-.t-type .profile-name {align-self:center}
 
 /* Labels and Archives */
 .post-labels>a, .label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:1px;padding:2px 6px;box-sizing:border-box}
@@ -818,10 +814,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
   </ul>
 </b:includable>
             <b:includable id='teamProfileLink'>
-  <a class='profile-link t-type' expr:href='data:userUrl' rel='me nofollow'>
-    <b:include name='profileImage'/>
-    <span class='profile-name'><data:display-name/></span>
-  </a>
+  <a class='profile-link' expr:href='data:userUrl' rel='me nofollow'><b:include name='profileImage'/><data:display-name/></a>
 </b:includable>
             <b:includable id='userGoogleProfile'>
   <b:comment>Don&#39;t show G+ profile.</b:comment>
@@ -854,9 +847,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
     <b:include name='viewProfileLink'/>
 </b:includable>
             <b:includable id='userProfileLink'>
-  <a class='profile-link i-type' expr:href='data:userUrl' rel='me nofollow'>
-    <data:displayname/>
-  </a>
+  <a class='profile-link' expr:href='data:userUrl' rel='me nofollow'><data:displayname/></a>
 </b:includable>
             <b:includable id='userProfileText'>
   <dd class='profile-textblock'>
@@ -864,9 +855,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link v-type' expr:href='data:userUrl' rel='me nofollow'>
-    <data:messages.viewMyCompleteProfile/>
-  </a>
+  <a class='profile-link' expr:href='data:userUrl' rel='me nofollow'><data:messages.viewMyCompleteProfile/></a>
 </b:includable>
 </b:defaultmarkup>
 <b:defaultmarkup type='BlogArchive'>
@@ -1078,7 +1067,11 @@ button</b:comment>
   <b:comment>We don&#39;t use overflowable page list</b:comment>
 </b:includable>
     <b:includable id='pageLink'>
-  <a class='pl-items' expr:href='data:link.href'><data:link.title/></a>
+  <b:if cond='data:view.url.canonical == data:link.href'>
+    <span class='pl-items indicate'><data:link.title/></span>
+  <b:else/>
+    <a class='pl-items' expr:href='data:link.href'><data:link.title/></a>
+</b:if>
 </b:includable>
     <b:includable id='pageList'>
   <nav class='tabs'>
@@ -1747,10 +1740,7 @@ button</b:comment>
   </ul>
 </b:includable>
             <b:includable id='teamProfileLink'>
-  <a class='profile-link t-type' expr:href='data:userUrl' rel='me nofollow'>
-    <b:include name='profileImage'/>
-    <span class='profile-name'><data:display-name/></span>
-  </a>
+  <a class='profile-link' expr:href='data:userUrl' rel='me nofollow'><b:include name='profileImage'/><data:display-name/></a>
 </b:includable>
             <b:includable id='userGoogleProfile'>
   <b:comment>Don&#39;t show G+ profile.</b:comment>
@@ -1783,9 +1773,7 @@ button</b:comment>
     <b:include name='viewProfileLink'/>
 </b:includable>
             <b:includable id='userProfileLink'>
-  <a class='profile-link i-type' expr:href='data:userUrl' rel='me nofollow'>
-    <data:displayname/>
-  </a>
+  <a class='profile-link' expr:href='data:userUrl' rel='me nofollow'><data:displayname/></a>
 </b:includable>
             <b:includable id='userProfileText'>
   <dd class='profile-textblock'>
@@ -1793,9 +1781,7 @@ button</b:comment>
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link v-type' expr:href='data:userUrl' rel='me nofollow'>
-    <data:messages.viewMyCompleteProfile/>
-  </a>
+  <a class='profile-link' expr:href='data:userUrl' rel='me nofollow'><data:messages.viewMyCompleteProfile/></a>
 </b:includable>
           </b:widget>
         <b:widget id='BlogArchive1' locked='false' title='Archive' type='BlogArchive' visible='true'>
