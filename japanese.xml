@@ -338,7 +338,7 @@
 **************************************************/
 
 /* 一般設定 */
-:root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6}
+:root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6;--svgicon-height:calc(24px * (var(--body-lineheight) - .5))}
 html {scroll-behavior:smooth}
 body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.base.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal;display:grid}
 a {text-decoration:none;color:$(body.link.base.color)}
@@ -401,23 +401,23 @@ noscript {grid-column:1/1;grid-row:2/3;background:#ff0;color:#000;padding:var(--
 
 /* フローティングバー */
 #floating_bar {grid-column:1/1;grid-row:2/3;position:sticky;top:0;left:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
-#floating_menu, #floating_share {display:inline-flex;column-gap:calc(var(--maincolumn-padding) / 3)}
+#floating_menu, #floating_share {display:inline-flex;column-gap:calc(var(--maincolumn-padding) / 3);align-items:center}
 
 /* SVGアイコン */
 .svg-icon-24-button, .loadingIcon {appearance:none;padding:0;border:none;background:transparent}
-.svg-icon-24 {vertical-align:top;width:calc(var(--body-lineheight) * 1.2em);height:calc(var(--body-lineheight) * 1.2em);cursor:pointer}
+.svg-icon-24 {vertical-align:top;width:var(--svgicon-height);height:var(--svgicon-height);cursor:pointer}
 .svg-icon-24>use {fill:$(sticky.icons.color)}
 #close_button>.svg-icon-24 {fill:$(sidebar.icons.color)}
 .post-icons .svg-icon-24 {fill:$(posts.icons.color)}
 .svg-icon-back {stroke-width:2px;stroke:$(sticky.icons.color);fill:transparent}
-.avatarIcon {width:35px;height:35px;fill:$(posts.icons.color);border:solid 1px $(posts.icons.color);border-radius:50%;padding:5.5px;box-sizing:border-box}
-.blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical-align:-36%}
+.avatarIcon {width:2.25em;height:2.25em;fill:$(posts.icons.color);border:solid 1px $(posts.icons.color);border-radius:50%;padding:5.5px;box-sizing:border-box}
+.blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical-align:-40%}
 
 /* 戻るボタン／コメントボタン／ローディング */
 #back_button, #comment_button, #add_button {position:fixed;bottom:calc(var(--maincolumn-padding) / 2);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50}
 html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #add_button {box-shadow:-5px 5px 10px -5px rgba(0,0,0,.35)}
 #back_button, #comment_button {width:var(--floatingbar-height);border-radius:50%}
-#back_button>.svg-icon-24 {margin-top:calc(-.1em * var(--body-lineheight));padding-bottom:calc(.1em * var(--body-lineheight))}
+#back_button>.svg-icon-24 {margin-top:calc(var(--svgicon-height) / -12);padding-bottom:calc(var(--svgicon-height) / 12)}
 #add_button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px}
 
 /* フェード */
@@ -499,7 +499,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 #top-ra>.comment {padding-bottom:1.5em}
 .comment .comment {margin-bottom:1em;padding-top:.5em;padding-bottom:.5em;position:relative}
 .avatar-image-container {position:absolute}
-.avatar-image-container>img {border-radius:50%}
+.avatar-image-container>img {width:2.25em;height:2.25em;border-radius:50%}
 .comment-block {margin-$startSide:49px}
 .comment>svg+.comment-block {margin-top:-42px}
 .comment-author-header-wrapper {margin-$startSide:40px}
