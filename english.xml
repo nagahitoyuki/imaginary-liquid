@@ -401,23 +401,23 @@ noscript {grid-column:1/1;grid-row:2/3;background:#ff0;color:#000;padding:var(--
 
 /* Floating bar */
 #floating_bar {grid-column:1/1;grid-row:2/3;position:sticky;top:0;left:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
-#floating_menu, #floating_share {display:flex;column-gap:calc(var(--maincolumn-padding) / 3)}
+#floating_menu, #floating_share {display:inline-flex;column-gap:calc(var(--maincolumn-padding) / 3)}
 
 /* SVG icons */
-.svg-icon-24-button, .loadingIcon {appearance:none;padding:0;border:none;background:transparent;}
-.svg-icon-24 {vertical-align:middle;width:24px;height:24px;cursor:pointer}
+.svg-icon-24-button, .loadingIcon {appearance:none;padding:0;border:none;background:transparent}
+.svg-icon-24 {vertical-align:top;width:calc(var(--body-lineheight) * 1.2em);height:calc(var(--body-lineheight) * 1.2em);cursor:pointer}
 .svg-icon-24>use {fill:$(sticky.icons.color)}
 #close_button>.svg-icon-24 {fill:$(sidebar.icons.color)}
 .post-icons .svg-icon-24 {fill:$(posts.icons.color)}
 .svg-icon-back {stroke-width:2px;stroke:$(sticky.icons.color);fill:transparent}
-.avatarIcon {width:24px;height:24px;fill:$(posts.icons.color);padding:5.5px}
-.blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical-align:calc(-2px - 24%)}
+.avatarIcon {width:35px;height:35px;fill:$(posts.icons.color);border:solid 1px $(posts.icons.color);border-radius:50%;padding:5.5px;box-sizing:border-box}
+.blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical-align:-36%}
 
 /* Back button / Comment button / Loading */
-#back_button, #comment_button, #add_button {position:fixed;bottom:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50}
+#back_button, #comment_button, #add_button {position:fixed;bottom:calc(var(--maincolumn-padding) / 2);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50}
 html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #add_button {box-shadow:-5px 5px 10px -5px rgba(0,0,0,.35)}
 #back_button, #comment_button {width:var(--floatingbar-height);border-radius:50%}
-#back_button>.svg-icon-24 {padding-top:calc(-20px / 6);padding-bottom:calc(20px / 6)}
+#back_button>.svg-icon-24 {margin-top:calc(-.1em * var(--body-lineheight));padding-bottom:calc(.1em * var(--body-lineheight))}
 #add_button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px}
 
 /* Fade effect */
@@ -506,7 +506,6 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .comment .comment {margin-bottom:1em;padding-top:.5em;padding-bottom:.5em;position:relative}
 .avatar-image-container {position:absolute}
 .avatar-image-container>img {border-radius:50%}
-.avatar-image-container>svg {border-radius:50%;border:solid 1px $(posts.icons.color);box-sizing:border-box;height:35px;width:35px}
 .comment-block {margin-$startSide:49px}
 .comment>svg+.comment-block {margin-top:-42px}
 .comment-author-header-wrapper {margin-$startSide:40px}
@@ -635,8 +634,8 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 #swc.hidden {display:block}
 
 /* Back button / Comment button / Loading */
-#back_button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
-#comment_button, #add_button {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
+#back_button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) / 2)}
+#comment_button, #add_button {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) / 2)}
 
 /* Side bar */
 #close_button {display:none}
@@ -652,8 +651,8 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 #search_expand {margin-$startSide:calc(var(--maincolumn-padding) / -3)}
 
 /* Back button / Comment button / Loading */
-#back_button {$endSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
-#comment_button, #add_button {$startSide:calc(var(--maincolumn-padding) - ((var(--floatingbar-height) - 24px) / 2) + 4px)}
+#back_button {$endSide:calc(var(--maincolumn-padding) / 2)}
+#comment_button, #add_button {$startSide:calc(var(--maincolumn-padding) / 2)}
 
 /* Side bar */
 #close_button {text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
