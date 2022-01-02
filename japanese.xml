@@ -338,7 +338,7 @@
 **************************************************/
 
 /* 一般設定 */
-:root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6;--svgicon-height:calc(24px * (var(--body-lineheight) - .5))}
+:root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6;--svgicon-height:calc($(body.text.font.size) * var(--body-lineheight))}
 html {scroll-behavior:smooth}
 body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.base.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal;display:grid}
 a {text-decoration:none;color:$(body.link.base.color)}
