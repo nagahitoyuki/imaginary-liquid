@@ -138,7 +138,7 @@
 <Group description="Blog title" selector="div.widget.Header">
   <Variable name="blog.title.font" description="Font"
       type="font"
-      default="bold 31px sans-serif"  value="bold 31px sans-serif"/>
+      default="bold 180% sans-serif"  value="bold 180% sans-serif"/>
   <Variable name="blog.title.color" description="Color"
       type="color"
       default="#fff"  value="#fff"/>
@@ -162,10 +162,10 @@
       default="#000"  value="#000"/>
   <Variable name="posts.title.font" description="Post title font"
       type="font"
-      default="bold 26px sans-serif"  value="bold 26px sans-serif"/>
+      default="bold 160% sans-serif"  value="bold 160% sans-serif"/>
   <Variable name="posts.stream.title.font" description="Post title stream font"
       type="font"
-      default="bold 26px sans-serif"  value="bold 26px sans-serif"/>
+      default="bold 160% sans-serif"  value="bold 160% sans-serif"/>
   <Variable name="posts.text.font" description="Post text font"
       type="font"
       default="16px sans-serif"  value="16px sans-serif"/>
@@ -229,7 +229,7 @@
       default="$(body.background.color)"  value="#f0f8ff"/>
   <Variable name="popularposts.title.font" description="Popular post title font"
       type="font"
-      default=" bold 21px sans-serif"  value="bold 21px sans-serif"/>
+      default=" bold 120% sans-serif"  value="bold 120% sans-serif"/>
   <Variable name="popularposts.title.color"
       description="Popular post title color"
       type="color"
@@ -489,12 +489,12 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .total-snippet>.snippet-thumbnail {float:$startSide;width:max(30%, 8em  - var(--maincolumn-padding));height:auto;margin-$endSide:var(--maincolumn-padding);margin-bottom:calc((var(--body-lineheight) - 1) * .5em)}
 .ytpic {background-color:#000}
 .summary {font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color);margin-top:0;margin-bottom:0}
-.entry-content h1 {font-size:26px;line-height:calc(var(--body-lineheight) - .2)}
-.entry-content h2 {font-size:24px;line-height:calc(var(--body-lineheight) - .15)}
-.entry-content h3 {font-size:21px;line-height:calc(var(--body-lineheight) - .1)}
-.entry-content h4 {font-size:16px}
-.entry-content h5 {font-size:14px}
-.entry-content h6 {font-size:11px}
+.entry-content h1 {font-size:xx-large}
+.entry-content h2 {font-size:x-large}
+.entry-content h3 {font-size:large}
+.entry-content h4 {font-size:medium}
+.entry-content h5 {font-size:small}
+.entry-content h6 {font-size:x-small}
 
 /* Comments */
 #comments {color:$(posts.text.color)}
