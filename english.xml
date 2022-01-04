@@ -481,7 +481,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .entry-title, .snippet-title, .snippet-title>a, .snippet-title>a:hover, .snippet-title>a:visited {color:$(posts.title.color)}
 
 /* Post body and snippet */
-.entry-content, .summary {width:100%;font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color)}
+.entry-content, .summary {font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color)}
 .entry-content {margin-top:20px;margin-bottom:20px}
 .entry-content a, .entry-content a:hover,.entry-content a:visited {color:$(posts.link.color)}
 .entry-content blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
@@ -1873,32 +1873,6 @@ button</b:comment>
   </address>
 </b:includable>
         </b:widget>
-    <b:widget id='AdSense1' locked='false' title='AdSense' type='AdSense' version='2' visible='false'>
-      <b:widget-settings>
-        <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
-        <b:widget-setting name='style.textcolor'>#ffffff</b:widget-setting>
-        <b:widget-setting name='style.layout'>1x1</b:widget-setting>
-        <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
-        <b:widget-setting name='style.urlcolor'>#ffffff</b:widget-setting>
-        <b:widget-setting name='style.linkcolor'>#ffffff</b:widget-setting>
-        <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
-      </b:widget-settings>
-      <b:includable id='main'>
-    <div aria-label='Advertisements' class='widget-content'>
-    <b:if cond='data:adCode'>
-      <data:adCode/>
-    <b:else/>
-      <b:include name='defaultAdUnit'/>
-    </b:if>
-    </div>
-  </b:includable>
-      <b:includable id='defaultAdUnit'>
-  <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
-  <b:with value='&quot;/* Done in css. */&quot;' var='style'>
-    <b:include name='super.defaultAdUnit'/>
-  </b:with>
-  </b:includable>
-    </b:widget>
       </b:section>
 </aside>
 </b:if>
