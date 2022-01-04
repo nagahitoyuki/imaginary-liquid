@@ -719,10 +719,10 @@ body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry
 @media screen and (max-width:480px) and (min-width:321px) {
 
 /* 文字サイズと行間 */
-#blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 13)}
+#blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 12)}
 body, .entry-content, .summary, .snippet-item, entry-content blockquote, .entry-content h4 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 20)}
 .entry-title, .snippet-title, .fp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 14)}
-.entry-content h1 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 12)}
+.entry-content h1 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 11)}
 .entry-content h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15)}
 .entry-content h3, .pp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 18)}
 .entry-content h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 25)}
