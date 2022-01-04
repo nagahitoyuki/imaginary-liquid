@@ -400,7 +400,7 @@ blockquote {margin:1em 2.5em}
 .indicate {text-decoration:underline 4px $(tabs.color) solid;text-underline-offset:.4em}
 
 /* Floating bar */
-#floating_bar {position:sticky;top:0;left:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
+#floating_bar {position:sticky;top:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
 #floating_menu, #floating_share {display:inline-flex;column-gap:calc(var(--maincolumn-padding) / 3);align-items:center}
 
 /* SVG icons */
@@ -639,7 +639,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 
 /* Side bar */
 #close_button {display:none}
-.sidebar-container {justify-self:end;align-self:end;position:sticky;bottom:0;$endSide:0}
+.sidebar-container {justify-self:end;align-self:end;position:sticky;bottom:0}
 .sidebar-invisible {content-visibility:visible;visibility:visible}
 }
 
