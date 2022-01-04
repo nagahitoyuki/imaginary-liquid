@@ -340,7 +340,7 @@
 /* General settings */
 :root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6;--svgicon-height:calc($(body.text.font.size) * var(--body-lineheight))}
 html {scroll-behavior:smooth}
-body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.base.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal;display:grid}
+body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:break-word;word-break:break-word;word-wrap:break-word;background-color:$(body.background.color);color:$(body.text.base.color);font:$(body.text.font);line-height:var(--body-lineheight);letter-spacing:normal}
 a {text-decoration:none;color:$(body.link.base.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
@@ -351,7 +351,7 @@ input {font-size:100%}
 blockquote {margin:1em 2.5em}
 
 /* Header background image */
-.bg-image-container {grid-column:1/1;grid-row:1/6;width:100%;height:$(body.background.height);position:relative;overflow:hidden;z-index:-1}
+.bg-image-container {width:min(100vw, $(sidebar.width + content.width + content.margin));height:$(body.background.height);position:absolute;top:0;$startSide:calc(50% - $((sidebar.width + content.width + content.margin) / 2));overflow:hidden;z-index:-1}
 .bg-image {width:calc(100% + $(body.background.blur * 3));height:calc(100% + $(body.background.blur * 3));position:absolute;top:$(body.background.blur * -1.5);left:$(body.background.blur * -1.5);background:$(body.background);background-size:cover;filter:blur($(body.background.blur))}
 .no-bg-image {background-color:$(blog.header.color)}
 
@@ -376,7 +376,7 @@ blockquote {margin:1em 2.5em}
 .CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
 .b-hbp-video {border:0}
-noscript {grid-column:1/1;grid-row:2/3;background:#ff0;color:#000;padding:var(--maincolumn-padding);margin-top:var(--floatingbar-height)}
+.noscript {background:#ff0;color:#000;padding:var(--maincolumn-padding)}
 
 /* Notification */
 .b-notification {color:#000;background-color:#fff;border-bottom:solid 1px #000;box-sizing:border-box;padding:16px 32px;text-align:center}
@@ -386,7 +386,7 @@ noscript {grid-column:1/1;grid-row:2/3;background:#ff0;color:#000;padding:var(--
 .no-posts-message {line-height:40px;text-align:center}
 
 /* Blog header */
-#header {grid-column:1/1;grid-row:1/2;padding:1.75em var(--maincolumn-padding);text-align:center}
+#header {padding:1.75em var(--maincolumn-padding);text-align:center}
 #blog-title {font:$(blog.title.font);line-height:calc(var(--body-lineheight) - .1);color:$(blog.title.color);margin:0}
 #blog-title>a, #blog-title>a:hover, #blog-title>a:visited{color:$(blog.title.color)}
 .blog-desc {color:$(blog.title.color);margin-top:1.25em;margin-bottom:0}
@@ -400,7 +400,7 @@ noscript {grid-column:1/1;grid-row:2/3;background:#ff0;color:#000;padding:var(--
 .indicate {text-decoration:underline 4px $(tabs.color) solid;text-underline-offset:.4em}
 
 /* Floating bar */
-#floating_bar {grid-column:1/1;grid-row:2/3;position:sticky;top:0;left:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
+#floating_bar {position:sticky;top:0;left:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
 #floating_menu, #floating_share {display:inline-flex;column-gap:calc(var(--maincolumn-padding) / 3);align-items:center}
 
 /* SVG icons */
@@ -439,7 +439,6 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .hentry .desktop-ad, .hentry .mobile-ad {transform:translateY(5px)}
 
 /* Page body */
-#main {grid-column:1/2;grid-row:3/4}
 .feed-view #main {margin-bottom:1em}
 .hfeed {display:grid;gap:var(--maincolumn-padding)}
 .hfeed>.post, .hentry {background:$(posts.background.color);padding:20px var(--maincolumn-padding);box-sizing:border-box}
@@ -482,13 +481,14 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .entry-title, .snippet-title, .snippet-title>a, .snippet-title>a:hover, .snippet-title>a:visited {color:$(posts.title.color)}
 
 /* Post body and snippet */
-.entry-content {font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color);margin-top:20px;margin-bottom:20px}
+.entry-content, .summary {width:100%;font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color)}
+.entry-content {margin-top:20px;margin-bottom:20px}
 .entry-content a, .entry-content a:hover,.entry-content a:visited {color:$(posts.link.color)}
 .entry-content blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:flow-root;margin-bottom:20px}
 .total-snippet>.snippet-thumbnail {float:$startSide;width:max(30%, 8em  - var(--maincolumn-padding));height:auto;margin-$endSide:var(--maincolumn-padding);margin-bottom:calc((var(--body-lineheight) - 1) * .5em)}
 .ytpic {background-color:#000}
-.summary {font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color);margin-top:0;margin-bottom:0}
+.summary {margin-top:0;margin-bottom:0}
 .entry-content h1 {font-size:xx-large}
 .entry-content h2 {font-size:x-large}
 .entry-content h3 {font-size:large}
@@ -568,7 +568,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
 
 /* Side bar */
-.sidebar-container {grid-column:1/1;grid-row:3/4;width:min($(sidebar.width), 85vw - var(--maincolumn-padding) * 1.7);justify-self:end;align-self:start;display:flex;flex-direction:column;background-color:$(sidebar.backgroundColor);overflow-y:auto;-webkit-overflow-scrolling: touch}
+.sidebar-container {width:min($(sidebar.width), 85vw - var(--maincolumn-padding) * 1.7);display:flex;flex-direction:column;background-color:$(sidebar.backgroundColor)}
 .sidebar>.widget {margin:1em var(--maincolumn-padding);color:$(widget.text.color)}
 .sidebar>.widget>.title {color:$(widget.title.color)}
 .sidebar>.widget+.widget {border-top:1px dashed $(sidebar.separator.color)}
@@ -611,11 +611,10 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .Translate .skiptranslate>div{display:block!important}
 
 /* Sub main */
-.centered-bottom {grid-column:1/1;grid-row:4/5}
 #sub_main>.widget {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box}
 
 /* Attribution */
-#attribution {grid-column:1/1;grid-row:5/6;text-align:center;font-size:small;color:$(attribution.text.color);padding:.75em var(--maincolumn-padding) 1.75em}
+#attribution {text-align:center;font-size:small;color:$(attribution.text.color);padding:.75em var(--maincolumn-padding) 1.75em}
 #attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
 #Text1>.title {margin-top:0}
 .blogger, .image-attribution, .copyright {margin-top:1em}
@@ -627,7 +626,8 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 @media screen and (min-width:$(sidebar.width + content.width + content.margin)) {
 
 /* Placement */
-.centered-top {margin-top:30px;margin-bottom:30px}
+#header {margin-top:30px;margin-bottom:30px}
+#content_wrapper {display:flex;gap:$(content.margin)}
 #main {width:$(content.width)}
 #attribution {margin-bottom:25px}
 #hamburger_menu, #search_expand, #febtn {display:none}
@@ -639,6 +639,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 
 /* Side bar */
 #close_button {display:none}
+.sidebar-container {justify-self:end;align-self:end;position:sticky;bottom:0;$endSide:0}
 .sidebar-invisible {content-visibility:visible;visibility:visible}
 }
 
@@ -656,7 +657,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 
 /* Side bar */
 #close_button {text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
-.sidebar-container {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s ease-out;z-index:101}
+.sidebar-container {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s ease-out;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:101}
 .slidein {transform:translateX($(sidebar.width))}
 .slideout {transform:translateX(0)}
 html[dir="rtl"] .slidein {transform:translateX(-$(sidebar.width))}
@@ -1081,6 +1082,8 @@ button</b:comment>
   </b:widget>
 </b:section>
 
+<noscript><div class='noscript'>To use this site properly, please enable JavaScript on your browser.</div></noscript>
+
 <div id='floating_bar'>
   <div id='floating_menu'>
   <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'><button aria-label='Open sidebar' class='svg-icon-24-button' id='hamburger_menu' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_menu_black_24dp'/></svg></button><b:else/><button aria-label='RSS feed' class='svg-icon-24-button' id='febtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_rss_feed_black_24dp'/></svg></button></b:if>
@@ -1114,8 +1117,18 @@ button</b:comment>
     </div>
 </div>
 
-<noscript>To use this site properly, please enable JavaScript on your browser.</noscript>
+  <b:if cond='data:view.isArchive or (data:view.isSearch and data:view.search.resultsMessageHtml)'>
+  <div class='post-filter-message'>
+    <b:if cond='data:view.isArchive'>
+      <data:view.archive.rangeMessage/>
+    <b:elseif cond='data:view.isSearch and data:view.search.resultsMessageHtml'/>
+      <data:view.search.resultsMessageHtml/>
+    </b:if>
+      <a class='pfm-link' expr:href='data:blog.homepageUrl'><data:messages.showAll/></a>
+  </div>
+  </b:if>
 
+<b:tag cond='!data:blog.isMobileRequest' id='content_wrapper' name='div'>
 <b:section class='centered-middle' id='main' name='Page Body' preferred='yes' showaddelement='false' tag='main'>
   <b:widget cond='data:view.isHomepage' id='FeaturedPost1' locked='true' title='' type='FeaturedPost' visible='true'>
     <b:widget-settings>
@@ -1188,16 +1201,6 @@ button</b:comment>
       <b:widget-setting name='showReactions'>false</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
-  <b:if cond='data:view.isArchive or (data:view.isSearch and data:view.search.resultsMessageHtml)'>
-  <div class='post-filter-message'>
-    <b:if cond='data:view.isArchive'>
-      <data:view.archive.rangeMessage/>
-    <b:elseif cond='data:view.isSearch and data:view.search.resultsMessageHtml'/>
-      <data:view.search.resultsMessageHtml/>
-    </b:if>
-      <a class='pfm-link' expr:href='data:blog.homepageUrl'><data:messages.showAll/></a>
-  </div>
-  </b:if>
   <b:include name='noContentPlaceholder'/>
   <b:comment>Cap the total number of ads (widgets and inline ads).</b:comment>
   <b:with value='3' var='maxNumAds'>
@@ -1899,6 +1902,7 @@ button</b:comment>
       </b:section>
 </aside>
 </b:if>
+</b:tag>
 
 <b:section class='centered-bottom' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true' tag='aside'>
   <b:widget id='Text2' locked='false' title='Information' type='Text' visible='true'>
