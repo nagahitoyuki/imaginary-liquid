@@ -374,7 +374,7 @@ blockquote {margin:1em 2.5em}
 .CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
 .b-hbp-video {border:0}
-.noscript {background:#ff0;color:#000;padding:var(--maincolumn-padding)}
+noscript {display:block;background:#ff0;color:#000;padding:20px var(--maincolumn-padding);text-align:center}
 
 /* Notification */
 .b-notification {color:#000;background-color:#fff;border-bottom:solid 1px #000;box-sizing:border-box;padding:16px 32px;text-align:center}
@@ -439,17 +439,17 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .adsbygoogle {display:block;overflow:hidden}
 .hentry .desktop-ad, .hentry .mobile-ad {transform:translateY(5px)}
 
+/* Message of archive and search pages */
+.post-filter-message {background-color:#333;color:#fff;padding:20px var(--maincolumn-padding);text-align:center}
+.pfm-link {margin-$startSide:1em;color:#fff !important}
+.post-filter-message .search-label, .post-filter-message .search-query {font-weight:bold}
+
 /* Page body */
 .feed-view #main {margin-bottom:1em}
 .hfeed {display:grid;gap:var(--maincolumn-padding)}
 .hfeed>.post, .hentry {background:$(posts.background.color);padding:20px var(--maincolumn-padding);box-sizing:border-box}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
 .hfeed>.post+aside {align-self:stretch;display:grid}
-
-/* Message of archive and search pages */
-.post-filter-message {background-color:#333;color:#fff;padding-top:calc(var(--maincolumn-padding) * 2.25);padding-bottom:calc(var(--maincolumn-padding) * 2.25);text-align:center}
-.pfm-link {margin-$startSide:1em;color:#fff !important}
-.post-filter-message .search-label, .post-filter-message .search-query {font-weight:bold}
 
 /* Featured post */
 .FeaturedPost {padding:20px var(--maincolumn-padding);background-color:$(posts.background.color);margin-bottom:var(--maincolumn-padding)}
@@ -1082,7 +1082,7 @@ button</b:comment>
   </b:widget>
 </b:section>
 
-<noscript><div class='noscript'>To use this site properly, please enable JavaScript on your browser.</div></noscript>
+<noscript>To use this site properly, please enable JavaScript on your browser.</noscript>
 
 <div id='floating_bar'>
   <div id='floating_menu'>
