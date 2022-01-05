@@ -568,7 +568,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 .sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
 
 /* Side bar */
-.sidebar-container {width:min($(sidebar.width), 85vw - var(--maincolumn-padding) * 1.7);display:flex;flex-direction:column;background-color:$(sidebar.backgroundColor)}
+.sidebar-container {width:min($(sidebar.width), 85vw);display:flex;flex-direction:column;background-color:$(sidebar.backgroundColor)}
 .sidebar>.widget {margin:1em var(--maincolumn-padding);color:$(widget.text.color)}
 .sidebar>.widget>.title {color:$(widget.title.color)}
 .sidebar>.widget+.widget {border-top:1px dashed $(sidebar.separator.color)}
