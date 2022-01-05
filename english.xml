@@ -448,7 +448,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .post-filter-message .search-label, .post-filter-message .search-query {font-weight:bold}
 
 /* Page body */
-.feed-view #main {margin-bottom:1em}
+.feed-view #main {padding-bottom:1em}
 .hfeed {display:grid;gap:var(--maincolumn-padding)}
 .hfeed>.post, .hentry {background:$(posts.background.color);padding:20px var(--maincolumn-padding);box-sizing:border-box}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
