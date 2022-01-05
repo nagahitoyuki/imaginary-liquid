@@ -347,7 +347,6 @@ a:hover {color:$(body.link.hover.color)}
 h1, h2, h3, h4, h5, h6, .item-view #blog-title {scroll-margin-top:calc(1em + var(--floatingbar-height))}
 img {max-width:100%;height:auto}
 iframe {max-width:100%}
-input {font-size:100%}
 blockquote {margin:1em 2.5em}
 
 /* Header background image */
@@ -358,8 +357,6 @@ blockquote {margin:1em 2.5em}
 /* Balancer */
 .hidden, :not(.feed-view>#sub_main).section.no-items {display:none}
 .invisible {visibility:hidden}
-#floating_bar {contain:strict}
-.hfeed, .hentry, .threaded {contain:content}
 .feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
 .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
 .sidebar-invisible {content-visibility:hidden;contain-intrinsic-size:100%;visibility:hidden}
@@ -417,6 +414,7 @@ blockquote {margin:1em 2.5em}
 /* Back button / Comment button / Loading */
 #back_button, #comment_button, #add_button {position:fixed;bottom:calc(var(--maincolumn-padding) / 2);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50}
 html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #add_button {box-shadow:-5px 5px 10px -5px rgba(0,0,0,.35)}
+html[dir="rtl"] #comment_button {transform:scale(-1, 1)}
 #back_button, #comment_button {width:var(--floatingbar-height);border-radius:50%}
 #back_button>.svg-icon-24 {margin-top:calc(var(--svgicon-height) / -12);padding-bottom:calc(var(--svgicon-height) / 12)}
 #add_button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px}
@@ -428,11 +426,13 @@ html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #
 .fadeout {animation:fadeout .3s ease-out}
 
 /* Search widget */
-.search-space {color:$(search.input.color);background-color:rgba(255, 255, 255, .2);font:$(search.input.font);line-height:var(--body-lineheight);max-width:73%}
+#BlogSearch1 {display:none}
+#swc {display:inline-flex;align-items:center;gap:.25em}
+.search-space {color:$(search.input.color);background-color:rgba(255, 255, 255, .2);font:$(search.input.font);line-height:var(--body-lineheight)}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
-html[dir="rtl"] .search-space {vertical-align:text-top}
-.search-action {color:$(search.action.color)}
+.search-action {color:$(search.action.color);font-size:100%}
+html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* AdSense ads */
 .inline-ad {display:none;overflow:hidden}
@@ -632,7 +632,7 @@ html[dir="rtl"] .search-space {vertical-align:text-top}
 #main {width:$(content.width)}
 #attribution {margin-bottom:25px}
 #hamburger_menu, #search_expand, #febtn {display:none}
-#swc.hidden {display:block}
+#BlogSearch1 {display:block}
 
 /* Back button / Comment button / Loading */
 #back_button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) / 2)}
@@ -1098,7 +1098,7 @@ button</b:comment>
              <b:include name='searchForm'/>
          </b:includable>
             <b:includable id='searchForm'>
-  <form aria-hidden='true' class='hidden' expr:action='data:blog.searchUrl' id='swc' role='search'>
+  <form aria-hidden='true' expr:action='data:blog.searchUrl' id='swc' role='search'>
     <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
     <b:include name='urlParamsAsFormInput'/>
       <input autocomplete='off' class='search-space' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' type='search'/>
@@ -1977,11 +1977,11 @@ if (bcsd.classList.contains(&quot;fadeout&quot;)) main.removeChild(bcsd); });<b:
 febtn.addEventListener(&quot;click&quot;, () =&gt; {
 window.location.href = &quot;<b:eval expr='data:view.isHomepage.canonical + &quot;feeds/posts/default?alt=rss&quot;'/>&quot;; });</b:if><b:if cond='data:widgets.BlogSearch.first.id == &quot;BlogSearch1&quot;'>
 /* Search button */
-const scsp = main.querySelector(&quot;input.search-space&quot;), shrb = main.querySelector(&quot;div.share-buttons&quot;);
+const scsp = BlogSearch1.querySelector(&quot;input.search-space&quot;), shrb = main.querySelector(&quot;div.share-buttons&quot;);
 search_expand.addEventListener(&quot;click&quot;, () =&gt; {
-if (swc.classList.contains(&quot;hidden&quot;)) {
-swc.classList.remove(&quot;hidden&quot;); floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
-swc.classList.add(&quot;hidden&quot;); floating_share.style.display = &quot;flex&quot;; swc.ariaHidden = &quot;true&quot;; });</b:if>
+if (getComputedStyle(BlogSearch1).display === "none") {
+BlogSearch1.style.display = "block"; floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
+BlogSearch1.style.display = "none"; floating_share.style.display = &quot;flex&quot;; swc.ariaHidden = &quot;true&quot;; });</b:if>
 /* Expand button */
 const rits = [].slice.call(bdis.querySelectorAll(&quot;div.remaining-items&quot;));
 if (rits[0]) {
