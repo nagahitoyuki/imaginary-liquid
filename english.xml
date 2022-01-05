@@ -358,7 +358,7 @@ blockquote {margin:1em 2.5em}
 .hidden, :not(.feed-view>#sub_main).section.no-items {display:none}
 .invisible {visibility:hidden}
 .feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
-.item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
+.hfeed>.post, .hentry>.post-footer, #comments, #PopularPosts1, .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
 .sidebar-invisible {content-visibility:hidden;contain-intrinsic-size:100%;visibility:hidden}
 .sidebar-visible {content-visibility:visible;overflow-y:hidden;visibility:visible}
 .dim-overlay {background-color:rgba(0, 0, 0, .8);position:fixed;top:0;$startSide:0;width:100%;height:100vh;z-index:100}
@@ -1961,7 +1961,7 @@ const bcsd = document.createElement(&quot;div&quot;);
 bcsd.classList.add(&quot;dim-overlay&quot;);
 hamburger_menu.addEventListener(&quot;click&quot;, () =&gt; {
 sbct.classList.remove(&quot;slideout&quot;); bcsd.classList.remove(&quot;fadeout&quot;); bcsd.classList.add(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
-sbct.classList.add(&quot;slidein&quot;); main.appendChild(bcsd); });  sbct.ariaHidden = &quot;false&quot;; sbct.classList.remove(&quot;sidebar-invisible&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); });
+sbct.classList.add(&quot;slidein&quot;); bdis.appendChild(bcsd); });  sbct.ariaHidden = &quot;false&quot;; sbct.classList.remove(&quot;sidebar-invisible&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); });
 /* Close button */
 function clsb() {
 sbct.classList.remove(&quot;slidein&quot;); bcsd.classList.remove(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
@@ -1971,7 +1971,7 @@ bcsd.addEventListener(&quot;click&quot;, clsb);
 sbct.addEventListener(&quot;transitionend&quot;, () =&gt; {
 if (sbct.classList.contains(&quot;slideout&quot;)) sbct.classList.add(&quot;sidebar-invisible&quot;); });
 bcsd.addEventListener(&quot;animationend&quot;, () =&gt; {
-if (bcsd.classList.contains(&quot;fadeout&quot;)) main.removeChild(bcsd); });<b:else/>
+if (bcsd.classList.contains(&quot;fadeout&quot;)) bdis.removeChild(bcsd); });<b:else/>
 /* Feed button */
 febtn.addEventListener(&quot;click&quot;, () =&gt; {
 window.location.href = &quot;<b:eval expr='data:view.isHomepage.canonical + &quot;feeds/posts/default?alt=rss&quot;'/>&quot;; });</b:if><b:if cond='data:widgets.BlogSearch.first.id == &quot;BlogSearch1&quot;'>
