@@ -426,12 +426,12 @@ html[dir="rtl"] #comment_button {transform:scale(-1, 1)}
 .fadeout {animation:fadeout .3s ease-out}
 
 /* Search widget */
-#BlogSearch1 {display:none}
-#swc {display:inline-flex;align-items:center;gap:.25em}
-.search-space {color:$(search.input.color);background-color:rgba(255, 255, 255, .2);font:$(search.input.font);line-height:var(--body-lineheight)}
+#search_top {display:none}
+#swc {display:inline-flex;align-items:center;gap:.25em;flex-wrap:wrap}
+.search-space {color:$(search.input.color);background-color:rgba(255, 255, 255, .2);font:$(search.input.font);line-height:var(--body-lineheight);max-width:45vw}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
-.search-action {color:$(search.action.color);font-size:100%}
+.search-action {color:$(search.action.color)}
 html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* AdSense ads */
@@ -632,7 +632,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 #main {width:$(content.width)}
 #attribution {margin-bottom:25px}
 #hamburger_menu, #search_expand, #febtn {display:none}
-#BlogSearch1 {display:block}
+#BlogSearch1 {display:inline}
 
 /* Back button / Comment button / Loading */
 #back_button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) / 2)}
@@ -649,8 +649,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* Placement */
 #main {width:100%}
-#swc {margin-$startSide:calc(var(--maincolumn-padding) / 2);margin-$endSide:calc(var(--maincolumn-padding) / 2);animation:fadein .3s ease-out}
-#search_expand {margin-$startSide:calc(var(--maincolumn-padding) / -3)}
+#swc {margin-$startSide:calc(var(--maincolumn-padding) / 3);margin-$endSide:calc(var(--maincolumn-padding) / 3);animation:fadein .3s ease-out}
 
 /* Back button / Comment button / Loading */
 #back_button {$endSide:calc(var(--maincolumn-padding) / 2)}
@@ -1977,11 +1976,11 @@ if (bcsd.classList.contains(&quot;fadeout&quot;)) main.removeChild(bcsd); });<b:
 febtn.addEventListener(&quot;click&quot;, () =&gt; {
 window.location.href = &quot;<b:eval expr='data:view.isHomepage.canonical + &quot;feeds/posts/default?alt=rss&quot;'/>&quot;; });</b:if><b:if cond='data:widgets.BlogSearch.first.id == &quot;BlogSearch1&quot;'>
 /* Search button */
-const scsp = BlogSearch1.querySelector(&quot;input.search-space&quot;), shrb = main.querySelector(&quot;div.share-buttons&quot;);
+const scsp = search_top.querySelector(&quot;input.search-space&quot;), shrb = main.querySelector(&quot;div.share-buttons&quot;);
 search_expand.addEventListener(&quot;click&quot;, () =&gt; {
-if (getComputedStyle(BlogSearch1).display === "none") {
-BlogSearch1.style.display = "block"; floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
-BlogSearch1.style.display = "none"; floating_share.style.display = &quot;flex&quot;; swc.ariaHidden = &quot;true&quot;; });</b:if>
+if (getComputedStyle(search_top).display === "none") {
+search_top.style.display = "inline"; floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
+search_top.style.display = "none"; floating_share.style.display = &quot;flex&quot;; swc.ariaHidden = &quot;true&quot;; });</b:if>
 /* Expand button */
 const rits = [].slice.call(bdis.querySelectorAll(&quot;div.remaining-items&quot;));
 if (rits[0]) {
