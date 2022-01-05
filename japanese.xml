@@ -14,7 +14,10 @@
   <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
 </b:if>
 <b:if cond='data:view.isSingleItem and data:view.featuredImage'>
-   <link expr:href='&quot;//&quot; + (data:view.featuredImage contains &quot;googleusercontent.com&quot; ? &quot;googleusercontent.com&quot; : data:view.featuredImage contains &quot;1.bp.blogspot.com&quot; ? &quot;1.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;2.bp.blogspot.com&quot; ? &quot;2.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;3.bp.blogspot.com&quot; ? &quot;3.bp.blogspot.com&quot; : &quot;4.bp.blogspot.com&quot;)' rel='preconnect'/>
+  <link expr:href='&quot;//&quot; + (data:view.featuredImage contains &quot;blogger.googleusercontent.com&quot; ? &quot;blogger.googleusercontent.com&quot; : data:view.featuredImage contains &quot;1.bp.blogspot.com&quot; ? &quot;1.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;2.bp.blogspot.com&quot; ? &quot;2.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;3.bp.blogspot.com&quot; ? &quot;3.bp.blogspot.com&quot; : &quot;4.bp.blogspot.com&quot;)' rel='preconnect'/>
+<b:if cond='data:view.featuredImage.isYoutube'>
+  <link href='//www.youtube.com' rel='preconnect'/>
+</b:if>
 </b:if>
 <b:with value='data:skin.vars.body_background.image' var='bgimg'>
 <b:if cond='data:blog.isMobileRequest'>
