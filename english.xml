@@ -433,7 +433,7 @@ html[dir="rtl"] #comment_button {transform:scale(-1, 1)}
 .search-space {color:$(search.input.color);background-color:rgba(255, 255, 255, .2);font:$(search.input.font);line-height:var(--body-lineheight);max-width:45vw}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
-.search-action {color:$(search.action.color)}
+.search-action {color:$(search.action.color);font-size:100%}
 html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* AdSense ads */
@@ -601,7 +601,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .show-more, .show-less {margin-top:1.2em;margin-$startSide:auto;font-size:medium;color:$(body.link.base.color);cursor:pointer}
 
 /* Contact form */
-.contact-form-button {color:inherit}
+.contact-form-button {color:inherit;font-size:100%}
 .contact-form-name, .contact-form-email, .contact-form-email-message {font-size:100%;max-width:100%;box-sizing:border-box}
 .contact-form-asterisk {font-weight:bolder}
 .contact-form-error {font-style:normal}
