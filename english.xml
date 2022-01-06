@@ -358,9 +358,8 @@ blockquote {margin:1em 2.5em}
 .no-bg-image {background-color:$(blog.header.color)}
 
 /* Balancer */
-.hidden, :not(.feed-view>#sub_main).section.no-items {display:none}
+.hidden, :not(.feed-view>#sub_main).section.no-items, .feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
 .invisible {visibility:hidden}
-.feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
 .hfeed>.post, .hentry>.post-footer, #comments, #PopularPosts1, .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
 .sidebar-invisible {content-visibility:hidden;contain-intrinsic-size:100%;visibility:hidden}
 .sidebar-visible {content-visibility:visible;overflow-y:hidden;visibility:visible}
@@ -1982,7 +1981,7 @@ const scsp = search_top.querySelector(&quot;input.search-space&quot;), shrb = ma
 search_expand.addEventListener(&quot;click&quot;, () =&gt; {
 if (getComputedStyle(search_top).display === "none") {
 search_top.style.display = "inline"; floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
-search_top.style.display = "none"; floating_share.style.display = &quot;flex&quot;; swc.ariaHidden = &quot;true&quot;; });</b:if>
+search_top.style.display = "none"; floating_share.style.display = &quot;inline-flex&quot;; swc.ariaHidden = &quot;true&quot;; });</b:if>
 /* Expand button */
 const rits = [].slice.call(bdis.querySelectorAll(&quot;div.remaining-items&quot;));
 if (rits[0]) {
