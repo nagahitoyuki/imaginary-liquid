@@ -633,7 +633,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 #main {width:$(content.width)}
 #attribution {margin-bottom:25px}
 #hamburger_menu, #search_expand, #febtn {display:none}
-#BlogSearch1 {display:inline}
+#search_top {display:inline}
 
 /* Back button / Comment button / Loading */
 #back_button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) / 2)}
@@ -1953,7 +1953,8 @@ document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
 const bdis = document.body;
 /* Header image link */
 const hil = bdis.querySelector(&quot;div.image-attribution a&quot;);
-if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);<b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
+if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);
+<b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 /* Screen reader */
 const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
 if (getComputedStyle(sbct).position !== &quot;fixed&quot;) sbct.ariaHidden = &quot;false&quot;;
@@ -1972,16 +1973,20 @@ bcsd.addEventListener(&quot;click&quot;, clsb);
 sbct.addEventListener(&quot;transitionend&quot;, () =&gt; {
 if (sbct.classList.contains(&quot;slideout&quot;)) sbct.classList.add(&quot;sidebar-invisible&quot;); });
 bcsd.addEventListener(&quot;animationend&quot;, () =&gt; {
-if (bcsd.classList.contains(&quot;fadeout&quot;)) bdis.removeChild(bcsd); });<b:else/>
+if (bcsd.classList.contains(&quot;fadeout&quot;)) bdis.removeChild(bcsd); });
+<b:else/>
 /* Feed button */
 febtn.addEventListener(&quot;click&quot;, () =&gt; {
-window.location.href = &quot;<b:eval expr='data:view.isHomepage.canonical + &quot;feeds/posts/default?alt=rss&quot;'/>&quot;; });</b:if><b:if cond='data:widgets.BlogSearch.first.id == &quot;BlogSearch1&quot;'>
+window.location.href = &quot;<b:eval expr='data:view.isHomepage.canonical + &quot;feeds/posts/default?alt=rss&quot;'/>&quot;; });
+</b:if>
 /* Search button */
+<b:if cond='data:widgets.BlogSearch.first.id == &quot;BlogSearch1&quot;'>
 const scsp = search_top.querySelector(&quot;input.search-space&quot;), shrb = main.querySelector(&quot;div.share-buttons&quot;);
 search_expand.addEventListener(&quot;click&quot;, () =&gt; {
-if (getComputedStyle(search_top).display === "none") {
-search_top.style.display = "inline"; floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
-search_top.style.display = "none"; floating_share.style.display = &quot;inline-flex&quot;; swc.ariaHidden = &quot;true&quot;; });</b:if>
+if (getComputedStyle(search_top).display === &quot;none&quot;) {
+search_top.style.display = &quot;inline&quot;; floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
+search_top.style.display = &quot;none&quot;; floating_share.style.display = &quot;inline-flex&quot;; swc.ariaHidden = &quot;true&quot;; });
+</b:if>
 /* Expand button */
 const rits = [].slice.call(bdis.querySelectorAll(&quot;div.remaining-items&quot;));
 if (rits[0]) {
@@ -2017,7 +2022,8 @@ button.classList.remove(&quot;fadeout&quot;); button.classList.add(&quot;fadein&
 button.classList.remove(&quot;hidden&quot;); }); }
 let backButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(flbt); });
-backButtonObserver.observe(backButton);<b:if cond='data:view.isMultipleItems'>
+backButtonObserver.observe(backButton);
+<b:if cond='data:view.isMultipleItems'>
 /* YouTube image */
 const ytpics = [].slice.call(main.querySelectorAll(&quot;img.ytpic&quot;));
 function yt(image) {
@@ -2088,7 +2094,8 @@ smwds.forEach(smwd =&gt; {
 smwd.style.display = &quot;block&quot;; }); }
 attribution.style.display = &quot;block&quot;; rmmg(&#39;end&#39;); }); }, {
 rootMargin: bthg + &quot;px&quot;});
-nextIndexObserver.observe(sub_main);<b:else/>
+nextIndexObserver.observe(sub_main);
+<b:else/>
 /* Comment button */
 const commentAllow = Blog1.querySelector(&quot;a.cmal&quot;), commentButton = Blog1.querySelector(&quot;article.hentry&quot;);
 let commentButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
@@ -2101,11 +2108,13 @@ entries.forEach(entry =&gt; {
 if (entry.isIntersecting) {
 const ifc = document.createElement(&quot;script&quot;);
 ifc.insertAdjacentHTML(&quot;afterbegin&quot;, &quot;BLOG_CMT_createIframe(&#39;https://www.blogger.com/rpc_relay.html&#39;);&quot;);
-iframeComment.parentNode.appendChild(ifc);<b:if cond='data:blog.isMobileRequest'>
+iframeComment.parentNode.appendChild(ifc);
+<b:if cond='data:blog.isMobileRequest'>
 window.addEventListener(&quot;blur&quot;, () =&gt; {
 if (iframeComment === document.activeElement) back_button.classList.add(&quot;invisible&quot;); });
 window.addEventListener(&quot;focus&quot;, () =&gt; {
-if (iframeComment !== document.activeElement) back_button.classList.remove(&quot;invisible&quot;); });</b:if>
+if (iframeComment !== document.activeElement) back_button.classList.remove(&quot;invisible&quot;); });
+</b:if>
 iframeCommentObserver.disconnect(); }}); }, {
 rootMargin: &quot;180px&quot;});
 if (iframeComment) iframeCommentObserver.observe(iframeComment);
@@ -2114,7 +2123,8 @@ if (comments) {
 const avics = [].slice.call(Blog1.querySelectorAll(&quot;div.avatar-image-container&quot;));
 avics.forEach(avic =&gt; {
 if (avic.firstElementChild.src.includes(&quot;//resources.blogblog.com/img/blank.gif&quot;)) {
-avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>&quot;; }}); }</b:if>});
-</script>
+avic.innerHTML = &quot;<svg aria-label='Avatar' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>&quot;; }}); }
+</b:if>
+});</script>
 </body>
 </html>
