@@ -1114,7 +1114,7 @@ button</b:comment>
     </b:if>
   </div>
   <div id='floating_share'>
-    <button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[1].shareMessage' id='fbbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark'/></svg></button><button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[3].shareMessage' id='twbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark'/></svg></button>
+    <button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[1].shareMessage' id='fbbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark'/></svg></button><button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[3].shareMessage' id='twbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark'/></svg></button><b:if cond='!data:blog.isMobileRequest'><button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[4].shareMessage' id='prbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_pinterest_dark'/></svg></button><button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[0].shareMessage' id='cbcp' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_link_dark'/></svg></button></b:if>
     </div>
 </div>
 
@@ -2003,7 +2003,14 @@ cmp.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;; cmp.pre
 fbbtn.addEventListener(&quot;click&quot;, () =&gt; {
 window.location.href = &quot;https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>&quot;; });
 twbtn.addEventListener(&quot;click&quot;, () =&gt; {
-window.location.href = &quot;https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=&quot; + encodeURIComponent(&#39;<data:view.title.jsEscaped/>&#39;); });
+window.location.href = &quot;https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=&quot; + encodeURIComponent(&#39;<data:blog.title.jsEscaped/>&#39;); });
+<b:if cond='!data:blog.isMobileRequest'>
+prbtn.addEventListener(&quot;click&quot;, () =&gt; {
+window.location.href = &quot;https://pinterest.com/pin/create/button/?url=<data:blog.url.canonical/>&quot;; });
+cbcp.addEventListener(&quot;click&quot;, () =&gt; {
+window.navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; {
+alert (&quot;<data:messages.linkCopiedToClipboard/>&quot;); }); });
+</b:if>
 /* Back button */
 const backButton = bdis.querySelector(&quot;header.centered-top&quot;);
 function flbt(entry) {
