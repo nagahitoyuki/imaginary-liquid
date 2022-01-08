@@ -1993,7 +1993,6 @@ if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
 if (getComputedStyle(sbct).position === &quot;sticky&quot;) {
-<b:if cond='!data:blog.isMobileRequest'>
 /* Share menu for desktop */
 prbtn.addEventListener(&quot;click&quot;, () =&gt; {
 window.location.href = &quot;https://pinterest.com/pin/create/button/?url=<data:blog.url.canonical/>&quot;; });
@@ -2004,7 +2003,6 @@ window.navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).the
 alert (&quot;リンクをクリップボードにコピーしました\u3002&quot;); }); });
 /* Screen reader */
 sbct.ariaHidden = &quot;false&quot;; } else {
-</b:if>
 /* Share menu for all devices */
 fbbtn.addEventListener(&quot;click&quot;, () =&gt; {
 window.location.href = &quot;https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>&quot;; });
