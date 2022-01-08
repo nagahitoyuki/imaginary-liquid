@@ -1991,9 +1991,33 @@ const bdis = document.body;
 const hil = bdis.querySelector(&quot;div.image-attribution a&quot;);
 if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
-/* Screen reader */
 const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
-if (getComputedStyle(sbct).position !== &quot;fixed&quot;) sbct.ariaHidden = &quot;false&quot;;
+if (getComputedStyle(sbct).position === &quot;sticky&quot;) {
+<b:if cond='!data:blog.isMobileRequest'>
+/* Share menu for desktop */
+prbtn.addEventListener(&quot;click&quot;, () =&gt; {
+window.location.href = &quot;https://pinterest.com/pin/create/button/?url=<data:blog.url.canonical/>&quot;; });
+hbbtn.addEventListener(&quot;click&quot;, () =&gt; {
+window.location.href = &quot;https://b.hatena.ne.jp/entry/<data:blog.url.canonical/>&quot;; });
+cbcp.addEventListener(&quot;click&quot;, () =&gt; {
+window.navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; {
+alert (&quot;リンクをクリップボードにコピーしました\u3002&quot;); }); });
+/* Screen reader */
+sbct.ariaHidden = &quot;false&quot;; } else {
+</b:if>
+/* Share menu for all devices */
+fbbtn.addEventListener(&quot;click&quot;, () =&gt; {
+window.location.href = &quot;https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>&quot;; });
+twbtn.addEventListener(&quot;click&quot;, () =&gt; {
+window.location.href = &quot;https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=&quot; + encodeURIComponent(&#39;<data:blog.title.jsEscaped/>&#39;); });
+/* Search button */
+<b:if cond='data:widgets.BlogSearch.first.id == &quot;BlogSearch1&quot;'>
+const scsp = search_top.querySelector(&quot;input.search-space&quot;), shrb = main.querySelector(&quot;div.share-buttons&quot;);
+search_expand.addEventListener(&quot;click&quot;, () =&gt; {
+if (getComputedStyle(search_top).display === &quot;none&quot;) {
+search_top.style.display = &quot;inline&quot;; floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
+search_top.style.display = &quot;none&quot;; floating_share.style.display = &quot;inline-flex&quot;; swc.ariaHidden = &quot;true&quot;; });
+</b:if>
 /* Hamburger menu */
 const bcsd = document.createElement(&quot;div&quot;);
 bcsd.classList.add(&quot;dim-overlay&quot;);
@@ -2009,19 +2033,11 @@ bcsd.addEventListener(&quot;click&quot;, clsb);
 sbct.addEventListener(&quot;transitionend&quot;, () =&gt; {
 if (sbct.classList.contains(&quot;slideout&quot;)) sbct.classList.add(&quot;sidebar-invisible&quot;); });
 bcsd.addEventListener(&quot;animationend&quot;, () =&gt; {
-if (bcsd.classList.contains(&quot;fadeout&quot;)) bdis.removeChild(bcsd); });
+if (bcsd.classList.contains(&quot;fadeout&quot;)) bdis.removeChild(bcsd); }); }
 <b:else/>
-/* Feed button */
+/* Feed button for no sidebar */
 febtn.addEventListener(&quot;click&quot;, () =&gt; {
 window.location.href = &quot;<b:eval expr='data:view.isHomepage.canonical + &quot;feeds/posts/default?alt=rss&quot;'/>&quot;; });
-</b:if>
-/* Search button */
-<b:if cond='data:widgets.BlogSearch.first.id == &quot;BlogSearch1&quot;'>
-const scsp = search_top.querySelector(&quot;input.search-space&quot;), shrb = main.querySelector(&quot;div.share-buttons&quot;);
-search_expand.addEventListener(&quot;click&quot;, () =&gt; {
-if (getComputedStyle(search_top).display === &quot;none&quot;) {
-search_top.style.display = &quot;inline&quot;; floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
-search_top.style.display = &quot;none&quot;; floating_share.style.display = &quot;inline-flex&quot;; swc.ariaHidden = &quot;true&quot;; });
 </b:if>
 /* Expand button */
 const rits = [].slice.call(bdis.querySelectorAll(&quot;div.remaining-items&quot;));
@@ -2035,20 +2051,6 @@ exp.classList.add(&quot;hidden&quot;); rit.style.height = rith + &quot;px&quot;;
 rit.nextElementSibling.nextElementSibling.addEventListener(&quot;click&quot;, event =&gt; {
 const cmp = event.target;
 cmp.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;; cmp.previousElementSibling.classList.remove(&quot;hidden&quot;); }); }); }
-/* Share menu */
-fbbtn.addEventListener(&quot;click&quot;, () =&gt; {
-window.location.href = &quot;https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>&quot;; });
-twbtn.addEventListener(&quot;click&quot;, () =&gt; {
-window.location.href = &quot;https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=&quot; + encodeURIComponent(&#39;<data:blog.title.jsEscaped/>&#39;); });
-<b:if cond='!data:blog.isMobileRequest'>
-prbtn.addEventListener(&quot;click&quot;, () =&gt; {
-window.location.href = &quot;https://pinterest.com/pin/create/button/?url=<data:blog.url.canonical/>&quot;; });
-hbbtn.addEventListener(&quot;click&quot;, () =&gt; {
-window.location.href = &quot;https://b.hatena.ne.jp/entry/<data:blog.url.canonical/>&quot;; });
-cbcp.addEventListener(&quot;click&quot;, () =&gt; {
-window.navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; {
-alert (&quot;リンクをクリップボードにコピーしました\u3002&quot;); }); });
-</b:if>
 /* Back button */
 const backButton = bdis.querySelector(&quot;header.centered-top&quot;);
 function flbt(entry) {
