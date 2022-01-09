@@ -1019,7 +1019,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
 </b:if>
 </b:with>
 <b:if cond='(data:widgets.AdSense.first or data:widgets.Blog.first.posts.first.showInlineAds) and not data:blog.adsenseAutoAds'>
-  <script async='async' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'/>
+  <script async='async' crossorigin='anonymous' expr:src='&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=&quot; + data:blog.adsenseClientId'/>
 </b:if>
 <b:if cond='data:blog.analyticsAccountNumber'>
   <script>
