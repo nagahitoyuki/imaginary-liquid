@@ -169,6 +169,9 @@
   <Variable name="posts.stream.title.font" description="Post title stream font"
       type="font"
       default="bold 160% sans-serif"  value="bold 160% sans-serif"/>
+  <Variable name="posts.stream.title.color" description="Post title stream color"
+      type="color"
+      default="$(posts.title.color)"  value="#000000"/>
   <Variable name="posts.text.font" description="Post text font"
       type="font"
       default="16px sans-serif"  value="16px sans-serif"/>
@@ -462,6 +465,12 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .fp-title {font:$(posts.stream.title.font);line-height:var(--body-lineheight);color:#fff;margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:21}
 .ft-snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
 
+/* 記事の題名 */
+.entry-title, .snippet-title {margin-top:0;margin-bottom:20px}
+.entry-title {font:$(posts.title.font);line-height:var(--body-lineheight);color:$(posts.title.color)}
+.snippet-title {font:$(posts.stream.title.font);line-height:var(--body-lineheight)}
+.snippet-title>a {color:$(posts.stream.title.color)}
+
 /* 記事のヘッダー／フッター */
 .post-header-line {display:flex;gap:.5em;color:$(posts.byline.color)}
 .photo {width:calc(var(--body-lineheight) * 1em);height:calc(var(--body-lineheight) * 1em);border-radius:50%;margin-$endSide:.5em;vertical-align:top}
@@ -476,12 +485,6 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .author-profile {display:flex;column-gap:var(--maincolumn-padding);margin-bottom:20px}
 .author-image {flex-shrink:0;width:50px;height:50px;border-radius:50%}
 .author-desc {color:$(profile.text.color)}
-
-/* 記事の題名 */
-.entry-title {font:$(posts.title.font);line-height:var(--body-lineheight)}
-.snippet-title {font:$(posts.stream.title.font);line-height:var(--body-lineheight);color:$(posts.title.color)}
-.entry-title, .snippet-title>a, .snippet-title>a:hover, .snippet-title>a:visited {color:$(posts.title.color)}
-.entry-title, .snippet-title {margin-top:0;margin-bottom:20px}
 
 /* 記事の本文とスニペット */
 .entry-content, .summary {font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color)}
