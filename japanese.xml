@@ -597,7 +597,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* 連絡フォーム */
 .contact-form-button {color:inherit;font-size:100%}
-.contact-form-name, .contact-form-email, .contact-form-email-message {font-size:100%;max-width:100%;box-sizing:border-box}
+.contact-form-name, .contact-form-email, .contact-form-email-message {font-size:100%;max-width:100%;margin-top:.2em;box-sizing:border-box}
 .contact-form-asterisk {font-weight:bolder}
 .contact-form-error {font-style:normal}
 
