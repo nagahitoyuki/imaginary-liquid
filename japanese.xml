@@ -379,7 +379,7 @@ blockquote {margin:1em 2.5em}
 .CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
 .b-hbp-video {border:0}
-noscript {display:block;background:#ff0;color:#000;padding:20px var(--maincolumn-padding);text-align:center}
+noscript {display:block;background-color:#ff0;color:#000;padding:20px var(--maincolumn-padding);text-align:center}
 
 /* 通知 */
 .b-notification {color:#000;background-color:#fff;border-bottom:solid 1px #000;box-sizing:border-box;padding:16px 32px;text-align:center}
@@ -407,7 +407,7 @@ noscript {display:block;background:#ff0;color:#000;padding:20px var(--maincolumn
 #floating_menu, #floating_share {display:inline-flex;column-gap:calc(var(--maincolumn-padding) / 3);align-items:center}
 
 /* SVGアイコン */
-.svg-icon-24-button, .loadingIcon {appearance:none;padding:0;border:none;background:transparent}
+.svg-icon-24-button, .loadingIcon {appearance:none;padding:0;border:none;background-color:transparent}
 .svg-icon-24 {vertical-align:top;width:var(--svgicon-height);height:var(--svgicon-height);cursor:pointer}
 .svg-icon-24>use, #hbbtn {fill:$(sticky.icons.color)}
 #close_button>.svg-icon-24 {fill:$(sidebar.icons.color)}
@@ -452,7 +452,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 /* ページボディー */
 .feed-view #main {padding-bottom:1em}
 .hfeed {display:grid;gap:var(--maincolumn-padding)}
-.hfeed>.post, .hentry {background:$(posts.background.color);padding:20px var(--maincolumn-padding);box-sizing:border-box}
+.hfeed>.post, .hentry {background-color:$(posts.background.color);padding:20px var(--maincolumn-padding);box-sizing:border-box}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
 .hfeed>.post+aside {align-self:stretch;display:grid}
 
@@ -476,9 +476,9 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .photo {width:calc(var(--body-lineheight) * 1em);height:calc(var(--body-lineheight) * 1em);border-radius:50%;margin-$endSide:.5em;vertical-align:top}
 .vcard>a, .published>.value-title, .post-footer, .pft-profile>span, .pf-last, .pf-last>.url, .post-location {color:$(posts.byline.color)}
 .post-footer {display:flex}
-.post-footer a {color:$(posts.link.color)}
 .hentry .post-footer {flex-direction:column}
 .post-footer-line>span {display:block;margin-bottom:20px}
+.post-footer-line>a, .archive-link, .jump-link {color:$(posts.link.color)}
 .pf-last {width:100%;text-align:$endSide;font-style:oblique}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
@@ -620,7 +620,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .blogger, .image-attribution, .copyright {margin-top:1em}
 
 /* エラー */
-.error-view .post-outer-container {background:$(body.background.color);padding:var(--maincolumn-padding);border-bottom:4px #c0c0c0 double;box-sizing:border-box}
+.error-view .post-outer-container {background-color:$(body.background.color);padding:var(--maincolumn-padding);border-bottom:4px #c0c0c0 double;box-sizing:border-box}
 
 /* ブログのコンテンツとサイドバーと隙間の幅以上 */
 @media screen and (min-width:$(sidebar.width + content.width + content.margin)) {
@@ -741,7 +741,7 @@ body#layout .bg-image-container {display:none}
 body#layout #floating_bar {position:static;display:block}
 body#layout #floating_menu {display:block}
 body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elseif cond='data:view.isPreview'/>
-<style>.widget-ad-placeholder, .inline-ad-placeholder {background:$(posts.background.color);border:1px solid #000;opacity:.9;vertical-align:middle;text-align:center}
+<style>.widget-ad-placeholder, .inline-ad-placeholder {background-color:$(posts.background.color);border:1px solid #000;opacity:.9;vertical-align:middle;text-align:center}
 .widget-ad-placeholder span, .inline-ad-placeholder span {margin-top:36px;display:block;text-transform:uppercase;font-weight:700;color:$(posts.title.color)}
 .widget-ad-placeholder {height:336px}
 .inline-ad-placeholder {height:90px}</style></b:if>
