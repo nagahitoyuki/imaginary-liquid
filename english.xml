@@ -2131,7 +2131,7 @@ if (iframeComment !== document.activeElement) back_button.classList.remove(&quot
 </b:if>
 iframeCommentObserver.disconnect(); }}); }, {
 rootMargin: &quot;180px&quot;});
-if (iframeComment) iframeCommentObserver.observe(iframeComment);
+if (iframeComment) iframeCommentObserver.observe(comments);
 /* Comment avatar */
 if (comments) {
 const avics = [].slice.call(Blog1.querySelectorAll(&quot;div.avatar-image-container&quot;));
