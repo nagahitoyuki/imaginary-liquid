@@ -403,7 +403,7 @@ noscript {display:block;background-color:#ff0;color:#000;padding:20px var(--main
 .indicate {text-decoration:underline 4px $(tabs.color) solid;text-underline-offset:.4em}
 
 /* Floating bar */
-#floating_bar {position:sticky;top:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0,0,0,.45);z-index:50}
+#floating_bar {position:sticky;top:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0, 0, 0, .4);z-index:50}
 #floating_menu, #floating_share {display:inline-flex;column-gap:calc(var(--maincolumn-padding) / 3);align-items:center}
 
 /* SVG icons */
@@ -417,8 +417,8 @@ noscript {display:block;background-color:#ff0;color:#000;padding:20px var(--main
 .blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical-align:-40%}
 
 /* Back button / Comment button / Loading */
-#back_button, #comment_button, #add_button {position:fixed;bottom:calc(var(--maincolumn-padding) / 2);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0,0,0,.35);z-index:50}
-html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #add_button {box-shadow:-5px 5px 10px -5px rgba(0,0,0,.35)}
+#back_button, #comment_button, #add_button {position:fixed;bottom:calc(var(--maincolumn-padding) / 2);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);z-index:50}
+html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #add_button {box-shadow:-5px 5px 10px -5px rgba(0, 0, 0, .4)}
 html[dir="rtl"] #comment_button {transform:scale(-1, 1)}
 #back_button, #comment_button {width:var(--floatingbar-height);border-radius:50%}
 #back_button>.svg-icon-24 {margin-top:calc(var(--svgicon-height) / -12);padding-bottom:calc(var(--svgicon-height) / 12)}
@@ -632,7 +632,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* Placement */
 #header {margin-top:30px;margin-bottom:30px}
-#content_wrapper {display:flex;gap:$(content.margin)}
+#content_wrapper {display:flex;align-items:start;gap:$(content.margin)}
 #main {width:$(content.width)}
 #attribution {margin-bottom:25px}
 #hamburger_menu, #search_expand, #febtn {display:none}
@@ -646,6 +646,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 #close_button {display:none}
 .sidebar-container {justify-self:end}
 .sidebar-invisible {content-visibility:visible;visibility:visible}
+.stickybottom {align-self:end;position:sticky;bottom:0}
 }
 
 /* Below the width of the blog content and sidebar and gaps */
@@ -1962,6 +1963,8 @@ if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
 if (getComputedStyle(sbct).position !== &quot;fixed&quot;) {
+/* Sidebar */
+if (main.clientHeight &gt; sbct.clientHeight &amp;&amp; sbct.clientHeight &gt; window.innerHeight) sbct.classList.add(&quot;stickybottom&quot;);
 /* Share menu for desktop */
 prbtn.addEventListener(&quot;click&quot;, () =&gt; {
 window.location.href = &quot;https://pinterest.com/pin/create/button/?url=<data:blog.url.canonical/>&quot;; });
