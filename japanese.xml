@@ -577,7 +577,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
 
 /* サイドバー */
-.sidebar-container {width:min($(sidebar.width), 85vw);display:flex;flex-direction:column;background-color:$(sidebar.backgroundColor)}
+.sidebar-container {width:min($(sidebar.width), 85vw - var(--maincolumn-padding) * 2);display:flex;flex-direction:column;background-color:$(sidebar.backgroundColor)}
 .sidebar>.widget {margin:1em var(--maincolumn-padding);color:$(widget.text.color)}
 .sidebar>.widget>.title {color:$(widget.title.color)}
 .sidebar>.widget+.widget {border-top:1px dashed $(sidebar.separator.color)}
@@ -722,7 +722,7 @@ margin-top:20px}
 /* 文字サイズ */
 #blog-title {font-size:190%}
 body, .entry-content, .summary, .snippet-item, entry-content blockquote, .entry-content h4 {font-size:100%}
-.entry-title, .snippet-title {font-size:160%}
+.entry-title, .snippet-title, .fp-title {font-size:160%}
 .entry-content h1 {font-size:190%}
 .entry-content h2 {font-size:150%}
 .entry-content h3, .pp-title {font-size:123%}
@@ -1917,7 +1917,7 @@ button</b:comment>
 <b:section class='centered-bottom' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true' tag='aside'>
   <b:widget id='Text2' locked='false' title='お知らせ' type='Text' visible='true'>
     <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<p>テーマデザイナーでの文字サイズの変更は横向きタブレットかパソコン以上の画面でしか反映しません。縦向きタブレット、スマホでの文字サイズの変更はBloggerのテーマのhtml編集かバックアップ／復元からskin内の二つに振り分けられたmedia screen内のfont-sizeを変更して下さい。</p><p>例＿<code>font-size:calc((100vw - var(--maincolumn-padding) * 2) / 22)}</code></p><p>右端の数字が一行当たりの文字数になり、減らすと文字サイズが大きくなり、増やすと文字サイズが小さくなります。</p><h4>対応する指定先</h4><dl><dt>#blog-title</dt><dd>ブログ名</dd><dt>body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry-content h4</dt><dd>ブログ、記事／追加ページの本文、ブログの投稿のスニペット、注目と人気の投稿のスニペット、記事／追加ページの引用、記事／追加ページの見出しのh4</dd><dt>.entry-title</dt><dd>記事／追加ページの記事／追加タイトル</dd><dt>.snippet-title, .fp-title</dt><dd>ブログと注目の投稿のスニペットの記事タイトル</dd><dt>.entry-content h1</dt><dd>記事／追加ページの見出しのh1</dd><dt>.entry-content h2</dt><dd>記事／追加ページの見出しのh2</dd><dt>.entry-content h3</dt><dd>記事／追加ページの見出しのh3</dd><dt>.entry-content h5</dt><dd>記事／追加ページの見出しのh5</dd><dt>.entry-content h6</dt><dd>記事／追加ページの見出しのh6</dd><dt>.pp-title</dt><dd>人気の投稿のスニペットの記事タイトル</dd></dl>]]></b:widget-setting>
+      <b:widget-setting name='content'><![CDATA[<p>Bloggerのテーマデザイナーでの文字サイズの変更はスマートフォンの画面幅で反映しません。文字サイズの変更はBloggerの管理画面のテーマのHTML編集かバックアップ／復元からskin内の振り分けられたmedia screen内のfont-sizeを変更して下さい。</p><p>例＿<code>font-size:100%}</code></p><p>初期値はパソコンなどで反映する基本の文字サイズに対する割合で指定されています。</p><h4>対応する指定先</h4><dl><dt>#blog-title</dt><dd>ブログ名</dd><dt>body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry-content h4</dt><dd>ブログ、記事／追加ページの本文、ブログの投稿のスニペット、注目と人気の投稿のスニペット、記事／追加ページの引用、記事／追加ページの見出しのh4</dd><dt>.entry-title, .snippet-title, .fp-title</dt><dd>記事／追加ページの記事／追加タイトル、ブログと注目の投稿のスニペットの記事タイトル</dd><dt>.entry-content h1</dt><dd>記事／追加ページの見出しのh1</dd><dt>.entry-content h2</dt><dd>記事／追加ページの見出しのh2</dd><dt>.entry-content h3, .pp-title</dt><dd>記事／追加ページの見出しのh3、人気の投稿のスニペットの記事タイトル</dd><dt>.entry-content h5</dt><dd>記事／追加ページの見出しのh5</dd><dt>.entry-content h6</dt><dd>記事／追加ページの見出しのh6</dd></dl>]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <b:include name='widget-title'/>
