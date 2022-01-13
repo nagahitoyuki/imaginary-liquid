@@ -411,6 +411,7 @@ noscript {display:block;background-color:#ff0;color:#000;padding:20px var(--main
 .svg-icon-24 {vertical-align:top;width:var(--svgicon-height);height:var(--svgicon-height);cursor:pointer}
 .svg-icon-24>use, #hbbtn {fill:$(sticky.icons.color)}
 #sis {display:inline-flex;align-items:inherit;gap:inherit}
+html[dir="rtl"] #shbtn {transform:scale(-1, 1)}
 #close_button>.svg-icon-24 {fill:$(sidebar.icons.color)}
 .post-icons .svg-icon-24 {fill:$(posts.icons.color)}
 .svg-icon-back {stroke-width:2px;stroke:$(sticky.icons.color);fill:transparent}
