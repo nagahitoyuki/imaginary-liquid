@@ -497,6 +497,12 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .total-snippet>.snippet-thumbnail {float:$startSide;width:max(30%, 8em  - var(--maincolumn-padding));height:auto;margin-$endSide:var(--maincolumn-padding);margin-bottom:calc((var(--body-lineheight) - 1) * .5em)}
 .ytpic {background-color:#000}
 .summary {margin-top:0;margin-bottom:0}
+.entry-content h1 {font-size:xx-large}
+.entry-content h2 {font-size:x-large}
+.entry-content h3 {font-size:large}
+.entry-content h4 {font-size:medium}
+.entry-content h5 {font-size:small}
+.entry-content h6 {font-size:x-small}
 
 /* コメント */
 #comments {color:$(posts.text.color)}
@@ -710,32 +716,18 @@ margin-top:20px}
 .hfeed .mobile-ad>.inline-ad {align-self:center}
 }
 
-/* タブレット中心 */
-@media screen and (max-width:$(content.width - 1px)) and (min-width:481px) {
-
-/* 文字サイズと行間 */
-#blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 20)}
-body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry-content h4 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 36)}
-.entry-title, .snippet-title, .fp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 23)}
-.entry-content h1 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 18)}
-.entry-content h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 24)}
-.entry-content h3, .pp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 32)}
-.entry-content h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 44)}
-.entry-content h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 57)}
-}
-
 /* スマホ中心 */
 @media screen and (max-width:480px) and (min-width:321px) {
 
-/* 文字サイズと行間 */
-#blog-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 12)}
-body, .entry-content, .summary, .snippet-item, entry-content blockquote, .entry-content h4 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 20)}
-.entry-title, .snippet-title, .fp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 14)}
-.entry-content h1 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 11)}
-.entry-content h2 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 15)}
-.entry-content h3, .pp-title {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 18)}
-.entry-content h5 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 25)}
-.entry-content h6 {font-size:calc((100vw - var(--maincolumn-padding) * 2) / 32)}
+/* 文字サイズ */
+#blog-title {font-size:190%}
+body, .entry-content, .summary, .snippet-item, entry-content blockquote, .entry-content h4 {font-size:100%}
+.entry-title, .snippet-title {font-size:160%}
+.entry-content h1 {font-size:190%}
+.entry-content h2 {font-size:150%}
+.entry-content h3, .pp-title {font-size:123%}
+.entry-content h5 {font-size:80%}
+.entry-content h6 {font-size:63%}
 }
 ]]></b:skin>
 
