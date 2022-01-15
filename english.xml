@@ -2013,7 +2013,7 @@ cbcp.addEventListener(&quot;click&quot;, () =&gt; {
 window.navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; {
 alert (&quot;<data:messages.linkCopiedToClipboard/>&quot;); }); }); }
 <b:else/>
-/* Feed button for no sidebar */
+/* Feed button */
 febtn.addEventListener(&quot;click&quot;, () =&gt; {
 window.location.href = &quot;<b:eval expr='data:view.isHomepage.canonical + &quot;feeds/posts/default?alt=rss&quot;'/>&quot;; });
 </b:if>
@@ -2090,11 +2090,12 @@ if (npl) {
 npl.parentNode.remove(); } else {
 file.querySelector(&quot;nav.blog-pager&quot;).remove(); }
 Promise.all(bats.map(async bat =&gt; {
-const nbat = document.adoptNode(bat), nppic = nbat.querySelector(&quot;img.ytpic&quot;), pssm = nbat.querySelector(&quot;p.summary&quot;);
-if (nppic) await yt(nppic);
+(await function (item) {
+const nbat = document.adoptNode(item), nppic = nbat.querySelector(&quot;img.ytpic&quot;), pssm = nbat.querySelector(&quot;p.summary&quot;);
+if (nppic) yt(nppic);
 if (pssm.querySelector(&quot;script&quot;)) {
 const pssc = pssm.querySelector(&quot;script&quot;).innerHTML;
-pssm.insertAdjacentHTML(&quot;afterbegin&quot;, pssc.slice(pssc.indexOf(&quot;`&quot;) + 1, pssc.indexOf(&quot;`&quot;, pssc.indexOf(&quot;`&quot;) + 1)).replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;)); } bpct.appendChild(nbat); })); }).catch(error =&gt; {
+pssm.insertAdjacentHTML(&quot;afterbegin&quot;, pssc.slice(pssc.indexOf(&quot;`&quot;) + 1, pssc.indexOf(&quot;`&quot;, pssc.indexOf(&quot;`&quot;) + 1)).replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;)); } bpct.appendChild(nbat); })(bat); })); }).catch(error =&gt; {
 switch (error) {
 case &#39;Too fast&#39;: rmmg(&#39;pass&#39;); throw &#39;&#39;;
 case &#39;Connection failed&#39;: bpct.after(bpg); rmmg(&#39;stop&#39;); }}).then(() =&gt; {
