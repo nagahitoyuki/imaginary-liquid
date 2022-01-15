@@ -2045,7 +2045,7 @@ febtn.addEventListener(&quot;click&quot;, () =&gt; {
 window.location.href = &quot;<b:eval expr='data:view.isHomepage.canonical + &quot;feeds/posts/default?alt=rss&quot;'/>&quot;; });
 </b:if>
 /* Expand button */
-const rits = [].slice.call(bdis.querySelectorAll(&quot;div.remaining-items&quot;));
+const rits = bdis.querySelectorAll(&quot;div.remaining-items&quot;);
 if (rits[0]) {
 rits.forEach(rit =&gt; {
 const rith = rit.clientHeight;
@@ -2077,7 +2077,7 @@ entries.forEach(flbt); });
 backButtonObserver.observe(backButton);
 <b:if cond='data:view.isMultipleItems'>
 /* YouTube image */
-const ytpics = [].slice.call(main.querySelectorAll(&quot;img.ytpic&quot;));
+const ytpics = main.querySelectorAll(&quot;img.ytpic&quot;);
 function yt(image) {
 const ytimg = new Image();
 ytimg.onload = () =&gt; {
@@ -2085,7 +2085,7 @@ if (ytimg.naturalWidth &lt; 121) image.removeAttribute(&quot;srcset&quot;, &quot
 ytimg.src = image.src; }
 if (ytpics[0]) ytpics.forEach(yt);
 /* Infinite scroll */
-const bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav.blog-pager&quot;), bthg = floating_bar.clientHeight, smwds = [].slice.call(sub_main.querySelectorAll(&quot;div.widget&quot;));
+const bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav.blog-pager&quot;), bthg = floating_bar.clientHeight, smwds = sub_main.querySelectorAll(&quot;div.widget&quot;);
 let npl = bpg.querySelector(&quot;a.older-link&quot;);
 if (bpct.clientHeight === 0) bpct.style.marginTop = &quot;0&quot;;
 function scrollStop(event) {
@@ -2111,12 +2111,12 @@ add_button.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot
 reject(&#39;Too fast&#39;); }}).then(async () =&gt; {
 const response = await fetch(npl.href);
 if (!response.ok) throw &quot;Connection failed&quot;;
-const text = await response.text(), file = new DOMParser().parseFromString(text, &quot;text/html&quot;), bats = [].slice.call(file.querySelectorAll(&quot;article.post&quot;));
+const text = await response.text(), file = new DOMParser().parseFromString(text, &quot;text/html&quot;), bats = file.querySelectorAll(&quot;article.post&quot;);
 npl = file.querySelector(&quot;a.older-link&quot;);
 if (npl) {
 npl.parentNode.remove(); } else {
 file.querySelector(&quot;nav.blog-pager&quot;).remove(); }
-Promise.all(bats.map(async bat =&gt; {
+Promise.all([...bats].map(async bat =&gt; {
 (await function (item) {
 const nbat = document.adoptNode(item), nppic = nbat.querySelector(&quot;img.ytpic&quot;), pssm = nbat.querySelector(&quot;p.summary&quot;);
 if (nppic) yt(nppic);
@@ -2172,7 +2172,7 @@ rootMargin: &quot;180px&quot;});
 if (iframeComment) iframeCommentObserver.observe(comments);
 /* Comment avatar */
 if (comments) {
-const avics = [].slice.call(Blog1.querySelectorAll(&quot;div.avatar-image-container&quot;));
+const avics = Blog1.querySelectorAll(&quot;div.avatar-image-container&quot;);
 avics.forEach(avic =&gt; {
 if (avic.firstElementChild.src.includes(&quot;//resources.blogblog.com/img/blank.gif&quot;)) {
 avic.innerHTML = &quot;<svg aria-label='アバター' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>&quot;; }}); }
