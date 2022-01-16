@@ -452,7 +452,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .post-filter-message .search-label, .post-filter-message .search-query {font-weight:bold}
 
 /* ページボディー */
-.feed-view #main {padding-bottom:1em}
+.feed-view #main {padding-bottom:var(--maincolumn-padding)}
 .hfeed {display:grid;gap:var(--maincolumn-padding)}
 .hfeed>.post, .hentry {background-color:$(posts.background.color);padding:20px var(--maincolumn-padding);box-sizing:border-box}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
@@ -2126,7 +2126,8 @@ file.querySelector(&quot;nav.blog-pager&quot;).remove(); }
 Promise.all([...bats].map(bat =&gt; psad(bat))).then(results =&gt; results.forEach(result =&gt; bpct.appendChild(result))); }).catch(error =&gt; {
 switch (error) {
 case &#39;Too fast&#39;: rmmg(&#39;pass&#39;); throw &#39;&#39;;
-case &#39;Connection failed&#39;: bpct.after(bpg); rmmg(&#39;stop&#39;); }}).then(() =&gt; {
+case &#39;Connection failed&#39;: bpct.after(bpg); rmmg(&#39;stop&#39;);
+default: bpct.after(bpg); rmmg(&#39;others&#39;); }}).then(() =&gt; {
 document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; add_button.classList.add(&quot;hidden&quot;); });
 if (Blog1.querySelector(&quot;nav.blog-pager&quot;)) bpg.remove(); }
 let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
