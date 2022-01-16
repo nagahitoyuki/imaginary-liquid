@@ -2063,6 +2063,12 @@ let npl = bpg.querySelector(&quot;a.older-link&quot;);
 if (bpct.clientHeight === 0) bpct.style.marginTop = &quot;0&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
+function psad(item) {
+const nbat = document.adoptNode(item), nppic = nbat.querySelector(&quot;img.ytpic&quot;), pssm = nbat.querySelector(&quot;p.summary&quot;);
+if (nppic) yt(nppic);
+if (pssm.querySelector(&quot;script&quot;)) {
+const pssc = pssm.querySelector(&quot;script&quot;).innerHTML;
+pssm.insertAdjacentHTML(&quot;afterbegin&quot;, pssc.slice(pssc.indexOf(&quot;`&quot;) + 1, pssc.indexOf(&quot;`&quot;, pssc.indexOf(&quot;`&quot;) + 1)).replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;)); } bpct.appendChild(nbat); }
 function rmmg(state) {
 if (sub_main.style.marginTop) sub_main.style.marginTop = &quot;&quot;;
 if (bdis.style.marginBottom) bdis.style.marginBottom = &quot;&quot;
@@ -2089,13 +2095,8 @@ npl = file.querySelector(&quot;a.older-link&quot;);
 if (npl) {
 npl.parentNode.remove(); } else {
 file.querySelector(&quot;nav.blog-pager&quot;).remove(); }
-Promise.all([...bats].map(async bat =&gt; {
-(await function (item) {
-const nbat = document.adoptNode(item), nppic = nbat.querySelector(&quot;img.ytpic&quot;), pssm = nbat.querySelector(&quot;p.summary&quot;);
-if (nppic) yt(nppic);
-if (pssm.querySelector(&quot;script&quot;)) {
-const pssc = pssm.querySelector(&quot;script&quot;).innerHTML;
-pssm.insertAdjacentHTML(&quot;afterbegin&quot;, pssc.slice(pssc.indexOf(&quot;`&quot;) + 1, pssc.indexOf(&quot;`&quot;, pssc.indexOf(&quot;`&quot;) + 1)).replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;)); } bpct.appendChild(nbat); })(bat); })); }).catch(error =&gt; {
+for (const bat of bats) {
+await psad(bat); }}).catch(error =&gt; {
 switch (error) {
 case &#39;Too fast&#39;: rmmg(&#39;pass&#39;); throw &#39;&#39;;
 case &#39;Connection failed&#39;: bpct.after(bpg); rmmg(&#39;stop&#39;); }}).then(() =&gt; {
