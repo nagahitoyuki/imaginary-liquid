@@ -721,7 +721,8 @@ margin-top:20px}
 
 /* 文字サイズ */
 #blog-title {font-size:190%}
-body, .entry-content, .summary, .snippet-item, entry-content blockquote, .entry-content h4 {font-size:100%}
+body {font-size:$(body.text.font.size)}
+.entry-content, .summary, .snippet-item, entry-content blockquote, .entry-content h4 {font-size:$(posts.text.font.size)}
 .entry-title, .snippet-title, .fp-title {font-size:160%}
 .entry-content h1 {font-size:190%}
 .entry-content h2 {font-size:150%}
@@ -1917,7 +1918,7 @@ button</b:comment>
 <b:section class='centered-bottom' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true' tag='aside'>
   <b:widget id='Text2' locked='false' title='お知らせ' type='Text' visible='true'>
     <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<p>Bloggerのテーマデザイナーでの文字サイズの変更はスマートフォンの画面幅で反映しません。文字サイズの変更はBloggerの管理画面のテーマのHTML編集かバックアップ／復元からskin内の振り分けられたmedia screen内のfont-sizeを変更して下さい。</p><p>例＿<code>font-size:100%}</code></p><p>初期値はパソコンなどで反映する基本の文字サイズに対する割合で指定されています。</p><h4>対応する指定先</h4><dl><dt>#blog-title</dt><dd>ブログ名</dd><dt>body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry-content h4</dt><dd>ブログ、記事／追加ページの本文、ブログの投稿のスニペット、注目と人気の投稿のスニペット、記事／追加ページの引用、記事／追加ページの見出しのh4</dd><dt>.entry-title, .snippet-title, .fp-title</dt><dd>記事／追加ページの記事／追加タイトル、ブログと注目の投稿のスニペットの記事タイトル</dd><dt>.entry-content h1</dt><dd>記事／追加ページの見出しのh1</dd><dt>.entry-content h2</dt><dd>記事／追加ページの見出しのh2</dd><dt>.entry-content h3, .pp-title</dt><dd>記事／追加ページの見出しのh3、人気の投稿のスニペットの記事タイトル</dd><dt>.entry-content h5</dt><dd>記事／追加ページの見出しのh5</dd><dt>.entry-content h6</dt><dd>記事／追加ページの見出しのh6</dd></dl>]]></b:widget-setting>
+      <b:widget-setting name='content'><![CDATA[<p>Bloggerのテーマデザイナーでの文字サイズの変更はスマートフォンの画面幅で基本のもの（パソコンと共通のブログ全体と記事）以外は項目がありません。文字サイズの変更はBloggerの管理画面のテーマのHTML編集かバックアップ／復元からskin内の振り分けられたmedia screen内のfont-sizeを変更して下さい。</p><p>例＿<code>font-size:150%}</code></p><p>見出しなどのパソコンとスマホで共通に反映する基本の文字サイズ以外はそれに対する割合で指定されています。</p><h4>対応する指定先</h4><dl><dt>#blog-title</dt><dd>ブログ名</dd><dt>body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry-content h4</dt><dd>ブログ、記事／追加ページの本文、ブログの投稿のスニペット、注目と人気の投稿のスニペット、記事／追加ページの引用、記事／追加ページの見出しのh4</dd><dt>.entry-title, .snippet-title, .fp-title</dt><dd>記事／追加ページの記事／追加タイトル、ブログと注目の投稿のスニペットの記事タイトル</dd><dt>.entry-content h1</dt><dd>記事／追加ページの見出しのh1</dd><dt>.entry-content h2</dt><dd>記事／追加ページの見出しのh2</dd><dt>.entry-content h3, .pp-title</dt><dd>記事／追加ページの見出しのh3、人気の投稿のスニペットの記事タイトル</dd><dt>.entry-content h5</dt><dd>記事／追加ページの見出しのh5</dd><dt>.entry-content h6</dt><dd>記事／追加ページの見出しのh6</dd></dl>]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <b:include name='widget-title'/>
