@@ -390,8 +390,8 @@ noscript {display:block;background-color:#ff0;color:#000;padding:20px var(--main
 
 /* ブログヘッダー */
 #header {padding:2em var(--maincolumn-padding);text-align:center}
-#blog-title {font:$(blog.title.font);line-height:calc(var(--body-lineheight) - .2);color:$(blog.title.color);margin:0}
-#blog-title>a, #blog-title>a:hover, #blog-title>a:visited{color:$(blog.title.color)}
+#blog-title {font:$(blog.title.font);line-height:var(--body-lineheight);margin:0}
+#blog-title, #blog-title>a {color:$(blog.title.color)}
 .blog-desc {color:$(blog.title.color);margin-top:1.5em;margin-bottom:0}
 .Header {background-position:center center;background-repeat:no-repeat}
 
@@ -623,7 +623,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* ブログの帰属 */
 #attribution {text-align:center;font-size:small;color:$(attribution.text.color);padding:1em var(--maincolumn-padding) 2em}
-#attribution a, #attribution a:hover, #attribution a:visited {color:$(attribution.link.color)}
+#attribution a {color:$(attribution.link.color)}
 #Text1>.title {margin-top:0}
 .blogger, .image-attribution, .copyright {margin-top:1em}
 
