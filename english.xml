@@ -165,13 +165,13 @@
       default="#000"  value="#000"/>
   <Variable name="posts.title.font" description="Post title font"
       type="font"
-      default="bold 160% sans-serif"  value="bold 160% sans-serif"/>
+      default="bold 163% sans-serif"  value="bold 163% sans-serif"/>
   <Variable name="posts.stream.title.color" description="Post title stream color"
       type="color"
       default="$(posts.title.color)"  value="#000000"/>
   <Variable name="posts.stream.title.font" description="Post title stream font"
       type="font"
-      default="bold 160% sans-serif"  value="bold 160% sans-serif"/>
+      default="bold 163% sans-serif"  value="bold 163% sans-serif"/>
   <Variable name="posts.text.font" description="Post text font"
       type="font"
       default="16px sans-serif"  value="16px sans-serif"/>
@@ -328,11 +328,11 @@
 
 <Group description="Widths">
   <Variable name="sidebar.width" description="Sidebar width" type="length"
-            min="0px" max="1000px" default="295px"  value="295px"/>
+            min="0px" max="1000px" default="302px"  value="302px"/>
   <Variable name="content.width" description="Content width" type="length"
-            min="600px" max="2400px" default="925px"  value="925px"/>
+            min="600px" max="2400px" default="920px"  value="920px"/>
   <Variable name="content.margin" description="Content margin" type="length"
-            min="0px" max="1000px" default="20px"  value="20px"/>
+            min="0px" max="1000px" default="18px"  value="18px"/>
 </Group>
  */
 
