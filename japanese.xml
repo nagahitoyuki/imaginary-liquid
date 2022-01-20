@@ -379,7 +379,7 @@ blockquote {margin:1em 2.5em}
 .CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
 .b-hbp-video {border:0}
-noscript {display:block;background-color:#ff0;color:#000;padding:20px var(--maincolumn-padding);text-align:center}
+.noscript {display:block;background-color:#ff0;color:#000;padding:20px var(--maincolumn-padding);text-align:center}
 
 /* 通知 */
 .b-notification {color:#000;background-color:#fff;border-bottom:solid 1px #000;box-sizing:border-box;padding:16px 32px;text-align:center}
@@ -1119,7 +1119,7 @@ button</b:comment>
   </b:widget>
 </b:section>
 
-<noscript>このサイトを適切に使用するためにはブラウザのJavaScriptの実行を許可して下さい。</noscript>
+<noscript class='noscript'>このサイトを適切に使用するためにはブラウザのJavaScriptの実行を許可して下さい。</noscript>
 
 <div id='floating_bar'>
   <div id='floating_menu'>
