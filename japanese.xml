@@ -350,7 +350,7 @@ body {width:min(100vw, $(sidebar.width + content.width + content.margin));height
 a {text-decoration:none;color:$(body.link.base.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
-h1, h2, h3, h4, h5, h6, .item-view #blog-title {scroll-margin-top:calc(1em + var(--floatingbar-height))}
+h1, h2, h3, h4, h5, h6, .item-view #blog_title {scroll-margin-top:calc(1em + var(--floatingbar-height))}
 img {max-width:100%;height:auto}
 iframe {max-width:100%}
 blockquote {margin:1em 2.5em}
@@ -390,8 +390,8 @@ blockquote {margin:1em 2.5em}
 
 /* ブログヘッダー */
 #header {padding:2em var(--maincolumn-padding);text-align:center}
-#blog-title {font:$(blog.title.font);line-height:var(--body-lineheight);margin:0}
-#blog-title, #blog-title>a {color:$(blog.title.color)}
+#blog_title {font:$(blog.title.font);line-height:var(--body-lineheight);margin:0}
+#blog_title, #blog_title>a {color:$(blog.title.color)}
 .blog-desc {color:$(blog.title.color);margin-top:1.5em;margin-bottom:0}
 .Header {background-position:center center;background-repeat:no-repeat}
 
@@ -720,11 +720,10 @@ margin-top:20px}
 @media screen and (max-width:480px) and (min-width:321px) {
 
 /* 文字サイズ */
-#blog-title {font-size:190%}
+#blog_title, .entry-content h1 {font-size:176%}
 body {font-size:$(body.text.font.size)}
 .entry-content, .summary, .snippet-item, entry-content blockquote, .entry-content h4 {font-size:$(posts.text.font.size)}
 .entry-title, .snippet-title, .fp-title {font-size:160%}
-.entry-content h1 {font-size:190%}
 .entry-content h2 {font-size:150%}
 .entry-content h3, .pp-title {font-size:123%}
 .entry-content h5 {font-size:80%}
@@ -1075,11 +1074,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <a class='header-image-wrapper' expr:href='data:blog.homepageUrl'><b:include data='{ image: data:image, altText: data:blog.title.escaped, originalWidth: data:width, originalHeight: data:height }' name='responsiveImage'/></a>
 </b:includable>
     <b:includable id='title'>
-   <b:if cond='data:view.isHomepage'><h1 id='blog-title'><data:title/></h1>
+   <b:if cond='data:view.isHomepage'><h1 id='blog_title'><data:title/></h1>
   <b:elseif cond='data:view.isSingleItem'/>
-    <p id='blog-title'><a expr:href='data:blog.homepageUrl'><data:title/></a></p>
+    <p id='blog_title'><a expr:href='data:blog.homepageUrl'><data:title/></a></p>
   <b:else/>
-     <h1 id='blog-title'><a expr:href='data:blog.homepageUrl'><data:title/></a></h1>
+     <h1 id='blog_title'><a expr:href='data:blog.homepageUrl'><data:title/></a></h1>
   </b:if>
 </b:includable>
   </b:widget>
@@ -1918,7 +1917,7 @@ button</b:comment>
 <b:section class='centered-bottom' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true' tag='aside'>
   <b:widget id='Text2' locked='false' title='お知らせ' type='Text' visible='true'>
     <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<p>Bloggerのテーマデザイナーでの文字サイズの変更はスマートフォンの画面幅で基本のもの（パソコンと共通のブログ全体と記事）以外は項目がありません。文字サイズの変更はBloggerの管理画面のテーマのHTML編集かバックアップ／復元からskin内の振り分けられたmedia screen内のfont-sizeを変更して下さい。</p><p>例＿<code>font-size:150%}</code></p><p>見出しなどのパソコンとスマホで共通に反映する基本の文字サイズ以外はそれに対する割合で指定されています。</p><h4>対応する指定先</h4><dl><dt>#blog-title</dt><dd>ブログ名</dd><dt>body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry-content h4</dt><dd>ブログ、記事／追加ページの本文、ブログの投稿のスニペット、注目と人気の投稿のスニペット、記事／追加ページの引用、記事／追加ページの見出しのh4</dd><dt>.entry-title, .snippet-title, .fp-title</dt><dd>記事／追加ページの記事／追加タイトル、ブログと注目の投稿のスニペットの記事タイトル</dd><dt>.entry-content h1</dt><dd>記事／追加ページの見出しのh1</dd><dt>.entry-content h2</dt><dd>記事／追加ページの見出しのh2</dd><dt>.entry-content h3, .pp-title</dt><dd>記事／追加ページの見出しのh3、人気の投稿のスニペットの記事タイトル</dd><dt>.entry-content h5</dt><dd>記事／追加ページの見出しのh5</dd><dt>.entry-content h6</dt><dd>記事／追加ページの見出しのh6</dd></dl>]]></b:widget-setting>
+      <b:widget-setting name='content'><![CDATA[<p>Bloggerのテーマデザイナーでの文字サイズの変更はスマートフォンの画面幅で基本のもの（パソコンと共通のブログ全体と記事）以外は項目がありません。文字サイズの変更はBloggerの管理画面のテーマのHTML編集かバックアップ／復元からskin内の振り分けられたmedia screen内のfont-sizeを変更して下さい。</p><p>例＿<code>font-size:150%}</code></p><p>見出しなどのパソコンとスマホで共通に反映する基本の文字サイズ以外はそれに対する割合で指定されています。</p><h4>対応する指定先</h4><dl><dt>#blog_title</dt><dd>ブログ名</dd><dt>body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry-content h4</dt><dd>ブログ、記事／追加ページの本文、ブログの投稿のスニペット、注目と人気の投稿のスニペット、記事／追加ページの引用、記事／追加ページの見出しのh4</dd><dt>.entry-title, .snippet-title, .fp-title</dt><dd>記事／追加ページの記事／追加タイトル、ブログと注目の投稿のスニペットの記事タイトル</dd><dt>.entry-content h1</dt><dd>記事／追加ページの見出しのh1</dd><dt>.entry-content h2</dt><dd>記事／追加ページの見出しのh2</dd><dt>.entry-content h3, .pp-title</dt><dd>記事／追加ページの見出しのh3、人気の投稿のスニペットの記事タイトル</dd><dt>.entry-content h5</dt><dd>記事／追加ページの見出しのh5</dd><dt>.entry-content h6</dt><dd>記事／追加ページの見出しのh6</dd></dl>]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <b:include name='widget-title'/>
@@ -1929,7 +1928,7 @@ button</b:comment>
   </b:widget>
 </b:section>
 
-<button aria-label='トップへ戻る' class='svg-icon-24-button hidden' id='back_button' onclick='location.href=&quot;#blog-title&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button>
+<button aria-label='トップへ戻る' class='svg-icon-24-button hidden' id='back_button' onclick='location.href=&quot;#blog_title&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button>
 <b:if cond='data:view.isMultipleItems'>
 <button class='svg-icon-24-button hidden' expr:aria-label='data:messages.loading' id='add_button' type='button'><data:messages.loading/></button>
 <b:else/>
@@ -2095,7 +2094,7 @@ function psad(item) {
 const nbat = document.adoptNode(item), nppic = nbat.querySelector(&quot;img.ytpic&quot;), pssm = nbat.querySelector(&quot;p.summary&quot;);
 if (nppic) yt(nppic);
 if (pssm.querySelector(&quot;script&quot;)) {
-const pssc = pssm.querySelector(&quot;script&quot;).innerHTML;
+const pssc = pssm.querySelector(&quot;script&quot;).textContent;
 pssm.insertAdjacentHTML(&quot;afterbegin&quot;, pssc.slice(pssc.indexOf(&quot;`&quot;) + 1, pssc.indexOf(&quot;`&quot;, pssc.indexOf(&quot;`&quot;) + 1)).replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;)); }
 return nbat; }
 function rmmg(state) {
