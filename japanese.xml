@@ -2022,7 +2022,7 @@ search_expand.addEventListener(&quot;click&quot;, () =&gt; {
 if (getComputedStyle(search_top).display === &quot;none&quot;) {
 search_top.style.display = &quot;inline&quot;; floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
 search_top.style.display = &quot;none&quot;; floating_share.style.display = &quot;inline-flex&quot;; swc.ariaHidden = &quot;true&quot;; });
-</b:if>
+</b:if> }
 /* Share menu */
 shbtn.addEventListener(&quot;click&quot;, () =&gt; {
 if (getComputedStyle(sis).display === &quot;none&quot;) {
@@ -2038,7 +2038,7 @@ hbbtn.addEventListener(&quot;click&quot;, () =&gt; {
 window.location.href = &quot;https://b.hatena.ne.jp/entry/<data:blog.url.canonical/>&quot;; });
 cbcp.addEventListener(&quot;click&quot;, () =&gt; {
 window.navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; {
-alert (&quot;リンクをクリップボードにコピーしました\u3002&quot;); }); }); }
+alert (&quot;リンクをクリップボードにコピーしました\u3002&quot;); }); });
 <b:else/>
 /* Feed button */
 febtn.addEventListener(&quot;click&quot;, () =&gt; {
