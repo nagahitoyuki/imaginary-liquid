@@ -350,7 +350,7 @@ body {width:min(100vw, $(sidebar.width + content.width + content.margin));height
 a {text-decoration:none;color:$(body.link.base.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
-h1, h2, h3, h4, h5, h6, .item-view #blog-title {scroll-margin-top:calc(1em + var(--floatingbar-height))}
+h1, h2, h3, h4, h5, h6, .item-view #blog_title {scroll-margin-top:calc(1em + var(--floatingbar-height))}
 img {max-width:100%;height:auto}
 iframe {max-width:100%}
 blockquote {margin:1em 2.5em}
@@ -390,8 +390,8 @@ blockquote {margin:1em 2.5em}
 
 /* Blog header */
 #header {padding:1.75em var(--maincolumn-padding);text-align:center}
-#blog-title {font:$(blog.title.font);line-height:var(--body-lineheight);margin:0}
-#blog-title, #blog-title>a {color:$(blog.title.color)}
+#blog_title {font:$(blog.title.font);line-height:var(--body-lineheight);margin:0}
+#blog_title, #blog_title>a {color:$(blog.title.color)}
 .blog-desc {color:$(blog.title.color);margin-top:1.25em;margin-bottom:0}
 .Header {background-position:center center;background-repeat:no-repeat}
 
@@ -403,7 +403,7 @@ blockquote {margin:1em 2.5em}
 .indicate {text-decoration:underline 4px $(tabs.color) solid;text-underline-offset:.4em}
 
 /* Floating bar */
-#floating_bar {position:sticky;top:0;height:var(--floatingbar-height);width:100%;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0, 0, 0, .4);z-index:50}
+#floating_bar {position:sticky;top:0;height:var(--floatingbar-height);left:0;right:0;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0, 0, 0, .4);contain:strict;z-index:50}
 #floating_menu, #floating_share {display:inline-flex;column-gap:calc(var(--maincolumn-padding) / 3);align-items:center}
 
 /* SVG icons */
@@ -422,9 +422,9 @@ html[dir="rtl"] #shbtn {transform:scale(-1, 1)}
 #back_button, #comment_button, #add_button {position:fixed;bottom:calc(var(--maincolumn-padding) / 2);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);z-index:50}
 html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #add_button {box-shadow:-5px 5px 10px -5px rgba(0, 0, 0, .4)}
 html[dir="rtl"] #comment_button {transform:scale(-1, 1)}
-#back_button, #comment_button {width:var(--floatingbar-height);border-radius:50%}
+#back_button, #comment_button {width:var(--floatingbar-height);border-radius:50%;contain:strict}
 #back_button>.svg-icon-24 {margin-top:calc(var(--svgicon-height) / -12);padding-bottom:calc(var(--svgicon-height) / 12)}
-#add_button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px}
+#add_button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px;contain:content}
 
 /* Fade effect */
 @keyframes fadein {from{ opacity:0} to { opacity:1}}
@@ -666,7 +666,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* Side bar */
 #close_button {text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
-.sidebar-container {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s ease-out;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:101}
+.sidebar-container {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s ease-out;overflow-y:auto;-webkit-overflow-scrolling:touch;contain:strict;z-index:101}
 .slidein {transform:translateX($(sidebar.width))}
 .slideout {transform:translateX(0)}
 html[dir="rtl"] .slidein {transform:translateX(-$(sidebar.width))}
@@ -1047,11 +1047,11 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '
   <a class='header-image-wrapper' expr:href='data:blog.homepageUrl'><b:include data='{ image: data:image, altText: data:blog.title.escaped, originalWidth: data:width, originalHeight: data:height }' name='responsiveImage'/></a>
 </b:includable>
     <b:includable id='title'>
-   <b:if cond='data:view.isHomepage'><h1 id='blog-title'><data:title/></h1>
+   <b:if cond='data:view.isHomepage'><h1 id='blog_title'><data:title/></h1>
   <b:elseif cond='data:view.isSingleItem'/>
-    <p id='blog-title'><a expr:href='data:blog.homepageUrl'><data:title/></a></p>
+    <p id='blog_title'><a expr:href='data:blog.homepageUrl'><data:title/></a></p>
   <b:else/>
-     <h1 id='blog-title'><a expr:href='data:blog.homepageUrl'><data:title/></a></h1>
+     <h1 id='blog_title'><a expr:href='data:blog.homepageUrl'><data:title/></a></h1>
   </b:if>
 </b:includable>
   </b:widget>
@@ -1902,7 +1902,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   </b:widget>
 </b:section>
 
-<button aria-label='Back to top' class='svg-icon-24-button hidden' id='back_button' onclick='location.href=&quot;#blog-title&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button>
+<button aria-label='Back to top' class='svg-icon-24-button hidden' id='back_button' onclick='location.href=&quot;#blog_title&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button>
 <b:if cond='data:view.isMultipleItems'>
 <button class='svg-icon-24-button hidden' expr:aria-label='data:messages.loading' id='add_button' type='button'><data:messages.loading/></button>
 <b:else/>
@@ -2067,7 +2067,7 @@ function psad(item) {
 const nbat = document.adoptNode(item), nppic = nbat.querySelector(&quot;img.ytpic&quot;), pssm = nbat.querySelector(&quot;p.summary&quot;);
 if (nppic) yt(nppic);
 if (pssm.querySelector(&quot;script&quot;)) {
-const pssc = pssm.querySelector(&quot;script&quot;).innerHTML;
+const pssc = pssm.querySelector(&quot;script&quot;).textContent;
 pssm.insertAdjacentHTML(&quot;afterbegin&quot;, pssc.slice(pssc.indexOf(&quot;`&quot;) + 1, pssc.indexOf(&quot;`&quot;, pssc.indexOf(&quot;`&quot;) + 1)).replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;)); }
 return nbat; }
 function rmmg(state) {
