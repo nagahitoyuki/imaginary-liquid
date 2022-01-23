@@ -1996,7 +1996,7 @@ search_expand.addEventListener(&quot;click&quot;, () =&gt; {
 if (getComputedStyle(search_top).display === &quot;none&quot;) {
 search_top.style.display = &quot;inline&quot;; floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
 search_top.style.display = &quot;none&quot;; floating_share.style.display = &quot;inline-flex&quot;; swc.ariaHidden = &quot;true&quot;; });
-</b:if>
+</b:if> }
 /* Share menu */
 shbtn.addEventListener(&quot;click&quot;, () =&gt; {
 if (getComputedStyle(sis).display === &quot;none&quot;) {
@@ -2011,7 +2011,7 @@ window.location.href = &quot;https://pinterest.com/pin/create/button/?url=<data:
 rdbtn.addEventListener(&quot;click&quot;, () =&gt; { window.location.href = &quot;https://www.reddit.com/submit?url=<data:blog.url.canonical/>&amp;title=&quot; + encodeURIComponent(&#39;<data:blog.title.jsEscaped/>&#39;); });
 cbcp.addEventListener(&quot;click&quot;, () =&gt; {
 window.navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; {
-alert (&quot;<data:messages.linkCopiedToClipboard/>&quot;); }); }); }
+alert (&quot;<data:messages.linkCopiedToClipboard/>&quot;); }); });
 <b:else/>
 /* Feed button */
 febtn.addEventListener(&quot;click&quot;, () =&gt; {
