@@ -364,9 +364,6 @@ blockquote {margin:1em 2.5em}
 .hidden, :not(.feed-view>#sub_main).section.no-items, .feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
 .invisible {visibility:hidden}
 .hfeed>.post, .hentry>.post-footer, #comments, #PopularPosts1, .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
-.sidebar-invisible {content-visibility:hidden;contain-intrinsic-size:100%;visibility:hidden}
-.sidebar-visible {content-visibility:visible;overflow-y:hidden;visibility:visible}
-.dim-overlay {background-color:rgba(0, 0, 0, .7);position:fixed;top:0;$startSide:0;width:100%;height:100vh;z-index:100}
 
 /* Widget */
 .title, .feed-title {font-size:large;color:$(widget.title.color)}
@@ -404,13 +401,13 @@ blockquote {margin:1em 2.5em}
 
 /* Floating bar */
 #floating_bar {position:sticky;top:0;height:var(--floatingbar-height);left:0;right:0;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0, 0, 0, .4);contain:strict;z-index:50}
-#floating_menu, #floating_share {display:inline-flex;column-gap:calc(var(--maincolumn-padding) / 3);align-items:center}
+#floating_menu, #floating_share {display:flex;column-gap:calc(var(--maincolumn-padding) / 3);align-items:center}
 
 /* SVG icons */
 .svg-icon-24-button, .loadingIcon {appearance:none;padding:0;border:none;background-color:transparent}
 .svg-icon-24 {vertical-align:top;width:var(--svgicon-height);height:var(--svgicon-height);cursor:pointer}
 .svg-icon-24>use, #rdbtn {fill:$(sticky.icons.color)}
-#sis {display:inline-flex;align-items:inherit;gap:inherit}
+#sis {display:flex;align-items:inherit;gap:inherit}
 html[dir="rtl"] #shbtn {transform:scale(-1, 1)}
 #close_button>.svg-icon-24 {fill:$(sidebar.icons.color)}
 .post-icons .svg-icon-24 {fill:$(posts.icons.color)}
@@ -434,7 +431,7 @@ html[dir="rtl"] #comment_button {transform:scale(-1, 1)}
 
 /* Search widget */
 #search_top {display:inline}
-#swc {display:inline-flex;align-items:inherit;gap:.25em;flex-wrap:wrap}
+#swc {display:flex;align-items:inherit;gap:.25em;flex-wrap:wrap}
 .search-space {color:$(search.input.color);background-color:rgba(255, 255, 255, .2);font:$(search.input.font);line-height:var(--body-lineheight);max-width:45vw}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
@@ -521,7 +518,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .comment-header>.user, .comment-header>.user>a, .comment-author, .comment-author>a {color:$(posts.byline.color);font-style:normal}
 .comment-actions {bottom:0;position:absolute}
 .comment-actions>* {margin-$endSide:.5em}
-.comment-header>.datetime {bottom:0;display:inline-block;margin-$startSide:.5em}
+.comment-header>.datetime {bottom:0;display:inline flow-root;margin-$startSide:.5em}
 .comment-timestamp>a, .comment-header>.datetime>a {color:$(posts.byline.color)}
 .comment-content, .comment-body {margin-top:.75em;margin-bottom:.75em;word-break:break-word}
 .comment-footer a, .comment-content a, .comment-body a, .comment-actions>a, .comment-actions>a:visited, .comment-actions>a:hover, .blog-admin>a, .comment-replybox-single, .comment-replies a {color:$(posts.link.color)}
@@ -544,7 +541,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* Paging control */
 .paging-control-container {margin-bottom:16px}
-.paging-control {display:inline-block}
+.paging-control {display:inline flow-root}
 .comment-range-text::after,.paging-control-container .paging-control {color:$(posts.link.color)}
 .comment-range-text, .paging-control {margin-$endSide:8px}
 .comment-range-text::after, .paging-control::after {content:'\00B7';cursor:default;padding-$startSide:8px;pointer-events:none}
@@ -586,7 +583,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .Profile>.title {color:$(profile.title.color)}
 .individual {text-align:center}
 .team-members {list-style-type:none;padding-$startSide:0;display:flex;flex-direction:column;gap:.5em}
-.profile-link {display:inline-flex;align-items:center;gap:1em;color:$(profile.link.color)}
+.profile-link {display:inline flex;align-items:center;gap:1em;color:$(profile.link.color)}
 .profile-img {border-radius:50%;vertical-align:top}
 .profile-data, .profile-textblock {color:$(profile.text.color);margin-$startSide:0;margin-bottom:.4em}
 
@@ -645,10 +642,10 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* Side bar */
 #close_button {display:none}
-.sidebar-container {justify-self:end}
+.sidebar-container {position:sticky;justify-self:end}
 .sidebar-invisible {content-visibility:visible;visibility:visible}
-.stickytop {position:sticky;top:var(--floatingbar-height)}
-.stickybottom {align-self:end;position:sticky;bottom:0}
+.stickytop {top:var(--floatingbar-height)}
+.stickybottom {align-self:end;bottom:0}
 }
 
 /* Below the width of the blog content and sidebar and gaps */
@@ -665,8 +662,15 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 #comment_button, #add_button {$startSide:calc(var(--maincolumn-padding) / 2)}
 
 /* Side bar */
-#close_button {text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
-.sidebar-container {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s ease-out;overflow-y:auto;-webkit-overflow-scrolling:touch;contain:strict;z-index:101}
+.swcn {display:contents}
+#hamburger_menu {transition:transform .3s ease-out}
+#close_button {display:none;text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
+.slider {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s ease-out;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:101}
+.slider>#close_button {display:block}
+.sidebar-container:not(.slider) {width:100%}
+.sidebar-invisible {content-visibility:hidden;visibility:hidden}
+.sidebar-visible {content-visibility:visible;visibility:visible;overflow-y:hidden}
+.dim-overlay {background-color:rgba(0, 0, 0, .7);position:fixed;top:0;$startSide:0;width:100%;height:100vh;z-index:100}
 .slidein {transform:translateX($(sidebar.width))}
 .slideout {transform:translateX(0)}
 html[dir="rtl"] .slidein {transform:translateX(-$(sidebar.width))}
@@ -1095,7 +1099,7 @@ button</b:comment>
 
 <div id='floating_bar'>
   <div id='floating_menu'>
-  <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'><button aria-label='Open sidebar' class='svg-icon-24-button' id='hamburger_menu' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_menu_black_24dp'/></svg></button><b:else/><button aria-label='RSS feed' class='svg-icon-24-button' id='febtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_rss_feed_black_24dp'/></svg></button></b:if>
+  <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin and data:blog.feedLinks'><button aria-label='Open sidebar' class='svg-icon-24-button' id='hamburger_menu' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_menu_black_24dp'/></svg></button><b:else/><button aria-label='RSS feed' class='svg-icon-24-button' id='febtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_rss_feed_black_24dp'/></svg></button></b:if>
      <b:if cond='data:widgets any (w =&gt; w.sectionId == &quot;search_top&quot;)'>
         <b:section id='search_top' name='Search (Top)' showaddelement='false'>
           <b:widget id='BlogSearch1' locked='true' title='Search this blog' type='BlogSearch' version='2' visible='true'>
@@ -1476,7 +1480,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
     <p class='summary'>
     <b:with value='data:post.body snippet { length:(data:blog.isMobileRequest ? 250 : 450), links: false, linebreaks: false, ellipsis: true }' var='chros'>
 <b:if cond='data:chros contains &quot;&lt;strong&gt;&quot; or data:chros contains &quot;&lt;b&gt;&quot; or data:chros contains &quot;&lt;em&gt;&quot; or data:chros contains &quot;&lt;i&gt;&quot;'>
-    <script>crsc = document.currentScript; crsc.insertAdjacentHTML(&quot;beforebegin&quot;, `<data:chros/>`.replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;));</script>
+    <script>const crsc = document.currentScript; crsc.insertAdjacentHTML(&quot;beforebegin&quot;, `<data:chros/>`.replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;));</script>
     <b:else/>
     <b:eval expr='data:chros'/>
     </b:if>
@@ -1697,6 +1701,8 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
 </b:section>
 
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
+<div id='sidebar_wrapper'>
+<b:class cond='data:view.isMultipleItems' name='swcn'/>
 <aside aria-hidden='true' class='sidebar-container sidebar-invisible'>
   <button aria-label='Close sidebar' class='svg-icon-24-button' id='close_button' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_close_black_24dp'/></svg></button>
         <b:section class='sidebar' id='sidebar' name='Sidebar'>
@@ -1885,6 +1891,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
         </b:widget>
       </b:section>
 </aside>
+</div>
 </b:if>
 </b:tag>
 
@@ -1965,7 +1972,7 @@ const hil = bdis.querySelector(&quot;div.image-attribution a&quot;);
 if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
-if (getComputedStyle(sbct).position !== &quot;fixed&quot;) {
+if (getComputedStyle(sbct).position === &quot;sticky&quot;) {
 /* Sidebar */
 if (main.clientHeight &gt; sbct.clientHeight) {
 if (sbct.clientHeight &lt; window.innerHeight) {
@@ -1973,12 +1980,23 @@ sbct.classList.add(&quot;stickytop&quot;); } else {
 sbct.classList.add(&quot;stickybottom&quot;); }}
 /* Screen reader */
 sbct.ariaHidden = &quot;false&quot;; } else {
+/* Sidebar bar */
+let bottomSidebarObserver = new IntersectionObserver((entries, observer) =&gt; {
+entries.forEach(entry =&gt; {
+if (entry.isIntersecting) {
+if (sbct.classList.contains("slider")) {
+sbct.classList.remove("slider"); sbct.classList.remove("sidebar-invisible"); sbct.classList.add("sidebar-visible"); hamburger_menu.style.transform = "rotateZ(90deg)"; sbct.ariaHidden = "false"; }} else {
+sbct.classList.add("slider"); sbct.classList.remove("sidebar-visible"); sbct.classList.add("sidebar-invisible"); hamburger_menu.style.transform = "rotateZ(0)"; sbct.ariaHidden = "true"; }}); });
+bottomSidebarObserver.observe(sidebar_wrapper);
 /* Hamburger menu */
 const bcsd = document.createElement(&quot;div&quot;);
 bcsd.classList.add(&quot;dim-overlay&quot;);
-hamburger_menu.addEventListener(&quot;click&quot;, () =&gt; {
+function hbmb() {
+if (sbct.classList.contains("slider")) {
 sbct.classList.remove(&quot;slideout&quot;); bcsd.classList.remove(&quot;fadeout&quot;); bcsd.classList.add(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
-sbct.classList.add(&quot;slidein&quot;); bdis.appendChild(bcsd); });  sbct.ariaHidden = &quot;false&quot;; sbct.classList.remove(&quot;sidebar-invisible&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); });
+sbct.classList.add(&quot;slidein&quot;); bdis.appendChild(bcsd); }); sbct.ariaHidden = &quot;false&quot;; sbct.classList.remove(&quot;sidebar-invisible&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); } else {
+location.href = "#attribution"; }}
+hamburger_menu.addEventListener(&quot;click&quot;, hbmb);
 /* Close button */
 function clsb() {
 sbct.classList.remove(&quot;slidein&quot;); bcsd.classList.remove(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
@@ -1995,12 +2013,12 @@ const scsp = search_top.querySelector(&quot;input.search-space&quot;), shrb = ma
 search_expand.addEventListener(&quot;click&quot;, () =&gt; {
 if (getComputedStyle(search_top).display === &quot;none&quot;) {
 search_top.style.display = &quot;inline&quot;; floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
-search_top.style.display = &quot;none&quot;; floating_share.style.display = &quot;inline-flex&quot;; swc.ariaHidden = &quot;true&quot;; });
-</b:if> }
+search_top.style.display = &quot;none&quot;; floating_share.style.display = &quot;flex&quot;; swc.ariaHidden = &quot;true&quot;; });
+</b:if>}
 /* Share menu */
 shbtn.addEventListener(&quot;click&quot;, () =&gt; {
 if (getComputedStyle(sis).display === &quot;none&quot;) {
-sis.style.display = &quot;inline-flex&quot;;} else {
+sis.style.display = &quot;flex&quot;;} else {
 sis.style.display = &quot;none&quot;; }});
 fbbtn.addEventListener(&quot;click&quot;, () =&gt; {
 window.location.href = &quot;https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>&quot;; });
@@ -2095,6 +2113,7 @@ const text = await response.text(), file = new DOMParser().parseFromString(text,
 npl = file.querySelector(&quot;a.older-link&quot;);
 if (npl) {
 npl.parentNode.remove(); } else {
+if (getComputedStyle(sidebar_wrapper).display === "contents") sidebar_wrapper.style.display = "block";
 file.querySelector(&quot;nav.blog-pager&quot;).remove(); }
 Promise.all([...bats].map(bat =&gt; psad(bat))).then(results =&gt; results.forEach(result =&gt; bpct.appendChild(result))); }).catch(error =&gt; {
 switch (error) {
