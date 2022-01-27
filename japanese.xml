@@ -413,7 +413,7 @@ html[dir="rtl"] #shbtn {transform:scale(-1, 1)}
 .post-icons .svg-icon-24 {fill:$(posts.icons.color)}
 .svg-icon-back {stroke-width:2px;stroke:$(sticky.icons.color);fill:transparent}
 .avatarIcon {width:2.25em;height:2.25em;fill:$(posts.icons.color);border:solid 1px $(posts.icons.color);border-radius:50%;padding:5.5px;box-sizing:border-box}
-.blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical-align:-40%}
+.blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical-align:bottom}
 
 /* 戻るボタン／コメントボタン／ローディング */
 #back_button, #comment_button, #add_button {position:fixed;bottom:calc(var(--maincolumn-padding) / 2);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);z-index:50}
