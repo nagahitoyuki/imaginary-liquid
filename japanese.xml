@@ -361,9 +361,9 @@ blockquote {margin:1em 2.5em}
 .no-bg-image {background-color:$(blog.header.color)}
 
 /* バランサー */
-.hidden, :not(.feed-view>#sub_main).section.no-items, .feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
+.hidden, :not(.feed-view #sub_main).section.no-items, .feed-view #sub_main>.widget, .feed-view>#attribution {display:none}
 .invisible {visibility:hidden}
-.hfeed>.post, .hentry>.post-footer, #comments, #PopularPosts1, .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
+.hfeed>.post, .hentry>.post-footer, #comments, #PopularPosts1, .item-view #sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* ウィジェット */
 .title, .feed-title {font-size:large;color:$(widget.title.color)}
@@ -2140,7 +2140,6 @@ const text = await response.text(), file = new DOMParser().parseFromString(text,
 npl = file.querySelector(&quot;a.older-link&quot;);
 if (npl) {
 npl.parentNode.remove(); } else {
-if (getComputedStyle(sidebar_wrapper).display === "contents") sidebar_wrapper.style.display = "block";
 file.querySelector(&quot;nav.blog-pager&quot;).remove(); }
 Promise.all([...bats].map(bat =&gt; psad(bat))).then(results =&gt; results.forEach(result =&gt; bpct.appendChild(result))); }).catch(error =&gt; {
 switch (error) {
@@ -2162,9 +2161,8 @@ isac(2, 0); }
 return; } else if (sgtm &gt; 0) {
 isac(2, &#39;on&#39;); }
 return; }
-if (smwds) {
-smwds.forEach(smwd =&gt; {
-smwd.style.display = &quot;block&quot;; }); }
+if (smwds) smwds.forEach(smwd =&gt; smwd.style.display = &quot;block&quot;)
+if (getComputedStyle(sidebar_wrapper).display === "contents") sidebar_wrapper.style.display = "block";
 attribution.style.display = &quot;block&quot;; rmmg(&#39;end&#39;); }); }, {
 rootMargin: bthg + &quot;px&quot;});
 nextIndexObserver.observe(sub_main);
