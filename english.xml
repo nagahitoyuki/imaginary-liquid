@@ -1700,6 +1700,20 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   </b:widget>
 </b:section>
 
+<b:section class='centered-bottom' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true' tag='aside'>
+  <b:widget id='Text2' locked='false' title='Information' type='Text' visible='true'>
+    <b:widget-settings>
+      <b:widget-setting name='content'><![CDATA[<p>You can place the widget you want to use here.</p><p>Blogger dashboard >> Layout >> Page Sub (Add a Gadget)</p><p>If you remove all the widgets here, the section itself will disappear.</p>]]></b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main'>
+  <b:include name='widget-title'/>
+  <div class='widget-content'>
+    <data:content/>
+  </div>
+</b:includable>
+  </b:widget>
+</b:section>
+
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 <div id='sidebar_wrapper'>
 <b:class cond='data:view.isMultipleItems' name='swcn'/>
@@ -1894,20 +1908,6 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
 </div>
 </b:if>
 </b:tag>
-
-<b:section class='centered-bottom' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true' tag='aside'>
-  <b:widget id='Text2' locked='false' title='Information' type='Text' visible='true'>
-    <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<p>You can place the widget you want to use here.</p><p>Blogger dashboard >> Layout >> Page Sub (Add a Gadget)</p><p>If you remove all the widgets here, the section itself will disappear.</p>]]></b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-  <b:include name='widget-title'/>
-  <div class='widget-content'>
-    <data:content/>
-  </div>
-</b:includable>
-  </b:widget>
-</b:section>
 
 <button aria-label='Back to top' class='svg-icon-24-button hidden' id='back_button' onclick='location.href=&quot;#blog_title&quot;' type='button'><svg class='svg-icon-24' role='img' viewBox='0 0 24 24'><path class='svg-icon-back' d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button>
 <b:if cond='data:view.isMultipleItems'>
