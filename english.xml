@@ -631,8 +631,9 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* Placement */
 #header {margin-top:30px;margin-bottom:30px}
-#content_wrapper {display:flex;align-items:start;gap:$(content.margin)}
-#main {width:$(content.width)}
+#content_wrapper {display:grid;align-items:start;column-gap:$(content.margin)}
+#main {grid-column:1/2;grid-row:1/2;width:$(content.width)}
+#sub_main {grid-column:1/2;grid-row:2/3}
 #attribution {margin-bottom:25px}
 #hamburger_menu, #search_expand, #shbtn, #febtn {display:none}
 
@@ -642,7 +643,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* Side bar */
 #close_button {display:none}
-.sidebar-container {position:sticky;justify-self:end}
+#sidebar_wrapper {grid-column:2/3;grid-row:1/3;position:sticky}
 .sidebar-invisible {content-visibility:visible;visibility:visible}
 .stickytop {top:var(--floatingbar-height)}
 .stickybottom {align-self:end;bottom:0}
@@ -1974,10 +1975,10 @@ if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);
 const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
 if (getComputedStyle(sbct).position === &quot;sticky&quot;) {
 /* Sidebar for desktop*/
-if (main.clientHeight &gt; sbct.clientHeight) {
-if (sbct.clientHeight &lt; window.innerHeight) {
-sbct.classList.add(&quot;stickytop&quot;); } else {
-sbct.classList.add(&quot;stickybottom&quot;); }}
+if (main.clientHeight + sub_main.clientHeight &gt; sidebar_wrapper.clientHeight) {
+if (sidebar_wrapper.clientHeight &lt; window.innerHeight) {
+sidebar_wrapper.classList.add(&quot;stickytop&quot;); } else {
+sidebar_wrapper.classList.add(&quot;stickybottom&quot;); }}
 /* Screen reader */
 sbct.ariaHidden = &quot;false&quot;; } else {
 /* Sidebar for mobile */
