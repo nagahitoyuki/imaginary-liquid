@@ -1999,12 +1999,9 @@ const hil = bdis.querySelector(&quot;div.image-attribution a&quot;);
 if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
-if (getComputedStyle(sbct).position === &quot;sticky&quot;) {
+if (getComputedStyle(sidebar_wrapper).position === &quot;sticky&quot;) {
 /* Sidebar for desktop */
-if (main.clientHeight + sub_main.clientHeight &gt; sidebar_wrapper.clientHeight) {
-if (sidebar_wrapper.clientHeight &lt; window.innerHeight) {
-sidebar_wrapper.classList.add(&quot;stickytop&quot;); } else {
-sidebar_wrapper.classList.add(&quot;stickybottom&quot;); }}
+if (main.clientHeight + sub_main.clientHeight &gt; sidebar_wrapper.clientHeight &amp;&amp; sidebar_wrapper.clientHeight &gt; window.innerHeight) sidebar_wrapper.classList.add(&quot;stickybottom&quot;); else sidebar_wrapper.classList.add(&quot;stickytop&quot;);
 /* Screen reader */
 sbct.ariaHidden = &quot;false&quot;; } else {
 /* Sidebar for mobile */
