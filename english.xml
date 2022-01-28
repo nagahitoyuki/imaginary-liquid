@@ -1703,7 +1703,6 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
 <div id='sidebar_wrapper'>
 <b:class cond='data:view.isMultipleItems' name='swcn'/>
 <aside aria-hidden='true' class='sidebar-container'>
-<b:class cond='data:view.isMultipleItems' name='slider'/>
   <button aria-label='Close sidebar' class='svg-icon-24-button' id='close_button' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_close_black_24dp'/></svg></button>
         <b:section class='sidebar' id='sidebar' name='Sidebar'>
           <b:widget id='Profile1' locked='false' title='Profile' type='Profile' visible='true'>
@@ -1982,8 +1981,9 @@ let bottomSidebarObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (entry.isIntersecting) {
 if (sbct.classList.contains(&quot;slider&quot;)) {
-sbct.classList.remove(&quot;slider&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); sbct.classList.add(&quot;sidebar-visible&quot;); hamburger_menu.style.transform = &quot;rotateZ(90deg)&quot;; sbct.ariaHidden = &quot;false&quot;; }} else if (entry.rootBounds.bottom &lt; entry.boundingClientRect.bottom) {
-sbct.classList.add(&quot;slider&quot;); sbct.classList.remove(&quot;sidebar-visible&quot;); sbct.classList.add(&quot;sidebar-invisible&quot;); hamburger_menu.style.transform = &quot;rotateZ(0)&quot;; sbct.ariaHidden = &quot;true&quot;; }}); });
+sbct.classList.remove(&quot;slider&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); sbct.classList.add(&quot;sidebar-visible&quot;); hamburger_menu.style.transform = &quot;rotateZ(90deg)&quot;; sbct.ariaHidden = &quot;false&quot;; }} else if (entry.rootBounds.bottom &lt; entry.boundingClientRect.bottom || entry.boundingClientRect.bottom === 0) {
+sbct.classList.add(&quot;slider&quot;); sbct.classList.remove(&quot;sidebar-visible&quot;); sbct.classList.add(&quot;sidebar-invisible&quot;); hamburger_menu.style.transform = &quot;rotateZ(0)&quot;; sbct.ariaHidden = &quot;true&quot;; }}); }, {
+rootMargin: &quot;180px&quot;});
 bottomSidebarObserver.observe(sidebar_wrapper);
 /* Hamburger menu */
 const bcsd = document.createElement(&quot;div&quot;);
@@ -2044,6 +2044,17 @@ exp.classList.add(&quot;hidden&quot;); rit.style.height = rith + &quot;px&quot;;
 rit.nextElementSibling.nextElementSibling.addEventListener(&quot;click&quot;, event =&gt; {
 const cmp = event.target;
 cmp.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;; cmp.previousElementSibling.classList.remove(&quot;hidden&quot;); }); }); }
+/* Contact form */
+<b:if cond='data:blog.isMobileRequest and data:widgets.ContactForm'>
+const fcpts = bdis.querySelectorAll("input.contact-form-name, input.contact-form-email, textarea.contact-form-email-message");
+fcpts.forEach(fcpt =&gt; {
+fcpt.addEventListener("focus", () =&gt; {
+if (getComputedStyle(sbct).position === "static") {
+back_button.classList.add(&quot;invisible&quot;); comment_button.classList.add(&quot;invisible&quot;); }});
+fcpt.addEventListener("blur", () =&gt; {
+if (getComputedStyle(sbct).position === "static") {
+back_button.classList.remove(&quot;invisible&quot;); comment_button.classList.remove(&quot;invisible&quot;); }}); });
+</b:if>
 /* Back button */
 const backButton = bdis.querySelector(&quot;header.centered-top&quot;);
 function flbt(entry) {
