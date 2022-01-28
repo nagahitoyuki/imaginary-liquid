@@ -2159,7 +2159,7 @@ isac(2, 0); }
 return; } else if (sgtm &gt; 0) {
 isac(2, &#39;on&#39;); }
 return; }
-if (smwds) smwds.forEach(smwd =&gt; smwd.style.display = &quot;block&quot;)
+if (smwds) smwds.forEach(smwd =&gt; smwd.style.display = &quot;block&quot;);
 attribution.style.display = &quot;block&quot;; rmmg(&#39;end&#39;); }); }, {
 rootMargin: bthg + &quot;px&quot;});
 nextIndexObserver.observe(sub_main);
