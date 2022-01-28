@@ -723,10 +723,10 @@ margin-top:20px}
 @media screen and (max-width:480px) and (min-width:321px) {
 
 /* 文字サイズ */
-#blog_title, .entry-content h1 {font-size:176%}
+#blog_title, .entry-content h1 {font-size:174%}
 body {font-size:$(body.text.font.size)}
 .entry-content, .summary, .snippet-item, entry-content blockquote, .entry-content h4 {font-size:$(posts.text.font.size)}
-.entry-title, .snippet-title, .fp-title {font-size:160%}
+.entry-title, .snippet-title, .fp-title {font-size:161%}
 .entry-content h2 {font-size:150%}
 .entry-content h3, .pp-title {font-size:123%}
 .entry-content h5 {font-size:80%}
