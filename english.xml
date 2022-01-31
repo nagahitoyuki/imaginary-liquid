@@ -1109,7 +1109,7 @@ button</b:comment>
              <b:include name='searchForm'/>
          </b:includable>
             <b:includable id='searchForm'>
-  <form aria-hidden='true' expr:action='data:blog.searchUrl' id='swc' role='search'>
+  <form aria-hidden='false' expr:action='data:blog.searchUrl' id='swc' role='search'>
     <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
     <b:include name='urlParamsAsFormInput'/>
       <input autocomplete='off' class='search-space' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' type='search'/>
@@ -1702,7 +1702,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 <div id='sidebar_wrapper'>
 <b:class cond='data:view.isMultipleItems' name='swcn'/>
-<aside aria-hidden='true' class='sidebar-container'>
+<aside aria-hidden='false' class='sidebar-container'>
   <button aria-label='Close sidebar' class='svg-icon-24-button' id='close_button' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_close_black_24dp'/></svg></button>
         <b:section class='sidebar' id='sidebar' name='Sidebar'>
           <b:widget id='Profile1' locked='false' title='Profile' type='Profile' visible='true'>
@@ -1973,9 +1973,7 @@ if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);
 const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
 if (getComputedStyle(sidebar_wrapper).position === &quot;sticky&quot;) {
 /* Sidebar for desktop */
-if (main.clientHeight + sub_main.clientHeight &gt; sidebar_wrapper.clientHeight &amp;&amp; sidebar_wrapper.clientHeight &gt; window.innerHeight) sidebar_wrapper.classList.add(&quot;stickybottom&quot;); else sidebar_wrapper.classList.add(&quot;stickytop&quot;);
-/* Screen reader */
-sbct.ariaHidden = &quot;false&quot;; } else {
+if (main.clientHeight + sub_main.clientHeight &gt; sidebar_wrapper.clientHeight &amp;&amp; sidebar_wrapper.clientHeight &gt; window.innerHeight) sidebar_wrapper.classList.add(&quot;stickybottom&quot;); else sidebar_wrapper.classList.add(&quot;stickytop&quot;); } else {
 /* Sidebar for mobile */
 let bottomSidebarObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
@@ -2007,7 +2005,7 @@ if (bcsd.classList.contains(&quot;fadeout&quot;)) bdis.removeChild(bcsd); });
 /* Search button */
 <b:if cond='data:widgets.BlogSearch.first.id == &quot;BlogSearch1&quot;'>
 const scsp = search_top.querySelector(&quot;input.search-space&quot;), shrb = main.querySelector(&quot;div.share-buttons&quot;);
-search_expand.addEventListener(&quot;click&quot;, () =&gt; {
+swc.ariaHidden = &quot;true&quot;; search_expand.addEventListener(&quot;click&quot;, () =&gt; {
 if (getComputedStyle(search_top).display === &quot;none&quot;) {
 search_top.style.display = &quot;inline&quot;; floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
 search_top.style.display = &quot;none&quot;; floating_share.style.display = &quot;flex&quot;; swc.ariaHidden = &quot;true&quot;; });
