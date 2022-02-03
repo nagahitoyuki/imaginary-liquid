@@ -2144,11 +2144,16 @@ attribution.style.display = &quot;block&quot;; rmmg(&#39;end&#39;); }); }, {
 rootMargin: bthg + &quot;px&quot;});
 nextIndexObserver.observe(sub_main);
 <b:else/>
-/* Comment button */
+/* Comment */
 const commentAllow = Blog1.querySelector(&quot;a.cmal&quot;), commentButton = Blog1.querySelector(&quot;article.hentry&quot;);
 let commentButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(flbt); });
-if (commentAllow) commentButtonObserver.observe(commentButton);
+if (commentAllow) {
+commentButtonObserver.observe(commentButton);
+const avics = comments.querySelectorAll(&quot;div.avatar-image-container&quot;);
+avics.forEach(avic =&gt; {
+if (avic.firstElementChild.src.includes(&quot;//resources.blogblog.com/img/blank.gif&quot;)) {
+avic.insertAdjacentHTML(&quot;afterbegin&quot;, &quot;<svg aria-label='Avatar' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>&quot;); }}); }
 /* iframe comment */
 const iframeComment = Blog1.querySelector(&quot;iframe.blogger-iframe-colorize&quot;);
 let iframeCommentObserver = new IntersectionObserver((entries, observer) =&gt; {
@@ -2166,12 +2171,6 @@ if (iframeComment !== document.activeElement) back_button.classList.remove(&quot
 iframeCommentObserver.disconnect(); }}); }, {
 rootMargin: &quot;180px&quot;});
 if (iframeComment) iframeCommentObserver.observe(comments);
-/* Comment avatar */
-if (comments) {
-const avics = Blog1.querySelectorAll(&quot;div.avatar-image-container&quot;);
-avics.forEach(avic =&gt; {
-if (avic.firstElementChild.src.includes(&quot;//resources.blogblog.com/img/blank.gif&quot;)) {
-avic.insertAdjacentHTML("afterbegin", &quot;<svg aria-label='Avatar' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>&quot;); }}); }
 </b:if>
 });</script>
 </body>
