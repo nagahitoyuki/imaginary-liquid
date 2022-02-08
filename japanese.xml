@@ -1999,7 +1999,7 @@ if (getComputedStyle(sidebar_wrapper).position === &quot;sticky&quot;) {
 /* Sidebar for desktop */
 if (main.clientHeight + sub_main.clientHeight &gt; sidebar_wrapper.clientHeight &amp;&amp; sidebar_wrapper.clientHeight &gt; window.innerHeight) sidebar_wrapper.classList.add(&quot;stickybottom&quot;); else sidebar_wrapper.classList.add(&quot;stickytop&quot;); } else {
 /* Sidebar for mobile */
-let bottomSidebarObserver = new IntersectionObserver((entries, observer) =&gt; {
+const bottomSidebarObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (entry.isIntersecting) {
 if (sbct.classList.contains(&quot;slider&quot;)) {
@@ -2087,14 +2087,12 @@ case backButton: button = back_button; break;
 case commentButton: button = comment_button; break; }  
 if (entry.isIntersecting) {
 if (!button.classList.contains(&quot;hidden&quot;)) {
-button.classList.remove(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
-button.classList.add(&quot;fadeout&quot;); });
+button.classList.remove(&quot;fadein&quot;); requestAnimationFrame(() =&gt; button.classList.add(&quot;fadeout&quot;));
 button.addEventListener(&quot;animationend&quot;, () =&gt; {
 if (button.classList.contains(&quot;fadeout&quot;)) button.classList.add(&quot;hidden&quot;); }); }
 return; }
-button.classList.remove(&quot;fadeout&quot;); button.classList.add(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
-button.classList.remove(&quot;hidden&quot;); }); }
-let backButtonObserver = new IntersectionObserver((entries, observer) =&gt; entries.forEach(flbt));
+button.classList.remove(&quot;fadeout&quot;); button.classList.add(&quot;fadein&quot;); requestAnimationFrame(() =&gt; button.classList.remove(&quot;hidden&quot;)); }
+const backButtonObserver = new IntersectionObserver((entries, observer) =&gt; entries.forEach(flbt));
 backButtonObserver.observe(backButton);
 <b:if cond='data:view.isMultipleItems'>
 /* YouTube image */
@@ -2152,7 +2150,7 @@ case &#39;Connection failed&#39;: bpct.after(bpg); rmmg(&#39;stop&#39;);
 default: bpct.after(bpg); rmmg(&#39;others&#39;); }}).then(() =&gt; {
 document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; add_button.classList.add(&quot;hidden&quot;); });
 if (Blog1.querySelector(&quot;nav.blog-pager&quot;)) bpg.remove(); }
-let nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
+const nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (npl) {
 const sgtm = entry.rootBounds.height - entry.boundingClientRect.top - bthg;
@@ -2171,9 +2169,8 @@ rootMargin: bthg + &quot;px&quot;});
 nextIndexObserver.observe(sub_main);
 <b:else/>
 /* Comment */
-const commentAllow = Blog1.querySelector(&quot;a.cmal&quot;), commentButton = Blog1.querySelector(&quot;article.hentry&quot;);
-let commentButtonObserver = new IntersectionObserver((entries, observer) =&gt; {
-entries.forEach(flbt); });
+const commentAllow = comments.querySelector(&quot;a.cmal&quot;), commentButton = Blog1.querySelector(&quot;article.hentry&quot;);
+const commentButtonObserver = new IntersectionObserver((entries, observer) =&gt; entries.forEach(flbt));
 if (commentAllow) {
 commentButtonObserver.observe(commentButton);
 const avics = comments.querySelectorAll(&quot;div.avatar-image-container&quot;);
@@ -2181,8 +2178,8 @@ avics.forEach(avic =&gt; {
 if (avic.firstElementChild.src.includes(&quot;//resources.blogblog.com/img/blank.gif&quot;)) {
 avic.insertAdjacentHTML(&quot;afterbegin&quot;, &quot;<svg aria-label='アバター' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>&quot;); }}); }
 /* iframe comment */
-const iframeComment = Blog1.querySelector(&quot;iframe.blogger-iframe-colorize&quot;);
-let iframeCommentObserver = new IntersectionObserver((entries, observer) =&gt; {
+const iframeComment = comments.querySelector(&quot;iframe.blogger-iframe-colorize&quot;);
+const iframeCommentObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (entry.isIntersecting) {
 const ifc = document.createElement(&quot;script&quot;);
