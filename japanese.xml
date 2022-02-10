@@ -2058,7 +2058,7 @@ event.target.classList.add(&quot;hidden&quot;); rit.style.height = rith + &quot;
 event.target.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;; event.target.previousElementSibling.classList.remove(&quot;hidden&quot;); }); }); }
 /* Contact form */
 <b:if cond='data:blog.isMobileRequest and data:widgets.ContactForm.first'>
-const fcpts = bdis.querySelectorAll("input.contact-form-name, input.contact-form-email, textarea.contact-form-email-message");
+const fcpts = <b:eval expr='data:widgets.ContactForm.length == 1 ? "ContactForm1" : "bdis"'/>.querySelectorAll("input.contact-form-name, input.contact-form-email, textarea.contact-form-email-message");
 fcpts.forEach(fcpt =&gt; {
 fcpt.addEventListener("focus", () =&gt; {
 if (getComputedStyle(sbct).position === "static") {
