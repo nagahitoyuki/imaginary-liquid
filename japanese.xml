@@ -2052,14 +2052,10 @@ febtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;
 const rits = bdis.querySelectorAll(&quot;div.remaining-items&quot;);
 if (rits) {
 rits.forEach(rit =&gt; {
-const rith = rit.clientHeight;
-rit.style.height = &quot;0&quot;;
+const rith = rit.clientHeight; rit.style.height = &quot;0&quot;;
 rit.nextElementSibling.addEventListener(&quot;click&quot;, event =&gt; {
-const exp = event.target;
-exp.classList.add(&quot;hidden&quot;); rit.style.height = rith + &quot;px&quot;; exp.nextElementSibling.classList.remove(&quot;hidden&quot;); }); 
-rit.nextElementSibling.nextElementSibling.addEventListener(&quot;click&quot;, event =&gt; {
-const cmp = event.target;
-cmp.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;; cmp.previousElementSibling.classList.remove(&quot;hidden&quot;); }); }); }
+event.target.classList.add(&quot;hidden&quot;); rit.style.height = rith + &quot;px&quot;; event.target.nextElementSibling.classList.remove(&quot;hidden&quot;); }); rit.nextElementSibling.nextElementSibling.addEventListener(&quot;click&quot;, event =&gt; {
+event.target.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;; event.target.previousElementSibling.classList.remove(&quot;hidden&quot;); }); }); }
 /* Contact form */
 <b:if cond='data:blog.isMobileRequest and data:widgets.ContactForm.first'>
 const fcpts = bdis.querySelectorAll("input.contact-form-name, input.contact-form-email, textarea.contact-form-email-message");
