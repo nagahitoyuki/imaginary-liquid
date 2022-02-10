@@ -2013,21 +2013,14 @@ shbtn.addEventListener(&quot;click&quot;, () =&gt; {
 if (getComputedStyle(sis).display === &quot;none&quot;) {
 sis.style.display = &quot;flex&quot;;} else {
 sis.style.display = &quot;none&quot;; }});
-fbbtn.addEventListener(&quot;click&quot;, () =&gt; {
-window.location.href = &quot;https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>&quot;; });
-twbtn.addEventListener(&quot;click&quot;, () =&gt; {
-window.location.href = &quot;https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=&quot; + encodeURIComponent(&#39;<data:blog.title.jsEscaped/>&#39;); });
-prbtn.addEventListener(&quot;click&quot;, () =&gt; {
-window.location.href = &quot;https://pinterest.com/pin/create/button/?url=<data:blog.url.canonical/>&quot;; });
-rdbtn.addEventListener(&quot;click&quot;, () =&gt; {
-window.location.href = &quot;https://www.reddit.com/submit?url=<data:blog.url.canonical/>&amp;title=&quot; + encodeURIComponent(&#39;<data:blog.title.jsEscaped/>&#39;); });
-cbcp.addEventListener(&quot;click&quot;, () =&gt; {
-window.navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; {
-alert (&quot;<data:messages.linkCopiedToClipboard/>&quot;); }); });
+fbbtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>&quot;);
+twbtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=&quot; + encodeURIComponent(&#39;<data:view.title.jsEscaped/>&#39;));
+prbtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;https://pinterest.com/pin/create/button/?url=<data:blog.url.canonical/>&quot;);
+rdbtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;https://www.reddit.com/submit?url=<data:blog.url.canonical/>&amp;title=&quot; + encodeURIComponent(&#39;<data:view.title.jsEscaped/>&#39;));
+cbcp.addEventListener(&quot;click&quot;, () =&gt; window.navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; alert (&quot;<data:messages.linkCopiedToClipboard/>&quot;)));
 <b:else/>
 /* Feed button */
-febtn.addEventListener(&quot;click&quot;, () =&gt; {
-window.location.href = &quot;<b:eval expr='data:view.isHomepage.canonical + &quot;feeds/posts/default?alt=rss&quot;'/>&quot;; });
+febtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;<b:eval expr='data:view.isHomepage.canonical + &quot;feeds/posts/default?alt=rss&quot;'/>&quot;);
 </b:if>
 /* Expand button */
 const rits = bdis.querySelectorAll(&quot;div.remaining-items&quot;);
@@ -2065,7 +2058,8 @@ button.classList.remove(&quot;fadein&quot;); requestAnimationFrame(() =&gt; butt
 button.addEventListener(&quot;animationend&quot;, () =&gt; {
 if (button.classList.contains(&quot;fadeout&quot;)) button.classList.add(&quot;hidden&quot;); }); }
 return; }
-button.classList.remove(&quot;fadeout&quot;); button.classList.add(&quot;fadein&quot;); requestAnimationFrame(() =&gt; button.classList.remove(&quot;hidden&quot;)); }
+if (entry.rootBounds.bottom &gt; entry.boundingClientRect.bottom) {
+button.classList.remove(&quot;fadeout&quot;); button.classList.add(&quot;fadein&quot;); requestAnimationFrame(() =&gt; button.classList.remove(&quot;hidden&quot;)); }}
 const backButtonObserver = new IntersectionObserver((entries, observer) =&gt; entries.forEach(flbt));
 backButtonObserver.observe(backButton);
 <b:if cond='data:view.isMultipleItems'>
