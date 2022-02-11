@@ -363,7 +363,6 @@ blockquote {margin:1em 2.5em}
 /* Balancer */
 .hidden, :not(.feed-view #sub_main).section.no-items, .feed-view #sub_main>.widget, .feed-view>#attribution {display:none}
 .invisible {visibility:hidden}
-.hfeed, .hentry {contain:content}
 .hfeed>.post, .hentry>.post-footer, #comments, #PopularPosts1, .item-view #sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* Widget */
@@ -2102,10 +2101,7 @@ const response = await fetch(npl.href);
 if (!response.ok) throw &quot;Connection failed&quot;;
 const text = await response.text(), file = new DOMParser().parseFromString(text, &quot;text/html&quot;), bats = file.querySelectorAll(&quot;article.post&quot;);
 npl = file.querySelector(&quot;a.older-link&quot;);
-if (npl) {
-npl.parentNode.remove(); } else {
-if (getComputedStyle(sidebar_wrapper).display === &quot;contents&quot;) sidebar_wrapper.style.display = &quot;block&quot;;
-file.querySelector(&quot;nav.blog-pager&quot;).remove(); }
+if (!npl &amp;&amp; getComputedStyle(sidebar_wrapper).display === &quot;contents&quot;) sidebar_wrapper.style.display = &quot;block&quot;;
 Promise.all([...bats].map(bat =&gt; psad(bat))).then(results =&gt; results.forEach(result =&gt; bpct.appendChild(result))); }).catch(error =&gt; {
 switch (error) {
 case &#39;Too fast&#39;: rmmg(&#39;pass&#39;); throw &#39;&#39;;
