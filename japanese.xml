@@ -2127,7 +2127,9 @@ const response = await fetch(npl.href);
 if (!response.ok) throw &quot;Connection failed&quot;;
 const text = await response.text(), file = new DOMParser().parseFromString(text, &quot;text/html&quot;), bats = file.querySelectorAll(&quot;article.post&quot;);
 npl = file.querySelector(&quot;a.older-link&quot;);
-if (!npl &amp;&amp; getComputedStyle(sidebar_wrapper).display === &quot;contents&quot;) sidebar_wrapper.style.display = &quot;block&quot;;
+if (npl) {
+npl.parentNode.remove(); } else {
+if (getComputedStyle(sidebar_wrapper).display === &quot;contents&quot;) sidebar_wrapper.style.display = &quot;block&quot;; }
 Promise.all([...bats].map(bat =&gt; psad(bat))).then(results =&gt; results.forEach(result =&gt; bpct.appendChild(result))); }).catch(error =&gt; {
 switch (error) {
 case &#39;Too fast&#39;: rmmg(&#39;pass&#39;); throw &#39;&#39;;
