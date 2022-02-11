@@ -1977,7 +1977,7 @@ const bottomSidebarObserver = new IntersectionObserver((entries, observer) =&gt;
 entries.forEach(entry =&gt; {
 if (entry.isIntersecting) {
 if (sbct.classList.contains(&quot;slider&quot;)) {
-sbct.classList.remove(&quot;slider&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); sbct.classList.add(&quot;sidebar-visible&quot;); hamburger_menu.style.transform = &quot;rotateZ(90deg)&quot;; sbct.ariaHidden = &quot;false&quot;; }} else if (entry.rootBounds.bottom &lt; entry.boundingClientRect.top || entry.boundingClientRect.bottom === 0) {
+sbct.classList.remove(&quot;slider&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); sbct.classList.add(&quot;sidebar-visible&quot;); hamburger_menu.style.transform = &quot;rotateZ(90deg)&quot;; sbct.ariaHidden = &quot;false&quot;; }} else if (entry.rootBounds.bottom &lt; entry.boundingClientRect.bottom || entry.boundingClientRect.bottom === 0) {
 sbct.classList.add(&quot;slider&quot;); sbct.classList.remove(&quot;sidebar-visible&quot;); sbct.classList.add(&quot;sidebar-invisible&quot;); hamburger_menu.style.transform = &quot;rotateZ(0)&quot;; sbct.ariaHidden = &quot;true&quot;; }}); }, {
 rootMargin: &quot;180px&quot;});
 bottomSidebarObserver.observe(sidebar_wrapper);
