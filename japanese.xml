@@ -867,7 +867,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
-  <a expr:href='data:userUrl' rel='me nofollow'>
+  <a expr:href='data:userUrl' rel='author me nofollow'>
     <b:include name='profileImage'/>
   </a>
 </b:includable>
@@ -882,7 +882,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
     <b:include name='viewProfileLink'/>
 </b:includable>
             <b:includable id='userProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='me nofollow'><data:displayname/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me nofollow'><data:displayname/></a>
 </b:includable>
             <b:includable id='userProfileText'>
   <dd class='profile-textblock'>
@@ -890,7 +890,7 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='me nofollow'><data:messages.viewMyCompleteProfile/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me nofollow'><data:messages.viewMyCompleteProfile/></a>
 </b:includable>
 </b:defaultmarkup>
 <b:defaultmarkup type='BlogArchive'>
@@ -1253,7 +1253,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='aboutPostAuthor'>
   <div class='author-name'>
-    <a class='pft-profile' expr:href='data:post.author.profileUrl' rel='me nofollow' title='author profile'>
+    <a class='pft-profile' expr:href='data:post.author.profileUrl' rel='author me nofollow' title='author profile'>
       <span><data:post.author.name/></span>
     </a>
   </div>
@@ -1473,7 +1473,7 @@ button</b:comment>
       <b:include data='post' name='postFooter'/>
 </b:includable>
     <b:includable id='postAuthor'>
-  <b:eval cond='data:byline.label' expr='data:byline.label'/><span class='author vcard'><b:if cond='data:post.author.profileUrl'><a class='url fn' expr:href='data:post.author.profileUrl' rel='me nofollow' title='author profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 24, &quot;1:1&quot;)' height='24' width='24'/><data:post.author.name/></a><b:else/><span class='fn'><data:post.author.name/></span></b:if></span>
+  <b:eval cond='data:byline.label' expr='data:byline.label'/><span class='author vcard'><b:if cond='data:post.author.profileUrl'><a class='url fn' expr:href='data:post.author.profileUrl' rel='author me nofollow' title='profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 24, &quot;1:1&quot;)' height='24' width='24'/><data:post.author.name/></a><b:else/><span class='fn'><data:post.author.name/></span></b:if></span>
 </b:includable>
     <b:includable id='postBody' var='post'>
   <!-- If metaDescription is empty, use the post body as the schema.org description too, for G+/FB snippeting. -->
@@ -1791,7 +1791,7 @@ button</b:comment>
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
-  <a expr:href='data:userUrl' rel='me nofollow'>
+  <a expr:href='data:userUrl' rel='author me nofollow'>
     <b:include name='profileImage'/>
   </a>
 </b:includable>
@@ -1806,7 +1806,7 @@ button</b:comment>
     <b:include name='viewProfileLink'/>
 </b:includable>
             <b:includable id='userProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='me nofollow'><data:displayname/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me nofollow'><data:displayname/></a>
 </b:includable>
             <b:includable id='userProfileText'>
   <dd class='profile-textblock'>
@@ -1814,7 +1814,7 @@ button</b:comment>
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='me nofollow'><data:messages.viewMyCompleteProfile/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me nofollow'><data:messages.viewMyCompleteProfile/></a>
 </b:includable>
           </b:widget>
         <b:widget id='BlogArchive1' locked='false' title='アーカイブ' type='BlogArchive' visible='true'>
