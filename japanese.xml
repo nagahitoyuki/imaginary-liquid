@@ -356,7 +356,7 @@ iframe {max-width:100%}
 blockquote {margin:1em 2.5em}
 
 /* ヘッダーの背景画像 */
-.bg-image-container {width:min(100vw, $(sidebar.width + content.width + content.margin));height:$(body.background.height);position:absolute;overflow:hidden;z-index:-1}
+.bg-image-container {width:min(100vw, $(sidebar.width + content.width + content.margin));height:$(body.background.height);position:absolute;overflow:hidden;z-index:-1;contain:strict}
 .bg-image {width:calc(100% + $(body.background.blur * 3));height:calc(100% + $(body.background.blur * 3));position:absolute;top:$(body.background.blur * -1.5);left:$(body.background.blur * -1.5);background:$(body.background);background-size:cover;filter:blur($(body.background.blur))}
 .no-bg-image {background-color:$(blog.header.color)}
 
@@ -2069,11 +2069,11 @@ event.target.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;
 const fcpts = <b:eval expr='data:widgets.ContactForm.length == 1 ? "ContactForm1" : "bdis"'/>.querySelectorAll("input.contact-form-name, input.contact-form-email, textarea.contact-form-email-message");
 fcpts.forEach(fcpt =&gt; {
 fcpt.addEventListener("focus", () =&gt; {
-if (getComputedStyle(sbct).position === "static") {
-back_button.classList.add(&quot;invisible&quot;); comment_button.classList.add(&quot;invisible&quot;); }});
+if (!sbct.classList.contains("slider")) {
+back_button.classList.add("invisible"); comment_button.classList.add("invisible"); }});
 fcpt.addEventListener("blur", () =&gt; {
-if (getComputedStyle(sbct).position === "static") {
-back_button.classList.remove(&quot;invisible&quot;); comment_button.classList.remove(&quot;invisible&quot;); }}); });
+if (!sbct.classList.contains("slider")) {
+back_button.classList.remove("invisible"); comment_button.classList.remove("invisible"); }}); });
 </b:if>
 /* Back button */
 const backButton = bdis.querySelector(&quot;header.centered-top&quot;);
@@ -2130,7 +2130,7 @@ const text = await response.text(), file = new DOMParser().parseFromString(text,
 npl = file.querySelector(&quot;a.older-link&quot;);
 if (npl) {
 npl.parentNode.remove(); } else {
-if (getComputedStyle(sidebar_wrapper).display === &quot;contents&quot;) sidebar_wrapper.style.display = &quot;block&quot;; }
+if (sbct.classList.contains("slider")) sidebar_wrapper.style.display = "block"; }
 Promise.all([...bats].map(bat =&gt; psad(bat))).then(results =&gt; results.forEach(result =&gt; bpct.appendChild(result))); }).catch(error =&gt; {
 switch (error) {
 case &#39;Too fast&#39;: rmmg(&#39;pass&#39;); throw &#39;&#39;;
