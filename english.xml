@@ -1961,11 +1961,20 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
             </b:section>
 
 <script>
+<b:if cond='data:view.isMultipleItems'>
+/* YouTube image */
+const ytpics = main.querySelectorAll(&quot;img.ytpic&quot;);
+function yt(image) {
+const ytimg = new Image();
+ytimg.onload = () =&gt; {
+if (ytimg.naturalWidth &lt; 121) image.removeAttribute(&quot;srcset&quot;, &quot;sizes&quot;); image.src = image.dataset.src; }
+ytimg.src = image.src; }
+if (ytpics) ytpics.forEach(yt);</b:if>
+/* Header image link */
+const hil = Attribution1.querySelector(&quot;div.image-attribution a&quot;);
+if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);
 document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
 const bdis = document.body;
-/* Header image link */
-const hil = bdis.querySelector(&quot;div.image-attribution a&quot;);
-if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
 if (getComputedStyle(sidebar_wrapper).position === &quot;sticky&quot;) {
@@ -2058,14 +2067,6 @@ button.classList.remove(&quot;fadeout&quot;); button.classList.add(&quot;fadein&
 const backButtonObserver = new IntersectionObserver((entries, observer) =&gt; entries.forEach(flbt));
 backButtonObserver.observe(backButton);
 <b:if cond='data:view.isMultipleItems'>
-/* YouTube image */
-const ytpics = main.querySelectorAll(&quot;img.ytpic&quot;);
-function yt(image) {
-const ytimg = new Image();
-ytimg.onload = () =&gt; {
-if (ytimg.naturalWidth &lt; 121) image.removeAttribute(&quot;srcset&quot;, &quot;sizes&quot;); image.src = image.dataset.src; }
-ytimg.src = image.src; }
-if (ytpics) ytpics.forEach(yt);
 /* Infinite scroll */
 const bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav.blog-pager&quot;), bthg = floating_bar.clientHeight, smwds = sub_main.querySelectorAll(&quot;div.widget&quot;);
 let npl = bpg.querySelector(&quot;a.older-link&quot;);
@@ -2125,7 +2126,7 @@ return; } else if (sgtm &gt; 0) {
 isac(2, &#39;on&#39;); }
 return; }
 if (smwds) smwds.forEach(smwd =&gt; smwd.style.display = &quot;block&quot;);
-attribution.style.display = &quot;block&quot;; rmmg(&#39;end&#39;); }); nextIndexObserver.disconnect(); }, {
+attribution.style.display = &quot;block&quot;; rmmg(&#39;end&#39;); nextIndexObserver.disconnect(); }); }, {
 rootMargin: bthg + &quot;px&quot;});
 nextIndexObserver.observe(sub_main);
 <b:else/>
