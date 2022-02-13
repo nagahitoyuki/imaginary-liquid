@@ -627,10 +627,9 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 @media screen and (min-width:$(sidebar.width + content.width + content.margin)) {
 
 /* Placement */
-#header {margin-top:30px;margin-bottom:30px}
+#header, #sub_main, #attribution {margin-top:30px;margin-bottom:30px}
 #content_wrapper {display:flex;align-items:start;gap:$(content.margin)}
 #main {width:$(content.width)}
-#attribution {margin-bottom:25px}
 #hamburger_menu, #search_expand, #shbtn, #febtn {display:none}
 
 /* Back button / Comment button / Loading */
