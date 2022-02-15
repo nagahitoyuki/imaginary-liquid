@@ -4,9 +4,6 @@
   <head expr:prefix='&quot;og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# &quot; + (data:view.isMultipleItems ? &quot;website: http://ogp.me/ns/website#&quot; : &quot;article: http://ogp.me/ns/article#&quot;)'>
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
-<b:if cond='data:blog.analyticsAccountNumber'>
-  <link href='//www.google-analytics.com' rel='dns-prefetch'/>
-</b:if>
 <b:if cond='data:blog.adsenseAutoAds'>
   <link href='//pagead2.googlesyndication.com' rel='dns-prefetch'/>
 <b:elseif cond='data:widgets.AdSense.first or data:widgets.Blog.first.posts.first.showInlineAds'/>
@@ -18,27 +15,11 @@
   <link href='//www.youtube.com' rel='preconnect'/>
 </b:if>
 </b:if>
-<b:with value='data:skin.vars.body_background.image' var='bgimg'>
-<b:if cond='data:blog.isMobileRequest'>
-<b:if cond='not data:view.isPreview and data:bgimg'>
-  <link as='image' expr:href='resizeImage(data:bgimg, 480) + (data:bgimg contains &quot;googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;)' rel='preload'/>
-</b:if>
+<b:if cond='data:blog.isMobileRequest or data:view.url !=  data:view.url.canonical'>
   <link expr:href='data:view.url.canonical' rel='canonical'/>
 <b:else/>
-<b:if cond='not data:view.isPreview and data:bgimg'>
-<b:with value='[481, 641]' var='minWidth'>
-<b:loop index='i' values='resizeImage(data:bgimg, [640, 1024, 1240])' var='headerImage'>
-  <link as='image' expr:href='data:headerImage.url + (data:headerImage.url contains &quot;googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;)' expr:media='&quot;(&quot; + (data:i != 2 ? &quot;max-width:&quot; + data:headerImage.size + &quot;px) and (min-width:&quot; + data:minWidth[i] + &quot;px)&quot; : &quot;min-width:1025px)&quot;)' rel='preload'/>
-</b:loop>
-</b:with>
-</b:if>
-<b:if cond='data:view.url ==  data:view.url.canonical'>
   <link expr:href='data:view.url.canonical params {m : 1}' media='only screen and (max-width: 640px)' rel='alternate'/>
-<b:else/>
-  <link expr:href='data:view.url.canonical' rel='canonical'/>
 </b:if>
-</b:if>
-</b:with>
   <title><data:view.title.escaped/><b:if cond='data:view.isArchive'>: <data:blog.pageName/>&#65288;<data:messages.archive/>&#65289;<b:elseif cond='data:view.isLabelSearch'/>: <data:blog.pageName/>&#65288;<data:messages.labels/>&#65289;<b:elseif cond='data:view.isSearch'/>: <data:messages.search/></b:if></title>
 <b:if cond='data:blog.metaDescription'>
   <meta expr:content='data:blog.metaDescription' name='description'/>
@@ -75,6 +56,22 @@
   <meta content='article' property='og:type'/>
 </b:if>
   <meta expr:content='data:blog.title.escaped' property='og:site_name'/>
+
+<b:with value='data:skin.vars.body_background.image' var='bgimg'>
+<b:if cond='not data:view.isPreview and data:bgimg'>
+<style>
+  .bg-image {background-image:url(<data:bgimg.cssEscaped/>)}
+<b:if cond='data:blog.isMobileRequest'>
+  @media (max-width: 480px) {.bg-image {background-image:url(<b:eval expr='resizeImage(data:bgimg, 480).cssEscaped + (data:bgimg contains &quot;blogger.googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;)'/>)}}
+<b:else/>
+<b:with value='[481, 641]' var='minWidth'>
+  <b:loop index='i' values='resizeImage(data:bgimg, [640, 1024, 1240])' var='headerImage'>
+<b:eval expr='&quot;@media &quot; + (data:i != 2 ? &quot;(max-width: &quot; + data:headerImage.size + &quot;px) and (min-width: &quot; + data:minWidth[i] + &quot;px)&quot; : &quot;(min-width: 1025px)&quot;) + &quot;{.bg-image {background-image:url(&quot; + data:headerImage.url.cssEscaped + (data:headerImage.url contains &quot;blogger.googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;) + &quot;;)}}&quot;'/></b:loop>
+</b:with>
+</b:if>
+</style>
+</b:if>
+</b:with>
 
   <b:skin version='1.0.0'><![CDATA[/*!
 
@@ -973,21 +970,6 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
 </b:defaultmarkup>
 </b:defaultmarkups>
 
-<b:with value='data:skin.vars.body_background.image' var='bgimg'>
-<b:if cond='not data:view.isPreview and data:bgimg'>
-<style>
-  .bg-image {background-image:url(<data:bgimg.cssEscaped/>)}
-<b:if cond='data:blog.isMobileRequest'>
-  @media (max-width: 480px) {.bg-image {background-image:url(<b:eval expr='resizeImage(data:bgimg, 480).cssEscaped + (data:bgimg contains &quot;blogger.googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;)'/>)}}
-<b:else/>
-<b:with value='[481, 641]' var='minWidth'>
-  <b:loop index='i' values='resizeImage(data:bgimg, [640, 1024, 1240])' var='headerImage'>
-<b:eval expr='&quot;@media &quot; + (data:i != 2 ? &quot;(max-width: &quot; + data:headerImage.size + &quot;px) and (min-width: &quot; + data:minWidth[i] + &quot;px)&quot; : &quot;(min-width: 1025px)&quot;) + &quot;{.bg-image {background-image:url(&quot; + data:headerImage.url.cssEscaped + (data:headerImage.url contains &quot;blogger.googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;) + &quot;;)}}&quot;'/></b:loop>
-</b:with>
-</b:if>
-</style>
-</b:if>
-</b:with>
 <b:if cond='(data:widgets.AdSense.first or data:widgets.Blog.first.posts.first.showInlineAds) and not data:blog.adsenseAutoAds'>
   <script async='async' crossorigin='anonymous' expr:src='&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=&quot; + data:blog.adsenseClientId'/>
 </b:if>
