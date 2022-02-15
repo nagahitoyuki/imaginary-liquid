@@ -4,7 +4,6 @@
   <head expr:prefix='&quot;og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# &quot; + (data:view.isMultipleItems ? &quot;website: http://ogp.me/ns/website#&quot; : &quot;article: http://ogp.me/ns/article#&quot;)'>
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
-  <link href='//www.blogger.com' rel='dns-prefetch'/>
 <b:if cond='data:blog.analyticsAccountNumber'>
   <link href='//www.google-analytics.com' rel='dns-prefetch'/>
 </b:if>
@@ -979,11 +978,11 @@ body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elsei
 <style>
   .bg-image {background-image:url(<data:bgimg.cssEscaped/>)}
 <b:if cond='data:blog.isMobileRequest'>
-  @media (max-width: 480px) {.bg-image {background-image:url(<b:eval expr='resizeImage(data:bgimg, 480).cssEscaped + (data:bgimg contains &quot;googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;)'/>)}}
+  @media (max-width: 480px) {.bg-image {background-image:url(<b:eval expr='resizeImage(data:bgimg, 480).cssEscaped + (data:bgimg contains &quot;blogger.googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;)'/>)}}
 <b:else/>
 <b:with value='[481, 641]' var='minWidth'>
   <b:loop index='i' values='resizeImage(data:bgimg, [640, 1024, 1240])' var='headerImage'>
-<b:eval expr='&quot;@media &quot; + (data:i != 2 ? &quot;(max-width: &quot; + data:headerImage.size + &quot;px) and (min-width: &quot; + data:minWidth[i] + &quot;px)&quot; : &quot;(min-width: 1025px)&quot;) + &quot;{.bg-image {background-image:url(&quot; + data:headerImage.url.cssEscaped + (data:headerImage.url contains &quot;googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;) + &quot;;)}}&quot;'/></b:loop>
+<b:eval expr='&quot;@media &quot; + (data:i != 2 ? &quot;(max-width: &quot; + data:headerImage.size + &quot;px) and (min-width: &quot; + data:minWidth[i] + &quot;px)&quot; : &quot;(min-width: 1025px)&quot;) + &quot;{.bg-image {background-image:url(&quot; + data:headerImage.url.cssEscaped + (data:headerImage.url contains &quot;blogger.googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;) + &quot;;)}}&quot;'/></b:loop>
 </b:with>
 </b:if>
 </style>
