@@ -646,11 +646,11 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .swcn {display:contents}
 #hamburger_menu {transition:transform .3s ease-out}
 #close_button {display:none;text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
-.slider {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s ease-out;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:10}
+.slider {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s ease-out;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:10;content-visibility:visible;visibility:visible}
 .slider>#close_button {display:block}
 .sidebar-container:not(.slider) {width:100%}
 .sidebar-invisible {content-visibility:hidden;visibility:hidden}
-.sidebar-visible {content-visibility:visible;visibility:visible;overflow-y:hidden}
+.sidebar-visible {overflow-y:hidden}
 .dim-overlay {background-color:rgba(0, 0, 0, .7);position:fixed;top:0;$startSide:0;width:100%;height:100vh;z-index:9}
 .slidein {transform:translateX($(sidebar.width))}
 .slideout {transform:translateX(0)}
@@ -694,7 +694,7 @@ margin-top:20px}
 body#layout .bg-image-container {display:none}
 body#layout #floating_bar {position:static;display:block}
 body#layout #floating_menu {display:block}
-body#layout .sidebar-invisible {visibility:visible}]]></b:template-skin><b:elseif cond='data:view.isPreview'/>
+body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]></b:template-skin><b:elseif cond='data:view.isPreview'/>
 <style>.widget-ad-placeholder, .inline-ad-placeholder {background-color:$(posts.background.color);border:1px solid #000;opacity:.9;vertical-align:middle;text-align:center}
 .widget-ad-placeholder span, .inline-ad-placeholder span {margin-top:36px;display:block;text-transform:uppercase;font-weight:700;color:$(posts.title.color)}
 .widget-ad-placeholder {height:336px}
@@ -1964,8 +1964,8 @@ const bottomSidebarObserver = new IntersectionObserver((entries, observer) =&gt;
 entries.forEach(entry =&gt; {
 if (entry.isIntersecting) {
 if (sbct.classList.contains(&quot;slider&quot;)) {
-sbct.classList.remove(&quot;slider&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); sbct.classList.add(&quot;sidebar-visible&quot;); hamburger_menu.style.transform = &quot;rotateZ(90deg)&quot;; sbct.ariaHidden = &quot;false&quot;; }} else if (entry.rootBounds.bottom &lt; entry.boundingClientRect.bottom || entry.boundingClientRect.bottom === 0) {
-sbct.classList.add(&quot;slider&quot;); sbct.classList.remove(&quot;sidebar-visible&quot;); sbct.classList.add(&quot;sidebar-invisible&quot;); hamburger_menu.style.transform = &quot;rotateZ(0)&quot;; sbct.ariaHidden = &quot;true&quot;; }}); }, {
+sbct.classList.remove(&quot;slider&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); hamburger_menu.style.transform = &quot;rotateZ(90deg)&quot;; sbct.ariaHidden = &quot;false&quot;; }} else if (entry.rootBounds.bottom &lt; entry.boundingClientRect.bottom || entry.boundingClientRect.bottom === 0) {
+sbct.classList.add(&quot;slider&quot;); sbct.classList.add(&quot;sidebar-invisible&quot;); hamburger_menu.style.transform = &quot;rotateZ(0)&quot;; sbct.ariaHidden = &quot;true&quot;; }}); }, {
 rootMargin: &quot;180px&quot;});
 bottomSidebarObserver.observe(sidebar_wrapper);
 /* Hamburger menu */
