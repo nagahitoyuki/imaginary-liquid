@@ -2023,10 +2023,12 @@ const fcpts = <b:eval expr='data:widgets.ContactForm.length == 1 ? "ContactForm1
 fcpts.forEach(fcpt =&gt; {
 fcpt.addEventListener("focus", () =&gt; {
 if (!sbct.classList.contains("slider")) {
-back_button.classList.add("invisible"); comment_button.classList.add("invisible"); }});
+if (comment_button) comment_button.classList.add("invisible");
+back_button.classList.add("invisible"); }});
 fcpt.addEventListener("blur", () =&gt; {
 if (!sbct.classList.contains("slider")) {
-back_button.classList.remove("invisible"); comment_button.classList.remove("invisible"); }}); });
+if (comment_button) comment_button.classList.remove("invisible");
+back_button.classList.remove("invisible"); }}); });
 </b:if>
 /* Back button */
 const backButton = bdis.querySelector(&quot;header.centered-top&quot;);
