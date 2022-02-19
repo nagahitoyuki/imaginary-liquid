@@ -336,7 +336,7 @@ body {width:min(100vw, $(sidebar.width + content.width + content.margin));height
 a {text-decoration:none;color:$(body.link.base.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
-h1, h2, h3, h4, h5, h6, .item-view #blog_title {scroll-margin-top:calc(1em + var(--floatingbar-height))}
+h1, h2, h3, h4, h5, h6, p#blog_title {scroll-margin-top:calc(1em + var(--floatingbar-height))}
 img {max-width:100%;height:auto}
 iframe {max-width:100%}
 blockquote {margin:1em 2.5em}
@@ -347,9 +347,9 @@ blockquote {margin:1em 2.5em}
 .no-bg-image {background-color:$(blog.header.color)}
 
 /* バランサー */
-.hidden, :not(.feed-view #sub_main).section.no-items, .feed-view #sub_main>.widget, .feed-view>#attribution {display:none}
+.hidden, :not(.feed-view>#sub_main).section.no-items, .feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
 .invisible {visibility:hidden}
-.hfeed>.post, .hentry>.post-footer, #comments, #PopularPosts1, .item-view #sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
+.hfeed>.post, .hentry>.post-footer, #comments, #PopularPosts1, .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* ウィジェット */
 .title, .feed-title {font-size:large;color:$(widget.title.color)}
