@@ -15,12 +15,6 @@
   <link href='//www.youtube.com' rel='preconnect'/>
 </b:if>
 </b:if>
-<b:with value='data:skin.vars.body_background.image' var='bgimg'>
-<b:if cond='not data:view.isPreview and data:bgimg'>
-<b:with value='[481, 641]' var='minWidth'><b:loop index='i' values='resizeImage(data:bgimg, (data:blog.isMobileRequest ? [480] : [640, 1024, 1240]))' var='headerImage'>
-<b:tag as='image' expr:href='data:headerImage.url + (data:headerImage.url contains "googleusercontent.com" ? "-rw-e60" : "")' rel='preload' name='link'><b:attr cond='!data:blog.isMobileRequest' expr:value='"(" + (data:i != 2 ? "max-width:" + data:headerImage.size + "px) and (min-width:" + data:minWidth[i] + "px)" : "min-width:1025px)")' name='media'/><b:attr name='b:whitespace' value='remove'/></b:tag></b:loop></b:with>
-</b:if>
-</b:with>
 <b:if cond='data:blog.isMobileRequest or data:view.url !=  data:view.url.canonical'>
   <link expr:href='data:view.url.canonical' rel='canonical'/>
 <b:else/>
@@ -778,7 +772,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
     <b:with value='data:post.featuredImage' var='imgurl'>
-      <img expr:alt='data:messages.image' expr:src='resizeImage(data:imgurl, 188, &quot;1:1&quot;) + (data:imgurl contains &quot;googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;)' height='188' loading='lazy' width='188'/>
+      <img expr:alt='data:messages.image' expr:src='resizeImage(data:imgurl, 188, &quot;1:1&quot;) + (data:imgurl contains &quot;googleusercontent.com&quot; ? &quot;-rw-e100&quot; : &quot;&quot;)' height='188' loading='lazy' width='188'/>
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
@@ -993,7 +987,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 <style>
 .bg-image {background-image:url(<data:bgimg.cssEscaped/>)}
 <b:with value='[481, 641]' var='minWidth'><b:loop index='i' values='resizeImage(data:bgimg, (data:blog.isMobileRequest ? [480] : [640, 1024, 1240]))' var='headerImage'>
-<b:eval expr='"@media " + (data:blog.isMobileRequest ? "(max-width: 480px)" : data:i != 2 ? "(max-width: " + data:headerImage.size + "px) and (min-width: " + data:minWidth[i] + "px)" : "(min-width: 1025px)") + "{.bg-image {background-image:url(" + data:headerImage.url.cssEscaped + (data:headerImage.url contains "blogger.googleusercontent.com" ? "-rw-e60" : "") + ";)}}"'/></b:loop></b:with></style>
+<b:eval expr='"@media " + (data:blog.isMobileRequest ? "(max-width: 480px)" : data:i != 2 ? "(max-width: " + data:headerImage.size + "px) and (min-width: " + data:minWidth[i] + "px)" : "(min-width: 1025px)") + "{.bg-image {background-image:url(" + data:headerImage.url.cssEscaped + (data:headerImage.url contains "blogger.googleusercontent.com" ? "-rw-e100" : "") + ";)}}"'/></b:loop></b:with></style>
 </b:if>
 </b:with>
 
@@ -1169,10 +1163,10 @@ button</b:comment>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
-    <b:tag class='ft-snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 480, &quot;3:2&quot;) + &quot;-rw-e60 480w, &quot; + resizeImage(data:imgurl, 768, &quot;3:2&quot;) + &quot;-rw-e60 768w, &quot; + resizeImage(data:imgurl, 1024, &quot;3:2&quot;) + &quot;-rw-e60 1024w&quot; : sourceSet(data:imgurl, [480,768,1024], &quot;3:2&quot;)' height='320' name='img' sizes='(max-width:960px) 100vw, 1024px' width='480'>
+    <b:tag class='ft-snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 480, &quot;3:2&quot;) + &quot;-rw-e100 480w, &quot; + resizeImage(data:imgurl, 768, &quot;3:2&quot;) + &quot;-rw-e100 768w, &quot; + resizeImage(data:imgurl, 1024, &quot;3:2&quot;) + &quot;-rw-e100 1024w&quot; : sourceSet(data:imgurl, [480,768,1024], &quot;3:2&quot;)' height='320' name='img' sizes='(max-width:960px) 100vw, 1024px' width='480'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
-    <b:attr expr:value='data:post.featuredImage + &quot;=w480-h320-n-k-no-nu-rw-e60&quot;' name='data-src'/>
+    <b:attr expr:value='data:post.featuredImage + &quot;=w480-h320-n-k-no-nu-rw-e100&quot;' name='data-src'/>
     <b:class name='ytpic'/>
     </b:if>
     </b:tag>
@@ -1465,10 +1459,10 @@ button</b:comment>
   <a class='total-snippet' expr:href='data:post.url'>
   <b:if cond='data:post.featuredImage'>
   <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
-    <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 180, &quot;1:1&quot;) + &quot;-rw-e60 180, &quot; + resizeImage(data:imgurl, 360, &quot;1:1&quot;) + &quot;-rw-e60 360w, &quot; : sourceSet(data:imgurl, [180, 360], &quot;1:1&quot;)' height='180' name='img' sizes='(max-width:960px) 30vw, 360px' width='180'>
+    <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 180, &quot;1:1&quot;) + &quot;-rw-e100 180, &quot; + resizeImage(data:imgurl, 360, &quot;1:1&quot;) + &quot;-rw-e100 360w, &quot; : sourceSet(data:imgurl, [180, 360], &quot;1:1&quot;)' height='180' name='img' sizes='(max-width:960px) 30vw, 360px' width='180'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
-    <b:attr expr:value='data:post.featuredImage + &quot;=w320-h320-n-k-no-nu-rw-e60&quot;' name='data-src'/>
+    <b:attr expr:value='data:post.featuredImage + &quot;=w320-h320-n-k-no-nu-rw-e100&quot;' name='data-src'/>
     <b:class name='ytpic'/>
     </b:if>
     <b:if cond='data:widgets.FeaturedPost.any and data:i &gt; 0 or !data:widgets.FeaturedPost.any and data:i &gt; 1'>
@@ -1684,7 +1678,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
     <b:with value='data:post.featuredImage' var='imgurl'>
-      <img expr:alt='data:messages.image' expr:src='resizeImage(data:imgurl, 188, &quot;1:1&quot;) + (data:imgurl contains &quot;googleusercontent.com&quot; ? &quot;-rw-e60&quot; : &quot;&quot;)' height='188' loading='lazy' width='188'/>
+      <img expr:alt='data:messages.image' expr:src='resizeImage(data:imgurl, 188, &quot;1:1&quot;) + (data:imgurl contains &quot;googleusercontent.com&quot; ? &quot;-rw-e100&quot; : &quot;&quot;)' height='188' loading='lazy' width='188'/>
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
