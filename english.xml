@@ -957,8 +957,9 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 
 <b:with value='data:skin.vars.body_background.image' var='bgimg'><b:if cond='not data:view.isPreview and data:bgimg'>
 <b:tag cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")' class='bg-media' name='noscript'><style><b:with value='[481, 641]' var='minWidth'><b:loop index='i' values='resizeImage(data:bgimg, (data:blog.isMobileRequest ? [480] : [640, 1024, 1240]))' var='headerImage'><b:eval expr='"@media " + (data:blog.isMobileRequest ? "(max-width: 480px)" : data:i != 2 ? "(max-width: " + data:headerImage.size + "px) and (min-width: " + data:minWidth[i] + "px)" : "(min-width: 1025px)") + "{.bg-image {background-image:url(" + data:headerImage.url.cssEscaped + (data:headerImage.url contains "themes.googleusercontent.com" ? "-rw-e100" : "") + ";)}}"'/></b:loop></b:with></style></b:tag>
-<b:if cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")'><script>const bgsl = document.createElement("style"), bmtx = document.head.querySelector("noscript.bg-media").innerText.replace(<b:eval expr='data:blog.isMobileRequest ? "/w480/, \"$&amp;-rw-e100\");" : "/w640/, \"$&amp;-rw-e100\").replace(/w1024/, \"$&amp;-rw-e100\").replace(/w1240/, \"$&amp;-rw-e100\");"'/>
-bgsl.innerText = /@media.*\)\}\}/.exec(bmtx)[0]; document.head.appendChild(bgsl);</script></b:if>
+<b:if cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")'><script>const bgsl = document.createElement("style"), bmtx = 
+/@media.*\)\}\}/.exec(document.head.querySelector("noscript.bg-media").innerText)[0].replace(<b:eval expr='data:blog.isMobileRequest ? "/w480/, \"$&amp;-rw-e100\");" : "/w640/, \"$&amp;-rw-e100\").replace(/w1024/, \"$&amp;-rw-e100\").replace(/w1240/, \"$&amp;-rw-e100\");"'/>
+bgsl.insertAdjacentHTML("afterbegin", bmtx); document.head.appendChild(bgsl);</script></b:if>
 </b:if></b:with>
 
 <b:if cond='(data:widgets.AdSense.first or data:widgets.Blog.first.posts.first.showInlineAds) and not data:blog.adsenseAutoAds'>
