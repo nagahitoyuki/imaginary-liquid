@@ -412,7 +412,7 @@ html[dir="rtl"] #comment_button {transform:scale(-1, 1)}
 /* Search widget */
 #search_top {display:inline}
 #swc {display:flex;align-items:inherit;gap:.25em;flex-wrap:wrap}
-.search-space {color:$(search.input.color);background-color:rgba(255, 255, 255, .2);font:$(search.input.font);line-height:var(--body-lineheight);max-width:45vw}
+.search-space {color:$(search.input.color);background-color:rgba(255, 255, 255, .2);font:$(search.input.font);line-height:var(--body-lineheight);max-width:min(45vw, $(content.width * 0.225))}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
 .search-action {color:$(search.action.color);font-size:100%}
@@ -1968,7 +1968,7 @@ function hbmb() {
 if (sbct.classList.contains("slider")) {
 sbct.classList.remove(&quot;slideout&quot;); bcsd.classList.remove(&quot;fadeout&quot;); bcsd.classList.add(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
 sbct.classList.add(&quot;slidein&quot;); bdis.appendChild(bcsd); }); sbct.ariaHidden = &quot;false&quot;; sbct.classList.remove(&quot;sidebar-invisible&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); } else {
-location.href = "#attribution"; }}
+window.location.href = "#attribution"; }}
 hamburger_menu.addEventListener(&quot;click&quot;, hbmb);
 /* Close button */
 function clsb() {
