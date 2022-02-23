@@ -581,7 +581,9 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .show-more, .show-less {margin-top:1.2em;margin-$startSide:auto;font-size:medium;color:$(body.link.base.color);cursor:pointer}
 
 /* 連絡フォーム */
-.contact-form-name, .contact-form-email, .contact-form-email-message {font-size:100%;max-width:100%;margin-top:.3em;box-sizing:border-box}
+.contact-form-name, .contact-form-email, .contact-form-email-message {font-size:100%;margin-top:.3em;box-sizing:border-box}
+.contact-form-name, .contact-form-email {max-width:100%}
+.contact-form-email-message {max-width:calc(100% - 2em)}
 .contact-form-asterisk {font-weight:bolder}
 .contact-form-error {font-style:normal}
 .contact-form-button {font-size:100%}
@@ -937,7 +939,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
         <p/>
         <data:contactFormMessageMsg/> <span class='contact-form-asterisk'>*</span>
         <br/>
-        <textarea class='contact-form-email-message' cols='25' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'/>
+        <textarea class='contact-form-email-message' cols='29' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'/>
         <p/>
         <div class='contact-form-error'>
           <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
@@ -1871,7 +1873,7 @@ button</b:comment>
         <p/>
         <data:contactFormMessageMsg/> <span class='contact-form-asterisk'>*</span>
         <br/>
-        <textarea class='contact-form-email-message' cols='25' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'/>
+        <textarea class='contact-form-email-message' cols='29' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'/>
         <p/>
         <div class='contact-form-error'>
           <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
