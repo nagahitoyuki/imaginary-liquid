@@ -939,7 +939,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
         <p/>
         <data:contactFormMessageMsg/> <span class='contact-form-asterisk'>*</span>
         <br/>
-        <textarea class='contact-form-email-message' cols='29' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'/>
+        <textarea class='contact-form-email-message' cols='29' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='6'/>
         <p/>
         <div class='contact-form-error'>
           <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
@@ -1873,7 +1873,7 @@ button</b:comment>
         <p/>
         <data:contactFormMessageMsg/> <span class='contact-form-asterisk'>*</span>
         <br/>
-        <textarea class='contact-form-email-message' cols='29' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'/>
+        <textarea class='contact-form-email-message' cols='29' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='6'/>
         <p/>
         <div class='contact-form-error'>
           <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
@@ -1961,6 +1961,7 @@ button</b:comment>
             </b:section>
 
 <script>
+const bdis = document.body;
 <b:if cond='data:view.isMultipleItems'>
 /* YouTube image */
 const ytpics = main.querySelectorAll(&quot;img.ytpic&quot;);
@@ -1973,8 +1974,6 @@ if (ytpics) ytpics.forEach(yt);</b:if>
 /* Header image link */
 const hil = Attribution1.querySelector(&quot;div.image-attribution a&quot;);
 if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);
-document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
-const bdis = document.body;
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
 if (getComputedStyle(sidebar_wrapper).position === &quot;sticky&quot;) {
@@ -2159,7 +2158,6 @@ if (iframeComment !== document.activeElement) back_button.classList.remove(&quot
 iframeCommentObserver.disconnect(); }}); }, {
 rootMargin: &quot;180px&quot;});
 if (iframeComment) iframeCommentObserver.observe(comments);
-</b:if>
-});</script>
+</b:if></script>
 </body>
 </html>
