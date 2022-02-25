@@ -1935,16 +1935,8 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
             </b:section>
 
 <script>
+document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
 const bdis = document.body;
-<b:if cond='data:view.isMultipleItems'>
-/* YouTube image */
-const ytpics = main.querySelectorAll(&quot;img.ytpic&quot;);
-function yt(image) {
-const ytimg = new Image();
-ytimg.onload = () =&gt; {
-if (ytimg.naturalWidth &lt; 121) image.removeAttribute(&quot;srcset&quot;, &quot;sizes&quot;); image.src = image.dataset.src; }
-ytimg.src = image.src; }
-if (ytpics) ytpics.forEach(yt);</b:if>
 /* Header image link */
 const hil = Attribution1.querySelector(&quot;div.image-attribution a&quot;);
 if (hil) hil.setAttribute(&quot;rel&quot;, &quot;nofollow&quot;);
@@ -2042,6 +2034,16 @@ button.classList.remove(&quot;fadeout&quot;); button.classList.add(&quot;fadein&
 const backButtonObserver = new IntersectionObserver((entries, observer) =&gt; entries.forEach(flbt));
 backButtonObserver.observe(backButton);
 <b:if cond='data:view.isMultipleItems'>
+<b:if cond='data:view.featuredImage.isYoutube'>
+/* YouTube image */
+const ytpics = main.querySelectorAll(&quot;img.ytpic&quot;);
+function yt(image) {
+const ytimg = new Image();
+ytimg.onload = () =&gt; {
+if (ytimg.naturalWidth &lt; 121) image.removeAttribute(&quot;srcset&quot;, &quot;sizes&quot;); image.src = image.dataset.src; }
+ytimg.src = image.src; }
+if (ytpics) ytpics.forEach(yt);
+</b:if>
 /* Infinite scroll */
 const bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav.blog-pager&quot;), bthg = floating_bar.clientHeight, smwds = sub_main.querySelectorAll(&quot;div.widget&quot;);
 let npl = bpg.querySelector(&quot;a.older-link&quot;);
@@ -2132,6 +2134,6 @@ if (iframeComment !== document.activeElement) back_button.classList.remove(&quot
 iframeCommentObserver.disconnect(); }}); }, {
 rootMargin: &quot;180px&quot;});
 if (iframeComment) iframeCommentObserver.observe(comments);
-</b:if></script>
+</b:if>});</script>
 </body>
 </html>
