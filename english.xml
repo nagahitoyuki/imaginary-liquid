@@ -2035,16 +2035,13 @@ const backButtonObserver = new IntersectionObserver((entries, observer) =&gt; en
 backButtonObserver.observe(backButton);
 <b:if cond='data:view.isMultipleItems'>
 /* YouTube image */
-const ytpics = main.querySelectorAll("img.ytpic");
-function ldyt(event) {
-if (event.currentTarget.naturalWidth &lt; 121) {
-this.item.removeAttribute("srcset", "sizes"); this.item.src = this.item.dataset.src; }
-event.currentTarget.removeEventListener("load", this); }
-if (ytpics) {
-ytpics.forEach(ytpic =&gt; {
+const ytpics = main.querySelectorAll(&quot;img.ytpic&quot;);
+function yt(image) {
 const ytimg = new Image();
-ytimg.addEventListener("load", {handleEvent: ldyt, item: ytpic});
-ytimg.src = ytpic.src; }); }
+ytimg.onload = () =&gt; {
+if (ytimg.naturalWidth &lt; 121) image.removeAttribute(&quot;srcset&quot;, &quot;sizes&quot;); image.src = image.dataset.src; }
+ytimg.src = image.src; }
+if (ytpics) ytpics.forEach(yt);
 /* Infinite scroll */
 const bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav.blog-pager&quot;), bthg = floating_bar.clientHeight, smwds = sub_main.querySelectorAll(&quot;div.widget&quot;);
 let npl = bpg.querySelector(&quot;a.older-link&quot;);
