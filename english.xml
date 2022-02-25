@@ -2034,16 +2034,17 @@ button.classList.remove(&quot;fadeout&quot;); button.classList.add(&quot;fadein&
 const backButtonObserver = new IntersectionObserver((entries, observer) =&gt; entries.forEach(flbt));
 backButtonObserver.observe(backButton);
 <b:if cond='data:view.isMultipleItems'>
-<b:if cond='data:view.featuredImage.isYoutube'>
 /* YouTube image */
-const ytpics = main.querySelectorAll(&quot;img.ytpic&quot;);
-function yt(image) {
+const ytpics = main.querySelectorAll("img.ytpic");
+function ldyt(event) {
+if (event.currentTarget.naturalWidth &lt; 121) {
+this.item.removeAttribute("srcset", "sizes"); this.item.src = this.item.dataset.src; }
+event.currentTarget.removeEventListener("load", this); }
+if (ytpics) {
+ytpics.forEach(ytpic =&gt; {
 const ytimg = new Image();
-ytimg.onload = () =&gt; {
-if (ytimg.naturalWidth &lt; 121) image.removeAttribute(&quot;srcset&quot;, &quot;sizes&quot;); image.src = image.dataset.src; }
-ytimg.src = image.src; }
-if (ytpics) ytpics.forEach(yt);
-</b:if>
+ytimg.addEventListener("load", {handleEvent: ldyt, item: ytpic});
+ytimg.src = ytpic.src; }); }
 /* Infinite scroll */
 const bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav.blog-pager&quot;), bthg = floating_bar.clientHeight, smwds = sub_main.querySelectorAll(&quot;div.widget&quot;);
 let npl = bpg.querySelector(&quot;a.older-link&quot;);
