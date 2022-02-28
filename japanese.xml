@@ -453,7 +453,8 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* 記事のヘッダー／フッター */
 .post-header-line {display:flex;gap:.5em;color:$(posts.byline.color)}
-.photo {width:calc(var(--body-lineheight) * 1em);height:calc(var(--body-lineheight) * 1em);border-radius:50%;margin-$endSide:.5em;vertical-align:top}
+.fn {display:flex;align-items:center;column-gap:.5em}
+.photo {border-radius:50%}
 .vcard>a, .published>.value-title, .post-footer, .pft-profile>span, .pf-last, .pf-last>.url, .post-location {color:$(posts.byline.color)}
 .post-footer {display:flex}
 .hentry .post-footer {flex-direction:column}
