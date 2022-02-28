@@ -1422,7 +1422,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
       <b:include data='post' name='postFooter'/>
 </b:includable>
     <b:includable id='postAuthor'>
-  <b:eval cond='data:byline.label' expr='data:byline.label'/><span class='author vcard'><b:if cond='data:post.author.profileUrl'><a class='url fn' expr:href='data:post.author.profileUrl' rel='author me nofollow' title='profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 24, &quot;1:1&quot;)' height='24' width='24'/><data:post.author.name/></a><b:else/><span class='fn'><data:post.author.name/></span></b:if></span>
+  <b:eval cond='data:byline.label' expr='data:byline.label'/><span class='author vcard'><b:if cond='data:post.author.profileUrl'><a class='url fn' expr:href='data:post.author.profileUrl' rel='author me nofollow' title='profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 24, &quot;1:1&quot;)' expr:srcset='resizeImage(data:post.author.authorPhoto.image, 24, &quot;1:1&quot;) + " 1x, " + resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;) + " 2x"' height='24' width='24'/><data:post.author.name/></a><b:else/><span class='fn'><data:post.author.name/></span></b:if></span>
 </b:includable>
     <b:includable id='postBody' var='post'>
   <!-- If metaDescription is empty, use the post body as the schema.org description too, for G+/FB snippeting. -->
