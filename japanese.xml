@@ -453,7 +453,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* 記事のヘッダー／フッター */
 .post-header-line {display:flex;gap:.5em;color:$(posts.byline.color)}
-.photo {padding:calc((var(--svgicon-height) - 24px) / 2);border-radius:50%;margin-$endSide:.5em;vertical-align:bottom}
+.photo {height:var(--svgicon-height);width:var(--svgicon-height);border-radius:50%;margin-$endSide:.5em;vertical-align:middle}
 .vcard>a, .published>.value-title, .post-footer, .pft-profile>span, .pf-last, .pf-last>.url, .post-location {color:$(posts.byline.color)}
 .post-footer {display:flex}
 .hentry .post-footer {flex-direction:column}
@@ -1448,7 +1448,7 @@ button</b:comment>
       <b:include data='post' name='postFooter'/>
 </b:includable>
     <b:includable id='postAuthor'>
-  <b:eval cond='data:byline.label' expr='data:byline.label'/><span class='author vcard'><b:if cond='data:post.author.profileUrl'><a class='url fn' expr:href='data:post.author.profileUrl' rel='author me nofollow' title='profile'><b:tag cond='data:post.author.authorPhoto' name='img' class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 24, &quot;1:1&quot;)' expr:srcset='resizeImage(data:post.author.authorPhoto.image, 24, &quot;1:1&quot;) + " 1x, " + resizeImage(data:post.author.authorPhoto.image, 48, &quot;1:1&quot;) + " 2x"' height='24' width='24'/><data:post.author.name/></a><b:else/><span class='fn'><data:post.author.name/></span></b:if></span>
+  <b:eval cond='data:byline.label' expr='data:byline.label'/><span class='author vcard'><b:if cond='data:post.author.profileUrl'><a class='url fn' expr:href='data:post.author.profileUrl' rel='author me nofollow' title='profile'><b:tag class='photo' cond='data:post.author.authorPhoto' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 26, &quot;1:1&quot;)' expr:srcset='resizeImage(data:post.author.authorPhoto.image, 24, &quot;1:1&quot;) + " 1x, " + resizeImage(data:post.author.authorPhoto.image, 52, &quot;1:1&quot;) + " 2x"' height='26' name='img' width='26'/><data:post.author.name/></a><b:else/><span class='fn'><data:post.author.name/></span></b:if></span>
 </b:includable>
     <b:includable id='postBody' var='post'>
   <!-- If metaDescription is empty, use the post body as the schema.org description too, for G+/FB snippeting. -->
