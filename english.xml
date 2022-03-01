@@ -324,7 +324,7 @@
 **************************************************/
 
 /* General settings */
-:root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6;--svgicon-height:calc($(body.text.font.size) * var(--body-lineheight))}
+:root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6;--svgicon-height:calc($(body.text.font.size) * var(--body-lineheight));--image-verticalalign:calc(((var(--body-lineheight) - 1) / 2 + 0.12) / var(--body-lineheight) * -100%)}
 html {scroll-behavior:smooth}
 body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:anywhere;background-color:$(body.background.color);color:$(body.text.base.color);font:$(body.text.font);line-height:var(--body-lineheight)}
 a {text-decoration:none;color:$(body.link.base.color)}
@@ -394,7 +394,7 @@ html[dir="rtl"] #shbtn {transform:scale(-1, 1)}
 .post-icons .svg-icon-24 {fill:$(posts.icons.color)}
 .svg-icon-back {stroke-width:2px;stroke:$(sticky.icons.color);fill:transparent}
 .avatarIcon {width:2.25em;height:2.25em;fill:$(posts.icons.color);border:solid 1px $(posts.icons.color);border-radius:50%;padding:5.5px;box-sizing:border-box}
-.blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical-align:middle}
+.blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical-align:var(---image-verticalalign)}
 
 /* Back button / Comment button / Loading */
 #back_button, #comment_button, #add_button {position:fixed;bottom:calc(var(--maincolumn-padding) / 2);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);z-index:5}
@@ -453,7 +453,7 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 
 /* Post header / footer */
 .post-header-line {display:flex;gap:.5em;color:$(posts.byline.color)}
-.photo {height:var(--svgicon-height);width:var(--svgicon-height);border-radius:50%;margin-$endSide:.5em;vertical-align:middle}
+.photo {height:var(--svgicon-height);width:var(--svgicon-height);border-radius:50%;margin-$endSide:.5em;vertical-align:var(---image-verticalalign)}
 .vcard>a, .published>.value-title, .post-footer, .pft-profile>span, .pf-last, .pf-last>.url, .post-location {color:$(posts.byline.color)}
 .post-footer {display:flex}
 .hentry .post-footer {flex-direction:column}
