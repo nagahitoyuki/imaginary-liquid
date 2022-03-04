@@ -1995,7 +1995,7 @@ window.addEventListener("blur", () =&gt; {
 if (commentForm === document.activeElement) back_button.classList.add("invisible"); });
 window.addEventListener("focus", () =&gt; {
 if (commentForm !== document.activeElement) back_button.classList.remove("invisible"); });</b:if>
-commentFormObserver.disconnect(); }}</b:if>
+subContentObserver.unobserve(comments); }}</b:if>
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 if (entry.target.id === "sidebar_wrapper") {
 if (entry.isIntersecting) {
@@ -2007,50 +2007,50 @@ rootMargin: "240px"});
 floatButtonObserver.observe(header);
 <b:if cond='data:view.isMultipleItems'>
 /* Infinite scroll */
-const bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav.blog-pager&quot;), bthg = floating_bar.clientHeight, smwds = sub_main.querySelectorAll(&quot;div.widget&quot;);
-let npl = bpg.querySelector(&quot;a.older-link&quot;);
-if (bpct.clientHeight === 0) bpct.style.marginTop = &quot;0&quot;;
+const bpct = Blog1.querySelector("div.hfeed"), bpg = Blog1.querySelector("nav.blog-pager"), bthg = floating_bar.clientHeight, smwds = sub_main.querySelectorAll("div.widget");
+let npl = bpg.querySelector("a.older-link");
+if (bpct.clientHeight === 0) bpct.style.marginTop = "0";
 function scrollStop(event) {
 event.preventDefault(); }
 function psad(item) {
-const nbat = document.adoptNode(item), pssm = nbat.querySelector(&quot;p.summary&quot;);
-if (pssm.querySelector(&quot;script&quot;)) {
-const pssc = pssm.querySelector(&quot;script&quot;).textContent;
-pssm.insertAdjacentHTML(&quot;afterbegin&quot;, /`([^]+)`/.exec(pssc)[1].replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;)); }
+const nbat = document.adoptNode(item), pssm = nbat.querySelector("p.summary");
+if (pssm.querySelector("script")) {
+const pssc = pssm.querySelector("script").textContent;
+pssm.insertAdjacentHTML("afterbegin", /`([^]+)`/.exec(pssc)[1].replace(/(&lt;([^&gt;]+)&gt;)/g, '')); }
 return nbat; }
 function rmmg(state) {
-if (sub_main.style.marginTop) sub_main.style.marginTop = &quot;&quot;;
-if (bdis.style.marginBottom) bdis.style.marginBottom = &quot;&quot;
-if (state !== &#39;end&#39;) sub_main.style.marginTop = bthg + &quot;px&quot;;
-if (state !== &#39;pass&#39;) nextIndexObserver.disconnect(); }
+if (sub_main.style.marginTop) sub_main.style.marginTop = "";
+if (bdis.style.marginBottom) bdis.style.marginBottom = ""
+if (state !== 'end') sub_main.style.marginTop = bthg + "px";
+if (state !== 'pass') nextIndexObserver.disconnect(); }
 function isac(state, scroll) {
 switch (state) {
-case 0: sub_main.style.marginTop = scroll + bthg + &quot;px&quot;; bdis.style.marginBottom = bthg + &quot;px&quot;; break;
-case 1: sub_main.style.marginTop = bthg + &quot;px&quot;; break;
+case 0: sub_main.style.marginTop = scroll + bthg + "px"; bdis.style.marginBottom = bthg + "px"; break;
+case 1: sub_main.style.marginTop = bthg + "px"; break;
 case 2: if (sub_main.style.marginTop) {
-sub_main.style.marginTop = &quot;&quot;; }
+sub_main.style.marginTop = ""; }
 if (!bdis.style.marginBottom) {
-bdis.style.marginBottom = bthg + &quot;px&quot;; }
-default: if (scroll !== &#39;on&#39;) return; }
+bdis.style.marginBottom = bthg + "px"; }
+default: if (scroll !== 'on') return; }
 new Promise ((resolve, reject) =&gt; {
-if (add_button.classList.contains(&quot;hidden&quot;)) {
-add_button.classList.remove(&quot;hidden&quot;); document.addEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.addEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;true&quot;; resolve(); } else {
-reject(&#39;Too fast&#39;); }}).then(async () =&gt; {
+if (add_button.classList.contains("hidden")) {
+add_button.classList.remove("hidden"); document.addEventListener("mousewheel", scrollStop, {passive: false}); document.addEventListener("touchmove", scrollStop, {passive: false}); bpct.ariaBusy = "true"; resolve(); } else {
+reject('Too fast'); }}).then(async () =&gt; {
 const response = await fetch(npl.href);
-if (!response.ok) throw &quot;Connection failed&quot;;
-const text = await response.text(), file = new DOMParser().parseFromString(text, &quot;text/html&quot;), bats = file.querySelectorAll(&quot;article.post&quot;);
-npl = file.querySelector(&quot;a.older-link&quot;);
+if (!response.ok) throw "Connection failed";
+const text = await response.text(), file = new DOMParser().parseFromString(text, "text/html"), bats = file.querySelectorAll("article.post");
+npl = file.querySelector("a.older-link");
 if (npl) {
 npl.parentNode.remove(); } else {
 if (sbct.classList.contains("slider")) sidebar_wrapper.style.display = "block";
-bats[bats.length - 1].lastElementChild.remove(); }
+bats[bats.length - 1].lastElementChild.remove();}
 Promise.all([...bats].map(bat =&gt; psad(bat))).then(results =&gt; results.forEach(result =&gt; bpct.appendChild(result))); }).catch(error =&gt; {
 switch (error) {
-case &#39;Too fast&#39;: rmmg(&#39;pass&#39;); throw &#39;&#39;;
-case &#39;Connection failed&#39;: bpct.after(bpg); rmmg(&#39;stop&#39;);
-default: bpct.after(bpg); rmmg(&#39;others&#39;); }}).then(() =&gt; {
-document.removeEventListener(&quot;mousewheel&quot;, scrollStop, {passive: false}); document.removeEventListener(&quot;touchmove&quot;, scrollStop, {passive: false}); bpct.ariaBusy = &quot;false&quot;; add_button.classList.add(&quot;hidden&quot;); });
-if (Blog1.querySelector(&quot;nav.blog-pager&quot;)) bpg.remove(); }
+case 'Too fast': rmmg('pass'); throw '';
+case 'Connection failed': bpct.after(bpg); rmmg('stop');
+default: bpct.after(bpg); rmmg('others'); }}).then(() =&gt; {
+document.removeEventListener("mousewheel", scrollStop, {passive: false}); document.removeEventListener("touchmove", scrollStop, {passive: false}); bpct.ariaBusy = "false"; add_button.classList.add("hidden"); });
+if (Blog1.querySelector("nav.blog-pager")) bpg.remove(); }
 const nextIndexObserver = new IntersectionObserver((entries, observer) =&gt; {
 entries.forEach(entry =&gt; {
 if (npl) {
@@ -2062,11 +2062,11 @@ isac(0, iolm); } else if (parseInt(sub_main.style.marginTop) &gt;= bthg) {
 isac(1, 0); } else {
 isac(2, 0); }
 return; } else if (sgtm &gt; 0) {
-isac(2, &#39;on&#39;); }
+isac(2, 'on'); }
 return; }
-if (smwds) smwds.forEach(smwd =&gt; smwd.style.display = &quot;block&quot;);
-attribution.style.display = &quot;block&quot;; rmmg(&#39;end&#39;); }); }, {
-rootMargin: bthg + &quot;px&quot;});
+if (smwds) smwds.forEach(smwd =&gt; smwd.style.display = "block");
+attribution.style.display = "block"; rmmg('end'); }); }, {
+rootMargin: bthg + "px"});
 nextIndexObserver.observe(sub_main);
 <b:else/>
 /* Comment */
@@ -2081,61 +2081,61 @@ const commentForm = comments.querySelector("iframe.blogger-iframe-colorize");
 if (commentForm) subContentObserver.observe(comments);
 </b:if>
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
-const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
-if (getComputedStyle(sidebar_wrapper).position === &quot;sticky&quot;) {
+const sbct = bdis.querySelector("aside.sidebar-container");
+if (getComputedStyle(sidebar_wrapper).position === "sticky") {
 /* Sidebar for desktop */
-if (main.clientHeight + sub_main.clientHeight &gt; sidebar_wrapper.clientHeight &amp;&amp; sidebar_wrapper.clientHeight &gt; window.innerHeight) sidebar_wrapper.classList.add(&quot;stickybottom&quot;); else sidebar_wrapper.classList.add(&quot;stickytop&quot;); } else {
+if (main.clientHeight + sub_main.clientHeight &gt; sidebar_wrapper.clientHeight &amp;&amp; sidebar_wrapper.clientHeight &gt; window.innerHeight) sidebar_wrapper.classList.add("stickybottom"); else sidebar_wrapper.classList.add("stickytop"); } else {
 /* Sidebar for mobile */
 subContentObserver.observe(sidebar_wrapper);
 /* Hamburger menu */
-const bcsd = document.createElement(&quot;div&quot;);
-bcsd.classList.add(&quot;dim-overlay&quot;);
+const bcsd = document.createElement("div");
+bcsd.classList.add("dim-overlay");
 function hbmb() {
 if (sbct.classList.contains("slider")) {
-sbct.classList.remove(&quot;slideout&quot;); bcsd.classList.remove(&quot;fadeout&quot;); bcsd.classList.add(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
-sbct.classList.add(&quot;slidein&quot;); bdis.appendChild(bcsd); }); sbct.ariaHidden = &quot;false&quot;; sbct.classList.remove(&quot;sidebar-invisible&quot;); bdis.classList.add(&quot;sidebar-visible&quot;); } else {
+sbct.classList.remove("slideout"); bcsd.classList.remove("fadeout"); bcsd.classList.add("fadein"); requestAnimationFrame(() =&gt; {
+sbct.classList.add("slidein"); bdis.appendChild(bcsd); }); sbct.ariaHidden = "false"; sbct.classList.remove("sidebar-invisible"); bdis.classList.add("sidebar-visible"); } else {
 window.location.href = "#attribution"; }}
-hamburger_menu.addEventListener(&quot;click&quot;, hbmb);
+hamburger_menu.addEventListener("click", hbmb);
 /* Close button */
 function clsb() {
-sbct.classList.remove(&quot;slidein&quot;); bcsd.classList.remove(&quot;fadein&quot;); requestAnimationFrame(() =&gt; {
-sbct.classList.add(&quot;slideout&quot;); bcsd.classList.add(&quot;fadeout&quot;); }); sbct.ariaHidden = &quot;true&quot;; bdis.classList.remove(&quot;sidebar-visible&quot;); }
-close_button.addEventListener(&quot;click&quot;, clsb);
-bcsd.addEventListener(&quot;click&quot;, clsb);
-sbct.addEventListener(&quot;transitionend&quot;, () =&gt; {
-if (sbct.classList.contains(&quot;slideout&quot;)) sbct.classList.add(&quot;sidebar-invisible&quot;); });
-bcsd.addEventListener(&quot;animationend&quot;, () =&gt; {
-if (bcsd.classList.contains(&quot;fadeout&quot;)) bdis.removeChild(bcsd); });
+sbct.classList.remove("slidein"); bcsd.classList.remove("fadein"); requestAnimationFrame(() =&gt; {
+sbct.classList.add("slideout"); bcsd.classList.add("fadeout"); }); sbct.ariaHidden = "true"; bdis.classList.remove("sidebar-visible"); }
+close_button.addEventListener("click", clsb);
+bcsd.addEventListener("click", clsb);
+sbct.addEventListener("transitionend", () =&gt; {
+if (sbct.classList.contains("slideout")) sbct.classList.add("sidebar-invisible"); });
+bcsd.addEventListener("animationend", () =&gt; {
+if (bcsd.classList.contains("fadeout")) bdis.removeChild(bcsd); });
 /* Search button */
-<b:if cond='data:widgets.BlogSearch.first.id == &quot;BlogSearch1&quot;'>
-const scsp = search_top.querySelector(&quot;input.search-space&quot;), shrb = main.querySelector(&quot;div.share-buttons&quot;);
-swc.ariaHidden = &quot;true&quot;; search_expand.addEventListener(&quot;click&quot;, () =&gt; {
-if (getComputedStyle(search_top).display === &quot;none&quot;) {
-search_top.style.display = &quot;inline&quot;; floating_share.style.display = &quot;none&quot;; swc.ariaHidden = &quot;false&quot;; scsp.focus(); return; }
-search_top.style.display = &quot;none&quot;; floating_share.style.display = &quot;flex&quot;; swc.ariaHidden = &quot;true&quot;; });
+<b:if cond='data:widgets.BlogSearch.first.id == "BlogSearch1"'>
+const scsp = search_top.querySelector("input.search-space"), shrb = main.querySelector("div.share-buttons");
+swc.ariaHidden = "true"; search_expand.addEventListener("click", () =&gt; {
+if (getComputedStyle(search_top).display === "none") {
+search_top.style.display = "inline"; floating_share.style.display = "none"; swc.ariaHidden = "false"; scsp.focus(); return; }
+search_top.style.display = "none"; floating_share.style.display = "flex"; swc.ariaHidden = "true"; });
 </b:if>}
 /* Share menu */
-shbtn.addEventListener(&quot;click&quot;, () =&gt; {
-if (getComputedStyle(sis).display === &quot;none&quot;) {
-sis.style.display = &quot;flex&quot;;} else {
-sis.style.display = &quot;none&quot;; }});
-fbbtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>&quot;);
-twbtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=&quot; + encodeURIComponent(&#39;<data:view.title.jsEscaped/>&#39;));
-prbtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;https://pinterest.com/pin/create/button/?url=<data:blog.url.canonical/>&quot;);
-hbbtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;https://b.hatena.ne.jp/entry/<data:blog.url.canonical/>&quot;);
-cbcp.addEventListener(&quot;click&quot;, () =&gt; window.navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; alert(&quot;リンクをクリップボードにコピーしました\u3002&quot;)));
+shbtn.addEventListener("click", () =&gt; {
+if (getComputedStyle(sis).display === "none") {
+sis.style.display = "flex";} else {
+sis.style.display = "none"; }});
+fbbtn.addEventListener("click", () =&gt; window.location.href = "https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>");
+twbtn.addEventListener("click", () =&gt; window.location.href = "https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=" + encodeURIComponent('<data:view.title.jsEscaped/>'));
+prbtn.addEventListener("click", () =&gt; window.location.href = "https://pinterest.com/pin/create/button/?url=<data:blog.url.canonical/>");
+hbbtn.addEventListener("click", () =&gt; window.location.href = "https://b.hatena.ne.jp/entry/<data:blog.url.canonical/>");
+cbcp.addEventListener("click", () =&gt; window.navigator.clipboard.writeText("<data:blog.url.canonical/>").then(() =&gt; alert("リンクをクリップボードにコピーしました\u3002")));
 <b:else/>
 /* Feed button */
-febtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;<b:eval expr='data:view.isHomepage.canonical + &quot;feeds/posts/default?alt=rss&quot;'/>&quot;);
+febtn.addEventListener("click", () =&gt; window.location.href = "<b:eval expr='data:view.isHomepage.canonical + "feeds/posts/default?alt=rss"'/>");
 </b:if>
 /* Expand button */
-const rits = bdis.querySelectorAll(&quot;div.remaining-items&quot;);
+const rits = bdis.querySelectorAll("div.remaining-items");
 if (rits) {
 rits.forEach(rit =&gt; {
-const rith = rit.clientHeight; rit.style.height = &quot;0&quot;;
-rit.nextElementSibling.addEventListener(&quot;click&quot;, event =&gt; {
-event.target.classList.add(&quot;hidden&quot;); rit.style.height = rith + &quot;px&quot;; event.target.nextElementSibling.classList.remove(&quot;hidden&quot;); }); rit.nextElementSibling.nextElementSibling.addEventListener(&quot;click&quot;, event =&gt; {
-event.target.classList.add(&quot;hidden&quot;); rit.style.height = &quot;0&quot;; event.target.previousElementSibling.classList.remove(&quot;hidden&quot;); }); }); }
+const rith = rit.clientHeight; rit.style.height = "0";
+rit.nextElementSibling.addEventListener("click", event =&gt; {
+event.target.classList.add("hidden"); rit.style.height = rith + "px"; event.target.nextElementSibling.classList.remove("hidden"); }); rit.nextElementSibling.nextElementSibling.addEventListener("click", event =&gt; {
+event.target.classList.add("hidden"); rit.style.height = "0"; event.target.previousElementSibling.classList.remove("hidden"); }); }); }
 /* Contact form */
 <b:if cond='data:blog.isMobileRequest and data:widgets.ContactForm.first'>
 const fcpts = <b:eval expr='data:widgets.ContactForm.length == 1 ? "ContactForm1" : "bdis"'/>.querySelectorAll("input.contact-form-name, input.contact-form-email, textarea.contact-form-email-message");
