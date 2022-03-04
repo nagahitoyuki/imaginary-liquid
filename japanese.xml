@@ -2012,12 +2012,6 @@ let npl = bpg.querySelector("a.older-link");
 if (bpct.clientHeight === 0) bpct.style.marginTop = "0";
 function scrollStop(event) {
 event.preventDefault(); }
-function psad(item) {
-const nbat = document.adoptNode(item), pssm = nbat.querySelector("p.summary");
-if (pssm.querySelector("script")) {
-const pssc = pssm.querySelector("script").textContent;
-pssm.insertAdjacentHTML("afterbegin", /`([^]+)`/.exec(pssc)[1].replace(/(&lt;([^&gt;]+)&gt;)/g, '')); }
-return nbat; }
 function rmmg(state) {
 if (sub_main.style.marginTop) sub_main.style.marginTop = "";
 if (bdis.style.marginBottom) bdis.style.marginBottom = ""
@@ -2044,7 +2038,10 @@ if (npl) {
 npl.parentNode.remove(); } else {
 if (sbct.classList.contains("slider")) sidebar_wrapper.style.display = "block";
 bats[bats.length - 1].lastElementChild.remove();}
-Promise.all([...bats].map(bat =&gt; psad(bat))).then(results =&gt; results.forEach(result =&gt; bpct.appendChild(result))); }).catch(error =&gt; {
+Promise.all([...bats].map(bat =&gt; {
+const nbat = document.adoptNode(bat), pssc = nbat.querySelector("p.summary>script");
+if (pssc) pssc.parentElement.insertAdjacentHTML("afterbegin", /`([^]+)`/.exec(pssc.textContent)[1].replace(/(&lt;([^&gt;]+)&gt;)/g, ''));
+return nbat; })).then(results =&gt; results.forEach(result =&gt; bpct.appendChild(result))); }).catch(error =&gt; {
 switch (error) {
 case 'Too fast': rmmg('pass'); throw '';
 case 'Connection failed': bpct.after(bpg); rmmg('stop');
