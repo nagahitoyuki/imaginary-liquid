@@ -1138,10 +1138,11 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
-    <b:tag class='ft-snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 480, &quot;3:2&quot;) + &quot;-rw-e100 480w, &quot; + resizeImage(data:imgurl, 768, &quot;3:2&quot;) + &quot;-rw-e100 768w, &quot; + resizeImage(data:imgurl, 1024, &quot;3:2&quot;) + &quot;-rw-e100 1024w&quot; : sourceSet(data:imgurl, [480,768,1024], &quot;3:2&quot;)' height='320' name='img' sizes='(max-width:960px) 100vw, 1024px' width='480'>
+    <b:tag class='ft-snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl.isYoutube ? "" : data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 480, &quot;3:2&quot;) + &quot;-rw-e100 480w, &quot; + resizeImage(data:imgurl, 768, &quot;3:2&quot;) + &quot;-rw-e100 768w, &quot; + resizeImage(data:imgurl, 1024, &quot;3:2&quot;) + &quot;-rw-e100 1024w&quot; : sourceSet(data:imgurl, [480,768,1024], &quot;3:2&quot;)' height='320' name='img' sizes='(max-width:960px) 100vw, 1024px' width='480'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
-    <b:attr expr:value='data:post.featuredImage + &quot;=w480-h320-n-k-no-nu-rw-e100&quot;' name='data-src'/>
+    <b:attr expr:value='resizeImage(data:imgurl, 480, "3:2") + "-rw-e100 480w, " + resizeImage(data:imgurl, 768, "3:2") + "-rw-e100 768w, " + resizeImage(data:imgurl, 1024, "3:2") + "-rw-e100 1024w"' name='data-hdss'/>   
+    <b:attr expr:value='"this.srcset = this.naturalWidth &lt; 121 ? \"" + data:post.featuredImage + "=w480-h320-n-k-no-nu-rw-e100\" : this.dataset.hdss;this.removeAttribute(\"onload\");"' name='onload'/>
     <b:class name='ytpic'/>
     </b:if>
     </b:tag>
@@ -1434,10 +1435,11 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   <a class='total-snippet' expr:href='data:post.url'>
   <b:if cond='data:post.featuredImage'>
   <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
-    <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 180, &quot;1:1&quot;) + &quot;-rw-e100 180, &quot; + resizeImage(data:imgurl, 360, &quot;1:1&quot;) + &quot;-rw-e100 360w, &quot; : sourceSet(data:imgurl, [180, 360], &quot;1:1&quot;)' height='180' name='img' sizes='(max-width:960px) 30vw, 360px' width='180'>
+    <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl' expr:srcset='data:imgurl.isYoutube ? "" : data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 180, &quot;1:1&quot;) + &quot;-rw-e100 180w, &quot; + resizeImage(data:imgurl, 360, &quot;1:1&quot;) + &quot;-rw-e100 360w&quot; : sourceSet(data:imgurl, [180, 360], &quot;1:1&quot;)' height='180' name='img' sizes='(max-width:960px) 30vw, 360px' width='180'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
-    <b:attr expr:value='data:post.featuredImage + &quot;=w320-h320-n-k-no-nu-rw-e100&quot;' name='data-src'/>
+    <b:attr expr:value='resizeImage(data:imgurl, 180, "1:1") + "-rw-e100 180w, " + resizeImage(data:imgurl, 360, "1:1") + "-rw-e100 360w"' name='data-hdss'/>   
+    <b:attr expr:value='"this.srcset = this.naturalWidth &lt; 121 ? \"" + data:post.featuredImage + "=w320-h320-n-k-no-nu-rw-e100\" : this.dataset.hdss;this.removeAttribute(\"onload\");"' name='onload'/>
     <b:class name='ytpic'/>
     </b:if>
     <b:if cond='data:widgets.FeaturedPost.any and data:i &gt; 0 or !data:widgets.FeaturedPost.any and data:i &gt; 1'>
@@ -1953,20 +1955,31 @@ if (button.classList.contains("fadeout")) button.classList.add("hidden"); }); }
 return; }
 if (entry.rootBounds.bottom &gt; entry.boundingClientRect.bottom) {
 button.classList.remove("fadeout"); button.classList.add("fadein"); requestAnimationFrame(() =&gt; button.classList.remove("hidden")); }}); });
+/* Sub content observer */
+const subContentObserver = new IntersectionObserver(entries =&gt; {
+entries.forEach(entry =&gt; {
+<b:if cond='data:view.isSingleItem'>
+if (entry.target.id === "comments") {
+if (entry.isIntersecting) {
+const ifc = document.createElement("script");
+ifc.insertAdjacentHTML("afterbegin", "BLOG_CMT_createIframe('https://www.blogger.com/rpc_relay.html');");
+commentForm.parentNode.appendChild(ifc);
+<b:if cond='data:blog.isMobileRequest'>
+window.addEventListener("blur", () =&gt; {
+if (commentForm === document.activeElement) back_button.classList.add("invisible"); });
+window.addEventListener("focus", () =&gt; {
+if (commentForm !== document.activeElement) back_button.classList.remove("invisible"); });</b:if>
+commentFormObserver.disconnect(); }}</b:if>
+<b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
+if (entry.target.id === "sidebar_wrapper") {
+if (entry.isIntersecting) {
+if (sbct.classList.contains("slider")) {
+sbct.classList.remove("slider"); sbct.classList.remove("sidebar-invisible"); hamburger_menu.style.transform = "rotateZ(90deg)"; sbct.ariaHidden = "false"; }} else if (entry.rootBounds.bottom &lt; entry.boundingClientRect.bottom || entry.boundingClientRect.bottom === 0) {
+sbct.classList.add("slider"); sbct.classList.add("sidebar-invisible"); hamburger_menu.style.transform = "rotateZ(0)"; sbct.ariaHidden = "true"; }}</b:if>}); }, {
+rootMargin: "240px"});
 /* Back button */
 floatButtonObserver.observe(header);
 <b:if cond='data:view.isMultipleItems'>
-/* YouTube image */
-const ytpics = main.querySelectorAll("img.ytpic");
-function yt(image) {
-const ytimg = new Image();
-ytimg.addEventListener("load", {handleEvent: ldyt, item: image});
-ytimg.src = image.src; }
-function ldyt(event) {
-if (event.currentTarget.naturalWidth &lt; 121) {
-this.item.removeAttribute("srcset", "sizes"); this.item.src = this.item.dataset.src; }
-event.currentTarget.removeEventListener("load", this); }
-if (ytpics) ytpics.forEach(yt);
 /* Infinite scroll */
 const bpct = Blog1.querySelector(&quot;div.hfeed&quot;), bpg = Blog1.querySelector(&quot;nav.blog-pager&quot;), bthg = floating_bar.clientHeight, smwds = sub_main.querySelectorAll(&quot;div.widget&quot;);
 let npl = bpg.querySelector(&quot;a.older-link&quot;);
@@ -1974,8 +1987,7 @@ if (bpct.clientHeight === 0) bpct.style.marginTop = &quot;0&quot;;
 function scrollStop(event) {
 event.preventDefault(); }
 function psad(item) {
-const nbat = document.adoptNode(item), nppic = nbat.querySelector(&quot;img.ytpic&quot;), pssm = nbat.querySelector(&quot;p.summary&quot;);
-if (nppic) yt(nppic);
+const nbat = document.adoptNode(item), pssm = nbat.querySelector(&quot;p.summary&quot;);
 if (pssm.querySelector(&quot;script&quot;)) {
 const pssc = pssm.querySelector(&quot;script&quot;).textContent;
 pssm.insertAdjacentHTML(&quot;afterbegin&quot;, /`([^]+)`/.exec(pssc)[1].replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;)); }
@@ -2040,21 +2052,7 @@ avic.insertAdjacentHTML("afterbegin", "<svg aria-label='Avatar' class='avatarIco
 floatButtonObserver.observe(Blog1.querySelector("article.hentry")); }
 /* Comment form */
 const commentForm = comments.querySelector("iframe.blogger-iframe-colorize");
-const commentFormObserver = new IntersectionObserver((entries, observer) =&gt; {
-entries.forEach(entry =&gt; {
-if (entry.isIntersecting) {
-const ifc = document.createElement("script");
-ifc.insertAdjacentHTML("afterbegin", "BLOG_CMT_createIframe('https://www.blogger.com/rpc_relay.html');");
-commentForm.parentNode.appendChild(ifc);
-<b:if cond='data:blog.isMobileRequest'>
-window.addEventListener("blur", () =&gt; {
-if (commentForm === document.activeElement) back_button.classList.add("invisible"); });
-window.addEventListener("focus", () =&gt; {
-if (commentForm !== document.activeElement) back_button.classList.remove("invisible"); });
-</b:if>
-commentFormObserver.disconnect(); }}); }, {
-rootMargin: "240px"});
-if (commentForm) commentFormObserver.observe(comments);
+if (commentForm) subContentObserver.observe(comments);
 </b:if>
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 const sbct = bdis.querySelector(&quot;aside.sidebar-container&quot;);
@@ -2062,14 +2060,7 @@ if (getComputedStyle(sidebar_wrapper).position === &quot;sticky&quot;) {
 /* Sidebar for desktop */
 if (main.clientHeight + sub_main.clientHeight &gt; sidebar_wrapper.clientHeight &amp;&amp; sidebar_wrapper.clientHeight &gt; window.innerHeight) sidebar_wrapper.classList.add(&quot;stickybottom&quot;); else sidebar_wrapper.classList.add(&quot;stickytop&quot;); } else {
 /* Sidebar for mobile */
-const bottomSidebarObserver = new IntersectionObserver((entries, observer) =&gt; {
-entries.forEach(entry =&gt; {
-if (entry.isIntersecting) {
-if (sbct.classList.contains(&quot;slider&quot;)) {
-sbct.classList.remove(&quot;slider&quot;); sbct.classList.remove(&quot;sidebar-invisible&quot;); hamburger_menu.style.transform = &quot;rotateZ(90deg)&quot;; sbct.ariaHidden = &quot;false&quot;; }} else if (entry.rootBounds.bottom &lt; entry.boundingClientRect.bottom || entry.boundingClientRect.bottom === 0) {
-sbct.classList.add(&quot;slider&quot;); sbct.classList.add(&quot;sidebar-invisible&quot;); hamburger_menu.style.transform = &quot;rotateZ(0)&quot;; sbct.ariaHidden = &quot;true&quot;; }}); }, {
-rootMargin: &quot;240px&quot;});
-bottomSidebarObserver.observe(sidebar_wrapper);
+subContentObserver.observe(sidebar_wrapper);
 /* Hamburger menu */
 const bcsd = document.createElement(&quot;div&quot;);
 bcsd.classList.add(&quot;dim-overlay&quot;);
@@ -2106,7 +2097,7 @@ fbbtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;
 twbtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=&quot; + encodeURIComponent(&#39;<data:view.title.jsEscaped/>&#39;));
 prbtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;https://pinterest.com/pin/create/button/?url=<data:blog.url.canonical/>&quot;);
 rdbtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;https://www.reddit.com/submit?url=<data:blog.url.canonical/>&amp;title=&quot; + encodeURIComponent(&#39;<data:view.title.jsEscaped/>&#39;));
-cbcp.addEventListener(&quot;click&quot;, () =&gt; window.navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; alert (&quot;<data:messages.linkCopiedToClipboard/>&quot;)));
+cbcp.addEventListener(&quot;click&quot;, () =&gt; window.navigator.clipboard.writeText(&quot;<data:blog.url.canonical/>&quot;).then(() =&gt; alert(&quot;<data:messages.linkCopiedToClipboard/>&quot;)));
 <b:else/>
 /* Feed button */
 febtn.addEventListener(&quot;click&quot;, () =&gt; window.location.href = &quot;<b:eval expr='data:view.isHomepage.canonical + &quot;feeds/posts/default?alt=rss&quot;'/>&quot;);
