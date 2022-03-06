@@ -1979,6 +1979,75 @@ sbct.classList.add("slider"); sbct.classList.add("sidebar-invisible"); hamburger
 rootMargin: "240px"});
 /* Back button */
 floatButtonObserver.observe(header);
+<b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
+const sbct = bdis.querySelector("aside.sidebar-container");
+if (getComputedStyle(sidebar_wrapper).position === "sticky") {
+/* Sidebar for desktop */
+if (main.clientHeight + sub_main.clientHeight &gt; sidebar_wrapper.clientHeight &amp;&amp; sidebar_wrapper.clientHeight &gt; window.innerHeight) sidebar_wrapper.classList.add("stickybottom"); else sidebar_wrapper.classList.add("stickytop"); } else {
+/* Sidebar for mobile */
+subContentObserver.observe(sidebar_wrapper);
+/* Hamburger menu */
+const bcsd = document.createElement("div");
+bcsd.classList.add("dim-overlay");
+function hbmb() {
+if (sbct.classList.contains("slider")) {
+sbct.classList.remove("slideout"); bcsd.classList.remove("fadeout"); bcsd.classList.add("fadein"); requestAnimationFrame(() =&gt; {
+sbct.classList.add("slidein"); bdis.appendChild(bcsd); }); sbct.ariaHidden = "false"; sbct.classList.remove("sidebar-invisible"); bdis.classList.add("sidebar-visible"); } else {
+window.location.href = "#attribution"; }}
+hamburger_menu.addEventListener("click", hbmb);
+/* Close button */
+function clsb() {
+sbct.classList.remove("slidein"); bcsd.classList.remove("fadein"); requestAnimationFrame(() =&gt; {
+sbct.classList.add("slideout"); bcsd.classList.add("fadeout"); }); sbct.ariaHidden = "true"; bdis.classList.remove("sidebar-visible"); }
+close_button.addEventListener("click", clsb);
+bcsd.addEventListener("click", clsb);
+sbct.addEventListener("transitionend", () =&gt; {
+if (sbct.classList.contains("slideout")) sbct.classList.add("sidebar-invisible"); });
+bcsd.addEventListener("animationend", () =&gt; {
+if (bcsd.classList.contains("fadeout")) bdis.removeChild(bcsd); });
+/* Search button */
+<b:if cond='data:widgets.BlogSearch.first.id == "BlogSearch1"'>
+const scsp = search_top.querySelector("input.search-space"), shrb = main.querySelector("div.share-buttons");
+swc.ariaHidden = "true"; search_expand.addEventListener("click", () =&gt; {
+if (getComputedStyle(search_top).display === "none") {
+search_top.style.display = "inline"; floating_share.style.display = "none"; swc.ariaHidden = "false"; scsp.focus(); return; }
+search_top.style.display = "none"; floating_share.style.display = "flex"; swc.ariaHidden = "true"; });
+</b:if>}
+/* Share menu */
+shbtn.addEventListener("click", () =&gt; {
+if (getComputedStyle(sis).display === "none") {
+sis.style.display = "flex";} else {
+sis.style.display = "none"; }});
+fbbtn.addEventListener("click", () =&gt; window.location.href = "https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>");
+twbtn.addEventListener("click", () =&gt; window.location.href = "https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=" + encodeURIComponent('<data:view.title.jsEscaped/>'));
+prbtn.addEventListener("click", () =&gt; window.location.href = "https://pinterest.com/pin/create/button/?url=<data:blog.url.canonical/>");
+rdbtn.addEventListener("click", () =&gt; window.location.href = "https://www.reddit.com/submit?url=<data:blog.url.canonical/>&amp;title=" + encodeURIComponent('<data:view.title.jsEscaped/>'));
+cbcp.addEventListener("click", () =&gt; window.navigator.clipboard.writeText("<data:blog.url.canonical/>").then(() =&gt; alert("<data:messages.linkCopiedToClipboard/>")));
+<b:else/>
+/* Feed button */
+febtn.addEventListener("click", () =&gt; window.location.href = "<b:eval expr='data:view.isHomepage.canonical + "feeds/posts/default?alt=rss"'/>");
+</b:if>
+/* Expand button */
+const rits = bdis.querySelectorAll("div.remaining-items");
+if (rits) {
+rits.forEach(rit =&gt; {
+const rith = rit.clientHeight; rit.style.height = "0";
+rit.nextElementSibling.addEventListener("click", event =&gt; {
+event.target.classList.add("hidden"); rit.style.height = rith + "px"; event.target.nextElementSibling.classList.remove("hidden"); }); rit.nextElementSibling.nextElementSibling.addEventListener("click", event =&gt; {
+event.target.classList.add("hidden"); rit.style.height = "0"; event.target.previousElementSibling.classList.remove("hidden"); }); }); }
+/* Contact form */
+<b:if cond='data:blog.isMobileRequest and data:widgets.ContactForm.first'>
+const fcpts = <b:eval expr='data:widgets.ContactForm.length == 1 ? "ContactForm1" : "bdis"'/>.querySelectorAll("input.contact-form-name, input.contact-form-email, textarea.contact-form-email-message");
+fcpts.forEach(fcpt =&gt; {
+fcpt.addEventListener("focus", () =&gt; {
+if (!sbct.classList.contains("slider")) {
+if (comment_button) comment_button.classList.add("invisible");
+back_button.classList.add("invisible"); }});
+fcpt.addEventListener("blur", () =&gt; {
+if (!sbct.classList.contains("slider")) {
+if (comment_button) comment_button.classList.remove("invisible");
+back_button.classList.remove("invisible"); }}); });
+</b:if>
 <b:if cond='data:view.isMultipleItems'>
 /* Infinite scroll */
 const bpct = Blog1.querySelector("div.hfeed"), bpg = Blog1.querySelector("nav.blog-pager"), bthg = floating_bar.clientHeight, smwds = sub_main.querySelectorAll("div.widget");
@@ -2050,75 +2119,6 @@ floatButtonObserver.observe(Blog1.querySelector("article.hentry")); }
 /* Comment form */
 const commentForm = comments.querySelector("iframe.blogger-iframe-colorize");
 if (commentForm) subContentObserver.observe(comments);
-</b:if>
-<b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
-const sbct = bdis.querySelector("aside.sidebar-container");
-if (getComputedStyle(sidebar_wrapper).position === "sticky") {
-/* Sidebar for desktop */
-if (main.clientHeight + sub_main.clientHeight &gt; sidebar_wrapper.clientHeight &amp;&amp; sidebar_wrapper.clientHeight &gt; window.innerHeight) sidebar_wrapper.classList.add("stickybottom"); else sidebar_wrapper.classList.add("stickytop"); } else {
-/* Sidebar for mobile */
-subContentObserver.observe(sidebar_wrapper);
-/* Hamburger menu */
-const bcsd = document.createElement("div");
-bcsd.classList.add("dim-overlay");
-function hbmb() {
-if (sbct.classList.contains("slider")) {
-sbct.classList.remove("slideout"); bcsd.classList.remove("fadeout"); bcsd.classList.add("fadein"); requestAnimationFrame(() =&gt; {
-sbct.classList.add("slidein"); bdis.appendChild(bcsd); }); sbct.ariaHidden = "false"; sbct.classList.remove("sidebar-invisible"); bdis.classList.add("sidebar-visible"); } else {
-window.location.href = "#attribution"; }}
-hamburger_menu.addEventListener("click", hbmb);
-/* Close button */
-function clsb() {
-sbct.classList.remove("slidein"); bcsd.classList.remove("fadein"); requestAnimationFrame(() =&gt; {
-sbct.classList.add("slideout"); bcsd.classList.add("fadeout"); }); sbct.ariaHidden = "true"; bdis.classList.remove("sidebar-visible"); }
-close_button.addEventListener("click", clsb);
-bcsd.addEventListener("click", clsb);
-sbct.addEventListener("transitionend", () =&gt; {
-if (sbct.classList.contains("slideout")) sbct.classList.add("sidebar-invisible"); });
-bcsd.addEventListener("animationend", () =&gt; {
-if (bcsd.classList.contains("fadeout")) bdis.removeChild(bcsd); });
-/* Search button */
-<b:if cond='data:widgets.BlogSearch.first.id == "BlogSearch1"'>
-const scsp = search_top.querySelector("input.search-space"), shrb = main.querySelector("div.share-buttons");
-swc.ariaHidden = "true"; search_expand.addEventListener("click", () =&gt; {
-if (getComputedStyle(search_top).display === "none") {
-search_top.style.display = "inline"; floating_share.style.display = "none"; swc.ariaHidden = "false"; scsp.focus(); return; }
-search_top.style.display = "none"; floating_share.style.display = "flex"; swc.ariaHidden = "true"; });
-</b:if>}
-/* Share menu */
-shbtn.addEventListener("click", () =&gt; {
-if (getComputedStyle(sis).display === "none") {
-sis.style.display = "flex";} else {
-sis.style.display = "none"; }});
-fbbtn.addEventListener("click", () =&gt; window.location.href = "https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>");
-twbtn.addEventListener("click", () =&gt; window.location.href = "https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=" + encodeURIComponent('<data:view.title.jsEscaped/>'));
-prbtn.addEventListener("click", () =&gt; window.location.href = "https://pinterest.com/pin/create/button/?url=<data:blog.url.canonical/>");
-rdbtn.addEventListener("click", () =&gt; window.location.href = "https://www.reddit.com/submit?url=<data:blog.url.canonical/>&amp;title=" + encodeURIComponent('<data:view.title.jsEscaped/>'));
-cbcp.addEventListener("click", () =&gt; window.navigator.clipboard.writeText("<data:blog.url.canonical/>").then(() =&gt; alert("<data:messages.linkCopiedToClipboard/>")));
-<b:else/>
-/* Feed button */
-febtn.addEventListener("click", () =&gt; window.location.href = "<b:eval expr='data:view.isHomepage.canonical + "feeds/posts/default?alt=rss"'/>");
-</b:if>
-/* Expand button */
-const rits = bdis.querySelectorAll("div.remaining-items");
-if (rits) {
-rits.forEach(rit =&gt; {
-const rith = rit.clientHeight; rit.style.height = "0";
-rit.nextElementSibling.addEventListener("click", event =&gt; {
-event.target.classList.add("hidden"); rit.style.height = rith + "px"; event.target.nextElementSibling.classList.remove("hidden"); }); rit.nextElementSibling.nextElementSibling.addEventListener("click", event =&gt; {
-event.target.classList.add("hidden"); rit.style.height = "0"; event.target.previousElementSibling.classList.remove("hidden"); }); }); }
-/* Contact form */
-<b:if cond='data:blog.isMobileRequest and data:widgets.ContactForm.first'>
-const fcpts = <b:eval expr='data:widgets.ContactForm.length == 1 ? "ContactForm1" : "bdis"'/>.querySelectorAll("input.contact-form-name, input.contact-form-email, textarea.contact-form-email-message");
-fcpts.forEach(fcpt =&gt; {
-fcpt.addEventListener("focus", () =&gt; {
-if (!sbct.classList.contains("slider")) {
-if (comment_button) comment_button.classList.add("invisible");
-back_button.classList.add("invisible"); }});
-fcpt.addEventListener("blur", () =&gt; {
-if (!sbct.classList.contains("slider")) {
-if (comment_button) comment_button.classList.remove("invisible");
-back_button.classList.remove("invisible"); }}); });
 </b:if>});</script>
 </body>
 </html>
