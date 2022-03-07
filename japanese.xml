@@ -505,7 +505,6 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .comment-reply, .blog-admin>a {font-weight:normal}
 .comment-body {margin-bottom:12px}
 .embed[data-num-comments="0"] {border:0;margin-top:0;padding-top:0}
-#comment-editor-src {display:none}
 #comment-editor {display:block}
 .comment-replybox-single>#comment-editor {margin-bottom:1em}
 .loadmore.loaded {max-height:0;opacity:0;overflow:hidden}
