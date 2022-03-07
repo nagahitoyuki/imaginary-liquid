@@ -486,7 +486,6 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 #comments {color:$(posts.text.color)}
 .comment-thread>ol {margin-top:0;margin-bottom:0;padding-$startSide:0}
 .comment-replybox-single, .comment-replies {margin-$startSide:2.5em}
-.thread-count {display:none}
 .comment {list-style-type:none;position:relative;margin-bottom:1.5em}
 #top-ra>.comment {padding-bottom:1.5em}
 .comment .comment {margin-bottom:1em;padding-top:.5em;padding-bottom:.5em;position:relative}
@@ -506,16 +505,14 @@ html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
 .comment-reply, .blog-admin>a {font-weight:normal}
 .comment-body {margin-bottom:12px}
 .embed[data-num-comments="0"] {border:0;margin-top:0;padding-top:0}
-#comment-editor-src {display:none}
 #comment-editor {display:block}
 .comment-replybox-single>#comment-editor {margin-bottom:1em}
 .loadmore.loaded {max-height:0;opacity:0;overflow:hidden}
 .comment-link {color:$(posts.link.color);position:relative}
 .comment-link .num_comments {margin-$startSide:.5em;vertical-align:top}
-#comments .continue {display:none}
 #comments>.title {font-size:large;color:$(posts.title.color);margin-top:20px;margin-bottom:1.5em}
 .comment-footer>p {margin-top:20px;margin-bottom:0}
-.item-control {display:none}
+.thread-count, #comment-editor-src, .continue, item-control {display:none}
 
 /* Paging control */
 .paging-control-container {margin-bottom:16px}
@@ -2117,7 +2114,7 @@ if (/resources.blogblog\.com\/img\/blank\.gif/.test(avic.firstElementChild.src))
 avic.insertAdjacentHTML("afterbegin", "<svg aria-label='Avatar' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>"); }});
 floatButtonObserver.observe(Blog1.querySelector("article.hentry")); }
 /* Comment form */
-const commentForm = comments.querySelector("iframe.blogger-iframe-colorize");
+const commentForm = comments.querySelector("iframe#comment-editor");
 if (commentForm) subContentObserver.observe(comments);
 </b:if>});</script>
 </body>
