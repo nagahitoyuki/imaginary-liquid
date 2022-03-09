@@ -1135,10 +1135,10 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
-    <b:tag class='ft-snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl.isYoutube ? data:imgurl + "=rw" : data:imgurl' expr:srcset='data:imgurl.isYoutube ? "" : data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 480, &quot;3:2&quot;) + &quot;-rw-e100 480w, &quot; + resizeImage(data:imgurl, 768, &quot;3:2&quot;) + &quot;-rw-e100 768w, &quot; + resizeImage(data:imgurl, 1024, &quot;3:2&quot;) + &quot;-rw-e100 1024w&quot; : sourceSet(data:imgurl, [480,768,1024], &quot;3:2&quot;)' height='320' name='img' sizes='(max-width:960px) 100vw, 1024px' width='480'>
+    <b:tag class='ft-snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl.isYoutube ? data:imgurl + &quot;=rw&quot; : data:imgurl' expr:srcset='data:imgurl.isYoutube ? &quot;&quot; : resizeImage(data:imgurl, 640, &quot;3:2&quot;) + (data:imgurl contains "googleusercontent.com" ? "-rw-e100" : "") + " 640w, " + resizeImage(data:imgurl, 1024, "3:2") + (data:imgurl contains "googleusercontent.com" ? "-rw-e100" : "")' height='426' name='img' sizes='(max-width:640px) 100vw, 1024px' width='640'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
-    <b:attr expr:value='resizeImage(data:imgurl, 480, "3:2") + "-rw-e100 480w, " + resizeImage(data:imgurl, 768, "3:2") + "-rw-e100 768w, " + resizeImage(data:imgurl, 1024, "3:2") + "-rw-e100 1024w"' name='data-hdss'/>   
+    <b:attr expr:value='resizeImage(data:imgurl, 640, "3:2") + "-rw-e100 640w, " + resizeImage(data:imgurl, 1024, "3:2") + "-rw-e100"' name='data-hdss'/>   
     <b:attr expr:value='"this.srcset=this.naturalWidth&lt;121?\"" + data:post.featuredImage + "=w480-h320-n-k-no-nu-rw-e100\":this.dataset.hdss;this.removeAttribute(\"onload\");"' name='onload'/>
     <b:class name='ytpic'/>
     </b:if>
@@ -1432,10 +1432,11 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   <a class='total-snippet' expr:href='data:post.url'>
   <b:if cond='data:post.featuredImage'>
   <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
-    <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl.isYoutube ? data:imgurl + "=rw" : data:imgurl' expr:srcset='data:imgurl.isYoutube ? "" : data:imgurl contains &quot;googleusercontent.com&quot; ? resizeImage(data:imgurl, 180, &quot;1:1&quot;) + &quot;-rw-e100 180w, &quot; + resizeImage(data:imgurl, 360, &quot;1:1&quot;) + &quot;-rw-e100 360w&quot; : sourceSet(data:imgurl, [180, 360], &quot;1:1&quot;)' height='180' name='img' sizes='(max-width:960px) 30vw, 360px' width='180'>
+    <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl.isYoutube ? data:imgurl + "=rw" : data:imgurl' 
+expr:srcset='data:imgurl.isYoutube ? &quot;&quot; : resizeImage(data:imgurl, 180, &quot;1:1&quot;) + (data:imgurl contains "googleusercontent.com" ? "-rw-e100" : "") + " 180w, " + resizeImage(data:imgurl, 360, "1:1") + (data:imgurl contains "googleusercontent.com" ? "-rw-e100" : "")' height='180' name='img' sizes='(max-width:640px) 30vw, 1024px' width='180'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
-    <b:attr expr:value='resizeImage(data:imgurl, 180, "1:1") + "-rw-e100 180w, " + resizeImage(data:imgurl, 360, "1:1") + "-rw-e100 360w"' name='data-hdss'/>   
+    <b:attr expr:value='resizeImage(data:imgurl, 180, "1:1") + "-rw-e100 180w, " + resizeImage(data:imgurl, 360, "1:1") + "-rw-e100"' name='data-hdss'/>   
     <b:attr expr:value='"this.srcset=this.naturalWidth&lt;121?\"" + data:post.featuredImage + "=w320-h320-n-k-no-nu-rw-e100\":this.dataset.hdss;this.removeAttribute(\"onload\");"' name='onload'/>
     <b:class name='ytpic'/>
     </b:if>
