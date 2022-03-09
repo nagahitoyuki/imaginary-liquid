@@ -4,13 +4,11 @@
   <head expr:prefix='&quot;og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# &quot; + (data:view.isMultipleItems ? &quot;website: http://ogp.me/ns/website#&quot; : &quot;article: http://ogp.me/ns/article#&quot;)'>
   <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
-<b:if cond='data:blog.adsenseAutoAds'>
-  <link href='//pagead2.googlesyndication.com' rel='dns-prefetch'/>
-<b:elseif cond='data:widgets.AdSense.first or data:widgets.Blog.first.posts.first.showInlineAds'/>
-  <link href='//pagead2.googlesyndication.com' rel='preconnect'/>
+<b:if cond='(data:widgets.AdSense.first or data:widgets.Blog.first.posts.first.showInlineAds) and not data:blog.adsenseAutoAds'>
+  <script async='async' crossorigin='anonymous' expr:src='"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + data:blog.adsenseClientId'/>
 </b:if>
 <b:if cond='data:view.isSingleItem and data:view.featuredImage'>
-  <link expr:href='&quot;//&quot; + (data:view.featuredImage contains &quot;blogger.googleusercontent.com&quot; ? &quot;blogger.googleusercontent.com&quot; : data:view.featuredImage contains &quot;1.bp.blogspot.com&quot; ? &quot;1.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;2.bp.blogspot.com&quot; ? &quot;2.bp.blogspot.com&quot; : data:view.featuredImage contains &quot;3.bp.blogspot.com&quot; ? &quot;3.bp.blogspot.com&quot; : &quot;4.bp.blogspot.com&quot;)' rel='preconnect'/>
+  <link expr:href='"//" + (data:view.featuredImage contains "blogger.googleusercontent.com" ? "blogger.googleusercontent.com" : data:view.featuredImage contains "1.bp.blogspot.com" ? "1.bp.blogspot.com" : data:view.featuredImage contains "2.bp.blogspot.com" ? "2.bp.blogspot.com" : data:view.featuredImage contains "3.bp.blogspot.com" ? &quot;3.bp.blogspot.com" : "4.bp.blogspot.com")' rel='preconnect'/>
 <b:if cond='data:view.featuredImage.isYoutube'>
   <link href='//www.youtube.com' rel='preconnect'/>
 </b:if>
@@ -962,9 +960,6 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 bgsl.insertAdjacentHTML("afterbegin", bmtx); document.head.appendChild(bgsl);</script></b:if>
 </b:if></b:with>
 
-<b:if cond='(data:widgets.AdSense.first or data:widgets.Blog.first.posts.first.showInlineAds) and not data:blog.adsenseAutoAds'>
-  <script async='async' crossorigin='anonymous' expr:src='&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=&quot; + data:blog.adsenseClientId'/>
-</b:if>
 <b:if cond='data:blog.analyticsAccountNumber'>
   <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; ga('create', '<data:blog.analyticsAccountNumber.jsEscaped/>', 'auto', 'blogger'); ga('set', 'transport', 'beacon'); ga('blogger.send', 'pageview');
