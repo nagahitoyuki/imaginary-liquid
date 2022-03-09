@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='japanese.xml' b:templateVersion='1.0.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language'>
-  <head expr:prefix='&quot;og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# &quot; + (data:view.isMultipleItems ? &quot;website: http://ogp.me/ns/website#&quot; : &quot;article: http://ogp.me/ns/article#&quot;)'>
-  <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
+  <head expr:prefix='"og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# " + (data:view.isMultipleItems ? "website: http://ogp.me/ns/website#" : "article: http://ogp.me/ns/article#")'>
+  <meta expr:content='"text/html; charset=" + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
 <b:if cond='(data:widgets.AdSense.first or data:widgets.Blog.first.posts.first.showInlineAds) and not data:blog.adsenseAutoAds'>
   <script async='async' crossorigin='anonymous' expr:src='"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + data:blog.adsenseClientId'/>
 </b:if>
 <b:if cond='data:view.isSingleItem and data:view.featuredImage'>
-  <link expr:href='"//" + (data:view.featuredImage contains "blogger.googleusercontent.com" ? "blogger.googleusercontent.com" : data:view.featuredImage contains "1.bp.blogspot.com" ? "1.bp.blogspot.com" : data:view.featuredImage contains "2.bp.blogspot.com" ? "2.bp.blogspot.com" : data:view.featuredImage contains "3.bp.blogspot.com" ? &quot;3.bp.blogspot.com" : "4.bp.blogspot.com")' rel='preconnect'/>
+  <link expr:href='"//" + (data:view.featuredImage contains "blogger.googleusercontent.com" ? "blogger.googleusercontent.com" : data:view.featuredImage contains "1.bp.blogspot.com" ? "1.bp.blogspot.com" : data:view.featuredImage contains "2.bp.blogspot.com" ? "2.bp.blogspot.com" : data:view.featuredImage contains "3.bp.blogspot.com" ? "3.bp.blogspot.com" : "4.bp.blogspot.com")' rel='preconnect'/>
 <b:if cond='data:view.featuredImage.isYoutube'>
   <link href='//www.youtube.com' rel='preconnect'/>
 </b:if>
@@ -47,10 +47,10 @@
 </b:if>
   <meta expr:content='data:view.description.escaped' property='og:description'/>
 <b:if cond='data:view.isMultipleItems'>
-  <b:tag cond='data:widgets.Blog.first.posts.first.featuredImage' expr:content='resizeImage(data:widgets.Blog.first.posts.first.featuredImage, 1200, &quot;1200:630&quot;)' property='og:image' name='meta'></b:tag>
+  <b:tag cond='data:widgets.Blog.first.posts.first.featuredImage' expr:content='resizeImage(data:widgets.Blog.first.posts.first.featuredImage, 1200, "1200:630")' property='og:image' name='meta'></b:tag>
   <meta content='website' property='og:type'/>
 <b:else/>
-  <b:tag cond='data:view.featuredImage' expr:content='resizeImage(data:view.featuredImage, 1200, &quot;1200:630&quot;)' property='og:image' name='meta'></b:tag>
+  <b:tag cond='data:view.featuredImage' expr:content='resizeImage(data:view.featuredImage, 1200, "1200:630")' property='og:image' name='meta'></b:tag>
   <meta content='article' property='og:type'/>
 </b:if>
   <meta expr:content='data:blog.title.escaped' property='og:site_name'/>
