@@ -954,9 +954,9 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 </b:defaultmarkups>
 
 <b:with value='data:skin.vars.body_background.image' var='bgimg'><b:if cond='not data:view.isPreview and data:bgimg'>
-<b:tag cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")' class='bg-media' name='noscript'><style><b:with value='[481, 641]' var='minWidth'><b:loop index='i' values='resizeImage(data:bgimg, (data:blog.isMobileRequest ? [480] : [640, 1024, 1240]))' var='headerImage'><b:eval expr='"@media " + (data:blog.isMobileRequest ? "(max-width: 480px)" : data:i != 2 ? "(max-width: " + data:headerImage.size + "px) and (min-width: " + data:minWidth[i] + "px)" : "(min-width: 1025px)") + "{.bg-image {background-image:url(" + data:headerImage.url.cssEscaped + (data:headerImage.url contains "themes.googleusercontent.com" ? "-rw-e100" : "") + ";)}}"'/></b:loop></b:with></style></b:tag>
+<b:tag class='bg-media' cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")' name='noscript'><style><b:loop index='i' values='resizeImage(data:bgimg, (data:blog.isMobileRequest ? 640 : [1024, 1240]))' var='headerImage'><b:eval expr='"@media " + (data:blog.isMobileRequest ? "(max-width: 640px)" : data:i != 1 ? "(max-width: 1024px) and (min-width: 641px)" : "(min-width: 1025px)") + "{.bg-image {background-image:url(" + data:headerImage.url.cssEscaped + (data:headerImage.url contains "themes.googleusercontent.com" ? "-rw-e100" : "") + ";)}}"'/></b:loop></style></b:tag>
 <b:if cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")'><script>const bgsl = document.createElement("style"), bmtx = 
-/@media.*\)\}\}/.exec(document.head.querySelector("noscript.bg-media").innerText)[0].replace(<b:eval expr='data:blog.isMobileRequest ? "/w480/, \"$&amp;-rw-e100\");" : "/w640/, \"$&amp;-rw-e100\").replace(/w1024/, \"$&amp;-rw-e100\").replace(/w1240/, \"$&amp;-rw-e100\");"'/>
+/@media.*\)\}\}/.exec(document.head.querySelector("noscript.bg-media").innerText)[0].replace(<b:eval expr='data:blog.isMobileRequest ? "/w640/, \"$&amp;-rw-e100\");" : "/w1024/, \"$&amp;-rw-e100\").replace(/w1240/, \"$&amp;-rw-e100\");"'/>
 bgsl.insertAdjacentHTML("afterbegin", bmtx); document.head.appendChild(bgsl);</script></b:if>
 </b:if></b:with>
 
@@ -1184,7 +1184,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   <b:with value='3' var='maxNumAds'>
   <b:with value='data:widgets.AdSense.size' var='numAds'>
   <b:comment>Filter out the featured post, but only on the homepage.</b:comment>
-  <b:with value='data:view.isHomepage and not data:view.isPreview ? data:posts filter (p =&gt; p.id != data:widgets.FeaturedPost.first.postId) : data:posts' var='posts'>
+  <b:with value='data:view.isHomepage ? data:posts filter (p =&gt; p.id != data:widgets.FeaturedPost.first.postId) : data:posts' var='posts'>
   <b:tag aria-busy='false' cond='data:view.isMultipleItems' class='hfeed' name='div' role='feed'>
   <b:loop index='i' values='data:posts' var='post'>
   <b:include data='post' name='postCommentsAndAd'/>
