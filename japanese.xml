@@ -1976,14 +1976,21 @@ entries.forEach(entry =&gt; {
 <b:if cond='data:view.isSingleItem'>
 if (entry.target.id === "comments") {
 if (entry.isIntersecting) {
+commentForm.style.height = "90px";
+if (cmhd) {
+const cmrls = comments.querySelectorAll("a.comment-reply");
+cmrls.forEach(cmrl =&gt; {
+cmrl.addEventListener("click", () =&gt; commentForm.style.height = "90px"); }); }
 const ifc = document.createElement("script");
 ifc.insertAdjacentHTML("afterbegin", "BLOG_CMT_createIframe('https://www.blogger.com/rpc_relay.html');");
 commentForm.parentNode.appendChild(ifc);
-<b:if cond='data:blog.isMobileRequest'>
 window.addEventListener("blur", () =&gt; {
-if (commentForm === document.activeElement) back_button.classList.add("invisible"); });
+if (commentForm === document.activeElement) {
+commentForm.style.height = "296px";
+<b:if cond='data:blog.isMobileRequest'> back_button.classList.add("invisible"); }});
 window.addEventListener("focus", () =&gt; {
-if (commentForm !== document.activeElement) back_button.classList.remove("invisible"); });</b:if>
+if (commentForm !== document.activeElement) {
+back_button.classList.remove("invisible");</b:if>}});
 subContentObserver.unobserve(comments); }}</b:if>
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 if (entry.target.id === "sidebar_wrapper") {
@@ -2132,7 +2139,7 @@ if (/resources.blogblog\.com\/img\/blank\.gif/.test(avic.firstElementChild.src))
 avic.insertAdjacentHTML("afterbegin", "<svg aria-label='アバター' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>"); }});
 floatButtonObserver.observe(Blog1.querySelector("article.hentry")); }
 /* Comment form */
-const commentForm = comments.querySelector("iframe#comment-editor");
+const commentForm = comments.querySelector("iframe#comment-editor"), cmhd = comments.querySelector("div.comment-thread");
 if (commentForm) subContentObserver.observe(comments);
 </b:if>});</script>
 </body>
