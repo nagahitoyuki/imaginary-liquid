@@ -8,10 +8,7 @@
   <script async='async' crossorigin='anonymous' expr:src='"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + data:blog.adsenseClientId'/>
 </b:if>
 <b:if cond='data:view.isSingleItem and data:view.featuredImage'>
-  <link expr:href='"//" + (data:view.featuredImage contains "blogger.googleusercontent.com" ? "blogger.googleusercontent.com" : data:view.featuredImage contains "1.bp.blogspot.com" ? "1.bp.blogspot.com" : data:view.featuredImage contains "2.bp.blogspot.com" ? "2.bp.blogspot.com" : data:view.featuredImage contains "3.bp.blogspot.com" ? "3.bp.blogspot.com" : "4.bp.blogspot.com")' rel='preconnect'/>
-<b:if cond='data:view.featuredImage.isYoutube'>
-  <link href='//www.youtube.com' rel='preconnect'/>
-</b:if>
+  <link expr:href='"//" + (data:view.featuredImage.isYoutube ? "www.youtube.com" : data:view.featuredImage contains "blogger.googleusercontent.com" ? "blogger.googleusercontent.com" : data:view.featuredImage contains "1.bp.blogspot.com" ? "1.bp.blogspot.com" : data:view.featuredImage contains "2.bp.blogspot.com" ? "2.bp.blogspot.com" : data:view.featuredImage contains "3.bp.blogspot.com" ? "3.bp.blogspot.com" : "4.bp.blogspot.com")' rel='dns-prefetch'/>
 </b:if>
 <b:if cond='data:blog.isMobileRequest or data:view.url !=  data:view.url.canonical'>
   <link expr:href='data:view.url.canonical' rel='canonical'/>
