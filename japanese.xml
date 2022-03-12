@@ -339,7 +339,7 @@ blockquote {margin:1em 2.5em}
 .hidden, :not(.feed-view>#sub_main).section.no-items, .feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
 .invisible {visibility:hidden}
 .hfeed, .hentry {contain:content}
-.hfeed>.post, #PopularPosts1, .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
+.hfeed>.post, .hentry>.post-footer, #comments, #PopularPosts1, .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* ウィジェット */
 .title, .feed-title {font-size:large;color:$(widget.title.color)}
