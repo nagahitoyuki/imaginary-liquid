@@ -7,6 +7,15 @@
 <b:if cond='(data:widgets.AdSense.first or data:widgets.Blog.first.posts.first.showInlineAds) and not data:blog.adsenseAutoAds'>
   <script async='async' crossorigin='anonymous' expr:src='"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + data:blog.adsenseClientId'/>
 </b:if>
+<b:with value='data:skin.vars.body_background.image' var='bgimg'><b:if cond='not data:view.isPreview and data:bgimg'>
+<b:loop index='i' values='resizeImage(data:bgimg, (data:blog.isMobileRequest ? [640] : [1024, 1280]))' var='headerImage'><b:tag name='link' class='bg-preload' rel='preload' as='image'>
+<b:attr name='b:whitespace' value='remove'/>
+<b:attr cond='!data:blog.isMobileRequest' expr:value='data:i != 1 ? "(max-width: 1024px) and (min-width: 641px)" : "(min-width: 1025px)"' name='media'/>
+<b:attr cond='data:headerImage.url contains "themes.googleusercontent.com"' expr:value='data:headerImage.url + "-rw-e100"' name='href'/>
+<b:attr cond='data:headerImage.url not contains "themes.googleusercontent.com"' expr:value='data:headerImage.url' name='data-href'/></b:tag></b:loop>
+<b:if cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")'><script>const bglk = document.head.querySelector("link.bg-preload"), nlhf = /^.+\/(.*)\/.+$/.exec(bglk.dataset.href);
+bglk.href = nlhf[0].replace(nlhf[1], nlhf[1] + "-rw-e100");</script></b:if>
+</b:if></b:with>
 <b:if cond='data:view.isSingleItem and data:view.featuredImage'>
   <link expr:href='"//" + (data:view.featuredImage.isYoutube ? "www.youtube.com" : data:view.featuredImage contains "blogger.googleusercontent.com" ? "blogger.googleusercontent.com" : data:view.featuredImage contains "1.bp.blogspot.com" ? "1.bp.blogspot.com" : data:view.featuredImage contains "2.bp.blogspot.com" ? "2.bp.blogspot.com" : data:view.featuredImage contains "3.bp.blogspot.com" ? "3.bp.blogspot.com" : "4.bp.blogspot.com")' rel='dns-prefetch'/>
 </b:if>
@@ -1466,9 +1475,9 @@ button</b:comment>
   </b:with>
   </b:if>
     <p class='summary'>
-    <b:with value='data:post.body snippet { length:(data:blog.isMobileRequest ? 250 : 450), links: false, linebreaks: false, ellipsis: true }' var='chros'>
+    <b:with value='data:post.body snippet { length:(data:blog.isMobileRequest ? 180 : 380), links: false, linebreaks: false, ellipsis: true }' var='chros'>
 <b:if cond='data:chros contains "&lt;strong&gt;" or data:chros contains "&lt;b&gt;" or data:chros contains "&lt;em&gt;" or data:chros contains "&lt;i&gt;"'>
-    <script>const crsc = document.currentScript; crsc.insertAdjacentHTML("beforebegin", `<data:chros/>`.replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;));</script>
+    <script>const crsc = document.currentScript; crsc.insertAdjacentHTML("beforebegin", `<data:chros/>`.replace(/(&lt;([^&gt;]+)&gt;)/g, ''));</script>
     <b:else/>
     <b:eval expr='data:chros'/>
     </b:if>
