@@ -951,9 +951,9 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 </b:defaultmarkups>
 
 <b:with value='data:skin.vars.body_background.image' var='bgimg'><b:if cond='not data:view.isPreview and data:bgimg'>
-<b:tag class='bg-media' cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")' name='noscript'><style><b:loop index='i' values='resizeImage(data:bgimg, (data:blog.isMobileRequest ? [640] : [1024, 1240]))' var='headerImage'><b:eval expr='"@media " + (data:blog.isMobileRequest ? "(max-width: 640px)" : data:i != 1 ? "(max-width: 1024px) and (min-width: 641px)" : "(min-width: 1025px)") + "{.bg-image {background-image:url(" + data:headerImage.url.cssEscaped + (data:headerImage.url contains "themes.googleusercontent.com" ? "-rw-e100" : "") + ";)}}"'/></b:loop></style></b:tag>
+<b:tag class='bg-media' cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")' name='noscript'><style><b:loop index='i' values='resizeImage(data:bgimg, (data:blog.isMobileRequest ? [640] : [1024, 1280]))' var='headerImage'><b:eval expr='"@media " + (data:blog.isMobileRequest ? "(max-width: 640px)" : data:i != 1 ? "(max-width: 1024px) and (min-width: 641px)" : "(min-width: 1025px)") + "{.bg-image {background-image:url(" + data:headerImage.url.cssEscaped + (data:headerImage.url contains "themes.googleusercontent.com" ? "-rw-e100" : "") + ")}}"'/></b:loop></style></b:tag>
 <b:if cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")'><script>const bgsl = document.createElement("style"), bmtx = 
-/@media.*\)\}\}/.exec(document.head.querySelector("noscript.bg-media").innerText)[0].replace(<b:eval expr='data:blog.isMobileRequest ? "/w640/, \"$&amp;-rw-e100\");" : "/w1024/, \"$&amp;-rw-e100\").replace(/w1240/, \"$&amp;-rw-e100\");"'/>
+/@media.*\)\}\}/.exec(document.head.querySelector("noscript.bg-media").innerText)[0].replace(<b:eval expr='data:blog.isMobileRequest ? "/w640/, \"$&amp;-rw-e100\");" : "/w1024/, \"$&amp;-rw-e100\").replace(/w1280/, \"$&amp;-rw-e100\");"'/>
 bgsl.insertAdjacentHTML("afterbegin", bmtx); document.head.appendChild(bgsl);</script></b:if>
 </b:if></b:with>
 
@@ -1127,10 +1127,10 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
-    <b:tag class='ft-snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl.isYoutube ? data:imgurl + &quot;=rw&quot; : data:imgurl' expr:srcset='data:imgurl.isYoutube ? &quot;&quot; : resizeImage(data:imgurl, 640, &quot;3:2&quot;) + (data:imgurl contains "googleusercontent.com" ? "-rw-e100" : "") + " 640w, " + resizeImage(data:imgurl, 1024, "3:2") + (data:imgurl contains "googleusercontent.com" ? "-rw-e100" : "") + " 1024w"' height='426' name='img' sizes='(max-width:640px) 100vw, 1024px' width='640'>
+    <b:tag class='ft-snippet-thumbnail' decoding='async' expr:alt='data:messages.image' expr:src='data:imgurl.isYoutube ? data:imgurl + "=rw" : data:imgurl' expr:srcset='data:imgurl.isYoutube ? "" : resizeImage(data:imgurl, 640, "3:2") + (data:imgurl contains "googleusercontent.com" ? "-rw-e100" : "") + " 640w, " + resizeImage(data:imgurl, 1280, "3:2") + (data:imgurl contains "googleusercontent.com" ? "-rw-e100" : "") + "1280w"' height='426' name='img' sizes='(max-width:640px) 100vw, 1280px' width='640'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
-    <b:attr expr:value='resizeImage(data:imgurl, 640, "3:2") + "-rw-e100 640w, " + resizeImage(data:imgurl, 1024, "3:2") + "-rw-e100 1024w"' name='data-hdss'/>   
+    <b:attr expr:value='resizeImage(data:imgurl, 640, "3:2") + "-rw-e100 640w, " + resizeImage(data:imgurl, 1280, "3:2") + "-rw-e100 1280w"' name='data-hdss'/>   
     <b:attr expr:value='"this.srcset=this.naturalWidth&lt;121?\"" + data:post.featuredImage + "=w480-h320-n-k-no-nu-rw-e100\":this.dataset.hdss;this.removeAttribute(\"onload\");"' name='onload'/>
     <b:class name='ytpic'/>
     </b:if>
@@ -1425,7 +1425,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   <b:if cond='data:post.featuredImage'>
   <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
     <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl.isYoutube ? data:imgurl + "=rw" : data:imgurl' 
-expr:srcset='data:imgurl.isYoutube ? &quot;&quot; : resizeImage(data:imgurl, 180, &quot;1:1&quot;) + (data:imgurl contains "googleusercontent.com" ? "-rw-e100" : "") + " 180w, " + resizeImage(data:imgurl, 360, "1:1") + (data:imgurl contains "googleusercontent.com" ? "-rw-e100" : "") + " 360w"' height='180' name='img' sizes='(max-width:640px) 30vw, 1024px' width='180'>
+expr:srcset='data:imgurl.isYoutube ? "" : resizeImage(data:imgurl, 180, "1:1") + (data:imgurl contains "googleusercontent.com" ? "-rw-e100" : "") + " 180w, " + resizeImage(data:imgurl, 360, "1:1") + (data:imgurl contains "googleusercontent.com" ? "-rw-e100" : "") + " 360w"' height='180' name='img' sizes='(max-width:640px) 30vw, 360px' width='180'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
     <b:attr expr:value='resizeImage(data:imgurl, 180, "1:1") + "-rw-e100 180w, " + resizeImage(data:imgurl, 360, "1:1") + "-rw-e100 360w"' name='data-hdss'/>   
@@ -1442,8 +1442,8 @@ expr:srcset='data:imgurl.isYoutube ? &quot;&quot; : resizeImage(data:imgurl, 180
   </b:if>
     <p class='summary'>
     <b:with value='data:post.body snippet { length:(data:blog.isMobileRequest ? 250 : 450), links: false, linebreaks: false, ellipsis: true }' var='chros'>
-<b:if cond='data:chros contains &quot;&lt;strong&gt;&quot; or data:chros contains &quot;&lt;b&gt;&quot; or data:chros contains &quot;&lt;em&gt;&quot; or data:chros contains &quot;&lt;i&gt;&quot;'>
-    <script>const crsc = document.currentScript; crsc.insertAdjacentHTML(&quot;beforebegin&quot;, `<data:chros/>`.replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;));</script>
+<b:if cond='data:chros contains "&lt;strong&gt;" or data:chros contains "&lt;b&gt;" or data:chros contains "&lt;em&gt;" or data:chros contains "&lt;i&gt;"'>
+    <script>const crsc = document.currentScript; crsc.insertAdjacentHTML("beforebegin", `<data:chros/>`.replace(/(&lt;([^&gt;]+)&gt;)/g, &#39;&#39;));</script>
     <b:else/>
     <b:eval expr='data:chros'/>
     </b:if>
