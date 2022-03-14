@@ -7,6 +7,11 @@
 <b:if cond='(data:widgets.AdSense.first or data:widgets.Blog.first.posts.first.showInlineAds) and not data:blog.adsenseAutoAds'>
   <script async='async' crossorigin='anonymous' expr:src='"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + data:blog.adsenseClientId'/>
 </b:if>
+<b:with value='resizeImage(data:skin.vars.body_background.image, (data:blog.isMobileRequest ? 640 : 1280))' var='bgimg'><b:if cond='not data:view.isPreview and data:bgimg'>
+<b:tag class='bg-preload' cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")' name='noscript'><link rel='preload' as='image' expr:href='data:bgimg + (data:bgimg contains "themes.googleusercontent.com" ? "-rw-e100" : "")'/></b:tag>
+<b:if cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")'><script>const bgpl = document.head.querySelector("noscript.bg-preload"), bglk = document.createElement("link");
+bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(bgpl.innerText)[0].replace(<b:eval cond='data:blog.isMobileRequest ? "/w640/" : "/w1280/"'/>, "$&amp;-rw-e100"); document.head.replaceChild(bglk, bgpl);</script></b:if>
+</b:if></b:with>
 <b:if cond='data:view.isSingleItem and data:view.featuredImage'>
   <link expr:href='"//" + (data:view.featuredImage.isYoutube ? "www.youtube.com" : data:view.featuredImage contains "blogger.googleusercontent.com" ? "blogger.googleusercontent.com" : data:view.featuredImage contains "1.bp.blogspot.com" ? "1.bp.blogspot.com" : data:view.featuredImage contains "2.bp.blogspot.com" ? "2.bp.blogspot.com" : data:view.featuredImage contains "3.bp.blogspot.com" ? "3.bp.blogspot.com" : "4.bp.blogspot.com")' rel='dns-prefetch'/>
 </b:if>
@@ -977,11 +982,11 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 </b:defaultmarkup>
 </b:defaultmarkups>
 
-<b:with value='data:skin.vars.body_background.image' var='bgimg'><b:if cond='not data:view.isPreview and data:bgimg'>
-<b:tag class='bg-media' cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")' name='noscript'><style><b:loop index='i' values='resizeImage(data:bgimg, (data:blog.isMobileRequest ? [640] : [1024, 1280]))' var='headerImage'><b:eval expr='"@media " + (data:blog.isMobileRequest ? "(max-width: 640px)" : data:i != 1 ? "(max-width: 1024px) and (min-width: 641px)" : "(min-width: 1025px)") + "{.bg-image {background-image:url(" + data:headerImage.url.cssEscaped + (data:headerImage.url contains "themes.googleusercontent.com" ? "-rw-e100" : "") + ")}}"'/></b:loop></style></b:tag>
-<b:if cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")'><script>const bgsl = document.createElement("style"), bmtx = 
-/@media.*\)\}\}/.exec(document.head.querySelector("noscript.bg-media").innerText)[0].replace(<b:eval expr='data:blog.isMobileRequest ? "/w640/, \"$&amp;-rw-e100\");" : "/w1024/, \"$&amp;-rw-e100\").replace(/w1280/, \"$&amp;-rw-e100\");"'/>
-bgsl.insertAdjacentHTML("afterbegin", bmtx); document.head.appendChild(bgsl);</script></b:if>
+<b:with value='resizeImage(data:skin.vars.body_background.image, (data:blog.isMobileRequest ? 640 : 1280))' var='bgimg'><b:if cond='not data:view.isPreview and data:bgimg'>
+<b:tag class='bg-media' cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")' name='noscript'><style><b:eval expr='".bg-image {background-image:url(" + data:bgimg.cssEscaped + (data:bgimg contains "themes.googleusercontent.com" ? "-rw-e100" : "") + ")}}"'/></style></b:tag>
+<b:if cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")'><script>const nsbm = document.head.querySelector("noscript.bg-media").innerText, bgsl = document.createElement("style"), bmtx = 
+/\.bg-image.*\)\}\}/.exec(nsbm)[0].replace(<b:eval expr='data:blog.isMobileRequest ? "/w640/" : "/w1280/"'/>, "$&amp;-rw-e100");
+bgsl.insertAdjacentHTML("afterbegin", bmtx); document.head.replaceChild(bgsl, nsbm);</script></b:if>
 </b:if></b:with>
 
 <b:if cond='data:blog.analyticsAccountNumber'>
