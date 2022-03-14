@@ -389,7 +389,7 @@ blockquote {margin:1em 2.5em}
 .svg-icon-24 {vertical-align:top;width:var(--svgicon-height);height:var(--svgicon-height);cursor:pointer}
 .svg-icon-24>use, #rdbtn {fill:$(sticky.icons.color)}
 #sis {display:flex;align-items:inherit;gap:inherit}
-html[dir="rtl"] #shbtn {transform:scale(-1, 1)}
+html[dir="rtl"] #shbtn {transform:scaleX(-1)}
 #close_button>.svg-icon-24 {fill:$(sidebar.icons.color)}
 .post-icons .svg-icon-24 {fill:$(posts.icons.color)}
 .svg-icon-back {stroke-width:2px;stroke:$(sticky.icons.color);fill:transparent}
@@ -399,7 +399,7 @@ html[dir="rtl"] #shbtn {transform:scale(-1, 1)}
 /* Back button / Comment button / Loading */
 #back_button, #comment_button, #add_button {position:fixed;bottom:calc(var(--maincolumn-padding) / 2);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);z-index:5}
 html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #add_button {box-shadow:-5px 5px 10px -5px rgba(0, 0, 0, .4)}
-html[dir="rtl"] #comment_button {transform:scale(-1, 1)}
+html[dir="rtl"] #comment_button {transform:scaleX(-1)}
 #back_button, #comment_button {width:var(--floatingbar-height);border-radius:50%;contain:strict}
 #back_button>.svg-icon-24 {margin-top:calc(var(--svgicon-height) / -12);padding-bottom:calc(var(--svgicon-height) / 12)}
 #add_button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px;contain:content}
@@ -417,7 +417,11 @@ html[dir="rtl"] #comment_button {transform:scale(-1, 1)}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
 .search-action {color:$(search.action.color);font-size:100%}
-html[dir="rtl"] #search_expand {transform:scale(-1, 1)}
+html[dir="rtl"] #search_expand {transform:scaleX(-1)}
+
+/* Turn effect */
+.reverse {transform:scaleX(-1)}
+html[dir="rtl"] #shbtn.reverse, html[dir="rtl"] #search_expand.reverse {transform:scaleX(1)}
 
 /* AdSense ads */
 .inline-ad {display:none;overflow:hidden}
@@ -2010,15 +2014,18 @@ if (bcsd.classList.contains("fadeout")) bdis.removeChild(bcsd); });
 /* Search button */
 <b:if cond='data:widgets.BlogSearch.first.id == "BlogSearch1"'>
 const scsp = search_top.querySelector("input.search-space"), shrb = main.querySelector("div.share-buttons");
-swc.ariaHidden = "true"; search_expand.addEventListener("click", () =&gt; {
+swc.ariaHidden = "true";
+search_expand.addEventListener("click", () =&gt; {
+search_expand.classList.toggle("reverse");
 if (getComputedStyle(search_top).display === "none") {
 search_top.style.display = "inline"; floating_share.style.display = "none"; swc.ariaHidden = "false"; scsp.focus(); return; }
 search_top.style.display = "none"; floating_share.style.display = "flex"; swc.ariaHidden = "true"; });
 </b:if>}
 /* Share menu */
 shbtn.addEventListener("click", () =&gt; {
+shbtn.classList.toggle("reverse");
 if (getComputedStyle(sis).display === "none") {
-sis.style.display = "flex";} else {
+sis.style.display = "flex"; } else {
 sis.style.display = "none"; }});
 fbbtn.addEventListener("click", () =&gt; window.location.href = "https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>");
 twbtn.addEventListener("click", () =&gt; window.location.href = "https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=" + encodeURIComponent('<data:view.title.jsEscaped/>'));
