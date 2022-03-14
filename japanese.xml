@@ -13,8 +13,7 @@
 <b:with value='resizeImage(data:skin.vars.body_background.image, (data:blog.isMobileRequest ? 640 : 1280))' var='bgimg'><b:if cond='not data:view.isPreview and data:bgimg'>
 <b:tag class='bg-preload' cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")' name='noscript'><link rel='preload' as='image' expr:href='data:bgimg + (data:bgimg contains "themes.googleusercontent.com" ? "-rw-e100" : "")'/></b:tag>
 <b:if cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")'><script>const bgpl = document.head.querySelector("noscript.bg-preload"), bglk = document.createElement("link");
-bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(bgpl.innerText)[0].replace(<b:eval expr='data:blog.isMobileRequest ? "/w640/" : "/w1280/"'/>, "$&amp;-rw-e100"); document.head.replaceChild(bglk, bgpl);
-</script></b:if>
+bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(bgpl.innerText)[0].replace(<b:eval expr='data:blog.isMobileRequest ? "/w640/" : "/w1280/"'/>, "$&amp;-rw-e100"); document.head.replaceChild(bglk, bgpl);</script></b:if>
 </b:if></b:with>
 <b:if cond='data:blog.isMobileRequest or data:view.url !=  data:view.url.canonical'>
   <link expr:href='data:view.url.canonical' rel='canonical'/>
