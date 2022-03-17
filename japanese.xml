@@ -422,7 +422,7 @@ html[dir="rtl"] #comment_button {transform:scaleX(-1)}
 html[dir="rtl"] #search_expand {transform:scaleX(-1)}
 
 /* ターン */
-.reverse {transition:transform .3s ease-out;transform:scaleX(-1)}
+.reverse {transform:scaleX(-1)}
 html[dir="rtl"] #shbtn.reverse, html[dir="rtl"] #search_expand.reverse {transform:scaleX(1)}
 
 /* アドセンス広告 */
