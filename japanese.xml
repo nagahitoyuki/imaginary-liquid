@@ -389,6 +389,7 @@ blockquote {margin:1em 2.5em}
 .svg-icon-24 {vertical-align:top;width:var(--svgicon-height);height:var(--svgicon-height);cursor:pointer}
 .svg-icon-24>use, #hbbtn {fill:$(sticky.icons.color)}
 #sis {display:flex;align-items:inherit;gap:inherit}
+#shbtn {transition:transform .3s ease-out}
 html[dir="rtl"] #shbtn {transform:scaleX(-1)}
 #close_button>.svg-icon-24 {fill:$(sidebar.icons.color)}
 .post-icons .svg-icon-24 {fill:$(posts.icons.color)}
@@ -417,10 +418,11 @@ html[dir="rtl"] #comment_button {transform:scaleX(-1)}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
 .search-action {color:$(search.action.color);font-size:100%}
+#search_expand {transition:transform .3s ease-out}
 html[dir="rtl"] #search_expand {transform:scaleX(-1)}
 
 /* ターン */
-.reverse {transform:scaleX(-1)}
+.reverse {transition:transform .3s ease-out;transform:scaleX(-1)}
 html[dir="rtl"] #shbtn.reverse, html[dir="rtl"] #search_expand.reverse {transform:scaleX(1)}
 
 /* アドセンス広告 */
