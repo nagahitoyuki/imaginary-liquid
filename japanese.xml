@@ -1568,10 +1568,14 @@ button</b:comment>
 "@type": "ImageObject", "url": "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60", "width": 206, "height": 60 }}<b:if cond='data:post.author.profileUrl'>, "author": {
 "@type": "Person", "name": "<data:post.author.name.jsonEscaped/>", "url": "<data:post.author.profileUrl.jsonEscaped/>"<b:if cond='data:post.author.authorPhoto'>, "image": {
 "@type": "ImageObject", "url": "https:<data:post.author.authorPhoto.image.jsonEscaped/>", "height": <data:post.author.authorPhoto.height/>, "width": <data:post.author.authorPhoto.width/> }</b:if>}</b:if>}</script>
-<b:if cond='data:view.isPost'><script type='application/ld+json'>{
+<script type='application/ld+json'><b:if cond='data:post.labels.any'>[<b:loop index='i' values='data:post.labels' var='item'>{
 "@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [{
 "@type": "ListItem", "position": 1, "name": "<data:blog.title.jsonEscaped/>", "item": "<data:blog.homepageUrl.canonical/>"}, {
-"@type": "ListItem", "position": 2, "name": "<data:blog.pageName.jsonEscaped/>" }]}</script></b:if>
+"@type": "ListItem", "position": 2, "name": "<data:item.name.jsonEscaped/>", "item": "<data:item.url.canonical/>"}, {
+"@type": "ListItem", "position": 3, "name": "<data:blog.pageName.jsonEscaped/>" }]<b:eval expr='data:post.labels.size - data:i == 1 ? "}" : "}, "'/></b:loop>]<b:else/>{
+"@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [{
+"@type": "ListItem", "position": 1, "name": "<data:blog.title.jsonEscaped/>", "item": "<data:blog.homepageUrl.canonical/>"}, {
+"@type": "ListItem", "position": 2, "name": "<data:blog.pageName.jsonEscaped/>" }]}</b:if></script>
 <b:else/>
 <script type='application/ld+json'>{
 "@context": "http://schema.org", "@type": "CreativeWork", "mainEntity": {
