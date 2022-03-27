@@ -835,7 +835,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   </ul>
 </b:includable>
             <b:includable id='teamProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='me nofollow'><b:include name='profileImage'/><data:display-name/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='me'><b:include name='profileImage'/><data:display-name/></a>
 </b:includable>
             <b:includable id='userGoogleProfile'>
   <b:comment>Don&#39;t show G+ profile.</b:comment>
@@ -853,7 +853,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
-  <a expr:href='data:userUrl' rel='author me nofollow'>
+  <a expr:href='data:userUrl' rel='author me'>
     <b:include name='profileImage'/>
   </a>
 </b:includable>
@@ -868,7 +868,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
     <b:include name='viewProfileLink'/>
 </b:includable>
             <b:includable id='userProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author me nofollow'><data:displayname/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me'><data:displayname/></a>
 </b:includable>
             <b:includable id='userProfileText'>
   <dd class='profile-textblock'>
@@ -876,7 +876,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author me nofollow'><data:messages.viewMyCompleteProfile/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me'><data:messages.viewMyCompleteProfile/></a>
 </b:includable>
 </b:defaultmarkup>
 <b:defaultmarkup type='BlogArchive'>
@@ -1228,7 +1228,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='aboutPostAuthor'>
   <div class='author-name'>
-    <a class='pft-profile' expr:href='data:post.author.profileUrl' rel='author me nofollow' title='author profile'>
+    <a class='pft-profile' expr:href='data:post.author.profileUrl' rel='author me' title='author profile'>
       <span><data:post.author.name/></span>
     </a>
   </div>
@@ -1448,7 +1448,7 @@ button</b:comment>
       <b:include data='post' name='postFooter'/>
 </b:includable>
     <b:includable id='postAuthor'>
-  <b:eval cond='data:byline.label' expr='data:byline.label'/><span class='author vcard'><b:if cond='data:post.author.profileUrl'><a class='url fn' expr:href='data:post.author.profileUrl' rel='author me nofollow' title='profile'><b:tag class='photo' cond='data:post.author.authorPhoto' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 30, &quot;1:1&quot;)' expr:srcset='resizeImage(data:post.author.authorPhoto.image, 30, &quot;1:1&quot;) + ",  " + resizeImage(data:post.author.authorPhoto.image, 52, &quot;1:1&quot;) + " 2x"' height='30' name='img' width='30'/><data:post.author.name/></a><b:else/><span class='fn'><data:post.author.name/></span></b:if></span>
+  <b:eval cond='data:byline.label' expr='data:byline.label'/><span class='author vcard'><b:if cond='data:post.author.profileUrl'><a class='url fn' expr:href='data:post.author.profileUrl' rel='author me' title='profile'><b:tag class='photo' cond='data:post.author.authorPhoto' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 30, &quot;1:1&quot;)' expr:srcset='resizeImage(data:post.author.authorPhoto.image, 30, &quot;1:1&quot;) + ",  " + resizeImage(data:post.author.authorPhoto.image, 52, &quot;1:1&quot;) + " 2x"' height='30' name='img' width='30'/><data:post.author.name/></a><b:else/><span class='fn'><data:post.author.name/></span></b:if></span>
 </b:includable>
     <b:includable id='postBody' var='post'>
   <!-- If metaDescription is empty, use the post body as the schema.org description too, for G+/FB snippeting. -->
@@ -1749,7 +1749,7 @@ button</b:comment>
   </ul>
 </b:includable>
             <b:includable id='teamProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='me nofollow'><b:include name='profileImage'/><data:display-name/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='me'><b:include name='profileImage'/><data:display-name/></a>
 </b:includable>
             <b:includable id='userGoogleProfile'>
   <b:comment>Don&#39;t show G+ profile.</b:comment>
@@ -1767,7 +1767,7 @@ button</b:comment>
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
-  <a expr:href='data:userUrl' rel='author me nofollow'>
+  <a expr:href='data:userUrl' rel='author me'>
     <b:include name='profileImage'/>
   </a>
 </b:includable>
@@ -1782,7 +1782,7 @@ button</b:comment>
     <b:include name='viewProfileLink'/>
 </b:includable>
             <b:includable id='userProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author me nofollow'><data:displayname/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me'><data:displayname/></a>
 </b:includable>
             <b:includable id='userProfileText'>
   <dd class='profile-textblock'>
@@ -1790,7 +1790,7 @@ button</b:comment>
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author me nofollow'><data:messages.viewMyCompleteProfile/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me'><data:messages.viewMyCompleteProfile/></a>
 </b:includable>
           </b:widget>
         <b:widget id='BlogArchive1' locked='false' title='アーカイブ' type='BlogArchive' visible='true'>
