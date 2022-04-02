@@ -1960,7 +1960,7 @@ entries.forEach(entry =&gt; {
 <b:if cond='data:view.isSingleItem'>
 if (entry.target.id === "comments") {
 if (entry.isIntersecting) {
-commentForm.style.height = "90px";
+commentForm.style.height = /www\.blogger\.com/.test(document.referrer) ? "" : "90px";
 if (cmhd) {
 const cmrls = comments.querySelectorAll("a.comment-reply");
 cmrls.forEach(cmrl =&gt; {
