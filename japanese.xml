@@ -1996,7 +1996,7 @@ ifc.insertAdjacentHTML("afterbegin", "BLOG_CMT_createIframe('https://www.blogger
 commentForm.parentNode.appendChild(ifc);
 window.addEventListener("blur", () =&gt; {
 if (commentForm === document.activeElement) {
-commentForm.style.height = "296px";
+commentForm.style.height = "";
 <b:if cond='data:blog.isMobileRequest'> back_button.classList.add("invisible"); }});
 window.addEventListener("focus", () =&gt; {
 if (commentForm !== document.activeElement) {
