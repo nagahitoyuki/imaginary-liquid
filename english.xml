@@ -1569,7 +1569,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
 </b:includable>
     <b:includable id='postTitle' var='post'>
   <b:if cond='data:post.title != &quot;&quot;'>
-     <b:if cond='data:post.url and data:view.url != data:post.url'>
+     <b:if cond='!data:view.isSingleItem'>
        <h2 class='snippet-title'><a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a></h2>
       <b:else/>
        <h1 class='entry-title'><data:post.title/></h1>
