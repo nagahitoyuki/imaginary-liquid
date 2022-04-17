@@ -755,9 +755,9 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <b:tag expr:name='data:title ? &quot;h4&quot; : &quot;h3&quot;' class='pp-title'>
+  <p class='pp-title'>
     <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
-  </b:tag>
+  </p>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
@@ -1658,9 +1658,9 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <b:tag expr:name='data:title ? &quot;h3&quot; : &quot;h2&quot;' class='pp-title'>
+  <p class='pp-title'>
     <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
-  </b:tag>
+  </p>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
