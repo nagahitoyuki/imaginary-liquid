@@ -741,12 +741,12 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
     </b:if>
   </a>
   <b:if cond='data:widget.sectionId == &quot;sub_main&quot;'>
-  <footer class='post-footer'>
+  <div class='post-footer'>
     <b:if cond='data:post.url'>
       <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
     </b:if>
     <b:include data='post' name='postFooterJumpLink'/>
-  </footer>
+  </div>
   </b:if>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
@@ -761,9 +761,9 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
-    <article class='pp-post' expr:aria-setsize='data:posts.length'>
+    <div class='pp-post' expr:aria-setsize='data:posts.length'>
       <b:include name='snippetedPostContent'/>
-    </article>
+    </div>
     </b:loop>
 </b:includable>
 </b:defaultmarkup>
@@ -1647,10 +1647,10 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
     </b:with>
     </b:if>
   </a>
-  <footer class='post-footer'>
+  <div class='post-footer'>
       <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
     <b:include data='post' name='postFooterJumpLink'/>
-  </footer>
+  </div>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
     <b:with value='data:post.featuredImage' var='imgurl'>
@@ -1664,9 +1664,9 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
-    <article class='pp-post' expr:aria-setsize='data:posts.length'>
+    <div class='pp-post' expr:aria-setsize='data:posts.length'>
       <b:include name='snippetedPostContent'/>
-    </article>
+    </div>
     </b:loop>
 </b:includable>
   </b:widget>
