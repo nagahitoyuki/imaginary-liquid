@@ -716,7 +716,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 <b:defaultmarkup type='PopularPosts'>
     <b:includable id='main' var='this'>
   <b:include name='widget-title'/>
-  <div expr:class='data:widget.sectionId == &quot;sub_main&quot; ? &quot;ctpp&quot; : &quot;sbpp&quot;' role='feed'>
+  <div expr:class='data:widget.sectionId == &quot;sub_main&quot; ? &quot;ctpp&quot; : &quot;sbpp&quot;'>
     <b:include name='snippetedPosts'/>
   </div>
 </b:includable>
@@ -761,7 +761,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
-    <div class='pp-post' expr:aria-setsize='data:posts.length'>
+    <div class='pp-post'>
       <b:include name='snippetedPostContent'/>
     </div>
     </b:loop>
@@ -1620,7 +1620,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
       <b:widget-setting name='timeRange'>LAST_WEEK</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-  <aside class='mnpp ctpp' role='feed'>
+  <aside class='mnpp ctpp'>
   <b:if cond='data:title'>
     <h2 class='feed-title'><data:title/></h2>
   </b:if>
@@ -1664,7 +1664,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
-    <div class='pp-post' expr:aria-setsize='data:posts.length'>
+    <div class='pp-post'>
       <b:include name='snippetedPostContent'/>
     </div>
     </b:loop>
