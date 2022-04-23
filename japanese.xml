@@ -743,7 +743,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 <b:defaultmarkup type='PopularPosts'>
     <b:includable id='main' var='this'>
   <b:include name='widget-title'/>
-  <div expr:class='data:widget.sectionId == &quot;sub_main&quot; ? &quot;ctpp&quot; : &quot;sbpp&quot;' role='feed'>
+  <div expr:class='data:widget.sectionId == &quot;sub_main&quot; ? &quot;ctpp&quot; : &quot;sbpp&quot;'>
     <b:include name='snippetedPosts'/>
   </div>
 </b:includable>
@@ -788,7 +788,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
-    <div class='pp-post' expr:aria-setsize='data:posts.length'>
+    <div class='pp-post'>
       <b:include name='snippetedPostContent'/>
     </div>
     </b:loop>
@@ -1646,7 +1646,7 @@ button</b:comment>
       <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-  <aside class='mnpp ctpp' role='feed'>
+  <aside class='mnpp ctpp'>
   <b:if cond='data:title'>
     <h2 class='feed-title'><data:title/></h2>
   </b:if>
@@ -1690,7 +1690,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
-    <div class='pp-post' expr:aria-setsize='data:posts.length'>
+    <div class='pp-post'>
       <b:include name='snippetedPostContent'/>
     </div>
     </b:loop>
