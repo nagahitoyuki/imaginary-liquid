@@ -530,7 +530,8 @@ html[dir="rtl"] #shbtn.reverse, html[dir="rtl"] #search_expand.reverse {transfor
 .comment-range-text:last-child::after, .paging-control:last-child::after {content:none}
 
 /* ページャー */
-.blog-pager {margin-top:20px;display:flex;justify-content:space-around}
+.blog-pager {display:flex;justify-content:space-around}
+.wocf {margin-top:20px}
 .blog-pager>a {color:$(posts.navigation.link.color)}
 .blog-pager>a:visited {color:$(posts.navigation.link.visited.color)}
 .blog-pager>a:hover {color:$(posts.navigation.link.hover.color)}
@@ -1277,7 +1278,7 @@ button</b:comment>
   </footer>
 </b:includable>
     <b:includable id='commentFormIframeSrc' var='post'>
-  <a class='cmal' expr:href='data:post.commentFormIframeSrc + &quot;&amp;skin=essential&quot;' id='comment-editor-src' rel='nofollow'/>
+  <a class='cmal' expr:href='data:post.commentFormIframeSrc' id='comment-editor-src' rel='nofollow'/>
 </b:includable>
     <b:includable id='commentItem' var='comment'>
   <div class='comment' expr:id='&quot;c&quot; + data:comment.id'>
@@ -1498,11 +1499,10 @@ button</b:comment>
 
     <!-- Show ad inside post container, after comments, if single item. -->
     <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
-
-  <b:if cond='data:posts.length - data:i == 1'>
-     <b:include data='post' name='postMeta'/>
-     <b:include  name='postPagination'/>
-  </b:if>
+    <b:if cond='data:posts.length - data:i == 1'>
+      <b:include data='post' name='postMeta'/>
+      <b:include name='postPagination'/>
+    </b:if>
   </article>
 
   <!-- Show ad outside post container (between posts) for feed pages. -->
@@ -1583,6 +1583,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='postPagination'>
     <nav class='blog-pager'>
+    <b:class cond='!data:post.showThreadedComments' name='wocf'/>
     <b:include cond='data:newerPageUrl and data:view.isSingleItem' name='previousPageLink'/>
     <b:include cond='data:olderPageUrl' name='nextPageLink'/>
    </nav>
