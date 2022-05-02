@@ -518,6 +518,7 @@ html[dir="rtl"] #shbtn.reverse, html[dir="rtl"] #search_expand.reverse {transfor
 .comment-link .num_comments {margin-$startSide:.5em;vertical-align:top}
 #comments>.title {font-size:large;color:$(posts.title.color);margin-top:20px;margin-bottom:1.5em}
 .comment-footer>p {margin-top:20px;margin-bottom:0}
+.no-form>.comment-footer {margin-bottom:20px}
 .thread-count, #comment-editor-src, .continue, item-control {display:none}
 
 /* Paging control */
@@ -530,7 +531,7 @@ html[dir="rtl"] #shbtn.reverse, html[dir="rtl"] #search_expand.reverse {transfor
 
 /* Pager */
 .blog-pager {display:flex;justify-content:space-around}
-.wocf {margin-top:20px}
+.feed-view .blog-pager  {margin-top:20px}
 .blog-pager>a {color:$(posts.navigation.link.color)}
 .blog-pager>a:visited {color:$(posts.navigation.link.visited.color)}
 .blog-pager>a:hover {color:$(posts.navigation.link.hover.color)}
@@ -1297,7 +1298,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   </b:if>
 </b:includable>
     <b:includable id='comments' var='post'>
-  <section expr:class='&quot;comments&quot; + (data:post.embedCommentForm ? &quot; embed&quot; : &quot;&quot;)' expr:data-num-comments='data:post.numberOfComments' id='comments'>
+  <section expr:class='&quot;comments&quot; + (data:post.embedCommentForm ? &quot; embed&quot; : &quot; no-form&quot;)' expr:data-num-comments='data:post.numberOfComments' id='comments'>
     <b:if cond='data:post.allowComments'>
 
       <b:include name='commentsTitle'/>
@@ -1557,7 +1558,6 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
 </b:includable>
     <b:includable id='postPagination'>
     <nav class='blog-pager'>
-    <b:class cond='!data:post.showThreadedComments' name='wocf'/>
     <b:include cond='data:newerPageUrl and data:view.isSingleItem' name='previousPageLink'/>
     <b:include cond='data:olderPageUrl' name='nextPageLink'/>
    </nav>
