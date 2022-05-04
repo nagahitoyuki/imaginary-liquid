@@ -464,8 +464,8 @@ html[dir="rtl"] #shbtn.reverse, html[dir="rtl"] #search_expand.reverse {transfor
 .post-footer {display:flex}
 .hentry .post-footer {flex-direction:column}
 .post-footer-line>span {display:block;margin-bottom:20px}
-.post-footer-line>a, .archive-link, .jump-link {color:$(posts.link.color)}
 .pf-last {width:100%;text-align:$endSide;font-style:oblique}
+a.archive-link, a.jump-link {color:$(posts.link.color)}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
 .author-profile {display:flex;column-gap:var(--maincolumn-padding);margin-bottom:20px}
