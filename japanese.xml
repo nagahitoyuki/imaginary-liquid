@@ -2115,7 +2115,6 @@ const text = await response.text(), file = new DOMParser().parseFromString(text,
 npl = file.querySelector("a.older-link");
 if (npl) {
 npl.parentNode.remove(); } else {
-if (sbct.classList.contains("slider")) sidebar_wrapper.style.display = "block";
 bats[bats.length - 1].lastElementChild.remove();}
 Promise.all([...bats].map(bat =&gt; {
 const nbat = document.adoptNode(bat), pssc = nbat.querySelector("p.summary>script");
@@ -2140,6 +2139,7 @@ isac(2, 0); }
 return; } else if (sgtm &gt; 0) {
 isac(2, 'on'); }
 return; }
+if (sbct.classList.contains("slider")) sidebar_wrapper.style.display = "block";
 if (smwds) smwds.forEach(smwd =&gt; smwd.style.display = "block");
 attribution.style.display = "block"; rmmg('end'); }); }, {
 rootMargin: bthg + "px"});
