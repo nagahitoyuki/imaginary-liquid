@@ -1675,7 +1675,6 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
 
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 <div id='sidebar_wrapper'>
-<b:class cond='data:view.isMultipleItems' name='swcn'/>
 <aside aria-hidden='false' class='sidebar-container sidebar-invisible'>
   <button aria-label='Close sidebar' class='svg-icon-24-button' id='close_button' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_close_black_24dp'/></svg></button>
         <b:section class='sidebar' id='sidebar' name='Sidebar'>
@@ -2062,6 +2061,7 @@ back_button.classList.remove("invisible"); }}); });
 /* Infinite scroll */
 const bpct = Blog1.querySelector("div.hfeed"), bpg = Blog1.querySelector("nav.blog-pager"), bthg = floating_bar.clientHeight, smwds = sub_main.querySelectorAll("div.widget");
 let npl = bpg.querySelector("a.older-link");
+sidebar_wrapper.classList.add("swcn");
 if (bpct.clientHeight === 0) bpct.style.marginTop = "0";
 function scrollStop(event) {
 event.preventDefault(); }
@@ -2114,7 +2114,7 @@ return; } else if (sgtm &gt; 0) {
 isac(2, 'on'); }
 return; }
 if (Blog1.querySelector("nav.blog-pager")) bpg.remove();
-if (sbct.classList.contains("slider")) sidebar_wrapper.style.display = "block";
+if (sbct.classList.contains("slider")) sidebar_wrapper.classList.remove("swcn");
 if (smwds) smwds.forEach(smwd =&gt; smwd.style.display = "block");
 attribution.style.display = "block"; rmmg('end'); }); }, {
 rootMargin: bthg + "px"});
