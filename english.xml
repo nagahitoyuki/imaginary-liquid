@@ -2114,7 +2114,7 @@ return; } else if (sgtm &gt; 0) {
 isac(2, 'on'); }
 return; }
 if (Blog1.querySelector("nav.blog-pager")) bpg.remove();
-if (sbct.classList.contains("slider")) sidebar_wrapper.classList.remove("swcn");
+if (sbct.classList.contains("slider")) sidebar_wrapper.style.display = "block";
 if (smwds) smwds.forEach(smwd =&gt; smwd.style.display = "block");
 attribution.style.display = "block"; rmmg('end'); }); }, {
 rootMargin: bthg + "px"});
