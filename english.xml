@@ -2099,7 +2099,7 @@ case 'Too fast': rmmg('pass'); throw '';
 case 'Connection failed': bpct.after(bpg); rmmg('stop'); break;
 default: bpct.after(bpg); rmmg('others'); }}).then(() =&gt; {
 document.removeEventListener("mousewheel", scrollStop, {passive: false}); document.removeEventListener("touchmove", scrollStop, {passive: false}); bpct.ariaBusy = "false"; add_button.classList.add("hidden"); });
-if (Blog1.querySelector("nav.blog-pager")) bpg.remove(); }
+if (bpg) bpg.remove(); }
 const nextIndexObserver = new IntersectionObserver(entries =&gt; {
 entries.forEach(entry =&gt; {
 if (npl) {
