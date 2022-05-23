@@ -2087,7 +2087,7 @@ back_button.classList.remove("invisible"); }}); });
 /* Infinite scroll */
 const bpct = Blog1.querySelector("div.hfeed"), bpg = Blog1.querySelector("nav.blog-pager"), bthg = floating_bar.clientHeight, smwds = sub_main.querySelectorAll("div.widget");
 let npl = bpg.querySelector("a.older-link");
-sidebar_wrapper.classList.add("swcn");
+if (npl) sidebar_wrapper.classList.add("swcn"); else bpg.remove();
 if (bpct.clientHeight === 0) bpct.style.marginTop = "0";
 function scrollStop(event) {
 event.preventDefault(); }
@@ -2139,10 +2139,9 @@ isac(2, 0); }
 return; } else if (sgtm &gt; 0) {
 isac(2, 'on'); }
 return; }
-if (bpg) bpg.style.margin = "0";
 if (sbct.classList.contains("slider")) sidebar_wrapper.style.display = "block";
 if (smwds) smwds.forEach(smwd =&gt; smwd.style.display = "block");
-attribution.style.display = "block"; rmmg('end'); }); }, {
+attribution.style.display = "block"; sidebar_wrapper.classList.remove("swcn"); rmmg('end'); }); }, {
 rootMargin: bthg + "px"});
 nextIndexObserver.observe(sub_main);
 <b:else/>
