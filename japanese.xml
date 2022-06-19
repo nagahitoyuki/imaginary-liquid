@@ -1246,6 +1246,22 @@ button</b:comment>
     <p><data:this.messages.blogComment/></p>
   </b:if>
 </b:includable>
+    <b:includable id='bylineByName' var='byline'>
+  <b:switch var='data:byline.name'>
+  <b:case value='comments'/>
+    <b:include cond='data:post.allowComments' name='postCommentsLink'/>
+  <b:case value='location'/>
+    <b:include cond='data:post.location' name='postLocation'/>
+  <b:case value='timestamp'/>
+    <b:include name='postTimestamp'/>
+  <b:case value='author'/>
+    <b:include name='postAuthor'/>
+  <b:case value='labels'/>
+    <b:include cond='data:post.labels.any' name='postLabels'/>
+  <b:case value='icons'/>
+    <b:include cond='data:post.emailPostUrl' name='emailPostIcon'/>
+  </b:switch>
+</b:includable>
     <b:includable id='commentAuthorAvatar'>
   <span class='avatar-image-container'>
   <b:if cond='data:comment.authorUserType == &quot;blogger&quot;'>
@@ -1514,13 +1530,9 @@ button</b:comment>
 </b:includable>
     <b:includable id='postFooter' var='post'>
     <footer class='post-footer'>
-      <b:if cond='data:view.isPost'>
+      <b:if cond='data:view.isSingleItem'>
       <b:include name='footerBylines'/>
-        <div class='pf-last'>
-          <span class='post-timestamp updated'>最終更新:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>題名:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a>
-        </div>
-      <b:elseif cond='data:view.isPage'/>
-      <div class='pf-last'>題名:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a></div>
+        <div class='pf-last'><span class='post-timestamp updated'>最終更新:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>題名:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a></div>
       <b:else/>
         <b:if cond='data:post.url'>
           <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
