@@ -723,18 +723,14 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   </div>
 </b:includable>
     <b:includable id='postSnippet'>
-    <p class='snippet-item'>
-      <data:post.snippets.short/>
-    </p>
+    <p class='snippet-item'><data:post.snippets.short/></p>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
-    <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title'>
-      <data:blog.jumpLinkMessage/>
-    </a>
+    <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title' rel='nofollow'><data:blog.jumpLinkMessage/></a>
  </b:includable>
     <b:includable id='snippetedPostContent'>
   <b:include name='snippetedPostTitle'/>
-  <a class='item-content' expr:href='data:post.url'>
+  <a class='item-content' expr:href='data:post.url' rel='nofollow'>
     <b:include cond='data:post.featuredImage and data:this.postDisplay.showFeaturedImage' name='snippetedPostThumbnail'/>
     <b:if cond='data:this.postDisplay.showSnippet'>
     <b:with value='&quot;popular-posts&quot;' var='snippetPrefix'>
@@ -757,15 +753,11 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <p class='pp-title'>
-    <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
-  </p>
+  <p class='pp-title'><a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a></p>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
-    <div class='pp-post'>
-      <b:include name='snippetedPostContent'/>
-    </div>
+    <div class='pp-post'><b:include name='snippetedPostContent'/></div>
     </b:loop>
 </b:includable>
 </b:defaultmarkup>
@@ -1449,7 +1441,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
     </div>
 </b:includable>
     <b:includable id='postBodySnippet' var='post'>
-  <a class='total-snippet' expr:href='data:post.url'>
+  <a class='total-snippet' expr:href='data:post.url' rel='nofollow'>
   <b:if cond='data:post.featuredImage'>
   <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
     <b:tag class='snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl.isYoutube ? data:imgurl + "=w121-rw" : data:imgurl' expr:srcset='data:imgurl.isYoutube ? "" : sourceSet(data:imgurl, [180, 360], "1:1")' height='180' name='img' sizes='(max-width:640px) 30vw, 360px' width='180'>
@@ -1531,7 +1523,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   </b:if>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
-    <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title'><data:blog.jumpLinkMessage/></a>
+    <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title' rel='nofollow'><data:blog.jumpLinkMessage/></a>
  </b:includable>
     <b:includable id='postHeader' var='post'>
   <b:include data='post' name='headerByline'/>
@@ -1641,18 +1633,14 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   </aside>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
-    <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title'>
-      <data:blog.jumpLinkMessage/>
-    </a>
+    <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title' rel='nofollow'><data:blog.jumpLinkMessage/></a>
  </b:includable>
     <b:includable id='postSnippet'>
-    <p class='snippet-item'>
-      <data:post.snippets.short/>
-    </p>
+    <p class='snippet-item'><data:post.snippets.short/></p>
 </b:includable>
     <b:includable id='snippetedPostContent'>
   <b:include name='snippetedPostTitle'/>
-  <a class='item-content' expr:href='data:post.url'>
+  <a class='item-content' expr:href='data:post.url' rel='nofollow'>
     <b:include cond='data:post.featuredImage and data:this.postDisplay.showFeaturedImage' name='snippetedPostThumbnail'/>
     <b:if cond='data:this.postDisplay.showSnippet'>
     <b:with value='&quot;popular-posts&quot;' var='snippetPrefix'>
@@ -1671,15 +1659,11 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <p class='pp-title'>
-    <a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a>
-  </p>
+  <p class='pp-title'><a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a></p>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
-    <div class='pp-post'>
-      <b:include name='snippetedPostContent'/>
-    </div>
+    <div class='pp-post'><b:include name='snippetedPostContent'/></div>
     </b:loop>
 </b:includable>
   </b:widget>
