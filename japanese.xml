@@ -830,7 +830,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   </ul>
 </b:includable>
             <b:includable id='teamProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='me'><b:include name='profileImage'/><data:display-name/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me'><b:include name='profileImage'/><data:display-name/></a>
 </b:includable>
             <b:includable id='userGoogleProfile'>
   <b:comment>Don&#39;t show G+ profile.</b:comment>
@@ -868,7 +868,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='nofollow'><data:messages.viewMyCompleteProfile/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me'><data:messages.viewMyCompleteProfile/></a>
 </b:includable>
 </b:defaultmarkup>
 <b:defaultmarkup type='BlogArchive'>
@@ -1743,7 +1743,7 @@ button</b:comment>
   </ul>
 </b:includable>
             <b:includable id='teamProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='me'><b:include name='profileImage'/><data:display-name/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me'><b:include name='profileImage'/><data:display-name/></a>
 </b:includable>
             <b:includable id='userGoogleProfile'>
   <b:comment>Don&#39;t show G+ profile.</b:comment>
@@ -1781,7 +1781,7 @@ button</b:comment>
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='nofollow'><data:messages.viewMyCompleteProfile/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me'><data:messages.viewMyCompleteProfile/></a>
 </b:includable>
           </b:widget>
         <b:widget id='BlogArchive1' locked='false' title='アーカイブ' type='BlogArchive' visible='true'>
