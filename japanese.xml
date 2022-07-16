@@ -568,7 +568,8 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .individual {text-align:center}
 .team-members {list-style-type:none;padding-$startSide:0;display:flex;flex-direction:column;gap:.5em}
 .profile-link {display:inline flex;align-items:center;gap:1em;color:$(profile.link.color)}
-.profile-img {border-radius:50%;vertical-align:top}
+.ip-img {vertical-align:top;border-radius:50%}
+.tp-img {vertical-align:calc(-50% + $(body.text.font.size) * -0.12);margin-right:.5em;border-radius:50%}
 .profile-data, .profile-textblock {color:$(profile.text.color);margin-$startSide:0;margin-bottom:.4em}
 
 /* ラベルとアーカイブ */
@@ -796,7 +797,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
             <b:include name='content'/>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:team ? 44 : data:authorPhoto.height' expr:loading='data:blog.isMobileRequest ? &quot;lazy&quot; : &quot;eager&quot;' expr:src='data:authorPhoto.image' expr:width='data:team ? 44 : data:authorPhoto.width'/>
+  <img expr:class='data:team ? "tp-img" : "ip-img"' expr:alt='data:messages.myPhoto' expr:height='data:team ? 44 : data:authorPhoto.height' expr:loading='data:blog.isMobileRequest ? &quot;lazy&quot; : &quot;eager&quot;' expr:src='data:authorPhoto.image' expr:width='data:team ? 44 : data:authorPhoto.width'/>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
@@ -847,14 +848,11 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
-  <a expr:href='data:userUrl' rel='author me'>
     <b:include name='profileImage'/>
-  </a>
 </b:includable>
             <b:includable id='userProfileInfo'>
     <dl class='profile-datablock'>
       <b:class cond='data:showlocation and data:location != &quot;&quot;' name='has-location'/>
-
       <b:include name='userProfileData'/>
       <b:include cond='data:showlocation and data:location != &quot;&quot;' name='userLocation'/>
       <b:include cond='data:aboutme != &quot;&quot;' name='userProfileText'/>
@@ -870,7 +868,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author me'><data:messages.viewMyCompleteProfile/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='nofollow'><data:messages.viewMyCompleteProfile/></a>
 </b:includable>
 </b:defaultmarkup>
 <b:defaultmarkup type='BlogArchive'>
@@ -1712,7 +1710,7 @@ button</b:comment>
             <b:include name='content'/>
         </b:includable>
             <b:includable id='authorProfileImage'>
-  <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:team ? 44 : data:authorPhoto.height' expr:loading='data:blog.isMobileRequest ? &quot;lazy&quot; : &quot;eager&quot;' expr:src='data:authorPhoto.image' expr:width='data:team ? 44 : data:authorPhoto.width'/>
+  <img expr:class='data:team ? "tp-img" : "ip-img"' expr:alt='data:messages.myPhoto' expr:height='data:team ? 44 : data:authorPhoto.height' expr:loading='data:blog.isMobileRequest ? &quot;lazy&quot; : &quot;eager&quot;' expr:src='data:authorPhoto.image' expr:width='data:team ? 44 : data:authorPhoto.width'/>
 </b:includable>
             <b:includable id='content'>
   <b:if cond='data:team'>
@@ -1763,14 +1761,11 @@ button</b:comment>
   </dt>
 </b:includable>
             <b:includable id='userProfileImage'>
-  <a expr:href='data:userUrl' rel='author me'>
     <b:include name='profileImage'/>
-  </a>
 </b:includable>
             <b:includable id='userProfileInfo'>
     <dl class='profile-datablock'>
       <b:class cond='data:showlocation and data:location != &quot;&quot;' name='has-location'/>
-
       <b:include name='userProfileData'/>
       <b:include cond='data:showlocation and data:location != &quot;&quot;' name='userLocation'/>
       <b:include cond='data:aboutme != &quot;&quot;' name='userProfileText'/>
@@ -1786,7 +1781,7 @@ button</b:comment>
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='author me'><data:messages.viewMyCompleteProfile/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='nofollow'><data:messages.viewMyCompleteProfile/></a>
 </b:includable>
           </b:widget>
         <b:widget id='BlogArchive1' locked='false' title='アーカイブ' type='BlogArchive' visible='true'>
