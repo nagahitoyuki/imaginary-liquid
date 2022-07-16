@@ -803,7 +803,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   </ul>
 </b:includable>
             <b:includable id='teamProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='me'><b:include name='profileImage'/><data:display-name/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me'><b:include name='profileImage'/><data:display-name/></a>
 </b:includable>
             <b:includable id='userGoogleProfile'>
   <b:comment>Don&#39;t show G+ profile.</b:comment>
@@ -841,7 +841,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='nofollow'><data:messages.viewMyCompleteProfile/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me'><data:messages.viewMyCompleteProfile/></a>
 </b:includable>
 </b:defaultmarkup>
 <b:defaultmarkup type='BlogArchive'>
@@ -1717,7 +1717,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   </ul>
 </b:includable>
             <b:includable id='teamProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='me'><b:include name='profileImage'/><data:display-name/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me'><b:include name='profileImage'/><data:display-name/></a>
 </b:includable>
             <b:includable id='userGoogleProfile'>
   <b:comment>Don&#39;t show G+ profile.</b:comment>
@@ -1755,7 +1755,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   </dd>
 </b:includable>
             <b:includable id='viewProfileLink'>
-  <a class='profile-link' expr:href='data:userUrl' rel='nofollow'><data:messages.viewMyCompleteProfile/></a>
+  <a class='profile-link' expr:href='data:userUrl' rel='author me'><data:messages.viewMyCompleteProfile/></a>
 </b:includable>
           </b:widget>
         <b:widget id='BlogArchive1' locked='false' title='Archive' type='BlogArchive' visible='true'>
