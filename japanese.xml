@@ -769,7 +769,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   <b:if cond='data:widget.sectionId == &quot;sub_main&quot;'>
   <div class='post-footer'>
     <b:if cond='data:post.url'>
-      <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
+      <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives nofollow'><data:messages.archive/></a>
     </b:if>
     <b:include data='post' name='postFooterJumpLink'/>
   </div>
@@ -1525,7 +1525,7 @@ button</b:comment>
         <div class='pf-last'><span class='post-timestamp updated'>最終更新:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>題名:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a></div>
       <b:else/>
         <b:if cond='data:post.url'>
-          <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
+          <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives nofollow'><data:messages.archive/></a>
         </b:if>
       <b:include data='post' name='postFooterJumpLink'/>
     </b:if>
@@ -1673,7 +1673,7 @@ button</b:comment>
     </b:if>
   </a>
   <div class='post-footer'>
-      <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives'><data:messages.archive/></a>
+      <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives nofollow'><data:messages.archive/></a>
     <b:include data='post' name='postFooterJumpLink'/>
   </div>
 </b:includable>
