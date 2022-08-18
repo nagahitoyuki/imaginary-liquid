@@ -784,7 +784,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
-    <div class='pp-post'><b:include name='snippetedPostContent'/></div>
+    <article class='pp-post'><b:include name='snippetedPostContent'/></article>
     </b:loop>
 </b:includable>
 </b:defaultmarkup>
@@ -1686,7 +1686,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
-    <div class='pp-post'><b:include name='snippetedPostContent'/></div>
+    <article class='pp-post'><b:include name='snippetedPostContent'/></article>
     </b:loop>
 </b:includable>
   </b:widget>
