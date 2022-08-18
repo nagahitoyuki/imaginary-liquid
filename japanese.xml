@@ -348,7 +348,6 @@ blockquote {margin:1em 2.5em}
 
 /* ウィジェット */
 .title, .feed-title {font-size:large;color:$(widget.title.color)}
-.feed-title {font-weight:bold}
 .widget-content ul {list-style-type:none;padding-$startSide:0}
 .widget-content ul ul {margin-$startSide:1em}
 
@@ -1142,7 +1141,7 @@ button</b:comment>
     </b:widget-settings>
     <b:includable id='main' var='this'>
   <b:if cond='data:title'>
-    <p class='feed-title'><data:title/></p>
+    <h2 class='feed-title'><data:title/></h2>
   </b:if>
     <b:include name='snippetedPosts'/>
 </b:includable>
@@ -1683,7 +1682,7 @@ button</b:comment>
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <p class='pp-title'><a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a></p>
+  <b:tag class='pp-title' expr:name='data:title ? "h3" : "h2"'><a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a></b:tag>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
