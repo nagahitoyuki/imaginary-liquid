@@ -2038,16 +2038,17 @@ search_top.style.display = "inline"; floating_share.style.display = "none"; swc.
 search_top.style.display = "none"; floating_share.style.display = "flex"; swc.ariaHidden = "true"; });
 </b:if>}
 /* Share menu */
+const pguc = "<data:blog.url.canonical/>", brus = "https://www.blogger.com/share-post.g?blogID=<data:blog.blogId/><b:eval expr='data:view.isSingleItem ? "&amp;postID=" + data:view.postId : ""'/>&amp;target="; 
 shbtn.addEventListener("click", () =&gt; {
 shbtn.classList.toggle("reverse");
 if (getComputedStyle(sis).display === "none") {
 sis.style.display = "flex"; } else {
 sis.style.display = "none"; }});
-fbbtn.addEventListener("click", () =&gt; window.location.href = "https://www.facebook.com/sharer/sharer.php?u=<data:blog.url.canonical/>");
-twbtn.addEventListener("click", () =&gt; window.location.href = "https://twitter.com/share?url=<data:blog.url.canonical/>&amp;text=" + encodeURIComponent('<data:view.title.jsEscaped/>'));
-prbtn.addEventListener("click", () =&gt; window.location.href = "https://pinterest.com/pin/create/button/?url=<data:blog.url.canonical/>");
-hbbtn.addEventListener("click", () =&gt; window.location.href = "https://b.hatena.ne.jp/entry/<data:blog.url.canonical/>");
-cbcp.addEventListener("click", () =&gt; window.navigator.clipboard.writeText("<data:blog.url.canonical/>").then(() =&gt; alert("リンクをクリップボードにコピーしました\u3002")));
+fbbtn.addEventListener("click", () =&gt; window.location.href = brus + "facebook");
+twbtn.addEventListener("click", () =&gt; window.location.href = brus + "twitter");
+prbtn.addEventListener("click", () =&gt; window.location.href = brus + "pinterest");
+hbbtn.addEventListener("click", () =&gt; window.location.href = "https://b.hatena.ne.jp/entry/" + pguc);
+cbcp.addEventListener("click", () =&gt; window.navigator.clipboard.writeText(pguc).then(() =&gt; alert("リンクをクリップボードにコピーしました\u3002")));
 <b:else/>
 /* Feed button */
 febtn.addEventListener("click", () =&gt; window.location.href = "<b:eval expr='data:view.isHomepage.canonical + "feeds/posts/default?alt=rss"'/>");
