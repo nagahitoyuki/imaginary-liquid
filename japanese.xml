@@ -1499,20 +1499,15 @@ button</b:comment>
   <b:attr cond='data:view.isMultipleItems' name='aria-setsize' value='-1'/>
     <!-- Post title and body -->
       <b:include data='post' name='post'/>
-
     <!-- Comments -->
     <b:include cond='data:view.isSingleItem and data:post.allowComments' data='post' name='commentPicker'/>
-
     <!-- Show ad inside post container, after comments, if single item. -->
     <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
-    <b:if cond='data:posts.length - data:i == 1'>
-      <b:include data='post' name='postMeta'/>
-      <b:include name='postPagination'/>
-    </b:if>
+    <b:include cond='data:posts.length - data:i == 1' name='postPagination'/>
   </article>
-
   <!-- Show ad outside post container (between posts) for feed pages. -->
   <b:include cond='data:view.isMultipleItems and data:post.includeAd' data='post' name='inlineAd'/>
+  <b:include cond='data:posts.length - data:i == 1' data='post' name='postMeta'/>
 </b:includable>
     <b:includable id='postCommentsLink'>
   <b:comment>Don&#39;t show comment buttons.</b:comment>
