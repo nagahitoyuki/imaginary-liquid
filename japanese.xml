@@ -310,9 +310,9 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
   <Variable name="sidebar.width" description="Sidebar width" type="length"
             min="0px" max="1000px" default="302px"  value="302px"/>
   <Variable name="content.width" description="Content width" type="length"
-            min="600px" max="2400px" default="920px"  value="920px"/>
+            min="600px" max="2000px" default="920px"  value="920px"/>
   <Variable name="content.margin" description="Content margin" type="length"
-            min="0px" max="1000px" default="18px"  value="18px"/>
+            min="0px" max="500px" default="18px"  value="18px"/>
 </Group>
  */
 
@@ -1276,7 +1276,7 @@ button</b:comment>
     <b:includable id='commentForm' var='post'>
   <footer class='comment-footer'>
     <b:include data='post' name='commentFormIframeSrc'/>
-    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' expr:title='data:messages.postAComment' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ? 410 : 90' expr:title='data:messages.postAComment' frameborder='0' id='comment-editor' name='comment-editor' src=''/>
     <data:post.cmtfpIframe/>
     <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
       <p><data:this.messages.blogComment/></p>
@@ -1610,7 +1610,7 @@ button</b:comment>
       <p><data:this.messages.blogComment/></p>
     </b:if>
     <b:include data='post' name='commentFormIframeSrc'/>
-    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' expr:title='data:messages.postAComment' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ? 410 : 90' expr:title='data:messages.postAComment' frameborder='0' id='comment-editor' name='comment-editor' src=''/>
     <data:post.cmtfpIframe/>
   </footer>
 </b:includable>
