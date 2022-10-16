@@ -980,7 +980,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 </b:defaultmarkups>
 
 <b:with value='resizeImage(data:skin.vars.body_background.image, (data:blog.isMobileRequest ? 640 : 1280))' var='bgimg'><b:if cond='not data:view.isPreview and data:bgimg'>
-<b:tag class='bg-media' cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")' name='noscript'><style><b:eval expr='".bg-image {background-image:url(" + data:bgimg.cssEscaped + (data:bgimg contains "themes.googleusercontent.com" ? "-rw-e100" : "") + ")}}"'/></style></b:tag>
+<b:tag class='bg-media' cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")' name='noscript'><style><b:eval expr='".bg-image {background-image:url(" + data:bgimg.cssEscaped + (data:bgimg contains "themes.googleusercontent.com" ? "-rw-e100" : "") + ")}"'/></style></b:tag>
 <b:if cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")'><script>const nsbm = document.head.querySelector("noscript.bg-media"), bgsl = document.createElement("style"), bmtx = 
 /\.bg-image.*\)\}\}/.exec(nsbm.innerText)[0].replace(<b:eval expr='data:blog.isMobileRequest ? "/w640/" : "/w1280/"'/>, "$&amp;-rw-e100");
 bgsl.insertAdjacentHTML("afterbegin", bmtx); document.head.replaceChild(bgsl, nsbm);</script></b:if>
