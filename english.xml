@@ -1532,7 +1532,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
     <b:includable id='postMeta' var='post'>
 <b:if cond='data:view.isSingleItem'><script type='application/ld+json'>{
 "@context": "http://schema.org", "@type": "BlogPosting", "mainEntityOfPage": {
-"@type": "WebPage", "@id": "<data:post.url.canonical.jsonEscaped/>" }, "headline": "<data:post.title.jsonEscaped/>", "description": "<b:eval expr='(data:post.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }).jsonEscaped'/>", "datePublished": "<data:post.date.iso8601.jsonEscaped/>", "dateModified": "<data:post.lastUpdated.iso8601.jsonEscaped/>", "image": {
+"@type": "WebPage", "@id": "<data:post.url.canonical.jsonEscaped/>" }, "headline": "<data:post.title.jsonEscaped/>", "description": "<b:eval expr='data:blog.metaDescription ? data:blog.metaDescription.jsonEscaped : (data:post.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }).jsonEscaped'/>", "datePublished": "<data:post.date.iso8601.jsonEscaped/>", "dateModified": "<data:post.lastUpdated.iso8601.jsonEscaped/>", "image": {
 "@type": "ImageObject", "url": "<b:eval expr='(data:post.featuredImage ? resizeImage(data:post.featuredImage, 1200, "1200:630") : "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200").jsonEscaped'/>", "height": <b:eval expr='data:post.featuredImage ? 630 : 348'/>, "width": 1200 }, "publisher": {
 "@type": "Organization", "name": "Blogger", "logo": {
 "@type": "ImageObject", "url": "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60", "width": 206, "height": 60 }}<b:if cond='data:post.author.profileUrl'>, "author": {
