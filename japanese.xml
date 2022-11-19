@@ -1276,7 +1276,7 @@ button</b:comment>
     <b:includable id='commentForm' var='post'>
   <footer class='comment-footer'>
     <b:include data='post' name='commentFormIframeSrc'/>
-    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: 90' expr:title='data:messages.postAComment' frameborder='0' id='comment-editor' name='comment-editor' src=''/>
+    <iframe class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ? 410 : 90' expr:title='data:messages.postAComment' id='comment-editor' name='comment-editor' src=''/>
     <data:post.cmtfpIframe/>
     <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
       <p><data:this.messages.blogComment/></p>
@@ -1378,7 +1378,7 @@ button</b:comment>
     </b:if>
     <b:if cond='data:showCmtPopup'>
       <div id='comment-popup'>
-        <iframe allowtransparency='allowtransparency' expr:title='data:messages.postAComment' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        <iframe expr:title='data:messages.postAComment' id='comment-actions' name='comment-actions' scrolling='no'>
         </iframe>
       </div>
     </b:if>
@@ -1610,7 +1610,7 @@ button</b:comment>
       <p><data:this.messages.blogComment/></p>
     </b:if>
     <b:include data='post' name='commentFormIframeSrc'/>
-    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: 90' expr:title='data:messages.postAComment' frameborder='0' id='comment-editor' name='comment-editor' src=''/>
+    <iframe class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ? 410 : 90' expr:title='data:messages.postAComment' id='comment-editor' name='comment-editor' src=''/>
     <data:post.cmtfpIframe/>
   </footer>
 </b:includable>
@@ -1628,7 +1628,7 @@ button</b:comment>
       </b:if>
     <b:if cond='data:showCmtPopup'>
       <div id='comment-popup'>
-        <iframe allowtransparency='allowtransparency' expr:title='data:messages.postAComment' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        <iframe expr:title='data:messages.postAComment' id='comment-actions' name='comment-actions' scrolling='no'>
         </iframe>
       </div>
     </b:if>
