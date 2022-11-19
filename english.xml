@@ -739,12 +739,12 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
     </b:if>
   </a>
   <b:if cond='data:widget.sectionId == &quot;sub_main&quot;'>
-  <div class='post-footer'>
+  <footer class='post-footer'>
     <b:if cond='data:post.url'>
       <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives nofollow'><data:messages.archive/></a>
     </b:if>
     <b:include data='post' name='postFooterJumpLink'/>
-  </div>
+  </footer>
   </b:if>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
@@ -753,7 +753,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <p class='pp-title'><a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a></p>
+  <header><b:tag class='pp-title' expr:name='data:title ? &quot;h4&quot; : &quot;h3&quot;'><a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a></b:tag></header>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
@@ -1567,7 +1567,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
     <b:includable id='postTitle' var='post'>
   <b:if cond='data:post.title != &quot;&quot;'>
      <b:if cond='!data:view.isSingleItem'>
-       <h2 class='snippet-title'><a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a></h2>
+       <header><h2 class='snippet-title'><a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a></h2></header>
       <b:else/>
        <h1 class='entry-title'><data:post.title/></h1>
      </b:if>
@@ -1640,10 +1640,10 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
     </b:with>
     </b:if>
   </a>
-  <div class='post-footer'>
+  <footer class='post-footer'>
       <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives nofollow'><data:messages.archive/></a>
     <b:include data='post' name='postFooterJumpLink'/>
-  </div>
+  </footer>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
     <b:with value='data:post.featuredImage' var='imgurl'>
@@ -1651,7 +1651,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   </b:with>
 </b:includable>
     <b:includable id='snippetedPostTitle'>
-  <b:tag class='pp-title' expr:name='data:title ? "h3" : "h2"'><a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a></b:tag>
+  <header><b:tag class='pp-title' expr:name='data:title ? &quot;h3&quot; : &quot;h2&quot;'><a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a></b:tag></header>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
