@@ -510,7 +510,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .comment-reply, .blog-admin>a {font-weight:normal}
 .comment-body {margin-bottom:12px}
 .embed[data-num-comments="0"] {border:0;margin-top:0;padding-top:0}
-#comment-editor {display:block;width:100%}
+#comment-editor {display:block;width:100%;border:none}
 .comment-replybox-single>#comment-editor {margin-bottom:1em}
 .loadmore.loaded {max-height:0;opacity:0;overflow:hidden}
 .comment-link {color:$(posts.link.color);position:relative}
