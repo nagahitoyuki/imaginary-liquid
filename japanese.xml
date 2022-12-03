@@ -39,7 +39,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
   <meta content='adult' name='rating'/>
 </b:if>
   <data:blog.feedLinks/>
-  <meta expr:content='data:blog.url.canonical' property='og:url'/>
+  <meta expr:content='data:view.url.canonical' property='og:url'/>
 <b:if cond='data:view.isArchive or data:view.isLabelSearch'>
   <meta expr:content='data:blog.pageTitle.escaped' property='og:title'/>
 <b:elseif cond='data:view.isSearch'/>
@@ -1571,7 +1571,7 @@ button</b:comment>
 <b:else/>
 <script type='application/ld+json'>{
 "@context": "http://schema.org", "@type": "CreativeWork", "mainEntity": {
-"@type": "Blog", "@id": "<data:blog.url.canonical.jsonEscaped/>" }, "name": "<data:blog.pageTitle.jsonEscaped/>", "description": "<b:eval expr='(data:posts.first.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }).jsonEscaped'/>", "datePublished": "<data:posts.last.date.iso8601.jsonEscaped/>", "dateModified": "<data:posts.first.date.iso8601.jsonEscaped/>", "image": {
+"@type": "Blog", "@id": "<data:view.url.canonical.jsonEscaped/>" }, "name": "<data:blog.pageTitle.jsonEscaped/>", "description": "<b:eval expr='(data:posts.first.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }).jsonEscaped'/>", "datePublished": "<data:posts.last.date.iso8601.jsonEscaped/>", "dateModified": "<data:posts.first.date.iso8601.jsonEscaped/>", "image": {
 "@type": "ImageObject", "url": "<b:eval expr='(data:posts.first.featuredImage ? resizeImage(data:posts.first.featuredImage, 1200, "1200:630") : "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200").jsonEscaped'/>", "height": <b:eval expr='data:posts.first.featuredImage ? 630 : 348'/>, "width": 1200 }, "publisher": {
 "@type": "Organization", "name": "Blogger", "logo": {
 "@type": "ImageObject", "url": "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60", "width": 206, "height": 60 }}<b:if cond='data:posts.first.author.profileUrl'>, "author": {
@@ -2033,7 +2033,7 @@ search_top.style.display = "inline"; floating_share.style.display = "none"; swc.
 search_top.style.display = "none"; floating_share.style.display = "flex"; swc.ariaHidden = "true"; });
 </b:if>}
 /* Share menu */
-const spgu = "<data:blog.url.canonical/>", spgt = document.title;
+const spgu = "<data:view.url.canonical/>", spgt = document.title;
 shbtn.addEventListener(&quot;click&quot;, () =&gt; {
 shbtn.classList.toggle(&quot;reverse&quot;);
 if (getComputedStyle(sis).display === &quot;none&quot;) {
