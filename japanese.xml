@@ -348,7 +348,7 @@ blockquote {margin:1em 2.5em}
 
 /* ウィジェット */
 .title, .feed-title {font-size:large;color:$(widget.title.color)}
-.widget:not(.HTML):not(.Text) ul {list-style-type:none;padding-$startSide:0}
+.widget:not(.HTML):not(.Text):not(.Blog) ul {list-style-type:none;padding-$startSide:0}
 .widget-content ul ul {margin-$startSide:1em}
 
 /* 補足 */
@@ -924,17 +924,11 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   <address class='contact-form-widget'>
       <form name='contact-form'>
         <p/>
-        <data:contactFormNameMsg/>
-        <br/>
-        <input class='contact-form-name' expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' name='name' size='30' type='text' value=''/>
+        <label><data:contactFormNameMsg/><br/><input class='contact-form-name' expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' name='name' size='30' type='text' value=''/></label>
         <p/>
-        <data:contactFormEmailMsg/> <span class='contact-form-asterisk'>*</span>
-        <br/>
-        <input class='contact-form-email' expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' name='email' size='30' type='text' value=''/>
+        <label><data:contactFormEmailMsg/> <span class='contact-form-asterisk'>*</span><br/><input class='contact-form-email' expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' name='email' size='30' type='text' value=''/></label>
         <p/>
-        <data:contactFormMessageMsg/> <span class='contact-form-asterisk'>*</span>
-        <br/>
-        <textarea class='contact-form-email-message' cols='29' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='6'/>
+        <label><data:contactFormMessageMsg/><span class='contact-form-asterisk'>*</span><br/><textarea class='contact-form-email-message' cols='29' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='6'/></label>
         <p/>
         <div class='contact-form-error'>
           <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
@@ -1850,17 +1844,11 @@ button</b:comment>
   <address class='contact-form-widget'>
       <form name='contact-form'>
         <p/>
-        <data:contactFormNameMsg/>
-        <br/>
-        <input class='contact-form-name' expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' name='name' size='30' type='text' value=''/>
+        <label><data:contactFormNameMsg/><br/><input class='contact-form-name' expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' name='name' size='30' type='text' value=''/></label>
         <p/>
-        <data:contactFormEmailMsg/> <span class='contact-form-asterisk'>*</span>
-        <br/>
-        <input class='contact-form-email' expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' name='email' size='30' type='text' value=''/>
+        <label><data:contactFormEmailMsg/> <span class='contact-form-asterisk'>*</span><br/><input class='contact-form-email' expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' name='email' size='30' type='text' value=''/></label>
         <p/>
-        <data:contactFormMessageMsg/> <span class='contact-form-asterisk'>*</span>
-        <br/>
-        <textarea class='contact-form-email-message' cols='29' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='6'/>
+        <label><data:contactFormMessageMsg/><span class='contact-form-asterisk'>*</span><br/><textarea class='contact-form-email-message' cols='29' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='6'/></label>
         <p/>
         <div class='contact-form-error'>
           <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
