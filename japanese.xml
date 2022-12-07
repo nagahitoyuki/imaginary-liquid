@@ -461,7 +461,7 @@ html[dir="rtl"] #shbtn.reverse, html[dir="rtl"] #search_expand.reverse {transfor
 .post-footer {display:flex}
 .hentry .post-footer {flex-direction:column}
 .post-footer-line>span {display:block;margin-bottom:20px}
-.pf-last {width:100%;text-align:$endSide;font-style:oblique}
+.pf-last {margin:0;list-style-type:none;padding-left:0;text-align:$endSide;font-style:oblique}
 a.archive-link, a.jump-link {color:$(posts.link.color)}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
@@ -1509,7 +1509,7 @@ button</b:comment>
     <footer class='post-footer'>
       <b:if cond='data:view.isSingleItem'>
       <b:include name='footerBylines'/>
-        <div class='pf-last'><span class='post-timestamp updated'>最終更新:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>題名:&#160;<data:post.title.escaped/><br/>URL:&#160;<data:post.url.canonical/></div>
+        <ul class='pf-last'><li><data:messages.blogAuthors/>:&#160;<data:post.author.name/></li><li><data:messages.title/>:&#160;<data:post.title.escaped/></li><li><data:messages.postLink/>:&#160;<data:post.url.canonical/></li><li class='post-timestamp updated'>最終更新:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></li></ul>
       <b:else/>
         <b:if cond='data:post.url'>
           <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives nofollow'><data:messages.archive/></a>
