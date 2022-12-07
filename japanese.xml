@@ -1509,7 +1509,7 @@ button</b:comment>
     <footer class='post-footer'>
       <b:if cond='data:view.isSingleItem'>
       <b:include name='footerBylines'/>
-        <div class='pf-last'><span class='post-timestamp updated'>最終更新:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>題名:&#160;<data:post.title.escaped/><br/>URL:&#160;<a class='url' expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.url.canonical/></a></div>
+        <div class='pf-last'><span class='post-timestamp updated'>最終更新:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></span><br/>題名:&#160;<data:post.title.escaped/><br/>URL:&#160;<data:post.url.canonical/></div>
       <b:else/>
         <b:if cond='data:post.url'>
           <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives nofollow'><data:messages.archive/></a>
