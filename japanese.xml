@@ -462,6 +462,7 @@ html[dir="rtl"] #shbtn.reverse, html[dir="rtl"] #search_expand.reverse {transfor
 .hentry .post-footer {flex-direction:column}
 .post-footer-line>span {display:block;margin-bottom:20px}
 .pf-last {margin:0;list-style-type:none;padding-left:0;text-align:$endSide;font-style:oblique}
+.link-url {word-break:break-all}
 a.archive-link, a.jump-link {color:$(posts.link.color)}
 .archive-link {margin-$endSide:auto}
 .jump-link {margin-$startSide:auto}
@@ -1509,7 +1510,7 @@ button</b:comment>
     <footer class='post-footer'>
       <b:if cond='data:view.isSingleItem'>
       <b:include name='footerBylines'/>
-        <ul class='pf-last'><li><data:messages.blogAuthors/>:&#160;<data:post.author.name/></li><li><data:messages.title/>:&#160;<data:post.title.escaped/></li><li><data:messages.postLink/>:&#160;<data:post.url.canonical/></li><li class='post-timestamp updated'>最終更新:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></li></ul>
+        <ul class='pf-last'><li><data:messages.blogAuthors/>:&#160;<data:post.author.name/></li><li><data:messages.title/>:&#160;<data:post.title.escaped/></li><li class='link-url'><data:messages.postLink/>:&#160;<data:post.url.canonical/></li><li class='updated'>最終更新:&#160;<time class='value-title' expr:datetime='data:post.lastUpdated.iso8601' expr:title='data:post.lastUpdated.iso8601'><data:post.lastUpdated/></time></li></ul>
       <b:else/>
         <b:if cond='data:post.url'>
           <a class='archive-link' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' expr:title='data:messages.archive' rel='archives nofollow'><data:messages.archive/></a>
@@ -1581,7 +1582,7 @@ button</b:comment>
   <b:comment>Don&#39;t show share buttons.</b:comment>
 </b:includable>
     <b:includable id='postTimestamp'>
-  <b:eval cond='data:byline.label' expr='data:byline.label'/><span class='post-timestamp'><b:if cond='data:post.url'><a class='timestamp-link published' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' rel='archives'><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></a></b:if></span>
+  <b:eval cond='data:byline.label' expr='data:byline.label'/><b:if cond='data:post.url'><a class='published' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' rel='archives'><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></a></b:if>
 </b:includable>
     <b:includable id='postTitle' var='post'>
   <b:if cond='data:post.title != &quot;&quot;'>
