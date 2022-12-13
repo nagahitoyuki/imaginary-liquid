@@ -331,8 +331,8 @@ a {text-decoration:none;color:$(body.link.base.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
 h1, h2, h3, h4, h5, h6, p#blog_title {scroll-margin-top:calc(1em + var(--floatingbar-height))}
-img {max-width:100%;height:auto}
-iframe {max-width:100%}
+img {height:auto}
+img, iframe {max-width:100%}
 blockquote {margin:1em 2.5em}
 
 /* ヘッダーの背景画像 */
@@ -343,8 +343,9 @@ blockquote {margin:1em 2.5em}
 /* バランサー */
 .hidden, :not(.feed-view>#sub_main).section.no-items, .feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
 .invisible {visibility:hidden}
-.hfeed, .hentry {contain:content}
-#comments, #PopularPosts1, .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
+.hfeed, .hentry, #comments {contain:content}
+.ft-snippet-thumbnail, .snippet-thumbnail, .item-content>img {contain:strict}
+#PopularPosts1, .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* ウィジェット */
 .title, .feed-title {font-size:large;color:$(widget.title.color)}
@@ -566,8 +567,9 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .individual {text-align:center}
 .team-members {list-style-type:none;padding-$startSide:0;display:flex;flex-direction:column;gap:.5em}
 .profile-link {display:inline flex;align-items:center;gap:1em;color:$(profile.link.color)}
-.ip-img {vertical-align:top;border-radius:50%}
-.tp-img {vertical-align:calc(-50% + $(body.text.font.size) * -0.12);margin-right:.5em;border-radius:50%}
+.ip-img {vertical-align:top}
+.tp-img {vertical-align:calc(-50% + $(body.text.font.size) * -0.12);margin-right:.5em}
+.ip-img, .tp-img {border-radius:50%;contain:strict}
 .profile-data, .profile-textblock {color:$(profile.text.color);margin-$startSide:0;margin-bottom:.4em}
 
 /* ラベルとアーカイブ */
