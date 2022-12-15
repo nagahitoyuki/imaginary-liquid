@@ -572,11 +572,11 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .profile-data, .profile-textblock {color:$(profile.text.color);margin-$startSide:0;margin-bottom:.4em}
 
 /* Labels and Archives */
-.post-labels>a, .label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:1px;padding:2px 6px;box-sizing:border-box}
+.post-labels>a, .label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid $(labels.background.color);border-radius:1px;padding:.125em .375em;box-sizing:border-box}
 .label-name:hover, .label-name:visited {color:$(labels.text.color)}
 .BlogArchive, .Label, .list-label, .hierarchy-archive, .flat-archive {display:flex;flex-direction:column}
 .post-labels, .cloud-label {display:flex;flex-wrap:wrap}
-.post-labels, .list-label, .cloud-label {gap:12px} 
+.post-labels, .list-label, .cloud-label {gap:var(--maincolumn-padding)} 
 .post-labels>a, .label-name, .hierarchy-archive>a, .flat-archive>a {display:list-item;list-style-type:none}
 .list-label>.label-name, .hierarchy-archive>a, .flat-archive>a {margin-$endSide:auto}
 .hierarchy-archive .hierarchy-archive {margin-$startSide:1em}
