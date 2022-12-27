@@ -330,7 +330,7 @@ body {width:min(100vw, $(sidebar.width + content.width + content.margin));height
 a {text-decoration:none;color:$(body.link.base.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
-h1, h2, h3, h4, h5, h6, p#blog_title {scroll-margin-top:calc(1em + var(--floatingbar-height))}
+h1, h2, h3, h4, h5, h6, p#blog_title, li.comment {scroll-margin-top:calc(1em + var(--floatingbar-height))}
 img {height:auto}
 img, iframe {max-width:100%}
 blockquote {margin:1em 2.5em}
