@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='japanese.xml' b:templateVersion='1.0.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language'>
-  <head expr:prefix='"og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# " + (data:view.isMultipleItems ? "website: http://ogp.me/ns/website#" : "article: http://ogp.me/ns/article#")'>
+  <head expr:prefix='"og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# " + (data:view.isMultipleItems ? "website: https://ogp.me/ns/website#" : "article: https://ogp.me/ns/article#")'>
   <meta expr:content='"text/html; charset=" + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
 <b:if cond='(data:widgets.AdSense.first or data:widgets.Blog.first.posts.first.showInlineAds) and not data:blog.adsenseAutoAds'>
@@ -1551,27 +1551,27 @@ button</b:comment>
   <span class='post-location'><data:byline.label/><a expr:href='data:post.location.mapsUrl' rel='nofollow' target='_blank'><data:post.location.name/></a></span>
 </b:includable>
     <b:includable id='postMeta' var='post'>
+<b:with value='"\"publisher\": {
+\"@type\": \"Organization\", \"name\": \"Blogger\", \"logo\": {
+\"@type\": \"ImageObject\", \"url\": \"https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60\", \"width\": 206, \"height\": 60 }}" + (data:post.author.profileUrl ? ", \"author\": {
+\"@type\": \"Person\", \"name\": \"" + data:post.author.name.jsonEscaped + "\", \"url\": \"" + data:post.author.profileUrl + "\"" + (data:post.author.authorPhoto ? ", \"image\": {
+\"@type\": \"ImageObject\", \"url\": \"https: " + data:post.author.authorPhoto.image + "\", \"height\": " + data:post.author.authorPhoto.height + ", \"width\": " + data:post.author.authorPhoto.width + " }" : "") + "}" : "")' var='fpta'>
 <b:if cond='data:view.isSingleItem'><script type='application/ld+json'>{
-"@context": "http://schema.org", "@type": "BlogPosting", "mainEntityOfPage": {
-"@type": "WebPage", "@id": "<data:post.url.canonical.jsonEscaped/>" }, "headline": "<data:post.title.jsonEscaped/>", "description": "<b:eval expr='data:blog.metaDescription ? data:blog.metaDescription.jsonEscaped : (data:post.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }).jsonEscaped'/>", "datePublished": "<data:post.date.iso8601.jsonEscaped/>", "dateModified": "<data:post.lastUpdated.iso8601.jsonEscaped/>", "image": {
-"@type": "ImageObject", "url": "<b:eval expr='(data:post.featuredImage ? resizeImage(data:post.featuredImage, 1200, "1200:630") : "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200").jsonEscaped'/>", "height": <b:eval expr='data:post.featuredImage ? 630 : 348'/>, "width": 1200 }, "publisher": {
-"@type": "Organization", "name": "Blogger", "logo": {
-"@type": "ImageObject", "url": "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60", "width": 206, "height": 60 }}<b:if cond='data:post.author.profileUrl'>, "author": {
-"@type": "Person", "name": "<data:post.author.name.jsonEscaped/>", "url": "<data:post.author.profileUrl.jsonEscaped/>"<b:if cond='data:post.author.authorPhoto'>, "image": {
-"@type": "ImageObject", "url": "https:<data:post.author.authorPhoto.image.jsonEscaped/>", "height": <data:post.author.authorPhoto.height/>, "width": <data:post.author.authorPhoto.width/> }</b:if>}</b:if>}</script>
-<script type='application/ld+json'>{
-"@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [{
+"@context": "https://schema.org", "@type": "BlogPosting", "mainEntityOfPage": {
+"@type": "WebPage", "@id": "<data:post.url.canonical/>" }, "headline": "<data:post.title.jsonEscaped/>", "name": "<data:post.title.jsonEscaped/>", "description": "<b:eval expr='data:blog.metaDescription ? data:blog.metaDescription.jsonEscaped : (data:post.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }).jsonEscaped'/>", "datePublished": "<data:post.date.iso8601/>", "dateModified": "<data:post.lastUpdated.iso8601/>", "image": {
+"@type": "ImageObject", "url": "<b:eval expr='(data:post.featuredImage ? resizeImage(data:post.featuredImage, 1200, "1200:630") : "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200")'/>", "height": <b:eval expr='data:post.featuredImage ? 630 : 348'/>, "width": 1200 }, "url": "<data:view.url.canonical/>", "isPartOf": {"@type": "Blog", "@id": "<data:blog.homepageUrl.canonical/>", "name": "<data:blog.title/>"}, "archivedAt": "<b:eval expr='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? "/0" : "/") + data:post.date.month + "/")'/>", <b:if cond='data:post.allowComments'><b:eval expr='"\"discussionUrl\": \"" + data:view.url fragment "cmt" + "\", "'/></b:if><b:if cond='data:post.labels.any'>"keywords": [<b:loop index='i' values='data:post.labels' var='label'>"<data:label.name.jsonEscaped/>"<b:eval expr='data:post.labels.size - data:i == 1 ? "" : ", "'/></b:loop>], </b:if>"inLanguage": "<data:blog.locale/>", <data:fpta/>}</script>
+<script type='application/ld+json'><b:if cond='data:post.labels.any'>[<b:loop index='i' values='data:post.labels' var='item'>{
+"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{
 "@type": "ListItem", "position": 1, "name": "<data:blog.title.jsonEscaped/>", "item": "<data:blog.homepageUrl.canonical/>"}, {
-"@type": "ListItem", "position": 2, "name": "<data:blog.pageName.jsonEscaped/>" }]}</script>
-<b:else/>
-<script type='application/ld+json'>{
-"@context": "http://schema.org", "@type": "CreativeWork", "mainEntity": {
-"@type": "Blog", "@id": "<data:view.url.canonical.jsonEscaped/>" }, "name": "<data:blog.pageTitle.jsonEscaped/>", "description": "<b:eval expr='(data:posts.first.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }).jsonEscaped'/>", "datePublished": "<data:posts.last.date.iso8601.jsonEscaped/>", "dateModified": "<data:posts.first.date.iso8601.jsonEscaped/>", "image": {
-"@type": "ImageObject", "url": "<b:eval expr='(data:posts.first.featuredImage ? resizeImage(data:posts.first.featuredImage, 1200, "1200:630") : "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200").jsonEscaped'/>", "height": <b:eval expr='data:posts.first.featuredImage ? 630 : 348'/>, "width": 1200 }, "publisher": {
-"@type": "Organization", "name": "Blogger", "logo": {
-"@type": "ImageObject", "url": "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60", "width": 206, "height": 60 }}<b:if cond='data:posts.first.author.profileUrl'>, "author": {
-"@type": "Person", "name": "<data:posts.first.author.name.jsonEscaped/>", "url": "<data:posts.first.author.profileUrl.jsonEscaped/>"<b:if cond='data:posts.first.author.authorPhoto'>, "image": {
-"@type": "ImageObject", "url": "https:<data:posts.first.author.authorPhoto.image.jsonEscaped/>", "height": <data:posts.first.author.authorPhoto.height/>, "width": <data:posts.first.author.authorPhoto.width/> }</b:if>}</b:if>}</script></b:if>
+"@type": "ListItem", "position": 2, "name": "<data:item.name.jsonEscaped/>", "item": "<data:item.url.canonical/>"}, {
+"@type": "ListItem", "position": 3, "name": "<data:blog.pageName.jsonEscaped/>" }]<b:eval expr='data:post.labels.size - data:i == 1 ? "}" : "}, "'/></b:loop>]<b:else/>{
+"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{
+"@type": "ListItem", "position": 1, "name": "<data:blog.title.jsonEscaped/>", "item": "<data:blog.homepageUrl.canonical/>"}, {
+"@type": "ListItem", "position": 2, "name": "<data:blog.pageName.jsonEscaped/>" }]}</b:if></script>
+<b:else/><script type='application/ld+json'>{
+"@context": "https://schema.org", "@type": "CreativeWork", "mainEntity": {
+"@type": "Blog", "@id": "<data:view.url.canonical/>" }, "name": "<data:blog.pageTitle.jsonEscaped/>", "description": "<b:eval expr='data:view.description.jsonEscaped ?: (data:posts.first.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }).jsonEscaped'/>", "dateCreated": "<data:posts.first.date.iso8601/>", "image": {
+"@type": "ImageObject", "url": "<b:eval expr='(data:posts.first.featuredImage ? resizeImage(data:posts.first.featuredImage, 1200, "1200:630") : "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200")'/>", "height": <b:eval expr='data:posts.first.featuredImage ? 630 : 348'/>, "width": 1200 }, "inLanguage": "<data:blog.locale/>", <data:fpta/>}</script></b:if></b:with>
 </b:includable>
     <b:includable id='postPagination'>
     <nav class='blog-pager'>
