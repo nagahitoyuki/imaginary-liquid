@@ -18,7 +18,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
 <b:if cond='data:blog.isMobileRequest or data:view.url !=  data:view.url.canonical'>
   <link expr:href='data:view.url.canonical' rel='canonical'/>
 <b:else/>
-  <link expr:href='data:view.url.canonical params {m : 1}' media='only screen and (max-width: 640px)' rel='alternate'/>
+  <link expr:href='data:view.url params {m : 1}' media='only screen and (max-width: 640px)' rel='alternate'/>
 </b:if>
   <title><data:view.title.escaped/><b:if cond='data:view.isArchive'>: <data:blog.pageName/>&#65288;<data:messages.archive/>&#65289;<b:elseif cond='data:view.isLabelSearch'/>: <data:blog.pageName/>&#65288;<data:messages.labels/>&#65289;<b:elseif cond='data:view.isSearch'/>: <data:messages.search/></b:if></title>
 <b:if cond='data:blog.metaDescription'>
@@ -1555,7 +1555,7 @@ button</b:comment>
 \"@type\": \"Organization\", \"name\": \"Blogger\", \"logo\": {
 \"@type\": \"ImageObject\", \"url\": \"https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60\", \"width\": 206, \"height\": 60 }}" + (data:post.author.profileUrl ? ", \"author\": {
 \"@type\": \"Person\", \"name\": \"" + data:post.author.name.jsonEscaped + "\", \"url\": \"" + data:post.author.profileUrl + "\"" + (data:post.author.authorPhoto ? ", \"image\": {
-\"@type\": \"ImageObject\", \"url\": \"https: " + data:post.author.authorPhoto.image + "\", \"height\": " + data:post.author.authorPhoto.height + ", \"width\": " + data:post.author.authorPhoto.width + " }" : "") + "}" : "")' var='fpta'>
+\"@type\": \"ImageObject\", \"url\": \"https:" + data:post.author.authorPhoto.image + "\", \"height\": " + data:post.author.authorPhoto.height + ", \"width\": " + data:post.author.authorPhoto.width + " }" : "") + "}" : "")' var='fpta'>
 <b:if cond='data:view.isSingleItem'><script type='application/ld+json'>{
 "@context": "https://schema.org", "@type": "BlogPosting", "mainEntityOfPage": {
 "@type": "WebPage", "@id": "<data:post.url.canonical/>" }, "headline": "<data:post.title.jsonEscaped/>", "name": "<data:post.title.jsonEscaped/>", "description": "<b:eval expr='data:blog.metaDescription ? data:blog.metaDescription.jsonEscaped : (data:post.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }).jsonEscaped'/>", "datePublished": "<data:post.date.iso8601/>", "dateModified": "<data:post.lastUpdated.iso8601/>", "image": {
