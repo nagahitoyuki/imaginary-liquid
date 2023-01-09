@@ -2031,6 +2031,8 @@ rits.forEach(rit =&gt; {
 const rith = rit.clientHeight; rit.style.height = "0";
 rit.nextElementSibling.addEventListener("click", event =&gt; {
 event.target.classList.add("hidden"); rit.style.height = rith + "px"; event.target.nextElementSibling.classList.remove("hidden"); }); rit.nextElementSibling.nextElementSibling.addEventListener("click", event =&gt; {
+const ssc = sbct.classList.contains("slider") ? sbct : window; 
+ssc.scrollBy({top: -rith, left: 0, behavior: 'smooth'});
 event.target.classList.add("hidden"); rit.style.height = "0"; event.target.previousElementSibling.classList.remove("hidden"); }); }); }
 /* Contact form */
 <b:if cond='data:blog.isMobileRequest and data:widgets.ContactForm.first'>
