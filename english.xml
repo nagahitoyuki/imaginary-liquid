@@ -386,7 +386,7 @@ blockquote {margin:1em 2.5em}
 .svg-icon-24 {vertical-align:top;width:var(--svgicon-height);height:var(--svgicon-height);cursor:pointer}
 .svg-icon-24>use, #rdbtn {fill:$(sticky.icons.color)}
 #sis {display:flex;align-items:inherit;gap:inherit}
-#shbtn {transition:transform .3s ease-out}
+#shbtn {transition:transform .3s}
 html[dir="rtl"] #shbtn {transform:scaleX(-1)}
 #close_button>.svg-icon-24 {fill:$(sidebar.icons.color)}
 .post-icons .svg-icon-24 {fill:$(posts.icons.color)}
@@ -405,8 +405,8 @@ html[dir="rtl"] #comment_button {transform:scaleX(-1)}
 /* Fade effect */
 @keyframes fadein {from{ opacity:0} to { opacity:1}}
 @keyframes fadeout {from{ opacity:1} to { opacity:0}}
-.fadein {animation:fadein .3s ease-out}
-.fadeout {animation:fadeout .3s ease-out}
+.fadein {animation:fadein .3s}
+.fadeout {animation:fadeout .3s}
 
 /* Search widget */
 #search_top {display:inline}
@@ -415,7 +415,7 @@ html[dir="rtl"] #comment_button {transform:scaleX(-1)}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
 .search-action {color:$(search.action.color);font-size:100%}
-#search_expand {transition:transform .3s ease-out}
+#search_expand {transition:transform .3s}
 html[dir="rtl"] #search_expand {transform:scaleX(-1)}
 
 /* Turn effect */
@@ -580,7 +580,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .list-label>.label-name, .hierarchy-archive>a, .flat-archive>a {margin-$endSide:auto}
 .hierarchy-archive .hierarchy-archive {margin-$startSide:1em}
 .post-labels {margin-bottom:20px}
-.remaining-items {overflow:hidden;transition:all .3s ease-in-out}
+.remaining-items {overflow:hidden;transition:all .3s}
 .Label .remaining-items {margin-top:12px;margin-bottom:-12px}
 .remaining-items>.list-label, .remaining-items>.cloud-label {margin-bottom:12px}
 .show-more, .show-less {margin-top:1.2em;margin-$startSide:auto;font-size:medium;color:$(body.link.base.color);cursor:pointer}
@@ -638,7 +638,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 /* Placement */
 #main {width:100%}
 #search_top, #sis {display:none}
-#swc, #sis {animation:fadein .3s ease-out}
+#swc, #sis {animation:fadein .3s}
 #swc {margin-$startSide:calc(var(--maincolumn-padding) / 3);margin-$endSide:calc(var(--maincolumn-padding) / 3)}
 
 /* Back button / Comment button / Loading */
@@ -647,9 +647,9 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 
 /* Side bar */
 .swcn {display:contents}
-#hamburger_menu {transition:transform .3s ease-out}
+#hamburger_menu {transition:transform .3s}
 #close_button {display:none;text-align:$endSide;padding-top:var(--maincolumn-padding);padding-$endSide:var(--maincolumn-padding)}
-.slider {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s ease-out;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:10;content-visibility:visible;visibility:visible}
+.slider {position:fixed;top:0;$startSide:-$(sidebar.width);$endSide:auto;bottom:0;transition:transform .3s;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:10;content-visibility:visible;visibility:visible}
 .slider>#close_button {display:block}
 .sidebar-container:not(.slider) {width:100%}
 .sidebar-invisible {content-visibility:hidden;visibility:hidden}
