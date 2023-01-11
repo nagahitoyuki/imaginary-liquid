@@ -2002,11 +2002,10 @@ febtn.addEventListener("click", () =&gt; window.location.href = "<b:eval expr='d
 const rits = bdis.querySelectorAll("div.remaining-items");
 if (rits) {
 rits.forEach(rit =&gt; {
-const rith = rit.clientHeight; rit.style.height = "0";
-rit.nextElementSibling.addEventListener("click", event =&gt; {
+const rith = rit.clientHeight;
+rit.style.height = "0"; rit.nextElementSibling.addEventListener("click", event =&gt; {
 event.target.classList.add("hidden"); rit.style.height = rith + "px"; event.target.nextElementSibling.classList.remove("hidden"); }); rit.nextElementSibling.nextElementSibling.addEventListener("click", event =&gt; {
-const ssc = sbct.classList.contains("slider") ? sbct : window; 
-ssc.scrollBy({top: -rith, left: 0, behavior: "smooth"}); event.target.classList.add("hidden"); rit.style.height = "0"; event.target.previousElementSibling.classList.remove("hidden"); }); }); }
+event.target.parentElement.scrollIntoView({behavior: "smooth", block: "center"}); event.target.classList.add("hidden"); rit.style.height = "0"; event.target.previousElementSibling.classList.remove("hidden"); }); }); }
 /* Contact form */
 <b:if cond='data:blog.isMobileRequest and data:widgets.ContactForm.first'>
 const fcpts = <b:eval expr='data:widgets.ContactForm.length == 1 ? "ContactForm1" : "bdis"'/>.querySelectorAll("input.contact-form-name, input.contact-form-email, textarea.contact-form-email-message");
