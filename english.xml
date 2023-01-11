@@ -1952,7 +1952,7 @@ const bcsd = document.createElement("div");
 bcsd.classList.add("dim-overlay");
 function hbmb() {
 if (sbct.classList.contains("slider")) {
-sbct.classList.remove("slideout"); bcsd.classList.remove("fadeout"); bcsd.classList.add("fadein"); requestAnimationFrame(() =&gt; {
+bcsd.classList.remove("fadeout"); bcsd.classList.add("fadein"); requestAnimationFrame(() =&gt; {
 sbct.classList.add("slidein"); bdis.appendChild(bcsd); }); sbct.ariaHidden = "false"; sbct.classList.remove("sidebar-invisible"); bdis.classList.add("sidebar-visible"); } else {
 window.location.href = "#attribution"; }}
 hamburger_menu.addEventListener("click", hbmb);
@@ -1963,7 +1963,8 @@ sbct.classList.add("slideout"); bcsd.classList.add("fadeout"); }); sbct.ariaHidd
 close_button.addEventListener("click", clsb);
 bcsd.addEventListener("click", clsb);
 sbct.addEventListener("transitionend", () =&gt; {
-if (sbct.classList.contains("slideout")) sbct.classList.add("sidebar-invisible"); });
+if (sbct.classList.contains("slideout")) {
+sbct.classList.add("sidebar-invisible"); sbct.classList.remove("slideout"); }});
 bcsd.addEventListener("animationend", () =&gt; {
 if (bcsd.classList.contains("fadeout")) bdis.removeChild(bcsd); });
 /* Search button */
@@ -2005,8 +2006,7 @@ const rith = rit.clientHeight; rit.style.height = "0";
 rit.nextElementSibling.addEventListener("click", event =&gt; {
 event.target.classList.add("hidden"); rit.style.height = rith + "px"; event.target.nextElementSibling.classList.remove("hidden"); }); rit.nextElementSibling.nextElementSibling.addEventListener("click", event =&gt; {
 const ssc = sbct.classList.contains("slider") ? sbct : window; 
-ssc.scrollBy({top: -rith, left: 0, behavior: 'smooth'});
-event.target.classList.add("hidden"); rit.style.height = "0"; event.target.previousElementSibling.classList.remove("hidden"); }); }); }
+ssc.scrollBy({top: -rith, left: 0, behavior: "smooth"}); event.target.classList.add("hidden"); rit.style.height = "0"; event.target.previousElementSibling.classList.remove("hidden"); }); }); }
 /* Contact form */
 <b:if cond='data:blog.isMobileRequest and data:widgets.ContactForm.first'>
 const fcpts = <b:eval expr='data:widgets.ContactForm.length == 1 ? "ContactForm1" : "bdis"'/>.querySelectorAll("input.contact-form-name, input.contact-form-email, textarea.contact-form-email-message");
