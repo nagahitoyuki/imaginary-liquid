@@ -2027,7 +2027,7 @@ febtn.addEventListener("click", () =&gt; window.location.href = "<b:eval expr='d
 </b:if>
 /* Expand button */
 const rits = bdis.querySelectorAll("div.remaining-items");
-if (rits) {
+if (rits[0] (
 rits.forEach(rit =&gt; {
 const rith = rit.clientHeight;
 rit.style.height = "0"; rit.nextElementSibling.addEventListener("click", event =&gt; {
