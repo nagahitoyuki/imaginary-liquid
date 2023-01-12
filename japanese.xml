@@ -343,8 +343,8 @@ blockquote {margin:1em 2.5em}
 /* バランサー */
 .hidden, :not(.feed-view>#sub_main).section.no-items, .feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
 .invisible {visibility:hidden}
-.hfeed, .hentry, #comments {contain:content}
-#PopularPosts1, .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
+.hfeed, .hentry, #comments, #PopularPost1 {contain:content}
+.item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* ウィジェット */
 .title, .feed-title {font-size:large;color:$(widget.title.color)}
@@ -2027,7 +2027,7 @@ febtn.addEventListener("click", () =&gt; window.location.href = "<b:eval expr='d
 </b:if>
 /* Expand button */
 const rits = bdis.querySelectorAll("div.remaining-items");
-if (rits[0] (
+if (rits[0]) {
 rits.forEach(rit =&gt; {
 const rith = rit.clientHeight;
 rit.style.height = "0"; rit.nextElementSibling.addEventListener("click", event =&gt; {
