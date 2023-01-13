@@ -588,6 +588,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 
 /* 連絡フォーム */
 .contact-form-name, .contact-form-email, .contact-form-email-message {font-size:100%;margin-top:.3em;box-sizing:border-box}
+.contact-form-name, .contact-form-email, .contact-form-email-message {background-color:#fff;border:calc($(body.text.font.size) / 10) #c0c0c0 inset}
 .contact-form-name, .contact-form-email {max-width:100%}
 .contact-form-email-message {max-width:calc(100% - 1em)}
 .contact-form-asterisk {font-weight:bolder}
@@ -2068,6 +2069,9 @@ sub_main.style.marginTop = ""; }
 if (!bdis.style.marginBottom) {
 bdis.style.marginBottom = bthg + "px"; }
 default: if (scroll !== 'on') return; }
+function lsps() {
+smwds.forEach(smwd =&gt; smwd.style.display = "block");
+attribution.style.display = "block"; sidebar_wrapper.classList.remove("swcn"); rmmg('end'); }
 new Promise ((resolve, reject) =&gt; {
 if (add_button.classList.contains("hidden")) {
 add_button.classList.remove("hidden"); document.addEventListener("mousewheel", scrollStop, {passive: false}); document.addEventListener("touchmove", scrollStop, {passive: false}); bpct.ariaBusy = "true"; resolve(); } else {
@@ -2076,9 +2080,7 @@ const response = await fetch(npl.href);
 if (!response.ok) throw "Connection failed";
 const text = await response.text(), file = new DOMParser().parseFromString(text, "text/html"), bats = file.querySelectorAll("article.post");
 npl = file.querySelector("a.older-link");
-if (npl) {
-npl.parentNode.remove(); } else {
-bats[bats.length - 1].lastElementChild.remove();}
+if (npl) npl.parentNode.remove(); else if (!bats[0]) lsps(); else bats[bats.length - 1].lastElementChild.remove();
 Promise.all([...bats].map(bat =&gt; {
 const nbat = document.adoptNode(bat), pssc = nbat.querySelector("p.summary>script");
 if (pssc) pssc.parentElement.insertAdjacentHTML("afterbegin", /`([^]+)`/.exec(pssc.textContent)[1].replace(/(&lt;([^&gt;]+)&gt;)/g, ''));
@@ -2103,8 +2105,7 @@ return; } else if (sgtm &gt; 0) {
 isac(2, 'on'); }
 return; }
 if (sbct.classList.contains("slider")) sidebar_wrapper.style.display = "block";
-if (smwds) smwds.forEach(smwd =&gt; smwd.style.display = "block");
-attribution.style.display = "block"; sidebar_wrapper.classList.remove("swcn"); rmmg('end'); }); }, {
+if (smwds) lsps(); }); }, {
 rootMargin: bthg + "px"});
 nextIndexObserver.observe(sub_main);
 <b:else/>
