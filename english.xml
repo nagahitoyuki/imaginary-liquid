@@ -428,7 +428,7 @@ html[dir="rtl"] #shbtn.reverse, html[dir="rtl"] #search_expand.reverse {transfor
 .hentry .desktop-ad, .hentry .mobile-ad {transform:translateY(5px)}
 
 /* Message of archive and search pages */
-.post-filter-message {padding:20px var(--maincolumn-padding);text-align:center}
+.post-filter-message {background-color:inherit;padding:20px var(--maincolumn-padding);text-align:center}
 .pfm-link {margin-$startSide:1em}
 .post-filter-message .search-label, .post-filter-message .search-query {font-weight:bold}
 
