@@ -784,7 +784,7 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
   <header><b:tag class='pp-title' expr:name='data:title ? &quot;h4&quot; : &quot;h3&quot;'><a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a></b:tag></header>
 </b:includable>
     <b:includable id='snippetedPosts'>
-    <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
+    <b:loop values='data:posts filter (p => p.id != data:view.postId)' var='post'>
     <article class='pp-post'><b:include name='snippetedPostContent'/></article>
     </b:loop>
 </b:includable>
@@ -1084,7 +1084,7 @@ button</b:comment>
 <div id='floating_bar'>
   <div id='floating_menu'>
   <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin and data:blog.feedLinks'><button aria-label='サイドバーを開く' class='svg-icon-24-button' id='hamburger_menu' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_menu_black_24dp'/></svg></button><b:else/><button aria-label='RSSフィード' class='svg-icon-24-button' id='febtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_rss_feed_black_24dp'/></svg></button></b:if>
-     <b:if cond='data:widgets any (w =&gt; w.sectionId == &quot;search_top&quot;)'>
+     <b:if cond='data:widgets any (w => w.sectionId == &quot;search_top&quot;)'>
         <b:section id='search_top' name='Search (Top)' showaddelement='false'>
           <b:widget id='BlogSearch1' locked='true' title='このブログを検索' type='BlogSearch' version='2' visible='true'>
             <b:includable id='main'>
@@ -1204,7 +1204,7 @@ button</b:comment>
   <b:with value='3' var='maxNumAds'>
   <b:with value='data:widgets.AdSense.size' var='numAds'>
   <b:comment>Filter out the featured post, but only on the homepage.</b:comment>
-  <b:with value='data:view.isHomepage ? data:posts filter (p =&gt; p.id != data:widgets.FeaturedPost.first.postId) : data:posts' var='posts'>
+  <b:with value='data:view.isHomepage ? data:posts filter (p => p.id != data:widgets.FeaturedPost.first.postId) : data:posts' var='posts'>
   <b:tag aria-busy='false' cond='data:view.isMultipleItems' class='hfeed' name='div' role='feed'>
   <b:loop index='i' values='data:posts' var='post'>
   <b:include data='post' name='postCommentsAndAd'/>
@@ -1471,10 +1471,10 @@ button</b:comment>
     <b:attr expr:value='"this.srcset=this.naturalWidth&lt;121?\"" + data:post.featuredImage + "=w320-h320-n-k-no-nu-rw-e100\":this.dataset.hdss;this.removeAttribute(\"onload\");"' name='onload'/>
     <b:class name='ytpic'/>
     </b:if>
-    <b:if cond='data:widgets.FeaturedPost.any and data:i &gt; 0 or !data:widgets.FeaturedPost.any and data:i &gt; 1'>
-    <b:attr name='loading' value='lazy'/>
-    <b:else/>
+    <b:if cond='!data:widgets.FeaturedPost.any and data:i lt 2'>
     <b:attr name='decoding' value='async'/>
+    <b:else/>
+    <b:attr name='loading' value='lazy'/>
     </b:if>
     </b:tag>
   </b:with>
@@ -1612,7 +1612,7 @@ button</b:comment>
   </section>
 </b:includable>
   </b:widget>
-  <b:widget cond='data:view.isSingleItem and data:posts any (p =&gt; p.id != data:view.postId)' id='PopularPosts1' locked='true' title='このブログの人気の投稿' type='PopularPosts' visible='true'>
+  <b:widget cond='data:view.isSingleItem and data:posts any (p => p.id != data:view.postId)' id='PopularPosts1' locked='true' title='このブログの人気の投稿' type='PopularPosts' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
       <b:widget-setting name='showThumbnails'>true</b:widget-setting>
@@ -1657,7 +1657,7 @@ button</b:comment>
   <header><b:tag class='pp-title' expr:name='data:title ? &quot;h3&quot; : &quot;h2&quot;'><a expr:href='data:post.url' rel='bookmark' title='permanent link'><data:post.title/></a></b:tag></header>
 </b:includable>
     <b:includable id='snippetedPosts'>
-    <b:loop values='data:posts filter (p =&gt; p.id != data:view.postId)' var='post'>
+    <b:loop values='data:posts filter (p => p.id != data:view.postId)' var='post'>
     <article class='pp-post'><b:include name='snippetedPostContent'/></article>
     </b:loop>
 </b:includable>
