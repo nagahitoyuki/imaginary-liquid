@@ -4,9 +4,6 @@
   <head expr:prefix='"og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# " + (data:view.isMultipleItems ? "website: https://ogp.me/ns/website#" : "article: https://ogp.me/ns/article#")'>
   <meta expr:content='"text/html; charset=" + data:blog.encoding' http-equiv='Content-Type'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
-<b:if cond='(data:widgets.AdSense.first or data:widgets.Blog.first.posts.first.showInlineAds) and not data:blog.adsenseAutoAds'>
-  <script async='async' crossorigin='anonymous' expr:src='"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + data:blog.adsenseClientId'/>
-</b:if>
 <b:with value='resizeImage(data:skin.vars.body_background.image, (data:blog.isMobileRequest ? 640 : 1280))' var='bgimg'><b:if cond='not data:view.isPreview and data:bgimg'>
 <b:tag class='bg-preload' cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")' name='noscript'><link rel='preload' as='image' expr:href='data:bgimg + (data:bgimg contains "themes.googleusercontent.com" ? "-rw-e100" : "")'/></b:tag>
 <b:if cond='data:bgimg not contains "themes.googleusercontent.com" and (data:bgimg contains "jpg" or data:bgimg contains "jpeg")'><script>const bgpl = document.head.querySelector("noscript.bg-preload"), bglk = document.createElement("link");
@@ -980,7 +977,9 @@ body#layout .sidebar-invisible {content-visibility:visible;visibility:visible}]]
 /\.bg-image.*\)\}/.exec(nsbm.innerText)[0].replace(<b:eval expr='data:blog.isMobileRequest ? "/w640/" : "/w1280/"'/>, "$&amp;-rw-e100");
 bgsl.insertAdjacentHTML("afterbegin", bmtx); document.head.replaceChild(bgsl, nsbm);</script></b:if>
 </b:if></b:with>
-
+<b:if cond='(data:widgets.AdSense.first or data:widgets.Blog.first.posts.first.showInlineAds) and not data:blog.adsenseAutoAds'>
+  <script async='async' crossorigin='anonymous' expr:src='"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + data:blog.adsenseClientId'/>
+</b:if>
 <b:if cond='data:blog.analyticsAccountNumber'>
   <script async expr:src='"https://www.googletagmanager.com/gtag/js?id=" + data:blog.analyticsAccountNumber'/>
   <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}
