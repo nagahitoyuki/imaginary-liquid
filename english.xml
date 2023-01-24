@@ -243,7 +243,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
 </Group>
 
 <Group description="Sidebar" selector="div.sidebar">
-  <Variable name="sidebar.backgroundColor"
+  <Variable name="sidebar.background.color"
       description="Background color"
       type="color"
       default="#f0f8ff"  value="#f0f8ff"/>
@@ -551,7 +551,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
 
 /* Side bar */
-.sidebar-container {width:min($(sidebar.width), 85vw - var(--maincolumn-padding) * 2);display:flex;flex-direction:column;background-color:$(sidebar.backgroundColor)}
+.sidebar-container {width:min($(sidebar.width), 85vw - var(--maincolumn-padding) * 2);display:flex;flex-direction:column;background-color:$(sidebar.background.color)}
 .sidebar>.widget {margin:1em var(--maincolumn-padding);color:$(widget.text.color)}
 .sidebar>.widget>.title {color:$(widget.title.color)}
 .sidebar>.widget+.widget {border-top:1px dashed $(sidebar.separator.color)}
@@ -2050,7 +2050,7 @@ add_button.classList.remove("hidden"); document.addEventListener("mousewheel", s
 reject('Too fast'); }}).then(async () =&gt; {
 const response = await fetch(npl.href);
 if (!response.ok) throw "Connection failed";
-const text = await response.text(), file = new DOMParser().parseFromString(text, "text/html"), bats = file.querySelectorAll("article.post");
+const text = await response.text(), file = new DOMParser().parseFromString(text, "text/html"), bats = file.querySelectorAll(".hfeed>*");
 npl = file.querySelector("a.older-link");
 if (npl) npl.parentNode.remove(); else if (!bats[0]) lsps(); else bats[bats.length - 1].lastElementChild.remove();
 Promise.all([...bats].map(bat =&gt; {
