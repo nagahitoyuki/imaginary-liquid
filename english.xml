@@ -338,7 +338,7 @@ blockquote {margin:1em 2.5em}
 .no-bg-image {background-color:$(blog.header.color)}
 
 /* Balancer */
-.hidden, :not(.feed-view>#sub_main).section.no-items, .feed-view>#sub_main>.widget, .feed-view>#attribution {display:none}
+.hidden, :not(.feed-view>#sub_main).section.no-items {display:none}
 .invisible {visibility:hidden}
 .hfeed, .hentry, #comments, #PopularPost1 {contain:content}
 .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
@@ -353,7 +353,7 @@ blockquote {margin:1em 2.5em}
 .CSS_LIGHTBOX {z-index:900}
 #cookieChoiceInfo {bottom:0;top:auto}
 .b-hbp-video {border:0}
-.no-posts-message {line-height:40px;text-align:center}
+.no-posts-message {background-color:$(body.background.color);text-align:center;padding-bottom:calc(var(--body-lineheight) * 1em);border-bottom:1px dashed $(sidebar.separator.color)}
 .noscript {display:block;background-color:#ff0;color:#000;padding:20px var(--maincolumn-padding);text-align:center}
 
 /* Skip navigation */
@@ -1172,17 +1172,18 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
       <b:widget-setting name='showReactions'>false</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-  <b:include name='noContentPlaceholder'/>
   <b:comment>Cap the total number of ads (widgets and inline ads).</b:comment>
   <b:with value='3' var='maxNumAds'>
   <b:with value='data:widgets.AdSense.size' var='numAds'>
   <b:comment>Filter out the featured post, but only on the homepage.</b:comment>
   <b:with value='data:view.isHomepage ? data:posts filter (p => p.id != data:widgets.FeaturedPost.first.postId) : data:posts' var='posts'>
-  <b:tag aria-busy='false' cond='data:view.isMultipleItems' class='hfeed' name='div' role='feed'>
-  <b:loop index='i' values='data:posts' var='post'>
-  <b:include data='post' name='postCommentsAndAd'/>
-  </b:loop></b:tag>
-  <script type='application/ld+json'><b:loop index='i' values='data:posts' var='post'><b:include data='post' name='postMeta'/></b:loop></script>
+  <b:if cond='data:posts.empty'><b:if cond='data:view.isError'>
+    <div class='status-msg-body'><data:navMessage/></div>
+   <b:else/>
+    <div class='no-posts-message'><b:eval expr='data:view.isSearch ? data:messages.noResultsFound : data:messages.theresNothingHere'/></div></b:if>
+    <b:else/>
+      <b:tag aria-busy='false' cond='data:view.isMultipleItems' expr:class='data:posts.length == 1 ? &quot;hfeed set-one&quot; : &quot;hfeed&quot;' name='div' role='feed'><b:loop index='i' values='data:posts' var='post'><b:include data='post' name='postCommentsAndAd'/></b:loop></b:tag>
+      <script id='sdob' type='application/ld+json'><b:loop index='i' values='data:posts' var='post'><b:include data='post' name='postMeta'/></b:loop></script></b:if>
   </b:with>
   </b:with>
   </b:with>
@@ -1934,7 +1935,7 @@ subContentObserver.unobserve(comments); }}</b:if>
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 if (entry.target.id === "sidebar_wrapper") {
 if (entry.isIntersecting) {
-if (sbct.classList.contains("slider")) {
+if (sbct.classList.contains("slider") || Blog1.firstElementChild.classList.contains("no-posts-message")) {
 sbct.classList.remove("slider"); sbct.classList.remove("sidebar-invisible"); hamburger_menu.style.transform = "rotateZ(90deg)"; sbct.ariaHidden = "false"; }} else if (entry.rootBounds.bottom &lt; entry.boundingClientRect.bottom || entry.boundingClientRect.bottom === 0) {
 sbct.classList.add("slider"); sbct.classList.add("sidebar-invisible"); hamburger_menu.style.transform = "rotateZ(0)"; sbct.ariaHidden = "true"; }}</b:if>}); }, {
 rootMargin: "240px"});
@@ -2021,17 +2022,25 @@ back_button.classList.remove("invisible"); }}); });
 </b:if>
 <b:if cond='data:view.isMultipleItems'>
 /* Infinite scroll */
-const bpct = Blog1.querySelector("div.hfeed"), bpg = Blog1.querySelector("nav.blog-pager"), bthg = floating_bar.clientHeight, smwds = sub_main.querySelectorAll("div.widget");
-let npl = bpg.querySelector("a.older-link");
+const bpct = Blog1.firstElementChild;
+if (bpct.classList.contains("hfeed")) {
+const bpg = bpct.querySelector("nav.blog-pager"), smwds = sub_main.querySelectorAll("div.widget"), bthg = floating_bar.clientHeight;
+let npl = bpg ? bpg.querySelector("a.older-link") : "";
+if (smwds[0]) smwds.forEach(smwd =&gt; smwd.style.display = "none");
+attribution.style.display = "none";
 if (npl) sidebar_wrapper.classList.add("swcn"); else bpg.remove();
 if (bpct.clientHeight === 0) bpct.style.marginTop = "0";
 function scrollStop(event) {
 event.preventDefault(); }
+function lsch() {
+if (sbct.classList.contains("slider")) sidebar_wrapper.style.display = "block";
+if (smwds[0]) smwds.forEach(smwd =&gt; smwd.style.display = "block");
+attribution.style.display = "block"; sidebar_wrapper.classList.remove("swcn"); rmmg('end'); }
 function rmmg(state) {
 if (sub_main.style.marginTop) sub_main.style.marginTop = "";
 if (bdis.style.marginBottom) bdis.style.marginBottom = ""
 if (state !== 'end') sub_main.style.marginTop = bthg + "px";
-if (state !== 'pass') nextIndexObserver.disconnect(); }
+if (state !== 'pass') nextIndexObserver.disconnect();}
 function isac(state, scroll) {
 switch (state) {
 case 0: sub_main.style.marginTop = scroll + bthg + "px"; bdis.style.marginBottom = bthg + "px"; break;
@@ -2041,18 +2050,15 @@ sub_main.style.marginTop = ""; }
 if (!bdis.style.marginBottom) {
 bdis.style.marginBottom = bthg + "px"; }
 default: if (scroll !== 'on') return; }
-function lsps() {
-smwds.forEach(smwd =&gt; smwd.style.display = "block");
-attribution.style.display = "block"; sidebar_wrapper.classList.remove("swcn"); rmmg('end'); }
 new Promise ((resolve, reject) =&gt; {
 if (add_button.classList.contains("hidden")) {
 add_button.classList.remove("hidden"); document.addEventListener("mousewheel", scrollStop, {passive: false}); document.addEventListener("touchmove", scrollStop, {passive: false}); bpct.ariaBusy = "true"; resolve(); } else {
 reject('Too fast'); }}).then(async () =&gt; {
 const response = await fetch(npl.href);
-if (!response.ok) throw "Connection failed";
-const text = await response.text(), file = new DOMParser().parseFromString(text, "text/html"), bats = file.querySelectorAll(".hfeed>*");
-npl = file.querySelector("a.older-link");
-if (npl) npl.parentNode.remove(); else if (!bats[0]) lsps(); else bats[bats.length - 1].lastElementChild.remove();
+if (!response.ok) throw 'Connection failed';
+const text = await response.text(), file = new DOMParser().parseFromString(text, "text/html"), bats = file.querySelectorAll("div.hfeed>*");
+npl = file.querySelector(".older-link");
+if (npl) npl.parentNode.remove(); else if (!bats[0]) throw 'cut'; else bats[bats.length - 1].lastElementChild.remove();
 Promise.all([...bats].map(bat =&gt; {
 const nbat = document.adoptNode(bat), pssc = nbat.querySelector("p.summary>script");
 if (pssc) pssc.parentElement.insertAdjacentHTML("afterbegin", /`([^]+)`/.exec(pssc.textContent)[1].replace(/(&lt;([^&gt;]+)&gt;)/g, ''));
@@ -2060,6 +2066,7 @@ return nbat; })).then(results =&gt; results.forEach(result =&gt; bpct.appendChil
 switch (error) {
 case 'Too fast': rmmg('pass'); throw '';
 case 'Connection failed': bpct.after(bpg); rmmg('stop'); break;
+case 'cut': return lsch();
 default: bpct.after(bpg); rmmg('others'); }}).then(() =&gt; {
 document.removeEventListener("mousewheel", scrollStop, {passive: false}); document.removeEventListener("touchmove", scrollStop, {passive: false}); bpct.ariaBusy = "false"; add_button.classList.add("hidden"); });
 if (bpg) bpg.remove(); }
@@ -2076,10 +2083,9 @@ isac(2, 0); }
 return; } else if (sgtm &gt; 0) {
 isac(2, 'on'); }
 return; }
-if (sbct.classList.contains("slider")) sidebar_wrapper.style.display = "block";
-if (smwds) lsps(); }); }, {
+lsch(); }); }, {
 rootMargin: bthg + "px"});
-nextIndexObserver.observe(sub_main);
+nextIndexObserver.observe(sub_main); }
 <b:else/>
 /* Comment */
 if (comments.querySelector("a.cmal")) {
