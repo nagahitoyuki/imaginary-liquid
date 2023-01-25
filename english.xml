@@ -2040,7 +2040,7 @@ function rmmg(state) {
 if (sub_main.style.marginTop) sub_main.style.marginTop = "";
 if (bdis.style.marginBottom) bdis.style.marginBottom = ""
 if (state !== 'end') sub_main.style.marginTop = bthg + "px";
-if (state !== 'pass') nextIndexObserver.disconnect();}
+if (state !== 'pass') nextIndexObserver.disconnect(); }
 function isac(state, scroll) {
 switch (state) {
 case 0: sub_main.style.marginTop = scroll + bthg + "px"; bdis.style.marginBottom = bthg + "px"; break;
@@ -2057,7 +2057,7 @@ reject('Too fast'); }}).then(async () =&gt; {
 const response = await fetch(npl.href);
 if (!response.ok) throw 'Connection failed';
 const text = await response.text(), file = new DOMParser().parseFromString(text, "text/html"), bats = file.querySelectorAll("div.hfeed>*");
-npl = file.querySelector(".older-link");
+npl = file.querySelector("a.older-link");
 if (npl) npl.parentNode.remove(); else if (!bats[0]) throw 'cut'; else bats[bats.length - 1].lastElementChild.remove();
 Promise.all([...bats].map(bat =&gt; {
 const nbat = document.adoptNode(bat), pssc = nbat.querySelector("p.summary>script");
