@@ -1932,7 +1932,7 @@ button.classList.remove("fadein"); requestAnimationFrame(() =&gt; button.classLi
 if (!button.classList.contains("ban")) {
 button.addEventListener("animationend", () =&gt; {
 if (button.classList.contains("fadeout")) {
-fbt.classList.add("hidden"); button.classList.add("hidden"); }}); button.classList.add("ban"); }}
+button.classList.add("hidden"); }}); button.classList.add("ban"); }}
 return; }
 if (entry.rootBounds.bottom &gt; entry.boundingClientRect.bottom) {
 button.classList.remove("fadeout"); button.classList.add("fadein"); requestAnimationFrame(() =&gt; button.classList.remove("hidden")); }}); });
