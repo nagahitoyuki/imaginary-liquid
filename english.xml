@@ -1903,9 +1903,7 @@ const button = entry.target.id === "header" ? back_button : comment_button;
 if (entry.isIntersecting) {
 if (!button.classList.contains("hidden")) {
 button.classList.remove("fadein"); requestAnimationFrame(() =&gt; button.classList.add("fadeout"));
-button.addEventListener("animationend", () =&gt; {
-if (button.classList.contains("fadeout")) button.classList.add("hidden"); }); }
-return; }if (!button.classList.contains("ban")) {
+if (!button.classList.contains("ban")) {
 button.addEventListener("animationend", () =&gt; {
 if (button.classList.contains("fadeout")) {
 fbt.classList.add("hidden"); button.classList.add("hidden"); }}); button.classList.add("ban"); }}
