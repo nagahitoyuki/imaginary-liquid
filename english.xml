@@ -1905,6 +1905,10 @@ if (!button.classList.contains("hidden")) {
 button.classList.remove("fadein"); requestAnimationFrame(() =&gt; button.classList.add("fadeout"));
 button.addEventListener("animationend", () =&gt; {
 if (button.classList.contains("fadeout")) button.classList.add("hidden"); }); }
+return; }if (!button.classList.contains("ban")) {
+button.addEventListener("animationend", () =&gt; {
+if (button.classList.contains("fadeout")) {
+fbt.classList.add("hidden"); button.classList.add("hidden"); }}); button.classList.add("ban"); }}
 return; }
 if (entry.rootBounds.bottom &gt; entry.boundingClientRect.bottom) {
 button.classList.remove("fadeout"); button.classList.add("fadein"); requestAnimationFrame(() =&gt; button.classList.remove("hidden")); }}); });
