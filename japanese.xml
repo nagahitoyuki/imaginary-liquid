@@ -377,6 +377,8 @@ blockquote {margin:1em 2.5em}
 /* フローティングバー */
 #floating_bar {position:sticky;top:0;height:var(--floatingbar-height);left:0;right:0;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0, 0, 0, .4);contain:strict;z-index:5}
 #floating_menu, #floating_share {display:flex;column-gap:calc(var(--maincolumn-padding) / 3);align-items:center}
+#fbt {color:$(sticky.icons.color);text-align:center;width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;transition:width .3s}
+#fbt>a {color:inherit}
 
 /* SVGアイコン */
 .svg-icon-24-button, .loadingIcon {appearance:none;padding:0;border:none;background-color:transparent}
@@ -1106,6 +1108,7 @@ button</b:comment>
           <button class='svg-icon-24-button' expr:aria-label='data:messages.search.escaped' id='search_expand' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_search_black_24dp'/></svg></button>
     </b:if>
   </div>
+  <p id='fbt'><b:tag cond='data:view.isSingleItem' expr:href='data:view.isHomepage' name='a'><data:blog.title.escaped/></b:tag></p>
   <div id='floating_share'>
     <button class='svg-icon-24-button' expr:aria-label='data:messages.share' id='shbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_share_black_24dp'/></svg></button><div id='sis'><button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[1].shareMessage' id='fbbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_facebook_dark'/></svg></button><button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[3].shareMessage' id='twbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_twitter_dark'/></svg></button><button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[4].shareMessage' id='prbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_pinterest_dark'/></svg></button><button aria-label='はてなブックマークで共有' class='svg-icon-24-button' id='hbbtn' type='button'><svg class='svg-icon-24' role='img' viewBox='-50 -50 600 600'><path d='M0,50q0,-50 50,-50h400q50,0 50,50v400q0,50 -50 50h-400q-50,0 -50,-50ZM278.2,258.1q-13.6-15.2-37.8-17c14.4-3.9,24.8-9.6,31.4-17.3s9.8-17.8,9.8-30.7A55,55,0,0,0,275,166a48.8,48.8,0,0,0-19.2-18.6c-7.3-4-16-6.9-26.2-8.6s-28.1-2.4-53.7-2.4H113.6V363.6h64.2q38.7,0,55.8-2.6c11.4-1.8,20.9-4.8,28.6-8.9a52.5,52.5,0,0,0,21.9-21.4c5.1-9.2,7.7-19.9,7.7-32.1C291.8,281.7,287.3,268.2,278.2,258.1Zm-107-71.4h13.3q23.1,0,31,5.2c5.3,3.5,7.9,9.5,7.9,18s-2.9,14-8.5,17.4-16.1,5-31.4,5H171.2V186.7Zm52.8,130.3c-6.1,3.7-16.5,5.5-31.1,5.5H171.2V273h22.6c15,0,25.4,1.9,30.9,5.7s8.4,10.4,8.4,20S230.1,313.4,223.9,317.1ZM357.6,306.1a28.8,28.8,0,1,0,28.8,28.8A28.8,28.8,0,0,0,357.6,306.1ZM332.6,136.4h50v151.52h-50Z' fill-rule='evenodd'/></svg></button></div><button class='svg-icon-24-button' expr:aria-label='data:blog.sharing.platforms[0].shareMessage' expr:data-cbms='data:messages.linkCopiedToClipboard' id='cbcp' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_24_link_dark'/></svg></button>
     </div>
@@ -1928,14 +1931,15 @@ entries.forEach(entry =&gt; {
 const button = entry.target.id === "header" ? back_button : comment_button;
 if (entry.isIntersecting) {
 if (!button.classList.contains("hidden")) {
-button.classList.remove("fadein"); requestAnimationFrame(() =&gt; button.classList.add("fadeout"));
+button.classList.remove("fadein"); fbt.style.width = "0"; requestAnimationFrame(() =&gt; button.classList.add("fadeout"));
 if (!button.classList.contains("ban")) {
 button.addEventListener("animationend", () =&gt; {
 if (button.classList.contains("fadeout")) {
-button.classList.add("hidden"); }}); button.classList.add("ban"); }}
+button.classList.add("hidden"); }});
+button.classList.add("ban"); }}
 return; }
 if (entry.rootBounds.bottom &gt; entry.boundingClientRect.bottom) {
-button.classList.remove("fadeout"); button.classList.add("fadein"); requestAnimationFrame(() =&gt; button.classList.remove("hidden")); }}); });
+button.classList.remove("fadeout"); button.classList.add("fadein"); fbt.style.width = "100%"; requestAnimationFrame(() =&gt; button.classList.remove("hidden")); }}); });
 /* Sub content observer */
 const subContentObserver = new IntersectionObserver(entries =&gt; {
 entries.forEach(entry =&gt; {
@@ -1997,20 +2001,20 @@ if (bcsd.classList.contains("fadeout")) bdis.removeChild(bcsd); });
 /* Search button */
 <b:if cond='data:widgets.BlogSearch.first.id == "BlogSearch1"'>
 const scsp = search_top.querySelector("input.search-space"), shrb = main.querySelector("div.share-buttons");
-swc.ariaHidden = "true";
-search_expand.addEventListener("click", () =&gt; {
+swc.ariaHidden = "true"; search_expand.addEventListener("click", () =&gt; {
 search_expand.classList.toggle("reverse");
 if (getComputedStyle(search_top).display === "none") {
-search_top.style.display = "inline"; floating_share.style.display = "none"; swc.ariaHidden = "false"; scsp.focus(); return; }
+if (getComputedStyle(sis).display === "none") fbt.style.display = "none";search_top.style.display = "inline"; floating_share.style.display = "none"; swc.ariaHidden = "false"; scsp.focus(); return; }
+if (getComputedStyle(sis).display === "none") fbt.style.display = "block";
 search_top.style.display = "none"; floating_share.style.display = "flex"; swc.ariaHidden = "true"; });
 </b:if>}
 /* Share menu */
 const spgu = "<data:view.url.canonical/>", spgt = document.title;
-shbtn.addEventListener(&quot;click&quot;, () =&gt; {
-shbtn.classList.toggle(&quot;reverse&quot;);
-if (getComputedStyle(sis).display === &quot;none&quot;) {
-sis.style.display = &quot;flex&quot;; } else {
-sis.style.display = &quot;none&quot;; }});
+shbtn.addEventListener("click", () =&gt; {
+shbtn.classList.toggle("reverse");
+if (getComputedStyle(sis).display === "none") {
+sis.style.display = "flex"; fbt.style.display = "none"; } else {
+sis.style.display = "none"; fbt.style.display = "block"; }});
 fbbtn.addEventListener("click", () =&gt; {
 window.location.href = "https://www.facebook.com/sharer/sharer.php?u=" + spgu; });
 twbtn.addEventListener("click", () =&gt; {
