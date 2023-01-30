@@ -1905,7 +1905,8 @@ entries.forEach(entry =&gt; {
 const button = entry.target.id === "header" ? back_button : comment_button;
 if (entry.isIntersecting) {
 if (!button.classList.contains("hidden")) {
-button.classList.remove("fadein"); fbt.style.width = "0"; requestAnimationFrame(() =&gt; button.classList.add("fadeout"));
+button.classList.remove("fadein"); requestAnimationFrame(() =&gt; button.classList.add("fadeout"));
+if (button === back_button) fbt.style.width = "0";
 if (!button.classList.contains("ban")) {
 button.addEventListener("animationend", () =&gt; {
 if (button.classList.contains("fadeout")) {
@@ -1913,7 +1914,8 @@ button.classList.add("hidden"); }});
 button.classList.add("ban"); }}
 return; }
 if (entry.rootBounds.bottom &gt; entry.boundingClientRect.bottom) {
-button.classList.remove("fadeout"); button.classList.add("fadein"); fbt.style.width = "100%"; requestAnimationFrame(() =&gt; button.classList.remove("hidden")); }}); });
+button.classList.remove("fadeout"); button.classList.add("fadein"); requestAnimationFrame(() =&gt; button.classList.remove("hidden"));
+if (button === back_button) fbt.style.width = "100%"; }}); });
 /* Sub content observer */
 const subContentObserver = new IntersectionObserver(entries =&gt; {
 entries.forEach(entry =&gt; {
