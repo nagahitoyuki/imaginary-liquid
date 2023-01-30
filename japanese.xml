@@ -2000,12 +2000,12 @@ bcsd.addEventListener("animationend", () =&gt; {
 if (bcsd.classList.contains("fadeout")) bdis.removeChild(bcsd); });
 /* Search button */
 <b:if cond='data:widgets.BlogSearch.first.id == "BlogSearch1"'>
-const scsp = search_top.querySelector("input.search-space"), shrb = main.querySelector("div.share-buttons");
+const scsp = search_top.querySelector("input.search-space"), shrb = main.querySelector("div.share-buttons"), vfs = 'getComputedStyle(fbt).width !== "0" &amp;&amp; getComputedStyle(sis).display === "none"';
 swc.ariaHidden = "true"; search_expand.addEventListener("click", () =&gt; {
 search_expand.classList.toggle("reverse");
 if (getComputedStyle(search_top).display === "none") {
-if (getComputedStyle(sis).display === "none") fbt.style.display = "none";search_top.style.display = "inline"; floating_share.style.display = "none"; swc.ariaHidden = "false"; scsp.focus(); return; }
-if (getComputedStyle(sis).display === "none") fbt.style.display = "block";
+if (vfs) fbt.classList.add("hidden");  search_top.style.display = "inline"; floating_share.style.display = "none"; swc.ariaHidden = "false"; scsp.focus(); return; }
+if (vfs) fbt.classList.remove("hidden"); 
 search_top.style.display = "none"; floating_share.style.display = "flex"; swc.ariaHidden = "true"; });
 </b:if>}
 /* Share menu */
@@ -2028,7 +2028,7 @@ window.navigator.clipboard.writeText(spgu).then(() =&gt; {
 alert (cbcp.dataset.cbms); }); });
 <b:else/>
 /* Feed button */
-febtn.addEventListener("click", () =&gt; window.location.href = "<b:eval expr='data:view.isHomepage.canonical + "feeds/posts/default?alt=rss"'/>");
+febtn.addEventListener("click", () =&gt; window.location.href = "<b:eval expr='data:blog.homepageUrl.canonical path "feeds/posts/default?alt=rss"'/>");
 </b:if>
 /* Expand button */
 const rits = bdis.querySelectorAll("div.remaining-items");
