@@ -377,7 +377,7 @@ blockquote {margin:1em 2.5em}
 /* Floating bar */
 #floating_bar {position:sticky;top:0;height:var(--floatingbar-height);left:0;right:0;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0, 0, 0, .4);contain:strict;z-index:5}
 #floating_menu, #floating_share {display:flex;column-gap:calc(var(--maincolumn-padding) / 3);align-items:center}
-#fbt {color:$(sticky.icons.color);text-align:center;width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;transition:width .3s}
+#fbt {font-weight:bold;color:$(sticky.icons.color);text-align:center;width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;transition:width .3s}
 #fbt>a {color:inherit}
 
 /* SVG icons */
