@@ -409,7 +409,7 @@ html[dir="rtl"] #comment_button {transform:scaleX(-1)}
 
 /* Search widget */
 #search_top {display:inline}
-#swc {display:flex;align-items:inherit;gap:.25em;flex-wrap:wrap}
+#swc {display:flex;align-items:inherit;gap:.25em}
 .search-space {color:$(search.input.color);background-color:rgba(255, 255, 255, .2);font:$(search.input.font);line-height:var(--body-lineheight);max-width:min(45vw, $(content.width * 0.225))}
 .search-space.no-cursor {color:transparent;text-shadow:0 0 0 $(search.input.color)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
@@ -1976,12 +1976,12 @@ bcsd.addEventListener("animationend", () =&gt; {
 if (bcsd.classList.contains("fadeout")) bdis.removeChild(bcsd); });
 /* Search button */
 <b:if cond='data:widgets.BlogSearch.first.id == "BlogSearch1"'>
-const scsp = search_top.querySelector("input.search-space"), shrb = main.querySelector("div.share-buttons"), vfs = 'getComputedStyle(fbt).width !== "0" &amp;&amp; getComputedStyle(sis).display === "none"';
+const scsp = search_top.querySelector("input.search-space"), shrb = main.querySelector("div.share-buttons");
 swc.ariaHidden = "true"; search_expand.addEventListener("click", () =&gt; {
 search_expand.classList.toggle("reverse");
 if (getComputedStyle(search_top).display === "none") {
-if (vfs) fbt.classList.add("hidden");  search_top.style.display = "inline"; floating_share.style.display = "none"; swc.ariaHidden = "false"; scsp.focus(); return; }
-if (vfs) fbt.classList.remove("hidden"); 
+if (getComputedStyle(fbt).width !== "0" &amp;&amp; getComputedStyle(sis).display === "none") fbt.classList.add("hidden");  search_top.style.display = "inline"; floating_share.style.display = "none"; swc.ariaHidden = "false"; scsp.focus(); return; }
+if (getComputedStyle(fbt).width !== "0" &amp;&amp; getComputedStyle(sis).display === "none") fbt.classList.remove("hidden"); 
 search_top.style.display = "none"; floating_share.style.display = "flex"; swc.ariaHidden = "true"; });
 </b:if>}
 /* Share menu */
@@ -1989,8 +1989,8 @@ const spgu = "<data:view.url.canonical/>", spgt = document.title;
 shbtn.addEventListener("click", () =&gt; {
 shbtn.classList.toggle("reverse");
 if (getComputedStyle(sis).display === "none") {
-sis.style.display = "flex"; fbt.style.display = "none"; } else {
-sis.style.display = "none"; fbt.style.display = "block"; }});
+sis.style.display = "flex"; fbt.classList.add("hidden"); } else {
+sis.style.display = "none"; fbt.classList.remove("hidden"); }});
 fbbtn.addEventListener("click", () =&gt; {
 window.location.href = "https://www.facebook.com/sharer/sharer.php?u=" + spgu; });
 twbtn.addEventListener("click", () =&gt; {
