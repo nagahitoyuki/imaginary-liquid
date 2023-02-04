@@ -1184,7 +1184,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
     <div class='no-posts-message'><b:eval expr='data:view.isSearch ? data:messages.noResultsFound : data:messages.theresNothingHere'/></div></b:if>
     <b:else/>
       <b:tag aria-busy='false' cond='data:view.isMultipleItems' expr:class='data:posts.length == 1 ? &quot;hfeed set-one&quot; : &quot;hfeed&quot;' name='div' role='feed'><b:loop index='i' values='data:posts' var='post'><b:include data='post' name='postCommentsAndAd'/></b:loop></b:tag>
-      <script id='sdob' type='application/ld+json'><b:loop index='i' values='data:posts' var='post'><b:include data='post' name='postMeta'/></b:loop></script></b:if>
+      <script type='application/ld+json'><b:loop index='i' values='data:posts' var='post'><b:include data='post' name='postMeta'/></b:loop></script></b:if>
   </b:with>
   </b:with>
   </b:with>
