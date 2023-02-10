@@ -86,7 +86,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
       default="$(color) none no-repeat scroll center center" value="$(color) none no-repeat scroll center center"/>
   <Variable name="blog.header.color" description="ブログのヘッダーのテキストの色"
       type="color"
-      default="#808080"  value="#808080"/>
+      default="#797676"  value="#797676"/>
   <Variable name="body.background.color" description="Body background color"
       type="color"
       default="#f0f8ff"  value="#f0f8ff"/>
@@ -444,7 +444,7 @@ html[dir="rtl"] #shbtn.reverse, html[dir="rtl"] #search_expand.reverse {transfor
 .FeaturedPost>.feed-title {margin-top:0;margin-bottom:20px}
 .FeaturedPost>.feed-title>a {color:$(posts.title.color)}
 .ft-post>a, .ft-snippet-thumbnail {aspect-ratio:1.5;width:100%;height:auto;display:grid;align-items:center;text-align:center}
-.no-image {background-color:#808080}
+.no-image {background-color:#797676}
 .fp-title {font:$(posts.stream.title.font);line-height:var(--body-lineheight);color:#fff;margin:0;padding:var(--maincolumn-padding);grid-column:1/2;grid-row:1/2;z-index:1}
 .ft-snippet-thumbnail {grid-column:1/2;grid-row:1/2;filter:brightness(70%);object-fit:cover}
 
