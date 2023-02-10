@@ -388,7 +388,6 @@ blockquote {margin:1em 2.5em}
 .svg-icon-24>use, #hbbtn {fill:$(sticky.icons.color)}
 #sis {display:flex;align-items:inherit;gap:inherit}
 #shbtn {transition:transform .3s}
-html[dir="rtl"] #shbtn {transform:scaleX(-1)}
 #close_button>.svg-icon-24 {fill:$(sidebar.icons.color)}
 .post-icons .svg-icon-24 {fill:$(posts.icons.color)}
 .svg-icon-back {stroke-width:2px;stroke:$(sticky.icons.color);fill:transparent}
@@ -397,8 +396,6 @@ html[dir="rtl"] #shbtn {transform:scaleX(-1)}
 
 /* 戻るボタン／コメントボタン／ローディング */
 #back_button, #comment_button, #add_button {position:fixed;bottom:calc(var(--maincolumn-padding) / 2);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);z-index:5}
-html[dir="rtl"] #back_button, html[dir="rtl"] #comment_button, html[dir="rtl"] #add_button {box-shadow:-5px 5px 10px -5px rgba(0, 0, 0, .4)}
-html[dir="rtl"] #comment_button {transform:scaleX(-1)}
 #back_button, #comment_button {width:var(--floatingbar-height);border-radius:50%;contain:strict}
 #back_button>.svg-icon-24 {margin-top:calc(var(--svgicon-height) / -12);padding-bottom:calc(var(--svgicon-height) / 12)}
 #add_button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px;contain:content}
@@ -417,11 +414,9 @@ html[dir="rtl"] #comment_button {transform:scaleX(-1)}
 .search-space::placeholder {color:$(search.placeholder.color);opacity:.6}
 .search-action {color:$(search.action.color);font-size:100%}
 #search_expand {transition:transform .3s}
-html[dir="rtl"] #search_expand {transform:scaleX(-1)}
 
 /* ターン */
 .reverse {transform:scaleX(-1)}
-html[dir="rtl"] #shbtn.reverse, html[dir="rtl"] #search_expand.reverse {transform:scaleX(1)}
 
 /* アドセンス広告 */
 .inline-ad {display:none;overflow:hidden}
@@ -502,7 +497,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .comment-header>.user, .comment-header>.user>a, .comment-author, .comment-author>a {color:$(posts.byline.color);font-style:normal}
 .comment-actions {bottom:0;position:absolute}
 .comment-actions>* {margin-$endSide:.5em}
-.comment-header>.datetime {bottom:0;display:inline flow-root;margin-$startSide:.5em}
+.comment-header>.datetime {bottom:0;display:inline-block;margin-$startSide:.5em}
 .comment-timestamp>a, .comment-header>.datetime>a {color:$(posts.byline.color)}
 .comment-content, .comment-body {margin-top:.75em;margin-bottom:.75em;word-break:break-word}
 .comment-footer a, .comment-content a, .comment-body a, .comment-actions>a, .comment-actions>a:visited, .comment-actions>a:hover, .blog-admin>a, .comment-replybox-single, .comment-replies a {color:$(posts.link.color)}
@@ -522,7 +517,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 
 /* ページングコントロール */
 .paging-control-container {margin-bottom:16px}
-.paging-control {display:inline flow-root}
+.paging-control {display:inline-block}
 .comment-range-text::after,.paging-control-container .paging-control {color:$(posts.link.color)}
 .comment-range-text, .paging-control {margin-$endSide:8px}
 .comment-range-text::after, .paging-control::after {content:'\00B7';cursor:default;padding-$startSide:8px;pointer-events:none}
@@ -614,6 +609,11 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 /* エラー */
 .error-view .post-outer-container {background-color:$(body.background.color);padding:var(--maincolumn-padding);border-bottom:4px #c0c0c0 double;box-sizing:border-box}
 
+/* 左右反転 */
+html[dir="rtl"] :is(#shbtn, #comment_button, #search_expand) {transform:scaleX(-1)}
+html[dir="rtl"] :is(#shbtn.reverse, #search_expand.reverse) {transform:scaleX(1)}
+html[dir="rtl"] :is(#back_button, #comment_button, #add_button) {box-shadow:-5px 5px 10px -5px rgba(0, 0, 0, .4)}
+
 /* ブログのコンテンツとサイドバーと隙間の幅以上 */
 @media screen and (min-width:$(sidebar.width + content.width + content.margin)) {
 
@@ -625,8 +625,6 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 #hamburger_menu, #search_expand, #shbtn, #febtn {display:none}
 #sdbtn {transform:translateX(calc(-$(sidebar.width) + var(--maincolumn-padding) * 2))}
 #floating_share {transform:translateX(var(--svgicon-height))}
-html[dir="rtl"] #sdbtn {transform:translateX(calc($(sidebar.width) + var(--maincolumn-padding) * -2))}
-html[dir="rtl"] #floating_share {transform:translateX(calc(var(--svgicon-height) * -1))}
 
 /* 戻るボタン／コメントボタン／ローディング */
 #back_button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) / 2)}
@@ -640,7 +638,7 @@ html[dir="rtl"] #floating_share {transform:translateX(calc(var(--svgicon-height)
 
 /* カラムの切り替え */
 .no-sidebar, .no-sidebar>.bg-image-container {width:$(content.width)}
-.no-sidebar #floating_share, html[dir="rtl"] .no-sidebar #floating_share {transform:translateX(0)}
+.no-sidebar #floating_share {transform:translateX(0)}
 .no-sidebar #sdbtn {display:none}
 .no-sidebar #subtn {display:initial}
 .no-sidebar>#content_wrapper {display:block}
@@ -648,6 +646,11 @@ html[dir="rtl"] #floating_share {transform:translateX(calc(var(--svgicon-height)
 .no-sidebar .sidebar-container {width:100%}
 .no-sidebar>#back_button {$endSide:calc(50% - $(content.width) / 2 + var(--maincolumn-padding) / 2)}
 .no-sidebar>#comment_button, .no-sidebar>#add_button {$startSide:calc(50% - $(content.width) / 2 + var(--maincolumn-padding) / 2)}
+
+/* 左右反転 */
+html[dir="rtl"] #sdbtn {transform:translateX(calc($(sidebar.width) + var(--maincolumn-padding) * -2))}
+html[dir="rtl"] #floating_share {transform:translateX(calc(var(--svgicon-height) * -1))}
+html[dir="rtl"] .no-sidebar #floating_share {transform:translateX(0)}
 }
 
 /* ブログのコンテンツとサイドバーと隙間の幅以下 */
@@ -676,6 +679,8 @@ html[dir="rtl"] #floating_share {transform:translateX(calc(var(--svgicon-height)
 .dim-overlay {background-color:rgba(0, 0, 0, .7);position:fixed;top:0;$startSide:0;width:100%;height:100vh;z-index:9}
 .slidein {transform:translateX($(sidebar.width))}
 .slideout {transform:translateX(0)}
+
+/* 左右反転 */
 html[dir="rtl"] .slidein {transform:translateX(-$(sidebar.width))}
 html[dir="rtl"] .slideout {transform:translateX(0)}
 }
