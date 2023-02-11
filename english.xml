@@ -463,7 +463,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .jump-link {margin-$startSide:auto}
 .author-profile {display:flex;column-gap:var(--maincolumn-padding);margin-bottom:20px}
 .author-image {flex-shrink:0;width:50px;height:50px;border-radius:50%}
-.author-desc {color:$(profile.text.color)}
+.author-desc {color:$(posts.text.color)}
 
 /* Post body and snippet */
 .entry-content, .summary {font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color)}
