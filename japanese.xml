@@ -498,9 +498,9 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .comment-actions {bottom:0;position:absolute}
 .comment-actions>* {margin-$endSide:.5em}
 .comment-header>.datetime {bottom:0;display:inline-block;margin-$startSide:.5em}
-.comment-timestamp>a, .comment-header>.datetime>a {color:$(posts.byline.color)}
+:is(.comment-timestamp, .comment-header>.datetime)>a {color:$(posts.byline.color)}
 .comment-content, .comment-body {margin-top:.75em;margin-bottom:.75em;word-break:break-word}
-.comment-footer a, .comment-content a, .comment-body a, .comment-actions>a, .comment-actions>a:visited, .comment-actions>a:hover, .blog-admin>a, .comment-replybox-single, .comment-replies a {color:$(posts.link.color)}
+:is(.comment-footer, .comment-content, .comment-body, .comment-actions, .comment-replies, .blog-admin)>a, .comment-replybox-single {color:$(posts.link.color)}
 .comment-reply, .blog-admin>a {font-weight:normal}
 .comment-body {margin-bottom:12px}
 .embed[data-num-comments="0"] {border:0;margin-top:0;padding-top:0}
@@ -511,7 +511,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .comment-link .num_comments {margin-$startSide:.5em;vertical-align:top}
 #comment-editor {display:block}
 #comments>.title {font-size:large;color:$(posts.title.color);margin-top:20px;margin-bottom:1.5em}
-.comment-footer>p {margin-top:20px;margin-bottom:0}
+.comment-footer:has(#comment-editor)>p {margin-top:0}
 .no-form>.comment-footer {margin-bottom:20px}
 .thread-count, #comment-editor-src, .continue, item-control {display:none}
 
