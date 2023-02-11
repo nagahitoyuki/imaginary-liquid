@@ -340,8 +340,8 @@ blockquote {margin:1em 2.5em}
 /* バランサー */
 .hidden, :not(.feed-view>#sub_main).section.no-items {display:none}
 .invisible {visibility:hidden}
-.hfeed>* {contain:content}
-.hentry>.post-footer, #comments, #PopularPost1, .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
+.hfeed>*, #PopularPosts1 {contain:content}
+.hentry>.post-footer, #comments, .item-view>#sub_main, .item-view>#attribution {content-visibility:auto;contain-intrinsic-size:100%}
 
 /* ウィジェット */
 .title, .feed-title {font-size:large;color:$(widget.title.color)}
