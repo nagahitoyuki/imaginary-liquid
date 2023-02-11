@@ -1525,7 +1525,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   <b:if cond='data:post.author.aboutMe and data:view.isPost'>
     <div class='author-profile'>
       <b:if cond='data:post.author.authorPhoto'>
-        <img class='author-image' expr:alt='data:post.author.authorPhoto.alt' expr:src='data:post.author.authorPhoto.image' height='50' width='50'/>
+        <img class='author-image' expr:alt='data:post.author.authorPhoto.alt' expr:src='data:post.author.authorPhoto.image' height='50' loading='lazy' width='50'/>
         <div class='author-about'>
           <b:include data='post' name='aboutPostAuthor'/>
         </div>
@@ -1991,7 +1991,7 @@ function hbmb() {
 if (sbct.classList.contains("slider")) {
 bcsd.classList.remove("fadeout"); bcsd.classList.add("fadein"); requestAnimationFrame(() =&gt; {
 sbct.classList.add("slidein"); bdis.appendChild(bcsd); }); sbct.ariaHidden = "false"; sbct.classList.remove("sidebar-invisible"); bdis.classList.add("sidebar-visible"); } else {
-window.location.href = "#attribution"; }}
+location.href = "#attribution"; }}
 hamburger_menu.addEventListener("click", hbmb);
 /* Close button */
 function clsb() {
@@ -2021,21 +2021,21 @@ shbtn.classList.toggle("reverse");
 if (getComputedStyle(sis).display === "none") {
 sis.style.display = "flex"; fbt.classList.add("hidden"); } else {
 sis.style.display = "none"; fbt.classList.remove("hidden"); }});
-fbbtn.addEventListener("click", () =&gt; {
-window.location.href = "https://www.facebook.com/sharer/sharer.php?u=" + spgu; });
+<b:if cond='!data:blog.isPrivateBlog and !data:view.isPreview'>fbbtn.addEventListener("click", () =&gt; {
+location.href = "https://www.facebook.com/sharer/sharer.php?u=" + spgu; });
 twbtn.addEventListener("click", () =&gt; {
-window.location.href = "https://twitter.com/intent/tweet?url=" + spgu + "&amp;text=" + encodeURIComponent(spgt); });
+location.href = "https://twitter.com/intent/tweet?url=" + spgu + "&amp;text=" + encodeURIComponent(spgt); });
 prbtn.addEventListener("click", () =&gt; {
-window.location.href = "https://pinterest.com/pin/create/button/?url=" + spgu; });
-rdbtn.addEventListener("click", () =&gt; window.location.href = "https://www.reddit.com/submit?url=" + spgu + "&amp;title=" + encodeURIComponent(spgt));
+location.href = "https://pinterest.com/pin/create/button/?url=" + spgu; });
+rdbtn.addEventListener("click", () =&gt; location.href = "https://www.reddit.com/submit?url=" + spgu + "&amp;title=" + encodeURIComponent(spgt));
 mlbtn.addEventListener("click", () =&gt; {
-window.location.href = "<b:eval expr='"https://www.blogger.com/email-post.g?blogID=" + data:blog.blogId + "&amp;postID=" + data:blog.postId'/>"; });
+location.href = "<b:eval expr='"https://www.blogger.com/email-post.g?blogID=" + data:blog.blogId + "&amp;postID=" + data:blog.postId'/>"; });
 cbcp.addEventListener("click", () =&gt; {
 window.navigator.clipboard.writeText(spgu).then(() =&gt; {
-alert (cbcp.dataset.cbms); }); });
+alert (cbcp.dataset.cbms); }); });</b:if>
 <b:else/>
 /* Feed button */
-febtn.addEventListener("click", () =&gt; window.location.href = "<b:eval expr='data:blog.homepageUrl.canonical path "feeds/posts/default?alt=rss"'/>");
+<b:if cond='!data:blog.isPrivateBlog and !data:view.isPreview'>febtn.addEventListener("click", () =&gt; location.href = "<b:eval expr='data:blog.homepageUrl.canonical path "feeds/posts/default?alt=rss"'/>");</b:if>
 </b:if>
 /* Expand button */
 const rits = bdis.querySelectorAll("div.remaining-items");
@@ -2131,7 +2131,8 @@ if (comments.querySelector("a.cmal")) {
 const avics = comments.querySelectorAll("div.avatar-image-container");
 avics.forEach(avic =&gt; {
 if (/resources.blogblog\.com\/img\/blank\.gif/.test(avic.firstElementChild.src)) {
-avic.insertAdjacentHTML("afterbegin", "<svg aria-label='Avatar' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>"); }});
+avic.insertAdjacentHTML("afterbegin", "<svg aria-label='Avatar' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>"); } else {
+avic.firstElementChild.alt = "Avatar"; }});
 floatButtonObserver.observe(Blog1.querySelector("article.hentry")); }
 /* Comment form */
 const commentForm = comments.querySelector("iframe#comment-editor"), cmhd = comments.querySelector("div.comment-thread");
