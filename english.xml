@@ -435,13 +435,15 @@ blockquote {margin:1em 2.5em}
 .hfeed>.post+aside {align-self:stretch;display:grid}
 
 /* Featured post */
-.FeaturedPost {padding:var(--maincolumn-padding);background-color:$(posts.background.color);margin-bottom:var(--maincolumn-padding)}
-.ft-post>a, .ft-snippet-thumbnail {aspect-ratio:16/9;width:100%;height:auto}
+.ft-post>a, .ft-snippet-thumbnail {aspect-ratio:3/2;width:100%;height:auto}
 .ft-post>a {display:grid}
 .no-image {background-color:#797676}
-.fp-title, .ft-snippet-thumbnail {grid-column:1/2;grid-row:1}
-.fp-title {font:$(posts.stream.title.font);color:#fff;padding:var(--maincolumn-padding);justify-self:center;align-self:center;margin:0;z-index:1}
+.ft-post .feed-title, .fp-title, .ft-snippet-thumbnail, .ft-date {grid-column:1/2;grid-row:1/2}
+.ft-post .feed-title, .fp-title, .ft-date {margin:0;z-index:1}
+.ft-post .feed-title {justify-self:start;align-self:start;color:$(posts.title.color);background-color:rgba($(posts.background.color.red), $(posts.background.color.green), $(posts.background.color.blue), 0.3);padding:var(--maincolumn-padding)}
+.fp-title {font:$(posts.stream.title.font);color:#fff;padding:var(--maincolumn-padding);justify-self:center;align-self:center}
 .ft-snippet-thumbnail {filter:brightness(70%);object-fit:cover}
+.ft-date {font-style:oblique;color:#fff;justify-self:end;align-self:end;margin-$endSide:var(--maincolumn-padding);margin-bottom:var(--maincolumn-padding)}
 
 /* Post title */
 .entry-title, .snippet-title {margin-top:0;margin-bottom:20px}
@@ -1128,19 +1130,17 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
     <b:widget-settings>
       <b:widget-setting name='showSnippet'>false</b:widget-setting>
       <b:widget-setting name='showPostTitle'>true</b:widget-setting>
-      <b:widget-setting name='postId'>6748730658026948177</b:widget-setting>
+      <b:widget-setting name='postId'>0</b:widget-setting>
       <b:widget-setting name='showFirstImage'>true</b:widget-setting>
       <b:widget-setting name='useMostRecentPost'>true</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-  <b:if cond='data:title'>
-    <h2 class='feed-title'><data:title/></h2>
-  </b:if>
     <b:include name='snippetedPosts'/>
 </b:includable>
     <b:includable id='snippetedPostContent'>
     <a expr:href='data:post.url' rel='bookmark' title='permanent link'>
     <b:class cond='!data:post.featuredImage or !data:this.postDisplay.showFeaturedImage' name='no-image'/>
+  <b:if cond='data:title'><h2 class='feed-title'><data:title/></h2><div class='ft-date'><data:messages.on/>&#160;<time expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></div></b:if>
   <b:include cond='data:this.postDisplay.showTitle' name='snippetedPostTitle'/>
   <b:include cond='data:post.featuredImage and data:this.postDisplay.showFeaturedImage' data='post' name='snippetedPostThumbnail'/>
   </a>
