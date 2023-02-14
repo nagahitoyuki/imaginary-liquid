@@ -386,7 +386,8 @@ blockquote {margin:1em 2.5em}
 /* SVGアイコン */
 .svg-icon-24-button, .loadingIcon {appearance:none;padding:0;border:none;background-color:transparent}
 .svg-icon-24 {vertical-align:top;width:var(--svgicon-height);height:var(--svgicon-height);cursor:pointer}
-.svg-icon-24>use, #hbbtn {fill:$(sticky.icons.color)}
+:not(#ftbtn)>.svg-icon-24>use, #hbbtn {fill:$(sticky.icons.color)}
+#ftbtn {fill:#c0c0c0}
 #sis {display:flex;align-items:inherit;gap:inherit}
 #shbtn {transition:transform .3s}
 #close_button>.svg-icon-24 {fill:$(sidebar.icons.color)}
@@ -440,15 +441,18 @@ blockquote {margin:1em 2.5em}
 .item-view #PopularPosts1 {order:3}
 
 /* 注目の投稿 */
+.feed-view .FeaturedPost {margin-bottom:var(--maincolumn-padding)}
 .ft-post>a, .ft-snippet-thumbnail {aspect-ratio:3/2;width:100%;height:auto}
-.ft-post>a {display:grid}
+.ft-post>a {display:grid;color:#fff}
 .no-image {background-color:#797676}
 .ft-post .feed-title, .fp-title, .ft-snippet-thumbnail, .ft-date {grid-column:1/2;grid-row:1/2}
 .ft-post .feed-title, .fp-title, .ft-date {margin:0;z-index:1}
-.ft-post .feed-title {justify-self:start;align-self:start;background-color:rgba(255, 255, 255, 0.5);padding:var(--maincolumn-padding)}
-.fp-title {font:$(posts.stream.title.font);color:#fff;padding:0 var(--maincolumn-padding);text-align:center;align-self:center;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient: vertical;overflow:hidden}
+.ft-post .feed-title {justify-self:start;align-self:start;background-color:rgba(255, 255, 255, 0.3);padding:var(--maincolumn-padding)}
+.fp-title {font:$(posts.stream.title.font);padding:0 var(--maincolumn-padding);text-align:center;align-self:center;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient: vertical;overflow:hidden}
 .ft-snippet-thumbnail {filter:brightness(70%);object-fit:cover}
-.ft-date {font-style:oblique;color:#fff;justify-self:end;align-self:end;margin-$endSide:var(--maincolumn-padding);margin-bottom:var(--maincolumn-padding)}
+.ft-date {font-style:oblique;justify-self:end;align-self:end;margin-$endSide:var(--maincolumn-padding);margin-bottom:var(--maincolumn-padding)}
+#ftbtn {width:100%;position:absolute;$startSide:calc(var(--maincolumn-padding) + var(--svgicon-height) / 2 - 50%);bottom:var(--maincolumn-padding)}
+.ftct {color:#fff;position:absolute;$startSide:var(--svgicon-height);bottom:var(--svgicon-height);backdrop-filter:blur($(body.background.blur));text-align:$startSide;max-width:calc(100% -  (var(--maincolumn-padding) + var(--svgicon-height)) * 2);padding:var(--maincolumn-padding);font-size:small;z-index:1}
 
 /* 記事の題名 */
 .entry-title, .snippet-title {margin-top:0;margin-bottom:20px}
@@ -1159,7 +1163,7 @@ button</b:comment>
 <b:section class='centered-middle' id='main' name='Page Body' preferred='yes' showaddelement='false' tag='main'>
   <b:widget cond='data:view.isHomepage or data:view.isSingleItem or data:view.isLayoutMode' id='FeaturedPost1' locked='true' title='' type='FeaturedPost' visible='true'>
     <b:widget-settings>
-      <b:widget-setting name='showSnippet'>false</b:widget-setting>
+      <b:widget-setting name='showSnippet'>true</b:widget-setting>
       <b:widget-setting name='showPostTitle'>true</b:widget-setting>
       <b:widget-setting name='postId'>0</b:widget-setting>
       <b:widget-setting name='showFirstImage'>true</b:widget-setting>
@@ -1175,6 +1179,7 @@ button</b:comment>
   <b:include cond='data:this.postDisplay.showTitle' name='snippetedPostTitle'/>
   <b:include cond='data:post.featuredImage and data:this.postDisplay.showFeaturedImage' data='post' name='snippetedPostThumbnail'/>
   </a>
+  <b:if cond='data:this.postDisplay.showSnippet'><button expr:aria-label='data:messages.learnMore' class='svg-icon-24-button' id='ftbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_more_vert_black_24dp'/></svg></button><p class='ftct hidden'><data:post.snippets.short.escaped/></p></b:if>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
@@ -2093,8 +2098,12 @@ back_button.classList.add("invisible"); }});
 fcpt.addEventListener("blur", () =&gt; {
 if (!sbct.classList.contains("slider")) {
 if (comment_button) comment_button.classList.remove("invisible");
-back_button.classList.remove("invisible"); }}); });
-</b:if>
+back_button.classList.remove("invisible"); }}); });</b:if>
+<b:if cond='data:widgets.FeaturedPost.first'>
+/* Featured post */
+if (ftbtn) {
+ftbtn.addEventListener("click", event =&gt; {
+event.currentTarget.nextElementSibling.classList.toggle("hidden"); }); }</b:if>
 <b:if cond='data:view.isMultipleItems'>
 /* Infinite scroll */
 const bpct = Blog1.firstElementChild;
