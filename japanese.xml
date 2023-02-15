@@ -321,7 +321,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
 **************************************************/
 
 /* 一般設定 */
-:root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6;--svgicon-height:calc($(body.text.font.size) * var(--body-lineheight));--image-verticalalign:calc(((var(--body-lineheight) - 1) / 2 + 0.12) / var(--body-lineheight) * -100%)}
+:root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6;--svgicon-height:calc($(body.text.font.size) * var(--body-lineheight));--image-verticalalign:calc(((var(--body-lineheight) - 1) / 2 + 0.12) / var(--body-lineheight) * -100%);--fixedbutton-margin:calc((var(--body-lineheight) - 1) * var(--maincolumn-padding))}
 html {scroll-behavior:smooth}
 body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:anywhere;background-color:$(body.background.color);color:$(body.text.base.color);font:$(body.text.font);line-height:var(--body-lineheight)}
 a {text-decoration:none;color:$(body.link.base.color)}
@@ -397,7 +397,7 @@ blockquote {margin:1em 2.5em}
 .blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical- align:var(--image-verticalalign)}
 
 /* 戻るボタン／コメントボタン／ローディング */
-#back_button, #comment_button, #add_button {position:fixed;bottom:calc(var(--maincolumn-padding) / 2);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);z-index:5}
+#back_button, #comment_button, #add_button {position:fixed;bottom:var(--fixedbutton-margin);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);z-index:5}
 #back_button, #comment_button {width:var(--floatingbar-height);border-radius:50%;contain:strict}
 #back_button>.svg-icon-24 {margin-top:calc(var(--svgicon-height) / -12);padding-bottom:calc(var(--svgicon-height) / 12)}
 #add_button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px;contain:content}
@@ -639,8 +639,8 @@ html[dir="rtl"] :is(#back_button, #comment_button, #add_button) {box-shadow:-5px
 #floating_share {transform:translateX(var(--svgicon-height))}
 
 /* 戻るボタン／コメントボタン／ローディング */
-#back_button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) / 2)}
-#comment_button, #add_button {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) / 2)}
+#back_button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--fixedbutton-margin))}
+#comment_button, #add_button {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--fixedbutton-margin))}
 
 /* サイドバー */
 #close_button {display:none}
@@ -676,8 +676,8 @@ html[dir="rtl"] .no-sidebar #floating_share {transform:translateX(0)}
 #sdbtn {display:none}
 
 /* 戻るボタン／コメントボタン／ローディング */
-#back_button {$endSide:calc(var(--maincolumn-padding) / 2)}
-#comment_button, #add_button {$startSide:calc(var(--maincolumn-padding) / 2)}
+#back_button {$endSide:var(--fixedbutton-margin)}
+#comment_button, #add_button {$startSide:var(--fixedbutton-margin)}
 
 /* サイドバー */
 .swcn {display:contents}
