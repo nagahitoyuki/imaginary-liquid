@@ -656,8 +656,8 @@ html[dir="rtl"] :is(#back_button, #comment_button, #add_button) {box-shadow:-5px
 .no-sidebar>#content_wrapper {display:block}
 .no-sidebar #sidebar_wrapper {position:static}
 .no-sidebar .sidebar-container {width:100%}
-.no-sidebar>#back_button {$endSide:calc(50% - $(content.width) / 2 + var(--maincolumn-padding) / 2)}
-.no-sidebar>#comment_button, .no-sidebar>#add_button {$startSide:calc(50% - $(content.width) / 2 + var(--maincolumn-padding) / 2)}
+.no-sidebar>#back_button {$endSide:calc(50% - $(content.width) / 2 + var(--fixedbutton-margin))}
+.no-sidebar>#comment_button, .no-sidebar>#add_button {$startSide:calc(50% - $(content.width) / 2 + var(--fixedbutton-margin))}
 
 /* 左右反転 */
 html[dir="rtl"] #sdbtn {transform:translateX(calc($(sidebar.width) + var(--maincolumn-padding) * -2))}
