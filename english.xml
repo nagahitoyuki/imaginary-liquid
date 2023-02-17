@@ -397,10 +397,15 @@ blockquote {margin:1em 2.5em}
 .blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical-align:var(---image-verticalalign)}
 
 /* Back button / Comment button / Loading */
-#back_button, #comment_button, #add_button {position:fixed;bottom:var(--fixedbutton-margin);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);z-index:5}
-#back_button, #comment_button {width:var(--floatingbar-height);border-radius:50%;contain:strict}
+#back_button, #comment_button, #add_button, #summary_button {position:fixed;bottom:var(--fixedbutton-margin);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);z-index:5}
+#back_button, #comment_button, #summary_button {width:var(--floatingbar-height);border-radius:50%;contain:strict}
 #back_button>.svg-icon-24 {margin-top:calc(var(--svgicon-height) / -12);padding-bottom:calc(var(--svgicon-height) / 12)}
 #add_button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px;contain:content}
+#wfsc {position:fixed;bottom:calc(var(--floatingbar-height) + var(--fixedbutton-margin))}
+.smct {display:grid;grid-template-columns:repeat(auto-fit, minmax(calc($(content.width / 3) - (var(--floatingbar-height) + var(--fixedbutton-margin) + var(--maincolumn-padding)) * 2), 1fr));gap:var(--maincolumn-padding);font-size:small;padding:var(--maincolumn-padding);background-color:$(body.background.color);color:$(body.text.base.color);border:3px $(sidebar.separator.color) double;box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);margin:0}
+.smtx>p {margin-top:0}
+.smtx>p:first-child {font-weight:bold}
+.smtx>p:last-child {margin-bottom:0}
 
 /* Fade effect */
 @keyframes fadein {from{ opacity:0} to { opacity:1}}
@@ -435,10 +440,9 @@ blockquote {margin:1em 2.5em}
 .hfeed>.post, .hentry {background-color:$(posts.background.color);padding:20px var(--maincolumn-padding);box-sizing:border-box}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
 .hfeed>.post+aside {align-self:stretch;display:grid}
-.item-view #main {display:flex;flex-direction:column}
-.item-view #Blog1 {order:1}
-.item-view #FeaturedPost1 {order:2}
-.item-view #PopularPosts1 {order:3}
+.feed-view #main {display:flex;flex-direction:column}
+.feed-view #FeaturedPost1 {order:1}
+.feed-view #Blog1 {order:2}
 
 /* Featured post */
 .feed-view .FeaturedPost {margin-bottom:var(--maincolumn-padding)}
@@ -623,7 +627,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 /* Flip horizontal */
 html[dir="rtl"] :is(#shbtn, #comment_button, #search_expand) {transform:scaleX(-1)}
 html[dir="rtl"] :is(#shbtn.reverse, #search_expand.reverse) {transform:scaleX(1)}
-html[dir="rtl"] :is(#back_button, #comment_button, #add_button) {box-shadow:-5px 5px 10px -5px rgba(0, 0, 0, .4)}
+html[dir="rtl"] :is(#back_button, #comment_button, #add_button, #summary_button, .smct) {box-shadow:-5px 5px 10px -5px rgba(0, 0, 0, .4)}
 
 /* More than the width of the blog content and sidebar and gaps */
 @media screen and (min-width:$(sidebar.width + content.width + content.margin)) {
@@ -639,7 +643,8 @@ html[dir="rtl"] :is(#back_button, #comment_button, #add_button) {box-shadow:-5px
 
 /* Back button / Comment button / Loading */
 #back_button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--fixedbutton-margin))}
-#comment_button, #add_button {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--fixedbutton-margin))}
+#comment_button, #add_button, #summary_button {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--fixedbutton-margin))}
+#wfsc {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--fixedbutton-margin) + var(--floatingbar-height));$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + $(sidebar.width + content.margin) + var(--fixedbutton-margin) + var(--floatingbar-height))}
 
 /* Side bar */
 #close_button {display:none}
@@ -648,7 +653,7 @@ html[dir="rtl"] :is(#back_button, #comment_button, #add_button) {box-shadow:-5px
 .stickybottom {align-self:end;bottom:0}
 
 /* Switching columns */
-.no-sidebar, .no-sidebar>.bg-image-container {width:$(content.width)}
+.no-sidebar {width:$(content.width)}
 .no-sidebar #floating_share {transform:translateX(0)}
 .no-sidebar #sdbtn {display:none}
 .no-sidebar #subtn {display:initial}
@@ -656,7 +661,8 @@ html[dir="rtl"] :is(#back_button, #comment_button, #add_button) {box-shadow:-5px
 .no-sidebar #sidebar_wrapper {position:static}
 .no-sidebar .sidebar-container {width:100%}
 .no-sidebar>#back_button {$endSide:calc(50% - $(content.width) / 2 + var(--fixedbutton-margin))}
-.no-sidebar>#comment_button, .no-sidebar>#add_button {$startSide:calc(50% - $(content.width) / 2 + var(--fixedbutton-margin))}
+.no-sidebar>#comment_button, .no-sidebar>#add_button, .no-sidebar>#summary_button {$startSide:calc(50% - $(content.width) / 2 + var(--fixedbutton-margin))}
+.no-sidebar>#wfsc {$startSide:calc(50% - $(content.width) / 2 + var(--fixedbutton-margin) + var(--floatingbar-height));$endSide:calc(50% - $(content.width) / 2 + var(--fixedbutton-margin) + var(--floatingbar-height))}
 
 /* Flip horizontal */
 html[dir="rtl"] #sdbtn {transform:translateX(calc($(sidebar.width) + var(--maincolumn-padding) * -2))}
@@ -676,7 +682,8 @@ html[dir="rtl"] .no-sidebar #floating_share {transform:translateX(0)}
 
 /* Back button / Comment button / Loading */
 #back_button {$endSide:var(--fixedbutton-margin)}
-#comment_button, #add_button {$startSide:var(--fixedbutton-margin)}
+#comment_button, #add_button, #summary_button {$startSide:var(--fixedbutton-margin)}
+#wfsc {$startSide:calc(var(--fixedbutton-margin) + var(--floatingbar-height));$endSide:calc(var(--fixedbutton-margin) + var(--floatingbar-height))}
 
 /* Side bar */
 .swcn {display:contents}
@@ -1136,54 +1143,6 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
 
 <b:tag cond='!data:blog.isMobileRequest' id='content_wrapper' name='div'>
 <b:section class='centered-middle' id='main' name='Page Body' preferred='yes' showaddelement='false' tag='main'>
-  <b:widget cond='data:view.isHomepage or data:view.isSingleItem or data:view.isLayoutMode' id='FeaturedPost1' locked='true' title='' type='FeaturedPost' visible='true'>
-    <b:widget-settings>
-      <b:widget-setting name='showSnippet'>true</b:widget-setting>
-      <b:widget-setting name='showPostTitle'>true</b:widget-setting>
-      <b:widget-setting name='postId'>0</b:widget-setting>
-      <b:widget-setting name='showFirstImage'>true</b:widget-setting>
-      <b:widget-setting name='useMostRecentPost'>true</b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main' var='this'>
-    <b:tag cond='data:view.isSingleItem' name='aside'><b:include name='snippetedPosts'/></b:tag>
-</b:includable>
-    <b:includable id='snippetedPostContent'>
-    <a expr:href='data:post.url' rel='bookmark' title='permanent link'>
-    <b:class cond='!data:post.featuredImage or !data:this.postDisplay.showFeaturedImage' name='no-image'/>
-  <b:if cond='data:title'><h2 class='feed-title'><data:title/></h2><div class='ft-date'><data:messages.on/>&#160;<time expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></div></b:if>
-  <b:include cond='data:this.postDisplay.showTitle' name='snippetedPostTitle'/>
-  <b:include cond='data:post.featuredImage and data:this.postDisplay.showFeaturedImage' data='post' name='snippetedPostThumbnail'/>
-  </a>
-  <b:if cond='data:this.postDisplay.showSnippet'><button expr:aria-label='data:messages.learnMore' class='svg-icon-24-button' id='ftbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_more_vert_black_24dp'/></svg></button><p class='ftct hidden'><data:post.snippets.short.escaped/></p></b:if>
-</b:includable>
-    <b:includable id='snippetedPostThumbnail'>
-  <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
-    <b:tag class='ft-snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl.isYoutube ? data:imgurl + "=w121-rw" : data:imgurl' expr:srcset='data:imgurl.isYoutube ? "" : sourceSet(data:imgurl, [640, 1280], "3:2")' height='426' name='img' sizes='(max-width:640px) 100vw, 1280px' width='640'>
-    <b:attr name='b:whitespace' value='remove'/>
-    <b:if cond='data:imgurl.isYoutube'>
-    <b:attr expr:value='resizeImage(data:imgurl, 640, "3:2") + "-rw-e100 640w, " + resizeImage(data:imgurl, 1280, "3:2") + "-rw-e100 1280w"' name='data-hdss'/>   
-    <b:attr expr:value='"this.srcset=this.naturalWidth&lt;121?\"" + data:post.featuredImage + "=w480-h320-n-k-no-nu-rw-e100\":this.dataset.hdss;this.removeAttribute(\"onload\");"' name='onload'/>
-    <b:class name='ytpic'/>
-    </b:if>
-    <b:if cond='data:view.isMultipleItems'>
-    <b:attr name='decoding' value='async'/>
-    <b:else/>
-    <b:attr name='loading' value='lazy'/>
-    </b:if>
-    </b:tag>
-  </b:with>
-</b:includable>
-    <b:includable id='snippetedPostTitle'>
-  <b:tag class='fp-title' expr:name='data:title ? &quot;h3&quot; : &quot;h2&quot;'><data:post.title/></b:tag>
-</b:includable>
-    <b:includable id='snippetedPosts'>
-    <b:loop values='data:posts' var='post'>
-    <article class='ft-post'>
-      <b:include name='snippetedPostContent'/>
-    </article>
-    </b:loop>
-</b:includable>
-  </b:widget>
   <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='showDateHeader'>false</b:widget-setting>
@@ -1627,6 +1586,54 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   </section>
 </b:includable>
   </b:widget>
+  <b:widget cond='data:view.isHomepage or data:view.isSingleItem or data:view.isLayoutMode' id='FeaturedPost1' locked='true' title='' type='FeaturedPost' visible='true'>
+    <b:widget-settings>
+      <b:widget-setting name='showSnippet'>true</b:widget-setting>
+      <b:widget-setting name='showPostTitle'>true</b:widget-setting>
+      <b:widget-setting name='postId'>0</b:widget-setting>
+      <b:widget-setting name='showFirstImage'>true</b:widget-setting>
+      <b:widget-setting name='useMostRecentPost'>true</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main' var='this'>
+    <b:tag cond='data:view.isSingleItem' name='aside'><b:include name='snippetedPosts'/></b:tag>
+</b:includable>
+    <b:includable id='snippetedPostContent'>
+    <a expr:href='data:post.url' rel='bookmark' title='permanent link'>
+    <b:class cond='!data:post.featuredImage or !data:this.postDisplay.showFeaturedImage' name='no-image'/>
+  <b:if cond='data:title'><h2 class='feed-title'><data:title/></h2><div class='ft-date'><data:messages.on/>&#160;<time expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></div></b:if>
+  <b:include cond='data:this.postDisplay.showTitle' name='snippetedPostTitle'/>
+  <b:include cond='data:post.featuredImage and data:this.postDisplay.showFeaturedImage' data='post' name='snippetedPostThumbnail'/>
+  </a>
+  <b:if cond='data:this.postDisplay.showSnippet'><button expr:aria-label='data:messages.learnMore' class='svg-icon-24-button' id='ftbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_more_vert_black_24dp'/></svg></button><p class='ftct hidden'><data:post.snippets.short.escaped/></p></b:if>
+</b:includable>
+    <b:includable id='snippetedPostThumbnail'>
+  <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
+    <b:tag class='ft-snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl.isYoutube ? data:imgurl + "=w121-rw" : data:imgurl' expr:srcset='data:imgurl.isYoutube ? "" : sourceSet(data:imgurl, [640, 1280], "3:2")' height='426' name='img' sizes='(max-width:640px) 100vw, 1280px' width='640'>
+    <b:attr name='b:whitespace' value='remove'/>
+    <b:if cond='data:imgurl.isYoutube'>
+    <b:attr expr:value='resizeImage(data:imgurl, 640, "3:2") + "-rw-e100 640w, " + resizeImage(data:imgurl, 1280, "3:2") + "-rw-e100 1280w"' name='data-hdss'/>   
+    <b:attr expr:value='"this.srcset=this.naturalWidth&lt;121?\"" + data:post.featuredImage + "=w480-h320-n-k-no-nu-rw-e100\":this.dataset.hdss;this.removeAttribute(\"onload\");"' name='onload'/>
+    <b:class name='ytpic'/>
+    </b:if>
+    <b:if cond='data:view.isMultipleItems'>
+    <b:attr name='decoding' value='async'/>
+    <b:else/>
+    <b:attr name='loading' value='lazy'/>
+    </b:if>
+    </b:tag>
+  </b:with>
+</b:includable>
+    <b:includable id='snippetedPostTitle'>
+  <b:tag class='fp-title' expr:name='data:title ? &quot;h3&quot; : &quot;h2&quot;'><data:post.title/></b:tag>
+</b:includable>
+    <b:includable id='snippetedPosts'>
+    <b:loop values='data:posts' var='post'>
+    <article class='ft-post'>
+      <b:include name='snippetedPostContent'/>
+    </article>
+    </b:loop>
+</b:includable>
+  </b:widget>
   <b:widget cond='data:view.isSingleItem and data:posts any (p => p.id != data:view.postId)' id='PopularPosts1' locked='true' title='Popular Posts' type='PopularPosts' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
@@ -1882,7 +1889,8 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
 <b:if cond='data:view.isMultipleItems'>
 <button class='svg-icon-24-button hidden' expr:aria-label='data:messages.loading' id='add_button' type='button'><data:messages.loading/></button>
 <b:else/>
-<button class='svg-icon-24-button hidden' expr:aria-label='data:messages.comments' id='comment_button' onclick='location.href=&quot;#cmt&quot;' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_mode_comment_black_24dp'/></svg></button>
+<button class='svg-icon-24-button hidden' expr:aria-label='data:messages.learnMore' id='summary_button' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_more_vert_black_24dp'/></svg></button><div class='hidden' id='wfsc'><figure class='smct'><b:tag cond='data:view.featuredImage' expr:alt='data:messages.photo' expr:src='resizeImage(data:view.featuredImage, 480, "1200:630")' name='img'/><div class='smtx'><p><data:view.title.escaped/></p><p><data:blog.metaDescription.escaped/></p><p><data:view.url.canonical/></p><p/><p><data:blog.title.escaped/></p></div></figure>
+</div><button class='svg-icon-24-button hidden' expr:aria-label='data:messages.comments' id='comment_button' onclick='location.href=&quot;#cmt&quot;' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_mode_comment_black_24dp'/></svg></button>
 </b:if>
 
             <b:section class='footer' id='attribution' name='Footer' showaddelement='false' tag='footer'>
@@ -1940,22 +1948,49 @@ const bdis = document.body;
 const hil = Attribution1.querySelector("div.image-attribution a");
 if (hil) hil.setAttribute("rel", "nofollow");
 /* Float button observer */
+function mbtn(item, state) {
+switch (state) {
+case 'fadeout': item.classList.remove("fadein"); requestAnimationFrame(() =&gt; item.classList.add("fadeout")); break;
+case 'fadein': item.classList.remove("fadeout"); item.classList.add("fadein"); requestAnimationFrame(() =&gt; item.classList.remove("hidden")); }
+if (!item.classList.contains("ban")) {
+item.addEventListener("animationend", () =&gt; {
+if (item.classList.contains("fadeout")) {
+item.classList.add("hidden"); }});
+item.classList.add("ban"); }}
+<b:if cond='data:view.isSingleItem'>function sbtn(state) {
+switch (state){
+case 'fadeout': summary_button.classList.remove("fadein"); requestAnimationFrame(() =&gt; {
+summary_button.classList.add("fadeout");
+if (!wfsc.classList.contains("hidden")) {
+wfsc.classList.add("hidden"); wfsc.classList.add("kept"); }
+summary_button.classList.add("hidden"); }); break;
+case 'fadein': summary_button.classList.remove("fadeout"); summary_button.classList.add("fadein"); requestAnimationFrame(() =&gt; summary_button.classList.remove("hidden"));
+if (wfsc.classList.contains("kept")) {
+wfsc.classList.remove("hidden"); wfsc.classList.remove("kept"); }}
+if (!summary_button.classList.contains("ban")) {
+summary_button.addEventListener("animationend", () =&gt; {
+if (summary_button.classList.contains("fadeout")) {
+summary_button.classList.add("hidden"); }});
+summary_button.classList.add("ban"); }}</b:if>
 const floatButtonObserver = new IntersectionObserver(entries =&gt; {
 entries.forEach(entry =&gt; {
 const button = entry.target.id === "header" ? back_button : comment_button;
 if (entry.isIntersecting) {
+if (button === back_button) {
 if (!button.classList.contains("hidden")) {
-button.classList.remove("fadein"); requestAnimationFrame(() =&gt; button.classList.add("fadeout"));
-if (button === back_button) fbt.style.width = "0";
-if (!button.classList.contains("ban")) {
-button.addEventListener("animationend", () =&gt; {
-if (button.classList.contains("fadeout")) {
-button.classList.add("hidden"); }});
-button.classList.add("ban"); }}
+mbtn(button, 'fadeout'); fbt.style.width = "0";
+<b:if cond='data:view.isSingleItem'>
+sbtn('fadeout'); </b:if>}} else if (button === comment_button) {
+<b:if cond='data:view.isSingleItem'>sbtn('fadeout'); </b:if>
+mbtn(button, 'fadein'); }
 return; }
+if (button === back_button) {
 if (entry.rootBounds.bottom &gt; entry.boundingClientRect.bottom) {
-button.classList.remove("fadeout"); button.classList.add("fadein"); requestAnimationFrame(() =&gt; button.classList.remove("hidden"));
-if (button === back_button) fbt.style.width = "100%"; }}); });
+mbtn(button, 'fadein'); fbt.style.width = "100%";
+<b:if cond='data:view.isSingleItem'>sbtn('fadein'); </b:if>}} else if (button === comment_button) {
+if (entry.rootBounds.bottom &lt; entry.boundingClientRect.bottom) {
+mbtn(button, 'fadeout');
+<b:if cond='data:view.isSingleItem'>if (summary_button.classList.contains("fadein") || summary_button.classList.contains("fadeout")) sbtn('fadein'); </b:if>}}}); });
 /* Sub content observer */
 const subContentObserver = new IntersectionObserver(entries =&gt; {
 entries.forEach(entry =&gt; {
@@ -2152,10 +2187,15 @@ avics.forEach(avic =&gt; {
 if (/resources.blogblog\.com\/img\/blank\.gif/.test(avic.firstElementChild.src)) {
 avic.insertAdjacentHTML("afterbegin", "<svg aria-label='Avatar' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>"); } else {
 avic.firstElementChild.alt = "Avatar"; }});
-floatButtonObserver.observe(Blog1.querySelector("article.hentry")); }
+floatButtonObserver.observe(comments); }
 /* Comment form */
 const commentForm = comments.querySelector("iframe#comment-editor"), cmhd = comments.querySelector("div.comment-thread");
 if (commentForm) subContentObserver.observe(comments);
+/* Summary button */
+const aab = wfsc.querySelector("div.smtx").lastElementChild, pau = aab.previousElementSibling;
+pau.textContent = Blog1.querySelector("a.published&gt;time").textContent + " / " + Blog1.querySelector("li.updated&gt;time").textContent;
+if (Blog1.querySelector(".fn")) aab.insertAdjacentHTML("afterbegin", Blog1.querySelector(".fn").textContent + " - ");
+summary_button.addEventListener("click", event =&gt; wfsc.classList.toggle("hidden"));
 </b:if>});</script>
 </body>
 </html>
