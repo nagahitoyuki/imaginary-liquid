@@ -1917,7 +1917,7 @@ button</b:comment>
 <b:if cond='data:view.isMultipleItems'>
 <button class='svg-icon-24-button hidden' expr:aria-label='data:messages.loading' id='add_button' type='button'><data:messages.loading/></button>
 <b:else/>
-<button class='svg-icon-24-button hidden' expr:aria-label='data:messages.learnMore' id='summary_button' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_more_vert_black_24dp'/></svg></button><div class='hidden' id='wfsc'><figure class='smct'><b:tag cond='data:view.featuredImage' expr:alt='data:messages.photo' expr:src='resizeImage(data:view.featuredImage, 480, "1200:630")' name='img'/><div class='smtx'><p><data:view.title.escaped/></p><p><data:blog.metaDescription.escaped/></p><p><data:view.url.canonical/></p><p/><p><data:blog.title.escaped/></p></div></figure>
+<button class='svg-icon-24-button hidden' expr:aria-label='data:messages.learnMore' id='summary_button' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_more_vert_black_24dp'/></svg></button><div class='hidden' id='wfsc'><figure class='smct'><b:tag cond='data:view.featuredImage' expr:alt='data:messages.photo' expr:src='resizeImage(data:view.featuredImage, 480, "1200:630")' loading='lazy' name='img'/><div class='smtx'><p><data:view.title.escaped/></p><p><data:blog.metaDescription.escaped/></p><p><data:view.url.canonical/></p><p/><p><data:blog.title.escaped/></p></div></figure>
 </div><button class='svg-icon-24-button hidden' expr:aria-label='data:messages.comments' id='comment_button' onclick='location.href=&quot;#cmt&quot;' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_mode_comment_black_24dp'/></svg></button>
 </b:if>
 
