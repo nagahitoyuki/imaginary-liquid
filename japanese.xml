@@ -443,7 +443,6 @@ blockquote {margin:1em 2.5em}
 .feed-view #main {display:flex;flex-direction:column}
 .feed-view #FeaturedPost1 {order:1}
 .feed-view #Blog1 {order:2}
-.feed-view #main>div:not(.widget) {order:2}
 
 /* 注目の投稿 */
 .feed-view .FeaturedPost {margin-bottom:var(--maincolumn-padding)}
@@ -2024,8 +2023,7 @@ entries.forEach(entry =&gt; {
 <b:if cond='data:view.isSingleItem'>
 if (entry.target.id === "comments") {
 if (entry.isIntersecting) {
-if (cmhd) {
-comments.querySelectorAll("a.comment-reply").forEach(cmrl =&gt; cmrl.addEventListener("click", () =&gt; commentForm.style.height = "90px")); }
+if (comments.querySelector("div.comment-thread")) comments.querySelectorAll("a.comment-reply").forEach(cmrl =&gt; cmrl.addEventListener("click", () =&gt; commentForm.style.height = "90px"));
 const ifc = document.createElement("script");
 ifc.insertAdjacentHTML("afterbegin", commentForm.dataset.script); commentForm.parentNode.appendChild(ifc);
 window.addEventListener("blur", () =&gt; {
@@ -2212,7 +2210,7 @@ avic.insertAdjacentHTML("afterbegin", "<svg aria-label='アバター' class='ava
 avic.firstElementChild.alt = "アバター"; }});
 floatButtonObserver.observe(comments); }
 /* Comment form */
-const commentForm = comments.querySelector("iframe#comment-editor"), cmhd = comments.querySelector("div.comment-thread");
+const commentForm = comments.querySelector("iframe#comment-editor");
 if (commentForm) subContentObserver.observe(comments);
 /* Summary button */
 const aab = wfsc.querySelector("div.smtx").lastElementChild, pau = aab.previousElementSibling;
