@@ -440,9 +440,11 @@ blockquote {margin:1em 2.5em}
 .hfeed>.post, .hentry {background-color:$(posts.background.color);padding:20px var(--maincolumn-padding);box-sizing:border-box}
 .hfeed>.post {display:grid;grid-template-rows:auto 1fr auto}
 .hfeed>.post+aside {align-self:stretch;display:grid}
-.feed-view #main {display:flex;flex-direction:column}
-.feed-view #FeaturedPost1 {order:1}
-.feed-view #Blog1 {order:2}
+.item-view #main {display:flex;flex-direction:column}
+.item-view #Blog1 {order:1}
+.item-view #FeaturedPost1 {order:2}
+.item-view #PopularPosts1 {order:3}
+.item-view #main>div:not(.widget) {order:4}
 
 /* 注目の投稿 */
 .feed-view .FeaturedPost {margin-bottom:var(--maincolumn-padding)}
@@ -1169,6 +1171,54 @@ button</b:comment>
 
 <b:tag cond='!data:blog.isMobileRequest' id='content_wrapper' name='div'>
 <b:section class='centered-middle' id='main' name='Page Body' preferred='yes' showaddelement='false' tag='main'>
+  <b:widget cond='data:view.isHomepage or data:view.isSingleItem or data:view.isLayoutMode' id='FeaturedPost1' locked='true' title='' type='FeaturedPost' visible='true'>
+    <b:widget-settings>
+      <b:widget-setting name='showSnippet'>true</b:widget-setting>
+      <b:widget-setting name='showPostTitle'>true</b:widget-setting>
+      <b:widget-setting name='postId'>0</b:widget-setting>
+      <b:widget-setting name='showFirstImage'>true</b:widget-setting>
+      <b:widget-setting name='useMostRecentPost'>true</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main' var='this'>
+    <b:tag cond='data:view.isSingleItem' name='aside'><b:include name='snippetedPosts'/></b:tag>
+</b:includable>
+    <b:includable id='snippetedPostContent'>
+    <a expr:href='data:post.url' rel='bookmark' title='permanent link'>
+    <b:class cond='!data:post.featuredImage or !data:this.postDisplay.showFeaturedImage' name='no-image'/>
+  <b:if cond='data:title'><h2 class='feed-title'><data:title/></h2><div class='ft-date'><data:messages.on/>&#160;<time expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></div></b:if>
+  <b:include cond='data:this.postDisplay.showTitle' name='snippetedPostTitle'/>
+  <b:include cond='data:post.featuredImage and data:this.postDisplay.showFeaturedImage' data='post' name='snippetedPostThumbnail'/>
+  </a>
+  <b:if cond='data:this.postDisplay.showSnippet'><button expr:aria-label='data:messages.learnMore' class='svg-icon-24-button' id='ftbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_more_vert_black_24dp'/></svg></button><p class='ftct hidden'><data:post.snippets.short.escaped/></p></b:if>
+</b:includable>
+    <b:includable id='snippetedPostThumbnail'>
+  <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
+    <b:tag class='ft-snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl.isYoutube ? data:imgurl + "=w121-rw" : data:imgurl' expr:srcset='data:imgurl.isYoutube ? "" : sourceSet(data:imgurl, [640, 1280], "3:2")' height='426' name='img' sizes='(max-width:640px) 100vw, 1280px' width='640'>
+    <b:attr name='b:whitespace' value='remove'/>
+    <b:if cond='data:imgurl.isYoutube'>
+    <b:attr expr:value='resizeImage(data:imgurl, 640, "3:2") + "-rw-e100 640w, " + resizeImage(data:imgurl, 1280, "3:2") + "-rw-e100 1280w"' name='data-hdss'/>   
+    <b:attr expr:value='"this.srcset=this.naturalWidth&lt;121?\"" + data:post.featuredImage + "=w480-h320-n-k-no-nu-rw-e100\":this.dataset.hdss;this.removeAttribute(\"onload\");"' name='onload'/>
+    <b:class name='ytpic'/>
+    </b:if>
+    <b:if cond='data:view.isMultipleItems'>
+    <b:attr name='decoding' value='async'/>
+    <b:else/>
+    <b:attr name='loading' value='lazy'/>
+    </b:if>
+    </b:tag>
+  </b:with>
+</b:includable>
+    <b:includable id='snippetedPostTitle'>
+  <b:tag class='fp-title' expr:name='data:title ? &quot;h3&quot; : &quot;h2&quot;'><data:post.title/></b:tag>
+</b:includable>
+    <b:includable id='snippetedPosts'>
+    <b:loop values='data:posts' var='post'>
+    <article class='ft-post'>
+      <b:include name='snippetedPostContent'/>
+    </article>
+    </b:loop>
+</b:includable>
+  </b:widget>
   <b:widget id='Blog1' locked='true' title='ブログの投稿' type='Blog' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='showDateHeader'>false</b:widget-setting>
@@ -1610,54 +1660,6 @@ button</b:comment>
       </div>
     </b:if>
   </section>
-</b:includable>
-  </b:widget>
-  <b:widget cond='data:view.isHomepage or data:view.isSingleItem or data:view.isLayoutMode' id='FeaturedPost1' locked='true' title='' type='FeaturedPost' visible='true'>
-    <b:widget-settings>
-      <b:widget-setting name='showSnippet'>true</b:widget-setting>
-      <b:widget-setting name='showPostTitle'>true</b:widget-setting>
-      <b:widget-setting name='postId'>0</b:widget-setting>
-      <b:widget-setting name='showFirstImage'>true</b:widget-setting>
-      <b:widget-setting name='useMostRecentPost'>true</b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main' var='this'>
-    <b:tag cond='data:view.isSingleItem' name='aside'><b:include name='snippetedPosts'/></b:tag>
-</b:includable>
-    <b:includable id='snippetedPostContent'>
-    <a expr:href='data:post.url' rel='bookmark' title='permanent link'>
-    <b:class cond='!data:post.featuredImage or !data:this.postDisplay.showFeaturedImage' name='no-image'/>
-  <b:if cond='data:title'><h2 class='feed-title'><data:title/></h2><div class='ft-date'><data:messages.on/>&#160;<time expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></div></b:if>
-  <b:include cond='data:this.postDisplay.showTitle' name='snippetedPostTitle'/>
-  <b:include cond='data:post.featuredImage and data:this.postDisplay.showFeaturedImage' data='post' name='snippetedPostThumbnail'/>
-  </a>
-  <b:if cond='data:this.postDisplay.showSnippet'><button expr:aria-label='data:messages.learnMore' class='svg-icon-24-button' id='ftbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_more_vert_black_24dp'/></svg></button><p class='ftct hidden'><data:post.snippets.short.escaped/></p></b:if>
-</b:includable>
-    <b:includable id='snippetedPostThumbnail'>
-  <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
-    <b:tag class='ft-snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl.isYoutube ? data:imgurl + "=w121-rw" : data:imgurl' expr:srcset='data:imgurl.isYoutube ? "" : sourceSet(data:imgurl, [640, 1280], "3:2")' height='426' name='img' sizes='(max-width:640px) 100vw, 1280px' width='640'>
-    <b:attr name='b:whitespace' value='remove'/>
-    <b:if cond='data:imgurl.isYoutube'>
-    <b:attr expr:value='resizeImage(data:imgurl, 640, "3:2") + "-rw-e100 640w, " + resizeImage(data:imgurl, 1280, "3:2") + "-rw-e100 1280w"' name='data-hdss'/>   
-    <b:attr expr:value='"this.srcset=this.naturalWidth&lt;121?\"" + data:post.featuredImage + "=w480-h320-n-k-no-nu-rw-e100\":this.dataset.hdss;this.removeAttribute(\"onload\");"' name='onload'/>
-    <b:class name='ytpic'/>
-    </b:if>
-    <b:if cond='data:view.isMultipleItems'>
-    <b:attr name='decoding' value='async'/>
-    <b:else/>
-    <b:attr name='loading' value='lazy'/>
-    </b:if>
-    </b:tag>
-  </b:with>
-</b:includable>
-    <b:includable id='snippetedPostTitle'>
-  <b:tag class='fp-title' expr:name='data:title ? &quot;h3&quot; : &quot;h2&quot;'><data:post.title/></b:tag>
-</b:includable>
-    <b:includable id='snippetedPosts'>
-    <b:loop values='data:posts' var='post'>
-    <article class='ft-post'>
-      <b:include name='snippetedPostContent'/>
-    </article>
-    </b:loop>
 </b:includable>
   </b:widget>
   <b:widget cond='data:view.isSingleItem and data:posts any (p => p.id != data:view.postId)' id='PopularPosts1' locked='true' title='人気の投稿' type='PopularPosts' visible='true'>
