@@ -2106,11 +2106,9 @@ fcpt.addEventListener("blur", () =&gt; {
 if (!sbct.classList.contains("slider")) {
 if (comment_button) comment_button.classList.remove("invisible");
 back_button.classList.remove("invisible"); }}); });</b:if>
-<b:if cond='data:widgets.FeaturedPost.first'>
+<b:if cond='data:widgets.FeaturedPost.first and data:view.isHomepage or data:view.isSingleItem'>
 /* Featured post */
-if (ftbtn) {
-ftbtn.addEventListener("click", event =&gt; {
-event.currentTarget.nextElementSibling.classList.toggle("hidden"); }); }</b:if>
+if (bdis.querySelector("button#ftbtn")) ftbtn.addEventListener(&quot;click&quot;, event =&gt; event.currentTarget.nextElementSibling.classList.toggle(&quot;hidden&quot;));</b:if>
 <b:if cond='data:view.isMultipleItems'>
 /* Infinite scroll */
 const bpct = Blog1.firstElementChild;
