@@ -1976,47 +1976,39 @@ if (hil) hil.setAttribute("rel", "nofollow");
 /* Float button observer */
 function mbtn(item, state) {
 switch (state) {
-case 'fadeout': item.classList.remove("fadein"); requestAnimationFrame(() =&gt; item.classList.add("fadeout")); break;
-case 'fadein': item.classList.remove("fadeout"); item.classList.add("fadein"); requestAnimationFrame(() =&gt; item.classList.remove("hidden")); }
+case 'fadeout': <b:if cond='data:view.isSingleItem'>if (item.id === 'back_button') {
+mbtn(summary_button, 'fadeout'); sbtn('fadeout'); } else if (item.id === 'comment_button' &amp;&amp; !back_button.classList.contains("hidden")) {
+mbtn(summary_button, 'fadein'); sbtn('fadein'); }</b:if>
+item.classList.remove("fadein"); requestAnimationFrame(() =&gt; item.classList.add("fadeout")); break;
+case 'fadein':<b:if cond='data:view.isSingleItem'>if (item.id === 'back_button') {
+mbtn(summary_button, 'fadein'); sbtn('fadein'); } else if (item.id === 'comment_button') {
+mbtn(summary_button, 'fadeout'); sbtn('fadeout'); }</b:if>
+item.classList.remove("fadeout"); item.classList.add("fadein"); requestAnimationFrame(() =&gt; item.classList.remove("hidden")); }
 if (!item.classList.contains("ban")) {
 item.addEventListener("animationend", () =&gt; {
 if (item.classList.contains("fadeout")) {
 item.classList.add("hidden"); }});
 item.classList.add("ban"); }}
 <b:if cond='data:view.isSingleItem'>function sbtn(state) {
-switch (state){
-case 'fadeout': summary_button.classList.remove("fadein"); requestAnimationFrame(() =&gt; {
-summary_button.classList.add("fadeout");
-if (!wfsc.classList.contains("hidden")) {
+switch (state) {
+case 'fadeout': if (!wfsc.classList.contains("hidden")) {
 wfsc.classList.add("hidden"); wfsc.classList.add("kept"); }
-summary_button.classList.add("hidden"); }); break;
-case 'fadein': summary_button.classList.remove("fadeout"); summary_button.classList.add("fadein"); requestAnimationFrame(() =&gt; summary_button.classList.remove("hidden"));
-if (wfsc.classList.contains("kept")) {
-wfsc.classList.remove("hidden"); wfsc.classList.remove("kept"); }}
-if (!summary_button.classList.contains("ban")) {
-summary_button.addEventListener("animationend", () =&gt; {
-if (summary_button.classList.contains("fadeout")) {
-summary_button.classList.add("hidden"); }});
-summary_button.classList.add("ban"); }}</b:if>
+break;
+case 'fadein': if (wfsc.classList.contains("kept")) {
+wfsc.classList.remove("hidden"); wfsc.classList.remove("kept"); }}}</b:if>
 const floatButtonObserver = new IntersectionObserver(entries =&gt; {
 entries.forEach(entry =&gt; {
 const button = entry.target.id === "header" ? back_button : comment_button;
 if (entry.isIntersecting) {
 if (button === back_button) {
 if (!button.classList.contains("hidden")) {
-mbtn(button, 'fadeout'); fbt.style.width = "0";
-<b:if cond='data:view.isSingleItem'>
-sbtn('fadeout'); </b:if>}} else if (button === comment_button) {
-<b:if cond='data:view.isSingleItem'>sbtn('fadeout'); </b:if>
+mbtn(button, 'fadeout'); fbt.style.width = "0"; }} else {
 mbtn(button, 'fadein'); }
-return; }
-if (button === back_button) {
+return; } else if (pageYOffset !== 0) {
 if (entry.rootBounds.bottom &gt; entry.boundingClientRect.bottom) {
-mbtn(button, 'fadein'); fbt.style.width = "100%";
-<b:if cond='data:view.isSingleItem'>sbtn('fadein'); </b:if>}} else if (button === comment_button) {
-if (entry.rootBounds.bottom &lt; entry.boundingClientRect.bottom) {
-mbtn(button, 'fadeout');
-<b:if cond='data:view.isSingleItem'>if (summary_button.classList.contains("fadein") || summary_button.classList.contains("fadeout")) sbtn('fadein'); </b:if>}}}); });
+if (button === back_button) {
+mbtn(button, 'fadein'); fbt.style.width = "100%"; return; }} else {
+mbtn(button, 'fadeout'); }}}); });
 /* Sub content observer */
 const subContentObserver = new IntersectionObserver(entries =&gt; {
 entries.forEach(entry =&gt; {
