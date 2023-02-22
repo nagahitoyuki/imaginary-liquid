@@ -396,7 +396,7 @@ blockquote {margin:1em 2.5em}
 .avatarIcon {width:2.25em;height:2.25em;fill:$(posts.icons.color);border:solid 1px $(posts.icons.color);border-radius:50%;padding:5.5px;box-sizing:border-box}
 .blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical- align:var(--image-verticalalign)}
 
-/* 戻るボタン／コメントボタン／ローディング */
+/* フローティングボタン／メッセージ */
 #back_button, #comment_button, #add_button, #summary_button {position:fixed;bottom:var(--fixedbutton-margin);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);z-index:5}
 #back_button, #comment_button, #summary_button {width:var(--floatingbar-height);border-radius:50%;contain:strict}
 #back_button>.svg-icon-24 {margin-top:calc(var(--svgicon-height) / -12);padding-bottom:calc(var(--svgicon-height) / 12)}
@@ -642,7 +642,7 @@ html[dir="rtl"] :is(#back_button, #comment_button, #add_button, #summary_button,
 #sdbtn {transform:translateX(calc(-$(sidebar.width) + var(--maincolumn-padding) * 2))}
 #floating_share {transform:translateX(var(--svgicon-height))}
 
-/* 戻るボタン／コメントボタン／ローディング */
+/* フローティングボタン／メッセージ */
 #back_button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--fixedbutton-margin))}
 #comment_button, #add_button, #summary_button {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--fixedbutton-margin))}
 #wfsc {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--fixedbutton-margin) + var(--floatingbar-height));$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + $(sidebar.width + content.margin) + var(--fixedbutton-margin) + var(--floatingbar-height))}
@@ -681,7 +681,7 @@ html[dir="rtl"] .no-sidebar #floating_share {transform:translateX(0)}
 #swc {margin-$startSide:calc(var(--maincolumn-padding) / 3);margin-$endSide:calc(var(--maincolumn-padding) / 3)}
 #sdbtn {display:none}
 
-/* 戻るボタン／コメントボタン／ローディング */
+/* フローティングボタン／メッセージ */
 #back_button {$endSide:var(--fixedbutton-margin)}
 #comment_button, #add_button, #summary_button {$startSide:var(--fixedbutton-margin)}
 #wfsc {$startSide:calc(var(--fixedbutton-margin) + var(--floatingbar-height));$endSide:calc(var(--fixedbutton-margin) + var(--floatingbar-height))}
@@ -1973,7 +1973,7 @@ const bdis = document.body;
 /* Header image link */
 const hil = Attribution1.querySelector("div.image-attribution a");
 if (hil) hil.setAttribute("rel", "nofollow");
-/* Float button observer */
+/* Floating button observer */
 function mbtn(item, state) {
 switch (state) {
 case 'fadeout': <b:if cond='data:view.isSingleItem'>if (item.id === 'back_button') {
