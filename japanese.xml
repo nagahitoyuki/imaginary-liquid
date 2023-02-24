@@ -472,7 +472,7 @@ blockquote {margin:1em 2.5em}
 .post-footer {display:flex}
 .hentry .post-footer {flex-direction:column}
 .post-footer-line>span {display:block;margin-bottom:20px}
-.pf-last {margin:0;list-style-type:none;padding-left:0;text-align:$endSide;font-style:oblique}
+.pf-last {margin:0;list-style-type:none;padding-$startSide:0;text-align:$endSide;font-style:oblique}
 .link-url {word-break:break-all}
 a.archive-link, a.jump-link {color:$(posts.link.color)}
 .archive-link {margin-$endSide:auto}
@@ -579,7 +579,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .team-members {list-style-type:none;padding-$startSide:0;display:flex;flex-direction:column;gap:.5em}
 .profile-link {display:inline flex;align-items:center;gap:1em;color:$(profile.link.color)}
 .ip-img {vertical-align:top}
-.tp-img {vertical-align:calc(-50% + $(body.text.font.size) * -0.12);margin-right:.5em}
+.tp-img {vertical-align:calc(-50% + $(body.text.font.size) * -0.12);margin-$endSide:.5em}
 .ip-img, .tp-img {border-radius:50%;contain:strict}
 .profile-data, .profile-textblock {color:$(profile.text.color);margin-$startSide:0;margin-bottom:.4em}
 
@@ -2206,8 +2206,8 @@ const commentForm = comments.querySelector("iframe#comment-editor");
 if (commentForm) subContentObserver.observe(comments);
 /* Summary button */
 const aab = wfsc.querySelector("div.smtx").lastElementChild, pau = aab.previousElementSibling;
-pau.textContent = Blog1.querySelector("a.published&gt;time").textContent + " / " + Blog1.querySelector("li.updated&gt;time").textContent;
-if (Blog1.querySelector(".fn")) aab.insertAdjacentHTML("afterbegin", Blog1.querySelector(".fn").textContent + " - ");
+pau.textContent = `${Blog1.querySelector("a.published&gt;time").textContent}/${Blog1.querySelector("li.updated&gt;time").textContent}`;
+if (Blog1.querySelector(".fn")) aab.insertAdjacentHTML("afterbegin", `${Blog1.querySelector(".fn").textContent}-`);
 summary_button.addEventListener("click", event =&gt; wfsc.classList.toggle("hidden"));
 </b:if>});</script>
 </body>
