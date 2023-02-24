@@ -1272,8 +1272,9 @@ button</b:comment>
     <b:includable id='commentForm' var='post'>
   <footer class='comment-footer'>
     <b:include data='post' name='commentFormIframeSrc'/>
-    <iframe class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ? 410 : 90' expr:title='data:messages.postAComment' id='comment-editor' name='comment-editor' src='' expr:data-script='"BLOG_CMT_createIframe(&#39;" + data:post.appRpcRelayPath + "&#39;);"'/>
+    <iframe class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ? 410 : 90' expr:title='data:messages.postAComment' id='comment-editor' name='comment-editor' src=''/>
     <data:post.cmtfpIframe/>
+    <script>BLOG_CMT_createIframe('<data:post.appRpcRelayPath/>');</script>
     <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
       <p><data:this.messages.blogComment/></p>
     </b:if>
@@ -1587,8 +1588,9 @@ button</b:comment>
       <p><data:this.messages.blogComment/></p>
     </b:if>
     <b:include data='post' name='commentFormIframeSrc'/>
-    <iframe class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ? 410 : 90' expr:title='data:messages.postAComment' id='comment-editor' name='comment-editor' src='' expr:data-script='"BLOG_CMT_createIframe(&#39;" + data:post.appRpcRelayPath + "&#39;);"'/>
+    <iframe class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ? 410 : 90' expr:title='data:messages.postAComment' id='comment-editor' name='comment-editor' src=''/>
     <data:post.cmtfpIframe/>
+    <script>BLOG_CMT_createIframe('<data:post.appRpcRelayPath/>');</script>
   </footer>
 </b:includable>
     <b:includable id='threadedCommentJs' var='post'>
@@ -2016,8 +2018,6 @@ entries.forEach(entry =&gt; {
 if (entry.target.id === "comments") {
 if (entry.isIntersecting) {
 if (comments.querySelector("div.comment-thread")) comments.querySelectorAll("a.comment-reply").forEach(cmrl =&gt; cmrl.addEventListener("click", () =&gt; commentForm.style.height = "90px"));
-const ifc = document.createElement("script");
-ifc.insertAdjacentHTML("afterbegin", commentForm.dataset.script); commentForm.parentNode.appendChild(ifc);
 window.addEventListener("blur", () =&gt; {
 if (commentForm === document.activeElement) {
 commentForm.style.height = "";
