@@ -2181,7 +2181,6 @@ if (commentForm) subContentObserver.observe(comments);
 const aab = wfsc.querySelector("div.smtx").lastElementChild, pau = aab.previousElementSibling;
 pau.textContent = `${Blog1.querySelector("a.published&gt;time").textContent}/${Blog1.querySelector("li.updated&gt;time").textContent}`;
 if (Blog1.querySelector(".fn")) aab.insertAdjacentHTML("afterbegin", `${Blog1.querySelector(".fn").textContent}-`);
-summary_button.addEventListener("click", event =&gt; wfsc.classList.toggle("hidden"));
-</b:if>});</script>
+summary_button.addEventListener("click", () =&gt; wfsc.classList.toggle("hidden")); </b:if>});</script>
 </body>
 </html>
