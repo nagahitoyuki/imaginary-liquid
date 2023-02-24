@@ -540,7 +540,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 
 /* Pager */
 .blog-pager {display:flex;justify-content:space-around}
-.feed-view .blog-pager  {margin-top:20px}
+.feed-view .blog-pager, .post-footer+.blog-pager {margin-top:20px}
 .hentry>aside+.blog-pager {margin-top:20px}
 .blog-pager>a {color:$(posts.navigation.link.color)}
 .blog-pager>a:visited {color:$(posts.navigation.link.visited.color)}
@@ -2098,7 +2098,7 @@ if (comment_button) comment_button.classList.remove("invisible");
 back_button.classList.remove("invisible"); }}); });</b:if>
 <b:if cond='data:widgets.FeaturedPost.first and data:view.isHomepage or data:view.isSingleItem'>
 /* Featured post */
-if (bdis.querySelector("button#ftbtn")) ftbtn.addEventListener(&quot;click&quot;, event =&gt; event.currentTarget.nextElementSibling.classList.toggle(&quot;hidden&quot;));</b:if>
+if (document.querySelector("button#ftbtn")) ftbtn.addEventListener(&quot;click&quot;, event =&gt; event.currentTarget.nextElementSibling.classList.toggle(&quot;hidden&quot;));</b:if>
 <b:if cond='data:view.isMultipleItems'>
 /* Infinite scroll */
 const bpct = Blog1.firstElementChild;
@@ -2175,7 +2175,7 @@ avic.insertAdjacentHTML("afterbegin", "<svg aria-label='Avatar' class='avatarIco
 avic.firstElementChild.alt = "Avatar"; }});
 floatButtonObserver.observe(comments); }
 /* Comment form */
-const commentForm = comments.querySelector("iframe#comment-editor");
+const commentForm = document.querySelector("iframe#comment-editor");
 if (commentForm) subContentObserver.observe(comments);
 /* Summary button */
 const aab = wfsc.querySelector("div.smtx").lastElementChild, pau = aab.previousElementSibling;
