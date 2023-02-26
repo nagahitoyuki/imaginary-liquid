@@ -2167,16 +2167,16 @@ rootMargin: bthg + "px"});
 nextIndexObserver.observe(sub_main); }
 <b:else/>
 /* Comment */
-if (Blog1.querySelector("a.cmal")) {
+const commentForm = document.querySelector("iframe#comment-editor");
+if (commentForm) {
 const avics = comments.querySelectorAll("div.avatar-image-container");
+if (avics[0]) {
 avics.forEach(avic =&gt; {
 if (/resources.blogblog\.com\/img\/blank\.gif/.test(avic.firstElementChild.src)) {
 avic.insertAdjacentHTML("afterbegin", "<svg aria-label='Avatar' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>"); } else {
-avic.firstElementChild.alt = "Avatar"; }});
-floatButtonObserver.observe(comments); }
-/* Comment form */
-const commentForm = document.querySelector("iframe#comment-editor");
-if (commentForm) subContentObserver.observe(comments);
+avic.firstElementChild.alt = "Avatar"; }}); }
+subContentObserver.observe(comments); }
+if (Blog1.querySelector("a.cmal")) floatButtonObserver.observe(comments);
 /* Summary button */
 const aab = wfsc.querySelector("div.smtx").lastElementChild, pau = aab.previousElementSibling;
 pau.textContent = `${Blog1.querySelector("a.published&gt;time").textContent} / ${Blog1.querySelector("li.updated&gt;time").textContent}`;
