@@ -1272,7 +1272,7 @@ button</b:comment>
     <b:includable id='commentForm' var='post'>
   <footer class='comment-footer'>
     <b:include data='post' name='commentFormIframeSrc'/>
-    <iframe class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ? 410 : 90' expr:title='data:messages.postAComment' id='comment-editor' name='comment-editor' src=''/>
+    <iframe class='blogger-iframe-colorize blogger-comment-from-post' expr:data-script='"BLOG_CMT_createIframe(&apos;" + data:post.appRpcRelayPath + "&apos;);"' expr:height='data:cmtIframeInitialHeight ? 410 : 90' expr:title='data:messages.postAComment' id='comment-editor' name='comment-editor' src=''/>
     <data:post.cmtfpIframe/>
     <script>BLOG_CMT_createIframe('<data:post.appRpcRelayPath/>');</script>
     <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
@@ -1588,7 +1588,7 @@ button</b:comment>
       <p><data:this.messages.blogComment/></p>
     </b:if>
     <b:include data='post' name='commentFormIframeSrc'/>
-    <iframe class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ? 410 : 90' expr:title='data:messages.postAComment' id='comment-editor' name='comment-editor' src=''/>
+    <iframe class='blogger-iframe-colorize blogger-comment-from-post' expr:data-script='"BLOG_CMT_createIframe(&apos;" + data:post.appRpcRelayPath + "&apos;);"' expr:height='data:cmtIframeInitialHeight ? 410 : 90' expr:title='data:messages.postAComment' id='comment-editor' name='comment-editor' src=''/>
     <data:post.cmtfpIframe/>
     <script>BLOG_CMT_createIframe('<data:post.appRpcRelayPath/>');</script>
   </footer>
@@ -2018,6 +2018,8 @@ entries.forEach(entry =&gt; {
 if (entry.target.id === "comments") {
 if (entry.isIntersecting) {
 if (comments.querySelector("div.comment-thread")) comments.querySelectorAll("a.comment-reply").forEach(cmrl =&gt; cmrl.addEventListener("click", () =&gt; commentForm.style.height = "90px"));
+const ifc = document.createElement("script");
+ifc.insertAdjacentHTML("afterbegin", commentForm.dataset.script);
 window.addEventListener("blur", () =&gt; {
 if (commentForm === document.activeElement) {
 commentForm.style.height = "";
@@ -2125,7 +2127,7 @@ if (comment_button) comment_button.classList.remove("invisible");
 back_button.classList.remove("invisible"); }}); });</b:if>
 <b:if cond='data:widgets.FeaturedPost.first and data:view.isHomepage or data:view.isSingleItem'>
 /* Featured post */
-if (document.querySelector("button#ftbtn")) ftbtn.addEventListener(&quot;click&quot;, event =&gt; event.currentTarget.nextElementSibling.classList.toggle(&quot;hidden&quot;));</b:if>
+if (main.querySelector("button#ftbtn")) ftbtn.addEventListener(&quot;click&quot;, event =&gt; event.currentTarget.nextElementSibling.classList.toggle(&quot;hidden&quot;));</b:if>
 <b:if cond='data:view.isMultipleItems'>
 /* Infinite scroll */
 const bpct = Blog1.firstElementChild;
@@ -2194,7 +2196,7 @@ rootMargin: bthg + "px"});
 nextIndexObserver.observe(sub_main); }
 <b:else/>
 /* Comment */
-const commentForm = document.querySelector("iframe#comment-editor");
+const commentForm = Blog1.querySelector("iframe#comment-editor");
 if (commentForm) {
 const avics = comments.querySelectorAll("div.avatar-image-container");
 if (avics[0]) {
