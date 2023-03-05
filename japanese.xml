@@ -2207,7 +2207,9 @@ if (/resources.blogblog\.com\/img\/blank\.gif/.test(avic.firstElementChild.src))
 avic.insertAdjacentHTML("afterbegin", "<svg aria-label='アバター' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>"); } else {
 avic.firstElementChild.alt = "アバター"; }}); }
 subContentObserver.observe(comments); }
-if (Blog1.querySelector("a.cmal")) floatButtonObserver.observe(comments);
+if (Blog1.querySelector("a.cmal")) {
+floatButtonObserver.observe(comments); } else {
+comment_button.tabindex = -1; comment_button.style.bottom = `calc((${getComputedStyle(comment_button).bottom} + ${getComputedStyle(comment_button).height}) * -1)`; floatButtonObserver.observe(Blog1.querySelector("nav.blog-pager")); }
 /* Summary button */
 const aab = wfsc.querySelector("div.smtx").lastElementChild, pau = aab.previousElementSibling;
 pau.textContent = `${Blog1.querySelector("a.published&gt;time").textContent} / ${Blog1.querySelector("li.updated&gt;time").textContent}`;
