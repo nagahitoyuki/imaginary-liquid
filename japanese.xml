@@ -1980,12 +1980,12 @@ if (hil) hil.setAttribute("rel", "nofollow");
 /* Floating button observer */
 function mbtn(item, state) {
 switch (state) {
-case 'fadeout': <b:if cond='data:view.isSingleItem'>if (item.id === 'back_button') {
-mbtn(summary_button, 'fadeout'); sbtn('fadeout'); } else if (item.id === 'comment_button' &amp;&amp; !back_button.classList.contains("hidden")) {
+case 'fadeout': <b:if cond='data:view.isSingleItem'>if (item.id === "back_button") {
+mbtn(summary_button, 'fadeout'); sbtn('fadeout'); } else if (item.id === "comment_button" &amp;&amp; !back_button.classList.contains("hidden")) {
 mbtn(summary_button, 'fadein'); sbtn('fadein'); }</b:if>
 item.classList.remove("fadein"); requestAnimationFrame(() =&gt; item.classList.add("fadeout")); break;
-case 'fadein':<b:if cond='data:view.isSingleItem'>if (item.id === 'back_button') {
-mbtn(summary_button, 'fadein'); sbtn('fadein'); } else if (item.id === 'comment_button') {
+case 'fadein':<b:if cond='data:view.isSingleItem'>if (item.id === "back_button" &amp;&amp; comment_button.classList.contains("hidden")) {
+mbtn(summary_button, 'fadein'); sbtn('fadein'); } else if (item.id === "comment_button") {
 mbtn(summary_button, 'fadeout'); sbtn('fadeout'); }</b:if>
 item.classList.remove("fadeout"); item.classList.add("fadein"); requestAnimationFrame(() =&gt; item.classList.remove("hidden")); }
 if (!item.classList.contains("ban")) {
