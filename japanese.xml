@@ -1981,7 +1981,7 @@ if (hil) hil.setAttribute("rel", "nofollow");
 function mbtn(item, state) {
 switch (state) {
 case 'fadeout': <b:if cond='data:view.isSingleItem'>if (item.id === "back_button") {
-mbtn(summary_button, 'fadeout'); sbtn('fadeout'); } else if (item.id === "comment_button" &amp;&amp; !back_button.classList.contains("hidden")) {
+mbtn(summary_button, 'fadeout'); sbtn('fadeout'); } else if (item.id === "comment_button" &amp;&amp; !back_button.classList.contains("fadeout")) {
 mbtn(summary_button, 'fadein'); sbtn('fadein'); }</b:if>
 item.classList.remove("fadein"); requestAnimationFrame(() =&gt; item.classList.add("fadeout")); break;
 case 'fadein':<b:if cond='data:view.isSingleItem'>if (item.id === "back_button" &amp;&amp; comment_button.classList.contains("hidden")) {
