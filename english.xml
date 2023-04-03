@@ -2201,10 +2201,7 @@ if (dr &gt; 0) {
 const idx = document.createElement("ol");
 idx.appendChild(tci); lid.appendChild(idx); } else if (dr === 0) {
 lid.after(tci); } else {
-let pol = lid;
-for (c = 0; c + dr &lt; 0; c++) {
-if (!pol.closest("ol").classList.contains("mdr")) pol = pol.closest("ol").parentElement; else c = -dr; }
-pol.after(tci); }} else {
+lid.closest("ol").parentElement.after(tci); }} else {
 fid.appendChild(tci); }
 n = tn; });
 wfsc.firstElementChild.insertAdjacentElement("afterbegin", dts); summary_button.firstElementChild.classList.add("original-icon"); summary_button.firstElementChild.setAttribute("viewBox", "0 0 24 24"); summary_button.firstElementChild.innerHTML = "&lt;path d='M2 4 H22 M7.3 9.4 H22 M7.3 14.7 H22 M7.3 20 H22'/&gt;&lt;circle cx='3.5' cy='9.4' r='0.5'/&gt;&lt;circle cx='3.5' cy='14.7' r='0.5'/&gt;&lt;circle cx='3.5' cy='20' r='0.5'/&gt;"; }
