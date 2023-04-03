@@ -402,10 +402,13 @@ blockquote {margin:1em 2.5em}
 #back_button>.svg-icon-24 {margin-top:calc(var(--svgicon-height) / -12);padding-bottom:calc(var(--svgicon-height) / 12)}
 #add_button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px;contain:content}
 #wfsc {position:fixed;bottom:calc(var(--floatingbar-height) + var(--fixedbutton-margin))}
-.smct {display:grid;grid-template-columns:repeat(auto-fit, minmax(calc($(content.width / 3) - (var(--floatingbar-height) + var(--fixedbutton-margin) + var(--maincolumn-padding)) * 2), 1fr));gap:1em;font-size:small;padding:var(--maincolumn-padding);background-color:$(body.background.color);color:$(body.text.base.color);border:3px $(sidebar.separator.color) double;box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);margin:0}
+.smct {display:grid;grid-template-columns:repeat(auto-fit, minmax(calc($(content.width / 3) - (var(--floatingbar-height) + var(--fixedbutton-margin) + var(--maincolumn-padding)) * 2), 1fr));gap:1em;font-size:small;padding:var(--maincolumn-padding);background-color:$(body.background.color);color:$(body.text.base.color);border:1px $(sidebar.separator.color) double;box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);margin:0;height:min(80dvh - (var(--floatingbar-height) + var(--fixedbutton-margin)) * 3, 480px - (var(--floatingbar-height) + var(--fixedbutton-margin)) * 2);overflow-y:scroll}
 .smtx>p {margin-top:0}
 .smtx>p:first-child {font-weight:bold}
 .smtx>p:last-child {margin-bottom:0}
+details:has(.mdr)>summary {list-style-type:none}
+details:has(.mdr) ol {padding-$startSide:1.25em}
+.mdr {margin-bottom:0}
 
 /* Fade effect */
 @keyframes fadein {from{ opacity:0} to { opacity:1}}
@@ -2184,9 +2187,35 @@ if (Blog1.querySelector("a.cmal")) {
 floatButtonObserver.observe(comments); } else {
 comment_button.tabindex = -1; comment_button.style.bottom = `calc((${getComputedStyle(comment_button).bottom} + ${getComputedStyle(comment_button).height}) * -1)`; floatButtonObserver.observe(Blog1.querySelector("nav.blog-pager")); }
 /* Summary button */
+const pb = Blog1.querySelector("div.entry-content"), hdgs = pb.querySelectorAll("h1, h2, h3");
+if (hdgs[0]) {
+const dts = document.createElement("details"), smr = document.createElement("summary"), fid = document.createElement("ol");
+dts.open = true; smr.insertAdjacentHTML("afterbegin", "Headings"); fid.className = "mdr"; dts.appendChild(smr); dts.appendChild(fid);
+let n;
+hdgs.forEach((hdg, i) =&gt; {
+const tci = document.createElement("li"), tcl = document.createElement("a"), tn = Number(hdg.tagName.substring(1));
+hdg.id = `content_${i + 1}`; tcl.href = `#${hdg.id}`; tcl.textContent = hdg.textContent; tci.appendChild(tcl);
+if (i !== 0 &amp;&amp; tn &gt; 1) {
+const fis = fid.querySelectorAll("li"), lid = fis[fis.length - 1], dr = tn - n;
+if (dr &gt; 0) {
+const idx = document.createElement("ol");
+idx.appendChild(tci); lid.appendChild(idx); } else if (dr === 0) {
+lid.after(tci); } else {
+let pol = lid;
+for (c = 0; c + dr &lt; 0; c++) {
+if (!pol.closest("ol").classList.contains("mdr")) pol = pol.closest("ol").parentElement; else c = -dr; }
+pol.after(tci); }} else {
+fid.appendChild(tci); }
+n = tn; });
+wfsc.firstElementChild.insertAdjacentElement("afterbegin", dts); summary_button.firstElementChild.classList.add("original-icon"); summary_button.firstElementChild.setAttribute("viewBox", "0 0 24 24"); summary_button.firstElementChild.innerHTML = "&lt;path d='M2 4 H22 M7.3 9.4 H22 M7.3 14.7 H22 M7.3 20 H22'/&gt;&lt;circle cx='3.5' cy='9.4' r='0.5'/&gt;&lt;circle cx='3.5' cy='14.7' r='0.5'/&gt;&lt;circle cx='3.5' cy='20' r='0.5'/&gt;"; }
 const aab = wfsc.querySelector("div.smtx").lastElementChild, pau = aab.previousElementSibling;
 pau.textContent = `${Blog1.querySelector("a.published&gt;time").textContent} / ${Blog1.querySelector("li.updated&gt;time").textContent}`;
 if (Blog1.querySelector(".fn")) aab.insertAdjacentHTML("afterbegin", `${Blog1.querySelector(".fn").textContent} - `);
-summary_button.addEventListener("click", () =&gt; wfsc.classList.toggle("hidden")); </b:if>});</script>
+const cpps = wfsc.querySelectorAll("ol.mdr a");
+function scpp() {
+wfsc.classList.add("hidden"); cpps.forEach(cpp =&gt; cpp.removeEventListener("click", scpp)); }
+summary_button.addEventListener("click", () =&gt; {
+wfsc.classList.toggle("hidden");
+if (cpps[0]) cpps.forEach(cpp =&gt; cpp.addEventListener("click", scpp)); }); </b:if>});</script>
 </body>
 </html>
