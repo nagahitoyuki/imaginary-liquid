@@ -84,7 +84,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
       color="$(blog.header.color)"
       type="background"
       default="$(color) none no-repeat scroll center center" value="$(color) none no-repeat scroll center center"/>
-  <Variable name="blog.header.color" description="ブログのヘッダーのテキストの色"
+  <Variable name="blog.header.color" description="ブログのヘッダーの色"
       type="color"
       default="#797676"  value="#797676"/>
   <Variable name="body.background.color" description="Body background color"
