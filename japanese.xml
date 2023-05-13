@@ -749,8 +749,8 @@ margin-top:20px}
 .hfeed .mobile-ad>.inline-ad {align-self:center}
 }
 
-/* スマホ中心 */
-@media screen and (max-width:480px) and (min-width:321px) {
+/* スマホ以下 */
+@media screen and (max-width:480px) {
 
 /* 文字サイズ */
 #blog_title, .entry-content h1 {font-size:174%}
