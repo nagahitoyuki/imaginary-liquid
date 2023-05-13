@@ -472,7 +472,7 @@ details:has(.mdr) ol {padding-$startSide:1.25em}
 .post-header-line, .pf-last {margin:0;list-style-type:none;padding-$startSide:0}
 .post-header-line {display:flex;color:$(posts.byline.color)}
 .vcard::after {content:'\00a0'}
-.photo {height:var(--svgicon-height);width:var(--svgicon-height);border-radius:50%;vertical-align:var(--image-verticalalign)}
+.photo {height:var(--svgicon-height);width:var(--svgicon-height);border-radius:50%;vertical-align:var(--image-verticalalign);margin-$endSide:.5em}
 .vcard>a, .published>.value-title, .post-footer, .pft-profile>span, .pf-last, .pf-last>.url, .post-location {color:$(posts.byline.color)}
 .post-footer {display:flex}
 .hentry>.post-footer {flex-direction:column}
@@ -1432,7 +1432,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
       <b:include data='post' name='postFooter'/>
 </b:includable>
     <b:includable id='postAuthor'>
-  <li class='author vcard'><b:eval cond='data:byline.label' expr='data:byline.label'/><b:if cond='data:post.author.profileUrl'><a class='url fn' expr:href='data:post.author.profileUrl' rel='author me' title='profile'><b:if cond='data:post.author.authorPhoto'><img class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 30, "1:1")' expr:srcset='resizeImage(data:post.author.authorPhoto.image, 30, "1:1") + ", " + resizeImage(data:post.author.authorPhoto.image, 52, "1:1") + " 2x"' height='30' width='30'/>&#160;</b:if><data:post.author.name/></a><b:else/><span class='fn'><data:post.author.name/></span></b:if></li>
+  <li class='author vcard'><b:eval cond='data:byline.label' expr='data:byline.label'/><b:if cond='data:post.author.profileUrl'><a class='url fn' expr:href='data:post.author.profileUrl' rel='author me' title='profile'><b:if cond='data:post.author.authorPhoto'><img class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 30, "1:1")' expr:srcset='resizeImage(data:post.author.authorPhoto.image, 30, "1:1") + ", " + resizeImage(data:post.author.authorPhoto.image, 52, "1:1") + " 2x"' height='30' width='30'/></b:if><data:post.author.name/></a><b:else/><span class='fn'><data:post.author.name/></span></b:if></li>
 </b:includable>
     <b:includable id='postBody' var='post'>
   <!-- If metaDescription is empty, use the post body as the schema.org description too, for G+/FB snippeting. -->
