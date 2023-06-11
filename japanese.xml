@@ -1628,7 +1628,7 @@ button</b:comment>
       <b:widget-setting name='useMostRecentPost'>true</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-    <b:tag cond='data:view.isSingleItem' name='aside'><b:include name='snippetedPosts'/></b:tag>
+    <b:include name='snippetedPosts'/>
 </b:includable>
     <b:includable id='snippetedPostContent'>
     <a expr:href='data:post.url' rel='bookmark' title='permanent link'>
@@ -1661,9 +1661,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='snippetedPosts'>
     <b:loop values='data:posts' var='post'>
-    <article class='ft-post'>
-      <b:include name='snippetedPostContent'/>
-    </article>
+    <section class='ft-post'><b:include name='snippetedPostContent'/></section>
     </b:loop>
 </b:includable>
   </b:widget>
@@ -1675,12 +1673,12 @@ button</b:comment>
       <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-  <aside class='mnpp ctpp'>
+  <section class='mnpp ctpp'>
   <b:if cond='data:title'>
     <h2 class='feed-title'><data:title/></h2>
   </b:if>
     <b:include name='snippetedPosts'/>
-  </aside>
+  </section>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
     <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title' rel='nofollow'><data:blog.jumpLinkMessage/></a>
