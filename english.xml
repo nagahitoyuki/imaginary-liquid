@@ -1901,7 +1901,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
             <b:section class='footer' id='attribution' name='Footer' showaddelement='false' tag='footer'>
               <b:widget id='Text1' locked='true' title='' type='Text' visible='true'>
                 <b:widget-settings>
-                  <b:widget-setting name='content'><![CDATA[with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow'>Imaginary theme</a>]]></b:widget-setting>
+                  <b:widget-setting name='content'><![CDATA[<p>with <a href='https://github.com/nagahitoyuki/imaginary-liquid' rel='nofollow'>Imaginary theme</a></p>]]></b:widget-setting>
                 </b:widget-settings>
                 <b:includable id='main'>
   <b:include name='widget-title'/>
