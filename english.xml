@@ -18,6 +18,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
   <link expr:href='data:view.url params {m: 1}' media='only screen and (max-width: 640px)' rel='alternate'/>
 </b:if>
   <title><data:view.title.escaped/><b:if cond='data:view.isArchive'>: <data:blog.pageName/>&#65288;<data:messages.archive/>&#65289;<b:elseif cond='data:view.isLabelSearch'/>: <data:blog.pageName/>&#65288;<data:messages.labels/>&#65289;<b:elseif cond='data:view.isSearch'/>: <data:messages.search/></b:if></title>
+  <meta expr:content='(data:view.isMultipleItems ? data:blog.pageTitle : data:view.title).escaped' name='subject'/>
 <b:if cond='data:blog.metaDescription'>
   <meta expr:content='data:blog.metaDescription' name='description'/>
 </b:if>
@@ -999,11 +1000,7 @@ bgsl.insertAdjacentHTML("afterbegin", bmtx); document.head.replaceChild(bgsl, ns
 <b:if cond='(data:widgets.AdSense.first or data:widgets.Blog.first.posts.first.showInlineAds) and not data:blog.adsenseAutoAds'>
   <script async='async' crossorigin='anonymous' expr:src='"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + data:blog.adsenseClientId'/>
 </b:if>
-<b:if cond='data:blog.analyticsAccountNumber'>
-  <script async expr:src='"https://www.googletagmanager.com/gtag/js?id=" + data:blog.analyticsAccountNumber'/>
-  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date()); gtag('config', '<data:blog.analyticsAccountNumber/>');</script>
-</b:if>
+  <b:include data='blog' name='google-analytics'/>
 </head>
 
 <body>
