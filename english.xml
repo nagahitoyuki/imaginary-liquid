@@ -87,7 +87,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
       default="$(color) none no-repeat scroll center center" value="$(color) none no-repeat scroll center center"/>
   <Variable name="blog.header.color" description="Blog header color"
       type="color"
-      default="#797676"  value="#797676"/>
+      default="#696969"  value="#696969"/>
   <Variable name="body.background.color" description="Body background color"
       type="color"
       default="#f0f8ff"  value="#f0f8ff"/>
@@ -453,7 +453,7 @@ details:has(.mdr) ol {padding-$startSide:1.25em}
 .ft-post {position:relative}
 .ft-post>a, .ft-snippet-thumbnail {aspect-ratio:3/2;width:100%;height:auto}
 .ft-post>a {display:grid}
-.no-image {background-color:#797676}
+.no-image {background-color:#696969}
 .ft-post .feed-title, .fp-title, .ft-snippet-thumbnail, .ft-date {grid-column:1/2;grid-row:1/2}
 .ft-post .feed-title, .fp-title, .ft-date {margin:0;z-index:1}
 .ft-post .feed-title {justify-self:start;align-self:start;background-color:rgba(255, 255, 255, 0.4);padding:var(--maincolumn-padding)}
