@@ -12,11 +12,8 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
 <b:if cond='data:view.isSingleItem and data:view.featuredImage'>
   <link expr:href='"//" + (data:view.featuredImage.isYoutube ? "www.youtube.com" : data:view.featuredImage contains "blogger.googleusercontent.com" ? "blogger.googleusercontent.com" : data:view.featuredImage contains "1.bp.blogspot.com" ? "1.bp.blogspot.com" : data:view.featuredImage contains "2.bp.blogspot.com" ? "2.bp.blogspot.com" : data:view.featuredImage contains "3.bp.blogspot.com" ? "3.bp.blogspot.com" : "4.bp.blogspot.com")' rel='dns-prefetch'/>
 </b:if>
-<b:if cond='data:blog.isMobileRequest or data:view.url !=  data:view.url.canonical'>
   <link expr:href='data:view.url.canonical' rel='canonical'/>
-<b:else/>
-  <link expr:href='data:view.url params {m: 1}' media='only screen and (max-width: 640px)' rel='alternate'/>
-</b:if>
+  <b:tag cond='!data:blog.isMobileRequest and data:view.url ==  data:view.url.canonical' expr:href='data:view.url params {m: 1}' media='only screen and (max-width: 640px)' name='link' rel='alternate'/>
   <title><data:view.title.escaped/><b:if cond='data:view.isArchive'>: <data:blog.pageName/>&#65288;<data:messages.archive/>&#65289;<b:elseif cond='data:view.isLabelSearch'/>: <data:blog.pageName/>&#65288;<data:messages.labels/>&#65289;<b:elseif cond='data:view.isSearch'/>: <data:messages.search/></b:if></title>
   <meta expr:content='(data:view.isMultipleItems ? data:blog.pageTitle : data:view.title).escaped' name='subject'/>
 <b:if cond='data:blog.metaDescription'>
