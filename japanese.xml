@@ -2213,7 +2213,7 @@ dts.open = true; smr.insertAdjacentHTML("afterbegin", "見出し"); fid.classNam
 let n;
 hdgs.forEach((hdg, i) =&gt; {
 const tci = document.createElement("li"), tcl = document.createElement("a"), tn = Number(hdg.tagName.substring(1));
-hdg.id = `content_${i + 1}`; tcl.href = `#${hdg.id}`; tcl.textContent = hdg.textContent; tci.appendChild(tcl);
+if (!hdg.id) hdg.id = `content_${i + 1}`; tcl.href = `#${hdg.id}`; tcl.textContent = hdg.textContent; tci.appendChild(tcl);
 if (i !== 0 &amp;&amp; tn &gt; 1) {
 const fis = fid.querySelectorAll("li"), lid = fis[fis.length - 1], dr = tn - n;
 if (dr &gt; 0) {
