@@ -200,14 +200,14 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
   <Variable name="sticky.background.color"
       description="Sharing background color"
       type="color"
-      default="$(body.background.color)"  value="#f0f8ff"/>
+      default="#f0f8ff"  value="#f0f8ff"/>
 </Group>
 
 <Group description="Popular posts" selector="div.widget.PopularPosts">
   <Variable name="popularposts.background.color"
       description="Popular post background color"
       type="color"
-      default="$(body.background.color)"  value="#f0f8ff"/>
+      default="#f0f8ff"  value="#f0f8ff"/>
   <Variable name="popularposts.title.font" description="人気の投稿のタイトルのフォント"
       type="font"
       default=" bold 120% sans-serif"  value="bold 120% sans-serif"/>
