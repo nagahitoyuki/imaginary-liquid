@@ -283,10 +283,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
   <Variable name="labels.background.color"
       description="Label background color"
       type="color"
-      red="$(labels.text.color.red)"
-      green="$(labels.text.color.green)"
-      blue="$(labels.text.color.blue)"
-      default="rgba($(red), $(green), $(blue), 0.06)"  value="rgba($(red), $(green), $(blue), 0.06)"/>
+      default="#191970"  value="#191970"/>
 </Group>
 
 <Group description="Attribution" selector=".widget.Attribution">
@@ -587,7 +584,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .profile-data, .profile-textblock {color:$(profile.text.color);margin-$startSide:0;margin-bottom:.4em}
 
 /* ラベルとアーカイブ */
-.post-labels>a, .label-name {color:$(labels.text.color);background-color:$(labels.background.color);border:1px solid rgba($(labels.text.color.red), $(labels.text.color.green), $(labels.text.color.blue), .34);border-radius:1px;padding:.125em .375em;box-sizing:border-box}
+.post-labels>a, .label-name {color:$(labels.text.color);background-color:rgba($(labels.background.color.red),$(labels.background.color.green),$(labels.background.color.blue),0.06);border:1px solid rgba($(labels.background.color.red), $(labels.background.color.green), $(labels.background.color.blue), .34);border-radius:1px;padding:.125em .375em;box-sizing:border-box}
 .label-name:hover, .label-name:visited {color:$(labels.text.color)}
 .BlogArchive, .Label, .list-label, .hierarchy-archive, .flat-archive {display:flex;flex-direction:column}
 .post-labels, .cloud-label {display:flex;flex-wrap:wrap}
