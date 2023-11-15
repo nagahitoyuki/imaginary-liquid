@@ -64,12 +64,9 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
   <Variable name="body.text.font" description="Font"
       type="font"
       default="16px sans-serif"  value="16px sans-serif"/>
-  <Variable name="body.text.base.color" description="Color"
+  <Variable name="body.text.color" description="Color"
       type="color"
       default="#000"  value="#000"/>
-  <Variable name="body.text.color" description="コメントフォームの色"
-      type="color"
-      default="$(posts.text.color)"  value="#000"/>
 </Group>
 
 <Group description="Backgrounds">
@@ -99,18 +96,15 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
 </Group>
 
 <Group description="Links">
-  <Variable name="body.link.base.color" description="Link color"
+  <Variable name="body.link.color" description="Link color"
       type="color"
       default="#dc143c"  value="#dc143c"/>
   <Variable name="body.link.visited.color" description="Visited link color"
       type="color"
-      default="$(body.link.base.color)"  value="#dc143c"/>
+      default="$(body.link.color)"  value="#dc143c"/>
   <Variable name="body.link.hover.color" description="Link Hover Color"
       type="color"
-      default="$(body.link.base.color)"  value="#dc143c"/>
-  <Variable name="body.link.color" description="コメントフォームのリンクの色"
-      type="color"
-      default="$(posts.link.color)"  value="#dc143c"/>
+      default="$(body.link.color)"  value="#dc143c"/>
 </Group>
 
 <Group description="Blog title" selector="div.widget.Header">
@@ -152,7 +146,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
       default="16px sans-serif"  value="16px sans-serif"/>
   <Variable name="posts.text.color" description="Post text color"
       type="color"
-      default="$(body.text.base.color)"  value="#000"/>
+      default="$(body.text.color)"  value="#000"/>
 <Variable name="posts.link.color" description="Post link color"
       type="color"
       default="#dc143c"  value="#dc143c"/>
@@ -167,11 +161,11 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
       default="16px sans-serif"  value="16px sans-serif"/>
   <Variable name="blockquote.color" description="Blockquote color"
       type="color"
-      default="$(body.text.base.color)"  value="#000"/>
+      default="$(body.text.color)"  value="#000"/>
   <Variable name="posts.icons.color"
       description="Post icons color"
       type="color"
-      default="$(body.text.base.color)"  value="#000"/>
+      default="$(body.text.color)"  value="#000"/>
 </Group>
 
 <Group description="Search">
@@ -196,7 +190,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
   <Variable name="sticky.icons.color"
       description="Sharing icons color"
       type="color"
-      default="$(body.text.base.color)"  value="#000"/>
+      default="$(body.text.color)"  value="#000"/>
   <Variable name="sticky.background.color"
       description="Sharing background color"
       type="color"
@@ -214,11 +208,11 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
   <Variable name="popularposts.title.color"
       description="Popular post title color"
       type="color"
-      default="$(body.text.base.color)"  value="#000"/>
+      default="$(body.text.color)"  value="#000"/>
   <Variable name="popularposts.text.color"
       description="Popular post text color"
       type="color"
-      default="$(body.text.base.color)"  value="#000"/>
+      default="$(body.text.color)"  value="#000"/>
   <Variable name="popularposts.link.color"
       description="Popular post link color"
       type="color"
@@ -289,10 +283,10 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
 <Group description="Attribution" selector=".widget.Attribution">
   <Variable name="attribution.text.color" description="Attribution text color"
       type="color"
-      default="$(body.text.base.color)"  value="#000"/>
+      default="$(body.text.color)"  value="#000"/>
   <Variable name="attribution.link.color" description="Attribution link color"
       type="color"
-      default="$(body.link.base.color)"  value="#dc143c"/>
+      default="$(body.link.color)"  value="#dc143c"/>
   <Variable name="attribution.icon.color" description="Attribution icon color"
       type="color"
       default="#000" value="#000"/>
@@ -318,8 +312,8 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
 /* 一般設定 */
 :root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6;--svgicon-height:calc($(body.text.font.size) * var(--body-lineheight));--image-verticalalign:calc(((var(--body-lineheight) - 1) / 2 + 0.12) / var(--body-lineheight) * -100%);--fixedbutton-margin:calc((var(--body-lineheight) - 1) * var(--maincolumn-padding))}
 html {scroll-behavior:smooth}
-body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:anywhere;background-color:$(body.background.color);color:$(body.text.base.color);font:$(body.text.font);line-height:var(--body-lineheight)}
-a {text-decoration:none;color:$(body.link.base.color)}
+body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:anywhere;background-color:$(body.background.color);color:$(body.text.color);font:$(body.text.font);line-height:var(--body-lineheight)}
+a {text-decoration:none;color:$(body.link.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
 h1, h2, h3, h4, h5, h6, p#blog_title, #comments, li.comment {scroll-margin-top:calc(1em + var(--floatingbar-height))}
@@ -397,7 +391,7 @@ blockquote {margin:1em 2.5em}
 #back_button>.svg-icon-24 {margin-top:calc(var(--svgicon-height) / -12);padding-bottom:calc(var(--svgicon-height) / 12)}
 #add_button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px;contain:content}
 #wfsc {position:fixed;bottom:calc(var(--floatingbar-height) + var(--fixedbutton-margin))}
-.smct {display:grid;grid-template-columns:repeat(auto-fit, minmax(calc($(content.width / 3) - (var(--floatingbar-height) + var(--fixedbutton-margin) + var(--maincolumn-padding)) * 2), 1fr));gap:1em;font-size:small;padding:var(--maincolumn-padding);background-color:$(body.background.color);color:$(body.text.base.color);border:1px $(sidebar.separator.color) double;box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);margin:0;height:min(80dvh - (var(--floatingbar-height) + var(--fixedbutton-margin)) * 3, 480px - (var(--floatingbar-height) + var(--fixedbutton-margin)) * 2);overflow-y:scroll}
+.smct {display:grid;grid-template-columns:repeat(auto-fit, minmax(calc($(content.width / 3) - (var(--floatingbar-height) + var(--fixedbutton-margin) + var(--maincolumn-padding)) * 2), 1fr));gap:1em;font-size:small;padding:var(--maincolumn-padding);background-color:$(body.background.color);color:$(body.text.color);border:1px $(sidebar.separator.color) double;box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);margin:0;height:min(80dvh - (var(--floatingbar-height) + var(--fixedbutton-margin)) * 3, 480px - (var(--floatingbar-height) + var(--fixedbutton-margin)) * 2);overflow-y:scroll}
 .smtx>p {margin-top:0}
 .smtx>p:first-child {font-weight:bold}
 .smtx>p:last-child {margin-bottom:0}
@@ -552,12 +546,12 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .pp-title {font:$(popularposts.title.font);line-height:var(--body-lineheight);margin-top:20px;margin-bottom:20px}
 .mnpp .pp-title>a {color:$(popularposts.title.color)}
 .mnpp .post-footer>a {color:$(popularposts.link.color)}
-#sub_main .ctpp .pp-title>a {color:$(body.text.base.color)}
-#sub_main .ctpp .post-footer>a {color:$(body.link.base.color)}
+#sub_main .ctpp .pp-title>a {color:$(body.text.color)}
+#sub_main .ctpp .post-footer>a {color:$(body.link.color)}
 .sbpp .pp-title>a {color:$(widget.title.color)}
 .snippet-item {margin:0}
 .mnpp .snippet-item {color:$(popularposts.text.color)}
-#sub_main .ctpp .snippet-item {color:$(body.text.base.color)}
+#sub_main .ctpp .snippet-item {color:$(body.text.color)}
 .item-content {display:flex;column-gap:var(--maincolumn-padding)}
 .item-content>img {flex:none;height:100%}
 .pp-post+.pp-post {border-top:1px dashed $(sidebar.separator.color)}
@@ -596,7 +590,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .remaining-items {overflow:hidden;transition:all .3s}
 .Label .remaining-items {margin-top:12px;margin-bottom:-12px}
 .remaining-items>.list-label, .remaining-items>.cloud-label {margin-bottom:12px}
-.show-more, .show-less {margin-top:1.2em;margin-$startSide:auto;font-size:medium;color:$(body.link.base.color);cursor:pointer}
+.show-more, .show-less {margin-top:1.2em;margin-$startSide:auto;font-size:medium;color:$(body.link.color);cursor:pointer}
 
 /* 連絡フォーム */
 .contact-form-name, .contact-form-email, .contact-form-email-message {font-size:100%;margin-top:.3em;box-sizing:border-box}
