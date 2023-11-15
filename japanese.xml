@@ -476,9 +476,9 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .author-desc {color:$(posts.text.color)}
 
 /* 記事の本文とスニペット */
-.entry-content, .summary {font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color)}
+.hentry, .summary {font:$(posts.text.font);line-height:var(--body-lineheight);color:$(posts.text.color)}
+.hentry a, .hentry a:hover, .hentry a:visited {color:$(posts.link.color)}
 .entry-content {margin-top:20px;margin-bottom:20px}
-.entry-content a, .entry-content a:hover,.entry-content a:visited {color:$(posts.link.color)}
 .entry-content blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:flow-root;margin-bottom:20px}
 .total-snippet>.snippet-thumbnail {float:$startSide;aspect-ratio:1;width:max(30%, 8em  - var(--maincolumn-padding));height:auto;margin-$endSide:var(--maincolumn-padding);margin-bottom:calc((var(--body-lineheight) - 1) * .5em)}
