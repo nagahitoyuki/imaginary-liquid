@@ -1214,7 +1214,7 @@ button</b:comment>
   </div>
 </b:includable>
     <b:includable id='addComments'>
-  <a class='cmal' expr:href='data:post.commentsUrl' expr:onclick='data:post.commentsUrlOnclick' rel='nofollow'>
+  <a expr:href='data:post.commentsUrl' expr:onclick='data:post.commentsUrlOnclick' rel='nofollow'>
     <b:message name='messages.postAComment'/>
   </a>
   <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
@@ -1271,7 +1271,7 @@ button</b:comment>
   </footer>
 </b:includable>
     <b:includable id='commentFormIframeSrc' var='post'>
-  <a class='cmal' expr:href='data:post.commentFormIframeSrc' id='comment-editor-src' rel='nofollow'/>
+  <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src' rel='nofollow'/>
 </b:includable>
     <b:includable id='commentItem' var='comment'>
   <div class='comment' expr:id='&quot;c&quot; + data:comment.id'>
@@ -1372,7 +1372,7 @@ button</b:comment>
   </section>
 </b:includable>
     <b:includable id='commentsTitle'>
-  <h2 class='title' id='cmt'><data:messages.comments/></h2>
+  <h2 class='title'><data:messages.comments/></h2>
 </b:includable>
     <b:includable id='defaultAdUnit'>
   <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
@@ -1906,7 +1906,7 @@ button</b:comment>
 <button class='svg-icon-24-button hidden' expr:aria-label='data:messages.loading' id='add_button' type='button'><data:messages.loading/></button>
 <b:else/>
 <button class='svg-icon-24-button hidden' expr:aria-label='data:messages.learnMore' id='summary_button' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_more_vert_black_24dp'/></svg></button><div class='hidden' id='wfsc'><figure class='smct'><b:tag cond='data:view.featuredImage' expr:alt='data:messages.photo' height='252' expr:src='resizeImage(data:view.featuredImage, 480, "1200:630")' loading='lazy' name='img' width='480'/><div class='smtx'><p><data:view.title.escaped/></p><p><data:blog.metaDescription.escaped/></p><p><data:view.url.canonical/></p><p/><p><data:blog.title.escaped/></p></div></figure>
-</div><button class='svg-icon-24-button hidden' expr:aria-label='data:messages.comments' id='comment_button' onclick='location.href=&quot;#cmt&quot;' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_mode_comment_black_24dp'/></svg></button>
+</div><button class='svg-icon-24-button hidden' expr:aria-label='data:messages.comments' id='comment_button' onclick='location.href=&quot;#comments&quot;' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_mode_comment_black_24dp'/></svg></button>
 </b:if>
 
             <b:section class='footer' id='attribution' name='Footer' showaddelement='false' tag='footer'>
@@ -2184,6 +2184,7 @@ rootMargin: bthg + "px"});
 nextIndexObserver.observe(sub_main); }
 <b:else/>
 /* Comment */
+if (Blog1.querySelector("section#comments")) {
 const commentForm = Blog1.querySelector("iframe#comment-editor");
 if (commentForm) {
 const avics = comments.querySelectorAll("div.avatar-image-container");
@@ -2193,7 +2194,6 @@ if (/resources.blogblog\.com\/img\/blank\.gif/.test(avic.firstElementChild.src))
 avic.insertAdjacentHTML("afterbegin", "<svg aria-label='アバター' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>"); } else {
 avic.firstElementChild.alt = "アバター"; }}); }
 subContentObserver.observe(comments); }
-if (Blog1.querySelector("a.cmal")) {
 floatButtonObserver.observe(comments); } else {
 comment_button.tabindex = -1; comment_button.style.bottom = `calc((${getComputedStyle(comment_button).bottom} + ${getComputedStyle(comment_button).height}) * -1)`; floatButtonObserver.observe(Blog1.querySelector("nav.blog-pager")); }
 /* Summary button */
