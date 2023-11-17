@@ -459,10 +459,10 @@ details:has(.mdr) ol {padding-$startSide:1.25em}
 
 /* 記事のヘッダー／フッター */
 .post-header-line, .pf-last {margin:0;list-style-type:none;padding-$startSide:0}
-.post-header-line {display:flex;color:$(posts.byline.color)}
+.post-header-line {display:flex}
 .vcard::after {content:'\00a0'}
 .photo {height:var(--svgicon-height);width:var(--svgicon-height);border-radius:50%;vertical-align:var(--image-verticalalign);margin-$endSide:.5em}
-.vcard>a, .published>.value-title, .post-footer, .pft-profile>span, .pf-last, .pf-last>.url, .post-location {color:$(posts.byline.color)}
+.post-header-line, .post-header-line>.vcard>.url, .published>.value-title, .post-footer, .pft-profile>span, .post-location {color:$(posts.byline.color)}
 .post-footer {display:flex}
 .hentry>.post-footer {flex-direction:column}
 .post-footer-line>span {display:block;margin-bottom:20px}
