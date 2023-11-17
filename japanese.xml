@@ -152,10 +152,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
       default="#dc143c"  value="#dc143c"/>
   <Variable name="posts.byline.color" description="Post byline color"
       type="color"
-      red="$(posts.text.color.red)"
-      green="$(posts.text.color.green)"
-      blue="$(posts.text.color.blue)"
-      default="rgba($(red), $(green), $(blue), 0.6)"  value="rgba($(red), $(green), $(blue), 0.6)"/>
+      default="rgba(0, 0, 0, 0.6)"  value="rgba(0, 0, 0, 0.6)"/>
   <Variable name="blockquote.font" description="Blockquote font"
       type="font"
       default="16px sans-serif"  value="16px sans-serif"/>
@@ -180,10 +177,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
       default="16px sans-serif"  value="16px sans-serif"/>
   <Variable name="search.placeholder.color" description="Placeholder text color"
       type="color"
-      red="$(search.input.color.red)"
-      green="$(search.input.color.green)"
-      blue="$(search.input.color.blue)"
-      default="rgba($(red), $(green), $(blue), 0.6)"  value="rgba($(red), $(green), $(blue), 0.6)"/>
+      default="rgba(0, 0, 0, 0.6)"  value="rgba(0, 0, 0, 0.6)"/>
 </Group>
 
 <Group description="Sharing">
@@ -462,7 +456,7 @@ details:has(.mdr) ol {padding-$startSide:1.25em}
 .post-header-line {display:flex}
 .vcard::after {content:'\00a0'}
 .photo {height:var(--svgicon-height);width:var(--svgicon-height);border-radius:50%;vertical-align:var(--image-verticalalign);margin-$endSide:.5em}
-.post-header-line, .post-header-line>.vcard>.url, .published>.value-title, .post-footer, .pft-profile>span, .post-location {color:$(posts.byline.color)}
+.post-header-line, .post-header-line>.vcard>.url, .published>.value-title, .post-footer, .pft-profile>span, .post-location {color:rgba($(posts.text.color.red), $(posts.text.color.green), $(posts.text.color.blue), 0.6)}
 .post-footer {display:flex}
 .hentry>.post-footer {flex-direction:column}
 .post-footer-line>span {display:block;margin-bottom:20px}
@@ -504,11 +498,11 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .comment>svg+.comment-block {margin-top:-42px}
 .comment-author-header-wrapper {margin-$startSide:40px}
 .thread-expanded .comment-block {padding-bottom:1.5em}
-.comment-header>.user, .comment-header>.user>a, .comment-author, .comment-author>a {color:$(posts.byline.color);font-style:normal}
+.comment-header>.user, .comment-header>.user>a, .comment-author, .comment-author>a {color:rgba($(posts.text.color.red), $(posts.text.color.green), $(posts.text.color.blue), 0.6);font-style:normal}
 .comment-actions {bottom:0;position:absolute}
 .comment-actions>* {margin-$endSide:.5em}
 .comment-header>.datetime {bottom:0;display:inline-block;margin-$startSide:.5em}
-:is(.comment-timestamp, .comment-header>.datetime)>a {color:$(posts.byline.color)}
+:is(.comment-timestamp, .comment-header>.datetime)>a {color:rgba($(posts.text.color.red), $(posts.text.color.green), $(posts.text.color.blue), 0.6)}
 .comment-content, .comment-body {margin-top:.75em;margin-bottom:.75em;word-break:break-word}
 :is(.comment-footer, .comment-content, .comment-body, .comment-actions, .comment-replies, .blog-admin)>a, .comment-replybox-single {color:$(posts.link.color)}
 .comment-reply, .blog-admin>a {font-weight:normal}
