@@ -304,7 +304,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
 **************************************************/
 
 /* General settings */
-:root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.6;--svgicon-height:calc($(body.text.font.size) * var(--body-lineheight));--image-verticalalign:calc(((var(--body-lineheight) - 1) / 2 + 0.12) / var(--body-lineheight) * -100%);--fixedbutton-margin:calc((var(--body-lineheight) - 1) * var(--maincolumn-padding))}
+:root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.7;--svgicon-height:calc($(body.text.font.size) * var(--body-lineheight));--image-verticalalign:calc(((var(--body-lineheight) - 1) / 2 + 0.12) / var(--body-lineheight) * -100%);--fixedbutton-margin:calc((var(--body-lineheight) - 1) * var(--maincolumn-padding))}
 html {scroll-behavior:smooth}
 body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:anywhere;background-color:$(body.background.color);color:$(body.text.color);font:$(body.text.font);line-height:var(--body-lineheight)}
 a {text-decoration:none;color:$(body.link.color)}
