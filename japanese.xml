@@ -475,7 +475,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .entry-content {margin-top:20px;margin-bottom:20px}
 .entry-content blockquote {color:$(blockquote.color);font:$(blockquote.font);line-height:inherit}
 .total-snippet {display:flow-root;margin-bottom:20px}
-.total-snippet>.snippet-thumbnail {float:$startSide;aspect-ratio:1;width:max(32%, $(posts.text.font.size * 5) * var(--body-lineheight) - var(--maincolumn-padding));height:auto;margin-$endSide:var(--maincolumn-padding);margin-bottom:calc((var(--body-lineheight) - 1) * .5em)}
+.total-snippet>.snippet-thumbnail {float:$startSide;aspect-ratio:1;width:max(32%, $(posts.text.font.size * 6) * var(--body-lineheight) - $(posts.text.font.size) - var(--maincolumn-padding) * var(--body-lineheight));height:auto;margin-$endSide:var(--maincolumn-padding);margin-bottom:calc((var(--body-lineheight) - 1) * .5em)}
 .ytpic {background-color:#000}
 .summary {margin-top:0;margin-bottom:0}
 .entry-content h1 {font-size:xx-large}
