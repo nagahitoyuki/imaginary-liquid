@@ -356,7 +356,6 @@ blockquote {margin:1em 2.5em}
 .tabs-title {color:$(tabs.title.color);font-size:large;margin-top:1em;margin-bottom:1em}
 .pl-items {font:$(tabs.font)}
 .pl-items, .pl-items:hover, .pl-items:visited {color:$(tabs.color)}
-.indicate {text-decoration:underline 4px $(tabs.color) solid;text-underline-offset:.7em}
 
 /* Floating bar */
 #floating_bar {position:sticky;top:0;height:var(--floatingbar-height);left:0;right:0;display:flex;justify-content:space-between;align-items:center;background-color:$(sticky.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box;box-shadow:0 5px 10px -5px rgba(0, 0, 0, .4);contain:strict;z-index:5}
@@ -1043,7 +1042,7 @@ bgsl.insertAdjacentHTML("afterbegin", bmtx); document.head.replaceChild(bgsl, ns
   </b:widget>
   <b:widget cond='!data:view.isSingleItem' id='PageList1' locked='true' title='Page List' type='PageList' visible='true'>
     <b:widget-settings>
-      <b:widget-setting name='pageListJson'><![CDATA[{'home': {'href': 'https://nagahitoyuki.blogspot.com/', 'title': 'Home', 'position': 0}}]]></b:widget-setting>
+      <b:widget-setting name='pageListJson'><![CDATA[{'home': {'href': '/', 'title': 'Home', 'position': 0}}]]></b:widget-setting>
       <b:widget-setting name='homeTitle'>Home</b:widget-setting>
     </b:widget-settings>
      <b:includable id='main'>
@@ -1062,7 +1061,7 @@ button</b:comment>
 </b:includable>
     <b:includable id='pageLink'>
   <b:if cond='data:view.url.canonical == data:link.href'>
-    <span class='pl-items indicate'><data:link.title/></span>
+    <span class='pl-items'><data:link.title/></span>
   <b:else/>
     <a class='pl-items' expr:href='data:link.href'><data:link.title/></a>
 </b:if>
