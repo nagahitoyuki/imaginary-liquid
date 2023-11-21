@@ -78,7 +78,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
   <Variable name="body.background" description="Background"
       color="$(blog.header.color)"
       type="background"
-      default="$(color) none no-repeat scroll center center" value="$(color) none no-repeat scroll center center"/>
+      default="$(color) none no-repeat scroll center center" value="$(color) url(https://themes.googleusercontent.com/image?id=0BwVBOzw_-hbMNjQyMWIwNGYtYWVjMi00YzJhLWIwMTQtZjdjZTI0YzhhN2Zh) repeat scroll top center /* Credit: Ollustrator (http://www.istockphoto.com/portfolio/Ollustrator?platform=blogger) */"/>
   <Variable name="blog.header.color" description="Blog header color"
       type="color"
       default="#696969"  value="#696969"/>
@@ -92,7 +92,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
       type="length"
       min="0px"
       max="50px"
-      default="10px"  value="10px"/>
+      default="8px"  value="8px"/>
 </Group>
 
 <Group description="Links">
