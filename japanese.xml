@@ -2013,7 +2013,7 @@ subContentObserver.unobserve(comments); }}</b:if>
 if (entry.target.id === "sidebar_wrapper") {
 if (entry.isIntersecting) {
 if (sbct.classList.contains("slider") || Blog1.firstElementChild.classList.contains("no-posts-message") || !Blog1.firstElementChild.textContent) {
-sbct.classList.remove("slider"); sbct.classList.remove("sidebar-invisible"); hamburger_menu.style.transform = "rotateZ(90deg)"; sbct.ariaHidden = "false"; }} else if (entry.rootBounds.bottom &lt; entry.boundingClientRect.bottom || entry.boundingClientRect.bottom === 0 || Blog1.firstElementChild.className.indexOf("message")) {
+sbct.classList.remove("slider"); sbct.classList.remove("sidebar-invisible"); hamburger_menu.style.transform = "rotateZ(90deg)"; sbct.ariaHidden = "false"; }} else if (entry.rootBounds.bottom &lt; entry.boundingClientRect.bottom || entry.boundingClientRect.bottom === 0 || Blog1.firstElementChild.className.indexOf("message") !== -1) {
 sbct.classList.add("slider"); sbct.classList.add("sidebar-invisible"); hamburger_menu.style.transform = "rotateZ(0)"; sbct.ariaHidden = "true"; }}</b:if>}); }, {
 rootMargin: "240px"});
 /* Back button */
