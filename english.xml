@@ -213,7 +213,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
       default="#dc143c"  value="#dc143c"/>
 </Group>
 
-<Group description="Post navigation" selector='nav.blog-pager'>
+<Group description="Post navigation" selector="nav.blog-pager">
   <Variable name="posts.navigation.link.color"
       description="Post navigation links color"
       type="color"
@@ -251,7 +251,7 @@ bglk.as = "image"; bglk.rel = "preload"; bglk.href = /\/\/.+\.(jpg|jpeg)/i.exec(
       default="#000"  value="#000"/>
 </Group>
 
-<Group description="Author profile" selector='.widget.Profile'>
+<Group description="Author profile" selector=".widget.Profile">
   <Variable name="profile.title.color" description="Profile title color"
       type="color"
       default="#000"  value="#000"/>
