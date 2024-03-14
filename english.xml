@@ -1522,7 +1522,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   <b:comment>Don&#39;t show share buttons.</b:comment>
 </b:includable>
     <b:includable id='postTimestamp'>
-  <li><b:eval cond='data:byline.label' expr='data:byline.label'/><b:if cond='data:post.url'><a class='published' expr:href='data:view.url path (data:post.date.year + (data:post.date.month lt 10 ? &quot;/0&quot; : &quot;/&quot;) + data:post.date.month + &quot;/&quot;)' rel='archives'><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></a></b:if></li>
+  <li><b:eval cond='data:byline.label' expr='data:byline.label'/><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></li>
 </b:includable>
     <b:includable id='postTitle' var='post'>
   <b:if cond='data:post.title != &quot;&quot;'>
