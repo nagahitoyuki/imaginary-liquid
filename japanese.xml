@@ -382,7 +382,7 @@ blockquote {margin:1em 2.5em}
 #back_button, #comment_button, #summary_button {width:var(--floatingbar-height);border-radius:50%;contain:strict}
 #back_button>.svg-icon-24 {margin-top:calc(var(--svgicon-height) / -12);padding-bottom:calc(var(--svgicon-height) / 12)}
 #add_button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px;contain:content}
-#wfsc {position:fixed;bottom:calc(var(--floatingbar-height) + var(--fixedbutton-margin))}
+#wfsc {position:fixed;bottom:calc(var(--floatingbar-height) + var(--fixedbutton-margin));z-index:5}
 .smct {display:grid;grid-template-columns:repeat(auto-fit, minmax(calc($(content.width / 3) - (var(--floatingbar-height) + var(--fixedbutton-margin) + var(--maincolumn-padding)) * 2), 1fr));gap:1em;font-size:small;padding:var(--maincolumn-padding);background-color:$(body.background.color);color:$(body.text.color);border:1px $(sidebar.separator.color) double;box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);margin:0;height:min(80dvh - (var(--floatingbar-height) + var(--fixedbutton-margin)) * 3, 480px - (var(--floatingbar-height) + var(--fixedbutton-margin)) * 2);overflow-y:scroll}
 .smtx>p {margin-top:0}
 .smtx>p:first-child {font-weight:bold}
