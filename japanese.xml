@@ -1548,7 +1548,7 @@ button</b:comment>
   <b:comment>Don&#39;t show share buttons.</b:comment>
 </b:includable>
     <b:includable id='postTimestamp'>
-  <li><b:eval cond='data:byline.label' expr='data:byline.label'/><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></li>
+  <li class='published'><b:eval cond='data:byline.label' expr='data:byline.label'/><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></li>
 </b:includable>
     <b:includable id='postTitle' var='post'>
   <b:if cond='data:post.title != &quot;&quot;'>
@@ -2208,7 +2208,7 @@ fid.appendChild(tci); }
 n = tn; });
 wfsc.firstElementChild.insertAdjacentElement("afterbegin", dts); summary_button.firstElementChild.classList.add("original-icon"); summary_button.firstElementChild.setAttribute("viewBox", "0 0 24 24"); summary_button.firstElementChild.innerHTML = "&lt;path d='M2 4 H22 M7.3 9.4 H22 M7.3 14.7 H22 M7.3 20 H22'/&gt;&lt;circle cx='3.5' cy='9.4' r='0.5'/&gt;&lt;circle cx='3.5' cy='14.7' r='0.5'/&gt;&lt;circle cx='3.5' cy='20' r='0.5'/&gt;"; }
 const aab = wfsc.querySelector("div.smtx").lastElementChild, pau = aab.previousElementSibling;
-pau.textContent = `${Blog1.querySelector("a.published&gt;time").textContent} / ${Blog1.querySelector("li.updated&gt;time").textContent}`;
+pau.textContent = `${Blog1.querySelector("li.published&gt;time").textContent} / ${Blog1.querySelector("li.updated&gt;time").textContent}`;
 if (Blog1.querySelector(".fn")) aab.insertAdjacentHTML("afterbegin", `${Blog1.querySelector(".fn").textContent} - `);
 const cpps = wfsc.querySelectorAll("ol.mdr a");
 function scpp() {
