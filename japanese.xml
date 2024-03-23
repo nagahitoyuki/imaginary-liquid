@@ -451,10 +451,10 @@ details:has(.mdr) ol {padding-$startSide:1.25em}
 
 /* 記事のヘッダー／フッター */
 .post-header-line, .pf-last {margin:0;list-style-type:none;padding-$startSide:0}
-.post-header-line {display:flex}
-.vcard::after {content:'\00a0'}
-.photo {height:var(--svgicon-height);width:var(--svgicon-height);border-radius:50%;vertical-align:var(--image-verticalalign);margin-$endSide:.5em}
-.post-header-line, .post-header-line>.vcard>.url, .published>.value-title, .post-footer, .pft-profile>span, .post-location {color:rgba($(posts.text.color.red), $(posts.text.color.green), $(posts.text.color.blue), 0.6)}
+.post-header-line {display:flex;column-gap:.25em}
+.atbl, .photo, .ptbl {margin-$endSide:.25em}
+.photo {height:var(--svgicon-height);width:var(--svgicon-height);border-radius:50%;vertical-align:var(--image-verticalalign)}
+.post-header-line, .post-header-line>.vcard>.url, .value-title, .post-footer, .pft-profile>span, .post-location {color:rgba($(posts.text.color.red), $(posts.text.color.green), $(posts.text.color.blue), 0.6)}
 .post-footer {display:flex}
 .hentry>.post-footer {flex-direction:column}
 .post-footer-line>span {display:block;margin-bottom:20px}
@@ -1164,7 +1164,7 @@ button</b:comment>
       <b:widget-setting name='style.linkcolor'>#000</b:widget-setting>
       <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
       <b:widget-setting name='style.bgcolor'>#fff</b:widget-setting>
-      <b:widget-setting name='timestampLabel'>-&#160;</b:widget-setting>
+      <b:widget-setting name='timestampLabel'>-</b:widget-setting>
       <b:widget-setting name='reactionsLabel'/>
       <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
       <b:widget-setting name='style.layout'>336x280</b:widget-setting>
@@ -1435,7 +1435,7 @@ button</b:comment>
       <b:include data='post' name='postFooter'/>
 </b:includable>
     <b:includable id='postAuthor'>
-  <li class='author vcard'><b:eval cond='data:byline.label' expr='data:byline.label'/><b:if cond='data:post.author.profileUrl'><a class='url fn' expr:href='data:post.author.profileUrl' rel='author me' title='profile'><b:if cond='data:post.author.authorPhoto'><img class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 30, "1:1")' expr:srcset='resizeImage(data:post.author.authorPhoto.image, 30, "1:1") + ", " + resizeImage(data:post.author.authorPhoto.image, 52, "1:1") + " 2x"' height='30' width='30'/></b:if><data:post.author.name/></a><b:else/><span class='fn'><data:post.author.name/></span></b:if></li>
+  <li class='author vcard'><b:tag class='atbl' cond='data:byline.label' name='span'><data:byline.label/></b:tag><b:if cond='data:post.author.profileUrl'><a class='url fn' expr:href='data:post.author.profileUrl' rel='author me' title='profile'><b:if cond='data:post.author.authorPhoto'><img class='photo' decoding='async' expr:alt='data:post.author.authorPhoto.alt' expr:src='resizeImage(data:post.author.authorPhoto.image, 30, "1:1")' expr:srcset='resizeImage(data:post.author.authorPhoto.image, 30, "1:1") + ", " + resizeImage(data:post.author.authorPhoto.image, 52, "1:1") + " 2x"' height='30' width='30'/></b:if><data:post.author.name/></a><b:else/><span class='fn'><data:post.author.name/></span></b:if></li>
 </b:includable>
     <b:includable id='postBody' var='post'>
   <!-- If metaDescription is empty, use the post body as the schema.org description too, for G+/FB snippeting. -->
@@ -1548,7 +1548,7 @@ button</b:comment>
   <b:comment>Don&#39;t show share buttons.</b:comment>
 </b:includable>
     <b:includable id='postTimestamp'>
-  <li class='published'><b:eval cond='data:byline.label' expr='data:byline.label'/><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></li>
+  <li class='published'><b:tag class='ptbl' cond='data:byline.label' name='span'><data:byline.label/></b:tag><time class='value-title' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'><data:post.date/></time></li>
 </b:includable>
     <b:includable id='postTitle' var='post'>
   <b:if cond='data:post.title != &quot;&quot;'>
@@ -1618,10 +1618,10 @@ button</b:comment>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
-    <b:tag class='ft-snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl.isYoutube ? data:imgurl + "=w121-rw" : data:imgurl' expr:srcset='data:imgurl.isYoutube ? "" : sourceSet(data:imgurl, [640, 1280], "3:2")' height='426' name='img' sizes='(max-width:640px) 100vw, 1280px' width='640'>
+    <b:tag class='ft-snippet-thumbnail' expr:alt='data:messages.image' expr:src='data:imgurl.isYoutube ? data:imgurl + "=w121-rw" : data:imgurl' expr:srcset='data:imgurl.isYoutube ? "" : sourceSet(data:imgurl, [640, 1280], "7:4")' height='426' name='img' sizes='(max-width:640px) 100vw, 1280px' width='640'>
     <b:attr name='b:whitespace' value='remove'/>
     <b:if cond='data:imgurl.isYoutube'>
-    <b:attr expr:value='resizeImage(data:imgurl, 640, "3:2") + "-rw-e100 640w, " + resizeImage(data:imgurl, 1280, "3:2") + "-rw-e100 1280w"' name='data-hdss'/>   
+    <b:attr expr:value='resizeImage(data:imgurl, 640, "7:4") + "-rw-e100 640w, " + resizeImage(data:imgurl, 1280, "7:4") + "-rw-e100 1280w"' name='data-hdss'/>   
     <b:attr expr:value='"this.srcset=this.naturalWidth&lt;121?\"" + data:post.featuredImage + "=w480-h320-n-k-no-nu-rw-e100\":this.dataset.hdss;this.removeAttribute(\"onload\");"' name='onload'/>
     <b:class name='ytpic'/>
     </b:if>
