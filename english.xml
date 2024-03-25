@@ -2001,7 +2001,7 @@ if (getComputedStyle(main).width === "<data:skin.vars.content_width/>") {
 function schb(event) {
 bdis.animate([{opacity:0}, {opacity:1}], {duration: 300}); bdis.classList.toggle("no-sidebar");
 switch (event.currentTarget.id) {
-case "sdbtn": <b:if cond='data:view.isMultipleItems'>sbct.style.display = "none"; </b:if>localStorage.setItem("content", "no-sidebar"); break;
+case "sdbtn": <b:if cond='data:view.isMultipleItems'>if (getComputedStyle(attribution).display === "none") sbct.style.display = "none"; </b:if>localStorage.setItem("content", "no-sidebar"); break;
 case "subtn": <b:if cond='data:view.isMultipleItems'>sbct.style.display = "flex"; </b:if>localStorage.setItem("content", ""); }}
 sdbtn.addEventListener("click", schb); subtn.addEventListener("click", schb);
 if (main.clientHeight + sub_main.clientHeight &gt; sidebar_wrapper.clientHeight &amp;&amp; sidebar_wrapper.clientHeight &gt; window.innerHeight) sidebar_wrapper.classList.add("stickybottom"); else sidebar_wrapper.classList.add("stickytop"); } else {
