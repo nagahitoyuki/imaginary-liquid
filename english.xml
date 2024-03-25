@@ -1966,28 +1966,30 @@ if (button === back_button) {
 mbtn(button, 'fadein'); fbt.style.width = "100%"; return; }} else {
 mbtn(button, 'fadeout'); }}}); });
 /* Sub content observer */
+function fxsb() {
+sbct.classList.add("slider"); sbct.classList.add("sidebar-invisible"); hamburger_menu.style.transform = "rotateZ(0)"; sbct.ariaHidden = "true"; }
+function rtsb() {
+sbct.classList.remove("slider"); sbct.classList.remove("sidebar-invisible"); hamburger_menu.style.transform = "rotateZ(90deg)"; sbct.ariaHidden = "false"; }
 const subContentObserver = new IntersectionObserver(entries =&gt; {
 entries.forEach(entry =&gt; {
 <b:if cond='data:view.isSingleItem'>
 if (entry.target.id === "comments") {
 if (entry.isIntersecting) {
-if (comments.querySelector("iframe#comment-editor")) comments.querySelectorAll("a.comment-reply").forEach(cmrl =&gt; cmrl.addEventListener("click", () =&gt; commentForm.style.height = "90px"));
+if (comments.querySelector("div.comment-thread")) comments.querySelectorAll("a.comment-reply").forEach(cmrl =&gt; cmrl.addEventListener("click", () =&gt; commentForm.style.height = "90px"));
 const ifc = document.createElement("script");
-ifc.insertAdjacentHTML("afterbegin", commentForm.dataset.script);
-window.addEventListener("blur", () =&gt; {
-if (commentForm === document.activeElement) {
-commentForm.style.height = "";
+ifc.insertAdjacentHTML("afterbegin", commentForm.dataset.script); commentForm.parentNode.appendChild(ifc);window.addEventListener("blur", () =&gt; {
+if (commentform === document.activeElement) {
+commentform.style.height = "";
 <b:if cond='data:blog.isMobileRequest'> back_button.classList.add("invisible"); }});
 window.addEventListener("focus", () =&gt; {
-if (commentForm !== document.activeElement) {
+if (commentform !== document.activeElement) {
 back_button.classList.remove("invisible");</b:if>}});
 subContentObserver.unobserve(comments); }}</b:if>
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 if (entry.target.id === "sidebar_wrapper") {
 if (entry.isIntersecting) {
-if (sbct.classList.contains("slider") || Blog1.firstElementChild.classList.contains("no-posts-message") || !Blog1.firstElementChild.textContent) {
-sbct.classList.remove("slider"); sbct.classList.remove("sidebar-invisible"); hamburger_menu.style.transform = "rotateZ(90deg)"; sbct.ariaHidden = "false"; }} else if (entry.rootBounds.bottom &lt; entry.boundingClientRect.bottom || entry.boundingClientRect.bottom === 0 || Blog1.firstElementChild.className.indexOf("message") !== -1) {
-sbct.classList.add("slider"); sbct.classList.add("sidebar-invisible"); hamburger_menu.style.transform = "rotateZ(0)"; sbct.ariaHidden = "true"; }}</b:if>}); }, {
+if (sbct.classList.contains("slider") || Blog1.firstElementChild.classList.contains("no-posts-message") || !Blog1.firstElementChild.textContent) rtsb(); else hamburger_menu.style.transform = "rotateZ(90deg)"; } else if (entry.rootBounds.bottom &lt; entry.boundingClientRect.bottom || entry.boundingClientRect.bottom === 0 || Blog1.firstElementChild.className.indexOf("message") !== -1) {
+fxsb(); }}</b:if>}); }, {
 rootMargin: "240px"});
 /* Back button */
 floatButtonObserver.observe(header);
@@ -2086,7 +2088,7 @@ if (main.querySelector("button#ftbtn")) ftbtn.addEventListener(&quot;click&quot;
 const bpct = Blog1.firstElementChild;
 if (bpct.classList.contains("hfeed") &amp;&amp; bpct.textContent) {
 const bpg = bpct.querySelector("nav.blog-pager"), smwds = sub_main.querySelectorAll("div.widget"), bthg = floating_bar.clientHeight;
-let npl = bpg ? bpg.querySelector("a.older-link") : "";
+let npl = bpg.firstElementChild;
 if (smwds[0]) smwds.forEach(smwd =&gt; smwd.style.display = "none");
 attribution.style.display = "none";
 if (npl) sidebar_wrapper.classList.add("swcn"); else bpg.remove();
