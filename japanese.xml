@@ -440,7 +440,7 @@ details:has(.mdr) ol {padding-$startSide:1.25em}
 .fp-title {color:#fff;font:$(posts.stream.title.font);line-height:var(--body-lineheight);padding:0 var(--maincolumn-padding);text-align:center;align-self:center;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient: vertical;overflow:hidden}
 .ft-snippet-thumbnail {filter:brightness(70%);object-fit:cover}
 .ft-date {color:#f5f5f5;font-style:oblique;justify-self:end;align-self:end;margin-$endSide:var(--maincolumn-padding);margin-bottom:var(--maincolumn-padding)}
-#ftbtn {position:absolute;$startSide:var(--maincolumn-padding);bottom:var(--maincolumn-padding)}
+#ftbtn {position:absolute;$startSide:calc(var(--maincolumn-padding) - (var(--svgicon-height) - $(body.text.font.size)) / 2);bottom:calc(var(--maincolumn-padding) - (var(--svgicon-height) - $(body.text.font.size)) / 2)}
 .ftct {color:#fff;position:absolute;$startSide:calc(var(--svgicon-height) + var(--maincolumn-padding));$endSide:calc(var(--svgicon-height) + var(--maincolumn-padding));bottom:calc(var(--svgicon-height) + var(--svgicon-height));backdrop-filter:blur($(body.background.blur));text-align:$startSide;margin:0;padding:var(--maincolumn-padding);font-size:small;z-index:1}
 
 /* 記事の題名 */
