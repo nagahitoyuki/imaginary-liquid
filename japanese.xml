@@ -1178,7 +1178,7 @@ button</b:comment>
   <b:with value='data:widgets.AdSense.size' var='numAds'>
   <b:comment>Filter out the featured post, but only on the homepage.</b:comment>
   <b:with value='data:view.isHomepage ? data:posts filter (p =&gt; p.id != data:widgets.FeaturedPost.first.postId) : data:posts' var='posts'>
-      <b:tag aria-busy='false' cond='data:view.isMultipleItems' class='hfeed' name='div' role='feed'><b:loop index='i' values='data:posts' var='post'><b:include data='post' name='postCommentsAndAd'/></b:loop></b:tag>
+      <b:tag aria-busy='false' cond='data:view.isMultipleItems' class='hfeed' name='div'><b:loop index='i' values='data:posts' var='post'><b:include data='post' name='postCommentsAndAd'/></b:loop></b:tag>
   </b:with>
   </b:with>
   </b:with>
@@ -1397,7 +1397,7 @@ button</b:comment>
   <!-- G+ comments, no longer available. The includable is retained for backwards-compatibility. -->
 </b:includable>
     <b:includable id='inlineAd' var='post'>
-  <aside aria-label='広告'>
+  <aside aria-labelledby='広告' role='complementary'>
   <b:class cond='data:post.adNumber + data:numAds lt data:maxNumAds' name='desktop-ad mobile-ad'/>
     <b:include data='post' name='super.inlineAd'/>
   </aside>
@@ -1465,7 +1465,6 @@ button</b:comment>
     <b:includable id='postCommentsAndAd' var='post'>
   <article class='post'>
   <b:class cond='data:view.isSingleItem' name='hentry'/>
-  <b:attr cond='data:view.isMultipleItems' name='aria-setsize' value='-1'/>
     <!-- Post title and body -->
       <b:include data='post' name='post'/>
     <!-- Comments -->
