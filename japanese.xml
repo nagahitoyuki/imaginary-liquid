@@ -362,8 +362,7 @@ blockquote {margin:1em 2.5em}
 /* SVGアイコン */
 .svg-icon-24-button, .loadingIcon {appearance:none;padding:0;border:none;background-color:transparent}
 .svg-icon-24 {vertical-align:top;width:var(--svgicon-height);height:var(--svgicon-height);cursor:pointer}
-:not(#ftbtn)>.svg-icon-24>use, #hbbtn {fill:$(sticky.icons.color)}
-#ftbtn {fill:#f5f5f5}
+.svg-icon-24>use, #hbbtn {fill:$(sticky.icons.color)}
 #sis {display:flex;align-items:inherit;gap:inherit}
 #shbtn {transition:transform .3s}
 #close_button>.svg-icon-24 {fill:$(sidebar.icons.color)}
@@ -435,7 +434,6 @@ details:has(.mdr) ol {padding-$startSide:1.25em}
 .fp-title {color:#fff;font:$(posts.stream.title.font);line-height:var(--body-lineheight);padding:0 var(--maincolumn-padding);text-align:center;align-self:center;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient: vertical;overflow:hidden}
 .ft-snippet-thumbnail {filter:brightness(70%);object-fit:cover}
 .ft-date {color:#f5f5f5;font-style:oblique;justify-self:end;align-self:end;margin-$endSide:var(--maincolumn-padding);margin-bottom:var(--maincolumn-padding)}
-#ftbtn {position:absolute;$startSide:calc(var(--maincolumn-padding) - (var(--svgicon-height) - $(body.text.font.size)) / 2);bottom:var(--maincolumn-padding)}
 .ftct {color:#fff;position:absolute;$startSide:calc(var(--svgicon-height) + var(--maincolumn-padding));$endSide:calc(var(--svgicon-height) + var(--maincolumn-padding));bottom:calc(var(--svgicon-height) + var(--svgicon-height));backdrop-filter:blur($(body.background.blur));text-align:$startSide;margin:0;padding:var(--maincolumn-padding);font-size:small;z-index:1}
 
 /* 記事の題名 */
@@ -1602,7 +1600,6 @@ button</b:comment>
   <b:include cond='data:this.postDisplay.showTitle' name='snippetedPostTitle'/>
   <b:include cond='data:post.featuredImage and data:this.postDisplay.showFeaturedImage' data='post' name='snippetedPostThumbnail'/>
   </a>
-  <b:if cond='data:this.postDisplay.showSnippet'><button expr:aria-label='data:messages.learnMore' class='svg-icon-24-button' id='ftbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_more_vert_black_24dp'/></svg></button><p class='ftct hidden'><data:post.snippets.short.escaped/></p></b:if>
 </b:includable>
     <b:includable id='snippetedPostThumbnail'>
   <b:with value='data:post.featuredImage.isYoutube ? data:post.featuredImage.youtubeMaxResDefaultUrl : data:post.featuredImage' var='imgurl'>
@@ -2095,9 +2092,6 @@ fcpt.addEventListener("blur", () =&gt; {
 if (!sbct.classList.contains("slider")) {
 if (comment_button) comment_button.classList.remove("invisible");
 back_button.classList.remove("invisible"); }}); });</b:if>
-<b:if cond='data:widgets.FeaturedPost.first and data:view.isHomepage or data:view.isSingleItem'>
-/* Featured post */
-if (main.querySelector("button#ftbtn")) ftbtn.addEventListener(&quot;click&quot;, event =&gt; event.currentTarget.nextElementSibling.classList.toggle(&quot;hidden&quot;));</b:if>
 <b:if cond='data:view.isMultipleItems'>
 /* Infinite scroll */
 const bpct = Blog1.firstElementChild;
