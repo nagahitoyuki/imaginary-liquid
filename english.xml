@@ -1371,7 +1371,7 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
   <!-- G+ comments, no longer available. The includable is retained for backwards-compatibility. -->
 </b:includable>
     <b:includable id='inlineAd' var='post'>
-  <aside aria-labelledby='Advertisements' role='complementary'>
+  <aside aria-labelledby='Advertisements'>
   <b:class cond='data:post.adNumber + data:numAds lt data:maxNumAds' name='desktop-ad mobile-ad'/>
     <b:include data='post' name='super.inlineAd'/>
   </aside>
@@ -1612,12 +1612,12 @@ d='M85.4,102.49q0,-17.09 17.09,-17.090h136.72q17.09,0 17.09 17.09v136.72q0,17.09
       <b:widget-setting name='timeRange'>LAST_WEEK</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-  <section class='mnpp ctpp'>
+  <aside class='mnpp ctpp'>
   <b:if cond='data:title'>
     <h2 class='feed-title'><data:title/></h2>
   </b:if>
     <b:include name='snippetedPosts'/>
-  </section>
+  </aside>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
     <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title' rel='nofollow'><data:blog.jumpLinkMessage/></a>

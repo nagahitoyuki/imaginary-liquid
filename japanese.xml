@@ -1397,7 +1397,7 @@ button</b:comment>
   <!-- G+ comments, no longer available. The includable is retained for backwards-compatibility. -->
 </b:includable>
     <b:includable id='inlineAd' var='post'>
-  <aside aria-labelledby='広告' role='complementary'>
+  <aside aria-labelledby='広告'>
   <b:class cond='data:post.adNumber + data:numAds lt data:maxNumAds' name='desktop-ad mobile-ad'/>
     <b:include data='post' name='super.inlineAd'/>
   </aside>
@@ -1638,12 +1638,12 @@ button</b:comment>
       <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-  <section class='mnpp ctpp'>
+  <aside class='mnpp ctpp'>
   <b:if cond='data:title'>
     <h2 class='feed-title'><data:title/></h2>
   </b:if>
     <b:include name='snippetedPosts'/>
-  </section>
+  </aside>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
     <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title' rel='nofollow'><data:blog.jumpLinkMessage/></a>
