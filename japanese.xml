@@ -1053,7 +1053,7 @@ body#layout #floating_menu {display:block}]]></b:template-skin><b:elseif cond='d
   </b:if>
 </b:includable>
   </b:widget>
-  <b:widget cond='!data:view.isSingleItem' id='PageList1' locked='true' title='ページリスト' type='PageList' visible='false'>
+  <b:widget id='PageList1' locked='true' title='ページリスト' type='PageList' visible='false'>
     <b:widget-settings>
       <b:widget-setting name='pageListJson'><![CDATA[{'home': {'href': '/', 'title': 'ホーム', 'position': 0}}]]></b:widget-setting>
       <b:widget-setting name='homeTitle'>ホーム</b:widget-setting>
