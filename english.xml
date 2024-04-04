@@ -1032,7 +1032,7 @@ body#layout #floating_menu {display:block}]]></b:template-skin><b:elseif cond='d
       <b:widget-setting name='homeTitle'>Home</b:widget-setting>
     </b:widget-settings>
      <b:includable id='main'>
-  <b:tag class='tabs-title' cond='data:title' name='h2'><data:title/></b:tag>
+  <b:tag class='tabs-title' cond='data:title' expr:name='data:view.isMultipleItems ? "h2" : "p"'><data:title/></b:tag>
   <b:include name='content'/>
 </b:includable>
     <b:includable id='content'>
