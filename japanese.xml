@@ -404,8 +404,13 @@ details:has(.mdr) ol {padding-$startSide:1.25em}
 .reverse {transform:scaleX(-1)}
 
 /* アドセンス広告 */
-.inline-ad {display:none;overflow:hidden}
-.adsbygoogle {display:block;overflow:hidden}
+.AdSense {margin:0 var(--maincolumn-padding)}
+.Adsense, .inline-ad {overflow:hidden}
+#ads>.AdSense {margin-bottom:1em}
+.adsbygoogle {display:block}
+.sidebar-container .adsbygoogle {width:min($(sidebar.width) - var(--maincolumn-padding) * 2, 85vw - var(--maincolumn-padding) * 2);margin:0 auto}
+.inline-ad>.adsbygoogle, #sub_main .adsbygoogle {width:min(100vw - var(--maincolumn-padding) * 2, $(content.width) - var(--maincolumn-padding) * 2);margin:calc(var(--maincolumn-padding) / 2) auto}
+.hfeed .inline-ad {align-self:center}
 
 /* アーカイブと検索のメッセージ */
 .post-filter-message {background-color:inherit;padding:calc(var(--body-lineheight) * 1em) var(--maincolumn-padding);text-align:center;border-bottom:1px dashed $(sidebar.separator.color)}
@@ -697,9 +702,6 @@ html[dir="rtl"] .slideout {transform:translateX(0)}
 .entry-content h4 {font-size:medium}
 .entry-content h5 {font-size:small}
 .entry-content h6 {font-size:x-small}
-
-/* アドセンス広告 */
-.desktop-ad>.inline-ad {display:block;width:100%;max-width:100%;margin:calc(var(--maincolumn-padding) / 2) auto}
 }
 
 /* コンテンツの幅以下 */
@@ -717,10 +719,6 @@ margin-top:20px}
 .post-body a[imageanchor] {display:block}
 .item-view .post-body a[imageanchor="1"] {margin-left:0 !important;margin-right:0 !important}
 .item-view .post-body a[imageanchor="1"]+a[imageanchor="1"] {margin-top:16px}
-
-/* アドセンス広告 */
-.mobile-ad>.inline-ad {display:block;width:min(100%, calc(100vw - var(--maincolumn-padding) * 2));margin:calc(var(--maincolumn-padding) / 2) auto}
-.hfeed .mobile-ad>.inline-ad {align-self:center}
 }
 
 /* スマホ以下 */
@@ -988,6 +986,19 @@ body#layout #floating_menu {display:block}]]></b:template-skin><b:elseif cond='d
             <b:includable id='content'>
   <div class='widget-content' expr:id='data:widget.instanceId + &quot;_feedItemListDisplay&quot;'><a expr:href='data:feedUrl'><data:loadingMsg/></a></div>
 </b:includable>
+</b:defaultmarkup>
+<b:defaultmarkup type='AdSense'>
+            <b:includable id='main'>
+    <div class='widget-content' aria-labelledby='広告'>
+      <b:include name='defaultAdUnit'/>
+    </div>
+  </b:includable>
+            <b:includable id='defaultAdUnit'>
+  <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
+  <b:with value='&quot;/* Done in css. */&quot;' var='style'>
+    <b:include name='super.defaultAdUnit'/>
+  </b:with>
+  </b:includable>
 </b:defaultmarkup>
 </b:defaultmarkups>
 
@@ -1859,6 +1870,30 @@ button</b:comment>
 </b:includable>
         </b:widget>
       </b:section>
+      <b:section ads='true' cond='data:widgets.AdSense any (a => a.id == "AdSense1")' id='ads' name='Ads' showaddelement='false'>
+          <b:widget id='AdSense1' locked='true' title='' type='AdSense' visible='false'>
+            <b:widget-settings>
+              <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+              <b:widget-setting name='style.textcolor'>#ffffff</b:widget-setting>
+              <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+              <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+              <b:widget-setting name='style.urlcolor'>#ffffff</b:widget-setting>
+              <b:widget-setting name='style.linkcolor'>#ffffff</b:widget-setting>
+              <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+    <div class='widget-content' aria-labelledby='広告'>
+      <b:include name='defaultAdUnit'/>
+    </div>
+  </b:includable>
+            <b:includable id='defaultAdUnit'>
+  <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
+  <b:with value='&quot;/* Done in css. */&quot;' var='style'>
+    <b:include name='super.defaultAdUnit'/>
+  </b:with>
+  </b:includable>
+          </b:widget>
+          </b:section>
 </aside>
 </div>
 </b:if>
