@@ -404,11 +404,11 @@ details:has(.mdr) ol {padding-$startSide:1.25em}
 .reverse {transform:scaleX(-1)}
 
 /* アドセンス広告 */
-.AdSense {margin:0 var(--maincolumn-padding)}
-.Adsense, .inline-ad {overflow:hidden}
+.AdSense {margin:0 var(--maincolumn-padding);overflow:hidden}
+.inline-ad {overflow:hidden}
 #ads>.AdSense {margin-bottom:1em}
 .adsbygoogle {display:block}
-.sidebar-container .adsbygoogle {width:min($(sidebar.width) - var(--maincolumn-padding) * 2, 85vw - var(--maincolumn-padding) * 2);margin:0 auto}
+.sidebar-container .adsbygoogle {width:min(80vw - var(--maincolumn-padding) * 2, $(sidebar.width) - var(--maincolumn-padding) * 2);margin:0 auto}
 .inline-ad>.adsbygoogle, #sub_main .adsbygoogle {width:min(100vw - var(--maincolumn-padding) * 2, $(content.width) - var(--maincolumn-padding) * 2);margin:calc(var(--maincolumn-padding) / 2) auto}
 .hfeed .inline-ad {align-self:center}
 
@@ -551,7 +551,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
 
 /* サイドバー */
-.sidebar-container {width:min($(sidebar.width), 85vw - var(--maincolumn-padding) * 2);display:flex;flex-direction:column;background-color:$(sidebar.background.color)}
+.sidebar-container {width:min($(sidebar.width), 80vw);display:flex;flex-direction:column;background-color:$(sidebar.background.color)}
 .sidebar>.widget {margin:1em var(--maincolumn-padding);color:$(widget.text.color)}
 .sidebar>.widget>.title {color:$(widget.title.color)}
 .sidebar>.widget+.widget {border-top:1px dashed $(sidebar.separator.color)}
