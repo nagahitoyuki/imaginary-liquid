@@ -1646,12 +1646,12 @@ button</b:comment>
       <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main' var='this'>
-  <aside class='mnpp ctpp'>
+  <section class='mnpp ctpp'>
   <b:if cond='data:title'>
     <h2 class='feed-title'><data:title/></h2>
   </b:if>
     <b:include name='snippetedPosts'/>
-  </aside>
+  </section>
 </b:includable>
     <b:includable id='postFooterJumpLink'>
     <a class='jump-link' expr:href='data:post.url' expr:title='data:post.title' rel='nofollow'><data:blog.jumpLinkMessage/></a>
