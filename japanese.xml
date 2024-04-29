@@ -989,9 +989,9 @@ body#layout #floating_menu {display:block}]]></b:template-skin><b:elseif cond='d
 </b:defaultmarkup>
 <b:defaultmarkup type='AdSense'>
             <b:includable id='main'>
-    <div class='widget-content' aria-labelledby='広告'>
+    <aside class='widget-content' aria-labelledby='広告'>
       <b:include name='defaultAdUnit'/>
-    </div>
+    </aside>
   </b:includable>
             <b:includable id='defaultAdUnit'>
   <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
@@ -1692,7 +1692,7 @@ button</b:comment>
 
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
 <div id='sidebar_wrapper'>
-<aside aria-hidden='false' class='sidebar-container'>
+<section aria-hidden='false' class='sidebar-container'>
   <button aria-label='サイドバーを閉じる' class='svg-icon-24-button' id='close_button' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_close_black_24dp'/></svg></button>
         <b:section class='sidebar' id='sidebar' name='Sidebar'>
           <b:widget id='Profile1' locked='false' title='プロフィール' type='Profile' visible='true'>
@@ -1882,9 +1882,9 @@ button</b:comment>
               <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
             </b:widget-settings>
             <b:includable id='main'>
-    <div class='widget-content' aria-labelledby='広告'>
+    <aside class='widget-content' aria-labelledby='広告'>
       <b:include name='defaultAdUnit'/>
-    </div>
+    </aside>
   </b:includable>
             <b:includable id='defaultAdUnit'>
   <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
@@ -1894,12 +1894,12 @@ button</b:comment>
   </b:includable>
           </b:widget>
           </b:section>
-</aside>
+</section>
 </div>
 </b:if>
 </b:tag>
 
-<b:section class='centered-bottom' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true' tag='aside'>
+<b:section class='centered-bottom' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true' tag='section'>
   <b:widget id='Text2' locked='false' title='お知らせ' type='Text' visible='true'>
     <b:widget-settings>
       <b:widget-setting name='content'><![CDATA[<p>Bloggerのテーマデザイナーでの文字サイズの変更はスマートフォンの画面幅で基本のもの（パソコンと共通のブログ全体と記事）以外は項目がありません。文字サイズの変更はBloggerの管理画面のテーマのHTML編集かバックアップ／復元からskin内の振り分けられたmedia screen内のfont-sizeを変更して下さい。</p><p>例＿<code>font-size:150%}</code></p><p>見出しなどのパソコンとスマホで共通に反映する基本の文字サイズ以外はそれに対する割合で指定されています。</p><h4>対応する指定先</h4><dl><dt>#blog_title</dt><dd>ブログ名</dd><dt>body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry-content h4</dt><dd>ブログ、記事／追加ページの本文、ブログの投稿のスニペット、注目と人気の投稿のスニペット、記事／追加ページの引用、記事／追加ページの見出しのh4</dd><dt>.entry-title, .snippet-title, .fp-title</dt><dd>記事／追加ページの記事／追加タイトル、ブログと注目の投稿のスニペットの記事タイトル</dd><dt>.entry-content h1</dt><dd>記事／追加ページの見出しのh1</dd><dt>.entry-content h2</dt><dd>記事／追加ページの見出しのh2</dd><dt>.entry-content h3, .pp-title</dt><dd>記事／追加ページの見出しのh3、人気の投稿のスニペットの記事タイトル</dd><dt>.entry-content h5</dt><dd>記事／追加ページの見出しのh5</dd><dt>.entry-content h6</dt><dd>記事／追加ページの見出しのh6</dd></dl>]]></b:widget-setting>
@@ -2040,7 +2040,7 @@ rootMargin: "240px"});
 /* Back button */
 floatButtonObserver.observe(header);
 <b:if cond='data:skin.vars.sidebar_width or data:skin.vars.content_margin'>
-const sbct = bdis.querySelector("aside.sidebar-container");
+const sbct = bdis.querySelector("section.sidebar-container");
 if (getComputedStyle(main).width === "<data:skin.vars.content_width/>") {
 /* Sidebar for desktop */
 <b:if cond='data:view.isMultipleItems'>if (bdis.classList.contains("no-sidebar")) sbct.style.display = "none";</b:if>
