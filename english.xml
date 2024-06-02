@@ -628,7 +628,7 @@ html[dir="rtl"] :is(#back_button, #comment_button, #add_button, #summary_button,
 /* Floating button / message */
 #back_button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--fixedbutton-margin))}
 #comment_button, #add_button, #summary_button {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--fixedbutton-margin))}
-#wfsc {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding) + var(--floatingbar-height) / 2);$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + $(sidebar.width + content.margin) + var(--maincolumn-padding) + var(--floatingbar-height) / 2)}
+#wfsc {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding));$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + $(sidebar.width + content.margin) + var(--maincolumn-padding))}
 
 /* Side bar */
 #close_button {display:none}
@@ -646,7 +646,7 @@ html[dir="rtl"] :is(#back_button, #comment_button, #add_button, #summary_button,
 .no-sidebar .sidebar-container {width:100%}
 .no-sidebar>#back_button {$endSide:calc(50% - $(content.width) / 2 + var(--fixedbutton-margin))}
 .no-sidebar>#comment_button, .no-sidebar>#add_button, .no-sidebar>#summary_button {$startSide:calc(50% - $(content.width) / 2 + var(--fixedbutton-margin))}
-.no-sidebar>#wfsc {$startSide:calc(50% - $(content.width) / 2 + var(--maincolumn-padding) + var(--floatingbar-height) / 2);$endSide:calc(50% - $(content.width) / 2 + var(--maincolumn-padding) + var(--floatingbar-height) / 2)}
+.no-sidebar>#wfsc {$startSide:calc(50% - $(content.width) / 2 + var(--maincolumn-padding));$endSide:calc(50% - $(content.width) / 2 + var(--maincolumn-padding))}
 
 /* Flip horizontal */
 html[dir="rtl"] #sdbtn {transform:translateX(calc($(sidebar.width) + var(--maincolumn-padding) * -2))}
@@ -667,7 +667,7 @@ html[dir="rtl"] .no-sidebar #floating_share {transform:translateX(0)}
 /* Floating button / message */
 #back_button {$endSide:var(--fixedbutton-margin)}
 #comment_button, #add_button, #summary_button {$startSide:var(--fixedbutton-margin)}
-#wfsc {$startSide:calc(var(--maincolumn-padding) + var(--floatingbar-height) / 2);$endSide:calc(var(--maincolumn-padding) + var(--floatingbar-height) / 2)}
+#wfsc {$startSide:calc(var(--maincolumn-padding));$endSide:calc(var(--maincolumn-padding))}
 
 /* Side bar */
 .swcn {display:contents}
