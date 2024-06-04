@@ -627,7 +627,7 @@ html[dir="rtl"] :is(#back_button, #comment_button, #add_button, #summary_button,
 #floating_share {transform:translateX(var(--svgicon-height))}
 
 /* フローティングボタン／メッセージ */
-#back_button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--fixedbutton-margin))}
+#back_button {$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + $(sidebar.width + content.margin) + var(--fixedbutton-margin))}
 #comment_button, #add_button, #summary_button {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--fixedbutton-margin))}
 #wfsc {$startSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + var(--maincolumn-padding));$endSide:calc(50% - ($(sidebar.width + content.width + content.margin)) / 2 + $(sidebar.width + content.margin) + var(--maincolumn-padding))}
 
