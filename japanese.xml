@@ -2009,7 +2009,8 @@ mbtn(button, 'fadein'); }
 return; } else if (pageYOffset !== 0) {
 if (entry.rootBounds.bottom &gt; entry.boundingClientRect.bottom) {
 if (button === back_button) {
-mbtn(button, 'fadein'); fbt.style.width = "100%"; return; }} else {
+mbtn(button, 'fadein'); fbt.style.width = "100%"; return; } else {
+mbtn(summary_button, "fadeout"); mbtn(comment_button, "fadein"); return; }} else {
 mbtn(button, 'fadeout'); }}}); });
 /* Sub content observer */
 function fxsb() {
