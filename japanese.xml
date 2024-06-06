@@ -569,7 +569,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 
 /* ラベルとアーカイブ */
 .post-labels>a, .label-name {color:$(labels.text.color);background-color:rgba($(labels.background.color.red),$(labels.background.color.green),$(labels.background.color.blue),0.06);border:1px solid rgba($(labels.background.color.red), $(labels.background.color.green), $(labels.background.color.blue), .34);border-radius:1px;padding:.125em .375em;box-sizing:border-box}
-.label-name:hover, .label-name:visited {color:$(labels.text.color)}
+.post-labels>a:hover, .post-labels>a:visited, .label-name:hover, .label-name:visited {color:$(labels.text.color)}
 .BlogArchive, .Label, .list-label, .hierarchy-archive, .flat-archive {display:flex;flex-direction:column}
 .post-labels, .cloud-label {display:flex;flex-wrap:wrap}
 .post-labels, .list-label, .cloud-label {gap:var(--maincolumn-padding)}
