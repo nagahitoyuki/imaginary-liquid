@@ -534,21 +534,15 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 /* 人気の投稿 */
 #PopularPosts1 {background-color:$(popularposts.background.color);padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);overflow:hidden}
 .pp-title {font:$(popularposts.title.font);line-height:var(--body-lineheight);margin-top:20px;margin-bottom:20px}
-.mnpp .pp-title>a {color:$(popularposts.title.color)}
-.mnpp .post-footer>a {color:$(popularposts.link.color)}
-#sub_main .ctpp .pp-title>a {color:$(body.text.color)}
-#sub_main .ctpp .post-footer>a {color:$(body.link.color)}
-.sbpp .pp-title>a {color:$(widget.title.color)}
-.snippet-item {margin:0}
-.mnpp .snippet-item {color:$(popularposts.text.color)}
-#sub_main .ctpp .snippet-item {color:$(body.text.color)}
-.item-content {display:flex;column-gap:var(--maincolumn-padding)}
-.item-content>img {flex:none;height:100%}
+.pp-title>a {color:$(popularposts.title.color)}
+.snippet-item {color:$(popularposts.text.color);margin:0}
+.ctpp .post-footer>a {color:$(popularposts.link.color)}
+.item-content {display:flex;column-gap:var(--maincolumn-padding);color:inherit}
+.item-content>img {flex:none;width:max(20%, 7em - var(--maincolumn-padding));height:100%}
 .pp-post+.pp-post {border-top:1px dashed $(sidebar.separator.color)}
 .pp-post {margin-bottom:20px}
 .ctpp .item-content {margin-bottom:20px}
-.ctpp .item-content>img {width:max(20%, 7em - var(--maincolumn-padding))}
-.sbpp .item-content>img {width:calc(35% - var(--maincolumn-padding))}
+.item-content>img {border:1px #2f4f4f groove;box-sizing:border-box}
 
 /* サイドバー */
 .sidebar-container {width:min($(sidebar.width), 80vw);display:flex;flex-direction:column;background-color:$(sidebar.background.color)}
