@@ -6,7 +6,7 @@
 
 <h3>Some features</h3>
 
-<ul><li>Lazy load image of post snippets</li><li>Infinite scroll in index pages</li><li>Floating back button (at the bottom right of the blog except its header) in all pages</li><li>Share button for apps in all pages on mobile</li><li>It is possible to start from the right side for Arabic etc.</li></ul>
+<ul><li>Lazy load image of post snippets</li><li>Infinite scroll in index pages</li><li>Floating back button (at the bottom right of the blog except its header) in all pages</li><li>Ability to drop down the desktop sidebar (with the switch to the left of the share button)</li><li>It is possible to start from the right side for Arabic etc.</li></ul>
 
 <h3>SEO measurement</h3>
 
