@@ -1,6 +1,6 @@
 <h2>About theme</h2>
 
-<figure style="display:flex;"><div><p>Desktop</p><img src="https://raw.githubusercontent.com/nagahitoyuki/imaginary-liquid/master/imaginary-desktop.jpeg" alt="Header image of Imaginary for desktop"></div><div><p>Mobile</p><img src="https://raw.githubusercontent.com/nagahitoyuki/imaginary-liquid/master/imaginary-mobile.jpeg" alt="Header image of Imaginary for mobile"></div><figcaption>Header image｜<a href="https://imaginary-theme.blogspot.com/">Imaginary theme</a></figcaption></figure><br>
+<figure><img src="https://raw.githubusercontent.com/nagahitoyuki/imaginary-liquid/master/imaginary.jpeg" alt="Header image of Imaginary"><figcaption>Header image｜<a href="https://imaginary-theme.blogspot.com/">Imaginary theme</a></figcaption></figure><br><br>
 
 <p>I introduce Imaginary with liquid design (one column index page) for Japanese and English.</p>
 
