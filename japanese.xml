@@ -1910,7 +1910,7 @@ button</b:comment>
 <button aria-label='トップへ戻る' class='svg-icon-24-button hidden' id='back_button' onclick='location.href=&quot;#blog_title&quot;' type='button'><svg class='svg-icon-24 original-icon' role='img' viewBox='0 0 24 24'><path d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button>
 <b:if cond='data:view.isMultipleItems'>
 <button class='svg-icon-24-button hidden' expr:aria-label='data:messages.loading' id='add_button' type='button'><data:messages.loading/></button>
-<b:else/>
+<b:elseif cond='data:view.isSingleItem'/>
 <button class='svg-icon-24-button hidden' expr:aria-label='data:messages.learnMore' id='summary_button' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_more_vert_black_24dp'/></svg></button><div class='hidden' id='wfsc'><figure class='smct'><b:tag cond='data:view.featuredImage' expr:alt='data:messages.photo' height='252' expr:src='resizeImage(data:view.featuredImage, 480, "1200:630")' loading='lazy' name='img' width='480'/><div class='smtx'><p><data:view.title.escaped/></p><p><data:blog.metaDescription.escaped/></p><p><data:view.url.canonical/></p><p/><p><data:blog.title.escaped/></p></div></figure>
 </div><button class='svg-icon-24-button hidden' expr:aria-label='data:messages.comments' id='comment_button' onclick='location.href=&quot;#comments&quot;' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_mode_comment_black_24dp'/></svg></button>
 </b:if>
@@ -2188,7 +2188,7 @@ return; }
 lsch(); }); }, {
 rootMargin: bthg + "px"});
 nextIndexObserver.observe(sub_main); }
-<b:else/>
+<b:elseif cond='data:view.isSingleItem'/>
 /* Comment */
 if (Blog1.querySelector("section#comments")) {
 const commentForm = Blog1.querySelector("iframe#comment-editor");
