@@ -509,7 +509,8 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .loadmore.loaded {max-height:0;opacity:0;overflow:hidden}
 .comment-link {color:$(posts.link.color);position:relative}
 .comment-link .num_comments {margin-$startSide:.5em;vertical-align:top}
-#comments>.title {font-size:large;color:$(posts.title.color);margin-top:20px;margin-bottom:1.5em}
+#comments>.title {font-size:large;color:$(posts.title.color);margin-top:20px}
+#comments>.title+:not(.comment-footer) {margin-top:1.5em}
 .comment-footer:has(#comment-editor)>p {margin-top:0}
 .no-form>.comment-footer {margin-bottom:20px}
 .thread-count, #comment-editor-src, .continue, item-control {display:none}
@@ -2169,8 +2170,7 @@ if (/resources.blogblog\.com\/img\/blank\.gif/.test(avic.firstElementChild.src))
 avic.insertAdjacentHTML("afterbegin", "<svg aria-label='Avatar' class='avatarIcon' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_person_black_24dp'/></svg>"); } else {
 avic.firstElementChild.alt = "Avatar"; }}); }
 subContentObserver.observe(comments); }
-<b:if cond='!data:view.isPreview'>floatButtonObserver.observe(comments);</b:if> } else {
-comment_button.tabindex = -1; comment_button.style.bottom = `calc((${getComputedStyle(comment_button).bottom} + ${getComputedStyle(comment_button).height}) * -1)`; <b:if cond='!data:view.isPreview'>floatButtonObserver.observe(Blog1.querySelector("nav.blog-pager"));</b:if> }
+<b:if cond='!data:view.isPreview'>floatButtonObserver.observe(comments);</b:if> }
 /* Summary button */
 const pb = Blog1.querySelector("div.entry-content"), hdgs = pb.querySelectorAll("h1, h2, h3");
 if (hdgs[0]) {
