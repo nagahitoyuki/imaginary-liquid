@@ -403,6 +403,10 @@ details:has(.mdr) ol {padding-$startSide:1.25em}
 .search-action {color:$(search.action.color);font:inherit}
 #search_expand {transition:transform .3s}
 
+/* 翻訳 */
+#translate_top {width:0;transition:width .3s}
+.skiptranslate>div{display:block!important}
+
 /* ターン */
 .reverse {transform:scaleX(-1)}
 
@@ -591,9 +595,6 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 
 /* 不正行為を報告 */
 .report_abuse {font-weight:400}
-
-/* 翻訳 */
-.Translate .skiptranslate>div{display:block!important}
 
 /* サブメイン */
 #sub_main>.widget {padding-left:var(--maincolumn-padding);padding-right:var(--maincolumn-padding);box-sizing:border-box}
@@ -1140,19 +1141,20 @@ button</b:comment>
   <b:include name='content'/>
 </b:includable>
   <b:includable id='content'>
-  <div id='google_translate_element'/>
+  <div id='google_translate_element'><data:messages.loading/></div>
   <script>
     if (!/<data:blog.locale.language/>/.test(navigator.language)) {
     cbcp.classList.add("hidden");
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
-        pageLanguage: '<b:eval expr='data:blog.locale.language ?: "auto"'/>', autoDisplay: 'true', layout: google.translate.TranslateElement.InlineLayout.<data:layout/> }, 'google_translate_element'); }
-    tlbtn.classList.remove("hidden"); tlbtn.addEventListener("click", () => {
-    if (!translate_top.lastElementChild.src) {
-    const sft = document.createElement("script"); sft.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"; translate_top.appendChild(sft); }
+        pageLanguage: '<b:eval expr='data:blog.locale.language ?: "auto"'/>', autoDisplay: 'true', layout: google.translate.TranslateElement.InlineLayout.<data:layout/> }, 'google_translate_element'); }tlbtn.classList.remove("hidden");
+    const sft = document.createElement("script"), tle = google_translate_element;
+    sft.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"; sft.addEventListener("load", () => {
+    tle.style.minWidth = tle.clientWidth + "px"; tle.textContent = ""; }, {once:true}); tlbtn.addEventListener("click", () => {
     if (translate_top.classList.contains("hidden")) {
     translate_top.classList.remove("hidden"); translate_top.style.width = "auto"; } else {
-    translate_top.style.width = 0; translate_top.classList.add("hidden"); }}); }</script>
+    translate_top.style.width = 0; translate_top.classList.add("hidden"); }
+    if (!translate_top.lastElementChild.src) translate_top.appendChild(sft); }); }</script>
 </b:includable>
 </b:widget>
 </b:section></b:if><b:if cond='!data:blog.isMobileRequest'><button aria-label='サイドバーを下げる' class='svg-icon-24-button' id='sdbtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_chevron_left_black_24dp'/></svg></button><button aria-label='サイドバー上げる' class='svg-icon-24-button' id='subtn' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_chevron_right_black_24dp'/></svg></button></b:if>
