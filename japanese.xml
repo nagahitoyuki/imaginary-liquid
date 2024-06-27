@@ -1924,19 +1924,7 @@ button</b:comment>
 </b:if>
 </b:tag>
 
-<b:section class='centered-bottom' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true' tag='section'>
-  <b:widget id='Text2' locked='false' title='お知らせ' type='Text' visible='true'>
-    <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<p>Bloggerのテーマデザイナーでの文字サイズの変更はスマートフォンの画面幅で基本のもの（パソコンと共通のブログ全体と記事）以外は項目がありません。文字サイズの変更はBloggerの管理画面のテーマのHTML編集かバックアップ／復元からskin内の振り分けられたmedia screen内のfont-sizeを変更して下さい。</p><p>例＿<code>font-size:150%}</code></p><p>見出しなどのパソコンとスマホで共通に反映する基本の文字サイズ以外はそれに対する割合で指定されています。</p><h4>対応する指定先</h4><dl><dt>#blog_title</dt><dd>ブログ名</dd><dt>body, .entry-content, .summary, .snippet-item, .entry-content blockquote, .entry-content h4</dt><dd>ブログ、記事／追加ページの本文、ブログの投稿のスニペット、注目と人気の投稿のスニペット、記事／追加ページの引用、記事／追加ページの見出しのh4</dd><dt>.entry-title, .snippet-title, .fp-title</dt><dd>記事／追加ページの記事／追加タイトル、ブログと注目の投稿のスニペットの記事タイトル</dd><dt>.entry-content h1</dt><dd>記事／追加ページの見出しのh1</dd><dt>.entry-content h2</dt><dd>記事／追加ページの見出しのh2</dd><dt>.entry-content h3, .pp-title</dt><dd>記事／追加ページの見出しのh3、人気の投稿のスニペットの記事タイトル</dd><dt>.entry-content h5</dt><dd>記事／追加ページの見出しのh5</dd><dt>.entry-content h6</dt><dd>記事／追加ページの見出しのh6</dd></dl>]]></b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-  <b:include name='widget-title'/>
-  <div class='widget-content'>
-    <data:content/>
-  </div>
-</b:includable>
-  </b:widget>
-</b:section>
+<b:section class='centered-bottom' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true' tag='section'/>
 
 <button aria-label='トップへ戻る' class='svg-icon-24-button hidden' id='back_button' onclick='location.href=&quot;#blog_title&quot;' type='button'><svg class='svg-icon-24 original-icon' role='img' viewBox='0 0 24 24'><path d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button>
 <b:if cond='data:view.isMultipleItems'>
