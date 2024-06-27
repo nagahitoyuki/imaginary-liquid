@@ -519,7 +519,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 #comments>.title {font-size:large;color:$(posts.title.color);margin-top:20px}
 #comments>.title+:not(.comment-footer) {margin-top:1.5em}
 .comment-footer:has(#comment-editor)>p {margin-top:0}
-.no-form>.comment-footer {margin-bottom:20px}
+.no-form>.comment-footer {margin-bottom:1em}
 .thread-count, #comment-editor-src, .continue, item-control {display:none}
 
 /* Paging control */
