@@ -590,7 +590,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .contact-form-email-message {max-width:calc(100% - 1em)}
 .contact-form-asterisk {font-weight:bolder}
 .contact-form-error {font-style:normal}
-.contact-form-button {font:$(body.text.font)}
+.contact-form-button {font:$(body.text.font);font-size:100%}
 
 /* Report abuse */
 .report_abuse {font-weight:400}
