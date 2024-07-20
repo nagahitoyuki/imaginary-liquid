@@ -375,7 +375,7 @@ blockquote {margin:1em 2.5em}
 .blogger .svg-icon-24 {fill:$(attribution.icon.color);vertical- align:var(--image-verticalalign)}
 
 /* フローティングボタン／メッセージ */
-#back_button, #comment_button, #add_button, #summary_button {position:fixed;bottom:var(--fixedbutton-margin);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);z-index:5}
+#back_button, #comment_button, #add_button, #summary_button {position:fixed;bottom:var(--fixedbutton-margin);height:var(--floatingbar-height);background-color:$(sticky.background.color);box-shadow:5px 5px 10px -5px rgba(0, 0, 0, .4);transition:all .3s allow-discrete;@starting-style{opacity:0};z-index:5}
 #back_button, #comment_button, #summary_button {width:var(--floatingbar-height);border-radius:50%;contain:strict}
 #back_button>.svg-icon-24 {margin-top:calc(var(--svgicon-height) / -12);padding-bottom:calc(var(--svgicon-height) / 12)}
 #add_button {color:$(sticky.icons.color);padding:0 calc(var(--floatingbar-height) / 2.5);border-radius:30px;contain:content}
@@ -389,10 +389,7 @@ details:has(.mdr) ol {padding-$startSide:1.25em}
 .mdr {margin-bottom:0}
 
 /* フェード */
-@keyframes fadein {from{ opacity:0} to { opacity:1}}
-@keyframes fadeout {from{ opacity:1} to { opacity:0}}
-.fadein {animation:fadein .3s}
-.fadeout {animation:fadeout .3s}
+.fadeout {opacity:0;display:none}
 
 /* ブログ内検索 */
 #search_top {display:inline}
@@ -678,7 +675,7 @@ html[dir="rtl"] .no-sidebar #floating_share {transform:translateX(0)}
 .sidebar-container:not(.slider) {width:100%}
 .sidebar-invisible {content-visibility:hidden;visibility:hidden}
 .sidebar-visible {overflow-y:hidden}
-.dim-overlay {background-color:rgba(0, 0, 0, .7);position:fixed;top:0;$startSide:0;width:100%;height:100vh;z-index:9}
+.dim-overlay {background-color:rgba(0, 0, 0, .7);position:fixed;top:0;$startSide:0;width:100%;height:100vh;transition:all .3s allow-discrete;@starting-style{opacity:0};z-index:9}
 .slidein {transform:translateX($(sidebar.width))}
 .slideout {transform:translateX(0)}
 
@@ -1926,12 +1923,12 @@ button</b:comment>
 
 <b:section class='centered-bottom' id='sub_main' maxwidgets='5' name='Page Sub' showaddelement='true' tag='section'/>
 
-<button aria-label='トップへ戻る' class='svg-icon-24-button hidden' id='back_button' onclick='location.href=&quot;#blog_title&quot;' type='button'><svg class='svg-icon-24 original-icon' role='img' viewBox='0 0 24 24'><path d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button>
+<button aria-label='トップへ戻る' class='svg-icon-24-button fadeout' id='back_button' onclick='location.href=&quot;#blog_title&quot;' type='button'><svg class='svg-icon-24 original-icon' role='img' viewBox='0 0 24 24'><path d='M4 20 L12 4 20 20 4 20Z' fill='transparent'/></svg></button>
 <b:if cond='data:view.isMultipleItems'>
-<button class='svg-icon-24-button hidden' expr:aria-label='data:messages.loading' id='add_button' type='button'><data:messages.loading/></button>
+<button class='svg-icon-24-button fadeout' expr:aria-label='data:messages.loading' id='add_button' type='button'><data:messages.loading/></button>
 <b:elseif cond='data:view.isSingleItem'/>
-<button class='svg-icon-24-button hidden' expr:aria-label='data:messages.learnMore' id='summary_button' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_more_vert_black_24dp'/></svg></button><div class='hidden' id='wfsc'><figure class='smct'><b:tag cond='data:view.featuredImage' expr:alt='data:messages.photo' height='252' expr:src='resizeImage(data:view.featuredImage, 480, "1200:630")' loading='lazy' name='img' width='480'/><div class='smtx'><p><data:view.title.escaped/></p><p><data:blog.metaDescription.escaped/></p><p><data:view.url.canonical/></p><p/><p><data:blog.title.escaped/></p></div></figure>
-</div><button class='svg-icon-24-button hidden' expr:aria-label='data:messages.comments' id='comment_button' onclick='location.href=&quot;#comments&quot;' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_mode_comment_black_24dp'/></svg></button>
+<button class='svg-icon-24-button fadeout' expr:aria-label='data:messages.learnMore' id='summary_button' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_more_vert_black_24dp'/></svg></button><div class='hidden' id='wfsc'><figure class='smct'><b:tag cond='data:view.featuredImage' expr:alt='data:messages.photo' height='252' expr:src='resizeImage(data:view.featuredImage, 480, "1200:630")' loading='lazy' name='img' width='480'/><div class='smtx'><p><data:view.title.escaped/></p><p><data:blog.metaDescription.escaped/></p><p><data:view.url.canonical/></p><p/><p><data:blog.title.escaped/></p></div></figure>
+</div><button class='svg-icon-24-button fadeout' expr:aria-label='data:messages.comments' id='comment_button' onclick='location.href=&quot;#comments&quot;' type='button'><svg class='svg-icon-24' role='img'><use href='/responsive/sprite_v1_6.css.svg#ic_mode_comment_black_24dp'/></svg></button>
 </b:if>
 
             <b:section class='footer' id='attribution' name='Footer' showaddelement='false' tag='footer'>
@@ -1994,16 +1991,11 @@ switch (state) {
 case 'fadeout': <b:if cond='data:view.isSingleItem'>if (item.id === "back_button") {
 mbtn(summary_button, 'fadeout'); sbtn('fadeout'); } else if (item.id === "comment_button" &amp;&amp; !back_button.classList.contains("fadeout")) {
 mbtn(summary_button, 'fadein'); sbtn('fadein'); }</b:if>
-item.classList.remove("fadein"); requestAnimationFrame(() =&gt; item.classList.add("fadeout")); break;
-case 'fadein':<b:if cond='data:view.isSingleItem'>if (item.id === "back_button" &amp;&amp; comment_button.classList.contains("hidden")) {
+requestAnimationFrame(() =&gt; item.classList.add("fadeout")); break;
+case 'fadein':<b:if cond='data:view.isSingleItem'>if (item.id === "back_button" &amp;&amp; comment_button.classList.contains("fadeout")) {
 mbtn(summary_button, 'fadein'); sbtn('fadein'); } else if (item.id === "comment_button") {
 mbtn(summary_button, 'fadeout'); sbtn('fadeout'); }</b:if>
-item.classList.remove("fadeout"); item.classList.add("fadein"); requestAnimationFrame(() =&gt; item.classList.remove("hidden")); }
-if (!item.classList.contains("ban")) {
-item.addEventListener("animationend", () =&gt; {
-if (item.classList.contains("fadeout")) {
-item.classList.add("hidden"); }});
-item.classList.add("ban"); }}
+requestAnimationFrame(() =&gt; item.classList.remove("fadeout")); }}
 <b:if cond='data:view.isSingleItem'>function sbtn(state) {
 switch (state) {
 case 'fadeout': if (!wfsc.classList.contains("hidden")) {
@@ -2016,7 +2008,7 @@ entries.forEach(entry =&gt; {
 const button = entry.target.id === "header" ? back_button : comment_button;
 if (entry.isIntersecting) {
 if (button === back_button) {
-if (!button.classList.contains("hidden")) {
+if (!button.classList.contains("fadeout")) {
 mbtn(button, 'fadeout'); fbt.style.width = "0"; }} else {
 mbtn(button, 'fadein'); }
 return; } else if (pageYOffset !== 0) {
@@ -2069,24 +2061,21 @@ if (main.clientHeight + sub_main.clientHeight &gt; sidebar_wrapper.clientHeight 
 subContentObserver.observe(sidebar_wrapper);
 /* Hamburger menu */
 const bcsd = document.createElement("div");
-bcsd.classList.add("dim-overlay");
+bcsd.classList.add("dim-overlay"); bcsd.classList.add("fadeout"); bdis.appendChild(bcsd);
 function hbmb() {
 if (sbct.classList.contains("slider")) {
-bcsd.classList.remove("fadeout"); bcsd.classList.add("fadein"); requestAnimationFrame(() =&gt; {
-sbct.classList.add("slidein"); bdis.appendChild(bcsd); }); sbct.ariaHidden = "false"; sbct.classList.remove("sidebar-invisible"); bdis.classList.add("sidebar-visible"); } else {
+bcsd.classList.remove("fadeout"); requestAnimationFrame(() =&gt; sbct.classList.add("slidein")); sbct.ariaHidden = "false"; sbct.classList.remove("sidebar-invisible"); bdis.classList.add("sidebar-visible"); } else {
 location.href = "#attribution"; }}
 hamburger_menu.addEventListener("click", hbmb);
 /* Close button */
 function clsb() {
-sbct.classList.remove("slidein"); bcsd.classList.remove("fadein"); requestAnimationFrame(() =&gt; {
+sbct.classList.remove("slidein"); requestAnimationFrame(() =&gt; {
 sbct.classList.add("slideout"); bcsd.classList.add("fadeout"); }); sbct.ariaHidden = "true"; bdis.classList.remove("sidebar-visible"); }
 close_button.addEventListener("click", clsb);
 bcsd.addEventListener("click", clsb);
 sbct.addEventListener("transitionend", () =&gt; {
 if (sbct.classList.contains("slideout")) {
 sbct.classList.add("sidebar-invisible"); sbct.classList.remove("slideout"); }});
-bcsd.addEventListener("animationend", () =&gt; {
-if (bcsd.classList.contains("fadeout")) bdis.removeChild(bcsd); });
 /* Search button */
 <b:if cond='data:widgets.BlogSearch.first.id == "BlogSearch1"'>
 const scsp = search_top.querySelector("input.search-space"), shrb = main.querySelector("div.share-buttons");
@@ -2178,8 +2167,8 @@ if (!bdis.style.marginBottom) {
 bdis.style.marginBottom = bthg + "px"; }
 default: if (scroll !== 'on') return; }
 new Promise ((resolve, reject) =&gt; {
-if (add_button.classList.contains("hidden")) {
-add_button.classList.remove("hidden"); document.addEventListener("mousewheel", scrollStop, {passive: false}); document.addEventListener("touchmove", scrollStop, {passive: false}); bpct.ariaBusy = "true"; resolve(); } else {
+if (add_button.classList.contains("fadeout")) {
+add_button.classList.remove("fadeout"); document.addEventListener("mousewheel", scrollStop, {passive: false}); document.addEventListener("touchmove", scrollStop, {passive: false}); bpct.ariaBusy = "true"; resolve(); } else {
 reject('Too fast'); }}).then(async () =&gt; {
 const response = await fetch(npl.href);
 if (!response.ok) throw 'Connection failed';
@@ -2195,7 +2184,7 @@ case 'Too fast': rmmg('pass'); throw '';
 case 'Connection failed': bpct.after(bpg); rmmg('stop'); break;
 case 'cut': return lsch();
 default: bpct.after(bpg); rmmg('others'); }}).then(() =&gt; {
-document.removeEventListener("mousewheel", scrollStop, {passive: false}); document.removeEventListener("touchmove", scrollStop, {passive: false}); bpct.ariaBusy = "false"; add_button.classList.add("hidden"); });
+document.removeEventListener("mousewheel", scrollStop, {passive: false}); document.removeEventListener("touchmove", scrollStop, {passive: false}); bpct.ariaBusy = "false"; add_button.classList.add("fadeout"); });
 if (bpg) bpg.remove(); }
 const nextIndexObserver = new IntersectionObserver(entries =&gt; {
 entries.forEach(entry =&gt; {
