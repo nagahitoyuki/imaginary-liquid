@@ -439,6 +439,7 @@ details:has(.mdr) ol {padding-$startSide:1.25em}
 .no-image {background-color:#696969}
 .ft-post .feed-title, .fp-title, .ft-snippet-thumbnail, .ft-date {grid-column:1/2;grid-row:1/2}
 .ft-post .feed-title, .fp-title, .ft-date {margin:0;z-index:1}
+.ft-post .feed-title, .ft-date {white-space:nowrap}
 .ft-post .feed-title {justify-self:start;align-self:start;background-color:rgba(255, 255, 255, 0.4);padding:var(--maincolumn-padding)}
 .fp-title {color:#fff;font:$(posts.stream.title.font);line-height:var(--body-lineheight);padding:0 var(--maincolumn-padding);text-align:center;align-self:center;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient: vertical;overflow:hidden}
 .ft-snippet-thumbnail {filter:brightness(70%);object-fit:cover}
