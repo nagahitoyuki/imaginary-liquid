@@ -300,7 +300,7 @@
 /* General settings */
 :root {--floatingbar-height:42px;--maincolumn-padding:12px;--body-lineheight:1.7;--svgicon-height:calc($(body.text.font.size) * var(--body-lineheight));--image-verticalalign:calc(((var(--body-lineheight) - 1) / 2 + 0.12) / var(--body-lineheight) * -100%);--fixedbutton-margin:calc((var(--body-lineheight) - 1) * var(--maincolumn-padding))}
 html {scroll-behavior:smooth}
-body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:anywhere;background-color:$(body.background.color);color:$(body.text.color);font:$(body.text.font);line-height:var(--body-lineheight)}
+body {width:min(100vw, $(sidebar.width + content.width + content.margin));height:auto;margin:0 auto;overflow-wrap:anywhere;background-color:$(body.background.color);color:$(body.text.color);font:$(body.text.font);line-height:var(--body-lineheight);text-size-adjust:none}
 a {text-decoration:none;color:$(body.link.color)}
 a:visited {color:$(body.link.visited.color)}
 a:hover {color:$(body.link.hover.color)}
