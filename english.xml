@@ -499,7 +499,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .comment>svg+.comment-block {margin-top:-42px}
 .comment-author-header-wrapper {margin-$startSide:40px}
 .thread-expanded .comment-block {padding-bottom:1.5em}
-.comment-header>.user, .comment-header>.user>a, .comment-author, .comment-author>a {color:rgba($(posts.text.color.red), $(posts.text.color.green), $(posts.text.color.blue), 0.6);font-style:normal}
+.comment-header>.user, .comment-author, :is(.comment-header>.user, .comment-author)>a {color:rgba($(posts.text.color.red), $(posts.text.color.green), $(posts.text.color.blue), 0.6);font-style:normal}
 .comment-actions {bottom:0;position:absolute}
 .comment-actions>* {margin-$endSide:.5em}
 .comment-header>.datetime {bottom:0;display:inline-block;margin-$startSide:.5em}
