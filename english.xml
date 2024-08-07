@@ -1455,7 +1455,7 @@ button</b:comment>
     <p class='summary'>
     <b:with value='data:post.body snippet { length:(data:blog.isMobileRequest ? 320 : 860), links: false, linebreaks: false, ellipsis: true }' var='chros'>
 <b:if cond='data:chros contains "&lt;strong&gt;" or data:chros contains "&lt;b&gt;" or data:chros contains "&lt;em&gt;" or data:chros contains "&lt;i&gt;"'>
-    <script>const crsc = document.currentScript; crsc.insertAdjacentHTML("beforebegin", `<data:chros/>`.replace(/(&lt;([^&gt;]+)&gt;)/g, ''));</script>
+    <script>document.currentScript.insertAdjacentHTML("beforebegin", `<data:chros/>`.replace(/(&lt;([^&gt;]+)&gt;)/g, ''));</script>
     <b:else/>
     <b:eval expr='data:chros'/>
     </b:if>
