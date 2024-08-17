@@ -418,6 +418,7 @@ details:has(.mdr) ol {padding-$startSide:1.25em}
 
 /* アーカイブと検索のメッセージ */
 .post-filter-message {background-color:inherit;padding:calc(var(--body-lineheight) * 1em) var(--maincolumn-padding);text-align:center;border-bottom:1px dashed $(sidebar.separator.color)}
+.post-filter-message>h2 {display:inline;font-weight:normal;font-size:medium}
 .pfm-link {margin-$startSide:.5em}
 .post-filter-message .search-label, .post-filter-message .search-query {font-weight:bold}
 
@@ -1068,7 +1069,11 @@ body#layout #translate_top {width:100%}]]></b:template-skin><b:elseif cond='data
       <b:widget-setting name='homeTitle'>ホーム</b:widget-setting>
     </b:widget-settings>
      <b:includable id='main'>
-  <b:tag class='tabs-title' cond='data:title' expr:name='data:view.isMultipleItems ? "h2" : "p"'><data:title/></b:tag>
+  <b:if cond='data:title'>
+    <b:if cond='data:view.isMultiplItems'>
+    <h2 class='tabs-title'><data:title/></h2>
+    <b:else/>
+    <p class='tabs-title'><data:title/></p></b:if></b:if>
   <b:include name='content'/>
 </b:includable>
     <b:includable id='content'>
@@ -1160,12 +1165,12 @@ button</b:comment>
 </div>
 
   <b:if cond='data:view.isArchive or (data:view.isSearch and data:view.search.resultsMessageHtml)'>
-  <div class='post-filter-message'>
+  <div class='post-filter-message'><h2>
     <b:if cond='data:view.isArchive'>
       <data:view.archive.rangeMessage/>
     <b:elseif cond='data:view.isSearch and data:view.search.resultsMessageHtml'/>
       <data:view.search.resultsMessageHtml/>
-    </b:if>
+    </b:if></h2>
       <a class='pfm-link' expr:href='data:blog.homepageUrl'><data:messages.showAll/></a>
   </div>
   </b:if>
