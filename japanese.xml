@@ -582,7 +582,7 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 .remaining-items {overflow:hidden;transition:all .3s}
 .Label .remaining-items {margin-top:12px;margin-bottom:-12px}
 .remaining-items>.list-label, .remaining-items>.cloud-label {margin-bottom:12px}
-.show-more, .show-less {margin-top:1em;text-align:$endSide;font-size:medium;color:$(body.link.color);cursor:pointer}
+.show-more, .show-less {margin-top:1em;text-align:$endSide;color:$(body.link.color);cursor:pointer}
 
 /* 連絡フォーム */
 .contact-form-name, .contact-form-email, .contact-form-email-message {font:$(body.text.font);margin-top:.3em;box-sizing:border-box}
