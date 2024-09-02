@@ -570,11 +570,10 @@ a.archive-link, a.jump-link {color:$(posts.link.color)}
 /* Labels and Archives */
 .post-labels>a, .label-name {color:$(labels.text.color);background-color:rgba($(labels.background.color.red),$(labels.background.color.green),$(labels.background.color.blue),0.06);border:1px solid rgba($(labels.background.color.red), $(labels.background.color.green), $(labels.background.color.blue), .34);border-radius:1px;padding:.125em .375em;box-sizing:border-box}
 .post-labels>a:hover, .post-labels>a:visited, .label-name:hover, .label-name:visited {color:$(labels.text.color)}
-.BlogArchive, .Label, .list-label {display:flex;flex-direction:column}
-.hierarchy-archive, .flat-archive {display:block}
+.BlogArchive, .Label, .list-label, .hierarchy-archive, .flat-archive {display:flex;flex-direction:column}
 .post-labels, .cloud-label {display:flex;flex-wrap:wrap}
-.post-labels, .list-label, .cloud-label {gap:var(--maincolumn-padding)} 
-.post-labels>a, .label-name, .hierarchy-archive>a, .flat-archive>a {display:list-item;list-style-type:none}
+.post-labels, .list-label, .cloud-label {gap:var(--maincolumn-padding)}
+.post-labels>a, .label-name, .hierarchy-archive>a, .flat-archive>a {display:inline flow-root}
 .list-label>.label-name, .hierarchy-archive>a, .flat-archive>a {margin-$endSide:auto}
 .hierarchy-archive .hierarchy-archive {margin-$startSide:1em}
 .post-labels {margin-bottom:20px}
