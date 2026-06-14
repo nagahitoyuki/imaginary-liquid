@@ -2112,7 +2112,7 @@ if (comment_button) comment_button.classList.remove("invisible");
 back_button.classList.remove("invisible"); }}); });</b:if>
 <b:if cond='data:view.isMultipleItems'>
 /* Infinite scroll */
-const bpct = Blog1.firstElementChild;
+const bpct = Blog1.querySelector("div");
 if (bpct.classList.contains("hfeed") &amp;&amp; bpct.textContent) {
 const bpg = bpct.querySelector("nav.blog-pager"), smwds = sub_main.querySelectorAll("div.widget"), bthg = floating_bar.clientHeight;
 let npl = bpg.firstElementChild;
